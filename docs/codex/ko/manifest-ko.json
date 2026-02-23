@@ -1,0 +1,7 @@
+[
+  {
+    "source": "docs/codex/en/codex/ambassadors/index.md",
+    "dest": "docs/codex/ko/codex/ambassadors/index.md",
+    "status": "skipped_existing"
+  }
+]

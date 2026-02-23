@@ -1,0 +1,4 @@
+interface:
+  display_name: "Korean Docs Translator"
+  short_description: "Translate technical docs into polished Korean"
+  default_prompt: "Use $translate-docs-ko to convert documentation pages into Korean Markdown while preserving links and code blocks."

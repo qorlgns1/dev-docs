@@ -1,0 +1,8 @@
+[
+  {
+    "url": "https://developers.openai.com/codex",
+    "en_path": "docs/codex/en/codex/index.md",
+    "ko_path": "docs/codex/ko/codex/index.md",
+    "status": "skipped_existing"
+  }
+]
