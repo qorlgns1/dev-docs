@@ -21,7 +21,7 @@ import time
 from pathlib import Path
 
 
-REPO_ROOT = Path(__file__).parent.parent.parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[4]
 LEGACY_CODE_OPEN_RE = re.compile(r"^(?:>\s*)?\[code\].*$", re.IGNORECASE)
 LEGACY_CODE_CLOSE_RE = re.compile(r"^(?:>\s*)?\[/code\]\s*$", re.IGNORECASE)
 

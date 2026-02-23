@@ -1,0 +1,73 @@
+[
+  {
+    "label": "Overview",
+    "url": "https://zod.dev/"
+  },
+  {
+    "label": "Api",
+    "url": "https://zod.dev/api"
+  },
+  {
+    "label": "Basics",
+    "url": "https://zod.dev/basics"
+  },
+  {
+    "label": "Codecs",
+    "url": "https://zod.dev/codecs"
+  },
+  {
+    "label": "Ecosystem",
+    "url": "https://zod.dev/ecosystem"
+  },
+  {
+    "label": "Error Customization",
+    "url": "https://zod.dev/error-customization"
+  },
+  {
+    "label": "Error Formatting",
+    "url": "https://zod.dev/error-formatting"
+  },
+  {
+    "label": "Json Schema",
+    "url": "https://zod.dev/json-schema"
+  },
+  {
+    "label": "Library Authors",
+    "url": "https://zod.dev/library-authors"
+  },
+  {
+    "label": "Llms.Txt",
+    "url": "https://zod.dev/llms.txt"
+  },
+  {
+    "label": "Metadata",
+    "url": "https://zod.dev/metadata"
+  },
+  {
+    "label": "Packages",
+    "items": [
+      {
+        "label": "Core",
+        "url": "https://zod.dev/packages/core"
+      },
+      {
+        "label": "Mini",
+        "url": "https://zod.dev/packages/mini"
+      },
+      {
+        "label": "Zod",
+        "url": "https://zod.dev/packages/zod"
+      }
+    ]
+  },
+  {
+    "label": "V4",
+    "url": "https://zod.dev/v4",
+    "items": [
+      {
+        "label": "Changelog",
+        "url": "https://zod.dev/v4/changelog"
+      }
+    ]
+  }
+]

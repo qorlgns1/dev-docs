@@ -23,7 +23,7 @@ import tempfile
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
-REPO_ROOT = Path(__file__).parent.parent.parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[4]
 REFS_DIR = Path(__file__).parent.parent / "references"
 ASTRO_CONFIG = REPO_ROOT / "astro.config.mjs"
 

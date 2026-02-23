@@ -24,7 +24,7 @@ import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 import re
-from urllib.parse import urljoin, urlparse, urlunparse
+from urllib.parse import unquote, urljoin, urlparse, urlunparse
 
 
 def require(name: str, import_name: str | None = None):
@@ -82,7 +82,7 @@ except ImportError:
 
 # ── Paths & constants ─────────────────────────────────────────────────────────
 
-REPO_ROOT = Path(__file__).parent.parent.parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[4]
 EN_DOCS = REPO_ROOT / "src/content/docs/en"
 REFS_DIR = REPO_ROOT / ".agents/skills/add-doc/references"
 USER_AGENT = "add-doc/1.0"
@@ -299,6 +299,9 @@ def _links_from_html(base_url: str, scope: str) -> list[str]:
         parsed = urlparse(abs_url)
         # same origin only
         if parsed.netloc != urlparse(base_url).netloc:
+            continue
+        # skip Cloudflare/system utility endpoints
+        if parsed.path.startswith("/cdn-cgi/"):
             continue
         # skip asset extensions
         if any(parsed.path.lower().endswith(ext) for ext in _SKIP_EXTS):
@@ -1087,6 +1090,75 @@ def _item_count(items: list) -> int:
     return total
 
 
+def _label_from_segment(segment: str) -> str:
+    raw = unquote(segment).strip()
+    if not raw:
+        return segment
+    normalized = raw.replace("-", " ").replace("_", " ").strip()
+    if not normalized:
+        return raw
+    if normalized.lower() == normalized:
+        return normalized.title()
+    return normalized
+
+
+def build_nav_from_urls(urls: list[str], base_url: str, base_path: str) -> list[dict]:
+    """Fallback nav builder when HTML navigation extraction is unavailable."""
+    base = base_path.rstrip("/")
+    tree: dict[str, dict] = {}
+    has_root_page = False
+
+    for raw in sorted(set(urls)):
+        url = canonicalize(raw)
+        path = urlparse(url).path.rstrip("/")
+        if path.startswith("/cdn-cgi/"):
+            continue
+
+        if path == base:
+            has_root_page = True
+            continue
+        if not in_scope(url, base_path):
+            continue
+
+        rel = path[len(base):].lstrip("/")
+        if not rel:
+            has_root_page = True
+            continue
+
+        parts = [seg for seg in rel.split("/") if seg]
+        cursor = tree
+        node = None
+        for idx, part in enumerate(parts):
+            if part not in cursor:
+                cursor[part] = {
+                    "label": _label_from_segment(part),
+                    "url": None,
+                    "children": {},
+                }
+            node = cursor[part]
+            if idx == len(parts) - 1:
+                node["url"] = url
+            cursor = node["children"]
+
+    def _to_items(nodes: dict[str, dict]) -> list[dict]:
+        items: list[dict] = []
+        for node in nodes.values():
+            item: dict = {"label": node["label"]}
+            if node.get("url"):
+                item["url"] = node["url"]
+            children = _to_items(node.get("children", {}))
+            if children:
+                item["items"] = children
+            if item.get("url") or item.get("items"):
+                items.append(item)
+        return items
+
+    result = _to_items(tree)
+    if has_root_page:
+        result.insert(0, {"label": "Overview", "url": canonicalize(base_url)})
+    return result
+
+
 def extract_nav(base_url: str, base_path: str, section: str) -> bool:
     """메인 페이지에서 내비게이션 구조를 추출해 references/<section>-nav.json 으로 저장."""
     print(f"[nav] Extracting navigation from {base_url}", flush=True)
@@ -1226,7 +1298,24 @@ def main() -> int:
     print(f"[fetch] Done. Failures: {failures}", flush=True)
 
     if not args.no_nav:
-        extract_nav(base_url, base_path, section)
+        nav_ok = extract_nav(base_url, base_path, section)
+        if not nav_ok:
+            fallback_items = build_nav_from_urls(urls, base_url, base_path)
+            if fallback_items:
+                REFS_DIR.mkdir(parents=True, exist_ok=True)
+                out_file = REFS_DIR / f"{section}-nav.json"
+                out_file.write_text(
+                    json.dumps(fallback_items, ensure_ascii=False, indent=2),
+                    encoding="utf-8",
+                )
+                print(
+                    f"[nav] Fallback saved: {out_file.relative_to(REPO_ROOT)} "
+                    f"({_item_count(fallback_items)} items, "
+                    f"{len(fallback_items)} top-level groups)",
+                    flush=True,
+                )
+            else:
+                print("[nav] Fallback generation failed (no in-scope URLs).", file=sys.stderr)
 
     return 1 if failures else 0
 

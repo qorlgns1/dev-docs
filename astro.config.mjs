@@ -787,6 +787,41 @@ export default defineConfig({
 					},
 				],
 			},
+			
+				{
+					label: 'Zod',
+					translations: { en: 'Zod' },
+					items: [
+						{ slug: 'zod', label: 'Overview', translations: { en: 'Overview' } },
+						{ slug: 'zod/api', label: 'Api', translations: { en: 'Api' } },
+						{ slug: 'zod/basics', label: 'Basics', translations: { en: 'Basics' } },
+						{ slug: 'zod/codecs', label: 'Codecs', translations: { en: 'Codecs' } },
+						{ slug: 'zod/ecosystem', label: 'Ecosystem', translations: { en: 'Ecosystem' } },
+						{ slug: 'zod/error-customization', label: 'Error Customization', translations: { en: 'Error Customization' } },
+						{ slug: 'zod/error-formatting', label: 'Error Formatting', translations: { en: 'Error Formatting' } },
+						{ slug: 'zod/json-schema', label: 'Json Schema', translations: { en: 'Json Schema' } },
+						{ slug: 'zod/library-authors', label: 'Library Authors', translations: { en: 'Library Authors' } },
+						{ slug: 'zod/llms.txt', label: 'Llms.Txt', translations: { en: 'Llms.Txt' } },
+						{ slug: 'zod/metadata', label: 'Metadata', translations: { en: 'Metadata' } },
+						{
+							label: 'Packages',
+							translations: { en: 'Packages' },
+							items: [
+							{ slug: 'zod/packages/core', label: 'Core', translations: { en: 'Core' } },
+							{ slug: 'zod/packages/mini', label: 'Mini', translations: { en: 'Mini' } },
+							{ slug: 'zod/packages/zod', label: 'Zod', translations: { en: 'Zod' } }
+							],
+						},
+						{
+							label: 'V4',
+							translations: { en: 'V4' },
+							items: [
+							{ slug: 'zod/v4', label: 'Overview', translations: { en: 'Overview' } },
+							{ slug: 'zod/v4/changelog', label: 'Changelog', translations: { en: 'Changelog' } }
+							],
+						}
+					],
+				},
 			],
 		}),
 		sitemap(),
