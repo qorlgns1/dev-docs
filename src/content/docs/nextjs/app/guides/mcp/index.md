@@ -1,6 +1,6 @@
 ---
 title: '가이드: Next.js MCP Server'
-description: '소스 URL: https://nextjs.org/docs/app/guides/mcp'
+description: 'Next.js 16 이상에는 MCP 지원이 포함되어 있어 코딩 에이전트가 애플리케이션 내부를 실시간으로 조회할 수 있습니다. 이 기능을 사용하려면  패키지를 설치하세요.'
 ---
 
 # 가이드: Next.js MCP Server | Next.js

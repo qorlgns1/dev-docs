@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: page.js'
-description: 'Last updated February 20, 2026'
+description: 'The  file allows you to define UI that is unique to a route. You can create a page by default exporting a component from the file:'
 ---
 
 # File-system conventions: page.js | Next.js

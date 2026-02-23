@@ -1,6 +1,5 @@
 ---
 title: 'App Router: API Reference'
-description: 'Last updated February 20, 2026'
 ---
 
 # App Router: API Reference | Next.js

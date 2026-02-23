@@ -1,6 +1,6 @@
 ---
 title: 'Routing: Custom App'
-description: 'Last updated February 20, 2026'
+description: 'Next.js uses the  component to initialize pages. You can override it and control the page initialization and:'
 ---
 
 # Routing: Custom App | Next.js

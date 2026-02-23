@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: bundlePagesRouterDependencies'
-description: 'Last updated February 20, 2026'
+description: 'Enable automatic server-side dependency bundling for Pages Router applications. Matches the automatic dependency bundling in App Router.'
 ---
 
 # next.config.js Options: bundlePagesRouterDependencies | Next.js

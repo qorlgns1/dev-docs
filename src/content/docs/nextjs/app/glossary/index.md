@@ -1,6 +1,6 @@
 ---
 title: 'App Router: 용어집'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'React Server Components 위에 구축되어 Next.js 13에서 도입된 라우터입니다. 파일 시스템 기반 라우팅을 사용하며 레이아웃, 중첩 라우팅, 로딩 상태, 오류 처리 등을 지원합니다. 자세한 내용은 App Router 문서를 참고하세요.'
 ---
 
 # App Router: 용어집 | Next.js

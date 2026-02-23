@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: typedRoutes'
-description: 'Last updated February 20, 2026'
+description: '> Note : This option has been marked as stable, so you should use  instead of .'
 ---
 
 # next.config.js: typedRoutes | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '지시문: use cache: remote'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/directives/use-cache-remote'
+description: '지시문은 대부분의 애플리케이션 요구 사항을 충족하지만, 캐시된 연산이 예상보다 자주 다시 실행되거나 업스트림 서비스(CMS, 데이터베이스, 외부 API 등)에 대한 요청이 늘어나는 경우가 있을 수 있습니다. 이는 가 엔트리를 메모리에 저장하기 때문에 발생하며, 다음과...'
 ---
 
 # 지시문: use cache: remote | Next.js

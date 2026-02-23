@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: env'
-description: 'Last updated February 20, 2026'
+description: '> Since the release of Next.js 9.4 we now have a more intuitive and ergonomic experience for adding environment variables. Give it a try!'
 ---
 
 # next.config.js Options: env | Next.js

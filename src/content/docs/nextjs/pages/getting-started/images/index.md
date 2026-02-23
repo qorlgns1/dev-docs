@@ -1,6 +1,6 @@
 ---
 title: '시작하기: Images'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js  컴포넌트는 HTML  요소를 확장해 다음을 제공합니다:'
 ---
 
 # 시작하기: Images | Next.js

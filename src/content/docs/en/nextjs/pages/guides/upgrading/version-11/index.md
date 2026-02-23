@@ -1,6 +1,6 @@
 ---
 title: 'Upgrading: Version 11'
-description: 'Last updated February 20, 2026'
+description: 'To upgrade to version 11, run the following command:'
 ---
 
 # Upgrading: Version 11 | Next.js

@@ -1,6 +1,5 @@
 ---
 title: 'App Router: API 레퍼런스'
-description: '마지막 업데이트: 2026년 2월 20일'
 ---
 
 # App Router: API 레퍼런스 | Next.js

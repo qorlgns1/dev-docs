@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Linking and Navigating'
-description: 'Last updated February 20, 2026'
+description: 'In Next.js, routes are rendered on the server by default. This often means the client has to wait for a server response before a new route can be show...'
 ---
 
 # Getting Started: Linking and Navigating | Next.js

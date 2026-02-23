@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: Dynamic Segments'
-description: 'Last updated February 20, 2026'
+description: "When you don't know the exact route segment names ahead of time and want to create routes from dynamic data, you can use Dynamic Segments that are fil..."
 ---
 
 # File-system conventions: Dynamic Segments | Next.js

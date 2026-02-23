@@ -1,6 +1,6 @@
 ---
 title: 'Guides: AI Coding Agents'
-description: 'Last updated February 20, 2026'
+description: 'Next.js ships version-matched documentation inside the  package, allowing AI coding agents to reference accurate, up-to-date APIs and patterns. An  fi...'
 ---
 
 # Guides: AI Coding Agents | Next.js

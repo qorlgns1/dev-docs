@@ -1,6 +1,6 @@
 ---
 title: '가이드: ISR'
-description: 'Last updated February 20, 2026'
+description: '증분 정적 재생성(ISR)을 사용하면 다음을 수행할 수 있습니다.'
 ---
 
 # 가이드: ISR | Next.js

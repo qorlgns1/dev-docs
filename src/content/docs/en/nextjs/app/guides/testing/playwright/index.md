@@ -1,6 +1,6 @@
 ---
 title: 'Testing: Playwright'
-description: 'Last updated February 20, 2026'
+description: 'Playwright is a testing framework that lets you automate Chromium, Firefox, and WebKit with a single API. You can use it to write End-to-End (E2E) tes...'
 ---
 
 # Testing: Playwright | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Tailwind CSS'
-description: 'Last updated February 20, 2026'
+description: 'This guide will walk you through how to install Tailwind CSS v3 in your Next.js application.'
 ---
 
 # Guides: Tailwind CSS | Next.js

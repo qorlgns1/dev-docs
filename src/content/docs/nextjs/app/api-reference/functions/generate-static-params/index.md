@@ -1,6 +1,6 @@
 ---
 title: '함수: generateStaticParams'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '함수는 동적 라우트 세그먼트와 함께 사용해 요청 시점이 아닌 빌드 시점에 정적 생성으로 라우트를 만들 수 있습니다.'
 ---
 
 # 함수: generateStaticParams | Next.js

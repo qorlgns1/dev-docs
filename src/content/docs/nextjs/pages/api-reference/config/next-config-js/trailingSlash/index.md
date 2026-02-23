@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: trailingSlash'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '기본적으로 Next.js는 슬래시로 끝나는 URL을 슬래시가 없는 대응 URL로 리다이렉트합니다. 예를 들어 는 으로 리다이렉트됩니다. 이 동작을 반대로 설정해, 슬래시 없이 끝나는 URL을 슬래시가 붙은 대응 URL로 리다이렉트하도록 구성할 수 있습니다.'
 ---
 
 # next.config.js Options: trailingSlash | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '데이터 페칭: getStaticProps'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '페이지에서 (정적 사이트 생성)라는 함수를 export하면, Next.js는 빌드 시점에 가 반환한 props를 사용해 해당 페이지를 사전 렌더링합니다.'
 ---
 
 # 데이터 페칭: getStaticProps | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: turbopack'
-description: 'Last updated February 20, 2026'
+description: 'The  option lets you customize Turbopack to transform different files and change how modules are resolved.'
 ---
 
 # next.config.js: turbopack | Next.js

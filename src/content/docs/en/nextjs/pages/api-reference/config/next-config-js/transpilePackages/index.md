@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: transpilePackages'
-description: 'Last updated February 20, 2026'
+description: 'Next.js can automatically transpile and bundle dependencies from local packages (like monorepos) or from external dependencies (). This replaces the...'
 ---
 
 # next.config.js Options: transpilePackages | Next.js

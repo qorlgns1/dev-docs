@@ -1,6 +1,6 @@
 ---
 title: '테스트: Vitest'
-description: 'Last updated February 20, 2026'
+description: 'Vitest와 React Testing Library는 단위 테스트에 자주 함께 사용됩니다. 이 가이드는 Next.js에서 Vitest를 설정하고 첫 번째 테스트를 작성하는 방법을 보여줍니다.'
 ---
 
 # 테스트: Vitest | Next.js

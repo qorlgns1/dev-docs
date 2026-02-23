@@ -1,6 +1,5 @@
 ---
 title: 'Pages Router: Guides'
-description: 'Last updated February 20, 2026'
 ---
 
 # Pages Router: Guides | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Routing: Dynamic Routes'
-description: 'Last updated February 20, 2026'
+description: "When you don't know the exact segment names ahead of time and want to create routes from dynamic data, you can use Dynamic Segments that are filled in..."
 ---
 
 # Routing: Dynamic Routes | Next.js

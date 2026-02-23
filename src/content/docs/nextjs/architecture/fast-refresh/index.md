@@ -1,6 +1,6 @@
 ---
 title: '아키텍처: Fast Refresh'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Fast Refresh는 Next.js에 통합된 React 기능으로, 파일을 저장할 때 임시 클라이언트 상태를 유지한 채 브라우저 페이지를 라이브 리로드할 수 있게 해줍니다. 9.4 이상의 모든 Next.js 애플리케이션에서 기본 활성화되어 있으며, Fast Refre...'
 ---
 
 # 아키텍처: Fast Refresh | Next.js

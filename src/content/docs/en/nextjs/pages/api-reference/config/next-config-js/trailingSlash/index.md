@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: trailingSlash'
-description: 'Last updated February 20, 2026'
+description: 'By default Next.js will redirect URLs with trailing slashes to their counterpart without a trailing slash. For example  will redirect to . You can con...'
 ---
 
 # next.config.js Options: trailingSlash | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: CI Build Caching'
-description: 'Last updated February 20, 2026'
+description: 'To improve build performance, Next.js saves a cache to  that is shared between builds.'
 ---
 
 # Guides: CI Build Caching | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: default.js'
-description: 'Last updated February 20, 2026'
+description: "The  file is used to render a fallback within Parallel Routes when Next.js cannot recover a slot's active state after a full-page load."
 ---
 
 # File-system conventions: default.js | Next.js

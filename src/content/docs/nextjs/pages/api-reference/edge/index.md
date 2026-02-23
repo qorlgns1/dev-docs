@@ -1,6 +1,6 @@
 ---
 title: 'API 레퍼런스: Edge Runtime'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Next.js 애플리케이션에서는 두 가지 서버 런타임을 사용할 수 있습니다.'
 ---
 
 # API 레퍼런스: Edge Runtime | Next.js

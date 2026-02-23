@@ -1,6 +1,6 @@
 ---
 title: 'Migrating: Vite'
-description: 'Last updated February 20, 2026'
+description: 'This guide will help you migrate an existing Vite application to Next.js.'
 ---
 
 # Migrating: Vite | Next.js

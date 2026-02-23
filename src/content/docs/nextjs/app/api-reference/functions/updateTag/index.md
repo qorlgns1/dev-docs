@@ -1,6 +1,6 @@
 ---
 title: 'Functions: updateTag'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '는 Server Actions 내에서 특정 캐시 태그의 캐시된 데이터를 필요할 때 업데이트할 수 있게 해 줍니다.'
 ---
 
 # Functions: updateTag | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: CSS-in-JS'
-description: 'Last updated February 20, 2026'
+description: '> Warning: Using CSS-in-JS with newer React features like Server Components and Streaming requires library authors to support the latest version of Re...'
 ---
 
 # Guides: CSS-in-JS | Next.js

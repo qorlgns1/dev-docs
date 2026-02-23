@@ -1,6 +1,6 @@
 ---
 title: 'Functions: NextResponse'
-description: 'Last updated February 20, 2026'
+description: 'NextResponse extends the Web Response API with additional convenience methods.'
 ---
 
 # Functions: NextResponse | Next.js

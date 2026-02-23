@@ -1,6 +1,6 @@
 ---
 title: 'Testing: Vitest'
-description: 'Last updated February 20, 2026'
+description: 'Vitest and React Testing Library are frequently used together for Unit Testing. This guide will show you how to setup Vitest with Next.js and write yo...'
 ---
 
 # Testing: Vitest | Next.js

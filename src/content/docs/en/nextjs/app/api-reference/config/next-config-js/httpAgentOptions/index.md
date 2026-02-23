@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: httpAgentOptions'
-description: 'Last updated February 20, 2026'
+description: 'In Node.js versions prior to 18, Next.js automatically polyfills  with undici and enables HTTP Keep-Alive by default.'
 ---
 
 # next.config.js: httpAgentOptions | Next.js

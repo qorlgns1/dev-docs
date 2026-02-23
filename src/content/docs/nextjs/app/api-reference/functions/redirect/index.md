@@ -1,6 +1,6 @@
 ---
 title: '함수: redirect'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '함수는 사용자를 다른 URL로 리디렉션할 수 있게 해 줍니다. 는 서버 및 클라이언트 컴포넌트, 라우트 핸들러, 서버 함수에서 렌더링 중에 사용할 수 있습니다.'
 ---
 
 # 함수: redirect | Next.js

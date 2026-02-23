@@ -1,6 +1,5 @@
 ---
 title: 'API Reference: Components'
-description: 'Last updated February 20, 2026'
 ---
 
 # API Reference: Components | Next.js

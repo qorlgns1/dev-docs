@@ -1,6 +1,6 @@
 ---
 title: 'Functions: generateSitemaps'
-description: 'Last updated February 20, 2026'
+description: 'You can use the  function to generate multiple sitemaps for your application.'
 ---
 
 # Functions: generateSitemaps | Next.js

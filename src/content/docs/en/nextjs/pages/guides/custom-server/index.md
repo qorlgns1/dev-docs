@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Custom Server'
-description: 'Last updated February 20, 2026'
+description: 'Next.js includes its own server with  by default. If you have an existing backend, you can still use it with Next.js (this is not a custom server). A...'
 ---
 
 # Guides: Custom Server | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Fetching Data'
-description: 'Last updated February 20, 2026'
+description: 'This page will walk you through how you can fetch data in Server and Client Components, and how to stream components that depend on data.'
 ---
 
 # Getting Started: Fetching Data | Next.js

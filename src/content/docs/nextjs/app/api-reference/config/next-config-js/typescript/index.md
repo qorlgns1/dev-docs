@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: typescript'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '에서  옵션으로 TypeScript 동작을 구성하세요:'
 ---
 
 # next.config.js: typescript | Next.js

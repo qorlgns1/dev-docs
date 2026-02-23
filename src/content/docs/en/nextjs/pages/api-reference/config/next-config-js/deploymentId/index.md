@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: deploymentId'
-description: 'Last updated February 20, 2026'
+description: 'The  option allows you to set an identifier for your deployment. This identifier is used for version skew protection and cache busting during rolling...'
 ---
 
 # next.config.js Options: deploymentId | Next.js

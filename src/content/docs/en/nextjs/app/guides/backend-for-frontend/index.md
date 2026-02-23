@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Backend for Frontend'
-description: 'Last updated February 20, 2026'
+description: 'Next.js supports the "Backend for Frontend" pattern. This lets you create public endpoints to handle HTTP requests and return any content type—not jus...'
 ---
 
 # Guides: Backend for Frontend | Next.js

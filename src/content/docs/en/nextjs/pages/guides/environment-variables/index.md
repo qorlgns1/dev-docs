@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Environment Variables'
-description: 'Last updated February 20, 2026'
+description: 'Next.js comes with built-in support for environment variables, which allows you to do the following:'
 ---
 
 # Guides: Environment Variables | Next.js

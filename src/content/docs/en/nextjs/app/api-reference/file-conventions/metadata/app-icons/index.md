@@ -1,6 +1,6 @@
 ---
 title: 'Metadata Files: favicon, icon, and apple-icon'
-description: 'Last updated February 20, 2026'
+description: 'The , , or  file conventions allow you to set icons for your application.'
 ---
 
 # Metadata Files: favicon, icon, and apple-icon | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Architecture: Accessibility'
-description: 'Last updated February 20, 2026'
+description: 'The Next.js team is committed to making Next.js accessible to all developers (and their end-users). By adding accessibility features to Next.js by def...'
 ---
 
 # Architecture: Accessibility | Next.js

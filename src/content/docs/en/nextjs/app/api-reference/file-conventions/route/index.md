@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: route.js'
-description: 'Last updated February 20, 2026'
+description: 'Route Handlers allow you to create custom request handlers for a given route using the Web Request and Response APIs.'
 ---
 
 # File-system conventions: route.js | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '컴포넌트: Link Component'
-description: 'Last updated February 20, 2026'
+description: '는 prefetching과 경로 간 클라이언트 측 내비게이션을 제공하도록 HTML  요소를 확장한 React 컴포넌트입니다. Next.js에서 경로 간 이동을 수행하는 기본 방법입니다.'
 ---
 
 # 컴포넌트: Link Component | Next.js

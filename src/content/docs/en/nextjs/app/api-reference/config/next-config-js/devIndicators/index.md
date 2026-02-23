@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: devIndicators'
-description: 'Last updated February 20, 2026'
+description: "allows you to configure the on-screen indicator that gives context about the current route you're viewing during development."
 ---
 
 # next.config.js: devIndicators | Next.js

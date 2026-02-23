@@ -1,6 +1,6 @@
 ---
 title: 'Community: Contribution Guide'
-description: 'Last updated February 20, 2026'
+description: "Welcome to the Next.js Docs Contribution Guide! We're excited to have you here."
 ---
 
 # Community: Contribution Guide | Next.js

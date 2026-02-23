@@ -1,6 +1,6 @@
 ---
 title: 'API Reference: Turbopack'
-description: 'Last updated February 20, 2026'
+description: 'Turbopack is an incremental bundler optimized for JavaScript and TypeScript, written in Rust, and built into Next.js. You can use Turbopack with both...'
 ---
 
 # API Reference: Turbopack | Next.js

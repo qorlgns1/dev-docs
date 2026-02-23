@@ -1,6 +1,6 @@
 ---
 title: 'Guides: PostCSS'
-description: 'Last updated February 20, 2026'
+description: 'Next.js compiles CSS for its built-in CSS support using PostCSS.'
 ---
 
 # Guides: PostCSS | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Functions: generateMetadata'
-description: 'Last updated February 20, 2026'
+description: 'You can use the  object or the  function to define metadata.'
 ---
 
 # Functions: generateMetadata | Next.js

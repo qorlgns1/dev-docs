@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: htmlLimitedBots'
-description: 'Last updated February 20, 2026'
+description: 'The  config allows you to specify a list of user agents that should receive blocking metadata instead of streaming metadata.'
 ---
 
 # next.config.js: htmlLimitedBots | Next.js

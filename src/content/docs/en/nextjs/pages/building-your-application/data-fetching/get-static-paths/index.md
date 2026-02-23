@@ -1,6 +1,6 @@
 ---
 title: 'Data Fetching: getStaticPaths'
-description: 'Last updated February 20, 2026'
+description: 'If a page has Dynamic Routes and uses , it needs to define a list of paths to be statically generated.'
 ---
 
 # Data Fetching: getStaticPaths | Next.js

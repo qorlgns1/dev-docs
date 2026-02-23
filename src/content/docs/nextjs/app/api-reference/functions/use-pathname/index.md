@@ -1,6 +1,6 @@
 ---
 title: 'Functions: usePathname'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '은 현재 URL의 pathname을 읽을 수 있게 해주는 클라이언트 컴포넌트 훅입니다.'
 ---
 
 # Functions: usePathname | Next.js

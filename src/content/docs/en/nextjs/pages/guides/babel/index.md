@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Babel'
-description: 'Last updated February 20, 2026'
+description: 'Next.js includes the  preset to your app, which includes everything needed to compile React applications and server-side code. But if you want to exte...'
 ---
 
 # Guides: Babel | Next.js

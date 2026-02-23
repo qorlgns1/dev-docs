@@ -1,6 +1,6 @@
 ---
 title: '데이터 페칭: getServerSideProps'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '는 Next.js 함수로, 요청 시점에 데이터를 가져와 페이지 내용을 렌더링할 때 사용할 수 있습니다.'
 ---
 
 # 데이터 페칭: getServerSideProps | Next.js

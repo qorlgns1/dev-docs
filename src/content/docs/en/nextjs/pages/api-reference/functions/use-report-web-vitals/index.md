@@ -1,6 +1,6 @@
 ---
 title: 'Functions: useReportWebVitals'
-description: 'Last updated February 20, 2026'
+description: 'The  hook allows you to report Core Web Vitals, and can be used in combination with your analytics service.'
 ---
 
 # Functions: useReportWebVitals | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '함수: NextResponse'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'NextResponse는 추가 편의 메서드로 Web Response API를 확장합니다.'
 ---
 
 # 함수: NextResponse | Next.js

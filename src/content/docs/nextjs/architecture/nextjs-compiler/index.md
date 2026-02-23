@@ -1,6 +1,6 @@
 ---
 title: '아키텍처: Next.js Compiler'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Rust로 작성되고 SWC를 사용하는 Next.js Compiler는 Next.js가 프로덕션용 JavaScript 코드를 변환하고 최소화할 수 있게 해 줍니다. 이는 개별 파일 처리에 사용되던 Babel과 출력 번들을 최소화하던 Terser를 대체합니다.'
 ---
 
 # 아키텍처: Next.js Compiler | Next.js

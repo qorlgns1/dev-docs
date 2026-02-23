@@ -1,6 +1,6 @@
 ---
 title: '업그레이드: Codemods'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Codemod은 코드베이스에 대해 프로그램 방식으로 실행되는 변환입니다. 이를 통해 모든 파일을 수동으로 훑어보지 않고도 대규모 변경을 자동으로 적용할 수 있습니다.'
 ---
 
 # 업그레이드: Codemods | Next.js

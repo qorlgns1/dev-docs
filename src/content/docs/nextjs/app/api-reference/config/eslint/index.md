@@ -1,6 +1,6 @@
 ---
 title: '구성: ESLint'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는 애플리케이션에서 흔히 발생하는 문제를 쉽게 찾을 수 있도록 라는 ESLint 구성 패키지를 제공합니다. 이 패키지는  플러그인과 함께 , 의 권장 규칙 세트를 포함합니다.'
 ---
 
 # 구성: ESLint | Next.js

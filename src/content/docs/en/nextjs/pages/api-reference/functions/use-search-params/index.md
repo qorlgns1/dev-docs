@@ -1,6 +1,6 @@
 ---
 title: 'Functions: useSearchParams'
-description: 'Last updated February 20, 2026'
+description: "is a hook that lets you read the current URL's query string."
 ---
 
 # Functions: useSearchParams | Next.js

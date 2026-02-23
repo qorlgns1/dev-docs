@@ -1,6 +1,6 @@
 ---
 title: '가이드: 셀프 호스팅'
-description: 'Last updated February 20, 2026'
+description: 'Next.js 앱을 배포할 때는 인프라에 따라 다양한 기능이 어떻게 처리될지 구성하고 싶을 수 있습니다.'
 ---
 
 # 가이드: 셀프 호스팅 | Next.js

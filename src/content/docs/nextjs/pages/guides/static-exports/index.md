@@ -1,6 +1,6 @@
 ---
 title: '안내서: Static Exports'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는 정적 사이트 또는 단일 페이지 애플리케이션(SPA)으로 시작한 뒤, 서버가 필요한 기능을 나중에 선택적으로 도입할 수 있게 해줍니다.'
 ---
 
 # 안내서: Static Exports | Next.js

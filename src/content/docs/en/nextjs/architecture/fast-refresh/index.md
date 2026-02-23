@@ -1,6 +1,6 @@
 ---
 title: 'Architecture: Fast Refresh'
-description: 'Last updated February 20, 2026'
+description: 'Fast refresh is a React feature integrated into Next.js that allows you to live reload the browser page while maintaining temporary client-side state...'
 ---
 
 # Architecture: Fast Refresh | Next.js

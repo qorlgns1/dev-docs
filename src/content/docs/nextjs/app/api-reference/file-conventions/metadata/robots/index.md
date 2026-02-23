@@ -1,6 +1,6 @@
 ---
 title: '메타데이터 파일: robots.txt'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '검색 엔진 크롤러에게 사이트에서 접근 가능한 URL을 알리려면  디렉터리의 루트에 Robots 배제 표준을 따르는  파일을 추가하거나 생성하세요.'
 ---
 
 # 메타데이터 파일: robots.txt | Next.js

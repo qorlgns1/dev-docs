@@ -1,6 +1,6 @@
 ---
 title: '가이드: CI Build Caching'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '빌드 성능을 개선하기 위해 Next.js는 빌드 간에 공유되는 캐시를 에 저장합니다.'
 ---
 
 # 가이드: CI Build Caching | Next.js

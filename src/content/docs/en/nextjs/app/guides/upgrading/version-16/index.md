@@ -1,6 +1,6 @@
 ---
 title: 'Upgrading: Version 16'
-description: 'Last updated February 20, 2026'
+description: "If you're using an AI coding assistant that supports the Model Context Protocol (MCP), you can use the Next.js DevTools MCP to automate the upgrade pr..."
 ---
 
 # Upgrading: Version 16 | Next.js

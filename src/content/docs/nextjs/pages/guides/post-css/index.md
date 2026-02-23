@@ -1,6 +1,6 @@
 ---
 title: '가이드: PostCSS'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Next.js는 내장 CSS 지원을 위해 CSS를 PostCSS로 컴파일합니다.'
 ---
 
 # 가이드: PostCSS | Next.js

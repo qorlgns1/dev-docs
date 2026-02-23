@@ -1,6 +1,6 @@
 ---
 title: 'Migrating: App Router'
-description: 'Last updated February 20, 2026'
+description: 'This guide will help you:'
 ---
 
 # Migrating: App Router | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: pageExtensions'
-description: 'Last updated February 20, 2026'
+description: 'You can extend the default Page extensions (, , , ) used by Next.js. Inside , add the  config:'
 ---
 
 # next.config.js Options: pageExtensions | Next.js

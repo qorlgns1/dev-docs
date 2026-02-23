@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: experimental.adapterPath'
-description: 'Last updated February 20, 2026'
+description: 'Next.js provides an experimental API that allows you to create custom adapters to hook into the build process. This is useful for deployment platforms...'
 ---
 
 # next.config.js Options: experimental.adapterPath | Next.js

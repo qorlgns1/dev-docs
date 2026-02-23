@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: generateBuildId'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Next.js는 애플리케이션에서 제공 중인 버전을 식별하기 위해  중에 ID를 생성합니다. 동일한 빌드를 재사용하여 여러 컨테이너를 부팅해야 합니다.'
 ---
 
 # next.config.js: generateBuildId | Next.js

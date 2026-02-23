@@ -1,6 +1,6 @@
 ---
 title: 'Upgrading: Version 14'
-description: 'Last updated February 20, 2026'
+description: 'To update to Next.js version 14, run the following command using your preferred package manager:'
 ---
 
 # Upgrading: Version 14 | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Debugging'
-description: 'Last updated February 20, 2026'
+description: 'This documentation explains how you can debug your Next.js frontend and backend code with full source maps support using the VS Code debugger, Chrome...'
 ---
 
 # Guides: Debugging | Next.js

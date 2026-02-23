@@ -1,6 +1,6 @@
 ---
 title: 'Functions: cookies'
-description: 'Last updated February 20, 2026'
+description: 'is an async function that allows you to read the HTTP incoming request cookies in Server Components, and read/write outgoing request cookies in Server...'
 ---
 
 # Functions: cookies | Next.js

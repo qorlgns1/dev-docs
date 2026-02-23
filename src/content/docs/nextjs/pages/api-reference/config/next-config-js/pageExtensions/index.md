@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: pageExtensions'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js가 사용하는 기본 페이지 확장자(, , , )를 확장할 수 있습니다.  안에  구성을 추가하세요:'
 ---
 
 # next.config.js 옵션: pageExtensions | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: CSS-in-JS'
-description: 'Last updated February 20, 2026'
+description: "It's possible to use any existing CSS-in-JS solution. The simplest one is inline styles:"
 ---
 
 # Guides: CSS-in-JS | Next.js

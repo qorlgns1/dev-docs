@@ -1,6 +1,6 @@
 ---
 title: '가이드: ISR'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Incremental Static Regeneration(ISR)은 다음을 가능하게 합니다:'
 ---
 
 # 가이드: ISR | Next.js

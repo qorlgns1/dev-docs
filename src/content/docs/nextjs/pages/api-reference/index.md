@@ -1,6 +1,5 @@
 ---
 title: 'Pages Router: API Reference'
-description: '마지막 업데이트 2026년 2월 20일'
 ---
 
 # Pages Router: API Reference | Next.js

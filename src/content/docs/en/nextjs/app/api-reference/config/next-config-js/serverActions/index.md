@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: serverActions'
-description: 'Last updated February 20, 2026'
+description: 'Options for configuring Server Actions behavior in your Next.js application.'
 ---
 
 # next.config.js: serverActions | Next.js

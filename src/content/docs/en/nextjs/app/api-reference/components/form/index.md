@@ -1,6 +1,6 @@
 ---
 title: 'Components: Form Component'
-description: 'Last updated February 20, 2026'
+description: 'The  component extends the HTML  element to provide prefetching of loading UI, client-side navigation on submission, and progressive enhancement.'
 ---
 
 # Components: Form Component | Next.js

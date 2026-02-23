@@ -1,6 +1,6 @@
 ---
 title: '지시문: use cache'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '지시문은 라우트, React 컴포넌트, 함수가 캐시될 수 있도록 표시합니다. 파일 상단에 선언하면 해당 파일의 모든 export가 캐시되고, 함수나 컴포넌트 상단에 인라인으로 선언하면 반환값을 캐시합니다.'
 ---
 
 # 지시문: use cache | Next.js

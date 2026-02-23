@@ -1,6 +1,6 @@
 ---
 title: 'Components: Script'
-description: 'Last updated February 20, 2026'
+description: 'This API reference will help you understand how to use props available for the Script Component. For features and usage, please see the Optimizing Scr...'
 ---
 
 # Components: Script | Next.js

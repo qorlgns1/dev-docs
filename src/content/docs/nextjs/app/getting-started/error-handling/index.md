@@ -1,6 +1,6 @@
 ---
 title: '시작하기: 오류 처리'
-description: '소스 URL: https://nextjs.org/docs/app/getting-started/error-handling'
+description: '오류는 예상된 오류와 처리되지 않은 예외 두 가지 범주로 나눌 수 있습니다. 이 페이지에서는 Next.js 애플리케이션에서 이러한 오류를 처리하는 방법을 설명합니다.'
 ---
 
 # 시작하기: 오류 처리 | Next.js

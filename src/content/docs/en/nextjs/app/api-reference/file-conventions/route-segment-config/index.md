@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: Route Segment Config'
-description: 'Last updated February 20, 2026'
+description: '>   * The options outlined on this page are disabled if the  flag is on, and will eventually be deprecated in the future.'
 ---
 
 # File-system conventions: Route Segment Config | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: generateEtags'
-description: 'Last updated February 20, 2026'
+description: 'Next.js will generate etags for every page by default. You may want to disable etag generation for HTML pages depending on your cache strategy.'
 ---
 
 # next.config.js Options: generateEtags | Next.js

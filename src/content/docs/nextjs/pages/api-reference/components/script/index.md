@@ -1,6 +1,6 @@
 ---
 title: '구성 요소: Script'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '이 API 레퍼런스는 Script 컴포넌트에서 사용할 수 있는 props를 이해하는 데 도움을 줍니다. 기능과 사용법은 Optimizing Scripts 페이지를 참고하세요.'
 ---
 
 # 구성 요소: Script | Next.js

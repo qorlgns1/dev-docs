@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: Intercepting Routes'
-description: 'Last updated February 20, 2026'
+description: 'Intercepting routes allows you to load a route from another part of your application within the current layout. This routing paradigm can be useful wh...'
 ---
 
 # File-system conventions: Intercepting Routes | Next.js

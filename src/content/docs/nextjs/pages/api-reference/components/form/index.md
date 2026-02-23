@@ -1,6 +1,6 @@
 ---
 title: '컴포넌트: Form'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '컴포넌트는 HTML  요소를 확장해 제출 시 클라이언트 측 내비게이션과 점진적 향상을 제공합니다.'
 ---
 
 # 컴포넌트: Form | Next.js

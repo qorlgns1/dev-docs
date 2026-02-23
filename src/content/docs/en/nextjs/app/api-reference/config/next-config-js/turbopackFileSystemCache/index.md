@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: turbopackFileSystemCache'
-description: 'Last updated February 20, 2026'
+description: 'Turbopack FileSystem Cache enables Turbopack to reduce work across  or  commands. When enabled, Turbopack will save and restore data to the  folder be...'
 ---
 
 # next.config.js: turbopackFileSystemCache | Next.js

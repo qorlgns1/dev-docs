@@ -1,6 +1,6 @@
 ---
 title: '함수: useSelectedLayoutSegment'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment'
+description: '최종 업데이트: 2026년 2월 20일'
 ---
 
 # 함수: useSelectedLayoutSegment | Next.js

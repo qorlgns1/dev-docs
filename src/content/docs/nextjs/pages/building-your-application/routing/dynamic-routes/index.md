@@ -1,6 +1,6 @@
 ---
 title: 'Routing: Dynamic Routes'
-description: 'Last updated February 20, 2026'
+description: '미리 정확한 세그먼트 이름을 알지 못하고 동적 데이터에서 라우트를 생성하려면, 요청 시점에 채워지거나 빌드 시점에 프리렌더링되는 Dynamic Segment를 사용할 수 있습니다.'
 ---
 
 # Routing: Dynamic Routes | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '지시문: use client'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '지시문은 클라이언트 측에서 렌더링될 컴포넌트의 진입점을 선언하며, 상태 관리, 이벤트 처리, 브라우저 API 접근처럼 클라이언트 측 JavaScript 기능이 필요한 대화형 사용자 인터페이스(UI)를 만들 때 사용해야 합니다. 이는 React 기능입니다.'
 ---
 
 # 지시문: use client | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: Route Groups'
-description: 'Last updated February 20, 2026'
+description: 'Route Groups are a folder convention that let you organize routes by category or team.'
 ---
 
 # File-system conventions: Route Groups | Next.js

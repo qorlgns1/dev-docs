@@ -1,6 +1,5 @@
 ---
 title: 'API Reference: 구성'
-description: '마지막 업데이트 2026년 2월 20일'
 ---
 
 # API Reference: 구성 | Next.js

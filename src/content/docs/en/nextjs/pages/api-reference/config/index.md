@@ -1,6 +1,5 @@
 ---
 title: 'API Reference: Configuration'
-description: 'Last updated February 20, 2026'
 ---
 
 # API Reference: Configuration | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Installation'
-description: 'Last updated February 20, 2026'
+description: 'Create a new Next.js app and run it locally.'
 ---
 
 # Getting Started: Installation | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: sassOptions'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '를 사용하면 Sass 컴파일러를 구성할 수 있습니다.'
 ---
 
 # next.config.js: sassOptions | Next.js

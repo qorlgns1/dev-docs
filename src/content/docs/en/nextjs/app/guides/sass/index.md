@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Sass'
-description: 'Last updated February 20, 2026'
+description: 'Next.js has built-in support for integrating with Sass after the package is installed using both the  and  extensions. You can use component-level Sas...'
 ---
 
 # Guides: Sass | Next.js

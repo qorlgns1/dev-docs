@@ -1,6 +1,6 @@
 ---
 title: '컴포넌트: Image 컴포넌트'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Next.js Image 컴포넌트는 자동 이미지 최적화를 위해 HTML  요소를 확장합니다.'
 ---
 
 # 컴포넌트: Image 컴포넌트 | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: 리다이렉트'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '리다이렉트는 들어오는 요청 경로를 다른 대상 경로로 전환할 수 있게 해 줍니다.'
 ---
 
 # next.config.js: 리다이렉트 | Next.js

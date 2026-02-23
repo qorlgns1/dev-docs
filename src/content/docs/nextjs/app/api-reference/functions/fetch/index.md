@@ -1,6 +1,6 @@
 ---
 title: '함수: fetch'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는 Web  API를 확장해 서버에서 수행되는 각 요청이 고유한 영구 캐싱 및 재검증 규칙을 설정할 수 있게 합니다.'
 ---
 
 # 함수: fetch | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Next.js 문서'
-description: '소스 URL: https://nextjs.org/docs'
+description: 'Next.js 문서에 오신 것을 환영합니다!'
 ---
 
 # Next.js 문서 | Next.js

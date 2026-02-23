@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: isolatedDevBuild'
-description: 'Last updated February 20, 2026'
+description: 'The experimental  option separates development and production build outputs into different directories. When enabled, the development server () writes...'
 ---
 
 # next.config.js Options: isolatedDevBuild | Next.js

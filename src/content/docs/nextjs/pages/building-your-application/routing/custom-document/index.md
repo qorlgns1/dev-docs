@@ -1,6 +1,6 @@
 ---
 title: '라우팅: Custom Document'
-description: '소스 URL: https://nextjs.org/docs/pages/building-your-application/routing/custom-document'
+description: '커스텀 는 Page를 렌더링할 때 사용되는  및  태그를 업데이트할 수 있습니다.'
 ---
 
 # 라우팅: Custom Document | Next.js

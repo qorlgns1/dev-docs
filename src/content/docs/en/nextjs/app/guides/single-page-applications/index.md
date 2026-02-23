@@ -1,6 +1,6 @@
 ---
 title: 'Guides: SPAs'
-description: 'Last updated February 20, 2026'
+description: 'Next.js fully supports building Single-Page Applications (SPAs).'
 ---
 
 # Guides: SPAs | Next.js

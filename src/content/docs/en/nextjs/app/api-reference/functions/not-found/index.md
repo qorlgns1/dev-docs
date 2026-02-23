@@ -1,6 +1,6 @@
 ---
 title: 'Functions: notFound'
-description: 'Last updated February 20, 2026'
+description: 'The  function allows you to render the  within a route segment as well as inject a  tag.'
 ---
 
 # Functions: notFound | Next.js

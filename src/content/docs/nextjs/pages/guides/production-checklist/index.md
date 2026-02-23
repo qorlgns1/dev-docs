@@ -1,6 +1,6 @@
 ---
 title: '가이드: 프로덕션'
-description: '소스 URL: https://nextjs.org/docs/pages/guides/production-checklist'
+description: 'Next.js 애플리케이션을 프로덕션에 배포하기 전, 최상의 사용자 경험·성능·보안을 위해 적용을 고려해야 하는 최적화와 패턴이 있습니다.'
 ---
 
 # 가이드: 프로덕션 | Next.js

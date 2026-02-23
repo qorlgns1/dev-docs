@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: experimental.adapterPath'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Next.js는 빌드 프로세스에 연결할 수 있는 커스텀 어댑터를 만들 수 있도록 실험적 API를 제공합니다. 이는 Next.js 구성을 수정하거나 빌드 결과물을 처리해야 하는 배포 플랫폼이나 커스텀 빌드 통합에서 유용합니다.'
 ---
 
 # next.config.js: experimental.adapterPath | Next.js

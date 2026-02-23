@@ -1,6 +1,6 @@
 ---
 title: '함수: getInitialProps'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '> 알아두면 좋아요 : 는 레거시 API입니다. 대신  또는 를 사용하는 것을 권장합니다.'
 ---
 
 # 함수: getInitialProps | Next.js

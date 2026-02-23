@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Metadata and OG images'
-description: 'Last updated February 20, 2026'
+description: 'The Metadata APIs can be used to define your application metadata for improved SEO and web shareability and include:'
 ---
 
 # Getting Started: Metadata and OG images | Next.js

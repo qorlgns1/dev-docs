@@ -1,6 +1,6 @@
 ---
 title: 'Architecture: Supported Browsers'
-description: 'Last updated February 20, 2026'
+description: 'Next.js supports modern browsers with zero configuration.'
 ---
 
 # Architecture: Supported Browsers | Next.js

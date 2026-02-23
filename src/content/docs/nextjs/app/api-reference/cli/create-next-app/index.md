@@ -1,6 +1,6 @@
 ---
 title: 'CLI: create-next-app'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/cli/create-next-app'
+description: 'CLI를 사용하면 기본 템플릿이나 공개 GitHub 리포지토리의 예제를 통해 새로운 Next.js 애플리케이션을 만들 수 있습니다. Next.js를 시작하는 가장 쉬운 방법입니다.'
 ---
 
 # CLI: create-next-app | Next.js

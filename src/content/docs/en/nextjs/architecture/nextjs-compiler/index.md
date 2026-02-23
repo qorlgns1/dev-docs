@@ -1,6 +1,6 @@
 ---
 title: 'Architecture: Next.js Compiler'
-description: 'Last updated February 20, 2026'
+description: 'The Next.js Compiler, written in Rust using SWC, allows Next.js to transform and minify your JavaScript code for production. This replaces Babel for i...'
 ---
 
 # Architecture: Next.js Compiler | Next.js

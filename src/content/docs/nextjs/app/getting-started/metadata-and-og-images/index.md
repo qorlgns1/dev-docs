@@ -1,6 +1,6 @@
 ---
 title: '시작하기: 메타데이터와 OG 이미지'
-description: '소스 URL: https://nextjs.org/docs/app/getting-started/metadata-and-og-images'
+description: '메타데이터 API는 애플리케이션 메타데이터를 정의해 SEO와 웹 공유성을 향상할 수 있으며 다음을 포함합니다.'
 ---
 
 # 시작하기: 메타데이터와 OG 이미지 | Next.js

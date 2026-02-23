@@ -1,6 +1,6 @@
 ---
 title: 'Testing: Cypress'
-description: 'Last updated February 20, 2026'
+description: '>   * Cypress versions below 13.6.3 do not support TypeScript version 5 with . However, this issue has been resolved in Cypress version 13.6.3 and lat...'
 ---
 
 # Testing: Cypress | Next.js

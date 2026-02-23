@@ -1,6 +1,6 @@
 ---
 title: 'Components: Link'
-description: 'Last updated February 20, 2026'
+description: 'is a React component that extends the HTML  element to provide prefetching and client-side navigation between routes. It is the primary way to navigat...'
 ---
 
 # Components: Link | Next.js

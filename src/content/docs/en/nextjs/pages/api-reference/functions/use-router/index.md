@@ -1,6 +1,6 @@
 ---
 title: 'Functions: useRouter'
-description: 'Last updated February 20, 2026'
+description: 'If you want to access the  object inside any function component in your app, you can use the  hook, take a look at the following example:'
 ---
 
 # Functions: useRouter | Next.js

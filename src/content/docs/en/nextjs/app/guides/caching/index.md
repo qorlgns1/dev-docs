@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Caching'
-description: 'Last updated February 20, 2026'
+description: "Next.js improves your application's performance and reduces costs by caching rendering work and data requests. This page provides an in-depth look at..."
 ---
 
 # Guides: Caching | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: isolatedDevBuild'
-description: 'Last updated February 20, 2026'
+description: '실험적 옵션인 는 개발 및 프로덕션 빌드 출력을 서로 다른 디렉터리로 분리합니다. 이 기능을 활성화하면 개발 서버()는  대신 에 출력을 기록하므로 와 를 동시에 실행할 때 충돌을 방지합니다.'
 ---
 
 # next.config.js Options: isolatedDevBuild | Next.js

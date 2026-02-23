@@ -1,6 +1,6 @@
 ---
 title: '마이그레이션: Create React App'
-description: '소스 URL: https://nextjs.org/docs/pages/guides/migrating/from-create-react-app'
+description: '이 가이드는 기존 Create React App(CRA) 사이트를 Next.js로 마이그레이션하는 방법을 설명합니다.'
 ---
 
 # 마이그레이션: Create React App | Next.js

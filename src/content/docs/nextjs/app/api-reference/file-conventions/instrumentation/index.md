@@ -1,6 +1,6 @@
 ---
 title: '파일 시스템 규칙: instrumentation.js'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '파일은 애플리케이션에 관측 도구를 통합하여 성능과 동작을 추적하고 프로덕션 문제를 디버깅할 수 있도록 합니다.'
 ---
 
 # 파일 시스템 규칙: instrumentation.js | Next.js

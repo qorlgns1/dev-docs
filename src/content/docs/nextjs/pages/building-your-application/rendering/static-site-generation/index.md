@@ -1,6 +1,6 @@
 ---
 title: '렌더링: Static Site Generation (SSG)'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '페이지가 Static Generation 을 사용하면 페이지 HTML은 빌드 시점 에 생성됩니다. 즉, 프로덕션 환경에서는  를 실행할 때 페이지 HTML이 생성됩니다. 이 HTML은 각 요청마다 재사용되며 CDN에 캐싱할 수 있습니다.'
 ---
 
 # 렌더링: Static Site Generation (SSG) | Next.js

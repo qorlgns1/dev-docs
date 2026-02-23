@@ -1,6 +1,6 @@
 ---
 title: '파일 시스템 규칙: Metadata Files'
-description: 'Last updated 2026년 2월 20일'
+description: '이 문서 섹션에서는 메타데이터 파일 규칙을 다룹니다. 파일 기반 메타데이터는 라우트 세그먼트에 특수한 메타데이터 파일을 추가하여 정의할 수 있습니다.'
 ---
 
 # 파일 시스템 규칙: Metadata Files | Next.js

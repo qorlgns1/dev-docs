@@ -1,6 +1,6 @@
 ---
 title: 'Functions: connection'
-description: 'Last updated February 20, 2026'
+description: 'The  function allows you to indicate rendering should wait for an incoming user request before continuing.'
 ---
 
 # Functions: connection | Next.js

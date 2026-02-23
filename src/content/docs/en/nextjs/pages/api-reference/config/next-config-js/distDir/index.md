@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: distDir'
-description: 'Last updated February 20, 2026'
+description: 'You can specify a name to use for a custom build directory to use instead of .'
 ---
 
 # next.config.js Options: distDir | Next.js

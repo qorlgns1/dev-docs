@@ -1,6 +1,6 @@
 ---
 title: 'Functions: after'
-description: 'Last updated February 20, 2026'
+description: 'allows you to schedule work to be executed after a response (or prerender) is finished. This is useful for tasks and other side effects that should no...'
 ---
 
 # Functions: after | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Scripts'
-description: 'Last updated February 20, 2026'
+description: 'To load a third-party script for multiple routes, import  and include the script directly in your layout component:'
 ---
 
 # Guides: Scripts | Next.js

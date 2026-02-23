@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: expireTime'
-description: 'Last updated February 20, 2026'
+description: 'You can specify a custom  expire time for CDNs to consume in the  header for ISR enabled pages.'
 ---
 
 # next.config.js: expireTime | Next.js

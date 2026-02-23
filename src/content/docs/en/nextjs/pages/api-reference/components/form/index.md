@@ -1,6 +1,6 @@
 ---
 title: 'Components: Form'
-description: 'Last updated February 20, 2026'
+description: 'The  component extends the HTML  element to provide  client-side navigation on submission, and progressive enhancement.'
 ---
 
 # Components: Form | Next.js

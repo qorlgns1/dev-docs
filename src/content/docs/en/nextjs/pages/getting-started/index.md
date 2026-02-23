@@ -1,6 +1,5 @@
 ---
 title: 'Pages Router: Getting Started'
-description: 'Last updated February 20, 2026'
 ---
 
 # Pages Router: Getting Started | Next.js

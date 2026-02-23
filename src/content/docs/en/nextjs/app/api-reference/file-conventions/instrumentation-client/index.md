@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: instrumentation-client.js'
-description: 'Last updated February 20, 2026'
+description: 'The  file allows you to add monitoring, analytics code, and other side-effects that run before your application becomes interactive. This is useful fo...'
 ---
 
 # File-system conventions: instrumentation-client.js | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '메타데이터 파일: favicon, icon, and apple-icon'
-description: '마지막 업데이트 2026년 2월 20일'
+description: ', , 또는  파일 규칙을 사용하면 애플리케이션 아이콘을 설정할 수 있습니다.'
 ---
 
 # 메타데이터 파일: favicon, icon, and apple-icon | Next.js

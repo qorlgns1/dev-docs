@@ -1,6 +1,5 @@
 ---
 title: 'API Reference: File-system conventions'
-description: 'Last updated February 20, 2026'
 ---
 
 # API Reference: File-system conventions | Next.js

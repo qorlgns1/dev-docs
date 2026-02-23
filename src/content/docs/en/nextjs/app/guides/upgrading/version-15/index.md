@@ -1,6 +1,6 @@
 ---
 title: 'Upgrading: Version 15'
-description: 'Last updated February 20, 2026'
+description: 'To update to Next.js version 15, you can use the  codemod:'
 ---
 
 # Upgrading: Version 15 | Next.js

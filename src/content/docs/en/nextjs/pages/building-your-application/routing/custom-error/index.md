@@ -1,6 +1,6 @@
 ---
 title: 'Routing: Custom Errors'
-description: 'Last updated February 20, 2026'
+description: 'A 404 page may be accessed very often. Server-rendering an error page for every visit increases the load of the Next.js server. This can result in inc...'
 ---
 
 # Routing: Custom Errors | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: sassOptions'
-description: 'Last updated February 20, 2026'
+description: 'allow you to configure the Sass compiler.'
 ---
 
 # next.config.js: sassOptions | Next.js

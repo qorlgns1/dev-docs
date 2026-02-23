@@ -1,6 +1,6 @@
 ---
 title: 'Components: Head'
-description: 'Last updated February 20, 2026'
+description: 'We expose a built-in component for appending elements to the  of the page:'
 ---
 
 # Components: Head | Next.js

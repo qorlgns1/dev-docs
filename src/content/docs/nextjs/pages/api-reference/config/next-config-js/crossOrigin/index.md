@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: crossOrigin'
-description: 'Last updated February 20, 2026'
+description: '옵션을 사용하면 와  컴포넌트가 생성하는 모든  태그에  속성을 추가하고, 크로스 오리진 요청을 어떻게 처리할지 정의할 수 있습니다.'
 ---
 
 # next.config.js Options: crossOrigin | Next.js

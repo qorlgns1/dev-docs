@@ -1,6 +1,6 @@
 ---
 title: 'Components: Image'
-description: 'Last updated February 20, 2026'
+description: 'The Next.js Image component extends the HTML  element for automatic image optimization.'
 ---
 
 # Components: Image | Next.js

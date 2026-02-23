@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: generateBuildId'
-description: 'Last updated February 20, 2026'
+description: 'Next.js generates an ID during  to identify which version of your application is being served. The same build should be used and boot up multiple cont...'
 ---
 
 # next.config.js Options: generateBuildId | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '가이드: Tailwind CSS'
-description: 'Last updated February 20, 2026'
+description: '이 가이드는 Next.js 애플리케이션에 Tailwind CSS v3를 설치하는 방법을 안내합니다.'
 ---
 
 # 가이드: Tailwind CSS | Next.js

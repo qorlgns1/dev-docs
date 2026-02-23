@@ -1,6 +1,6 @@
 ---
 title: '함수: useSearchParams'
-description: '소스 URL: https://nextjs.org/docs/pages/api-reference/functions/use-search-params'
+description: '는 현재 URL의 쿼리 문자열을 읽을 수 있게 해 주는 훅입니다.'
 ---
 
 # 함수: useSearchParams | Next.js

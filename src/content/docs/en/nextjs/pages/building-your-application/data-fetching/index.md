@@ -1,6 +1,6 @@
 ---
 title: 'Building Your Application: Data Fetching'
-description: 'Last updated February 20, 2026'
+description: "Data fetching in Next.js allows you to render your content in different ways, depending on your application's use case. These include pre-rendering wi..."
 ---
 
 # Building Your Application: Data Fetching | Next.js

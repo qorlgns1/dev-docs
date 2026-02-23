@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Cache Components'
-description: 'Last updated February 20, 2026'
+description: '> Good to know: Cache Components is an opt-in feature. Enable it by setting the  flag to  in your Next config file. See Enabling Cache Components for...'
 ---
 
 # Getting Started: Cache Components | Next.js

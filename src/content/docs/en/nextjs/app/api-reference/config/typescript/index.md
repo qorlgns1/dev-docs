@@ -1,6 +1,6 @@
 ---
 title: 'Configuration: TypeScript'
-description: 'Last updated February 20, 2026'
+description: 'Next.js comes with built-in TypeScript, automatically installing the necessary packages and configuring the proper settings when you create a new proj...'
 ---
 
 # Configuration: TypeScript | Next.js

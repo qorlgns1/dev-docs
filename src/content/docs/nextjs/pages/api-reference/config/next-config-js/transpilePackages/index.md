@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: transpilePackages'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는 로컬 패키지(예: 모노레포)나 외부 의존성()에서 오는 의존성을 자동으로 트랜스파일하고 번들링할 수 있습니다. 이는  패키지를 대체합니다.'
 ---
 
 # next.config.js 옵션: transpilePackages | Next.js

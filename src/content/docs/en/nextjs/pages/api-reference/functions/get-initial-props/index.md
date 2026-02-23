@@ -1,6 +1,6 @@
 ---
 title: 'Functions: getInitialProps'
-description: 'Last updated February 20, 2026'
+description: '> Good to know :  is a legacy API. We recommend using  or  instead.'
 ---
 
 # Functions: getInitialProps | Next.js

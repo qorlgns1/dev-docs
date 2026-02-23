@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: assetPrefix'
-description: 'Last updated February 20, 2026'
+description: '> Attention : Deploying to Vercel automatically configures a global CDN for your Next.js project. You do not need to manually setup an Asset Prefix.'
 ---
 
 # next.config.js: assetPrefix | Next.js

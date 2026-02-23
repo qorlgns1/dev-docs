@@ -1,6 +1,6 @@
 ---
 title: '가이드: Custom Server'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Next.js는 기본적으로 와 함께 자체 서버를 포함합니다. 기존 백엔드가 있더라도 Next.js와 함께 사용할 수 있으며(이 경우 커스텀 서버가 아님) 커스텀 Next.js 서버를 통해 특정 패턴에 맞춰 프로그래밍 방식으로 서버를 시작할 수 있습니다. 대부분의 경우...'
 ---
 
 # 가이드: Custom Server | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '테스트: Playwright'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Playwright는 하나의 API로 Chromium, Firefox, WebKit을 자동화할 수 있는 테스트 프레임워크입니다. 이를 사용해 엔드 투 엔드(E2E) 테스트를 작성할 수 있습니다. 이 가이드는 Playwright를 Next.js와 함께 설정하고 첫 번째...'
 ---
 
 # 테스트: Playwright | Next.js

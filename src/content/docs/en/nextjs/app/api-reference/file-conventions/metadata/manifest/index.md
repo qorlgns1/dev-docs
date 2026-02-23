@@ -1,6 +1,6 @@
 ---
 title: 'Metadata Files: manifest.json'
-description: 'Last updated February 20, 2026'
+description: 'Add or generate a  file that matches the Web Manifest Specification in the root of  directory to provide information about your web application for th...'
 ---
 
 # Metadata Files: manifest.json | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '테스트: Cypress'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '>   * Cypress 13.6.3 미만 버전은  설정에서 TypeScript 5를 지원하지 않습니다. 이 문제는 Cypress 13.6.3 이후 버전에서 해결되었습니다. cypress v13.6.3'
 ---
 
 # 테스트: Cypress | Next.js

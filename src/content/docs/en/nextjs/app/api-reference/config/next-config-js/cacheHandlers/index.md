@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: cacheHandlers'
-description: 'Last updated February 20, 2026'
+description: 'The  configuration allows you to define custom cache storage implementations for  and . This enables you to store cached components and functions in e...'
 ---
 
 # next.config.js: cacheHandlers | Next.js

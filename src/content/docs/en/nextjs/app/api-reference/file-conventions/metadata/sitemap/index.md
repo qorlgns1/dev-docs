@@ -1,6 +1,6 @@
 ---
 title: 'Metadata Files: sitemap.xml'
-description: 'Last updated February 20, 2026'
+description: 'is a special file that matches the Sitemaps XML format to help search engine crawlers index your site more efficiently.'
 ---
 
 # Metadata Files: sitemap.xml | Next.js

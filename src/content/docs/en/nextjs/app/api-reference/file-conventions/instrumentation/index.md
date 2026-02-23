@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: instrumentation.js'
-description: 'Last updated February 20, 2026'
+description: 'The  file is used to integrate observability tools into your application, allowing you to track the performance and behavior, and to debug issues in p...'
 ---
 
 # File-system conventions: instrumentation.js | Next.js

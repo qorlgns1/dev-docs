@@ -1,6 +1,6 @@
 ---
 title: 'Data Fetching: getServerSideProps'
-description: 'Last updated February 20, 2026'
+description: 'is a Next.js function that can be used to fetch data and render the contents of a page at request time.'
 ---
 
 # Data Fetching: getServerSideProps | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Self-Hosting'
-description: 'Last updated February 20, 2026'
+description: 'When deploying your Next.js app, you may want to configure how different features are handled based on your infrastructure.'
 ---
 
 # Guides: Self-Hosting | Next.js

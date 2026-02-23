@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: env'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '> Next.js 9.4 릴리스 이후로 환경 변수를 추가하는 경험이 더욱 직관적이고 편리해졌습니다. 직접 사용해 보세요!'
 ---
 
 # next.config.js 옵션: env | Next.js

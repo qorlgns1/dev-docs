@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: serverExternalPackages'
-description: '소스 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages'
+description: '이러한 페이지는 이후 네이티브 Node.js 를 사용해 의존성을 해석합니다.'
 ---
 
 # next.config.js 옵션: serverExternalPackages | Next.js

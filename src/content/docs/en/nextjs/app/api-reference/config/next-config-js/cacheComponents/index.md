@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: cacheComponents'
-description: 'Last updated February 20, 2026'
+description: 'The  flag is a feature in Next.js that causes data fetching operations in the App Router to be excluded from pre-renders unless they are explicitly ca...'
 ---
 
 # next.config.js: cacheComponents | Next.js

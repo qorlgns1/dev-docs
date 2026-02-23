@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Next.js MCP Server'
-description: 'Last updated February 20, 2026'
+description: 'The Model Context Protocol (MCP) is an open standard that allows AI agents and coding assistants to interact with your applications through a standard...'
 ---
 
 # Guides: Next.js MCP Server | Next.js

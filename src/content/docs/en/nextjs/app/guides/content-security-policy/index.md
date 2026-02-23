@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Content Security Policy'
-description: 'Last updated February 20, 2026'
+description: 'By using CSP, developers can specify which origins are permissible for content sources, scripts, stylesheets, images, fonts, objects, media (audio, vi...'
 ---
 
 # Guides: Content Security Policy | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Directives: use cache: remote'
-description: 'Last updated February 20, 2026'
+description: 'While the  directive is sufficient for most application needs, you might notice that cached operations are re-running more often than expected, or tha...'
 ---
 
 # Directives: use cache: remote | Next.js

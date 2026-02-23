@@ -1,6 +1,6 @@
 ---
 title: '함수: userAgent'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '도우미는 요청에서 사용자 에이전트 객체와 상호 작용할 수 있도록 Web Request API를 확장하여 추가 속성과 메서드를 제공합니다.'
 ---
 
 # 함수: userAgent | Next.js

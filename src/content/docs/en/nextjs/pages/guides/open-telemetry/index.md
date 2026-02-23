@@ -1,6 +1,6 @@
 ---
 title: 'Guides: OpenTelemetry'
-description: 'Last updated February 20, 2026'
+description: 'Observability is crucial for understanding and optimizing the behavior and performance of your Next.js app.'
 ---
 
 # Guides: OpenTelemetry | Next.js

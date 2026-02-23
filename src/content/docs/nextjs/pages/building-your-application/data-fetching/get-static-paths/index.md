@@ -1,6 +1,6 @@
 ---
 title: '데이터 패칭: getStaticPaths'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '페이지가 동적 라우트를 사용하고 를 정의한다면, 정적으로 생성할 경로 목록을 지정해야 합니다.'
 ---
 
 # 데이터 패칭: getStaticPaths | Next.js

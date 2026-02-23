@@ -1,6 +1,6 @@
 ---
 title: '파일 시스템 규칙: proxy.js'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '> 참고:  파일 규칙은 더 이상 사용되지 않으며 로 이름이 변경되었습니다. 자세한 내용은 Migration to Proxy를 참고하세요.'
 ---
 
 # 파일 시스템 규칙: proxy.js | Next.js

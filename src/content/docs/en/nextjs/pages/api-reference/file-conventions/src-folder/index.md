@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: src Directory'
-description: 'Last updated February 20, 2026'
+description: 'As an alternative to having the special Next.js  or  directories in the root of your project, Next.js also supports the common pattern of placing appl...'
 ---
 
 # File-system conventions: src Directory | Next.js

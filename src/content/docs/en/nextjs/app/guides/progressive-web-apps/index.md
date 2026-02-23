@@ -1,6 +1,6 @@
 ---
 title: 'Guides: PWAs'
-description: 'Last updated February 20, 2026'
+description: 'Progressive Web Applications (PWAs) offer the reach and accessibility of web applications combined with the features and user experience of native mob...'
 ---
 
 # Guides: PWAs | Next.js

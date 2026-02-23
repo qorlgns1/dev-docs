@@ -1,6 +1,6 @@
 ---
 title: 'CLI: next CLI'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js CLI를 사용하면 애플리케이션을 개발하고, 빌드하고, 시작하는 등 다양한 작업을 수행할 수 있습니다.'
 ---
 
 # CLI: next CLI | Next.js

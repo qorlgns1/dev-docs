@@ -1,6 +1,6 @@
 ---
 title: 'App Router: Glossary'
-description: 'Last updated February 20, 2026'
+description: 'The Next.js router introduced in version 13, built on top of React Server Components. It uses file-system based routing and supports layouts, nested r...'
 ---
 
 # App Router: Glossary | Next.js

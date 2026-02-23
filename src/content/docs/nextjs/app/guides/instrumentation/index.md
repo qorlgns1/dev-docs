@@ -1,6 +1,6 @@
 ---
 title: '가이드: Instrumentation'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Instrumentation은 애플리케이션에 모니터링과 로깅 도구를 통합하도록 코드를 사용하는 과정입니다. 이를 통해 애플리케이션의 성능과 동작을 추적하고, 프로덕션 환경에서 문제를 디버그할 수 있습니다.'
 ---
 
 # 가이드: Instrumentation | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Third Party Libraries'
-description: 'Last updated February 20, 2026'
+description: 'All third-party integrations provided by  have been optimized for performance and ease of use.'
 ---
 
 # Guides: Third Party Libraries | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '구성 요소: Head'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '다음과 같이 페이지의 에 요소를 추가하는 내장 컴포넌트를 제공합니다:'
 ---
 
 # 구성 요소: Head | Next.js

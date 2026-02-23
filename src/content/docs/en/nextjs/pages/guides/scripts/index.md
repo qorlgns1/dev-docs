@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Scripts'
-description: 'Last updated February 20, 2026'
+description: 'To load a third-party script for all routes, import  and include the script directly in your custom :'
 ---
 
 # Guides: Scripts | Next.js

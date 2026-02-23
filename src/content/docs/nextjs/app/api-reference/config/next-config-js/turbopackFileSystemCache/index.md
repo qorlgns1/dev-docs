@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: turbopackFileSystemCache'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache'
+description: 'Turbopack 파일시스템 캐시는  또는  명령 전반에서 Turbopack의 작업량을 줄일 수 있도록 합니다. 이 기능을 활성화하면 Turbopack은 빌드 사이에  폴더에 데이터를 저장하고 복원하여 이후 빌드와 개발 세션을 크게 가속할 수 있습니다.'
 ---
 
 # next.config.js: turbopackFileSystemCache | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Functions: getStaticProps'
-description: 'Last updated February 20, 2026'
+description: 'Exporting a function called  will pre-render a page at build time using the props returned from the function:'
 ---
 
 # Functions: getStaticProps | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '구성 요소: Font'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '모든 폰트 파일에 대해 내장 자동 셀프 호스팅을 포함합니다. 이는 layout shift 없이 웹 폰트를 최적으로 로드할 수 있음을 의미합니다.'
 ---
 
 # 구성 요소: Font | Next.js

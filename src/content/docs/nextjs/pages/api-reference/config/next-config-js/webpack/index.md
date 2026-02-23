@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: webpack'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '> 알아두면 좋아요: webpack 구성 변경은 semver 보장에 포함되지 않으므로 위험을 감수하고 진행하세요'
 ---
 
 # next.config.js 옵션: webpack | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Functions: headers'
-description: 'Last updated February 20, 2026'
+description: 'is an async function that allows you to read the HTTP incoming request headers from a Server Component.'
 ---
 
 # Functions: headers | Next.js

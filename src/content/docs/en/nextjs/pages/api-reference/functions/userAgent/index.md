@@ -1,6 +1,6 @@
 ---
 title: 'Functions: userAgent'
-description: 'Last updated February 20, 2026'
+description: 'The  helper extends the Web Request API with additional properties and methods to interact with the user agent object from the request.'
 ---
 
 # Functions: userAgent | Next.js

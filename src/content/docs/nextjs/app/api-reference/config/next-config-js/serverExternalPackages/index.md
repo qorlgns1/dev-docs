@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: serverExternalPackages'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '특정 의존성이 Node.js 전용 기능을 사용한다면, 해당 의존성을 Server Components 번들링에서 선택적으로 제외하고 네이티브 Node.js 를 사용할 수 있습니다.'
 ---
 
 # next.config.js: serverExternalPackages | Next.js

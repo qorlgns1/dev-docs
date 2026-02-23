@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Testing'
-description: 'Last updated February 20, 2026'
+description: 'In React and Next.js, there are a few different types of tests you can write, each with its own purpose and use cases. This page provides an overview...'
 ---
 
 # Guides: Testing | Next.js

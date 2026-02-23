@@ -1,6 +1,6 @@
 ---
 title: 'Functions: cacheTag'
-description: 'Last updated February 20, 2026'
+description: 'The  function allows you to tag cached data for on-demand invalidation. By associating tags with cache entries, you can selectively purge or revalidat...'
 ---
 
 # Functions: cacheTag | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Functions: cacheLife'
-description: 'Last updated February 20, 2026'
+description: 'The  function is used to set the cache lifetime of a function or component. It should be used alongside the  directive, and within the scope of the fu...'
 ---
 
 # Functions: cacheLife | Next.js

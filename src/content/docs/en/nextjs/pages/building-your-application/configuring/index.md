@@ -1,6 +1,6 @@
 ---
 title: 'Building Your Application: Configuring'
-description: 'Last updated February 20, 2026'
+description: 'Next.js allows you to customize your project to meet specific requirements. This includes integrations with TypeScript, ESlint, and more, as well as i...'
 ---
 
 # Building Your Application: Configuring | Next.js

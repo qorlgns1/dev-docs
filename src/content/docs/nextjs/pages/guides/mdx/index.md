@@ -1,6 +1,6 @@
 ---
 title: '가이드: MDX'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는 애플리케이션 내부의 로컬 MDX 콘텐츠뿐 아니라 서버에서 동적으로 가져오는 원격 MDX 파일도 지원합니다. Next.js 플러그인은 마크다운과 React 컴포넌트를 HTML로 변환하며, App Router에서 기본인 서버 컴포넌트 사용도 지원합니다.'
 ---
 
 # 가이드: MDX | Next.js

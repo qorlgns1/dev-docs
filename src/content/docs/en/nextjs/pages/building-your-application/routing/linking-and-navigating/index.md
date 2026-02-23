@@ -1,6 +1,6 @@
 ---
 title: 'Routing: Linking and Navigating'
-description: 'Last updated February 20, 2026'
+description: 'The Next.js router allows you to do client-side route transitions between pages, similar to a single-page application.'
 ---
 
 # Routing: Linking and Navigating | Next.js

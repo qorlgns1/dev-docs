@@ -1,6 +1,6 @@
 ---
 title: 'Routing: Pages and Layouts'
-description: 'Last updated February 20, 2026'
+description: 'The Pages Router has a file-system based router built on the concept of pages.'
 ---
 
 # Routing: Pages and Layouts | Next.js

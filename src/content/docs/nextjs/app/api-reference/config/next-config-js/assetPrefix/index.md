@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: assetPrefix'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '> 주의: Vercel에 배포하면 Next.js 프로젝트에 대한 글로벌 CDN이 자동으로 구성됩니다. Asset Prefix를 수동으로 설정할 필요가 없습니다.'
 ---
 
 # next.config.js: assetPrefix | Next.js

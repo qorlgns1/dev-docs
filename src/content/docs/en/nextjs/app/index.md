@@ -1,6 +1,6 @@
 ---
 title: 'Next.js Docs: App Router'
-description: 'Last updated February 20, 2026'
+description: "The App Router is a file-system based router that uses React's latest features such as Server Components, Suspense, and Server Functions."
 ---
 
 # Next.js Docs: App Router | Next.js

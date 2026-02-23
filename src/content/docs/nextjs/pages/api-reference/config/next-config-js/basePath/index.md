@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: basePath'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js 애플리케이션을 도메인의 하위 경로로 배포하려면  구성 옵션을 사용할 수 있습니다.'
 ---
 
 # next.config.js 옵션: basePath | Next.js

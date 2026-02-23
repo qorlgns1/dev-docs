@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: cacheLife'
-description: 'Last updated February 20, 2026'
+description: 'The  option allows you to define custom cache profiles when using the  function inside components or functions, and within the scope of the  directive...'
 ---
 
 # next.config.js: cacheLife | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: onDemandEntries'
-description: 'Last updated February 20, 2026'
+description: 'Next.js exposes some options that give you some control over how the server will dispose or keep in memory built pages in development.'
 ---
 
 # next.config.js Options: onDemandEntries | Next.js

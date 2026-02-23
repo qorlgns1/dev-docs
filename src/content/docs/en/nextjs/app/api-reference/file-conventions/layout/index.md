@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: layout.js'
-description: 'Last updated February 20, 2026'
+description: 'The  file is used to define a layout in your Next.js application.'
 ---
 
 # File-system conventions: layout.js | Next.js

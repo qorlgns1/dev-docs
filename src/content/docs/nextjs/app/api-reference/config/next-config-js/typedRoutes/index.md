@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: typedRoutes'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '> 참고: 이 옵션은 안정(stable) 버전으로 지정되었으므로  대신 를 사용해야 합니다.'
 ---
 
 # next.config.js: typedRoutes | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Functions: draftMode'
-description: 'Last updated February 20, 2026'
+description: 'is an async function allows you to enable and disable Draft Mode, as well as check if Draft Mode is enabled in a Server Component.'
 ---
 
 # Functions: draftMode | Next.js

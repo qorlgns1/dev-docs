@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: images'
-description: 'Last updated February 20, 2026'
+description: 'If you want to use a cloud provider to optimize images instead of using the Next.js built-in Image Optimization API, you can configure  with the follo...'
 ---
 
 # next.config.js Options: images | Next.js

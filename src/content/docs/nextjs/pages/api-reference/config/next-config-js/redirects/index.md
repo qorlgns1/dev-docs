@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: redirects'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '리디렉션을 사용하면 들어오는 요청 경로를 다른 목적지 경로로 전달할 수 있습니다.'
 ---
 
 # next.config.js 옵션: redirects | Next.js

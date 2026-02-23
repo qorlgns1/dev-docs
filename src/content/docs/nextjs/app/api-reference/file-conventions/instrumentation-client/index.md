@@ -1,6 +1,6 @@
 ---
 title: '파일 시스템 규칙: instrumentation-client.js'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '파일을 사용하면 애플리케이션이 인터랙티브 상태가 되기 전에 실행되는 모니터링, 분석 코드, 기타 부수 효과를 추가할 수 있습니다. 이는 성능 추적, 오류 모니터링, 폴리필 또는 그 밖의 클라이언트 측 관측 도구를 설정하는 데 유용합니다.'
 ---
 
 # 파일 시스템 규칙: instrumentation-client.js | Next.js

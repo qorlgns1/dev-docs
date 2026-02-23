@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Development Environment'
-description: 'Last updated February 20, 2026'
+description: 'Next.js is designed to provide a great developer experience. As your application grows, you might notice slower compilation times during local develop...'
 ---
 
 # Guides: Development Environment | Next.js

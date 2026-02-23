@@ -1,6 +1,6 @@
 ---
 title: 'Functions: usePathname'
-description: 'Last updated February 20, 2026'
+description: "is a Client Component hook that lets you read the current URL's pathname."
 ---
 
 # Functions: usePathname | Next.js

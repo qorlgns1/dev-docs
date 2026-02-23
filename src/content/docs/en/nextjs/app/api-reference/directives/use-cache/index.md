@@ -1,6 +1,6 @@
 ---
 title: 'Directives: use cache'
-description: 'Last updated February 20, 2026'
+description: 'The  directive allows you to mark a route, React component, or a function as cacheable. It can be used at the top of a file to indicate that all expor...'
 ---
 
 # Directives: use cache | Next.js

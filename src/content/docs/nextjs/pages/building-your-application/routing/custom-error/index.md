@@ -1,6 +1,6 @@
 ---
 title: '라우팅: 사용자 정의 오류'
-description: '소스 URL: https://nextjs.org/docs/pages/building-your-application/routing/custom-error'
+description: '404 페이지는 자주 접근될 수 있습니다. 방문마다 오류 페이지를 서버 렌더링하면 Next.js 서버의 부하가 증가하여 비용 증가와 느린 경험으로 이어질 수 있습니다.'
 ---
 
 # 라우팅: 사용자 정의 오류 | Next.js

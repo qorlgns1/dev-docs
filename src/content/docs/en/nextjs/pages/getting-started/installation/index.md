@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Installation'
-description: 'Last updated February 20, 2026'
+description: 'Before you begin, make sure your development environment meets the following requirements:'
 ---
 
 # Getting Started: Installation | Next.js

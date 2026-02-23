@@ -1,6 +1,6 @@
 ---
 title: 'Functions: refresh'
-description: 'Last updated February 20, 2026'
+description: 'allows you to refresh the client router from within a Server Action.'
 ---
 
 # Functions: refresh | Next.js

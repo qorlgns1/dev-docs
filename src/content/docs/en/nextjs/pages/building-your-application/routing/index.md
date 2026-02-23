@@ -1,6 +1,6 @@
 ---
 title: 'Building Your Application: Routing'
-description: 'Last updated February 20, 2026'
+description: "The Pages Router has a file-system based router built on concepts of pages. When a file is added to the  directory it's automatically available as a r..."
 ---
 
 # Building Your Application: Routing | Next.js

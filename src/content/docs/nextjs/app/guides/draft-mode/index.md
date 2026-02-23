@@ -1,6 +1,6 @@
 ---
 title: '가이드: Draft Mode'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '이 문서는 Draft Mode를 활성화하고 사용하는 방법을 안내합니다.'
 ---
 
 # 가이드: Draft Mode | Next.js

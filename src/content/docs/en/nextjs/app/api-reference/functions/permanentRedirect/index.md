@@ -1,6 +1,6 @@
 ---
 title: 'Functions: permanentRedirect'
-description: 'Last updated February 20, 2026'
+description: 'The  function allows you to redirect the user to another URL.  can be used in Server Components, Client Components, Route Handlers, and Server Functio...'
 ---
 
 # Functions: permanentRedirect | Next.js

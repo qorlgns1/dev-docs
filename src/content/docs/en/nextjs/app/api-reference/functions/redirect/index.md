@@ -1,6 +1,6 @@
 ---
 title: 'Functions: redirect'
-description: 'Last updated February 20, 2026'
+description: 'The  function allows you to redirect the user to another URL.  can be used while rendering in Server and Client Components, Route Handlers, and Server...'
 ---
 
 # Functions: redirect | Next.js

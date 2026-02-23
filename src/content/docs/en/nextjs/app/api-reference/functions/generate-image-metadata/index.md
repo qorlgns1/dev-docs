@@ -1,6 +1,6 @@
 ---
 title: 'Functions: generateImageMetadata'
-description: 'Last updated February 20, 2026'
+description: 'You can use  to generate different versions of one image or return multiple images for one route segment. This is useful for when you want to avoid ha...'
 ---
 
 # Functions: generateImageMetadata | Next.js

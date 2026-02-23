@@ -1,6 +1,6 @@
 ---
 title: '함수: cookies'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '는 Server Components에서 들어오는 HTTP 요청의 쿠키를 읽고, Server Functions 또는 Route Handlers에서 나가는 요청 쿠키를 읽거나 쓸 수 있도록 해주는 비동기 함수입니다.'
 ---
 
 # 함수: cookies | Next.js

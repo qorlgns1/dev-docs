@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: productionBrowserSourceMaps'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '개발 중에는 소스 맵이 기본적으로 활성화됩니다. 프로덕션 빌드에서는 클라이언트에 소스가 유출되는 것을 막기 위해 비활성화되며, 구성 플래그로 명시적으로 옵트인하지 않는 한 그대로 유지됩니다.'
 ---
 
 # next.config.js 옵션: productionBrowserSourceMaps | Next.js

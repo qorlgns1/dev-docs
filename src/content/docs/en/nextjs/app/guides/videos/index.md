@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Videos'
-description: 'Last updated February 20, 2026'
+description: 'This page outlines how to use videos with Next.js applications, showing how to store and display video files without affecting performance.'
 ---
 
 # Guides: Videos | Next.js

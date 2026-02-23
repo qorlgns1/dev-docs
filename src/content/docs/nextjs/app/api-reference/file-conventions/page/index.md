@@ -1,6 +1,6 @@
 ---
 title: '파일 시스템 규칙: page.js'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/file-conventions/page'
+description: '파일을 사용하면 경로에 고유한 UI를 정의할 수 있습니다. 파일에서 컴포넌트를 기본 내보내기(default export)하면 페이지를 만들 수 있습니다:'
 ---
 
 # 파일 시스템 규칙: page.js | Next.js

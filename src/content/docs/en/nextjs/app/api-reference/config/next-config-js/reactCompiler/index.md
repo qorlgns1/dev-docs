@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: reactCompiler'
-description: 'Last updated February 20, 2026'
+description: 'Next.js includes support for the React Compiler, a tool designed to improve performance by automatically optimizing component rendering. This reduces...'
 ---
 
 # next.config.js: reactCompiler | Next.js

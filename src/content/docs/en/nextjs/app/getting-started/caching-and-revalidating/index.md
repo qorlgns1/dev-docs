@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Caching and Revalidating'
-description: 'Last updated February 20, 2026'
+description: 'Caching is a technique for storing the result of data fetching and other computations so that future requests for the same data can be served faster,...'
 ---
 
 # Getting Started: Caching and Revalidating | Next.js

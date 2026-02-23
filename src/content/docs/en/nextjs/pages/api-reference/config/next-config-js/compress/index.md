@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: compress'
-description: 'Last updated February 20, 2026'
+description: 'By default, Next.js uses  to compress rendered content and static files when using  or a custom server. This is an optimization for applications that...'
 ---
 
 # next.config.js Options: compress | Next.js

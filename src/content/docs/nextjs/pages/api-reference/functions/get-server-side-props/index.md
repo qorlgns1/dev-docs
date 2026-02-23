@@ -1,6 +1,6 @@
 ---
 title: '함수: getServerSideProps'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '페이지에서 (서버 사이드 렌더링)라는 함수를 내보내면, Next.js는 각 요청마다 가 반환한 데이터를 사용해 이 페이지를 사전 렌더링합니다. 자주 변경되는 데이터를 가져와 페이지가 최신 데이터를 보여 주도록 하고 싶을 때 유용합니다.'
 ---
 
 # 함수: getServerSideProps | Next.js

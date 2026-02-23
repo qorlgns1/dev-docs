@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Upgrading'
-description: 'Last updated February 20, 2026'
+description: 'Learn how to upgrade to the latest versions of Next.js following the versions-specific guides:'
 ---
 
 # Guides: Upgrading | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: serverExternalPackages'
-description: 'Last updated February 20, 2026'
+description: 'Opt-out specific dependencies from being included in the automatic bundling of the  option.'
 ---
 
 # next.config.js Options: serverExternalPackages | Next.js

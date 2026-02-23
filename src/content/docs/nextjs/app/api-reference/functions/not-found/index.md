@@ -1,6 +1,6 @@
 ---
 title: 'Functions: notFound'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '함수는 라우트 세그먼트 내에서  파일을 렌더링하고  태그를 삽입할 수 있도록 해줍니다.'
 ---
 
 # Functions: notFound | Next.js

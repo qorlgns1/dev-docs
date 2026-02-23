@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Project Structure'
-description: 'Last updated February 20, 2026'
+description: 'This page provides an overview of all the folder and file conventions in Next.js, and recommendations for organizing your project.'
 ---
 
 # Getting Started: Project Structure | Next.js

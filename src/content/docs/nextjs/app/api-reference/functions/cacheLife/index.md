@@ -1,6 +1,6 @@
 ---
 title: 'Functions: cacheLife'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/functions/cacheLife'
+description: '함수는 함수나 컴포넌트의 캐시 수명을 설정하는 데 사용됩니다.  지시문과 함께, 해당 함수나 컴포넌트 범위 내에서 사용해야 합니다.'
 ---
 
 # Functions: cacheLife | Next.js

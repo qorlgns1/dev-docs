@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: productionBrowserSourceMaps'
-description: 'Last updated February 20, 2026'
+description: 'Source Maps are enabled by default during development. During production builds, they are disabled to prevent you leaking your source on the client, u...'
 ---
 
 # next.config.js: productionBrowserSourceMaps | Next.js

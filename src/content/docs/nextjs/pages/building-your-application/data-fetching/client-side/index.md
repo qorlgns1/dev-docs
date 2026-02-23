@@ -1,6 +1,6 @@
 ---
 title: '데이터 페칭: 클라이언트 측 페칭'
-description: '소스 URL: https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side'
+description: '클라이언트 측 데이터 페칭은 페이지가 SEO 인덱싱을 필요로 하지 않거나, 데이터를 사전 렌더링할 필요가 없거나, 페이지 콘텐츠를 자주 업데이트해야 할 때 유용합니다. 서버 측 렌더링 API와 달리 클라이언트 측 데이터 페칭은 컴포넌트 수준에서 사용할 수 있습니다.'
 ---
 
 # 데이터 페칭: 클라이언트 측 페칭 | Next.js

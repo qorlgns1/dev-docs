@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: reactStrictMode'
-description: 'Last updated February 20, 2026'
+description: '> Good to know : Since Next.js 13.5.1, Strict Mode is  by default with  router, so the above configuration is only necessary for . You can still disab...'
 ---
 
 # next.config.js Options: reactStrictMode | Next.js

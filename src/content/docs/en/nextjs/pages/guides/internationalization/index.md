@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Internationalization'
-description: 'Last updated February 20, 2026'
+description: 'Next.js has built-in support for internationalized (i18n) routing since . You can provide a list of locales, the default locale, and domain-specific l...'
 ---
 
 # Guides: Internationalization | Next.js

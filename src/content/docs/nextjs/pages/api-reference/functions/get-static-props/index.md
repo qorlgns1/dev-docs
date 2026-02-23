@@ -1,6 +1,6 @@
 ---
 title: 'Functions: getStaticProps'
-description: 'Last updated February 20, 2026'
+description: '라는 함수를 export하면 함수가 반환한 props를 사용해 빌드 시점에 페이지를 사전 렌더링합니다:'
 ---
 
 # Functions: getStaticProps | Next.js

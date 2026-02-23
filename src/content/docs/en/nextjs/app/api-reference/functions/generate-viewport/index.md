@@ -1,6 +1,6 @@
 ---
 title: 'Functions: generateViewport'
-description: 'Last updated February 20, 2026'
+description: 'You can customize the initial viewport of the page with the static  object or the dynamic  function.'
 ---
 
 # Functions: generateViewport | Next.js

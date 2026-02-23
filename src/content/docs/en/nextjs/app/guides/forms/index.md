@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Forms'
-description: 'Last updated February 20, 2026'
+description: 'React Server Actions are Server Functions that execute on the server. They can be called in Server and Client Components to handle form submissions. T...'
 ---
 
 # Guides: Forms | Next.js

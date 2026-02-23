@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Redirecting'
-description: 'Last updated February 20, 2026'
+description: 'There are a few ways you can handle redirects in Next.js. This page will go through each available option, use cases, and how to manage large numbers...'
 ---
 
 # Guides: Redirecting | Next.js

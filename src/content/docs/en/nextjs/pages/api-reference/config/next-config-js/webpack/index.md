@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: webpack'
-description: 'Last updated February 20, 2026'
+description: '> Good to know : changes to webpack config are not covered by semver so proceed at your own risk'
 ---
 
 # next.config.js Options: webpack | Next.js

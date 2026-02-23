@@ -1,6 +1,6 @@
 ---
 title: 'Upgrading: Version 10'
-description: 'Last updated February 20, 2026'
+description: 'There were no breaking changes between versions 9 and 10.'
 ---
 
 # Upgrading: Version 10 | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Functions: fetch'
-description: 'Last updated February 20, 2026'
+description: 'Next.js extends the Web  API to allow each request on the server to set its own persistent caching and revalidation semantics.'
 ---
 
 # Functions: fetch | Next.js

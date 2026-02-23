@@ -1,6 +1,6 @@
 ---
 title: 'Data Fetching: getStaticProps'
-description: 'Last updated February 20, 2026'
+description: 'If you export a function called  (Static Site Generation) from a page, Next.js will pre-render this page at build time using the props returned by .'
 ---
 
 # Data Fetching: getStaticProps | Next.js

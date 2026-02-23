@@ -1,6 +1,5 @@
 ---
 title: 'Guides: Migrating'
-description: 'Last updated February 20, 2026'
 ---
 
 # Guides: Migrating | Next.js

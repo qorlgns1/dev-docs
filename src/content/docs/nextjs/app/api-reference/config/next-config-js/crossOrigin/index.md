@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: crossOrigin'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '옵션을 사용하면  컴포넌트가 생성하는 모든  태그에  속성을 추가하고, 교차 출처 요청을 처리하는 방식을 정의할 수 있습니다.'
 ---
 
 # next.config.js: crossOrigin | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'App Router: Getting Started'
-description: 'Last updated February 20, 2026'
+description: 'Welcome to the Next.js documentation!'
 ---
 
 # App Router: Getting Started | Next.js

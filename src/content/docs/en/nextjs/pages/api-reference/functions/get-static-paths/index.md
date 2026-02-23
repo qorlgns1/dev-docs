@@ -1,6 +1,6 @@
 ---
 title: 'Functions: getStaticPaths'
-description: 'Last updated February 20, 2026'
+description: 'When exporting a function called  from a page that uses Dynamic Routes, Next.js will statically pre-render all the paths specified by .'
 ---
 
 # Functions: getStaticPaths | Next.js

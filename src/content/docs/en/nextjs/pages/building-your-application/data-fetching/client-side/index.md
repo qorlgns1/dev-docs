@@ -1,6 +1,6 @@
 ---
 title: 'Data Fetching: Client-side Fetching'
-description: 'Last updated February 20, 2026'
+description: "Client-side data fetching is useful when your page doesn't require SEO indexing, when you don't need to pre-render your data, or when the content of y..."
 ---
 
 # Data Fetching: Client-side Fetching | Next.js

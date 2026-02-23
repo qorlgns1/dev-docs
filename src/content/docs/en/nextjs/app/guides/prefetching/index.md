@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Prefetching'
-description: 'Last updated February 20, 2026'
+description: 'Prefetching makes navigating between different routes in your application feel instant. Next.js tries to intelligently prefetch by default, based on t...'
 ---
 
 # Guides: Prefetching | Next.js

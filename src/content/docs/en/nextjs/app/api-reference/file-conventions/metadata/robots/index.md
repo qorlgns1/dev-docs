@@ -1,6 +1,6 @@
 ---
 title: 'Metadata Files: robots.txt'
-description: 'Last updated February 20, 2026'
+description: 'Add or generate a  file that matches the Robots Exclusion Standard in the root of  directory to tell search engine crawlers which URLs they can access...'
 ---
 
 # Metadata Files: robots.txt | Next.js

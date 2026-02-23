@@ -1,6 +1,6 @@
 ---
 title: 'Functions: refresh'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '는 서버 액션 내부에서 클라이언트 라우터를 새로 고칠 수 있게 해줍니다.'
 ---
 
 # Functions: refresh | Next.js

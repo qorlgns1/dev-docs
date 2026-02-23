@@ -1,6 +1,6 @@
 ---
 title: '함수: useSelectedLayoutSegments'
-description: 'Last updated February 20, 2026'
+description: '는 호출된 Layout 아래의 활성 라우트 세그먼트를 읽을 수 있게 해주는 Client Component 훅입니다.'
 ---
 
 # 함수: useSelectedLayoutSegments | Next.js

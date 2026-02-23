@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: Metadata Files'
-description: 'Last updated February 20, 2026'
+description: 'This section of the docs covers Metadata file conventions. File-based metadata can be defined by adding special metadata files to route segments.'
 ---
 
 # File-system conventions: Metadata Files | Next.js

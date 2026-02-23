@@ -1,6 +1,6 @@
 ---
 title: '함수: generateMetadata'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '객체나  함수를 사용하여 메타데이터를 정의할 수 있습니다.'
 ---
 
 # 함수: generateMetadata | Next.js

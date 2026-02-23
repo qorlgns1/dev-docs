@@ -1,6 +1,6 @@
 ---
 title: '메타데이터 파일: opengraph-image 및 twitter-image'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '및  파일 규칙은 라우트 세그먼트에 대해 Open Graph 및 Twitter 이미지를 설정할 수 있게 해줍니다.'
 ---
 
 # 메타데이터 파일: opengraph-image 및 twitter-image | Next.js

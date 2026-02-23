@@ -1,6 +1,6 @@
 ---
 title: '라우팅: Custom App'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는  컴포넌트를 사용해 페이지를 초기화합니다. 이를 오버라이드해 페이지 초기화를 제어하면 다음을 수행할 수 있습니다.'
 ---
 
 # 라우팅: Custom App | Next.js

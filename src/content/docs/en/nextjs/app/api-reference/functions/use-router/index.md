@@ -1,6 +1,6 @@
 ---
 title: 'Functions: useRouter'
-description: 'Last updated February 20, 2026'
+description: 'The  hook allows you to programmatically change routes inside Client Components.'
 ---
 
 # Functions: useRouter | Next.js

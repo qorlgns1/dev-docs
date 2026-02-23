@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: typescript'
-description: 'Last updated February 20, 2026'
+description: 'Configure TypeScript behavior with the  option in :'
 ---
 
 # next.config.js Options: typescript | Next.js

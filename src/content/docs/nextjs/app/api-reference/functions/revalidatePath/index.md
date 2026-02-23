@@ -1,6 +1,6 @@
 ---
 title: '함수: revalidatePath'
-description: 'Last updated February 20, 2026'
+description: '는 특정 경로에 대해 필요할 때 캐시된 데이터를 무효화할 수 있게 해줍니다.'
 ---
 
 # 함수: revalidatePath | Next.js

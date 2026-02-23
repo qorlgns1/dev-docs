@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: public'
-description: 'Last updated February 20, 2026'
+description: 'Next.js can serve static files, like images, under a folder called  in the root directory. Files inside  can then be referenced by your code starting...'
 ---
 
 # File-system conventions: public | Next.js

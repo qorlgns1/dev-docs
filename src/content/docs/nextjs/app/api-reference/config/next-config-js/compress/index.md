@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: compress'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '기본적으로 Next.js는  또는 커스텀 서버를 사용할 때 렌더링된 콘텐츠와 정적 파일을 압축하기 위해 을 사용합니다. 이는 압축이 구성되어 있지 않은 애플리케이션을 위한 최적화입니다. 커스텀 서버를 통해 애플리케이션에서 이미 압축을 구성한 경우 Next.js는 압축을...'
 ---
 
 # next.config.js: compress | Next.js

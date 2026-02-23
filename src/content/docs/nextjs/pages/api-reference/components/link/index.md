@@ -1,6 +1,6 @@
 ---
 title: '컴포넌트: Link'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '은 HTML  요소를 확장하여 prefetching과 라우트 간 클라이언트 내비게이션을 제공하는 React 컴포넌트입니다. Next.js에서 라우트 간 이동을 수행하는 기본 수단입니다.'
 ---
 
 # 컴포넌트: Link | Next.js

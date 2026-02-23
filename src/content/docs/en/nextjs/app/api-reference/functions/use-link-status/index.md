@@ -1,6 +1,6 @@
 ---
 title: 'Functions: useLinkStatus'
-description: 'Last updated February 20, 2026'
+description: 'The  hook lets you track the pending state of a . Use it for subtle, inline feedback, for example a shimmer effect over the clicked link, while naviga...'
 ---
 
 # Functions: useLinkStatus | Next.js

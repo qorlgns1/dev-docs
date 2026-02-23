@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: basePath'
-description: 'Last updated February 20, 2026'
+description: 'To deploy a Next.js application under a sub-path of a domain you can use the  config option.'
 ---
 
 # next.config.js Options: basePath | Next.js

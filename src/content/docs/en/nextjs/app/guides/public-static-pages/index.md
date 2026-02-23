@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Public pages'
-description: 'Last updated February 20, 2026'
+description: 'Public pages show the same content to every user. Common examples include landing pages, marketing pages, and product pages.'
 ---
 
 # Guides: Public pages | Next.js

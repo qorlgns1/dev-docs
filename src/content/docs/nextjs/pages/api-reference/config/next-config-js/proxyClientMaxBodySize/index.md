@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: experimental.proxyClientMaxBodySize'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '프록시를 사용할 때 Next.js는 요청 본문을 자동으로 복제해 메모리에 버퍼링하여, 프록시와 기본 라우트 처리기 모두에서 여러 번 읽을 수 있도록 합니다. 과도한 메모리 사용을 방지하기 위해 이 구성 옵션은 버퍼링되는 본문의 크기 제한을 설정합니다.'
 ---
 
 # next.config.js Options: experimental.proxyClientMaxBodySize | Next.js

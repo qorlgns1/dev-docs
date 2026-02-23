@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: cacheHandler'
-description: 'Last updated February 20, 2026'
+description: 'You can configure the Next.js cache location if you want to persist cached pages and data to durable storage, or share the cache across multiple conta...'
 ---
 
 # next.config.js: cacheHandler | Next.js

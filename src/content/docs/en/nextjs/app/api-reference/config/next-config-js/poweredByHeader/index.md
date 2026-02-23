@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: poweredByHeader'
-description: 'Last updated February 20, 2026'
+description: 'By default Next.js will add the  header. To opt-out of it, open  and disable the  config:'
 ---
 
 # next.config.js: poweredByHeader | Next.js

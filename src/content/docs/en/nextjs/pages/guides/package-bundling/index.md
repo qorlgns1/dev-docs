@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Package Bundling'
-description: 'Last updated February 20, 2026'
+description: 'Bundling is the process of combining your application code and its dependencies into optimized output files for the client and server. Smaller bundles...'
 ---
 
 # Guides: Package Bundling | Next.js

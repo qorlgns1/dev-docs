@@ -1,6 +1,6 @@
 ---
 title: '마이그레이션: App Router'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '이 가이드를 통해 다음을 수행할 수 있습니다:'
 ---
 
 # 마이그레이션: App Router | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'API 레퍼런스: Directives'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '사용 가능한 디렉티브는 다음과 같습니다:'
 ---
 
 # API 레퍼런스: Directives | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Static Exports'
-description: 'Last updated February 20, 2026'
+description: 'Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server.'
 ---
 
 # Guides: Static Exports | Next.js

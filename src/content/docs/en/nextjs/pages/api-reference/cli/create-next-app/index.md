@@ -1,6 +1,6 @@
 ---
 title: 'CLI: create-next-app CLI'
-description: 'Last updated February 20, 2026'
+description: 'The  CLI allow you to create a new Next.js application using the default template or an example from a public GitHub repository. It is the easiest way...'
 ---
 
 # CLI: create-next-app CLI | Next.js

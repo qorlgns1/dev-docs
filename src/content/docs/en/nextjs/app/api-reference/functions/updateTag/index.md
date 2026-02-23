@@ -1,6 +1,6 @@
 ---
 title: 'Functions: updateTag'
-description: 'Last updated February 20, 2026'
+description: 'allows you to update cached data on-demand for a specific cache tag from within Server Actions.'
 ---
 
 # Functions: updateTag | Next.js

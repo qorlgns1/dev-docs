@@ -1,6 +1,6 @@
 ---
 title: 'Upgrading: Codemods'
-description: 'Last updated February 20, 2026'
+description: 'Codemods are transformations that run on your codebase programmatically. This allows a large number of changes to be programmatically applied without...'
 ---
 
 # Upgrading: Codemods | Next.js

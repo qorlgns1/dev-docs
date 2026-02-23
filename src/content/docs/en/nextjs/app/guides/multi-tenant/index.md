@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Multi-tenant'
-description: 'Last updated February 20, 2026'
+description: 'If you are looking to build a single Next.js application that serves multiple tenants, we have built an example showing our recommended architecture.'
 ---
 
 # Guides: Multi-tenant | Next.js

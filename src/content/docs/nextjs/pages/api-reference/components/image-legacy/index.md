@@ -1,6 +1,6 @@
 ---
 title: '컴포넌트: Image (Legacy)'
-description: '소스 URL: https://nextjs.org/docs/pages/api-reference/components/image-legacy'
+description: '이는 더 이상 권장되지 않는 레거시 API입니다. 하위 호환성을 위해 계속 지원됩니다.'
 ---
 
 # 컴포넌트: Image (Legacy) | Next.js

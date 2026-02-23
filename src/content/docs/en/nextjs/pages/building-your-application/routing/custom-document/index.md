@@ -1,6 +1,6 @@
 ---
 title: 'Routing: Custom Document'
-description: 'Last updated February 20, 2026'
+description: 'A custom  can update the  and  tags used to render a Page.'
 ---
 
 # Routing: Custom Document | Next.js

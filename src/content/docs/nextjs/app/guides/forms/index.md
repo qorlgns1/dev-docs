@@ -1,6 +1,6 @@
 ---
 title: '가이드: 폼'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'React Server Actions는 서버에서 실행되는 Server Functions입니다. 서버 및 클라이언트 컴포넌트에서 호출해 폼 제출을 처리할 수 있습니다. 이 가이드는 Server Actions를 사용해 Next.js에서 폼을 만드는 과정을 단계별로 안내합니...'
 ---
 
 # 가이드: 폼 | Next.js

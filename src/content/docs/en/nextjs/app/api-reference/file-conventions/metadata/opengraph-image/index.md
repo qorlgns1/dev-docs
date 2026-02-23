@@ -1,6 +1,6 @@
 ---
 title: 'Metadata Files: opengraph-image and twitter-image'
-description: 'Last updated February 20, 2026'
+description: 'The  and  file conventions allow you to set Open Graph and Twitter images for a route segment.'
 ---
 
 # Metadata Files: opengraph-image and twitter-image | Next.js

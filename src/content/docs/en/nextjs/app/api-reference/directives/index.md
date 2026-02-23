@@ -1,6 +1,6 @@
 ---
 title: 'API Reference: Directives'
-description: 'Last updated February 20, 2026'
+description: 'The following directives are available:'
 ---
 
 # API Reference: Directives | Next.js

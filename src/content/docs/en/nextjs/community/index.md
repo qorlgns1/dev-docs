@@ -1,6 +1,6 @@
 ---
 title: 'Next.js Docs: Community'
-description: 'Last updated February 20, 2026'
+description: "With over 5 million weekly downloads, Next.js has a large and active community of developers across the world. Here's how you can get involved in our..."
 ---
 
 # Next.js Docs: Community | Next.js

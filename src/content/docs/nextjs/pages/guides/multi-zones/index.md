@@ -1,6 +1,6 @@
 ---
 title: '가이드: Multi-Zones'
-description: '소스 URL: https://nextjs.org/docs/pages/guides/multi-zones'
+description: 'Multi-Zones는 하나의 도메인에서 큰 애플리케이션을 여러 개의 Next.js 애플리케이션으로 분리하여 각 애플리케이션이 특정 경로 집합을 서비스하도록 하는 마이크로 프런트엔드 접근 방식입니다. 이는 애플리케이션 내의 다른 페이지와 관련 없는 페이지 모음을 다룰...'
 ---
 
 # 가이드: Multi-Zones | Next.js

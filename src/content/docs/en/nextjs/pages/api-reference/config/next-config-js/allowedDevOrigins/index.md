@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: allowedDevOrigins'
-description: 'Last updated February 20, 2026'
+description: 'Next.js does not automatically block cross-origin requests during development, but will block by default in a future major version of Next.js to preve...'
 ---
 
 # next.config.js Options: allowedDevOrigins | Next.js

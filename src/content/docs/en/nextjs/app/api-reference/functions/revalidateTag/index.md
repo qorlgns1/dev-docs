@@ -1,6 +1,6 @@
 ---
 title: 'Functions: revalidateTag'
-description: 'Last updated February 20, 2026'
+description: 'allows you to invalidate cached data on-demand for a specific cache tag.'
 ---
 
 # Functions: revalidateTag | Next.js

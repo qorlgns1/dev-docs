@@ -1,6 +1,5 @@
 ---
 title: 'App Router: Guides'
-description: 'Last updated February 20, 2026'
 ---
 
 # App Router: Guides | Next.js

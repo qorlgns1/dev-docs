@@ -1,6 +1,6 @@
 ---
 title: 'Guides: JSON-LD'
-description: 'Last updated February 20, 2026'
+description: 'Our current recommendation for JSON-LD is to render structured data as a  tag in your  or  components.'
 ---
 
 # Guides: JSON-LD | Next.js

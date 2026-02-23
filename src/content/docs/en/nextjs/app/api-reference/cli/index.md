@@ -1,6 +1,6 @@
 ---
 title: 'API Reference: CLI'
-description: 'Last updated February 20, 2026'
+description: 'Next.js comes with two Command Line Interface (CLI) tools:'
 ---
 
 # API Reference: CLI | Next.js

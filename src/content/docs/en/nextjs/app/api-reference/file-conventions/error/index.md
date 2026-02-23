@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: error.js'
-description: 'Last updated February 20, 2026'
+description: 'An error file allows you to handle unexpected runtime errors and display fallback UI.'
 ---
 
 # File-system conventions: error.js | Next.js

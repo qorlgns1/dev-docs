@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Analytics'
-description: 'Last updated February 20, 2026'
+description: 'Next.js has built-in support for measuring and reporting performance metrics. You can either use the  hook to manage reporting yourself, or alternativ...'
 ---
 
 # Guides: Analytics | Next.js

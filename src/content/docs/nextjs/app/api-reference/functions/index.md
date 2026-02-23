@@ -1,6 +1,5 @@
 ---
 title: 'API 참조: Functions'
-description: '마지막 업데이트: 2026년 2월 20일'
 ---
 
 # API 참조: Functions | Next.js

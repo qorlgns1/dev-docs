@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Upgrading'
-description: 'Last updated February 20, 2026'
+description: 'To update to the latest version of Next.js, you can use the  command:'
 ---
 
 # Getting Started: Upgrading | Next.js

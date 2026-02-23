@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: CSS'
-description: 'Last updated February 20, 2026'
+description: 'Next.js provides several ways to style your application using CSS, including:'
 ---
 
 # Getting Started: CSS | Next.js

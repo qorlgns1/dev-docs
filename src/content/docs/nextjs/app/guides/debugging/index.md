@@ -1,6 +1,6 @@
 ---
 title: '가이드: 디버깅'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '이 문서는 VS Code 디버거, Chrome DevTools, Firefox DevTools를 사용해 전체 소스맵을 지원하는 Next.js 프런트엔드 및 백엔드 코드를 디버깅하는 방법을 설명합니다.'
 ---
 
 # 가이드: 디버깅 | Next.js

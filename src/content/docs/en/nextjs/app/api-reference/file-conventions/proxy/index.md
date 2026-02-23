@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: proxy.js'
-description: 'Last updated February 20, 2026'
+description: '> Note : The  file convention is deprecated and has been renamed to . See Migration to Proxy for more details.'
 ---
 
 # File-system conventions: proxy.js | Next.js

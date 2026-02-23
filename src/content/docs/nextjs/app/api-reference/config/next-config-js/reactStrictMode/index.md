@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: reactStrictMode'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '> 알아두면 좋아요 : Next.js 13.5.1부터  라우터에서는 Strict Mode가 기본값으로 이므로, 위 설정은 에서만 필요합니다. 로 설정해 Strict Mode를 비활성화할 수도 있습니다.'
 ---
 
 # next.config.js: reactStrictMode | Next.js

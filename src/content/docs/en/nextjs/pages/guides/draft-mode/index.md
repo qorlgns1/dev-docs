@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Draft Mode'
-description: 'Last updated February 20, 2026'
+description: 'In the Pages documentation and the Data Fetching documentation, we talked about how to pre-render a page at build time (Static Generation) using  and...'
 ---
 
 # Guides: Draft Mode | Next.js

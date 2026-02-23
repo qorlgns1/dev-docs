@@ -1,6 +1,6 @@
 ---
 title: '함수: useParams'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '는 현재 URL이 채운 라우트의 동적 매개변수를 읽을 수 있는 훅입니다.'
 ---
 
 # 함수: useParams | Next.js

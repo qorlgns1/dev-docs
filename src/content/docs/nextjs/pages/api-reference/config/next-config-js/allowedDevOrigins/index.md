@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: allowedDevOrigins'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는 개발 중 교차 출처 요청을 자동으로 차단하지 않지만, 향후 메이저 버전에서는 개발 모드에서 접근 가능한 내부 자산/엔드포인트에 대한 무단 요청을 방지하기 위해 기본적으로 차단할 예정입니다.'
 ---
 
 # next.config.js 옵션: allowedDevOrigins | Next.js

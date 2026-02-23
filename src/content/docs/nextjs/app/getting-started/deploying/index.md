@@ -1,6 +1,6 @@
 ---
 title: '시작하기: 배포'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는 Node.js 서버, Docker 컨테이너, 정적 내보내기, 또는 다양한 플랫폼에 맞춘 어댑터 형태로 배포할 수 있습니다.'
 ---
 
 # 시작하기: 배포 | Next.js

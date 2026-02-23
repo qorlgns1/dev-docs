@@ -1,6 +1,6 @@
 ---
 title: '시작하기: Route Handlers'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Route Handlers는 Web Request 및 Response API를 사용해 특정 경로에 대한 사용자 정의 요청 핸들러를 만들 수 있게 해줍니다.'
 ---
 
 # 시작하기: Route Handlers | Next.js

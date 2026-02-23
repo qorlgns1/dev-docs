@@ -1,6 +1,6 @@
 ---
 title: '가이드: Lazy Loading'
-description: 'Last updated February 20, 2026'
+description: 'Next.js의 Lazy loading은 라우트를 렌더링하는 데 필요한 JavaScript 양을 줄여 애플리케이션의 초기 로딩 성능을 향상시킵니다.'
 ---
 
 # 가이드: Lazy Loading | Next.js

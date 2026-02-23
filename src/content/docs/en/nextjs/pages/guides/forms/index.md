@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Forms'
-description: 'Last updated February 20, 2026'
+description: 'Forms enable you to create and update data in web applications. Next.js provides a powerful way to handle data mutations using API Routes. This guide...'
 ---
 
 # Guides: Forms | Next.js

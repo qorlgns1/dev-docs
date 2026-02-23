@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: deploymentId'
-description: 'Last updated February 20, 2026'
+description: '옵션을 사용하면 배포에 대한 식별자를 설정할 수 있습니다. 이 식별자는 버전 스큐 보호와 롤링 배포 중 캐시 무효화에 사용됩니다.'
 ---
 
 # next.config.js 옵션: deploymentId | Next.js

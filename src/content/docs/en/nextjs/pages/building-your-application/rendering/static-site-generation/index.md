@@ -1,6 +1,6 @@
 ---
 title: 'Rendering: Static Site Generation (SSG)'
-description: 'Last updated February 20, 2026'
+description: 'If a page uses Static Generation , the page HTML is generated at build time. That means in production, the page HTML is generated when you run . This...'
 ---
 
 # Rendering: Static Site Generation (SSG) | Next.js

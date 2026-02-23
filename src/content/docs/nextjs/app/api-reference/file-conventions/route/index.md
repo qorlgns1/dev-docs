@@ -1,6 +1,6 @@
 ---
 title: '파일 시스템 규칙: route.js'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Route Handler를 사용하면 Web Request 및 Response API를 이용해 특정 라우트에 대한 사용자 정의 요청 핸들러를 만들 수 있습니다.'
 ---
 
 # 파일 시스템 규칙: route.js | Next.js

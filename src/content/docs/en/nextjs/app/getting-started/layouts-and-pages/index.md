@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Layouts and Pages'
-description: 'Last updated February 20, 2026'
+description: 'Next.js uses file-system based routing , meaning you can use folders and files to define routes. This page will guide you through how to create layout...'
 ---
 
 # Getting Started: Layouts and Pages | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Functions: after'
-description: 'Last updated February 20, 2026'
+description: '는 응답(또는 사전 렌더링)이 완료된 뒤에 실행할 작업을 예약할 수 있게 해 줍니다. 이는 로깅, 분석처럼 응답을 차단하면 안 되는 작업 및 부수 효과에 유용합니다.'
 ---
 
 # Functions: after | Next.js

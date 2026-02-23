@@ -1,6 +1,6 @@
 ---
 title: 'Functions: generateStaticParams'
-description: 'Last updated February 20, 2026'
+description: 'The  function can be used in combination with dynamic route segments to statically generate routes at build time instead of on-demand at request time.'
 ---
 
 # Functions: generateStaticParams | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Testing: Jest'
-description: 'Last updated February 20, 2026'
+description: 'Jest and React Testing Library are frequently used together for Unit Testing and Snapshot Testing. This guide will show you how to set up Jest with Ne...'
 ---
 
 # Testing: Jest | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: devIndicators'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '는 개발 중에 보고 있는 현재 라우트에 대한 컨텍스트를 제공하는 화면 상의 인디케이터를 구성할 수 있게 합니다.'
 ---
 
 # next.config.js Options: devIndicators | Next.js

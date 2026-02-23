@@ -1,6 +1,6 @@
 ---
 title: 'Routing: API Routes'
-description: 'Last updated February 20, 2026'
+description: '> Good to know : If you are using the App Router, you can use Server Components or Route Handlers instead of API Routes.'
 ---
 
 # Routing: API Routes | Next.js

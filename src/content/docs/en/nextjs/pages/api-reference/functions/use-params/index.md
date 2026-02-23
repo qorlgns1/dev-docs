@@ -1,6 +1,6 @@
 ---
 title: 'Functions: useParams'
-description: 'Last updated February 20, 2026'
+description: "is a hook that lets you read a route's dynamic params filled in by the current URL."
 ---
 
 # Functions: useParams | Next.js

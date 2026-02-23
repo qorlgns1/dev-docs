@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Production'
-description: 'Last updated February 20, 2026'
+description: 'Before taking your Next.js application to production, there are some optimizations and patterns you should consider implementing for the best user exp...'
 ---
 
 # Guides: Production | Next.js

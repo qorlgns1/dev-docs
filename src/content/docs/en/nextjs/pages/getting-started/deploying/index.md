@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Deploying'
-description: 'Last updated February 20, 2026'
+description: 'Next.js can be deployed as a Node.js server, Docker container, static export, or adapted to run on different platforms.'
 ---
 
 # Getting Started: Deploying | Next.js

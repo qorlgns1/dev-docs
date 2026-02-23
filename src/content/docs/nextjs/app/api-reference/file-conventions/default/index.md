@@ -1,6 +1,6 @@
 ---
 title: '파일 시스템 규칙: default.js'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/file-conventions/default'
+description: '파일은 Next.js가 전체 페이지 로드 후 슬롯의 활성 상태를 복구하지 못할 때 병렬 라우트 내에서 폴백을 렌더링하는 데 사용됩니다.'
 ---
 
 # 파일 시스템 규칙: default.js | Next.js

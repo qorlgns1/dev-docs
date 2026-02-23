@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Error Handling'
-description: 'Last updated February 20, 2026'
+description: 'Errors can be divided into two categories: expected errors and uncaught exceptions. This page will walk you through how you can handle these errors in...'
 ---
 
 # Getting Started: Error Handling | Next.js

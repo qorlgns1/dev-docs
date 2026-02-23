@@ -1,6 +1,6 @@
 ---
 title: '가이드: 국제화'
-description: '소스 URL: https://nextjs.org/docs/pages/guides/internationalization'
+description: 'Next.js는 부터 국제화(i18n) 라우팅을 기본 지원합니다. 로케일 목록, 기본 로케일, 도메인별 로케일을 지정하면 Next.js가 라우팅을 자동으로 처리합니다.'
 ---
 
 # 가이드: 국제화 | Next.js

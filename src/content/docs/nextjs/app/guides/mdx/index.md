@@ -1,6 +1,6 @@
 ---
 title: '가이드: MDX'
-description: '소스 URL: https://nextjs.org/docs/app/guides/mdx'
+description: 'Next.js는 애플리케이션 내부의 로컬 MDX 콘텐츠는 물론, 서버에서 동적으로 가져온 원격 MDX 파일도 지원합니다. Next.js 플러그인은 마크다운과 React 컴포넌트를 HTML로 변환하며, App Router에서 기본인 서버 컴포넌트에서도 사용할 수 있도록...'
 ---
 
 # 가이드: MDX | Next.js

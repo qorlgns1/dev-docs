@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Draft Mode'
-description: 'Last updated February 20, 2026'
+description: 'This page walks through how to enable and use Draft Mode.'
 ---
 
 # Guides: Draft Mode | Next.js

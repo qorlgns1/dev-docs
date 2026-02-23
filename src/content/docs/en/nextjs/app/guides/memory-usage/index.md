@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Memory Usage'
-description: 'Last updated February 20, 2026'
+description: 'As applications grow and become more feature rich, they can demand more resources when developing locally or creating production builds.'
 ---
 
 # Guides: Memory Usage | Next.js

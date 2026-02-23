@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: devIndicators'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '는 개발 중에 현재 보고 있는 경로에 대한 컨텍스트를 제공하는 화면 표시기를 구성할 수 있게 해줍니다.'
 ---
 
 # next.config.js: devIndicators | Next.js

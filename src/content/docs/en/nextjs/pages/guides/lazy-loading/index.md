@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Lazy Loading'
-description: 'Last updated February 20, 2026'
+description: 'is a composite of  and Suspense. It behaves the same way in the  and  directories to allow for incremental migration.'
 ---
 
 # Guides: Lazy Loading | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'CLI: next CLI'
-description: 'Last updated February 20, 2026'
+description: 'The Next.js CLI allows you to develop, build, start your application, and more.'
 ---
 
 # CLI: next CLI | Next.js

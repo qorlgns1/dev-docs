@@ -1,6 +1,6 @@
 ---
 title: 'Migrating: Create React App'
-description: 'Last updated February 20, 2026'
+description: 'This guide will help you migrate an existing Create React App (CRA) site to Next.js.'
 ---
 
 # Migrating: Create React App | Next.js

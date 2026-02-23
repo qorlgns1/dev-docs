@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Updating Data'
-description: 'Last updated February 20, 2026'
+description: "You can update data in Next.js using React's Server Functions. This page will go through how you can create and invoke Server Functions."
 ---
 
 # Getting Started: Updating Data | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: logging'
-description: 'Last updated February 20, 2026'
+description: 'You can configure the logging level and whether the full URL is logged to the console when running Next.js in development mode.'
 ---
 
 # next.config.js: logging | Next.js

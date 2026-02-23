@@ -1,6 +1,6 @@
 ---
 title: 'Rendering: Server-side Rendering (SSR)'
-description: 'Last updated February 20, 2026'
+description: '> Also referred to as "SSR" or "Dynamic Rendering".'
 ---
 
 # Rendering: Server-side Rendering (SSR) | Next.js

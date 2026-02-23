@@ -1,6 +1,6 @@
 ---
 title: '함수: draftMode'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/functions/draft-mode'
+description: '는 Server Component에서 Draft Mode가 활성화되어 있는지 확인하고, Draft Mode를 활성화·비활성화할 수 있는 async 함수입니다.'
 ---
 
 # 함수: draftMode | Next.js

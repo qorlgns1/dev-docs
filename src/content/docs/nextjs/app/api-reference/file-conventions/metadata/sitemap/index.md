@@ -1,6 +1,6 @@
 ---
 title: '메타데이터 파일: sitemap.xml'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '는 Sitemaps XML 포맷과 일치하는 특별한 파일로, 검색 엔진 크롤러가 사이트를 더 효율적으로 색인화하도록 돕습니다.'
 ---
 
 # 메타데이터 파일: sitemap.xml | Next.js

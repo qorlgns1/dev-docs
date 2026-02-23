@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: pageExtensions'
-description: 'Last updated February 20, 2026'
+description: 'By default, Next.js accepts files with the following extensions: , , , . This can be modified to allow other extensions like markdown (, ).'
 ---
 
 # next.config.js: pageExtensions | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Next.js Docs: Pages Router'
-description: 'Last updated February 20, 2026'
+description: "> You're viewing the documentation for the Pages Router. See the App Router documentation for the latest features."
 ---
 
 # Next.js Docs: Pages Router | Next.js

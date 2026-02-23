@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Internationalization'
-description: 'Last updated February 20, 2026'
+description: 'Next.js enables you to configure the routing and rendering of content to support multiple languages. Making your site adaptive to different locales in...'
 ---
 
 # Guides: Internationalization | Next.js

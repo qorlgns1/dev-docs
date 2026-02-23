@@ -1,6 +1,6 @@
 ---
 title: '가이드: 리디렉션'
-description: 'Last updated February 20, 2026'
+description: 'Next.js에서 리디렉션을 처리하는 방법은 몇 가지가 있습니다. 이 페이지에서는 사용 가능한 옵션, 활용 사례, 그리고 대량의 리디렉션을 관리하는 방법을 살펴봅니다.'
 ---
 
 # 가이드: 리디렉션 | Next.js

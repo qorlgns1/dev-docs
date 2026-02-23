@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: logging'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '개발 모드에서 Next.js를 실행할 때, 로그 수준과 전체 URL을 콘솔에 기록할지 여부를 구성할 수 있습니다.'
 ---
 
 # next.config.js: logging | Next.js

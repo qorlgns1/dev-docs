@@ -1,6 +1,6 @@
 ---
 title: '함수: ImageResponse'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '생성자는 JSX와 CSS를 사용해 동적 이미지를 생성할 수 있게 합니다. 이는 Open Graph 이미지, Twitter 카드 등 소셜 미디어 이미지를 만들 때 유용합니다.'
 ---
 
 # 함수: ImageResponse | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '가이드: PWAs'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Progressive Web Application(PWA)는 웹 애플리케이션의 도달성과 접근성을 네이티브 모바일 앱의 기능 및 사용자 경험과 결합합니다. Next.js를 사용하면 여러 코드베이스나 앱 스토어 승인 없이 모든 플랫폼에서 매끄럽고 앱 같은 경험을 제공하는...'
 ---
 
 # 가이드: PWAs | Next.js

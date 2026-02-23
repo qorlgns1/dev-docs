@@ -1,6 +1,5 @@
 ---
 title: 'Pages Router: Building Your Application'
-description: 'Last updated February 20, 2026'
 ---
 
 # Pages Router: Building Your Application | Next.js

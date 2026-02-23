@@ -1,6 +1,6 @@
 ---
 title: '테스트: Jest'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Jest와 React Testing Library는 단위 테스트 및 스냅샷 테스트에 자주 함께 사용됩니다. 이 가이드는 Next.js와 Jest를 설정하고 첫 번째 테스트를 작성하는 방법을 보여줍니다.'
 ---
 
 # 테스트: Jest | Next.js

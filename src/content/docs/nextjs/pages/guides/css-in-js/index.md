@@ -1,6 +1,6 @@
 ---
 title: 'Guides: CSS-in-JS'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '기존 CSS-in-JS 솔루션은 모두 사용할 수 있습니다. 가장 간단한 방법은 인라인 스타일입니다:'
 ---
 
 # Guides: CSS-in-JS | Next.js

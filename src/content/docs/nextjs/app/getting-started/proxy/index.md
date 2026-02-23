@@ -1,6 +1,6 @@
 ---
 title: '시작하기: 프록시'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '> 알아두면 좋아요 : Next.js 16부터 Middleware가 목적을 더 잘 드러내도록 Proxy로 이름이 변경되었습니다. 기능은 동일하게 유지됩니다.'
 ---
 
 # 시작하기: 프록시 | Next.js

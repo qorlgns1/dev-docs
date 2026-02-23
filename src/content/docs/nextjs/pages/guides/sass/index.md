@@ -1,6 +1,6 @@
 ---
 title: '가이드: Sass'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Next.js는 와  확장자를 사용하는 패키지를 설치하면 Sass 통합을 기본 지원합니다. CSS Modules와  또는  확장을 통해 컴포넌트 단위의 Sass를 사용할 수 있습니다.'
 ---
 
 # 가이드: Sass | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Data Security'
-description: 'Last updated February 20, 2026'
+description: 'This guide will help you understand how to think about data security in Next.js and how to implement best practices.'
 ---
 
 # Guides: Data Security | Next.js

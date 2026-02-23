@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: redirects'
-description: 'Last updated February 20, 2026'
+description: 'Redirects allow you to redirect an incoming request path to a different destination path.'
 ---
 
 # next.config.js Options: redirects | Next.js

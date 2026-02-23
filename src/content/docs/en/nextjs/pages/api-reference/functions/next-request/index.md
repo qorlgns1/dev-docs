@@ -1,6 +1,6 @@
 ---
 title: 'Functions: NextRequest'
-description: 'Last updated February 20, 2026'
+description: 'NextRequest extends the Web Request API with additional convenience methods.'
 ---
 
 # Functions: NextRequest | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '가이드: 지연 로딩'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js의 지연 로딩은 경로를 렌더링하는 데 필요한 JavaScript 양을 줄여 애플리케이션의 초기 로딩 성능을 향상합니다.'
 ---
 
 # 가이드: 지연 로딩 | Next.js

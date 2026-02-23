@@ -1,6 +1,6 @@
 ---
 title: '시작하기: Cache Components'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '> 알아두면 좋아요: Cache Components는 선택 사항입니다. Next 구성 파일에서  플래그를 로 설정해 활성화하세요. 자세한 내용은 Cache Components 활성화를 참조하세요.'
 ---
 
 # 시작하기: Cache Components | Next.js

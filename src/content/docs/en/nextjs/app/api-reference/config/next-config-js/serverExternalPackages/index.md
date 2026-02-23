@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: serverExternalPackages'
-description: 'Last updated February 20, 2026'
+description: 'Dependencies used inside Server Components and Route Handlers will automatically be bundled by Next.js.'
 ---
 
 # next.config.js: serverExternalPackages | Next.js

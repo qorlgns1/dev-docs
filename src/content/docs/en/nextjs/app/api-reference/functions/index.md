@@ -1,6 +1,5 @@
 ---
 title: 'API Reference: Functions'
-description: 'Last updated February 20, 2026'
 ---
 
 # API Reference: Functions | Next.js

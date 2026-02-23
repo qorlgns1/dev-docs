@@ -1,6 +1,6 @@
 ---
 title: 'API Reference: Turbopack'
-description: 'Last updated February 20, 2026'
+description: 'Turbopack은 Rust로 작성된 증분 번들러로, JavaScript와 TypeScript에 최적화되어 있으며 Next.js에 내장되어 있습니다. Pages Router와 App Router 모두에서 Turbopack을 사용하면 훨씬 빠른 로컬 개발 환경을 경험할...'
 ---
 
 # API Reference: Turbopack | Next.js

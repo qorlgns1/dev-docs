@@ -1,6 +1,6 @@
 ---
 title: 'Functions: unstable_cache'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '> 참고: 이 API는 Next.js 16에서 로 대체되었습니다. Cache Components를 사용하도록 전환하고 를  지시어로 교체하는 것을 권장합니다.'
 ---
 
 # Functions: unstable_cache | Next.js

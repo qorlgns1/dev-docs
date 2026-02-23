@@ -1,6 +1,6 @@
 ---
 title: '지시문: use server'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/directives/use-server'
+description: '지시문은 함수나 파일이 서버 측에서 실행되어야 함을 지정합니다. 파일 맨 위에 두면 해당 파일의 모든 함수가 서버 측 함수임을 나타내고, 함수의 상단에 인라인으로 추가하면 해당 함수를 Server Function으로 표시합니다. 이는 React 기능입니다.'
 ---
 
 # 지시문: use server | Next.js

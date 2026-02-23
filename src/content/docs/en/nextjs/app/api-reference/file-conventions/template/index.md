@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: template.js'
-description: 'Last updated February 20, 2026'
+description: 'A template file is similar to a layout in that it wraps a layout or page. Unlike layouts that persist across routes and maintain state, templates are...'
 ---
 
 # File-system conventions: template.js | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '가이드: SPAs'
-description: 'Last updated February 20, 2026'
+description: 'Next.js는 단일 페이지 애플리케이션(SPA) 구축을 완전히 지원합니다.'
 ---
 
 # 가이드: SPAs | Next.js

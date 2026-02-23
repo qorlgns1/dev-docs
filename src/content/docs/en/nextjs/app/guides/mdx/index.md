@@ -1,6 +1,6 @@
 ---
 title: 'Guides: MDX'
-description: 'Last updated February 20, 2026'
+description: 'Next.js can support both local MDX content inside your application, as well as remote MDX files fetched dynamically on the server. The Next.js plugin...'
 ---
 
 # Guides: MDX | Next.js

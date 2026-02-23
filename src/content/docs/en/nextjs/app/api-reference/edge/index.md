@@ -1,6 +1,6 @@
 ---
 title: 'API Reference: Edge Runtime'
-description: 'Last updated February 20, 2026'
+description: 'Next.js has two server runtimes you can use in your application:'
 ---
 
 # API Reference: Edge Runtime | Next.js

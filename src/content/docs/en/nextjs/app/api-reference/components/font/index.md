@@ -1,6 +1,6 @@
 ---
 title: 'Components: Font'
-description: 'Last updated February 20, 2026'
+description: 'It includes built-in automatic self-hosting for any font file. This means you can optimally load web fonts with no layout shift.'
 ---
 
 # Components: Font | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Upgrading: Version 13'
-description: 'Last updated February 20, 2026'
+description: 'To update to Next.js version 13, run the following command using your preferred package manager:'
 ---
 
 # Upgrading: Version 13 | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: output'
-description: 'Last updated February 20, 2026'
+description: 'During a build, Next.js will automatically trace each page and its dependencies to determine all of the files that are needed for deploying a producti...'
 ---
 
 # next.config.js Options: output | Next.js

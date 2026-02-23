@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: output'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '빌드 중 Next.js는 각 페이지와 그 의존성을 자동으로 추적해 프로덕션 버전을 배포하는 데 필요한 모든 파일을 결정합니다.'
 ---
 
 # next.config.js: output | Next.js

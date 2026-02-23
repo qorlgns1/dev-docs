@@ -1,6 +1,6 @@
 ---
 title: '함수: NextRequest'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'NextRequest는 Web Request API를 확장하여 추가 편의 메서드를 제공합니다.'
 ---
 
 # 함수: NextRequest | Next.js

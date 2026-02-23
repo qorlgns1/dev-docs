@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: useLightningcss'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/useLightningcss'
+description: '이 기능은 현재 실험적이며 향후 변경될 수 있으므로 프로덕션에서는 권장되지 않습니다. GitHub에서 사용해 보고 피드백을 공유하세요.'
 ---
 
 # next.config.js: useLightningcss | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: Parallel Routes'
-description: 'Last updated February 20, 2026'
+description: 'Parallel Routes allows you to simultaneously or conditionally render one or more pages within the same layout. They are useful for highly dynamic sect...'
 ---
 
 # File-system conventions: Parallel Routes | Next.js

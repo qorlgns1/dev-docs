@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: webVitalsAttribution'
-description: 'Last updated February 20, 2026'
+description: 'When debugging issues related to Web Vitals, it is often helpful if we can pinpoint the source of the problem. For example, in the case of Cumulative...'
 ---
 
 # next.config.js Options: webVitalsAttribution | Next.js

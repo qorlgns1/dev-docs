@@ -1,6 +1,6 @@
 ---
 title: '파일 시스템 규칙: Route Groups'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '라우트 그룹은 폴더 이름을 기준으로 경로를 팀이나 카테고리별로 구성할 수 있게 해주는 폴더 규칙입니다.'
 ---
 
 # 파일 시스템 규칙: Route Groups | Next.js

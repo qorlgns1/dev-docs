@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: mdx-components.js'
-description: 'Last updated February 20, 2026'
+description: 'The  file is required to use  with App Router and will not work without it. Additionally, you can use it to customize styles.'
 ---
 
 # File-system conventions: mdx-components.js | Next.js

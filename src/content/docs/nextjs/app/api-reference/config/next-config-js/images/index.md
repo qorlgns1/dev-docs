@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: 이미지'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js 내장 Image Optimization API 대신 클라우드 공급자를 사용해 이미지를 최적화하려면 를 다음과 같이 구성할 수 있습니다.'
 ---
 
 # next.config.js: 이미지 | Next.js

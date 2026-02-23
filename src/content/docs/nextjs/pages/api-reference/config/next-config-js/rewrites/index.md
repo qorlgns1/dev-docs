@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: rewrites'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Rewrites를 사용하면 들어오는 요청 경로를 다른 목적지 경로로 매핑할 수 있습니다.'
 ---
 
 # next.config.js Options: rewrites | Next.js

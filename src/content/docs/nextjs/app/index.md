@@ -1,6 +1,6 @@
 ---
 title: 'Next.js Docs: App Router'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '설치부터 레이아웃, 내비게이션, 서버 및 클라이언트 컴포넌트까지 앱 라우터 프로젝트를 구축하는 기본기를 학습하세요.'
 ---
 
 # Next.js Docs: App Router | Next.js

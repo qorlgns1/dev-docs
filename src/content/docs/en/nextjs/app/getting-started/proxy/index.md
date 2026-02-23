@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Proxy'
-description: 'Last updated February 20, 2026'
+description: '> Good to know : Starting with Next.js 16, Middleware is now called Proxy to better reflect its purpose. The functionality remains the same.'
 ---
 
 # Getting Started: Proxy | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Configuration: ESLint'
-description: 'Last updated February 20, 2026'
+description: 'Next.js provides an ESLint configuration package, , that makes it easy to catch common issues in your application. It includes the  plugin along with...'
 ---
 
 # Configuration: ESLint | Next.js

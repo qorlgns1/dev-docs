@@ -1,6 +1,6 @@
 ---
 title: 'Next.js Docs: Architecture'
-description: 'Last updated February 20, 2026'
+description: 'Learn about the Next.js architecture and how it works under the hood.'
 ---
 
 # Next.js Docs: Architecture | Next.js

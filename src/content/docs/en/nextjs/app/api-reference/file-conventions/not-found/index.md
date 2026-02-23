@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: not-found.js'
-description: 'Last updated February 20, 2026'
+description: 'Next.js provides two conventions to handle not found cases:'
 ---
 
 # File-system conventions: not-found.js | Next.js

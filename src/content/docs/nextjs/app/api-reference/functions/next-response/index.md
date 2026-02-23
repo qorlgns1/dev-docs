@@ -1,6 +1,6 @@
 ---
 title: '함수: NextResponse'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/functions/next-response'
+description: 'NextResponse는 Web Response API를 확장해 추가적인 편의 메서드를 제공합니다.'
 ---
 
 # 함수: NextResponse | Next.js

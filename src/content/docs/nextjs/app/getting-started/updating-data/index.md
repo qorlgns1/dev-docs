@@ -1,6 +1,6 @@
 ---
 title: '시작하기: 데이터 업데이트'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js에서는 React의 Server Functions을 사용해 데이터를 업데이트할 수 있습니다. 이 페이지에서는 Server Function을 생성하고 호출하는 방법을 다룹니다.'
 ---
 
 # 시작하기: 데이터 업데이트 | Next.js

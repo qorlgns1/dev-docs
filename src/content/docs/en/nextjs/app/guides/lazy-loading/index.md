@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Lazy Loading'
-description: 'Last updated February 20, 2026'
+description: "It allows you to defer loading of Client Components and imported libraries, and only include them in the client bundle when they're needed. For exampl..."
 ---
 
 # Guides: Lazy Loading | Next.js

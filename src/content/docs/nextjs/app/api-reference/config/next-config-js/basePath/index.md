@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: basePath'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath'
+description: 'Next.js 애플리케이션을 도메인의 하위 경로에 배포하려면  구성 옵션을 사용할 수 있습니다.'
 ---
 
 # next.config.js: basePath | Next.js

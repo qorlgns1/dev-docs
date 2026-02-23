@@ -1,6 +1,6 @@
 ---
 title: '가이드: 업그레이드'
-description: '소스 URL: https://nextjs.org/docs/app/guides/upgrading'
+description: '버전별 가이드를 따라 최신 Next.js 버전으로 업그레이드하는 방법을 알아보세요:'
 ---
 
 # 가이드: 업그레이드 | Next.js

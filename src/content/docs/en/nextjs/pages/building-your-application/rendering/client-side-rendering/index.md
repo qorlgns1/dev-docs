@@ -1,6 +1,6 @@
 ---
 title: 'Rendering: Client-side Rendering (CSR)'
-description: 'Last updated February 20, 2026'
+description: 'In Client-Side Rendering (CSR) with React, the browser downloads a minimal HTML page and the JavaScript needed for the page. The JavaScript is then us...'
 ---
 
 # Rendering: Client-side Rendering (CSR) | Next.js

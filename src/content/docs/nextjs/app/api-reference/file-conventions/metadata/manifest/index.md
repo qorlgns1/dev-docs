@@ -1,6 +1,6 @@
 ---
 title: '메타데이터 파일: manifest.json'
-description: '소스 URL: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest'
+description: '브라우저에 웹 애플리케이션 정보를 제공하려면  디렉터리의 루트에 Web Manifest Specification을 준수하는  파일을 추가하거나 생성하세요.'
 ---
 
 # 메타데이터 파일: manifest.json | Next.js

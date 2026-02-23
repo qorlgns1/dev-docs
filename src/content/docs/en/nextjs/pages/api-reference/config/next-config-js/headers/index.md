@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: headers'
-description: 'Last updated February 20, 2026'
+description: 'Headers allow you to set custom HTTP headers on the response to an incoming request on a given path.'
 ---
 
 # next.config.js Options: headers | Next.js

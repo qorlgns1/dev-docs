@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Authentication'
-description: 'Last updated February 20, 2026'
+description: "Understanding authentication is crucial for protecting your application's data. This page will guide you through what React and Next.js features to us..."
 ---
 
 # Guides: Authentication | Next.js

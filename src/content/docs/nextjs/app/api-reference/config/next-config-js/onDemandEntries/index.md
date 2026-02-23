@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: onDemandEntries'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는 개발 환경에서 빌드된 페이지를 서버가 메모리에 유지하거나 폐기하는 방식을 일부 제어할 수 있는 옵션을 제공합니다.'
 ---
 
 # next.config.js: onDemandEntries | Next.js

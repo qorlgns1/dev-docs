@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Instrumentation'
-description: 'Last updated February 20, 2026'
+description: 'Instrumentation is the process of using code to integrate monitoring and logging tools into your application. This allows you to track the performance...'
 ---
 
 # Guides: Instrumentation | Next.js

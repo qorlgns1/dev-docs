@@ -1,6 +1,6 @@
 ---
 title: 'File-system conventions: loading.js'
-description: 'Last updated February 20, 2026'
+description: 'The special file  helps you create meaningful Loading UI with React Suspense. With this convention, you can show an instant loading state from the ser...'
 ---
 
 # File-system conventions: loading.js | Next.js

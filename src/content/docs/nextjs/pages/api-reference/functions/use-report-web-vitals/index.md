@@ -1,6 +1,6 @@
 ---
 title: '함수: useReportWebVitals'
-description: '소스 URL: https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals'
+description: '훅을 사용하면 Core Web Vitals를 보고할 수 있으며 분석 서비스와 함께 활용할 수 있습니다.'
 ---
 
 # 함수: useReportWebVitals | Next.js

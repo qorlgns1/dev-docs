@@ -1,6 +1,6 @@
 ---
 title: 'Directives: use server'
-description: 'Last updated February 20, 2026'
+description: 'The  directive designates a function or file to be executed on the server side. It can be used at the top of a file to indicate that all functions in...'
 ---
 
 # Directives: use server | Next.js

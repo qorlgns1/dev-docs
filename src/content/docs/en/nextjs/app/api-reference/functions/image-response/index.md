@@ -1,6 +1,6 @@
 ---
 title: 'Functions: ImageResponse'
-description: 'Last updated February 20, 2026'
+description: 'The  constructor allows you to generate dynamic images using JSX and CSS. This is useful for generating social media images such as Open Graph images,...'
 ---
 
 # Functions: ImageResponse | Next.js

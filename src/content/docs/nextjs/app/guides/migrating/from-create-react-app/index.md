@@ -1,6 +1,6 @@
 ---
 title: '마이그레이션: Create React App'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '이 가이드는 기존 Create React App(CRA) 사이트를 Next.js로 마이그레이션하는 데 도움이 됩니다.'
 ---
 
 # 마이그레이션: Create React App | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'Rendering: Automatic Static Optimization'
-description: 'Last updated February 20, 2026'
+description: 'Next.js automatically determines that a page is static (can be prerendered) if it has no blocking data requirements. This determination is made by the...'
 ---
 
 # Rendering: Automatic Static Optimization | Next.js

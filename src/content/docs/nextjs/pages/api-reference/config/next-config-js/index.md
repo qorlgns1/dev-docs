@@ -1,6 +1,6 @@
 ---
 title: '구성: next.config.js 옵션'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Next.js는 프로젝트 디렉터리 루트(예:  옆)에 있는  파일의 기본 내보내기를 통해 구성할 수 있습니다.'
 ---
 
 # 구성: next.config.js 옵션 | Next.js

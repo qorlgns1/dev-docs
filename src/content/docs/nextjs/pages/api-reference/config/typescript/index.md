@@ -1,6 +1,6 @@
 ---
 title: '구성: TypeScript'
-description: '소스 URL: https://nextjs.org/docs/pages/api-reference/config/typescript'
+description: 'Next.js에는 기본적으로 TypeScript가 포함되어 있어 으로 새 프로젝트를 만들 때 필요한 패키지를 자동으로 설치하고 적절한 설정을 구성합니다.'
 ---
 
 # 구성: TypeScript | Next.js

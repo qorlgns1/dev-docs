@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: reactMaxHeadersLength'
-description: 'Last updated February 20, 2026'
+description: 'During static rendering, React can emit headers that can be added to the response. These can be used to improve performance by allowing the browser to...'
 ---
 
 # next.config.js: reactMaxHeadersLength | Next.js

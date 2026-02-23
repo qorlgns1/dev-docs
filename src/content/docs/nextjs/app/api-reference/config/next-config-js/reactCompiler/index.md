@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: reactCompiler'
-description: '마지막 업데이트 2026년 2월 20일'
+description: 'Next.js는 컴포넌트 렌더링을 자동으로 최적화해 성능을 높이도록 설계된 React Compiler를 지원합니다. 이를 통해 와 으로 수동 메모이제이션을 해야 하는 필요성이 줄어듭니다.'
 ---
 
 # next.config.js: reactCompiler | Next.js

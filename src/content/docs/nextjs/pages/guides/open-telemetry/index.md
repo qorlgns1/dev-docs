@@ -1,6 +1,6 @@
 ---
 title: '안내서: OpenTelemetry'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '관측 가능성은 Next.js 앱의 동작과 성능을 이해하고 최적화하는 데 필수적입니다.'
 ---
 
 # 안내서: OpenTelemetry | Next.js

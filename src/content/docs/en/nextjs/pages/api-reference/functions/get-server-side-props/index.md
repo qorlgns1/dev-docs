@@ -1,6 +1,6 @@
 ---
 title: 'Functions: getServerSideProps'
-description: 'Last updated February 20, 2026'
+description: 'When exporting a function called  (Server-Side Rendering) from a page, Next.js will pre-render this page on each request using the data returned by ....'
 ---
 
 # Functions: getServerSideProps | Next.js

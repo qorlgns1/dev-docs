@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Fonts'
-description: 'Last updated February 20, 2026'
+description: 'The  module automatically optimizes your fonts and removes external network requests for improved privacy and performance.'
 ---
 
 # Getting Started: Fonts | Next.js

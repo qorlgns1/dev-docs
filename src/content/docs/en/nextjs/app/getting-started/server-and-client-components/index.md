@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Server and Client Components'
-description: 'Last updated February 20, 2026'
+description: 'By default, layouts and pages are Server Components, which lets you fetch data and render parts of your UI on the server, optionally cache the result,...'
 ---
 
 # Getting Started: Server and Client Components | Next.js

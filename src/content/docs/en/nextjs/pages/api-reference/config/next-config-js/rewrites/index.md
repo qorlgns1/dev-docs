@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: rewrites'
-description: 'Last updated February 20, 2026'
+description: 'Rewrites allow you to map an incoming request path to a different destination path.'
 ---
 
 # next.config.js Options: rewrites | Next.js

@@ -1,6 +1,6 @@
 ---
 title: '함수: generateImageMetadata'
-description: '마지막 업데이트 2026년 2월 20일'
+description: '를 사용하면 하나의 이미지에 대한 다양한 버전을 생성하거나 하나의 라우트 세그먼트에 여러 이미지를 반환할 수 있습니다. 이는 아이콘처럼 메타데이터 값을 하드코딩하지 않고자 할 때 유용합니다.'
 ---
 
 # 함수: generateImageMetadata | Next.js

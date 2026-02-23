@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: experimental.proxyClientMaxBodySize'
-description: 'Last updated February 20, 2026'
+description: 'When proxy is used, Next.js automatically clones the request body and buffers it in memory to enable multiple reads - both in proxy and the underlying...'
 ---
 
 # next.config.js Options: experimental.proxyClientMaxBodySize | Next.js

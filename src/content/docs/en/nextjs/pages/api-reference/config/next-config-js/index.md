@@ -1,6 +1,6 @@
 ---
 title: 'Configuration: next.config.js Options'
-description: 'Last updated February 20, 2026'
+description: 'Next.js can be configured through a  file in the root of your project directory (for example, by ) with a default export.'
 ---
 
 # Configuration: next.config.js Options | Next.js

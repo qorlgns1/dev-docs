@@ -1,6 +1,6 @@
 ---
 title: 'Guides: Multi-zones'
-description: 'Last updated February 20, 2026'
+description: 'Multi-Zones are an approach to micro-frontends that separate a large application on a domain into smaller Next.js applications that each serve a set o...'
 ---
 
 # Guides: Multi-zones | Next.js

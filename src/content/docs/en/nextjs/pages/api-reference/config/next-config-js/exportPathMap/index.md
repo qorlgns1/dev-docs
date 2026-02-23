@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js Options: exportPathMap'
-description: 'Last updated February 20, 2026'
+description: '> This feature is exclusive to  and currently deprecated in favor of  with  or  with .'
 ---
 
 # next.config.js Options: exportPathMap | Next.js

@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js 옵션: distDir'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: '대신 사용할 사용자 지정 빌드 디렉터리 이름을 지정할 수 있습니다.'
 ---
 
 # next.config.js 옵션: distDir | Next.js

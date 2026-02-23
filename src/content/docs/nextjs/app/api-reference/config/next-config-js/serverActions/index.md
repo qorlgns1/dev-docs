@@ -1,6 +1,6 @@
 ---
 title: 'next.config.js: serverActions'
-description: '마지막 업데이트: 2026년 2월 20일'
+description: 'Next.js 애플리케이션에서 Server Actions 동작을 구성하기 위한 옵션입니다.'
 ---
 
 # next.config.js: serverActions | Next.js

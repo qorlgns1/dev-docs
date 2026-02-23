@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started: Images'
-description: 'Last updated February 20, 2026'
+description: 'The Next.js  component extends the HTML  element to provide:'
 ---
 
 # Getting Started: Images | Next.js

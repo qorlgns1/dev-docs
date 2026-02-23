@@ -1,6 +1,6 @@
 ---
 title: 'Functions: useSelectedLayoutSegment'
-description: 'Last updated February 20, 2026'
+description: 'is a Client Component hook that lets you read the active route segment one level below the Layout it is called from.'
 ---
 
 # Functions: useSelectedLayoutSegment | Next.js

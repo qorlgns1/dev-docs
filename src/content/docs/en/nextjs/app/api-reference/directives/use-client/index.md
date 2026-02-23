@@ -1,6 +1,6 @@
 ---
 title: 'Directives: use client'
-description: 'Last updated February 20, 2026'
+description: 'The  directive declares an entry point for the components to be rendered on the client side and should be used when creating interactive user interfac...'
 ---
 
 # Directives: use client | Next.js
