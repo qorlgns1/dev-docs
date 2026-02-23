@@ -3,7 +3,7 @@ import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-	site: 'https://docs.moodybeard.com',
+	site: 'https://dev-docs.moodybeard.com',
 	integrations: [
 		starlight({
 			title: 'dev-docs',
@@ -15,7 +15,7 @@ export default defineConfig({
 						'@context': 'https://schema.org',
 						'@type': 'WebSite',
 						name: 'dev-docs',
-						url: 'https://docs.moodybeard.com',
+						url: 'https://dev-docs.moodybeard.com',
 					}),
 				},
 			],

@@ -2,7 +2,7 @@
 
 개발자 도구의 공식 문서를 한국어로 번역해 제공하는 Astro Starlight 기반 문서 사이트입니다.
 
-- 사이트: [docs.moodybeard.com](https://docs.moodybeard.com)
+- 사이트: [dev-docs.moodybeard.com](https://dev-docs.moodybeard.com)
 - 기본 언어: 한국어 (루트 경로)
 - 영어: `/en/` 경로
 
@@ -97,4 +97,4 @@ python3 skills/translate-docs-ko/scripts/translate_docs.py \
 
 ## 배포
 
-Vercel에 자동 배포됩니다. `main` 브랜치에 push하면 [docs.moodybeard.com](https://docs.moodybeard.com)에 반영됩니다.
+Vercel에 자동 배포됩니다. `main` 브랜치에 push하면 [dev-docs.moodybeard.com](https://dev-docs.moodybeard.com)에 반영됩니다.
