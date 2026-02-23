@@ -84,7 +84,7 @@ except ImportError:
 
 REPO_ROOT = Path(__file__).parent.parent.parent.parent
 EN_DOCS = REPO_ROOT / "src/content/docs/en"
-REFS_DIR = REPO_ROOT / "skills/add-doc/references"
+REFS_DIR = REPO_ROOT / ".agents/skills/add-doc/references"
 USER_AGENT = "add-doc/1.0"
 
 # Phase 5: min body text length before triggering Playwright fallback
@@ -273,6 +273,41 @@ def _sitemap_urls_from_robots(origin: str) -> list[str]:
     return urls
 
 
+def _links_from_html(base_url: str, scope: str) -> list[str]:
+    """
+    Fallback URL discovery: extract in-scope <a href> links from the base page.
+    Used when no sitemap is available. Skips anchor-only, external, and
+    media/asset links.
+    """
+    _SKIP_EXTS = {
+        ".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp",
+        ".pdf", ".zip", ".tar", ".gz",
+        ".css", ".js", ".json", ".xml",
+    }
+    try:
+        html = fetch(base_url)
+    except Exception:
+        return []
+
+    soup = bs4.BeautifulSoup(html, "html.parser")
+    found: list[str] = []
+    for a in soup.find_all("a", href=True):
+        href = a["href"].strip()
+        if not href or href.startswith("#"):
+            continue
+        abs_url = canonicalize(urljoin(base_url, href))
+        parsed = urlparse(abs_url)
+        # same origin only
+        if parsed.netloc != urlparse(base_url).netloc:
+            continue
+        # skip asset extensions
+        if any(parsed.path.lower().endswith(ext) for ext in _SKIP_EXTS):
+            continue
+        if in_scope(abs_url, scope):
+            found.append(abs_url)
+    return list(dict.fromkeys(found))  # deduplicate, preserve order
+
+
 def markdown_candidate(url: str) -> str:
     p = urlparse(url)
     path = p.path.rstrip("/")
@@ -405,6 +440,16 @@ def collect_urls(base_url: str) -> list[str]:
                     urls.append(norm)
 
     urls.append(canonicalize(base_url))
+
+    # Fallback: if sitemap discovered nothing beyond the base URL itself,
+    # extract in-scope <a href> links from the base page HTML.
+    if len(set(urls)) <= 1:
+        print(
+            "[collect] No sitemap found — falling back to HTML link discovery",
+            flush=True,
+        )
+        urls.extend(_links_from_html(canonicalize(base_url), scope))
+
     return sorted(set(urls))
 
 

@@ -1,0 +1,23 @@
+# ── Core (always required) ────────────────────────────────────────────────────
+beautifulsoup4>=4.12
+html2text>=2024.2.26
+httpx>=0.27
+
+# Phase 1: retry + HTTP cache
+tenacity>=8.2
+hishel>=1.1          # requires Python >=3.10; BSD-3-Clause
+
+# ── Optional: richer HTML extraction ─────────────────────────────────────────
+# Use --extractor=trafilatura
+# Apache 2.0 since v2.0.0 — pin to >=2.0.0 to ensure license compliance
+trafilatura>=2.0.0
+
+# ── Optional: CommonMark Markdown formatting ──────────────────────────────────
+# Use --format  (opt-in)
+# IMPORTANT: pin this version — output format changes between releases
+mdformat==0.7.22
+
+# ── Optional: JS-rendered page support ───────────────────────────────────────
+# Use --js-fallback
+# After install, run: playwright install chromium
+playwright>=1.44

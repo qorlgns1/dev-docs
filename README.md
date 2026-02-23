@@ -21,7 +21,7 @@ dev-docs/
 │   ├── index.md                  # 홈페이지
 │   ├── <section>/                # 한국어 문서 (루트 경로)
 │   └── en/<section>/             # 영어 문서
-└── skills/
+└── .agents/skills/
     └── add-doc/                  # 문서 추가 파이프라인 스킬
         ├── SKILL.md
         └── scripts/
@@ -43,7 +43,7 @@ pnpm build
 
 ```bash
 codex login
-python3 -m pip install --user -r skills/translate-docs-ko/scripts/requirements.txt
+python3 -m pip install --user -r .agents/skills/add-doc/scripts/requirements.txt
 ```
 
 ## 문서 추가 파이프라인
@@ -54,13 +54,13 @@ URL 하나로 크롤링 → 번역 → frontmatter → 배포까지 자동화합
 SECTION=codex
 URL=https://developers.openai.com/codex/
 
-python3 skills/add-doc/scripts/fetch.py --url $URL   # --section 생략 가능 (자동 유도)
-python3 skills/add-doc/scripts/translate.py \
+python3 .agents/skills/add-doc/scripts/fetch.py --url $URL   # --section 생략 가능 (자동 유도)
+python3 .agents/skills/add-doc/scripts/translate.py \
   --source-root src/content/docs/en/$SECTION \
   --dest-root   src/content/docs/$SECTION
-python3 skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/$SECTION
-python3 skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/en/$SECTION
-python3 skills/add-doc/scripts/deploy.py --section $SECTION
+python3 .agents/skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/$SECTION
+python3 .agents/skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/en/$SECTION
+python3 .agents/skills/add-doc/scripts/deploy.py --section $SECTION
 ```
 
 ## Codex에서 호출

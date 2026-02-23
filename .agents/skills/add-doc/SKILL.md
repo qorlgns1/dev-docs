@@ -20,27 +20,39 @@ $add-doc https://nextjs.org/docs --section nextjs
 
 ## Steps
 
-Run each script in order. All scripts live in `skills/add-doc/scripts/`.
+Run each script in order. All scripts live in `.agents/skills/add-doc/scripts/`.
 
 ### 1. Fetch — URL → English Markdown + nav structure
 
 ```bash
-python3 skills/add-doc/scripts/fetch.py \
+python3 .agents/skills/add-doc/scripts/fetch.py \
   --url <URL> \
-  [--section <name>]   # URL에서 자동 추론
-  [--force]            # 기존 파일 덮어쓰기
-  [--limit N]          # 테스트용 N개만 수집
-  [--no-nav]           # 내비게이션 구조 추출 건너뜀
+  [--section <name>]            # URL에서 자동 추론
+  [--force]                     # 기존 파일 덮어쓰기
+  [--limit N]                   # 테스트용 N개만 수집
+  [--no-nav]                    # 내비게이션 구조 추출 건너뜀
+  [--no-cache]                  # HTTP 캐시 비활성화 (기본: 활성)
+  [--cache-dir PATH]            # 캐시 저장 경로 (기본: .cache/fetch-http)
+  [--extractor html2text|trafilatura]  # HTML→MD 추출기 선택 (기본: html2text)
+  [--format]                    # mdformat으로 CommonMark 포맷 정규화 (opt-in)
+  [--js-fallback]               # JS 렌더링 페이지에 Playwright 폴백 사용
+```
+
+Dependencies (install before use):
+```bash
+pip install -r .agents/skills/add-doc/scripts/requirements.txt
+# JS fallback 사용 시 추가:
+playwright install chromium
 ```
 
 Output:
 - `src/content/docs/en/<section>/` — 영어 Markdown
-- `skills/add-doc/references/<section>-nav.json` — 사이드바 계층 구조
+- `.agents/skills/add-doc/references/<section>-nav.json` — 사이드바 계층 구조
 
 ### 2. Translate — English → Korean (Codex CLI)
 
 ```bash
-python3 skills/add-doc/scripts/translate.py \
+python3 .agents/skills/add-doc/scripts/translate.py \
   --source-root src/content/docs/en/<section> \
   --dest-root   src/content/docs/<section> \
   [--force]
@@ -54,10 +66,10 @@ Output: `src/content/docs/<section>/`
 한국어·영어 모두 실행:
 
 ```bash
-python3 skills/add-doc/scripts/frontmatter.py \
+python3 .agents/skills/add-doc/scripts/frontmatter.py \
   --docs-dir src/content/docs/<section>
 
-python3 skills/add-doc/scripts/frontmatter.py \
+python3 .agents/skills/add-doc/scripts/frontmatter.py \
   --docs-dir src/content/docs/en/<section>
 ```
 
@@ -66,7 +78,7 @@ python3 skills/add-doc/scripts/frontmatter.py \
 nav JSON을 읽어 한국어 레이블을 번역하고 astro.config.mjs 를 업데이트합니다.
 
 ```bash
-python3 skills/add-doc/scripts/sidebar.py \
+python3 .agents/skills/add-doc/scripts/sidebar.py \
   --section <name> \
   [--section-label 'Next.js']      # 영어 섹션 레이블 (기본: title-case)
   [--section-label-ko 'Next.js']   # 한국어 섹션 레이블
@@ -84,7 +96,7 @@ Output: `astro.config.mjs` — 섹션 블록이 교체 또는 추가됨
 ### 5. Deploy — commit & push → Vercel
 
 ```bash
-python3 skills/add-doc/scripts/deploy.py \
+python3 .agents/skills/add-doc/scripts/deploy.py \
   --section <name> \
   [--no-push]   # 로컬 테스트용
 ```
@@ -97,14 +109,14 @@ python3 skills/add-doc/scripts/deploy.py \
 SECTION=codex
 URL=https://developers.openai.com/codex/
 
-python3 skills/add-doc/scripts/fetch.py --url $URL --section $SECTION
-python3 skills/add-doc/scripts/translate.py \
+python3 .agents/skills/add-doc/scripts/fetch.py --url $URL --section $SECTION
+python3 .agents/skills/add-doc/scripts/translate.py \
   --source-root src/content/docs/en/$SECTION \
   --dest-root   src/content/docs/$SECTION
-python3 skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/$SECTION
-python3 skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/en/$SECTION
-python3 skills/add-doc/scripts/sidebar.py --section $SECTION
-python3 skills/add-doc/scripts/deploy.py --section $SECTION
+python3 .agents/skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/$SECTION
+python3 .agents/skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/en/$SECTION
+python3 .agents/skills/add-doc/scripts/sidebar.py --section $SECTION
+python3 .agents/skills/add-doc/scripts/deploy.py --section $SECTION
 ```
 
 ## Guardrails
