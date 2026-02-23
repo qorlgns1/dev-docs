@@ -9,6 +9,8 @@ export default defineConfig({
 			title: 'dev-docs',
 			components: {
 				Head: './src/components/Head.astro',
+				PageTitle: './src/components/PageTitle.astro',
+				ContentPanel: './src/components/ContentPanel.astro',
 			},
 			head: [
 				{

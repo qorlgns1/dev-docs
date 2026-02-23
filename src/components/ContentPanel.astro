@@ -1,0 +1,15 @@
+---
+import DefaultContentPanel from '@astrojs/starlight/components/ContentPanel.astro';
+---
+
+<DefaultContentPanel><slot /></DefaultContentPanel>
+
+<style is:global>
+	@layer starlight.core {
+		/* Remove title-only top panel spacing when PageTitle is hidden for duplicate-H1 handling. */
+		main > .content-panel:first-of-type:has(> .sl-container > h1.starlight-hidden-page-title:only-child) {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+</style>
