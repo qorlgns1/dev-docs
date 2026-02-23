@@ -1,0 +1,38 @@
+---
+title: 'next.config.js: onDemandEntries'
+description: '마지막 업데이트 2026년 2월 20일'
+---
+
+# next.config.js: onDemandEntries | Next.js
+
+출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/onDemandEntries
+
+[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)onDemandEntries
+
+페이지 복사
+
+# onDemandEntries
+
+마지막 업데이트 2026년 2월 20일
+
+Next.js는 개발 환경에서 빌드된 페이지를 서버가 메모리에 유지하거나 폐기하는 방식을 일부 제어할 수 있는 옵션을 제공합니다.
+
+기본값을 변경하려면 `next.config.js`를 열고 `onDemandEntries` 구성을 추가하세요.
+
+next.config.js
+[code]
+    module.exports = {
+      onDemandEntries: {
+        // period (in ms) where the server will keep pages in the buffer
+        maxInactiveAge: 25 * 1000,
+        // number of pages that should be kept simultaneously without being disposed
+        pagesBufferLength: 2,
+      },
+    }
+[/code]
+
+도움이 되었나요?
+
+지원됨.
+
+보내기
