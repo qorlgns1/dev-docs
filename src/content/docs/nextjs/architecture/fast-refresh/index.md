@@ -6,7 +6,6 @@ description: 'Fast Refresh는 Next.js에 통합된 React 기능으로, 파일을
 # 아키텍처: Fast Refresh | Next.js
 출처 URL: https://nextjs.org/docs/architecture/fast-refresh
 [Next.js 문서](https://nextjs.org/docs)[아키텍처](https://nextjs.org/docs/architecture)Fast Refresh
-페이지 복사
 
 # Fast Refresh
 마지막 업데이트 2026년 2월 20일
@@ -56,9 +55,3 @@ Fast Refresh는 수정 중인 컴포넌트의 로컬 React 상태를 보존하�
 이 때문에 예상치 못한 결과가 나타날 수 있습니다. 예를 들어 의존성 배열이 비어 있는 `useEffect`도 Fast Refresh 동안 한 번은 다시 실행됩니다.
 
 그러나 Fast Refresh가 없더라도 `useEffect`가 가끔 다시 실행되는 상황을 견딜 수 있도록 코드를 작성하는 것이 좋은 습관입니다. 이렇게 하면 나중에 새로운 의존성을 추가하기 쉽고, [React Strict Mode](https://nextjs.org/docs/pages/api-reference/config/next-config-js/reactStrictMode)가 이를 강제하므로 활성화를 강력히 권장합니다.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

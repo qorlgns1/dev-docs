@@ -6,8 +6,6 @@ description: 'app/dashboard/error.tsx'
 # 파일 시스템 규칙: error.js | Next.js
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/error
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)error.js
-
 Copy page
 
 # error.js
@@ -21,9 +19,9 @@ app/dashboard/error.tsx
 JavaScriptTypeScript
 [code]
     'use client' // Error boundaries must be Client Components
-     
+
     import { useEffect } from 'react'
-     
+
     export default function Error({
       error,
       reset,
@@ -35,7 +33,7 @@ JavaScriptTypeScript
         // Log the error to an error reporting service
         console.error(error)
       }, [error])
-     
+
       return (
         <div>
           <h2>Something went wrong!</h2>
@@ -55,10 +53,10 @@ JavaScriptTypeScript
 `error.js`는 경로 세그먼트와 중첩된 하위 요소를 [React Error Boundary](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)로 감쌉니다. 경계 내부에서 오류가 발생하면 `error` 컴포넌트가 대체 UI로 표시됩니다.
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * [React DevTools](https://react.dev/learn/react-developer-tools)를 사용해 오류 경계를 토글하고 오류 상태를 테스트할 수 있습니다.
 >   * 오류가 상위 오류 경계까지 전파되길 원한다면 `error` 컴포넌트를 렌더링할 때 `throw`를 호출하면 됩니다.
-> 
+>
 
 ## Reference[](https://nextjs.org/docs/app/api-reference/file-conventions/error#reference)
 
@@ -90,7 +88,7 @@ app/dashboard/error.tsx
 JavaScriptTypeScript
 [code]
     'use client' // Error boundaries must be Client Components
-     
+
     export default function Error({
       error,
       reset,
@@ -120,7 +118,7 @@ app/global-error.tsx
 JavaScriptTypeScript
 [code]
     'use client' // Error boundaries must be Client Components
-     
+
     export default function GlobalError({
       error,
       reset,
@@ -151,40 +149,40 @@ app/dashboard/error.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import React, { Component, ErrorInfo, ReactNode } from 'react'
-     
+
     interface ErrorBoundaryProps {
       children: ReactNode
       onError?: (error: Error, errorInfo: ErrorInfo) => void
     }
-     
+
     interface ErrorBoundaryState {
       hasError: boolean
     }
-     
+
     export class GracefullyDegradingErrorBoundary extends Component<
       ErrorBoundaryProps,
       ErrorBoundaryState
     > {
       private contentRef: React.RefObject<HTMLDivElement | null>
-     
+
       constructor(props: ErrorBoundaryProps) {
         super(props)
         this.state = { hasError: false }
         this.contentRef = React.createRef()
       }
-     
+
       static getDerivedStateFromError(_: Error): ErrorBoundaryState {
         return { hasError: true }
       }
-     
+
       componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         if (this.props.onError) {
           this.props.onError(error, errorInfo)
         }
       }
-     
+
       render() {
         if (this.state.hasError) {
           // Render the current HTML content without hydration
@@ -205,28 +203,24 @@ JavaScriptTypeScript
             </>
           )
         }
-     
+
         return <div ref={this.contentRef}>{this.props.children}</div>
       }
     }
-     
+
     export default GracefullyDegradingErrorBoundary
 [/code]
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/error#version-history)
 
-Version| Changes  
----|---  
-`v15.2.0`| 개발 환경에서도 `global-error`를 표시합니다.  
-`v13.1.0`| `global-error`가 도입되었습니다.  
-`v13.0.0`| `error`가 도입되었습니다.  
-  
+Version| Changes
+---|---
+`v15.2.0`| 개발 환경에서도 `global-error`를 표시합니다.
+`v13.1.0`| `global-error`가 도입되었습니다.
+`v13.0.0`| `error`가 도입되었습니다.
+
 ## 오류 처리 더 알아보기
 
-### [Error Handling예상된 오류를 표시하고 처리되지 않은 예외를 다루는 방법을 알아보세요.](https://nextjs.org/docs/app/getting-started/error-handling)
-
-도움이 되었나요?
-
-지원됨.
+- [Error Handling예상된 오류를 표시하고 처리되지 않은 예외를 다루는 방법을 알아보세요.](https://nextjs.org/docs/app/getting-started/error-handling)
 
 보내기

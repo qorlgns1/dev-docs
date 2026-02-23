@@ -7,10 +7,6 @@ description: '> 참고:  파일 규칙은 더 이상 사용되지 않으며 로 
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/file-conventions/proxy
 
-[API Reference](https://nextjs.org/docs/pages/api-reference)[File-system conventions](https://nextjs.org/docs/pages/api-reference/file-conventions)Proxy
-
-페이지 복사
-
 # Proxy
 
 마지막 업데이트 2026년 2월 20일
@@ -36,12 +32,12 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import { NextResponse, NextRequest } from 'next/server'
-     
+
     // This function can be marked `async` if using `await` inside
     export function proxy(request: NextRequest) {
       return NextResponse.redirect(new URL('/home', request.url))
     }
-     
+
     export const config = {
       matcher: '/about/:path*',
     }
@@ -144,7 +140,7 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import type { NextRequest } from 'next/server'
-     
+
     export function proxy(request: NextRequest) {
       // Proxy logic goes here
     }
@@ -203,14 +199,14 @@ next.config.js
 proxy.js
 [code]
     const legacyPrefixes = ['/docs', '/blog']
-     
+
     export default async function proxy(req) {
       const { pathname } = req.nextUrl
-     
+
       if (legacyPrefixes.some((prefix) => pathname.startsWith(prefix))) {
         return NextResponse.next()
       }
-     
+
       // apply trailing slash handling
       if (
         !pathname.endsWith('/') &&
@@ -236,9 +232,9 @@ proxy.js
 [code]
     export default async function proxy(req) {
       const { pathname } = req.nextUrl
-     
+
       // GET /_next/data/build-id/hello.json
-     
+
       console.log(pathname)
       // with the flag this now /_next/data/build-id/hello.json
       // without the flag this would be normalized to /hello
@@ -255,12 +251,12 @@ JavaScriptTypeScript
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
-     
+
     export function proxy(request: NextRequest) {
       if (request.nextUrl.pathname.startsWith('/about')) {
         return NextResponse.rewrite(new URL('/about-2', request.url))
       }
-     
+
       if (request.nextUrl.pathname.startsWith('/dashboard')) {
         return NextResponse.rewrite(new URL('/dashboard/user', request.url))
       }
@@ -274,15 +270,13 @@ JavaScriptTypeScript
   1. 들어오는 요청의 경우 `cookies`에는 `get`, `getAll`, `set`, `delete` 메서드가 있으며, `has`로 특정 쿠키의 존재를 확인하거나 `clear`로 모든 쿠키를 제거할 수 있습니다.
   2. 나가는 응답의 경우 `cookies`에는 `get`, `getAll`, `set`, `delete` 메서드가 있습니다.
 
-
-
 proxy.ts
 
 JavaScriptTypeScript
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
-     
+
     export function proxy(request: NextRequest) {
       // Assume a "Cookie:nextjs=fast" header to be present on the incoming request
       // Getting cookies from the request using the `RequestCookies` API
@@ -290,11 +284,11 @@ JavaScriptTypeScript
       console.log(cookie) // => { name: 'nextjs', value: 'fast', Path: '/' }
       const allCookies = request.cookies.getAll()
       console.log(allCookies) // => [{ name: 'nextjs', value: 'fast' }]
-     
+
       request.cookies.has('nextjs') // => true
       request.cookies.delete('nextjs')
       request.cookies.has('nextjs') // => false
-     
+
       // Setting cookies on the response using the `ResponseCookies` API
       const response = NextResponse.next()
       response.cookies.set('vercel', 'fast')
@@ -306,7 +300,7 @@ JavaScriptTypeScript
       cookie = response.cookies.get('vercel')
       console.log(cookie) // => { name: 'vercel', value: 'fast', Path: '/' }
       // The outgoing response will have a `Set-Cookie:vercel=fast;path=/` header.
-     
+
       return response
     }
 [/code]
@@ -321,12 +315,12 @@ JavaScriptTypeScript
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
-     
+
     export function proxy(request: NextRequest) {
       // Clone the request headers and set a new header `x-hello-from-proxy1`
       const requestHeaders = new Headers(request.headers)
       requestHeaders.set('x-hello-from-proxy1', 'hello')
-     
+
       // You can also set request headers in NextResponse.next
       const response = NextResponse.next({
         request: {
@@ -334,7 +328,7 @@ JavaScriptTypeScript
           headers: requestHeaders,
         },
       })
-     
+
       // Set a new response header `x-hello-from-proxy2`
       response.headers.set('x-hello-from-proxy2', 'hello')
       return response
@@ -345,8 +339,6 @@ JavaScriptTypeScript
 
   * `requestHeaders`를 업스트림에서 사용할 수 있도록 `NextResponse.next({ request: { headers: requestHeaders } })`
   * 클라이언트에 `requestHeaders`를 노출하므로 사용하지 말아야 하는 `NextResponse.next({ headers: requestHeaders })`
-
-
 
 [Proxy에서의 NextResponse 헤더](https://nextjs.org/docs/app/api-reference/functions/next-response#next)에서 더 알아보세요.
 
@@ -361,22 +353,22 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import { NextRequest, NextResponse } from 'next/server'
-     
+
     const allowedOrigins = ['https://acme.com', 'https://my-app.org']
-     
+
     const corsOptions = {
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     }
-     
+
     export function proxy(request: NextRequest) {
       // Check the origin from the request
       const origin = request.headers.get('origin') ?? ''
       const isAllowedOrigin = allowedOrigins.includes(origin)
-     
+
       // Handle preflighted requests
       const isPreflight = request.method === 'OPTIONS'
-     
+
       if (isPreflight) {
         const preflightHeaders = {
           ...(isAllowedOrigin && { 'Access-Control-Allow-Origin': origin }),
@@ -384,21 +376,21 @@ JavaScriptTypeScript
         }
         return NextResponse.json({}, { headers: preflightHeaders })
       }
-     
+
       // Handle simple requests
       const response = NextResponse.next()
-     
+
       if (isAllowedOrigin) {
         response.headers.set('Access-Control-Allow-Origin', origin)
       }
-     
+
       Object.entries(corsOptions).forEach(([key, value]) => {
         response.headers.set(key, value)
       })
-     
+
       return response
     }
-     
+
     export const config = {
       matcher: '/api/:path*',
     }
@@ -414,12 +406,12 @@ JavaScriptTypeScript
 [code]
     import type { NextRequest } from 'next/server'
     import { isAuthenticated } from '@lib/auth'
-     
+
     // Limit the proxy to paths starting with `/api/`
     export const config = {
       matcher: '/api/:function*',
     }
-     
+
     export function proxy(request: NextRequest) {
       // Call our authentication function to check the request
       if (!isAuthenticated(request)) {
@@ -473,7 +465,7 @@ proxy.js
             { type: 'header', key: 'purpose', value: 'prefetch' },
           ],
         },
-     
+
         {
           source:
             '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
@@ -482,7 +474,7 @@ proxy.js
             { type: 'header', key: 'purpose', value: 'prefetch' },
           ],
         },
-     
+
         {
           source:
             '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
@@ -494,7 +486,7 @@ proxy.js
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 > 부정 매처 패턴에서 `_next/data`를 제외했더라도 Proxy는 여전히 `_next/data` 경로에 대해 실행됩니다. 이는 페이지는 보호하면서 해당 데이터 경로를 보호하지 않아 발생할 수 있는 보안 문제를 방지하기 위한 의도된 동작입니다.
 
 proxy.js
@@ -503,7 +495,7 @@ proxy.js
       matcher:
         '/((?!api|_next/data|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
     }
-     
+
     // Proxy will still run for /_next/data/* routes despite being excluded
 [/code]
 
@@ -517,7 +509,7 @@ proxy.ts
 [code]
     import { NextResponse } from 'next/server'
     import type { NextFetchEvent, NextRequest } from 'next/server'
-     
+
     export function proxy(req: NextRequest, event: NextFetchEvent) {
       event.waitUntil(
         fetch('https://my-analytics-platform.com', {
@@ -525,7 +517,7 @@ proxy.ts
           body: JSON.stringify({ pathname: req.nextUrl.pathname }),
         })
       )
-     
+
       return NextResponse.next()
     }
 [/code]
@@ -535,9 +527,9 @@ proxy.ts
 Next.js 15.1부터 `next/experimental/testing/server` 패키지는 proxy 파일의 단위 테스트를 돕는 유틸리티를 제공합니다. Proxy 단위 테스트는 특정 경로에서만 실행되도록 보장하고, 프로덕션에 도달하기 전에 사용자 정의 라우팅 로직이 예상대로 동작하는지 확인하는 데 도움이 됩니다.
 
 `unstable_doesProxyMatch` 함수는 주어진 URL, 헤더, 쿠키에 대해 proxy가 실행될지 여부를 단언하는 데 사용할 수 있습니다.
-[code] 
+[code]
     import { unstable_doesProxyMatch } from 'next/experimental/testing/server'
-     
+
     expect(
       unstable_doesProxyMatch({
         config,
@@ -548,9 +540,9 @@ Next.js 15.1부터 `next/experimental/testing/server` 패키지는 proxy 파일�
 [/code]
 
 전체 proxy 함수도 테스트할 수 있습니다.
-[code] 
+[code]
     import { isRewrite, getRewrittenUrl } from 'next/experimental/testing/server'
-     
+
     const request = new NextRequest('https://nextjs.org/docs')
     const response = await proxy(request)
     expect(isRewrite(response)).toEqual(true)
@@ -560,13 +552,13 @@ Next.js 15.1부터 `next/experimental/testing/server` 패키지는 proxy 파일�
 
 ## 플랫폼 지원[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#platform-support)
 
-Deployment Option| Supported  
----|---  
-[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| Yes  
-[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| Yes  
-[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| No  
-[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| Platform-specific  
-  
+Deployment Option| Supported
+---|---
+[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| Yes
+[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| Yes
+[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| No
+[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| Platform-specific
+
 Next.js를 셀프 호스팅할 때 [Proxy를 구성](https://nextjs.org/docs/app/guides/self-hosting#proxy)하는 방법을 알아보세요.
 
 ## Proxy로의 마이그레이션[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#migration-to-proxy)
@@ -588,33 +580,27 @@ Proxy라는 이름은 Middleware가 수행할 수 있는 일을 명확히 보여
 “middleware”라는 용어는 종종 Express.js 미들웨어와 혼동되어 오용을 유발할 수 있다. 방향성을 명확히 하기 위해 파일 규칙을 “proxy”로 이름 변경하고 있다. 이는 Middleware에서 멀어지고, 과도하게 혼재된 기능을 분리하며, Proxy의 목적을 명확히 드러낸다는 의미다.
 
 Next.js는 `middleware.ts`에서 `proxy.ts`로 마이그레이션할 수 있는 codemod를 제공한다. 다음 명령으로 마이그레이션을 실행할 수 있다:
-[code] 
+[code]
     npx @next/codemod@canary middleware-to-proxy .
 [/code]
 
 이 codemod는 파일과 함수 이름을 `middleware`에서 `proxy`로 변경한다.
-[code] 
+[code]
     // middleware.ts -> proxy.ts
-     
+
     - export function middleware() {
     + export function proxy() {
 [/code]
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| Middleware가 더 이상 권장되지 않으며 Proxy로 이름이 변경됨  
-`v15.5.0`| Middleware가 이제 Node.js 런타임을 사용할 수 있음(안정화)  
-`v15.2.0`| Middleware가 이제 Node.js 런타임을 사용할 수 있음(실험적)  
-`v13.1.0`| 고급 Middleware 플래그 추가  
-`v13.0.0`| Middleware가 요청 헤더, 응답 헤더를 수정하고 응답을 전송할 수 있음  
-`v12.2.0`| Middleware가 안정화됨; [업그레이드 가이드](https://nextjs.org/docs/messages/middleware-upgrade-guide) 참조  
-`v12.0.9`| Edge Runtime에서 절대 URL을 강제함([PR](https://github.com/vercel/next.js/pull/33410))  
-`v12.0.0`| Middleware(베타) 추가  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+Version| Changes
+---|---
+`v16.0.0`| Middleware가 더 이상 권장되지 않으며 Proxy로 이름이 변경됨
+`v15.5.0`| Middleware가 이제 Node.js 런타임을 사용할 수 있음(안정화)
+`v15.2.0`| Middleware가 이제 Node.js 런타임을 사용할 수 있음(실험적)
+`v13.1.0`| 고급 Middleware 플래그 추가
+`v13.0.0`| Middleware가 요청 헤더, 응답 헤더를 수정하고 응답을 전송할 수 있음
+`v12.2.0`| Middleware가 안정화됨; [업그레이드 가이드](https://nextjs.org/docs/messages/middleware-upgrade-guide) 참조
+`v12.0.9`| Edge Runtime에서 절대 URL을 강제함([PR](https://github.com/vercel/next.js/pull/33410))
+`v12.0.0`| Middleware(베타) 추가

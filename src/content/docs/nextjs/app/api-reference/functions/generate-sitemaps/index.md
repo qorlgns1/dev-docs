@@ -7,10 +7,6 @@ description: '애플리케이션에 대해 여러 사이트맵을 생성하려�
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps
 
-[API 레퍼런스](https://nextjs.org/docs/app/api-reference)[함수](https://nextjs.org/docs/app/api-reference/functions)generateSitemaps
-
-페이지 복사
-
 # generateSitemaps
 
 최종 업데이트 2026년 2월 20일
@@ -35,12 +31,12 @@ JavaScriptTypeScript
 ```javascript
     import type { MetadataRoute } from 'next'
     import { BASE_URL } from '@/app/lib/constants'
-     
+
     export async function generateSitemaps() {
       // Fetch the total number of products and calculate the number of sitemaps needed
       return [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]
     }
-     
+
     export default async function sitemap(props: {
       id: Promise<string>
     }): Promise<MetadataRoute.Sitemap> {
@@ -60,20 +56,17 @@ JavaScriptTypeScript
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| `generateSitemaps` 에서 반환된 `id` 값이 이제 사이트맵 함수에 `string` 으로 해석되는 프로미스로 전달됩니다.  
-`v15.0.0`| `generateSitemaps` 가 이제 개발 환경과 프로덕션 환경에서 일관된 URL을 생성합니다.  
-`v13.3.2`| `generateSitemaps` 가 도입되었습니다. 개발 환경에서는 `/.../sitemap.xml/[id]` 에서 생성된 사이트맵을 확인할 수 있습니다. 예: `/product/sitemap.xml/1`.  
-  
+Version| Changes
+---|---
+`v16.0.0`| `generateSitemaps` 에서 반환된 `id` 값이 이제 사이트맵 함수에 `string` 으로 해석되는 프로미스로 전달됩니다.
+`v15.0.0`| `generateSitemaps` 가 이제 개발 환경과 프로덕션 환경에서 일관된 URL을 생성합니다.
+`v13.3.2`| `generateSitemaps` 가 도입되었습니다. 개발 환경에서는 `/.../sitemap.xml/[id]` 에서 생성된 사이트맵을 확인할 수 있습니다. 예: `/product/sitemap.xml/1`.
+
 ## 다음 단계
 
 Next.js 애플리케이션용 사이트맵을 만드는 방법을 알아보세요.
 
-### [sitemap.xml 파일에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
-
-도움이 되었나요?
-
-지원됨.
+- [sitemap.xml](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
+  - 파일에 대한 API 레퍼런스.
 
 보내기

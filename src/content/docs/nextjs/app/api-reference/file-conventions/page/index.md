@@ -7,10 +7,6 @@ description: '파일을 사용하면 경로에 고유한 UI를 정의할 수 있
 
 소스 URL: https://nextjs.org/docs/app/api-reference/file-conventions/page
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)page.js
-
-페이지 복사
-
 # page.js
 
 마지막 업데이트: 2026년 2월 20일
@@ -39,8 +35,6 @@ JavaScriptTypeScript
   * `page` 파일이 있어야 라우트 세그먼트를 **공개적으로 접근 가능**하게 만들 수 있습니다.
   * 페이지는 기본적으로 [Server Components](https://react.dev/reference/rsc/server-components)이지만, [Client Component](https://react.dev/reference/rsc/use-client)로 설정할 수 있습니다.
 
-
-
 ## 참고[](https://nextjs.org/docs/app/api-reference/file-conventions/page#reference)
 
 ### Props[](https://nextjs.org/docs/app/api-reference/file-conventions/page#props)
@@ -62,16 +56,14 @@ JavaScriptTypeScript
     }
 [/code]
 
-예시 경로| URL| `params`  
----|---|---  
-`app/shop/[slug]/page.js`| `/shop/1`| `Promise<{ slug: '1' }>`  
-`app/shop/[category]/[item]/page.js`| `/shop/1/2`| `Promise<{ category: '1', item: '2' }>`  
-`app/shop/[...slug]/page.js`| `/shop/1/2`| `Promise<{ slug: ['1', '2'] }>`  
-  
+예시 경로| URL| `params`
+---|---|---
+`app/shop/[slug]/page.js`| `/shop/1`| `Promise<{ slug: '1' }>`
+`app/shop/[category]/[item]/page.js`| `/shop/1/2`| `Promise<{ category: '1', item: '2' }>`
+`app/shop/[...slug]/page.js`| `/shop/1/2`| `Promise<{ slug: ['1', '2'] }>`
+
   * `params` prop이 프로미스이므로 값을 읽으려면 `async/await` 또는 React의 [`use`](https://react.dev/reference/react/use) 함수를 사용해야 합니다.
     * 버전 14 및 이전에서는 `params`가 동기 prop이었습니다. 하위 호환을 돕기 위해 Next.js 15에서도 동기적으로 접근할 수 있지만, 이 동작은 추후 폐기될 예정입니다.
-
-
 
 #### `searchParams` (optional)[](https://nextjs.org/docs/app/api-reference/file-conventions/page#searchparams-optional)
 
@@ -98,7 +90,7 @@ JavaScriptTypeScript
 [code]
     'use client'
     import { use } from 'react'
-     
+
     export default function Page({
       searchParams,
     }: {
@@ -108,18 +100,16 @@ JavaScriptTypeScript
     }
 [/code]
 
-예시 URL| `searchParams`  
----|---  
-`/shop?a=1`| `Promise<{ a: '1' }>`  
-`/shop?a=1&b=2`| `Promise<{ a: '1', b: '2' }>`  
-`/shop?a=1&a=2`| `Promise<{ a: ['1', '2'] }>`  
-  
+예시 URL| `searchParams`
+---|---
+`/shop?a=1`| `Promise<{ a: '1' }>`
+`/shop?a=1&b=2`| `Promise<{ a: '1', b: '2' }>`
+`/shop?a=1&a=2`| `Promise<{ a: ['1', '2'] }>`
+
   * `searchParams` prop이 프로미스이므로 값을 읽을 때 `async/await` 또는 React의 [`use`](https://react.dev/reference/react/use) 함수를 사용해야 합니다.
     * 버전 14 및 이전에서는 `searchParams`가 동기 prop이었습니다. 하위 호환을 돕기 위해 Next.js 15에서도 동기적으로 접근할 수 있지만, 이 동작은 추후 폐기될 예정입니다.
   * `searchParams`는 값이 미리 결정될 수 없는 **[동적 API](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)**입니다. 이를 사용하면 페이지가 요청 시점의 **[동적 렌더링](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)**으로 전환됩니다.
   * `searchParams`는 `URLSearchParams` 인스턴스가 아닌 일반 JavaScript 객체입니다.
-
-
 
 ### Page Props Helper[](https://nextjs.org/docs/app/api-reference/file-conventions/page#page-props-helper)
 
@@ -135,13 +125,12 @@ app/blog/[slug]/page.tsx
 [/code]
 
 > **알아두면 좋은 내용**
-> 
+>
 >   * 리터럴 라우트(예: `'/blog/[slug]'`)를 사용하면 `params`에 대한 자동 완성과 엄격한 키를 활용할 수 있습니다.
 >   * 정적 라우트의 `params`는 `{}`로 해석됩니다.
 >   * 타입은 `next dev`, `next build`, 또는 `next typegen` 중에 생성됩니다.
 >   * 타입 생성 후에는 `PageProps` 헬퍼가 전역적으로 제공되므로 import할 필요가 없습니다.
-> 
-
+>
 
 ## 예시[](https://nextjs.org/docs/app/api-reference/file-conventions/page#examples)
 
@@ -177,7 +166,7 @@ JavaScriptTypeScript
       searchParams: Promise<{ [key: string]: string | string[] | undefined }>
     }) {
       const { page = '1', sort = 'asc', query = '' } = await searchParams
-     
+
       return (
         <div>
           <h1>Product Listing</h1>
@@ -198,9 +187,9 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { use } from 'react'
-     
+
     export default function Page({
       params,
       searchParams,
@@ -215,13 +204,9 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/page#version-history)
 
-버전| 변경 사항  
----|---  
-`v15.0.0-RC`| `params`와 `searchParams`가 이제 프로미스입니다. [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150)가 제공됩니다.  
-`v13.0.0`| `page` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`v15.0.0-RC`| `params`와 `searchParams`가 이제 프로미스입니다. [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150)가 제공됩니다.
+`v13.0.0`| `page` 도입.
 
 보내기

@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험적이며 변경될 수 있으므로 �
 
 출처 URL: https://nextjs.org/docs/app/api-reference/file-conventions/forbidden
 
-[API 레퍼런스](https://nextjs.org/docs/app/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)forbidden.js
-
-페이지 복사
-
 # forbidden.js
 
 이 기능은 현재 실험적이며 변경될 수 있으므로 프로덕션 환경에서는 권장되지 않습니다. 사용해 보고 [GitHub](https://github.com/vercel/next.js/issues)에 피드백을 공유해 주세요.
@@ -24,7 +20,7 @@ app/forbidden.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Forbidden() {
       return (
         <div>
@@ -44,16 +40,11 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/forbidden#version-history)
 
-버전| 변경 사항  
----|---  
-`v15.1.0`| `forbidden.js` 도입.  
-  
-## 
+버전| 변경 사항
+---|---
+`v15.1.0`| `forbidden.js` 도입.
 
-### [forbidden 함수에 대한 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/functions/forbidden)
+##
 
-도움이 되었나요?
-
-지원됨.
-
-전송
+- [forbidden](https://nextjs.org/docs/app/api-reference/functions/forbidden)
+  - 함수에 대한 API 레퍼런스입니다.

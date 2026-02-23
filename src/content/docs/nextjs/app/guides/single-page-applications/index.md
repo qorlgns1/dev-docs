@@ -6,8 +6,6 @@ description: 'Next.js는 단일 페이지 애플리케이션(SPA) 구축을 완�
 # 가이드: SPAs | Next.js
 Source URL: https://nextjs.org/docs/app/guides/single-page-applications
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)SPAs
-
 Copy page
 
 # Next.js로 단일 페이지 애플리케이션을 구축하는 방법
@@ -26,8 +24,6 @@ SPA의 정의는 다양합니다. 여기서는 “엄격한 SPA”를 다음과 
 
   * **Client-side rendering (CSR)** : 앱은 하나의 HTML 파일(예: `index.html`)로 제공됩니다. 모든 라우트, 페이지 전환, 데이터 패칭은 브라우저의 JavaScript가 처리합니다.
   * **전체 페이지 새로고침 없음** : 각 라우트마다 새 문서를 요청하는 대신, 클라이언트 사이드 JavaScript가 현재 페이지의 DOM을 조작하고 필요에 따라 데이터를 가져옵니다.
-
-
 
 엄격한 SPA는 페이지가 상호작용 가능해지기 전에 많은 양의 JavaScript를 로드해야 하는 경우가 많습니다. 또한 클라이언트 데이터 워터폴을 관리하기도 어렵습니다. Next.js로 SPA를 구축하면 이러한 문제를 해결할 수 있습니다.
 
@@ -59,14 +55,14 @@ JavaScriptTypeScript
 [code]
     import { UserProvider } from './user-provider'
     import { getUser } from './user' // some server-side function
-     
+
     export default function RootLayout({
       children,
     }: {
       children: React.ReactNode
     }) {
       let userPromise = getUser() // do NOT await
-     
+
       return (
         <html lang="en">
           <body>
@@ -86,16 +82,16 @@ app/user-provider.ts
 JavaScriptTypeScript
 [code]
     'use client';
-     
+
     import { createContext, useContext, ReactNode } from 'react';
-     
+
     type User = any;
     type UserContextType = {
       userPromise: Promise<User | null>;
     };
-     
+
     const UserContext = createContext<UserContextType | null>(null);
-     
+
     export function useUser(): UserContextType {
       let context = useContext(UserContext);
       if (context === null) {
@@ -103,7 +99,7 @@ JavaScriptTypeScript
       }
       return context;
     }
-     
+
     export function UserProvider({
       children,
       userPromise
@@ -126,14 +122,14 @@ app/profile.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { use } from 'react'
     import { useUser } from './user-provider'
-     
+
     export function Profile() {
       const { userPromise } = useUser()
       const user = use(userPromise)
-     
+
       return '...'
     }
 [/code]
@@ -150,8 +146,6 @@ SWR 2.3.0(및 React 19+)에서는 기존 SWR 기반 클라이언트 데이터 �
   * **서버 전용:** `useSWR(key)` \+ RSC가 제공하는 데이터
   * **혼합:** `useSWR(key, fetcher)` \+ RSC가 제공하는 데이터
 
-
-
 예를 들어 애플리케이션을 `<SWRConfig>`와 `fallback`으로 감쌀 수 있습니다.
 
 app/layout.tsx
@@ -160,7 +154,7 @@ JavaScriptTypeScript
 [code]
     import { SWRConfig } from 'swr'
     import { getUser } from './user' // some server-side function
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -189,14 +183,14 @@ app/profile.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import useSWR from 'swr'
-     
+
     export function Profile() {
       const fetcher = (url) => fetch(url).then((res) => res.json())
       // The same SWR pattern you already know
       const { data, error } = useSWR('/api/user', fetcher)
-     
+
       return '...'
     }
 [/code]
@@ -205,13 +199,13 @@ JavaScriptTypeScript
 
 초기 `fallback` 데이터를 Next.js가 자동 처리하므로, 이전에 `data`가 `undefined`인지 확인하던 조건부 로직을 삭제해도 됩니다. 데이터가 로딩 중이면 가장 가까운 `<Suspense>` 경계가 서스펜드됩니다.
 
-| SWR| RSC| RSC + SWR  
----|---|---|---  
-SSR data| | |   
-Streaming while SSR| | |   
-Deduplicate requests| | |   
-Client-side features| | |   
-  
+| SWR| RSC| RSC + SWR
+---|---|---|---
+SSR data| | |
+Streaming while SSR| | |
+Deduplicate requests| | |
+Client-side features| | |
+
 ### React Query를 사용하는 SPA[](https://nextjs.org/docs/app/guides/single-page-applications#spas-with-react-query)
 
 React Query를 Next.js에서 클라이언트와 서버 모두와 함께 사용할 수 있습니다. 이를 통해 엄격한 SPA를 구축하는 동시에 React Query와 함께 Next.js 서버 기능을 활용할 수 있습니다.
@@ -221,9 +215,9 @@ React Query를 Next.js에서 클라이언트와 서버 모두와 함께 사용�
 ### 브라우저에서만 컴포넌트 렌더링[](https://nextjs.org/docs/app/guides/single-page-applications#rendering-components-only-in-the-browser)
 
 클라이언트 컴포넌트는 `next build` 중에 [프리렌더](https://github.com/reactwg/server-components/discussions/4)됩니다. 클라이언트 컴포넌트의 프리렌더링을 비활성화하고 브라우저 환경에서만 로드하려면 [`next/dynamic`](https://nextjs.org/docs/app/guides/lazy-loading#nextdynamic)을 사용할 수 있습니다.
-[code] 
+[code]
     import dynamic from 'next/dynamic'
-     
+
     const ClientOnlyComponent = dynamic(() => import('./component'), {
       ssr: false,
     })
@@ -238,20 +232,20 @@ React Query를 Next.js에서 클라이언트와 서버 모두와 함께 사용�
 Next.js에서는 페이지를 새로고침하지 않고 브라우저의 히스토리 스택을 업데이트하기 위해 네이티브 [`window.history.pushState`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState)와 [`window.history.replaceState`](https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState) 메서드를 사용할 수 있습니다.
 
 `pushState`와 `replaceState` 호출은 Next.js Router와 통합되어 [`usePathname`](https://nextjs.org/docs/app/api-reference/functions/use-pathname) 및 [`useSearchParams`](https://nextjs.org/docs/app/api-reference/functions/use-search-params)와 동기화됩니다.
-[code] 
+[code]
     'use client'
-     
+
     import { useSearchParams } from 'next/navigation'
-     
+
     export default function SortProducts() {
       const searchParams = useSearchParams()
-     
+
       function updateSorting(sortOrder: string) {
         const urlSearchParams = new URLSearchParams(searchParams.toString())
         urlSearchParams.set('sort', sortOrder)
         window.history.pushState(null, '', `?${urlSearchParams.toString()}`)
       }
-     
+
       return (
         <>
           <button onClick={() => updateSorting('asc')}>Sort Ascending</button>
@@ -274,7 +268,7 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     export async function create() {}
 [/code]
 
@@ -285,9 +279,9 @@ app/button.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { create } from './actions'
-     
+
     export function Button() {
       return <button onClick={() => create()}>Create</button>
     }
@@ -302,18 +296,16 @@ Next.js는 완전한 [정적 사이트](https://nextjs.org/docs/app/guides/stati
   * **자동 코드 분할:** 단일 `index.html`을 제공하는 대신, Next.js는 라우트마다 HTML 파일을 생성하므로 방문자가 클라이언트 자바스크립트 번들을 기다리지 않고 더 빠르게 콘텐츠를 볼 수 있습니다.
   * **향상된 사용자 경험:** 모든 라우트에 동일한 최소 스켈레톤을 제공하는 대신 각 라우트에 완전히 렌더링된 페이지를 제공합니다. 사용자가 클라이언트 측에서 탐색할 때 전환은 여전히 즉각적이며 SPA와 유사합니다.
 
-
-
 정적 내보내기를 활성화하려면 구성을 업데이트하세요:
 
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       output: 'export',
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -328,11 +320,7 @@ next.config.ts
   * [Create React App에서 마이그레이션](https://nextjs.org/docs/app/guides/migrating/from-create-react-app)
   * [Vite에서 마이그레이션](https://nextjs.org/docs/app/guides/migrating/from-vite)
 
-
-
 이미 Pages Router를 사용하는 SPA라면 [App Router를 점진적으로 도입](https://nextjs.org/docs/app/guides/migrating/app-router-migration)하는 방법을 확인하세요.
-
-도움이 되었나요?
 
 supported.
 

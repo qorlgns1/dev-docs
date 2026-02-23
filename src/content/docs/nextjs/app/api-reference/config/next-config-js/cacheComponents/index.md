@@ -7,10 +7,6 @@ description: '플래그는 Next.js App Router에서 데이터 가져오기 작�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)cacheComponents
-
-페이지 복사
-
 # cacheComponents
 
 최종 업데이트 2026년 2월 20일
@@ -28,11 +24,11 @@ Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/cach
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -42,22 +38,14 @@ next.config.ts
   * `use cache`와 함께 사용하는 [`cacheLife` 함수](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife)
   * [`cacheTag` 함수](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
 
-
-
 ## 참고[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents#notes)
 
   * `cacheComponents`는 런타임 동안 최신 데이터 가져오기를 보장해 성능을 최적화할 수 있지만, 사전 렌더링된 콘텐츠를 제공하는 것보다 지연 시간이 늘어날 수 있습니다.
 
-
-
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents#version-history)
 
-Version| Change  
----|---  
-16.0.0| `cacheComponents` 도입. 이 플래그는 `ppr`, `useCache`, `dynamicIO` 플래그를 단일 통합 구성으로 제어합니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Change
+---|---
+16.0.0| `cacheComponents` 도입. 이 플래그는 `ppr`, `useCache`, `dynamicIO` 플래그를 단일 통합 구성으로 제어합니다.
 
 보내기

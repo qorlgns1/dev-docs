@@ -7,8 +7,6 @@ description: '함수는 함수나 컴포넌트의 캐시 수명을 설정하는 
 
 소스 URL: https://nextjs.org/docs/app/api-reference/functions/cacheLife
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)cacheLife
-
 Copy page
 
 # cacheLife
@@ -28,21 +26,21 @@ next.config.ts
 JavaScriptTypeScript
 ```
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
     }
-     
+
     export default nextConfig
 ```
 
 `cacheLife`는 `use cache` 지시문이 필요하며, 파일 수준 또는 비동기 함수·컴포넌트의 최상단에 배치해야 합니다.
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `use cache` 지시문이 파일 수준에 있더라도, `cacheLife`는 해당 함수의 출력이 캐시되는 함수 내부에 배치해야 합니다.
 >   * 함수 실행당 `cacheLife`는 한 번만 호출되어야 합니다. 서로 다른 제어 흐름 분기에서 호출할 수 있지만, 실행 시점에는 하나만 실행되도록 보장하세요. [조건부 캐시 수명](https://nextjs.org/docs/app/api-reference/functions/cacheLife#conditional-cache-lifetimes) 예시를 참고하세요.
-> 
+>
 
 ### Using preset profiles[](https://nextjs.org/docs/app/api-reference/functions/cacheLife#using-preset-profiles)
 
@@ -67,10 +65,10 @@ app/blog/page.tsx
 ```
     'use cache'
     import { cacheLife } from 'next/cache'
-     
+
     export default async function BlogPage() {
       cacheLife('days') // Blog content updated daily
-     
+
       const posts = await getBlogPosts()
       return <div>{/* render posts */}</div>
     }
@@ -131,15 +129,15 @@ app/blog/page.tsx
 
 프로필을 지정하지 않으면 Next.js는 `default` 프로필을 사용합니다. 캐싱 동작을 명확히 하기 위해 프로필을 명시적으로 설정하는 것이 좋습니다.
 
-**Profile**| **Use Case**| `stale`| `revalidate`| `expire`  
----|---|---|---|---  
-`default`| Standard content| 5 minutes| 15 minutes| never  
-`seconds`| Real-time data| 30 seconds| 1 second| 1 minute  
-`minutes`| Frequently updated content| 5 minutes| 1 minute| 1 hour  
-`hours`| Content updated multiple times per day| 5 minutes| 1 hour| 1 day  
-`days`| Content updated daily| 5 minutes| 1 day| 1 week  
-`weeks`| Content updated weekly| 5 minutes| 1 week| 30 days  
-`max`| Stable content that rarely changes| 5 minutes| 30 days| 1 year  
+**Profile**| **Use Case**| `stale`| `revalidate`| `expire`
+---|---|---|---|---
+`default`| Standard content| 5 minutes| 15 minutes| never
+`seconds`| Real-time data| 30 seconds| 1 second| 1 minute
+`minutes`| Frequently updated content| 5 minutes| 1 minute| 1 hour
+`hours`| Content updated multiple times per day| 5 minutes| 1 hour| 1 day
+`days`| Content updated daily| 5 minutes| 1 day| 1 week
+`weeks`| Content updated weekly| 5 minutes| 1 week| 30 days
+`max`| Stable content that rarely changes| 5 minutes| 30 days| 1 year
 
 ### Custom cache profiles[](https://nextjs.org/docs/app/api-reference/functions/cacheLife#custom-cache-profiles)
 
@@ -148,7 +146,7 @@ app/blog/page.tsx
 next.config.ts
 ```
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
       cacheLife: {
@@ -159,7 +157,7 @@ next.config.ts
         },
       },
     }
-     
+
     export default nextConfig
 ```
 
@@ -171,7 +169,7 @@ app/page.tsx
 ```
     'use cache'
     import { cacheLife } from 'next/cache'
-     
+
     export default async function Page() {
       cacheLife('biweekly')
       return <div>Page</div>
@@ -199,7 +197,7 @@ next.config.ts
         },
       },
     }
-     
+
     export default nextConfig
 ```
 
@@ -211,14 +209,14 @@ app/page.tsx
 ```
     'use cache'
     import { cacheLife } from 'next/cache'
-     
+
     export default async function Page() {
       cacheLife({
         stale: 3600,
         revalidate: 900,
         expire: 86400,
       })
-     
+
       return <div>Page</div>
     }
 ```
@@ -250,11 +248,11 @@ Server Action에서 [`revalidateTag`](https://nextjs.org/docs/app/api-reference/
 app/blog/[slug]/page.tsx
 ```
     import { cacheLife } from 'next/cache'
-     
+
     export default async function BlogPost() {
       'use cache'
       cacheLife('days') // Blog posts updated daily
-     
+
       const post = await fetchBlogPost()
       return <article>{post.content}</article>
     }
@@ -263,11 +261,11 @@ app/blog/[slug]/page.tsx
 app/products/[id]/page.tsx
 ```
     import { cacheLife } from 'next/cache'
-     
+
     export default async function ProductPage() {
       'use cache'
       cacheLife('hours') // Product data updated multiple times per day
-     
+
       const product = await fetchProduct()
       return <div>{product.name}</div>
     }
@@ -281,7 +279,7 @@ next.config.ts
 
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
       cacheLife: {
@@ -297,7 +295,7 @@ next.config.ts
         },
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -306,7 +304,7 @@ next.config.ts
 app/editorial/page.tsx
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     export default async function EditorialPage() {
       'use cache'
       cacheLife('editorial')
@@ -322,27 +320,27 @@ app/api/limited-offer/route.ts
 [code]
     import { cacheLife } from 'next/cache'
     import { getDb } from '@lib/db'
-     
+
     async function getLimitedOffer() {
       'use cache'
-     
+
       cacheLife({
         stale: 60, // 1 minute
         revalidate: 300, // 5 minutes
         expire: 3600, // 1 hour
       })
-     
+
       const offer = await getDb().offer.findFirst({
         where: { type: 'limited' },
         orderBy: { created_at: 'desc' },
       })
-     
+
       return offer
     }
-     
+
     export async function GET() {
       const offer = await getLimitedOffer()
-     
+
       return Response.json(offer)
     }
 [/code]
@@ -354,11 +352,11 @@ app/api/limited-offer/route.ts
 lib/api.ts
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     export async function getSettings() {
       'use cache'
       cacheLife('max') // Settings rarely change
-     
+
       return await fetchSettings()
     }
 [/code]
@@ -366,11 +364,11 @@ lib/api.ts
 lib/stats.ts
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     export async function getRealtimeStats() {
       'use cache'
       cacheLife('seconds') // Stats update constantly
-     
+
       return await fetchStats()
     }
 [/code]
@@ -387,11 +385,11 @@ app/dashboard/page.tsx
 [code]
     import { cacheLife } from 'next/cache'
     import { Widget } from './widget'
-     
+
     export default async function Dashboard() {
       'use cache'
       cacheLife('hours') // Outer scope sets its own lifetime
-     
+
       return (
         <div>
           <h1>Dashboard</h1>
@@ -408,13 +406,13 @@ app/dashboard/page.tsx
 app/dashboard/page.tsx
 [code]
     import { Widget } from './widget'
-     
+
     export default async function Dashboard() {
       'use cache'
       // No cacheLife call - uses default (15 min)
       // If Widget has 5 min → Dashboard becomes 5 min
       // If Widget has 1 hour → Dashboard stays 15 min
-     
+
       return (
         <div>
           <h1>Dashboard</h1>
@@ -433,25 +431,25 @@ app/dashboard/page.tsx
 lib/posts.ts
 [code]
     import { cacheLife, cacheTag } from 'next/cache'
-     
+
     async function getPostContent(slug: string) {
       'use cache'
-     
+
       const post = await fetchPost(slug)
-     
+
       // Tag the cache entry for targeted revalidation
       cacheTag(`post-${slug}`)
-     
+
       if (!post) {
         // Content may not be published yet or could be in draft
         // Cache briefly to reduce database load
         cacheLife('minutes')
         return null
       }
-     
+
       // Published content can be cached longer
       cacheLife('days')
-     
+
       // Return only the necessary data to keep cache size minimal
       return post.data
     }
@@ -466,25 +464,25 @@ lib/posts.ts
 lib/posts.ts
 [code]
     import { cacheLife, cacheTag } from 'next/cache'
-     
+
     async function getPostContent(slug: string) {
       'use cache'
-     
+
       const post = await fetchPost(slug)
       cacheTag(`post-${slug}`)
-     
+
       if (!post) {
         cacheLife('minutes')
         return null
       }
-     
+
       // Use cache timing from CMS data directly as an object
       cacheLife({
         // Ensure post.revalidateSeconds is a number in seconds
         // stale and expire inherit from 'default' profile
         revalidate: post.revalidateSeconds ?? 3600,
       })
-     
+
       return post.data
     }
 [/code]
@@ -493,13 +491,11 @@ lib/posts.ts
 
 관련 API 레퍼런스를 확인하세요.
 
-### [cacheComponentsNext.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
-### [use cacheNext.js 애플리케이션에서 "use cache" 지시어를 사용해 데이터를 캐시하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/directives/use-cache)
-### [revalidateTagrevalidateTag 함수의 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
-### [cacheTagNext.js 애플리케이션에서 cacheTag 함수를 사용해 캐시 무효화를 관리하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
-
-도움이 되었나요?
-
-지원됨.
-
-전송
+- [cacheComponents](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+  - Next.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.
+- [use cache](https://nextjs.org/docs/app/api-reference/directives/use-cache)
+  - Next.js 애플리케이션에서 "use cache" 지시어를 사용해 데이터를 캐시하는 방법을 알아보세요.
+- [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
+  - revalidateTag 함수의 API 레퍼런스입니다.
+- [cacheTag](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
+  - Next.js 애플리케이션에서 cacheTag 함수를 사용해 캐시 무효화를 관리하는 방법을 알아보세요.

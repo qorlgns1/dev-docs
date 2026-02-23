@@ -9,8 +9,6 @@ description: '이는 더 이상 권장되지 않는 레거시 API입니다. 하�
 
 [API 참고](https://nextjs.org/docs/pages/api-reference)[컴포넌트](https://nextjs.org/docs/pages/api-reference/components)Image (Legacy)
 
-페이지 복사
-
 # Image (Legacy)
 
 이는 더 이상 권장되지 않는 레거시 API입니다. 하위 호환성을 위해 계속 지원됩니다.
@@ -82,13 +80,13 @@ Next.js 13부터 `next/image` 컴포넌트가 성능과 개발자 경험을 모�
 
 뷰포트 크기가 변할 때 이미지의 레이아웃 동작입니다.
 
-`layout`| 동작| `srcSet`| `sizes`| 래퍼 및 사이저 존재  
----|---|---|---|---  
-`intrinsic` (default)| 컨테이너 너비에 맞도록 _축소_하며 이미지 크기까지 확장| `1x`, `2x` ( [imageSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#image-sizes)에 기반)| 해당 없음| yes  
-`fixed`| `width`와 `height`에 정확히 맞게 설정| `1x`, `2x` ( [imageSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#image-sizes)에 기반)| 해당 없음| yes  
-`responsive`| 컨테이너 너비에 맞게 크기 조절| `640w`, `750w`, ... `2048w`, `3840w` ( [imageSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#image-sizes)와 [deviceSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#device-sizes)에 기반)| `100vw`| yes  
-`fill`| 컨테이너를 채우도록 X, Y 축 모두에서 확장| `640w`, `750w`, ... `2048w`, `3840w` ( [imageSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#image-sizes)와 [deviceSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#device-sizes)에 기반)| `100vw`| yes  
-  
+`layout`| 동작| `srcSet`| `sizes`| 래퍼 및 사이저 존재
+---|---|---|---|---
+`intrinsic` (default)| 컨테이너 너비에 맞도록 _축소_하며 이미지 크기까지 확장| `1x`, `2x` ( [imageSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#image-sizes)에 기반)| 해당 없음| yes
+`fixed`| `width`와 `height`에 정확히 맞게 설정| `1x`, `2x` ( [imageSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#image-sizes)에 기반)| 해당 없음| yes
+`responsive`| 컨테이너 너비에 맞게 크기 조절| `640w`, `750w`, ... `2048w`, `3840w` ( [imageSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#image-sizes)와 [deviceSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#device-sizes)에 기반)| `100vw`| yes
+`fill`| 컨테이너를 채우도록 X, Y 축 모두에서 확장| `640w`, `750w`, ... `2048w`, `3840w` ( [imageSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#image-sizes)와 [deviceSizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#device-sizes)에 기반)| `100vw`| yes
+
   * [`intrinsic` 레이아웃(기본값) 데모](https://image-legacy-component.nextjs.gallery/layout-intrinsic)
     * `intrinsic`일 때 이미지는 작은 뷰포트에서는 크기를 줄이고 큰 뷰포트에서는 원래 크기를 유지합니다.
   * [`fixed` 레이아웃 데모](https://image-legacy-component.nextjs.gallery/layout-fixed)
@@ -113,13 +111,13 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
   * [`quality`](https://nextjs.org/docs/pages/api-reference/components/image-legacy#quality)
 
 커스텀 loader를 사용하는 예시는 다음과 같습니다.
-[code] 
+[code]
     import Image from 'next/legacy/image'
-     
+
     const myLoader = ({ src, width, quality }) => {
       return `https://example.com/${src}?w=${width}&q=${quality || 75}`
     }
-     
+
     const MyImage = (props) => {
       return (
         <Image
@@ -144,7 +142,7 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
 둘째, `sizes` 값이 구문 분석되어 자동 생성된 소스 집합의 값을 잘라내는 데 사용됩니다. 뷰포트 너비의 비율을 나타내는 `50vw`와 같은 값이 `sizes`에 포함되어 있으면, 소스 집합에서 필요 이상으로 작은 값은 제거됩니다.
 
 예를 들어 스타일링으로 인해 모바일에서는 전체 너비, 태블릿에서는 2열, 데스크톱에서는 3열 레이아웃을 사용할 것임을 알고 있다면 아래와 같은 sizes 속성을 포함해야 합니다.
-[code] 
+[code]
     import Image from 'next/legacy/image'
     const Example = () => (
       <div className="grid-element">
@@ -194,8 +192,6 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
   * `blurDataURL` prop으로 셔머 효과 데모(https://image-legacy-component.nextjs.gallery/shimmer)
   * `blurDataURL` prop으로 색상 효과 데모(https://image-legacy-component.nextjs.gallery/color)
 
-
-
 ## 고급 Props[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#advanced-props)
 
 일부 상황에서는 더 고급 기능이 필요할 수 있습니다. `<Image />` 컴포넌트는 다음 고급 속성을 선택적으로 받습니다.
@@ -229,8 +225,6 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
   * [`naturalWidth`](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/naturalWidth)
   * [`naturalHeight`](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/naturalHeight)
 
-
-
 ### loading[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#loading)
 
 이미지의 로딩 동작입니다. 기본값은 `lazy`입니다.
@@ -253,8 +247,6 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
   * `blurDataURL` prop으로 셔머 효과 데모(https://image-legacy-component.nextjs.gallery/shimmer)
   * `blurDataURL` prop으로 색상 효과 데모(https://image-legacy-component.nextjs.gallery/color)
 
-
-
 이미지와 어울리는 [단색 Data URL을 생성](https://png-pixel.com)할 수도 있습니다.
 
 ### lazyBoundary[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#lazyboundary)
@@ -272,13 +264,13 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
 Ref는 DOM 요소이거나, 기본 DOM 요소로 [전달된 Ref를 전달](https://react.dev/reference/react/forwardRef)하는 React 컴포넌트를 가리켜야 합니다.
 
 **DOM 요소를 가리키는 예시**
-[code] 
+[code]
     import Image from 'next/legacy/image'
     import React from 'react'
-     
+
     const Example = () => {
       const lazyRoot = React.useRef(null)
-     
+
       return (
         <div ref={lazyRoot} style={{ overflowX: 'scroll', width: '500px' }}>
           <Image lazyRoot={lazyRoot} src="/one.jpg" width="500" height="500" />
@@ -289,10 +281,10 @@ Ref는 DOM 요소이거나, 기본 DOM 요소로 [전달된 Ref를 전달](https
 [/code]
 
 **React 컴포넌트를 가리키는 예시**
-[code] 
+[code]
     import Image from 'next/legacy/image'
     import React from 'react'
-     
+
     const Container = React.forwardRef((props, ref) => {
       return (
         <div ref={ref} style={{ overflowX: 'scroll', width: '500px' }}>
@@ -300,10 +292,10 @@ Ref는 DOM 요소이거나, 기본 DOM 요소로 [전달된 Ref를 전달](https
         </div>
       )
     })
-     
+
     const Example = () => {
       const lazyRoot = React.useRef(null)
-     
+
       return (
         <Container ref={lazyRoot}>
           <Image lazyRoot={lazyRoot} src="/one.jpg" width="500" height="500" />
@@ -320,9 +312,9 @@ Ref는 DOM 요소이거나, 기본 DOM 요소로 [전달된 Ref를 전달](https
 `true`일 때 원본 이미지가 품질, 크기, 형식 변경 없이 `src`에서 그대로 제공됩니다. 기본값은 `false`입니다.
 
 1KB 미만의 작은 이미지, 벡터 이미지(SVG), 애니메이션 이미지(GIF)처럼 최적화 이점이 없는 이미지에 유용합니다.
-[code] 
+[code]
     import Image from 'next/image'
-     
+
     const UnoptimizedImage = (props) => {
       return <Image {...props} unoptimized />
     }
@@ -346,8 +338,6 @@ next.config.js
   * `srcSet`. 대신 [Device Sizes](https://nextjs.org/docs/pages/api-reference/components/image-legacy#device-sizes)를 사용하세요.
   * `ref`. 대신 [`onLoadingComplete`](https://nextjs.org/docs/pages/api-reference/components/image-legacy#onloadingcomplete)를 사용하세요.
   * `decoding`. 항상 `"async"`입니다.
-
-
 
 ## 구성 옵션[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#configuration-options)
 
@@ -398,8 +388,6 @@ next.config.js
 
   * `*`는 하나의 경로 세그먼트 또는 서브도메인과 일치
   * `**`는 끝부분의 여러 경로 세그먼트 또는 시작 부분의 여러 서브도메인과 일치
-
-
 
 `**` 문법은 패턴 중간에서는 작동하지 않습니다.
 
@@ -561,12 +549,12 @@ next.config.js
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 대부분의 사용 사례에서는 여전히 WebP 사용을 권장합니다.
 >   * AVIF는 일반적으로 인코딩에 50% 더 오래 걸리지만 WebP보다 20% 더 작게 압축됩니다. 즉, 이미지가 처음 요청될 때는 보통 더 느리지만 캐시된 이후의 요청은 더 빠릅니다.
 >   * 여러 포맷을 사용할 때 Next.js는 각 포맷을 별도로 캐시합니다. 따라서 단일 포맷을 사용할 때보다 저장 공간이 더 필요하며, 브라우저별 지원을 위해 AVIF와 WebP 버전 모두 저장됩니다.
 >   * Next.js 앞에 Proxy/CDN을 두고 자체 호스팅한다면 Proxy가 `Accept` 헤더를 전달하도록 설정해야 합니다.
-> 
+>
 
 ## 캐싱 동작[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#caching-behavior)
 
@@ -681,13 +669,9 @@ next.config.js
 
 ## Version History[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| `next/legacy/image`는 사용 중단되었으며 향후 Next.js 버전에서 제거될 예정입니다. 대신 `next/image`를 사용하세요.  
-`v13.0.0`| `next/image`가 `next/legacy/image`로 이름이 변경되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v16.0.0`| `next/legacy/image`는 사용 중단되었으며 향후 Next.js 버전에서 제거될 예정입니다. 대신 `next/image`를 사용하세요.
+`v13.0.0`| `next/image`가 `next/legacy/image`로 이름이 변경되었습니다.
 
 보내기

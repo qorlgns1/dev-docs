@@ -24,7 +24,7 @@ description: '> 인라인 콘텐츠가 있는  컴포넌트에는  속성을 강
 pages/_app.js
 [code]
     import Script from 'next/script'
-     
+
     export default function App({ Component, pageProps }) {
       return (
         <>
@@ -38,11 +38,3 @@ pages/_app.js
 ## 유용한 링크[](https://nextjs.org/docs/messages/inline-script-id#useful-links)
 
   * [Next.js Script 컴포넌트 문서](https://nextjs.org/docs/pages/guides/scripts)
-
-
-
-도움이 되었나요?
-
-지원됨.
-
-전송

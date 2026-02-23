@@ -22,8 +22,6 @@ Next.js [`<Image>`](https://nextjs.org/docs/app/api-reference/components/image) 
   * **더 빠른 페이지 로드:** 네이티브 브라우저 지연 로딩을 사용해 뷰포트에 들어올 때만 이미지를 로드하며, 선택적으로 블러 업 플레이스홀더를 제공합니다.
   * **에셋 유연성:** 원격 서버에 있는 이미지까지 포함해 필요할 때마다 이미지 크기를 조정합니다.
 
-
-
 `<Image>` 사용을 시작하려면 `next/image`에서 import한 뒤 컴포넌트 안에서 렌더링하세요.
 
 app/page.tsx
@@ -31,7 +29,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return <Image src="" alt="" />
     }
@@ -50,7 +48,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return (
         <Image
@@ -71,7 +69,7 @@ JavaScriptTypeScript
 [code]
     import Image from 'next/image'
     import ProfileImage from './profile.png'
-     
+
     export default function Page() {
       return (
         <Image
@@ -95,7 +93,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return (
         <Image
@@ -117,7 +115,7 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const config: NextConfig = {
       images: {
         remotePatterns: [
@@ -131,7 +129,7 @@ JavaScriptTypeScript
         ],
       },
     }
-     
+
     export default config
 [/code]
 
@@ -139,9 +137,8 @@ JavaScriptTypeScript
 
 Next.js Image의 전체 기능은 API Reference에서 확인하세요.
 
-### [Image ComponentOptimize Images in your Next.js Application using the built-in `next/image` Component.](https://nextjs.org/docs/app/api-reference/components/image)
-
-도움이 되었나요?
+- [이미지 컴포넌트](https://nextjs.org/docs/app/api-reference/components/image)
+  - Image ComponentOptimize Images in your Next.js Application using the built-in `next/image` Component.
 
 supported.
 

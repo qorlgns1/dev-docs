@@ -9,8 +9,6 @@ description: 'Next.js의 데이터 가져오기는 애플리케이션의 사용 
 
 [Pages Router](https://nextjs.org/docs/pages)[애플리케이션 빌드](https://nextjs.org/docs/pages/building-your-application)데이터 가져오기
 
-페이지 복사
-
 # 데이터 가져오기
 
 마지막 업데이트: 2026년 2월 20일
@@ -48,12 +46,19 @@ Next.js의 데이터 가져오기는 애플리케이션의 사용 사례에 따�
   * [Blog Starter 예제](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) ([데모](https://next-blog-starter.vercel.app/))
   * [Static Tweet (데모)](https://react-tweet.vercel.app/)
 
+- [getStaticProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)
+  - `getStaticProps`로 데이터를 가져와 정적 페이지를 생성합니다. Next.js의 이 데이터 패칭 API에 대해 자세히 알아보세요.
 
+- [getStaticPaths](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths)
+  - `getStaticPaths`로 데이터를 가져와 정적 페이지를 생성합니다. Next.js의 이 데이터 패칭 API에 대해 자세히 알아보세요.
 
-### [getStaticProps`getStaticProps`로 데이터를 가져와 정적 페이지를 생성합니다. Next.js의 이 데이터 패칭 API에 대해 자세히 알아보세요.](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)### [getStaticPaths`getStaticPaths`로 데이터를 가져와 정적 페이지를 생성합니다. Next.js의 이 데이터 패칭 API에 대해 자세히 알아보세요.](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths)### [Forms and MutationsNext.js에서 폼 제출과 데이터 변경을 처리하는 방법을 알아보세요.](https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations)### [getServerSideProps각 요청마다 `getServerSideProps`로 데이터를 가져옵니다.](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props)### [Client-side Fetching클라이언트 측 데이터 가져오기와 캐싱, 재검증, 포커스 추적, 주기적 재요청 등을 처리하는 데이터 패칭 React 훅 라이브러리 SWR 사용 방법을 알아보세요.](https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side)
+- [Forms and Mutations](https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations)
+  - Next.js에서 폼 제출과 데이터 변경을 처리하는 방법을 알아보세요.
 
-도움이 되었나요?
+- [getServerSideProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props)
+  - 각 요청마다 `getServerSideProps`로 데이터를 가져옵니다.
 
-지원됨.
+- [클라이언트사이드 가져오기](https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side)
+  - Client-side Fetching클라이언트 측 데이터 가져오기와 캐싱, 재검증, 포커스 추적, 주기적 재요청 등을 처리하는 데이터 패칭 React 훅 라이브러리 SWR 사용 방법을 알아보세요.
 
 보내기

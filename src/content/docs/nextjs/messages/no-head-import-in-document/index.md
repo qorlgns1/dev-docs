@@ -24,12 +24,12 @@ description: '원본 URL: https://nextjs.org/docs/messages/no-head-import-in-doc
 pages/_document.js
 ```js
 import Document, { Html, Head, Main, NextScript } from 'next/document'
- 
+
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     //...
   }
- 
+
   render() {
     return (
       <Html>
@@ -38,16 +38,12 @@ class MyDocument extends Document {
     )
   }
 }
- 
+
 export default MyDocument
 ```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-head-import-in-document#useful-links)
 
 - [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

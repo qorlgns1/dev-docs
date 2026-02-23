@@ -9,8 +9,6 @@ description: 'Next.js의 지연 로딩은 경로를 렌더링하는 데 필요�
 
 [Pages Router](https://nextjs.org/docs/pages)[가이드](https://nextjs.org/docs/pages/guides)지연 로딩
 
-페이지 복사
-
 # 클라이언트 컴포넌트와 라이브러리를 지연 로딩하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -24,11 +22,11 @@ Next.js의 [지연 로딩](https://developer.mozilla.org/docs/Web/Performance/La
 아래 예제에서는 `next/dynamic`을 사용하면 헤더 컴포넌트가 페이지의 초기 JavaScript 번들에 포함되지 않습니다. 페이지는 먼저 Suspense `fallback`을 렌더링한 뒤, `Suspense` 경계가 해제되면 `Header` 컴포넌트를 렌더링합니다.
 [code]
     import dynamic from 'next/dynamic'
-     
+
     const DynamicHeader = dynamic(() => import('../components/header'), {
       loading: () => <p>Loading...</p>,
     })
-     
+
     export default function Home() {
       return <DynamicHeader />
     }
@@ -47,10 +45,10 @@ components/hello.js
     export function Hello() {
       return <p>Hello!</p>
     }
-     
+
     // pages/index.js
     import dynamic from 'next/dynamic'
-     
+
     const DynamicComponent = dynamic(() =>
       import('../components/hello').then((mod) => mod.Hello)
     )
@@ -61,9 +59,9 @@ components/hello.js
 클라이언트 측에서 컴포넌트를 동적으로 로드하려면 `ssr` 옵션을 사용해 서버 렌더링을 비활성화할 수 있습니다. 외부 종속성이나 컴포넌트가 `window`와 같은 브라우저 API에 의존하는 경우 유용합니다.
 [code]
     'use client'
-     
+
     import dynamic from 'next/dynamic'
-     
+
     const DynamicHeader = dynamic(() => import('../components/header'), {
       ssr: false,
     })
@@ -74,12 +72,12 @@ components/hello.js
 이 예시는 퍼지 검색을 위해 외부 라이브러리 `fuse.js`를 사용합니다. 사용자가 검색 입력에 텍스트를 입력한 후에만 브라우저에서 모듈이 로드됩니다.
 [code]
     import { useState } from 'react'
-     
+
     const names = ['Tim', 'Joe', 'Bel', 'Lee']
-     
+
     export default function Page() {
       const [results, setResults] = useState()
-     
+
       return (
         <div>
           <input
@@ -90,7 +88,7 @@ components/hello.js
               // Dynamically load fuse.js
               const Fuse = (await import('fuse.js')).default
               const fuse = new Fuse(names)
-     
+
               setResults(fuse.search(value))
             }}
           />
@@ -99,9 +97,5 @@ components/hello.js
       )
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

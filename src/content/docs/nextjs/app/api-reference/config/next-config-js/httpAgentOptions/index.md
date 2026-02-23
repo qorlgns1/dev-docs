@@ -6,10 +6,6 @@ description: 'Node.js 18 이전 버전에서는 Next.js가 자동으로 undici�
 # next.config.js: httpAgentOptions | Next.js
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/httpAgentOptions
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)httpAgentOptions
-
-페이지 복사
-
 # httpAgentOptions
 
 최종 업데이트 2026년 2월 20일
@@ -26,9 +22,5 @@ module.exports = {
   },
 }
 ```
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

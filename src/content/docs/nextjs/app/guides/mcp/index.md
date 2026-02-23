@@ -8,8 +8,6 @@ description: 'Next.js 16 이상에는 MCP 지원이 포함되어 있어 코딩 �
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)Next.js MCP Server
 
-페이지 복사
-
 # 코딩 에이전트를 위한 Next.js MCP Server 활성화
 
 최종 업데이트 2026년 2월 20일
@@ -104,7 +102,7 @@ MCP 호환 코딩 에이전트는 Next.js 개발 서버를 자동으로 발견�
 ### 오류 감지 및 진단[](https://nextjs.org/docs/app/guides/mcp#error-detection-and-diagnosis)
 
 실시간으로 에이전트에게 오류를 물어보세요:
-[code] 
+[code]
     User: "What errors are currently in my application?"
 [/code]
 
@@ -117,19 +115,19 @@ MCP 호환 코딩 에이전트는 Next.js 개발 서버를 자동으로 발견�
 에이전트 응답(클릭하여 펼치기)
 [code]
     > fix errors on the page
-     
+
     ⏺ I'll help you fix the errors on the page. Let me first check what errors exist by looking at the
       current state of the project.
-     
+
     ⏺ next-devtools - nextjs_runtime (MCP)(action: "discover_servers")
     ⏺ next-devtools - nextjs_runtime (MCP)(action: "call_tool", toolName: "get_errors")
-     
+
     ⏺ I found a hydration error on the /about page. The error shows that the server is rendering
       "server" but the client is rendering "client", causing a mismatch. Let me create a todo list and fix
        this issue.
-     
+
     ⏺ Perfect! Now let me check for errors on the page.           01:14 PM  claude-sonnet-4-5-20250929
-     
+
     ⏺ next-devtools - nextjs_runtime (MCP)(action: "call_tool", toolName: "get_errors")
       ⎿ {
           "success": true,
@@ -146,14 +144,14 @@ MCP 호환 코딩 에이전트는 Next.js 개발 서버를 자동으로 발견�
 ### 업그레이드 및 모범 사례[](https://nextjs.org/docs/app/guides/mcp#upgrading-and-best-practices)
 
 Next.js 개념과 마이그레이션에 대한 도움을 받아보세요:
-[code] 
+[code]
     User: "Help me upgrade my Next.js app to version 16"
 [/code]
 
 에이전트는 현재 버전을 분석하고, codemod가 포함된 자동 마이그레이션을 안내하며, 주요 변경 사항을 처리하기 위한 단계별 지침을 제공합니다.
 
 개념적 질문을 해보세요:
-[code] 
+[code]
     User: "When should I use 'use client' in App Router?"
 [/code]
 
@@ -178,9 +176,3 @@ Next.js 16 이상에는 개발 서버 내에서 실행되는 `/_next/mcp`에 기
   * 개발 서버를 시작하세요: `npm run dev`
   * 이미 실행 중이었다면 개발 서버를 재시작하세요
   * 코딩 에이전트가 MCP 서버 구성을 로드했는지 확인하세요
-
-도움이 되었나요?
-
-지원됨.
-
-전송

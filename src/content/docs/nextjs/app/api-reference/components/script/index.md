@@ -8,8 +8,6 @@ Source URL: https://nextjs.org/docs/app/api-reference/components/script
 
 [API 레퍼런스](https://nextjs.org/docs/app/api-reference)[컴포넌트](https://nextjs.org/docs/app/api-reference/components)Script 컴포넌트
 
-페이지 복사
-
 # Script 컴포넌트
 
 최종 업데이트 2026년 2월 20일
@@ -21,7 +19,7 @@ app/dashboard/page.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function Dashboard() {
       return (
         <>
@@ -35,14 +33,14 @@ JavaScriptTypeScript
 
 Script 컴포넌트에서 사용할 수 있는 props 요약은 다음과 같습니다.
 
-Prop| 예시| 타입| 필수  
----|---|---|---  
-[`src`](https://nextjs.org/docs/app/api-reference/components/script#src)| `src="http://example.com/script"`| String| 인라인 스크립트를 사용하지 않는 한 필수  
-[`strategy`](https://nextjs.org/docs/app/api-reference/components/script#strategy)| `strategy="lazyOnload"`| String| -  
-[`onLoad`](https://nextjs.org/docs/app/api-reference/components/script#onload)| `onLoad={onLoadFunc}`| Function| -  
-[`onReady`](https://nextjs.org/docs/app/api-reference/components/script#onready)| `onReady={onReadyFunc}`| Function| -  
-[`onError`](https://nextjs.org/docs/app/api-reference/components/script#onerror)| `onError={onErrorFunc}`| Function| -  
-  
+Prop| 예시| 타입| 필수
+---|---|---|---
+[`src`](https://nextjs.org/docs/app/api-reference/components/script#src)| `src="http://example.com/script"`| String| 인라인 스크립트를 사용하지 않는 한 필수
+[`strategy`](https://nextjs.org/docs/app/api-reference/components/script#strategy)| `strategy="lazyOnload"`| String| -
+[`onLoad`](https://nextjs.org/docs/app/api-reference/components/script#onload)| `onLoad={onLoadFunc}`| Function| -
+[`onReady`](https://nextjs.org/docs/app/api-reference/components/script#onready)| `onReady={onReadyFunc}`| Function| -
+[`onError`](https://nextjs.org/docs/app/api-reference/components/script#onerror)| `onError={onErrorFunc}`| Function| -
+
 ## 필수 Props[](https://nextjs.org/docs/app/api-reference/components/script#required-props)
 
 `<Script />` 컴포넌트에는 다음 속성이 필요합니다.
@@ -64,8 +62,6 @@ Prop| 예시| 타입| 필수
   * `lazyOnload`: 브라우저 유휴 시간 동안 로드합니다.
   * `worker`: (실험적) 웹 워커에서 로드합니다.
 
-
-
 ### `beforeInteractive`[](https://nextjs.org/docs/app/api-reference/components/script#beforeinteractive)
 
 `beforeInteractive` 전략으로 로드되는 스크립트는 서버에서 초기 HTML에 삽입되고, 어떤 Next.js 모듈보다 먼저 다운로드되며, 배치된 순서대로 실행됩니다.
@@ -81,7 +77,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -108,8 +104,6 @@ JavaScriptTypeScript
   * 봇 감지기
   * 쿠키 동의 관리자
 
-
-
 ### `afterInteractive`[](https://nextjs.org/docs/app/api-reference/components/script#afterinteractive)
 
 `afterInteractive` 전략을 사용하는 스크립트는 클라이언트 측 HTML에 삽입되며, 페이지에서 일부(또는 전체) 하이드레이션이 발생한 이후에 로드됩니다. **이 전략은 Script 컴포넌트의 기본값**이며, 1st-party Next.js 코드보다 먼저 로드할 필요는 없지만 가능한 한 빨리 로드해야 하는 스크립트에 사용하세요.
@@ -119,7 +113,7 @@ JavaScriptTypeScript
 app/page.js
 [code]
     import Script from 'next/script'
-     
+
     export default function Page() {
       return (
         <>
@@ -134,8 +128,6 @@ app/page.js
   * 태그 관리자
   * 애널리틱스
 
-
-
 ### `lazyOnload`[](https://nextjs.org/docs/app/api-reference/components/script#lazyonload)
 
 `lazyOnload` 전략을 사용하는 스크립트는 브라우저 유휴 시간 동안 클라이언트 측 HTML에 삽입되며, 페이지의 모든 리소스가 페치된 후 로드됩니다. 이 전략은 일찍 로드할 필요가 없는 백그라운드 또는 낮은 우선순위 스크립트에 사용하세요.
@@ -145,7 +137,7 @@ app/page.js
 app/page.js
 [code]
     import Script from 'next/script'
-     
+
     export default function Page() {
       return (
         <>
@@ -159,8 +151,6 @@ app/page.js
 
   * 채팅 지원 플러그인
   * 소셜 미디어 위젯
-
-
 
 ### `worker`[](https://nextjs.org/docs/app/api-reference/components/script#worker)
 
@@ -186,7 +176,7 @@ pages/home.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function Home() {
       return (
         <>
@@ -209,9 +199,9 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Script from 'next/script'
-     
+
     export default function Page() {
       return (
         <>
@@ -239,13 +229,13 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useRef } from 'react'
     import Script from 'next/script'
-     
+
     export default function Page() {
       const mapRef = useRef()
-     
+
       return (
         <>
           <div ref={mapRef}></div>
@@ -275,9 +265,9 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Script from 'next/script'
-     
+
     export default function Page() {
       return (
         <>
@@ -294,15 +284,11 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/components/script#version-history)
 
-버전| 변경 사항  
----|---  
-`v13.0.0`| `beforeInteractive` 및 `afterInteractive`가 `app`을 지원하도록 수정됨.  
-`v12.2.4`| `onReady` prop 추가.  
-`v12.2.2`| `_document`에서도 `beforeInteractive`와 함께 `next/script` 사용 허용.  
-`v11.0.0`| `next/script` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`v13.0.0`| `beforeInteractive` 및 `afterInteractive`가 `app`을 지원하도록 수정됨.
+`v12.2.4`| `onReady` prop 추가.
+`v12.2.2`| `_document`에서도 `beforeInteractive`와 함께 `next/script` 사용 허용.
+`v11.0.0`| `next/script` 도입.
 
 보내기

@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/getting-started/server-and-client-compon
 
 [App Router](https://nextjs.org/docs/app)[Getting Started](https://nextjs.org/docs/app/getting-started)서버 및 클라이언트 컴포넌트
 
-페이지 복사
-
 # 서버 및 클라이언트 컴포넌트
 
 최종 업데이트 2026년 2월 20일
@@ -30,16 +28,12 @@ Source URL: https://nextjs.org/docs/app/getting-started/server-and-client-compon
   * 브라우저 전용 API. 예: `localStorage`, `window`, `Navigator.geolocation` 등.
   * [커스텀 훅](https://react.dev/learn/reusing-logic-with-custom-hooks).
 
-
-
 다음이 필요할 때는 **서버 컴포넌트**를 사용하세요:
 
   * 데이터 소스와 가까운 데이터베이스나 API에서 데이터를 가져오기.
   * API 키, 토큰 등 비밀 값을 클라이언트에 노출하지 않고 사용하기.
   * 브라우저로 전송되는 JavaScript 양을 줄이기.
   * [First Contentful Paint(FCP)](https://web.dev/fcp/)를 개선하고, 콘텐츠를 클라이언트로 점진적으로 스트리밍하기.
-
-
 
 예를 들어 `<Page>` 컴포넌트는 게시물에 대한 데이터를 가져오는 서버 컴포넌트이며, 이 데이터를 클라이언트 측 상호작용을 처리하는 `<LikeButton>`에 props로 전달합니다.
 
@@ -49,7 +43,7 @@ JavaScript/TypeScript
 [code]
     import LikeButton from '@/app/ui/like-button'
     import { getPost } from '@/lib/data'
-     
+
     export default async function Page({
       params,
     }: {
@@ -57,7 +51,7 @@ JavaScript/TypeScript
     }) {
       const { id } = await params
       const post = await getPost(id)
-     
+
       return (
         <div>
           <main>
@@ -75,9 +69,9 @@ app/ui/like-button.tsx
 JavaScript/TypeScript
 [code]
     'use client'
-     
+
     import { useState } from 'react'
-     
+
     export default function LikeButton({ likes }: { likes: number }) {
       // ...
     }
@@ -92,17 +86,14 @@ JavaScript/TypeScript
   * **서버 컴포넌트**는 React Server Component Payload(RSC Payload)라는 특수 데이터 형식으로 렌더링됩니다.
   * **클라이언트 컴포넌트**와 RSC Payload는 함께 HTML을 [사전 렌더링](https://nextjs.org/docs/app/guides/caching#rendering-strategies)하는 데 사용됩니다.
 
-
-
 > **React Server Component Payload(RSC)란 무엇인가요?**
-> 
+>
 > RSC Payload는 렌더링된 React 서버 컴포넌트 트리를 압축한 이진 표현입니다. 이는 클라이언트의 React가 브라우저 DOM을 업데이트하는 데 사용됩니다. RSC Payload에는 다음이 포함됩니다.
-> 
+>
 >   * 서버 컴포넌트의 렌더링 결과
 >   * 클라이언트 컴포넌트를 렌더링할 위치와 해당 JavaScript 파일에 대한 참조
 >   * 서버 컴포넌트에서 클라이언트 컴포넌트로 전달되는 모든 props
-> 
-
+>
 
 ### 클라이언트에서(첫 로드)[](https://nextjs.org/docs/app/getting-started/server-and-client-components#on-the-client-first-load)
 
@@ -112,10 +103,8 @@ JavaScript/TypeScript
   2. **RSC Payload**는 클라이언트와 서버 컴포넌트 트리를 동기화하는 데 사용됩니다.
   3. **JavaScript**는 클라이언트 컴포넌트를 하이드레이트하고 애플리케이션을 인터랙티브하게 만듭니다.
 
-
-
 > **하이드레이션이란 무엇인가요?**
-> 
+>
 > 하이드레이션은 React가 DOM에 [이벤트 핸들러](https://react.dev/learn/responding-to-events)를 연결하여 정적 HTML을 인터랙티브하게 만드는 과정입니다.
 
 ### 이후 내비게이션[](https://nextjs.org/docs/app/getting-started/server-and-client-components#subsequent-navigations)
@@ -124,8 +113,6 @@ JavaScript/TypeScript
 
   * **RSC Payload**를 사전 가져와 캐시하여 즉시 내비게이션할 수 있습니다.
   * **클라이언트 컴포넌트**는 서버 렌더링된 HTML 없이 전적으로 클라이언트에서 렌더링됩니다.
-
-
 
 ## 예제[](https://nextjs.org/docs/app/getting-started/server-and-client-components#examples)
 
@@ -138,12 +125,12 @@ app/ui/counter.tsx
 JavaScript/TypeScript
 [code]
     'use client'
-     
+
     import { useState } from 'react'
-     
+
     export default function Counter() {
       const [count, setCount] = useState(0)
-     
+
       return (
         <div>
           <p>{count} likes</p>
@@ -171,7 +158,7 @@ JavaScript/TypeScript
     import Search from './search'
     // Server Component
     import Logo from './logo'
-     
+
     // Layout is a Server Component by default
     export default function Layout({ children }: { children: React.ReactNode }) {
       return (
@@ -191,7 +178,7 @@ app/ui/search.tsx
 JavaScript/TypeScript
 [code]
     'use client'
-     
+
     export default function Search() {
       // ...
     }
@@ -207,7 +194,7 @@ JavaScript/TypeScript
 [code]
     import LikeButton from '@/app/ui/like-button'
     import { getPost } from '@/lib/data'
-     
+
     export default async function Page({
       params,
     }: {
@@ -215,7 +202,7 @@ JavaScript/TypeScript
     }) {
       const { id } = await params
       const post = await getPost(id)
-     
+
       return <LikeButton likes={post.likes} />
     }
 [/code]
@@ -225,7 +212,7 @@ app/ui/like-button.tsx
 JavaScript/TypeScript
 [code]
     'use client'
-     
+
     export default function LikeButton({ likes }: { likes: number }) {
       // ...
     }
@@ -246,7 +233,7 @@ app/ui/modal.tsx
 JavaScript/TypeScript
 [code]
     'use client'
-     
+
     export default function Modal({ children }: { children: React.ReactNode }) {
       return <div>{children}</div>
     }
@@ -260,7 +247,7 @@ JavaScript/TypeScript
 [code]
     import Modal from './ui/modal'
     import Cart from './ui/cart'
-     
+
     export default function Page() {
       return (
         <Modal>
@@ -283,11 +270,11 @@ app/theme-provider.tsx
 JavaScript/TypeScript
 [code]
     'use client'
-     
+
     import { createContext } from 'react'
-     
+
     export const ThemeContext = createContext({})
-     
+
     export default function ThemeProvider({
       children,
     }: {
@@ -304,7 +291,7 @@ app/layout.tsx
 JavaScript/TypeScript
 [code]
     import ThemeProvider from './theme-provider'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -335,7 +322,7 @@ app/lib/user.ts
 JavaScriptTypeScript
 [code]
     import { cache } from 'react'
-     
+
     export const getUser = cache(async () => {
       const res = await fetch('https://api.example.com/user')
       return res.json()
@@ -349,16 +336,16 @@ app/user-provider.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { createContext } from 'react'
-     
+
     type User = {
       id: string
       name: string
     }
-     
+
     export const UserContext = createContext<Promise<User> | null>(null)
-     
+
     export default function UserProvider({
       children,
       userPromise,
@@ -378,14 +365,14 @@ JavaScriptTypeScript
 [code]
     import UserProvider from './user-provider'
     import { getUser } from './lib/user'
-     
+
     export default function RootLayout({
       children,
     }: {
       children: React.ReactNode
     }) {
       const userPromise = getUser() // Don't await
-     
+
       return (
         <html>
           <body>
@@ -403,10 +390,10 @@ app/ui/profile.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { use, useContext } from 'react'
     import { UserContext } from '../user-provider'
-     
+
     export function Profile() {
       const userPromise = useContext(UserContext)
       if (!userPromise) {
@@ -423,7 +410,7 @@ JavaScriptTypeScript
 [code]
     import { Suspense } from 'react'
     import { Profile } from './ui/profile'
-     
+
     export default function Page() {
       return (
         <Suspense fallback={<div>Loading profile...</div>}>
@@ -440,7 +427,7 @@ app/dashboard/page.tsx
 JavaScriptTypeScript
 [code]
     import { getUser } from '../lib/user'
-     
+
     export default async function DashboardPage() {
       const user = await getUser() // Cached - same request, no duplicate fetch
       return <h1>Dashboard for {user.name}</h1>
@@ -464,13 +451,13 @@ app/gallery.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useState } from 'react'
     import { Carousel } from 'acme-carousel'
-     
+
     export default function Gallery() {
       const [isOpen, setIsOpen] = useState(false)
-     
+
       return (
         <div>
           <button onClick={() => setIsOpen(true)}>View pictures</button>
@@ -490,9 +477,9 @@ app/carousel.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { Carousel } from 'acme-carousel'
-     
+
     export default Carousel
 [/code]
 
@@ -503,7 +490,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Carousel from './carousel'
-     
+
     export default function Page() {
       return (
         <div>
@@ -516,9 +503,9 @@ JavaScriptTypeScript
 [/code]
 
 > **라이브러리 작성자를 위한 조언**
-> 
+>
 > 컴포넌트 라이브러리를 구축 중이라면, 클라이언트 전용 기능에 의존하는 엔트리 포인트에 `"use client"` 지시문을 추가하세요. 그러면 사용자가 래퍼를 만들 필요 없이 서버 컴포넌트에 컴포넌트를 가져올 수 있습니다.
-> 
+>
 > 일부 번들러는 `"use client"` 지시문을 제거할 수 있다는 점에 유의하세요. `"use client"` 지시문을 유지하도록 esbuild를 구성하는 예시는 [React Wrap Balancer](https://github.com/shuding/react-wrap-balancer/blob/main/tsup.config.ts#L10-L13)와 [Vercel Analytics](https://github.com/vercel/analytics/blob/main/packages/web/tsup.config.js#L26-L30) 저장소에서 확인할 수 있습니다.
 
 ### Preventing environment poisoning[](https://nextjs.org/docs/app/getting-started/server-and-client-components#preventing-environment-poisoning)
@@ -535,7 +522,7 @@ JavaScriptTypeScript
           authorization: process.env.API_KEY,
         },
       })
-     
+
       return res.json()
     }
 [/code]
@@ -553,14 +540,14 @@ Next.js에서는 `NEXT_PUBLIC_` 접두사가 붙은 환경 변수만 클라이�
 lib/data.js
 [code]
     import 'server-only'
-     
+
     export async function getData() {
       const res = await fetch('https://external-service.com/data', {
         headers: {
           authorization: process.env.API_KEY,
         },
       })
-     
+
       return res.json()
     }
 [/code]
@@ -586,9 +573,8 @@ Next.js는 모듈이 잘못된 환경에서 사용될 때 더 명확한 오류 �
 
 이 페이지에 언급된 API에 대해 더 알아보세요.
 
-### [use client클라이언트에서 컴포넌트를 렌더링하기 위해 use client 지시문을 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/directives/use-client)
-
-도움이 되었나요?
+- [use client](https://nextjs.org/docs/app/api-reference/directives/use-client)
+  - 클라이언트에서 컴포넌트를 렌더링하기 위해 use client 지시문을 사용하는 방법을 알아보세요.
 
 supported.
 

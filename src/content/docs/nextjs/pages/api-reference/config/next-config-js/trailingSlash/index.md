@@ -7,8 +7,6 @@ description: '기본적으로 Next.js는 슬래시로 끝나는 URL을 슬래시
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/trailingSlash
 
-[Configuration](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)trailingSlash
-
 Copy page
 
 # trailingSlash
@@ -39,10 +37,10 @@ next.config.js
 
 ## Version History[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/trailingSlash#version-history)
 
-Version| Changes  
----|---  
-`v9.5.0`| `trailingSlash`가 추가되었습니다.  
-  
+Version| Changes
+---|---
+`v9.5.0`| `trailingSlash`가 추가되었습니다.
+
 Was this helpful?
 
 supported.

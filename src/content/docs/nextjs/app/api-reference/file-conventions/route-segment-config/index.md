@@ -8,8 +8,6 @@ description: '>   *  플래그가 켜져 있으면 이 페이지에 설명된 �
 
 [API 참조](https://nextjs.org/docs/app/api-reference) [파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions) Route Segment Config
 
-페이지 복사
-
 # 라우트 세그먼트 구성(Route Segment Config)
 
 최종 업데이트 2026년 2월 20일
@@ -23,16 +21,16 @@ description: '>   *  플래그가 켜져 있으면 이 페이지에 설명된 �
 
 라우트 세그먼트 옵션을 사용하면 다음 변수를 직접 export하여 [Page](https://nextjs.org/docs/app/api-reference/file-conventions/layout), [Layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout), 또는 [Route Handler](https://nextjs.org/docs/app/api-reference/file-conventions/route)의 동작을 설정할 수 있습니다:
 
-옵션| 유형| 기본값  
----|---|---  
-[`dynamic`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic)| `'auto' | 'force-dynamic' | 'error' | 'force-static'`| `'auto'`  
-[`dynamicParams`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams)| `boolean`| `true`  
-[`revalidate`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate)| `false | 0 | number`| `false`  
-[`fetchCache`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#fetchcache)| `'auto' | 'default-cache' | 'only-cache' | 'force-cache' | 'force-no-store' | 'default-no-store' | 'only-no-store'`| `'auto'`  
-[`runtime`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime)| `'nodejs' | 'edge'`| `'nodejs'`  
-[`preferredRegion`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#preferredregion)| `'auto' | 'global' | 'home' | string | string[]`| `'auto'`  
-[`maxDuration`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#maxduration)| `number`| 배포 플랫폼에서 설정  
-  
+옵션| 유형| 기본값
+---|---|---
+[`dynamic`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic)| `'auto' | 'force-dynamic' | 'error' | 'force-static'`| `'auto'`
+[`dynamicParams`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams)| `boolean`| `true`
+[`revalidate`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate)| `false | 0 | number`| `false`
+[`fetchCache`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#fetchcache)| `'auto' | 'default-cache' | 'only-cache' | 'force-cache' | 'force-no-store' | 'default-no-store' | 'only-no-store'`| `'auto'`
+[`runtime`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime)| `'nodejs' | 'edge'`| `'nodejs'`
+[`preferredRegion`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#preferredregion)| `'auto' | 'global' | 'home' | string | string[]`| `'auto'`
+[`maxDuration`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#maxduration)| `number`| 배포 플랫폼에서 설정
+
 ## 옵션[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#options)
 
 ### `dynamic`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic)
@@ -62,9 +60,6 @@ JavaScript / TypeScript
     * 세그먼트 구성을 `fetchCache = 'only-cache'`로 설정.
   * **`'force-static'`** : [`cookies`](https://nextjs.org/docs/app/api-reference/functions/cookies), [`headers()`](https://nextjs.org/docs/app/api-reference/functions/headers), [`useSearchParams()`](https://nextjs.org/docs/app/api-reference/functions/use-search-params)를 비어 있는 값으로 강제하여 레이아웃이나 페이지의 정적 렌더링과 데이터 캐싱을 보장합니다. `force-static`으로 렌더링된 페이지나 레이아웃에서도 [`revalidate`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate), [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath), [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)를 사용할 수 있습니다.
 
-
-
-
 > **알아두면 좋아요** :
 >
 >   * `getServerSideProps`, `getStaticProps`에서 `dynamic: 'force-dynamic'`, `dynamic: 'error'`로 [마이그레이션하는 방법](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods)은 [업그레이드 가이드](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods)에서 확인하세요.
@@ -83,8 +78,6 @@ JavaScript / TypeScript
 
   * **`true`** (기본): `generateStaticParams`에 포함되지 않은 동적 세그먼트를 요청 시점에 생성합니다.
   * **`false`** : `generateStaticParams`에 포함되지 않은 동적 세그먼트는 404를 반환합니다.
-
-
 
 > **알아두면 좋아요** :
 >
@@ -109,8 +102,6 @@ JavaScript / TypeScript
   * **`0`** : Dynamic API나 캐시되지 않은 데이터 페치가 없더라도 레이아웃이나 페이지를 항상 [동적으로 렌더링](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)하게 만듭니다. 이 옵션은 `cache` 옵션을 지정하지 않은 `fetch` 요청의 기본값을 `'no-store'`로 변경하지만, `'force-cache'`를 선택했거나 양수 `revalidate`를 지정한 `fetch` 요청은 그대로 유지합니다.
   * **`number`** : (초 단위) 레이아웃이나 페이지의 기본 재검증 주기를 `n`초로 설정합니다.
 
-
-
 > **알아두면 좋아요** :
 >
 >   * `revalidate` 값은 정적으로 해석 가능해야 합니다. 예를 들어 `revalidate = 600`은 유효하지만 `revalidate = 60 * 10`은 허용되지 않습니다.
@@ -122,8 +113,6 @@ JavaScript / TypeScript
 
   * 하나의 라우트에 속한 각 레이아웃과 페이지의 `revalidate` 값 중 가장 낮은 값이 라우트 전체의 재검증 빈도를 결정합니다. 이를 통해 자식 페이지가 부모 레이아웃만큼 자주 재검증되도록 보장합니다.
   * 개별 `fetch` 요청이 라우트 기본 `revalidate`보다 낮은 값을 설정하면 라우트 전체의 재검증 빈도를 높일 수 있습니다. 이를 통해 특정 기준에 따라 더 자주 재검증해야 하는 라우트만 동적으로 선택할 수 있습니다.
-
-
 
 ### `fetchCache`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#fetchcache)
 
@@ -150,8 +139,6 @@ JavaScript / TypeScript
   * **`'only-no-store'`** : 기본값을 `cache: 'no-store'`로 변경해 모든 `fetch` 요청이 캐싱을 거부하도록 하며, `cache: 'force-cache'`를 사용하는 `fetch` 요청이 있으면 오류를 발생시킵니다.
   * **`'force-no-store'`** : 모든 `fetch` 요청의 `cache` 옵션을 `'no-store'`로 설정해 캐싱 거부를 강제합니다. `fetch` 요청에서 `'force-cache'` 옵션을 제공하더라도 매 요청마다 다시 가져오게 됩니다.
 
-
-
 #### 라우트 간 세그먼트 동작[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#cross-route-segment-behavior)
 
   * 하나의 라우트에 속한 각 레이아웃과 페이지에서 설정하는 옵션은 서로 호환되어야 합니다.
@@ -162,8 +149,6 @@ JavaScript / TypeScript
       * 하나의 라우트에서 `'force-cache'`와 `'force-no-store'`를 함께 사용할 수 없습니다.
     * 자식이 `'auto'` 또는 `'*-cache'`를 제공하는 경우, 부모는 동일한 fetch에서 서로 다른 동작이 발생할 수 있으므로 `'default-no-store'`를 제공할 수 없습니다.
   * 일반적으로 공유 부모 레이아웃은 `'auto'`로 유지하고, 자식 세그먼트마다 옵션이 달라지는 지점에서 커스터마이즈하는 것이 좋습니다.
-
-
 
 ### `runtime`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime)
 
@@ -182,8 +167,6 @@ JavaScriptTypeScript
   * **`'nodejs'`** (기본값)
   * **`'edge'`**
 
-
-
 ### `preferredRegion`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#preferredregion)
 
 layout.tsx | page.tsx | route.ts
@@ -197,11 +180,10 @@ JavaScriptTypeScript
 `preferredRegion` 지원 여부와 사용 가능한 리전은 배포 플랫폼에 따라 달라집니다.
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * `preferredRegion`을 지정하지 않으면 가장 가까운 부모 레이아웃의 옵션을 상속합니다.
 >   * 루트 레이아웃은 기본적으로 `all` 리전을 사용합니다.
-> 
-
+>
 
 ### `maxDuration`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#maxduration)
 
@@ -217,10 +199,9 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * [Server Actions](https://nextjs.org/docs/app/getting-started/updating-data)을 사용하는 경우, 페이지 수준에서 `maxDuration`을 설정하면 해당 페이지에서 사용되는 모든 Server Actions의 기본 타임아웃을 변경할 수 있습니다.
-> 
-
+>
 
 ### `generateStaticParams`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#generatestaticparams)
 
@@ -230,13 +211,9 @@ JavaScriptTypeScript
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#version-history)
 
-Version|   
----|---  
-`v16.0.0`| `export const experimental_ppr = true`가 제거되었습니다. [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#remove-experimental_ppr-route-segment-config-from-app-router-pages-and-layouts)를 사용할 수 있습니다.  
-`v15.0.0-RC`| `export const runtime = "experimental-edge"`가 더 이상 권장되지 않습니다. [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#transform-app-router-route-segment-config-runtime-value-from-experimental-edge-to-edge)를 사용할 수 있습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version|
+---|---
+`v16.0.0`| `export const experimental_ppr = true`가 제거되었습니다. [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#remove-experimental_ppr-route-segment-config-from-app-router-pages-and-layouts)를 사용할 수 있습니다.
+`v15.0.0-RC`| `export const runtime = "experimental-edge"`가 더 이상 권장되지 않습니다. [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#transform-app-router-route-segment-config-runtime-value-from-experimental-edge-to-edge)를 사용할 수 있습니다.
 
 보내기

@@ -24,13 +24,13 @@ Before:
 app/page.js
 [code]
     import { cookies } from 'next/headers'
-     
+
     async function getExampleData() {
       "use cache"
       const isLoggedIn = (await cookies()).has('token')
       ...
     }
-     
+
     export default async function Page() {
       const data = await getExampleData()
       return ...
@@ -42,12 +42,12 @@ After:
 app/page.js
 [code]
     import { cookies } from 'next/headers'
-     
+
     async function getExampleData(isLoggedIn) {
       "use cache"
       ...
     }
-     
+
     export default async function Page() {
       const isLoggedIn = (await cookies()).has('token')
       const data = await getExampleData(isLoggedIn)
@@ -60,10 +60,6 @@ app/page.js
   * [`headers()` function](https://nextjs.org/docs/app/api-reference/functions/headers)
   * [`cookies()` function](https://nextjs.org/docs/app/api-reference/functions/cookies)
   * [`draftMode()` function](https://nextjs.org/docs/app/api-reference/functions/draft-mode)
-
-
-
-도움이 되었나요?
 
 supported.
 

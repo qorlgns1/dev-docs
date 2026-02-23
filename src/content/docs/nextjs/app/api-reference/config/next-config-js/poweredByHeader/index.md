@@ -7,8 +7,6 @@ description: '기본적으로 Next.js는  헤더를 추가합니다. 이를 사�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/poweredByHeader
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)poweredByHeader
-
 Copy page
 
 # poweredByHeader
@@ -23,8 +21,6 @@ next.config.js
       poweredByHeader: false,
     }
 [/code]
-
-도움이 되었나요?
 
 supported.
 

@@ -8,8 +8,6 @@ description: 'Next.js에서는 React의 Server Functions을 사용해 데이터�
 
 [App Router](https://nextjs.org/docs/app)[시작하기](https://nextjs.org/docs/app/getting-started)데이터 업데이트
 
-페이지 복사
-
 # 데이터 업데이트
 
 마지막 업데이트 2026년 2월 20일
@@ -45,15 +43,15 @@ JavaScriptTypeScript
       'use server'
       const title = formData.get('title')
       const content = formData.get('content')
-     
+
       // Update data
       // Revalidate cache
     }
-     
+
     export async function deletePost(formData: FormData) {
       'use server'
       const id = formData.get('id')
-     
+
       // Update data
       // Revalidate cache
     }
@@ -73,7 +71,7 @@ JavaScriptTypeScript
         'use server'
         // ...
       }
-     
+
       return <></>
     }
 [/code]
@@ -89,7 +87,7 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     export async function createPost() {}
 [/code]
 
@@ -98,9 +96,9 @@ app/ui/button.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { createPost } from '@/app/actions'
-     
+
     export function Button() {
       return <button formAction={createPost}>Create</button>
     }
@@ -111,7 +109,7 @@ JavaScriptTypeScript
 ### 액션을 prop으로 전달하기[](https://nextjs.org/docs/app/getting-started/updating-data#passing-actions-as-props)
 
 액션을 Client Component에 prop으로 전달할 수도 있습니다.
-[code] 
+[code]
     <ClientComponent updateItemAction={updateItem} />
 [/code]
 
@@ -120,7 +118,7 @@ app/client-component.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     export default function ClientComponent({
       updateItemAction,
     }: {
@@ -150,7 +148,7 @@ app/ui/form.tsx
 JavaScriptTypeScript
 [code]
     import { createPost } from '@/app/actions'
-     
+
     export function Form() {
       return (
         <form action={createPost}>
@@ -167,11 +165,11 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     export async function createPost(formData: FormData) {
       const title = formData.get('title')
       const content = formData.get('content')
-     
+
       // Update data
       // Revalidate cache
     }
@@ -186,13 +184,13 @@ app/like-button.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { incrementLike } from './actions'
     import { useState } from 'react'
-     
+
     export default function LikeButton({ initialLikes }: { initialLikes: number }) {
       const [likes, setLikes] = useState(initialLikes)
-     
+
       return (
         <>
           <p>Total Likes: {likes}</p>
@@ -220,14 +218,14 @@ app/ui/button.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useActionState, startTransition } from 'react'
     import { createPost } from '@/app/actions'
     import { LoadingSpinner } from '@/app/ui/loading-spinner'
-     
+
     export function Button() {
       const [state, action, pending] = useActionState(createPost, false)
-     
+
       return (
         <button onClick={() => startTransition(action)}>
           {pending ? <LoadingSpinner /> : 'Create Post'}
@@ -245,13 +243,13 @@ app/lib/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { refresh } from 'next/cache'
-     
+
     export async function updatePost(formData: FormData) {
       // Update data
       // ...
-     
+
       refresh()
     }
 [/code]
@@ -267,12 +265,12 @@ app/lib/actions.ts
 JavaScriptTypeScript
 [code]
     import { revalidatePath } from 'next/cache'
-     
+
     export async function createPost(formData: FormData) {
       'use server'
       // Update data
       // ...
-     
+
       revalidatePath('/posts')
     }
 [/code]
@@ -286,14 +284,14 @@ app/lib/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { revalidatePath } from 'next/cache'
     import { redirect } from 'next/navigation'
-     
+
     export async function createPost(formData: FormData) {
       // Update data
       // ...
-     
+
       revalidatePath('/posts')
       redirect('/posts')
     }
@@ -314,18 +312,18 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { cookies } from 'next/headers'
-     
+
     export async function exampleAction() {
       const cookieStore = await cookies()
-     
+
       // Get cookie
       cookieStore.get('name')?.value
-     
+
       // Set cookie
       cookieStore.set('name', 'Delba')
-     
+
       // Delete cookie
       cookieStore.delete('name')
     }
@@ -340,21 +338,21 @@ app/view-count.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { incrementViews } from './actions'
     import { useState, useEffect, useTransition } from 'react'
-     
+
     export default function ViewCount({ initialViews }: { initialViews: number }) {
       const [views, setViews] = useState(initialViews)
       const [isPending, startTransition] = useTransition()
-     
+
       useEffect(() => {
         startTransition(async () => {
           const updatedViews = await incrementViews()
           setViews(updatedViews)
         })
       }, [])
-     
+
       // You can use `isPending` to give users feedback
       return <p>Total Views: {views}</p>
     }
@@ -366,10 +364,13 @@ JavaScriptTypeScript
 
 이 페이지에서 언급된 기능에 대해 더 알고 싶다면 API 레퍼런스를 읽어보세요.
 
-### [revalidatePath revalidatePath 함수에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)### [revalidateTag revalidateTag 함수에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)### [redirect redirect 함수에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/functions/redirect)
+- [revalidatePath](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)
+  - revalidatePath 함수에 대한 API 레퍼런스.
 
-도움이 되었나요?
+- [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
+  - revalidateTag 함수에 대한 API 레퍼런스.
 
-지원됨.
+- [redirect](https://nextjs.org/docs/app/api-reference/functions/redirect)
+  - redirect 함수에 대한 API 레퍼런스.
 
 보내기

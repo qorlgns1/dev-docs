@@ -6,10 +6,6 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 # next.config.js: 리라이트 | Next.js
 원본 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)리라이트
-
-페이지 복사
-
 # 리라이트
 
 최종 업데이트 2026년 2월 20일
@@ -325,8 +321,6 @@ next.config.js
 
   * [여러 영역 사용](https://github.com/vercel/next.js/tree/canary/examples/with-zones)
 
-
-
 리라이트를 사용하면 외부 URL로 라우트를 재작성할 수 있으므로 Next.js를 점진적으로 도입할 때 특히 유용합니다. 아래 예시는 메인 앱의 `/blog` 라우트를 외부 사이트로 리디렉션하기 위한 리라이트입니다.
 
 next.config.js
@@ -398,7 +392,7 @@ next.config.js
 [code]
     module.exports = {
       basePath: '/docs',
-     
+
       async rewrites() {
         return [
           {
@@ -419,14 +413,10 @@ next.config.js
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites#version-history)
 
-버전| 변경 사항  
----|---  
-`v13.3.0`| `missing`이 추가되었습니다.  
-`v10.2.0`| `has`가 추가되었습니다.  
-`v9.5.0`| Headers가 추가되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`v13.3.0`| `missing`이 추가되었습니다.
+`v10.2.0`| `has`가 추가되었습니다.
+`v9.5.0`| Headers가 추가되었습니다.
 
 보내기

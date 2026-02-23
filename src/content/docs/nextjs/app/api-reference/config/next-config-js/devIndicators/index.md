@@ -7,8 +7,6 @@ description: '는 개발 중에 현재 보고 있는 경로에 대한 컨텍스�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)devIndicators
-
 Copy page
 
 # devIndicators
@@ -42,7 +40,7 @@ Build Output
     Route (app)
     ┌ ○ /_not-found
     └ ƒ /products/[id]
-     
+
     ○  (Static)   prerendered as static content
     ƒ  (Dynamic)  server-rendered on demand
 [/code]
@@ -56,12 +54,12 @@ Build Output
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| `appIsrStatus`, `buildActivity`, `buildActivityPosition` 옵션이 제거되었습니다.  
-`v15.2.0`| 새로운 `position` 옵션이 포함된 화면 표시기가 개선되었습니다. `appIsrStatus`, `buildActivity`, `buildActivityPosition` 옵션이 더는 권장되지 않습니다.  
-`v15.0.0`| `appIsrStatus` 옵션과 함께 정적 화면 표시기가 추가되었습니다.  
-  
+Version| Changes
+---|---
+`v16.0.0`| `appIsrStatus`, `buildActivity`, `buildActivityPosition` 옵션이 제거되었습니다.
+`v15.2.0`| 새로운 `position` 옵션이 포함된 화면 표시기가 개선되었습니다. `appIsrStatus`, `buildActivity`, `buildActivityPosition` 옵션이 더는 권장되지 않습니다.
+`v15.0.0`| `appIsrStatus` 옵션과 함께 정적 화면 표시기가 추가되었습니다.
+
 Was this helpful?
 
 supported.

@@ -7,10 +7,6 @@ description: '> 알아두면 좋아요 : Next.js 16부터 Middleware가 목적�
 
 Source URL: https://nextjs.org/docs/app/getting-started/proxy
 
-[앱 라우터](https://nextjs.org/docs/app)[시작하기](https://nextjs.org/docs/app/getting-started)Proxy
-
-페이지 복사
-
 # 프록시
 
 마지막 업데이트 2026년 2월 20일
@@ -28,8 +24,6 @@ Source URL: https://nextjs.org/docs/app/getting-started/proxy
   * 모든 페이지 또는 일부 페이지에 대해 헤더를 수정
   * A/B 테스트나 실험 결과에 따라 다른 페이지로 재작성
   * 들어오는 요청 속성에 따른 프로그래밍 방식 리디렉션
-
-
 
 간단한 리디렉션에는 먼저 `next.config.ts`의 [`redirects`](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects) 구성을 사용하는 것을 고려하세요. 요청 데이터에 접근하거나 더 복잡한 로직이 필요할 때 프록시를 사용하면 됩니다.
 
@@ -53,15 +47,15 @@ JavaScriptTypeScript
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
-     
+
     // This function can be marked `async` if using `await` inside
     export function proxy(request: NextRequest) {
       return NextResponse.redirect(new URL('/home', request.url))
     }
-     
+
     // Alternatively, you can use a default export:
     // export default function proxy(request: NextRequest) { ... }
-     
+
     export const config = {
       matcher: '/about/:path*',
     }
@@ -75,10 +69,10 @@ JavaScriptTypeScript
 
 프록시에 대해 더 알아보기
 
-### [proxy.js프록시 파일에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)### [Backend for FrontendNext.js를 백엔드 프레임워크로 사용하는 방법을 알아보세요](https://nextjs.org/docs/app/guides/backend-for-frontend)
+- [proxy.js](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)
+  - 프록시 파일에 대한 API 레퍼런스.
 
-도움이 되었나요?
-
-지원됨.
+- [백엔드 포 프론트엔드](https://nextjs.org/docs/app/guides/backend-for-frontend)
+  - Backend for FrontendNext.js를 백엔드 프레임워크로 사용하는 방법을 알아보세요
 
 보내기

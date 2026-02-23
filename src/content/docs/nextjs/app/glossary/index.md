@@ -6,10 +6,6 @@ description: 'React Server Components 위에 구축되어 Next.js 13에서 도�
 # App Router: 용어집 | Next.js
 출처 URL: https://nextjs.org/docs/app/glossary
 
-[Next.js Docs](https://nextjs.org/docs)[App Router](https://nextjs.org/docs/app)용어집
-
-페이지 복사
-
 # Next.js 용어집
 
 마지막 업데이트 2026년 2월 20일
@@ -190,8 +186,6 @@ React Server Components 위에 구축되어 Next.js 13에서 도입된 라우터
   * [`headers()`](https://nextjs.org/docs/app/api-reference/functions/headers) \- 요청 헤더에 접근
   * [`searchParams`](https://nextjs.org/docs/app/api-reference/file-conventions/page#searchparams-optional) \- URL 쿼리 매개변수에 접근
   * [`draftMode()`](https://nextjs.org/docs/app/api-reference/functions/draft-mode) \- 드래프트 모드 활성화 또는 확인
-
-
 
 ## Request-time rendering[](https://nextjs.org/docs/app/glossary#request-time-rendering)
 

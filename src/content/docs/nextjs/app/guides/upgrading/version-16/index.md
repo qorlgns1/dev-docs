@@ -9,8 +9,6 @@ description: '각 코딩 에이전트에 대해 MCP 클라이언트에 다음 �
 
 [가이드](https://nextjs.org/docs/app/guides)[업그레이드](https://nextjs.org/docs/app/guides/upgrading)버전 16
 
-페이지 복사
-
 # 버전 16으로 업그레이드하는 방법
 
 마지막 업데이트: 2026년 2월 20일
@@ -50,14 +48,14 @@ description: '각 코딩 에이전트에 대해 MCP 클라이언트에 다음 �
 **Next.js 16으로 업그레이드하려면:**
 
 코딩 에이전트에 연결한 뒤 다음을 입력하세요:
-[code] 
+[code]
     Next Devtools, help me upgrade my Next.js app to version 16
 [/code]
 
 **Cache Components로 마이그레이션하려면(v16 업그레이드 이후):**
 
 코딩 에이전트에 연결한 뒤 다음을 입력하세요:
-[code] 
+[code]
     Next Devtools, migrate my Next.js app to cache components
 [/code]
 
@@ -82,8 +80,6 @@ pnpmnpmyarnbun
   * 안정화된 API에서 `unstable_` 접두사 제거
   * 페이지와 레이아웃에서 `experimental_ppr` Route Segment Config 제거
 
-
-
 수동으로 진행하고 싶다면 최신 Next.js 및 React 버전을 설치하세요:
 
 pnpmnpmyarnbun
@@ -97,12 +93,12 @@ TypeScript를 사용한다면 `@types/react` 와 `@types/react-dom` 도 최신 �
 
 ## Node.js 런타임 및 브라우저 지원[](https://nextjs.org/docs/app/guides/upgrading/version-16#nodejs-runtime-and-browser-support)
 
-Requirement| Change / Details  
----|---  
-Node.js 20.9+| 최소 버전이 `20.9.0`(LTS)로 상향; Node.js 18은 더 이상 지원되지 않음  
-TypeScript 5+| 최소 버전이 `5.1.0`으로 상향  
-Browsers| Chrome 111+, Edge 111+, Firefox 111+, Safari 16.4+  
-  
+Requirement| Change / Details
+---|---
+Node.js 20.9+| 최소 버전이 `20.9.0`(LTS)로 상향; Node.js 18은 더 이상 지원되지 않음
+TypeScript 5+| 최소 버전이 `5.1.0`으로 상향
+Browsers| Chrome 111+, Edge 111+, Firefox 111+, Safari 16.4+
+
 ## 기본 Turbopack[](https://nextjs.org/docs/app/guides/upgrading/version-16#turbopack-by-default)
 
 **Next.js 16** 부터 Turbopack이 안정화되었으며 `next dev` 와 `next build` 에서 기본으로 사용됩니다.
@@ -141,8 +137,6 @@ package.json
   * **완전히 Turbopack으로 전환:** `webpack` 구성을 Turbopack 호환 옵션으로 마이그레이션합니다.
   * **Webpack 유지 사용:** `--webpack` 플래그로 Turbopack을 비활성화하고 Webpack으로 빌드합니다.
 
-
-
 > **알아두면 좋아요**: 직접 `webpack` 구성을 정의하지 않았는데도 해당 설정으로 인해 빌드가 실패한다면, 플러그인이 `webpack` 옵션을 추가했을 가능성이 큽니다.
 
 ### Turbopack 옵트아웃[](https://nextjs.org/docs/app/guides/upgrading/version-16#opting-out-of-turbopack)
@@ -169,7 +163,7 @@ package.json
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     // Next.js 15 - experimental.turbopack
     const nextConfig: NextConfig = {
       experimental: {
@@ -178,7 +172,7 @@ next.config.ts
         },
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -187,14 +181,14 @@ next.config.ts
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     // Next.js 16 - turbopack at the top level of nextConfig
     const nextConfig: NextConfig = {
       turbopack: {
         // options
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -202,8 +196,6 @@ next.config.ts
 
   * [고급 Webpack 로더 조건](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#advanced-webpack-loader-conditions)
   * [debugIds](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#debug-ids)
-
-
 
 ### resolve alias 폴백[](https://nextjs.org/docs/app/guides/upgrading/version-16#resolve-alias-fallback)
 
@@ -216,7 +208,7 @@ next.config.ts
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       turbopack: {
         resolveAlias: {
@@ -226,7 +218,7 @@ next.config.ts
         },
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -255,7 +247,7 @@ styles/globals.scss
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       turbopack: {
         resolveAlias: {
@@ -263,7 +255,7 @@ next.config.ts
         },
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -278,13 +270,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         turbopackFileSystemCacheForDev: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -299,8 +291,6 @@ JavaScriptTypeScript
   * [`draftMode`](https://nextjs.org/docs/app/api-reference/functions/draft-mode)
   * [`layout.js`](https://nextjs.org/docs/app/api-reference/file-conventions/layout), [`page.js`](https://nextjs.org/docs/app/api-reference/file-conventions/page), [`route.js`](https://nextjs.org/docs/app/api-reference/file-conventions/route), [`default.js`](https://nextjs.org/docs/app/api-reference/file-conventions/default), [`opengraph-image`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#opengraph-image), [`twitter-image`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#twitter-image), [`icon`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#icon), [`apple-icon`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#apple-icon)의 `params`
   * [`page.js`](https://nextjs.org/docs/app/api-reference/file-conventions/page)의 `searchParams`
-
-
 
 비동기 Dynamic API로 마이그레이션하려면 [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#migrate-to-async-dynamic-apis)를 사용하세요.
 
@@ -340,7 +330,7 @@ app/shop/[slug]/opengraph-image.js
    const { slug } = params
    return [{ id: '1' }, { id: '2' }]
  }
-  
+
  // Next.js 15 - synchronous params and id access
  export default function Image({ params, id }) {
    const slug = params.slug
@@ -357,7 +347,7 @@ export async function generateImageMetadata({ params }) {
   const { slug } = params
   return [{ id: '1' }, { id: '2' }]
 }
- 
+
 // Next.js 16 - asynchronous params and id access
 export default async function Image({ params, id }) {
   const { slug } = await params // params now async
@@ -375,7 +365,7 @@ app/product/sitemap.js
 export async function generateSitemaps() {
   return [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]
 }
- 
+
 // Next.js 15 - synchronous id access
 export default async function sitemap({ id }) {
   const start = id * 50000 // id is a number
@@ -390,7 +380,7 @@ app/product/sitemap.js
 export async function generateSitemaps() {
   return [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]
 }
- 
+
 // Next.js 16 - asynchronous id access
 export default async function sitemap({ id }) {
   const resolvedId = await id // id is now Promise<string>
@@ -420,11 +410,11 @@ next.config.ts
 JavaScriptTypeScript
 ```
 import type { NextConfig } from 'next'
- 
+
 const nextConfig: NextConfig = {
   reactCompiler: true,
 }
- 
+
 export default nextConfig
 ```
 
@@ -450,9 +440,9 @@ app/actions.ts
 JavaScriptTypeScript
 ```
 'use server'
- 
+
 import { revalidateTag } from 'next/cache'
- 
+
 export async function updateArticle(articleId: string) {
   // Mark article data as stale - article readers see stale data while it revalidates
   revalidateTag(`article-${articleId}`, 'max')
@@ -472,12 +462,12 @@ app/actions.ts
 JavaScriptTypeScript
 ```
 'use server'
- 
+
 import { updateTag } from 'next/cache'
- 
+
 export async function updateUserProfile(userId: string, profile: Profile) {
   await db.users.update(userId, profile)
- 
+
   // Expire cache and refresh immediately - user sees their changes right away
   updateTag(`user-${userId}`)
 }
@@ -496,13 +486,13 @@ app/actions.ts
 JavaScriptTypeScript
 ```
 'use server'
- 
+
 import { refresh } from 'next/cache'
- 
+
 export async function markNotificationAsRead(notificationId: string) {
   // Update the notification in the database
   await db.notifications.markAsRead(notificationId)
- 
+
   // Refresh the notification count displayed in the header
   refresh()
 }
@@ -552,7 +542,7 @@ next.config.js
 const nextConfig = {
   cacheComponents: true,
 }
- 
+
 module.exports = nextConfig
 ```
 
@@ -568,7 +558,7 @@ const nextConfig = {
     ppr: true,
   },
 }
- 
+
 module.exports = nextConfig
 ```
 
@@ -604,11 +594,11 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       skipProxyUrlNormalize: true,
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -623,7 +613,7 @@ JavaScriptTypeScript
 app/page.tsx
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return <Image src="/assets/photo?v=1" alt="Photo" width="100" height="100" />
     }
@@ -636,7 +626,7 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       images: {
         localPatterns: [
@@ -647,7 +637,7 @@ JavaScriptTypeScript
         ],
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -666,13 +656,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       images: {
         minimumCacheTTL: 60,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -689,13 +679,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       images: {
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -712,13 +702,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       images: {
         qualities: [50, 75, 100],
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -733,13 +723,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       images: {
         dangerouslyAllowLocalIP: true, // 비공개 네트워크에서만 사용
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -752,7 +742,7 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       images: {
         maximumRedirects: 0, // 리디렉션 비활성화
@@ -760,17 +750,17 @@ JavaScriptTypeScript
         maximumRedirects: 5, // 에지 케이스에 대비해 증가
       },
     }
-     
+
     export default nextConfig
 [/code]
 
 ### `next/legacy/image` 컴포넌트(사용 중단)[](https://nextjs.org/docs/app/guides/upgrading/version-16#nextlegacyimage-component-deprecated)
 
 `next/legacy/image` 컴포넌트는 사용 중단되었습니다. 대신 `next/image`를 사용하세요.
-[code] 
+[code]
     // Before
     import Image from 'next/legacy/image'
-     
+
     // After
     import Image from 'next/image'
 [/code]
@@ -830,7 +820,7 @@ Terminal
 app/@modal/default.tsx
 [code]
     import { notFound } from 'next/navigation'
-     
+
     export default function Default() {
       notFound()
     }
@@ -860,8 +850,6 @@ app/@modal/default.tsx
   1. 일시적으로 `scroll-behavior`를 `auto`로 설정
   2. 내비게이션 수행(즉시 맨 위로 스크롤)
   3. 원래 `scroll-behavior` 값 복원
-
-
 
 이 동작은 페이지 내비게이션이 스무스 스크롤을 사용할 때에도 항상 빠르고 즉각적으로 느껴지도록 보장했습니다. 그러나 이러한 조작은 특히 내비게이션 시작 시 비용이 클 수 있었습니다.
 
@@ -895,8 +883,6 @@ app/layout.tsx
   * `next dev` 명령을 실행할 때
   * `next dev` 명령이 Next.js 서버를 시작할 때
 
-
-
 `next dev` 명령이 Next.js 서버를 시작하기 위해 구성 파일을 필요로 하지 않기 때문에 이는 비효율적이었습니다.
 
 이 변경의 결과로, `next dev` 실행 시 Next.js 구성 파일에서 `process.argv`에 `'dev'`가 포함되어 있는지 확인하면 `false`를 반환합니다.
@@ -908,17 +894,17 @@ app/layout.tsx
 next.config.js
 [code]
     import { startServer } from 'docs-lib/dev-server'
-     
+
     const isDev = process.env.NODE_ENV === 'development'
-     
+
     if (isDev) {
       startServer()
     }
-     
+
     const nextConfig = {
       /* Your config options */
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -937,7 +923,7 @@ next.config.js
         adapterPath: require.resolve('./my-adapter.js'),
       },
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -958,10 +944,10 @@ AMP 채택률이 크게 감소했고, 이 기능을 유지하면 프레임워크
   * Next 구성 파일의 `amp` 설정
   * `next/amp` 훅 import 및 사용(`useAmp`)
 
-[code] 
+[code]
     // Removed
     import { useAmp } from 'next/amp'
-     
+
     // Removed
     export const config = { amp: true }
 [/code]
@@ -976,7 +962,7 @@ next.config.js
         canonicalBase: 'https://example.com',
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -1004,7 +990,7 @@ next.config.mjs
       // No longer supported
       // eslint: {},
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -1029,7 +1015,7 @@ next.config.js
 pages/index.tsx
 [code]
     import getConfig from 'next/config'
-     
+
     export default function Page() {
       const { publicRuntimeConfig } = getConfig()
       return <p>API URL: {publicRuntimeConfig.apiUrl}</p>
@@ -1047,7 +1033,7 @@ app/page.tsx
       // Use for server-side operations only
       return await db.query(dbUrl, 'SELECT * FROM users')
     }
-     
+
     export default async function Page() {
       const data = await fetchData()
       return <div>{/* render data */}</div>
@@ -1066,7 +1052,7 @@ app/page.tsx
 app/components/client-component.tsx
 [code]
     'use client'
-     
+
     export default function ClientComponent() {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL
       return <p>API URL: {apiUrl}</p>
@@ -1078,7 +1064,7 @@ app/components/client-component.tsx
 app/page.tsx
 [code]
     import { connection } from 'next/server'
-     
+
     export default async function Page() {
       await connection()
       const config = process.env.RUNTIME_CONFIG
@@ -1127,9 +1113,5 @@ next.config.js
 ### `unstable_rootParams`[](https://nextjs.org/docs/app/guides/upgrading/version-16#unstable_rootparams)
 
 `unstable_rootParams` 함수가 제거되었습니다. 곧 출시될 마이너 릴리스에서 대체 API를 제공할 예정입니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

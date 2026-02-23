@@ -43,10 +43,6 @@ Folder structure
 
   * [정적 파일 제공 문서](https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder)
 
-
-
-도움이 되었나요?
-
 supported.
 
 Send

@@ -26,7 +26,7 @@ description: '>  또는  외부에서 의  전략 사용을 방지합니다.'
 app/layout.jsx
 ```
     import Script from 'next/script'
-     
+
     export default function RootLayout({ children }) {
       return (
         <html lang="en">
@@ -48,7 +48,7 @@ pages/_document.js
 ```
     import { Html, Head, Main, NextScript } from 'next/document'
     import Script from 'next/script'
-     
+
     export default function Document() {
       return (
         <Html>
@@ -70,11 +70,5 @@ pages/_document.js
 
   * [App Router 스크립트 최적화](https://nextjs.org/docs/app/guides/scripts)
   * [Pages Router 스크립트 최적화](https://nextjs.org/docs/pages/guides/scripts)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

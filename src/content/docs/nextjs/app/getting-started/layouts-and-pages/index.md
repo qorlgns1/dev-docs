@@ -9,8 +9,6 @@ description: '원본 URL: https://nextjs.org/docs/app/getting-started/layouts-an
 
 [App Router](https://nextjs.org/docs/app)[Getting Started](https://nextjs.org/docs/app/getting-started)Layouts and Pages
 
-페이지 복사
-
 # 레이아웃과 페이지
 
 마지막 업데이트 2026년 2월 20일
@@ -83,10 +81,10 @@ JavaScriptTypeScript
     // Dummy imports
     import { getPosts } from '@/lib/posts'
     import { Post } from '@/ui/post'
-     
+
     export default async function Page() {
       const posts = await getPosts()
-     
+
       return (
         <ul>
           {posts.map((post) => (
@@ -104,7 +102,7 @@ app/blog/[slug]/page.tsx
 JavaScriptTypeScript
 [code]
     function generateStaticParams() {}
-     
+
     export default function Page() {
       return <h1>Hello, Blog Post Page!</h1>
     }
@@ -150,7 +148,7 @@ JavaScriptTypeScript
     }) {
       const { slug } = await params
       const post = await getPost(slug)
-     
+
       return (
         <div>
           <h1>{post.title}</h1>
@@ -204,10 +202,10 @@ app/ui/post.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default async function Post({ post }) {
       const posts = await getPosts()
-     
+
       return (
         <ul>
           {posts.map((post) => (
@@ -253,20 +251,27 @@ app/dashboard/layout.tsx
 [/code]
 
 > **알아두면 좋아요**
-> 
+>
 >   * 정적 라우트는 `params`가 `{}`로 해석됩니다.
 >   * `PageProps`, `LayoutProps`는 전역 헬퍼이므로 import가 필요 없습니다.
 >   * 타입은 `next dev`, `next build`, `next typegen` 실행 중 생성됩니다.
-> 
+>
 
 ## API Reference
 
 API Reference를 읽어 이 페이지에서 언급된 기능을 더 알아보세요.
 
-### [링크 및 네비게이션내장 네비게이션 최적화(프리패칭, 프리렌더링, 클라이언트 사이드 네비게이션 등) 작동 방식과 동적 라우트·느린 네트워크에 대한 최적화 방법을 알아보세요.](https://nextjs.org/docs/app/getting-started/linking-and-navigating)### [layout.jslayout.js 파일에 대한 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/layout)### [page.jspage.js 파일에 대한 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/page)### [Link 컴포넌트내장 `next/link` 컴포넌트로 빠른 클라이언트 사이드 네비게이션을 구현하세요.](https://nextjs.org/docs/app/api-reference/components/link)### [동적 세그먼트동적 데이터로부터 라우트 세그먼트를 프로그래밍 방식으로 생성할 수 있는 Dynamic Route Segments를 활용하세요.](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes)
+- [링크 및 탐색](https://nextjs.org/docs/app/getting-started/linking-and-navigating)
+  - 링크 및 네비게이션내장 네비게이션 최적화(프리패칭, 프리렌더링, 클라이언트 사이드 네비게이션 등) 작동 방식과 동적 라우트·느린 네트워크에 대한 최적화 방법을 알아보세요.
 
-도움이 되었나요?
+- [layout.js](https://nextjs.org/docs/app/api-reference/file-conventions/layout)
+  - layout.js 파일에 대한 API 레퍼런스입니다.
 
-지원됨.
+- [page.js](https://nextjs.org/docs/app/api-reference/file-conventions/page)
+  - page.js 파일에 대한 API 레퍼런스입니다.
 
-전송
+- [링크 컴포넌트](https://nextjs.org/docs/app/api-reference/components/link)
+  - Link 컴포넌트내장 `next/link` 컴포넌트로 빠른 클라이언트 사이드 네비게이션을 구현하세요.
+
+- [동적 세그먼트](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes)
+  - 동적 데이터로부터 라우트 세그먼트를 프로그래밍 방식으로 생성할 수 있는 Dynamic Route Segments를 활용하세요.

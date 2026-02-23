@@ -7,8 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)urlImports
-
 Copy page
 
 # urlImports
@@ -33,7 +31,7 @@ next.config.js
 [/code]
 
 그런 다음 URL에서 모듈을 직접 가져올 수 있습니다:
-[code] 
+[code]
     import { a, b, c } from 'https://example.com/assets/some/module.js'
 [/code]
 
@@ -50,17 +48,15 @@ URL Imports를 사용하면 Next.js가 lockfile과 가져온 에셋을 포함하
   * `next dev`를 실행하면 Next.js가 새로 발견한 모든 URL Imports를 다운로드해 lockfile에 추가합니다.
   * `next build`를 실행하면 Next.js는 프로덕션 빌드를 위해 lockfile만 사용합니다.
 
-
-
 일반적으로 네트워크 요청이 필요 없으며, lockfile이 오래되면 빌드가 실패합니다. 예외적으로 `Cache-Control: no-cache`로 응답하는 리소스는 lockfile에 `no-cache` 항목으로 표시되며 매 빌드마다 네트워크에서 다시 가져옵니다.
 
 ## Examples[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#examples)
 
 ### Skypack[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#skypack)
-[code] 
+[code]
     import confetti from 'https://cdn.skypack.dev/canvas-confetti'
     import { useEffect } from 'react'
-     
+
     export default () => {
       useEffect(() => {
         confetti()
@@ -70,10 +66,10 @@ URL Imports를 사용하면 Next.js가 lockfile과 가져온 에셋을 포함하
 [/code]
 
 ### Static Image Imports[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#static-image-imports)
-[code] 
+[code]
     import Image from 'next/image'
     import logo from 'https://example.com/assets/logo.png'
-     
+
     export default () => (
       <div>
         <Image src={logo} placeholder="blur" />
@@ -82,18 +78,18 @@ URL Imports를 사용하면 Next.js가 lockfile과 가져온 에셋을 포함하
 [/code]
 
 ### URLs in CSS[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#urls-in-css)
-[code] 
+[code]
     .className {
       background: url('https://example.com/assets/hero.jpg');
     }
 [/code]
 
 ### Asset Imports[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#asset-imports)
-[code] 
+[code]
     const logo = new URL('https://example.com/assets/file.txt', import.meta.url)
-     
+
     console.log(logo.pathname)
-     
+
     // prints "/_next/static/media/file.a9727b5d.txt"
 [/code]
 

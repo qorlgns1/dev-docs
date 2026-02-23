@@ -1,66 +1,53 @@
 ---
-title: 'Upgrading: Version 12'
+title: 'How to upgrade to version 12'
 description: 'To upgrade to version 12, run the following command:'
 ---
 
-# Upgrading: Version 12 | Next.js
-
 Source URL: https://nextjs.org/docs/pages/guides/upgrading/version-12
-
-[Guides](https://nextjs.org/docs/pages/guides)[Upgrading](https://nextjs.org/docs/pages/guides/upgrading)Version 12
-
-Copy page
 
 # How to upgrade to version 12
 
-Last updated February 20, 2026
-
 To upgrade to version 12, run the following command:
 
-Terminal
-[code]
-    npm i next@12 react@17 react-dom@17 eslint-config-next@12
-[/code]
+```bash filename="Terminal"
+npm i next@12 react@17 react-dom@17 eslint-config-next@12
+```
 
-Terminal
-[code]
-    yarn add next@12 react@17 react-dom@17 eslint-config-next@12
-[/code]
+```bash filename="Terminal"
+yarn add next@12 react@17 react-dom@17 eslint-config-next@12
+```
 
-Terminal
-[code]
-    pnpm up next@12 react@17 react-dom@17 eslint-config-next@12
-[/code]
+```bash filename="Terminal"
+pnpm up next@12 react@17 react-dom@17 eslint-config-next@12
+```
 
-Terminal
-[code]
-    bun add next@12 react@17 react-dom@17 eslint-config-next@12
-[/code]
+```bash filename="Terminal"
+bun add next@12 react@17 react-dom@17 eslint-config-next@12
+```
 
 > **Good to know:** If you are using TypeScript, ensure you also upgrade `@types/react` and `@types/react-dom` to their corresponding versions.
 
-### Upgrading to 12.2[](https://nextjs.org/docs/pages/guides/upgrading/version-12#upgrading-to-122)
+### Upgrading to 12.2
 
-[Middleware](https://nextjs.org/docs/messages/middleware-upgrade-guide) \- If you were using Middleware prior to `12.2`, please see the [upgrade guide](https://nextjs.org/docs/messages/middleware-upgrade-guide) for more information.
+[Middleware](https://nextjs.org/docs/messages/middleware-upgrade-guide) - If you were using Middleware prior to `12.2`, please see the [upgrade guide](https://nextjs.org/docs/messages/middleware-upgrade-guide) for more information.
 
-### Upgrading to 12.0[](https://nextjs.org/docs/pages/guides/upgrading/version-12#upgrading-to-120)
+### Upgrading to 12.0
 
-[Minimum Node.js Version](https://nodejs.org/en/) \- The minimum Node.js version has been bumped from `12.0.0` to `12.22.0` which is the first version of Node.js with native ES Modules support.
+[Minimum Node.js Version](https://nodejs.org/en/) - The minimum Node.js version has been bumped from `12.0.0` to `12.22.0` which is the first version of Node.js with native ES Modules support.
 
-[Minimum React Version](https://react.dev/learn/add-react-to-an-existing-project) \- The minimum required React version is `17.0.2`. To upgrade you can run the following command in the terminal:
+[Minimum React Version](https://react.dev/learn/add-react-to-an-existing-project) - The minimum required React version is `17.0.2`. To upgrade you can run the following command in the terminal:
 
-Terminal
-[code]
-    npm install react@latest react-dom@latest
-     
-    yarn add react@latest react-dom@latest
-     
-    pnpm update react@latest react-dom@latest
-     
-    bun add react@latest react-dom@latest
-[/code]
+```bash filename="Terminal"
+npm install react@latest react-dom@latest
 
-#### SWC replacing Babel[](https://nextjs.org/docs/pages/guides/upgrading/version-12#swc-replacing-babel)
+yarn add react@latest react-dom@latest
+
+pnpm update react@latest react-dom@latest
+
+bun add react@latest react-dom@latest
+```
+
+#### SWC replacing Babel
 
 Next.js now uses the Rust-based compiler [SWC](https://swc.rs/) to compile JavaScript/TypeScript. This new compiler is up to 17x faster than Babel when compiling individual files and up to 5x faster Fast Refresh.
 
@@ -70,34 +57,31 @@ When an application has a custom Babel configuration, Next.js will automatically
 
 Many of the integrations with external libraries that currently require custom Babel transformations will be ported to Rust-based SWC transforms in the near future. These include but are not limited to:
 
-  * Styled Components
-  * Emotion
-  * Relay
-
-
+* Styled Components
+* Emotion
+* Relay
 
 In order to prioritize transforms that will help you adopt SWC, please provide your `.babelrc` on [this feedback thread](https://github.com/vercel/next.js/discussions/30174).
 
-#### SWC replacing Terser for minification[](https://nextjs.org/docs/pages/guides/upgrading/version-12#swc-replacing-terser-for-minification)
+#### SWC replacing Terser for minification
 
 You can opt-in to replacing Terser with SWC for minifying JavaScript up to 7x faster using a flag in `next.config.js`:
 
-next.config.js
-[code]
-    module.exports = {
-      swcMinify: true,
-    }
-[/code]
+```js filename="next.config.js"
+module.exports = {
+  swcMinify: true,
+}
+```
 
 Minification using SWC is an opt-in flag to ensure it can be tested against more real-world Next.js applications before it becomes the default in Next.js 12.1. If you have feedback about minification, please leave it on [this feedback thread](https://github.com/vercel/next.js/discussions/30237).
 
-#### Improvements to styled-jsx CSS parsing[](https://nextjs.org/docs/pages/guides/upgrading/version-12#improvements-to-styled-jsx-css-parsing)
+#### Improvements to styled-jsx CSS parsing
 
 On top of the Rust-based compiler we've implemented a new CSS parser based on the one used for the styled-jsx Babel transform. This new parser has improved handling of CSS and now errors when invalid CSS is used that would previously slip through and cause unexpected behavior.
 
 Because of this change invalid CSS will throw an error during development and `next build`. This change only affects styled-jsx usage.
 
-#### `next/image` changed wrapping element[](https://nextjs.org/docs/pages/guides/upgrading/version-12#nextimage-changed-wrapping-element)
+#### `next/image` changed wrapping element
 
 `next/image` now renders the `<img>` inside a `<span>` instead of `<div>`.
 
@@ -109,49 +93,51 @@ The `className` prop is unchanged and will still be passed to the underlying `<i
 
 See the [documentation](https://nextjs.org/docs/pages/api-reference/components/image#styling-images) for more info.
 
-#### HMR connection now uses a WebSocket[](https://nextjs.org/docs/pages/guides/upgrading/version-12#hmr-connection-now-uses-a-websocket)
+#### HMR connection now uses a WebSocket
 
 Previously, Next.js used a [server-sent events](https://developer.mozilla.org/docs/Web/API/Server-sent_events) connection to receive HMR events. Next.js 12 now uses a WebSocket connection.
 
 In some cases when proxying requests to the Next.js dev server, you will need to ensure the upgrade request is handled correctly. For example, in `nginx` you would need to add the following configuration:
-[code] 
-    location /_next/webpack-hmr {
-        proxy_pass http://localhost:3000/_next/webpack-hmr;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-    }
-[/code]
+
+```nginx
+location /_next/webpack-hmr {
+    proxy_pass http://localhost:3000/_next/webpack-hmr;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+}
+```
 
 If you are using Apache (2.x), you can add the following configuration to enable web sockets to the server. Review the port, host name and server names.
-[code] 
-    <VirtualHost *:443>
-     # ServerName yourwebsite.local
-     ServerName "${WEBSITE_SERVER_NAME}"
-     ProxyPass / http://localhost:3000/
-     ProxyPassReverse / http://localhost:3000/
-     # Next.js 12 uses websocket
-     <Location /_next/webpack-hmr>
-        RewriteEngine On
-        RewriteCond %{QUERY_STRING} transport=websocket [NC]
-        RewriteCond %{HTTP:Upgrade} websocket [NC]
-        RewriteCond %{HTTP:Connection} upgrade [NC]
-        RewriteRule /(.*) ws://localhost:3000/_next/webpack-hmr/$1 [P,L]
-        ProxyPass ws://localhost:3000/_next/webpack-hmr retry=0 timeout=30
-        ProxyPassReverse ws://localhost:3000/_next/webpack-hmr
-     </Location>
-    </VirtualHost>
-    
-[/code]
+
+```
+<VirtualHost *:443>
+ # ServerName yourwebsite.local
+ ServerName "${WEBSITE_SERVER_NAME}"
+ ProxyPass / http://localhost:3000/
+ ProxyPassReverse / http://localhost:3000/
+ # Next.js 12 uses websocket
+ <Location /_next/webpack-hmr>
+    RewriteEngine On
+    RewriteCond %{QUERY_STRING} transport=websocket [NC]
+    RewriteCond %{HTTP:Upgrade} websocket [NC]
+    RewriteCond %{HTTP:Connection} upgrade [NC]
+    RewriteRule /(.*) ws://localhost:3000/_next/webpack-hmr/$1 [P,L]
+    ProxyPass ws://localhost:3000/_next/webpack-hmr retry=0 timeout=30
+    ProxyPassReverse ws://localhost:3000/_next/webpack-hmr
+ </Location>
+</VirtualHost>
+```
 
 For custom servers, such as `express`, you may need to use `app.all` to ensure the request is passed correctly, for example:
-[code] 
-    app.all('/_next/webpack-hmr', (req, res) => {
-      nextjsRequestHandler(req, res)
-    })
-[/code]
 
-#### Webpack 4 support has been removed[](https://nextjs.org/docs/pages/guides/upgrading/version-12#webpack-4-support-has-been-removed)
+```js
+app.all('/_next/webpack-hmr', (req, res) => {
+  nextjsRequestHandler(req, res)
+})
+```
+
+#### Webpack 4 support has been removed
 
 If you are already using webpack 5 you can skip this section.
 
@@ -159,7 +145,7 @@ Next.js has adopted webpack 5 as the default for compilation in Next.js 11. As c
 
 If your application is still using webpack 4 using the opt-out flag, you will now see an error linking to the [webpack 5 upgrading documentation](https://nextjs.org/docs/messages/webpack5).
 
-#### `target` option deprecated[](https://nextjs.org/docs/pages/guides/upgrading/version-12#target-option-deprecated)
+#### `target` option deprecated
 
 If you do not have `target` in `next.config.js` you can skip this section.
 
@@ -168,9 +154,5 @@ The target option has been deprecated in favor of built-in support for tracing w
 During `next build`, Next.js will automatically trace each page and its dependencies to determine all of the files that are needed for deploying a production version of your application.
 
 If you are currently using the `target` option set to `serverless`, please read the [documentation on how to leverage the new output](https://nextjs.org/docs/pages/api-reference/config/next-config-js/output).
+---
 
-Was this helpful?
-
-supported.
-
-Send

@@ -7,8 +7,6 @@ description: 'Rewrites를 사용하면 들어오는 요청 경로를 다른 목�
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites
 
-[Configuration](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)rewrites
-
 Copy page
 
 # rewrites
@@ -45,8 +43,6 @@ Rewrites는 클라이언트 측 라우팅에 적용됩니다. 위 예제에서 `
   * `locale`: `false` 또는 `undefined` \- 매칭 시 locale을 포함하지 않을지 여부입니다.
   * `has`는 `type`, `key`, `value` 속성을 가진 [has objects](https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#header-cookie-and-query-matching)의 배열입니다.
   * `missing`은 `type`, `key`, `value` 속성을 가진 [missing objects](https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#header-cookie-and-query-matching)의 배열입니다.
-
-
 
 `rewrites` 함수가 배열을 반환하면 rewrites는 파일 시스템(페이지 및 `/public` 파일)을 확인한 후, 동적 라우트 이전에 적용됩니다. `rewrites` 함수가 특정 형태의 배열 객체를 반환하면 이 동작을 변경하고 `v10.1`부터 더 세밀하게 제어할 수 있습니다:
 
@@ -96,8 +92,6 @@ Next.js 라우트가 확인되는 순서는 다음과 같습니다:
   4. [public directory](https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder)의 정적 파일, `_next/static` 파일, 비동적 페이지가 확인/제공됩니다.
   5. `afterFiles` rewrites가 확인/적용되며, 이 중 하나가 매칭되면 매칭마다 동적 라우트/정적 파일을 확인합니다.
   6. `fallback` rewrites가 확인/적용되며, 이는 404 페이지 렌더링 전에, 동적 라우트/모든 정적 자산을 확인한 후에 적용됩니다. `getStaticPaths`에서 [fallback: true/'blocking'](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-true)을 사용하면 `next.config.js`에 정의된 fallback `rewrites`는 실행되지 않습니다.
-
-
 
 ## Rewrite parameters[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#rewrite-parameters)
 
@@ -240,8 +234,6 @@ next.config.js
   * `type`: `String` \- `header`, `cookie`, `host`, `query` 중 하나여야 합니다.
   * `key`: `String` \- 선택된 타입에서 매칭할 키입니다.
   * `value`: `String` 또는 `undefined` \- 확인할 값입니다. `undefined`이면 어떤 값이든 매칭됩니다. 값에 정규식 형태의 문자열을 사용하여 특정 부분을 캡처할 수 있습니다. 예를 들어 값으로 `first-(?<paramName>.*)`를 사용하고 `first-second`가 들어오면 `second`를 `:paramName`으로 destination에서 사용할 수 있습니다.
-
-
 
 next.config.js
 [code]
@@ -401,7 +393,7 @@ next.config.js
 [code]
     module.exports = {
       basePath: '/docs',
-     
+
       async rewrites() {
         return [
           {
@@ -431,7 +423,7 @@ next.config.js
         locales: ['en', 'fr', 'de'],
         defaultLocale: 'en',
       },
-     
+
       async rewrites() {
         return [
           {
@@ -469,14 +461,10 @@ next.config.js
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#version-history)
 
-Version| Changes  
----|---  
-`v13.3.0`| `missing` 추가.  
-`v10.2.0`| `has` 추가.  
-`v9.5.0`| 헤더 추가.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v13.3.0`| `missing` 추가.
+`v10.2.0`| `has` 추가.
+`v9.5.0`| 헤더 추가.
 
 보내기

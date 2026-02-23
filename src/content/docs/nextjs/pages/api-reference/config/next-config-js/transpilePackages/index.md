@@ -7,10 +7,6 @@ description: 'Next.js는 로컬 패키지(예: 모노레포)나 외부 의존성
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/transpilePackages
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)transpilePackages
-
-페이지 복사
-
 # transpilePackages
 
 마지막 업데이트 2026년 2월 20일
@@ -23,18 +19,12 @@ next.config.js
     const nextConfig = {
       transpilePackages: ['package-name'],
     }
-     
+
     module.exports = nextConfig
 [/code]
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/transpilePackages#version-history)
 
-버전| 변경 사항  
----|---  
-`v13.0.0`| `transpilePackages`가 추가되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+버전| 변경 사항
+---|---
+`v13.0.0`| `transpilePackages`가 추가되었습니다.

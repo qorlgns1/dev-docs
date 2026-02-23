@@ -7,10 +7,6 @@ description: 'Next.js에는 기본적으로 TypeScript가 포함되어 있어 �
 
 소스 URL: https://nextjs.org/docs/pages/api-reference/config/typescript
 
-[API Reference](https://nextjs.org/docs/pages/api-reference)[Configuration](https://nextjs.org/docs/pages/api-reference/config)타입스크립트
-
-페이지 복사
-
 # 타입스크립트
 
 마지막 업데이트: 2026년 2월 20일
@@ -28,10 +24,10 @@ Next.js는 프로젝트 루트에 `next-env.d.ts` 파일을 생성합니다. 이
 `next dev`, `next build`, [`next typegen`](https://nextjs.org/docs/app/api-reference/cli/next#next-typegen-options)을 실행하면 이 파일이 다시 생성됩니다.
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * `next-env.d.ts`를 `.gitignore`에 추가하는 것이 좋습니다.
 >   * 이 파일은 `tsconfig.json`의 `include` 배열에 반드시 포함되어야 합니다(`create-next-app`은 자동으로 처리합니다).
-> 
+>
 
 ## 예시[](https://nextjs.org/docs/pages/api-reference/config/typescript#examples)
 
@@ -42,11 +38,11 @@ Next.js는 프로젝트 루트에 `next-env.d.ts` 파일을 생성합니다. 이
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       /* config options here */
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -57,12 +53,12 @@ next.config.ts
 next.config.js
 [code]
     // @ts-check
-     
+
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       /* config options here */
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -86,15 +82,15 @@ Terminal
 next.config.mts
 [code]
     import type { NextConfig } from 'next'
-     
+
     // Top-level await and dynamic import are supported
     const flags = await import('./flags.js').then((m) => m.default ?? m)
-     
+
     const nextConfig: NextConfig = {
       /* config options here */
       typedRoutes: Boolean(flags?.typedRoutes),
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -117,11 +113,11 @@ Pages와 App Router 모두에서 `next/link`의 `href` prop에 적용됩니다. 
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       typedRoutes: true,
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -147,15 +143,15 @@ tsconfig.json
 app/example-client.tsx
 [code]
     'use client'
-     
+
     import type { Route } from 'next'
     import Link from 'next/link'
     import { useRouter } from 'next/navigation'
-     
+
     export default function Example() {
       const router = useRouter()
       const slug = 'nextjs'
-     
+
       return (
         <>
           {/* Link: literal and dynamic */}
@@ -164,7 +160,7 @@ app/example-client.tsx
           <Link href={('/blog/' + slug) as Route} />
           {/* TypeScript error if href is not a valid route */}
           <Link href="/aboot" />
-     
+
           {/* Router: literal and dynamic strings are validated */}
           <button onClick={() => router.push('/about')}>Push About</button>
           <button onClick={() => router.replace(`/blog/${slug}`)}>
@@ -173,7 +169,7 @@ app/example-client.tsx
           <button onClick={() => router.prefetch('/contact')}>
             Prefetch Contact
           </button>
-     
+
           {/* For non-literal strings, cast to Route */}
           <button onClick={() => router.push(('/blog/' + slug) as Route)}>
             Push Non-literal Blog
@@ -188,12 +184,12 @@ app/example-client.tsx
 proxy.ts
 [code]
     import { NextRequest, NextResponse } from 'next/server'
-     
+
     export function proxy(request: NextRequest) {
       if (request.nextUrl.pathname === '/proxy-redirect') {
         return NextResponse.redirect(new URL('/', request.url))
       }
-     
+
       return NextResponse.next()
     }
 [/code]
@@ -201,17 +197,17 @@ proxy.ts
 app/some/page.tsx
 [code]
     import type { Route } from 'next'
-     
+
     export default function Page() {
       return <Link href={'/proxy-redirect' as Route}>Link Text</Link>
     }
 [/code]
 
 `next/link`를 래핑하는 커스텀 컴포넌트에서 `href`를 허용하려면 제네릭을 사용하세요.
-[code] 
+[code]
     import type { Route } from 'next'
     import Link from 'next/link'
-     
+
     function Card<T extends string>({ href }: { href: Route<T> | URL }) {
       return (
         <Link href={href}>
@@ -226,12 +222,12 @@ app/some/page.tsx
 components/nav-items.ts
 [code]
     import type { Route } from 'next'
-     
+
     type NavItem<T extends string = string> = {
       href: T
       label: string
     }
-     
+
     export const navItems: NavItem<Route>[] = [
       { href: '/', label: 'Home' },
       { href: '/about', label: 'About' },
@@ -245,7 +241,7 @@ components/nav.tsx
 [code]
     import Link from 'next/link'
     import { navItems } from './nav-items'
-     
+
     export function Nav() {
       return (
         <nav>
@@ -260,7 +256,7 @@ components/nav.tsx
 [/code]
 
 > **작동 방식은 무엇인가요?**
-> 
+>
 > `next dev` 또는 `next build`를 실행하면 Next.js가 애플리케이션의 모든 기존 라우트 정보를 담은 숨김 `.d.ts` 파일을 `.next` 내부에 생성합니다(`Link`의 `href` 타입으로 모든 유효한 라우트가 포함됨). 이 `.d.ts` 파일은 `tsconfig.json`에 포함되며 TypeScript 컴파일러가 이를 확인해 에디터에서 잘못된 링크를 알려줍니다.
 
 ### 환경 변수 타입 IntelliSense[](https://nextjs.org/docs/pages/api-reference/config/typescript#type-intellisense-for-environment-variables)
@@ -272,13 +268,13 @@ components/nav.tsx
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         typedEnv: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -293,15 +289,15 @@ pages/blog/[slug].tsx
 [/code]
 
 import type { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
-     
+
     export const getStaticProps = (async (context) => {
       // ...
     }) satisfies GetStaticProps
-     
+
     export const getStaticPaths = (async () => {
       // ...
     }) satisfies GetStaticPaths
-     
+
     export const getServerSideProps = (async (context) => {
       // ...
     }) satisfies GetServerSideProps
@@ -316,7 +312,7 @@ import type { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 pages/api/hello.ts
 [code]
     import type { NextApiRequest, NextApiResponse } from 'next'
-     
+
     export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(200).json({ name: 'John Doe' })
     }
@@ -327,11 +323,11 @@ pages/api/hello.ts
 pages/api/hello.ts
 [code]
     import type { NextApiRequest, NextApiResponse } from 'next'
-     
+
     type Data = {
       name: string
     }
-     
+
     export default function handler(
       req: NextApiRequest,
       res: NextApiResponse<Data>
@@ -345,7 +341,7 @@ pages/api/hello.ts
 [커스텀 `App`](https://nextjs.org/docs/pages/building-your-application/routing/custom-app)을 사용하는 경우 내장 타입 `AppProps`를 활용하고 파일 이름을 `./pages/_app.tsx`로 변경할 수 있습니다.
 [code]
     import type { AppProps } from 'next/app'
-     
+
     export default function MyApp({ Component, pageProps }: AppProps) {
       return <Component {...pageProps} />
     }
@@ -362,13 +358,13 @@ pages/api/hello.ts
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       typescript: {
         tsconfigPath: 'tsconfig.build.json',
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -377,15 +373,15 @@ next.config.ts
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const isProd = process.env.NODE_ENV === 'production'
-     
+
     const nextConfig: NextConfig = {
       typescript: {
         tsconfigPath: isProd ? 'tsconfig.build.json' : 'tsconfig.json',
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -408,11 +404,11 @@ tsconfig.build.json
 이렇게 하면 `tsconfig.json`을 통해 에디터는 엄격함을 유지하면서 프로덕션 빌드는 완화된 설정을 사용할 수 있습니다.
 
 > **알아두면 좋아요** :
-> 
+>
 >   * IDE는 보통 진단과 IntelliSense를 위해 `tsconfig.json`을 읽으므로, 프로덕션 빌드가 다른 구성을 사용해도 IDE 경고를 계속 볼 수 있습니다. 에디터와 동등한 동작을 원하면 핵심 옵션을 맞춰 주세요.
 >   * 개발 모드에서는 `tsconfig.json`만 변경 감지 대상입니다. `typescript.tsconfigPath`로 다른 파일 이름을 편집했다면 변경 사항을 적용하려면 개발 서버를 재시작하세요.
 >   * 구성한 파일은 `next dev`, `next build`, `next typegen`에서 사용됩니다.
-> 
+>
 
 ### 프로덕션에서 TypeScript 오류 비활성화[](https://nextjs.org/docs/pages/api-reference/config/typescript#disabling-typescript-errors-in-production)
 
@@ -427,7 +423,7 @@ tsconfig.build.json
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       typescript: {
         // !! WARN !!
@@ -437,7 +433,7 @@ next.config.ts
         ignoreBuildErrors: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -467,15 +463,11 @@ tsconfig.json
 
 ## 버전 변경 사항[](https://nextjs.org/docs/pages/api-reference/config/typescript#version-changes)
 
-Version| Changes  
----|---  
-`v15.0.0`| TypeScript 프로젝트에 [`next.config.ts`](https://nextjs.org/docs/pages/api-reference/config/typescript#type-checking-nextjs-configuration-files) 지원이 추가되었습니다.  
-`v13.2.0`| 정적으로 타입이 지정된 링크가 베타로 제공됩니다.  
-`v12.0.0`| [SWC](https://nextjs.org/docs/architecture/nextjs-compiler)가 기본값으로 TypeScript와 TSX를 컴파일하여 빌드를 더 빠르게 합니다.  
-`v10.2.1`| `tsconfig.json`에서 활성화했을 때 [증분 타입 검사](https://www.typescriptlang.org/tsconfig#incremental) 지원이 추가되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v15.0.0`| TypeScript 프로젝트에 [`next.config.ts`](https://nextjs.org/docs/pages/api-reference/config/typescript#type-checking-nextjs-configuration-files) 지원이 추가되었습니다.
+`v13.2.0`| 정적으로 타입이 지정된 링크가 베타로 제공됩니다.
+`v12.0.0`| [SWC](https://nextjs.org/docs/architecture/nextjs-compiler)가 기본값으로 TypeScript와 TSX를 컴파일하여 빌드를 더 빠르게 합니다.
+`v10.2.1`| `tsconfig.json`에서 활성화했을 때 [증분 타입 검사](https://www.typescriptlang.org/tsconfig#incremental) 지원이 추가되었습니다.
 
 보내기

@@ -7,8 +7,6 @@ description: '> Next.js 9.4 릴리스 이후로 환경 변수를 추가하는 �
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/env
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)env
-
 Copy page
 
 # env
@@ -31,27 +29,25 @@ next.config.js
 [/code]
 
 이제 코드에서 `process.env.customKey`에 접근할 수 있습니다. 예를 들어:
-[code] 
+[code]
     function Page() {
       return <h1>The value of customKey is: {process.env.customKey}</h1>
     }
-     
+
     export default Page
 [/code]
 
 Next.js는 빌드 시점에 `process.env.customKey`를 `'my-value'`로 대체합니다. webpack [DefinePlugin](https://webpack.js.org/plugins/define-plugin/)의 특성상 `process.env` 변수를 구조 분해하려고 하면 동작하지 않습니다.
 
 예를 들어, 다음과 같은 줄은:
-[code] 
+[code]
     return <h1>The value of customKey is: {process.env.customKey}</h1>
 [/code]
 
 다음과 같이 바뀝니다:
-[code] 
+[code]
     return <h1>The value of customKey is: {'my-value'}</h1>
 [/code]
-
-도움이 되었나요?
 
 supported.
 

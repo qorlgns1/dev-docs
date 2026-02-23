@@ -7,10 +7,6 @@ description: '특정 의존성이 Node.js 전용 기능을 사용한다면, 해�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)serverExternalPackages
-
-페이지 복사
-
 # serverExternalPackages
 
 마지막 업데이트 2026년 2월 20일
@@ -25,7 +21,7 @@ next.config.js
     const nextConfig = {
       serverExternalPackages: ['@acme/ui'],
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -111,14 +107,8 @@ Next.js에는 현재 호환성 작업 중이며 자동으로 제외되는 [인�
   * `websocket`
   * `zeromq`
 
-
-
-Version|Changes  
----|---  
-`v15.0.0`| 실험 단계에서 안정화 단계로 이동했으며, `serverComponentsExternalPackages`에서 `serverExternalPackages`로 이름이 변경되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version|Changes
+---|---
+`v15.0.0`| 실험 단계에서 안정화 단계로 이동했으며, `serverComponentsExternalPackages`에서 `serverExternalPackages`로 이름이 변경되었습니다.
 
 보내기

@@ -53,10 +53,9 @@ JavaScriptTypeScript
 하지만 slot은 **라우트 세그먼트가 아니며** URL 구조에 영향을 주지 않습니다. 예를 들어, `/@analytics/views`의 URL은 `@analytics`가 slot이므로 `/views`가 됩니다. slot은 일반 [Page](https://nextjs.org/docs/app/api-reference/file-conventions/page) 컴포넌트와 결합되어 라우트 세그먼트에 연결된 최종 페이지를 형성합니다. 이 때문에 동일한 라우트 세그먼트 수준에서 [static](https://nextjs.org/docs/app/guides/caching#static-rendering) slot과 [dynamic](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) slot을 따로 가질 수 없습니다. 한 slot이 dynamic이면 해당 수준의 모든 slot이 dynamic이어야 합니다.
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `children` prop은 폴더에 매핑할 필요가 없는 암묵적인 slot입니다. 즉, `app/page.js`는 `app/@children/page.js`와 동일합니다.
-> 
-
+>
 
 ### `default.js`[](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes#defaultjs)
 
@@ -77,13 +76,10 @@ JavaScriptTypeScript
   * [**Soft Navigation**](https://nextjs.org/docs/app/getting-started/linking-and-navigating#client-side-transitions): 클라이언트 측 탐색 동안 Next.js는 [부분 렌더](https://nextjs.org/docs/app/getting-started/linking-and-navigating#client-side-transitions)를 수행하여 slot 내 서브페이지를 변경하면서, URL과 일치하지 않더라도 다른 slot의 활성 서브페이지는 유지합니다.
   * **Hard Navigation** : 전체 페이지 로드(브라우저 새로고침) 이후에는 현재 URL과 일치하지 않는 slot의 활성 상태를 Next.js가 판단할 수 없습니다. 대신 해당 slot에 대한 [`default.js`](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes#defaultjs) 파일을 렌더링하거나 `default.js`가 없으면 `404`를 렌더링합니다.
 
-
-
 > **알아두면 좋아요** :
-> 
+>
 >   * 일치하지 않는 라우트에 대한 `404`는 의도하지 않은 페이지에서 병렬 라우트가 실수로 렌더링되는 일을 방지합니다.
-> 
-
+>
 
 ## Examples[](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes#examples)
 
@@ -96,9 +92,9 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useSelectedLayoutSegment } from 'next/navigation'
-     
+
     export default function Layout({ auth }: { auth: React.ReactNode }) {
       const loginSegment = useSelectedLayoutSegment('auth')
       // ...
@@ -116,7 +112,7 @@ app/dashboard/layout.tsx
 JavaScriptTypeScript
 [code]
     import { checkUserRole } from '@/lib/auth'
-     
+
     export default function Layout({
       user,
       admin,
@@ -142,7 +138,7 @@ app/@analytics/layout.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       return (
         <>
@@ -165,8 +161,6 @@ Parallel Routes는 [Intercepting Routes](https://nextjs.org/docs/app/api-referen
   * 이전 라우트로 이동하는 대신 **뒤로 탐색 시 모달 닫기**.
   * **앞으로 탐색 시 모달 다시 열기**.
 
-
-
 다음 UI 패턴을 고려해 보세요. 사용자는 레이아웃에서 클라이언트 측 탐색을 사용해 로그인 모달을 열거나 별도의 `/login` 페이지에 접근할 수 있습니다:
 
 이 패턴을 구현하려면 먼저 **메인** 로그인 페이지를 렌더링하는 `/login` 라우트를 만듭니다.
@@ -176,7 +170,7 @@ app/login/page.tsx
 JavaScriptTypeScript
 [code]
     import { Login } from '@/app/ui/login'
-     
+
     export default function Page() {
       return <Login />
     }
@@ -201,7 +195,7 @@ JavaScriptTypeScript
 [code]
     import { Modal } from '@/app/ui/modal'
     import { Login } from '@/app/ui/login'
-     
+
     export default function Page() {
       return (
         <Modal>
@@ -212,11 +206,10 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋아요:**
-> 
+>
 >   * `(.)` 규칙은 라우트를 가로채는 데 사용됩니다. 자세한 내용은 [Intercepting Routes](https://nextjs.org/docs/app/api-reference/file-conventions/intercepting-routes#convention) 문서를 참고하세요.
 >   * `<Modal>` 기능을 모달 콘텐츠(`<Login>`)와 분리하면 모달 내부의 모든 콘텐츠(예: [forms](https://nextjs.org/docs/app/guides/forms))가 서버 컴포넌트임을 보장할 수 있습니다. 자세한 내용은 [Interleaving Client and Server Components](https://nextjs.org/docs/app/getting-started/server-and-client-components#examples#supported-pattern-passing-server-components-to-client-components-as-props)를 참고하세요.
-> 
-
+>
 
 #### Opening the modal[](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes#opening-the-modal)
 
@@ -229,7 +222,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Layout({
       auth,
       children,
@@ -260,12 +253,12 @@ app/ui/modal.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useRouter } from 'next/navigation'
-     
+
     export function Modal({ children }: { children: React.ReactNode }) {
       const router = useRouter()
-     
+
       return (
         <>
           <button
@@ -288,7 +281,7 @@ app/ui/modal.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export function Modal({ children }: { children: React.ReactNode }) {
       return (
         <>
@@ -321,11 +314,11 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋아요:**
-> 
+>
 >   * 병렬 라우트의 동작 방식 때문에 모달을 닫기 위해 `@auth` 슬롯에서 캐치올 라우트를 사용합니다. 슬롯과 더 이상 일치하지 않는 경로로 클라이언트 측 탐색을 수행하면 계속 표시되므로, 모달을 닫으려면 `null`을 반환하는 라우트와 슬롯을 일치시켜야 합니다.
 >   * 다른 예로는 전용 `/photo/[id]` 페이지를 유지하면서 갤러리에서 사진 모달을 열거나, 사이드 모달에서 쇼핑 카트를 여는 경우가 있습니다.
 >   * Intercepted 및 Parallel Routes와 함께하는 모달 [예시 보기](https://github.com/vercel-labs/nextgram).
-> 
+>
 
 ### 로딩 및 오류 UI[](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes#loading-and-error-ui)
 
@@ -335,10 +328,7 @@ JavaScriptTypeScript
 
 ##
 
-### [default.js 파일에 대한 API Reference입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/default)
-
-도움이 되었나요?
-
-지원됨.
+- [default.js](https://nextjs.org/docs/app/api-reference/file-conventions/default)
+  - 파일에 대한 API Reference입니다.
 
 보내기

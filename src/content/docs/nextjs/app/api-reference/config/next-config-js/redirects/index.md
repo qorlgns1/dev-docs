@@ -7,10 +7,6 @@ description: '리다이렉트는 들어오는 요청 경로를 다른 대상 경
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)redirects
-
-페이지 복사
-
 # 리다이렉트
 
 마지막 업데이트: 2026년 2월 20일
@@ -40,8 +36,6 @@ next.config.js
   * `destination`은 라우팅하려는 경로입니다.
   * `permanent`는 `true` 또는 `false`입니다. `true`이면 308 상태 코드를 사용하여 클라이언트/검색 엔진이 리다이렉트를 영구적으로 캐시하도록 지시하고, `false`이면 307 상태 코드를 사용하여 일시적이며 캐시되지 않습니다.
 
-
-
 > **Next.js가 307과 308을 사용하는 이유는 무엇인가요?** 전통적으로 302는 임시 리다이렉트, 301은 영구 리다이렉트였지만 많은 브라우저가 원래 메서드와 상관없이 리다이렉트 요청 메서드를 `GET`으로 변경했습니다. 예를 들어 브라우저가 `POST /v1/users` 요청을 보냈고 응답이 상태 코드 `302`와 위치 `/v2/users`를 반환하면, 이후 요청이 예상한 `POST /v2/users`가 아니라 `GET /v2/users`가 될 수 있습니다. Next.js는 사용된 요청 메서드를 명시적으로 보존하기 위해 307 임시 리다이렉트와 308 영구 리다이렉트 상태 코드를 사용합니다.
 
   * `basePath`: `false` 또는 `undefined`. `false`이면 매칭 시 `basePath`가 포함되지 않으며, 외부 리다이렉트에만 사용할 수 있습니다.
@@ -49,14 +43,12 @@ next.config.js
   * `has`는 `type`, `key`, `value` 속성을 가진 [has 객체](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects#header-cookie-and-query-matching)의 배열입니다.
   * `missing`은 `type`, `key`, `value` 속성을 가진 [missing 객체](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects#header-cookie-and-query-matching)의 배열입니다.
 
-
-
 리다이렉트는 페이지와 `/public` 파일을 포함하는 파일 시스템보다 먼저 확인됩니다.
 
 Pages Router를 사용할 때는 [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)가 존재하고 경로를 매칭하지 않는 한 클라이언트 사이드 라우팅(`Link`, `router.push`)에 리다이렉트가 적용되지 않습니다.
 
 리다이렉트가 적용되면 요청에 제공된 모든 쿼리 값이 리다이렉트 대상에 그대로 전달됩니다. 예를 들어 다음 리다이렉트 구성을 살펴보세요:
-[code] 
+[code]
     {
       source: '/old-blog/:path*',
       destination: '/blog/:path*',
@@ -159,8 +151,6 @@ next.config.js
   * `key`: `String`. 선택한 타입에서 매칭할 키입니다.
   * `value`: `String` 또는 `undefined`. 확인할 값이며, `undefined`이면 어떤 값이든 매칭됩니다. 값에 정규식과 유사한 문자열을 사용하여 특정 부분을 캡처할 수 있습니다. 예를 들어 `first-(?<paramName>.*)` 값을 `first-second`에 사용하면 `second`를 `:paramName`으로 대상에서 사용할 수 있습니다.
 
-
-
 next.config.js
 [code]
     module.exports = {
@@ -254,7 +244,7 @@ next.config.js
 [code]
     module.exports = {
       basePath: '/docs',
-     
+
       async redirects() {
         return [
           {
@@ -323,14 +313,10 @@ next.config.js
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects#version-history)
 
-Version| Changes  
----|---  
-`v13.3.0`| `missing` 추가.  
-`v10.2.0`| `has` 추가.  
-`v9.5.0`| `redirects` 추가.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v13.3.0`| `missing` 추가.
+`v10.2.0`| `has` 추가.
+`v9.5.0`| `redirects` 추가.
 
 보내기

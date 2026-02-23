@@ -7,8 +7,6 @@ description: 'Next.js는 개발 환경에서 서버가 빌드된 페이지를 �
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/onDemandEntries
 
-[Configuration](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)onDemandEntries
-
 Copy page
 
 # onDemandEntries
@@ -30,8 +28,6 @@ next.config.js
       },
     }
 [/code]
-
-도움이 되었나요?
 
 supported.
 

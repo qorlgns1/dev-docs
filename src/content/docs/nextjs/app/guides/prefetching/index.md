@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/prefetching'
 
 원본 URL: https://nextjs.org/docs/app/guides/prefetching
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Prefetching
-
-페이지 복사
-
 # Prefetching
 
 최종 업데이트 2026년 2월 20일
@@ -25,8 +21,6 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/prefetching'
   * [Link 확장 또는 분리](https://nextjs.org/docs/app/guides/prefetching#extending-or-ejecting-link)
   * [프리페치 비활성화](https://nextjs.org/docs/app/guides/prefetching#disabled-prefetch)
 
-
-
 ## 프리페칭은 어떻게 작동하나요?[](https://nextjs.org/docs/app/guides/prefetching#how-does-prefetching-work)
 
 라우트 간 네비게이션 시 브라우저는 HTML 및 JavaScript 파일과 같은 페이지 자산을 요청합니다. 프리페칭은 새 라우트로 이동하기 전에 이러한 리소스를 _미리_ 가져오는 과정입니다.
@@ -37,12 +31,12 @@ Next.js는 라우트를 기준으로 애플리케이션을 더 작은 JavaScript
 
 ## 정적 라우트 vs. 동적 라우트 프리페칭[](https://nextjs.org/docs/app/guides/prefetching#prefetching-static-vs-dynamic-routes)
 
-| | **정적 페이지** | **동적 페이지**  
-|---|---|---  
-| **Prefetched** | 예, 전체 라우트 | [`loading.js`](https://nextjs.org/docs/app/api-reference/file-conventions/loading)가 있는 경우만  
-| [**클라이언트 캐시 TTL**](https://nextjs.org/docs/app/guides/caching#full-route-cache) | 5분(기본값) | [활성화](https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes)되지 않으면 해제  
-| **클릭 시 서버 왕복** | 없음 | 예, [shell](https://nextjs.org/docs/app/getting-started/cache-components) 이후 스트리밍  
-  
+| | **정적 페이지** | **동적 페이지**
+|---|---|---
+| **Prefetched** | 예, 전체 라우트 | [`loading.js`](https://nextjs.org/docs/app/api-reference/file-conventions/loading)가 있는 경우만
+| [**클라이언트 캐시 TTL**](https://nextjs.org/docs/app/guides/caching#full-route-cache) | 5분(기본값) | [활성화](https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes)되지 않으면 해제
+| **클릭 시 서버 왕복** | 없음 | 예, [shell](https://nextjs.org/docs/app/getting-started/cache-components) 이후 스트리밍
+
 > **알아두면 좋아요:** 초기 네비게이션 동안 브라우저는 HTML, JavaScript, React Server Components(RSC) 페이로드를 가져옵니다. 이후 네비게이션에서는 서버 컴포넌트용 RSC 페이로드와 클라이언트 컴포넌트용 JS 번들을 가져옵니다.
 
 ## 자동 프리페치[](https://nextjs.org/docs/app/guides/prefetching#automatic-prefetch)
@@ -52,31 +46,31 @@ app/ui/nav-link.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function NavLink() {
       return <Link href="/about">About</Link>
     }
 [/code]
 
-**Context**| **Prefetched payload**| **Client Cache TTL**  
----|---|---  
-`loading.js` 없음| 전체 페이지| 앱 리로드 시까지  
-`loading.js` 포함| 첫 번째 로딩 경계까지의 레이아웃| 30초 ([구성 가능](https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes))  
-  
+**Context**| **Prefetched payload**| **Client Cache TTL**
+---|---|---
+`loading.js` 없음| 전체 페이지| 앱 리로드 시까지
+`loading.js` 포함| 첫 번째 로딩 경계까지의 레이아웃| 30초 ([구성 가능](https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes))
+
 자동 프리페칭은 프로덕션에서만 실행됩니다. `prefetch={false}`를 사용해 비활성화하거나 [프리페치 비활성화](https://nextjs.org/docs/app/guides/prefetching#disabled-prefetch)에 나오는 래퍼를 활용하세요.
 
 ## 수동 프리페치[](https://nextjs.org/docs/app/guides/prefetching#manual-prefetch)
 
 수동 프리페칭을 하려면 `next/navigation`에서 `useRouter` 훅을 가져와 뷰포트 밖의 라우트나 애널리틱스, 호버, 스크롤 등에 대응하여 `router.prefetch()`를 호출해 워밍업합니다.
-[code] 
+[code]
     'use client'
-     
+
     import { useRouter } from 'next/navigation'
     import { CustomLink } from '@components/link'
-     
+
     export function PricingCard() {
       const router = useRouter()
-     
+
       return (
         <div onMouseEnter={() => router.prefetch('/pricing')}>
           {/* other UI elements */}
@@ -95,12 +89,12 @@ JavaScriptTypeScript
 Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사용자는 필요에 따라 분리하여 수정할 수 있습니다. 성능과 리소스 사용 사이의 균형을 직접 제어할 수 있습니다.
 
 예를 들어, 뷰포트에 들어올 때(기본 동작)가 아니라 호버 시에만 프리페치하도록 만들어야 할 수 있습니다.
-[code] 
+[code]
     'use client'
-     
+
     import Link from 'next/link'
     import { useState } from 'react'
-     
+
     export function HoverPrefetchLink({
       href,
       children,
@@ -109,7 +103,7 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
       children: React.ReactNode
     }) {
       const [active, setActive] = useState(false)
-     
+
       return (
         <Link
           href={href}
@@ -129,12 +123,12 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
 `<Link>` 컴포넌트를 확장해 자체 프리페칭 전략을 만들 수 있습니다. 예를 들어 사용자 커서 방향을 예측해 링크를 프리페치하는 [ForesightJS](https://foresightjs.com/docs/integrations/nextjs) 라이브러리를 사용할 수 있습니다.
 
 또는 [`useRouter`](https://nextjs.org/docs/app/api-reference/functions/use-router)를 사용해 기본 `<Link>` 일부 동작을 재현할 수도 있습니다. 다만 이 경우 프리페칭과 캐시 무효화를 직접 관리해야 합니다.
-[code] 
+[code]
     'use client'
-     
+
     import { useRouter } from 'next/navigation'
     import { useEffect } from 'react'
-     
+
     function ManualPrefetchLink({
       href,
       children,
@@ -143,7 +137,7 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
       children: React.ReactNode
     }) {
       const router = useRouter()
-     
+
       useEffect(() => {
         let cancelled = false
         const poll = () => {
@@ -154,7 +148,7 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
           cancelled = true
         }
       }, [href, router])
-     
+
       return (
         <a
           href={href}
@@ -176,11 +170,11 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
 ## 프리페치 비활성화[](https://nextjs.org/docs/app/guides/prefetching#disabled-prefetch)
 
 특정 라우트의 프리페칭을 완전히 비활성화해 리소스 사용을 보다 세밀하게 제어할 수 있습니다.
-[code] 
+[code]
     'use client'
-     
+
     import Link, { LinkProps } from 'next/link'
-     
+
     function NoPrefetchLink({
       prefetch,
       ...rest
@@ -216,8 +210,6 @@ PPR이 활성화되면 페이지가 정적 셸과 스트리밍되는 동적 섹�
   * 동적 데이터는 준비되는 대로 스트리밍됩니다.
   * `revalidateTag`, `revalidatePath`와 같은 데이터 무효화는 관련 프리페치를 조용히 새로 고칩니다.
 
-
-
 ## 문제 해결[](https://nextjs.org/docs/app/guides/prefetching#troubleshooting)
 
 ### 프리페칭 중 원치 않는 부작용 발생[](https://nextjs.org/docs/app/guides/prefetching#triggering-unwanted-side-effects-during-prefetching)
@@ -233,11 +225,11 @@ app/dashboard/layout.tsx
 JavaScriptTypeScript
 [code]
     import { trackPageView } from '@/lib/analytics'
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       // This runs during prefetch
       trackPageView()
-     
+
       return <div>{children}</div>
     }
 [/code]
@@ -249,15 +241,15 @@ app/ui/analytics-tracker.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useEffect } from 'react'
     import { trackPageView } from '@/lib/analytics'
-     
+
     export function AnalyticsTracker() {
       useEffect(() => {
         trackPageView()
       }, [])
-     
+
       return null
     }
 [/code]
@@ -267,7 +259,7 @@ app/dashboard/layout.tsx
 JavaScriptTypeScript
 [code]
     import { AnalyticsTracker } from '@/app/ui/analytics-tracker'
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       return (
         <div>
@@ -304,10 +296,10 @@ app/ui/hover-prefetch-link.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Link from 'next/link'
     import { useState } from 'react'
-     
+
     export function HoverPrefetchLink({
       href,
       children,
@@ -316,7 +308,7 @@ JavaScriptTypeScript
       children: React.ReactNode
     }) {
       const [active, setActive] = useState(false)
-     
+
       return (
         <Link
           href={href}
@@ -328,9 +320,5 @@ JavaScriptTypeScript
       )
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

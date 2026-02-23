@@ -7,10 +7,6 @@ description: '개발 모드에서 Next.js를 실행할 때, 로그 수준과 전
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/logging
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)로깅
-
-페이지 복사
-
 # 로깅
 
 마지막 업데이트 2026년 2월 20일
@@ -83,9 +79,5 @@ next.config.js
       logging: false,
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

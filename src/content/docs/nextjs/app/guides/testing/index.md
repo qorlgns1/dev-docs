@@ -6,10 +6,6 @@ description: 'React와 Next.js에는 작성 목적과 활용 사례가 서로 �
 # 가이드: 테스트 | Next.js
 Source URL: https://nextjs.org/docs/app/guides/testing
 
-[앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)테스트
-
-페이지 복사
-
 # 테스트
 
 마지막 업데이트 2026년 2월 20일
@@ -32,10 +28,16 @@ React와 Next.js에는 작성 목적과 활용 사례가 서로 다른 다양한
 
 아래 가이드를 통해 Next.js와 자주 사용되는 테스트 도구를 설정하는 방법을 알아보세요:
 
-### [Cypress Next.js와 함께 End-to-End(E2E) 및 컴포넌트 테스트를 설정하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/testing/cypress)### [Jest Next.js와 함께 단위 테스트 및 스냅샷 테스트를 설정하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/testing/jest)### [Playwright Next.js와 함께 End-to-End(E2E) 테스트를 설정하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/testing/playwright)### [Vitest Next.js와 함께 단위 테스트를 설정하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/testing/vitest)
+- [Cypress](https://nextjs.org/docs/app/guides/testing/cypress)
+  - Next.js와 함께 End-to-End(E2E) 및 컴포넌트 테스트를 설정하는 방법을 알아보세요.
 
-도움이 되었나요?
+- [Jest](https://nextjs.org/docs/app/guides/testing/jest)
+  - Next.js와 함께 단위 테스트 및 스냅샷 테스트를 설정하는 방법을 알아보세요.
 
-지원됨.
+- [Playwright](https://nextjs.org/docs/app/guides/testing/playwright)
+  - Next.js와 함께 End-to-End(E2E) 테스트를 설정하는 방법을 알아보세요.
+
+- [Vitest](https://nextjs.org/docs/app/guides/testing/vitest)
+  - Next.js와 함께 단위 테스트를 설정하는 방법을 알아보세요.
 
 보내기

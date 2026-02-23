@@ -8,8 +8,6 @@ description: 'Rust로 작성되고 SWC를 사용하는 Next.js Compiler는 Next.
 
 [Next.js 문서](https://nextjs.org/docs)[아키텍처](https://nextjs.org/docs/architecture)Next.js Compiler
 
-페이지 복사
-
 # Next.js Compiler
 
 마지막 업데이트 2026년 2월 20일
@@ -30,8 +28,6 @@ SWC를 기반으로 선택한 이유는 다음과 같습니다.
   * **성능:** SWC로 전환하면서 Next.js에서 Fast Refresh는 약 3배, 빌드는 약 5배 빨라졌으며 여전히 최적화 여지가 있습니다.
   * **WebAssembly:** Rust의 WASM 지원은 모든 플랫폼을 지원하고 Next.js 개발 경험을 어디서나 제공하기 위해 필수적입니다.
   * **커뮤니티:** Rust 커뮤니티와 생태계는 뛰어나며 계속 성장하고 있습니다.
-
-
 
 ## Supported Features[](https://nextjs.org/docs/architecture/nextjs-compiler#supported-features)
 
@@ -97,22 +93,20 @@ Next.js Compiler는 테스트를 트랜스파일하며 다음과 같이 Jest와 
   * 테스트 해석에서 `.next` 무시
   * 실험적 SWC 변환을 활성화하는 플래그를 읽기 위해 `next.config.js` 로드
 
-
-
 먼저 Next.js를 최신 버전으로 업데이트하세요: `npm install next@latest`. 그런 다음 `jest.config.js` 파일을 업데이트합니다:
 
 jest.config.js
 [code]
     const nextJest = require('next/jest')
-     
+
     // Providing the path to your Next.js app which will enable loading next.config.js and .env files
     const createJestConfig = nextJest({ dir: './' })
-     
+
     // Any custom config you want to pass to Jest
     const customJestConfig = {
       setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
     }
-     
+
     // createJestConfig is exported in this way to ensure that next/jest can load the Next.js configuration, which is async
     module.exports = createJestConfig(customJestConfig)
 [/code]
@@ -201,7 +195,7 @@ Next.js는 `jsconfig.json` 또는 `tsconfig.json`에서 `experimentalDecorators`
 이 플래그는 기존 애플리케이션과의 호환성만을 위해 지원됩니다. 새 애플리케이션에서는 레거시 데코레이터 사용을 권장하지 않습니다.
 
 먼저 Next.js를 최신 버전으로 업데이트하세요: `npm install next@latest`. 그런 다음 `jsconfig.json` 또는 `tsconfig.json` 파일을 업데이트합니다:
-[code] 
+[code]
     {
       "compilerOptions": {
         "experimentalDecorators": true
@@ -214,7 +208,7 @@ Next.js는 `jsconfig.json` 또는 `tsconfig.json`에서 `experimentalDecorators`
 Next.js는 `jsconfig.json` 또는 `tsconfig.json`의 `jsxImportSource`를 자동으로 감지하여 적용합니다. 이는 [Theme UI](https://theme-ui.com) 같은 라이브러리에서 자주 사용됩니다.
 
 먼저 Next.js를 최신 버전으로 업데이트하세요: `npm install next@latest`. 그런 다음 `jsconfig.json` 또는 `tsconfig.json` 파일을 업데이트합니다:
-[code] 
+[code]
     {
       "compilerOptions": {
         "jsxImportSource": "theme-ui"
@@ -230,7 +224,7 @@ Next.js는 `jsconfig.json` 또는 `tsconfig.json`의 `jsxImportSource`를 자동
 
 next.config.js
 [code]
-     
+
     module.exports = {
       compiler: {
         emotion: boolean | {
@@ -328,8 +322,6 @@ next.config.js
   * `distDir`: 빌드 출력 디렉터리(기본값 `.next`)
   * `projectDir`: 프로젝트 루트 디렉터리
 
-
-
 ## 실험적 기능[](https://nextjs.org/docs/architecture/nextjs-compiler#experimental-features)
 
 ### SWC Trace profiling[](https://nextjs.org/docs/architecture/nextjs-compiler#swc-trace-profiling)
@@ -377,17 +369,11 @@ next.config.js
 
 ## 버전 기록[](https://nextjs.org/docs/architecture/nextjs-compiler#version-history)
 
-Version| Changes  
----|---  
-`v13.1.0`| [Module Transpilation](https://nextjs.org/blog/next-13-1#built-in-module-transpilation-stable) 및 [Modularize Imports](https://nextjs.org/blog/next-13-1#import-resolution-for-smaller-bundles) 안정화.  
-`v13.0.0`| SWC Minifier 기본 활성화.  
-`v12.3.0`| SWC Minifier [stable](https://nextjs.org/blog/next-12-3#swc-minifier-stable).  
-`v12.2.0`| [SWC Plugins](https://nextjs.org/docs/architecture/nextjs-compiler#swc-plugins-experimental) 실험적 지원 추가.  
-`v12.1.0`| Styled Components, Jest, Relay, Remove React Properties, Legacy Decorators, Remove Console, jsxImportSource 지원 추가.  
-`v12.0.0`| Next.js Compiler [도입](https://nextjs.org/blog/next-12).  
-
-도움이 되었나요?
-
-지원됨.
-
-전송
+Version| Changes
+---|---
+`v13.1.0`| [Module Transpilation](https://nextjs.org/blog/next-13-1#built-in-module-transpilation-stable) 및 [Modularize Imports](https://nextjs.org/blog/next-13-1#import-resolution-for-smaller-bundles) 안정화.
+`v13.0.0`| SWC Minifier 기본 활성화.
+`v12.3.0`| SWC Minifier [stable](https://nextjs.org/blog/next-12-3#swc-minifier-stable).
+`v12.2.0`| [SWC Plugins](https://nextjs.org/docs/architecture/nextjs-compiler#swc-plugins-experimental) 실험적 지원 추가.
+`v12.1.0`| Styled Components, Jest, Relay, Remove React Properties, Legacy Decorators, Remove Console, jsxImportSource 지원 추가.
+`v12.0.0`| Next.js Compiler [도입](https://nextjs.org/blog/next-12).

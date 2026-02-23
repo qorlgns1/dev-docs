@@ -24,11 +24,3 @@ Polyfill.io의 폴리필을 사용하면서 Next.js에 이미 포함된 폴리�
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-unwanted-polyfillio#useful-links)
 
   * [지원되는 브라우저 및 기능](https://nextjs.org/docs/architecture/supported-browsers)
-
-
-
-도움이 되었나요?
-
-지원됨.
-
-전송

@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/api-reference/directives/use-cache
 
 [API Reference](https://nextjs.org/docs/app/api-reference)[Directives](https://nextjs.org/docs/app/api-reference/directives)use cache
 
-페이지 복사
-
 # use cache
 
 마지막 업데이트 2026년 2월 20일
@@ -18,11 +16,11 @@ Source URL: https://nextjs.org/docs/app/api-reference/directives/use-cache
 `use cache` 지시문은 라우트, React 컴포넌트, 함수가 캐시될 수 있도록 표시합니다. 파일 상단에 선언하면 해당 파일의 모든 export가 캐시되고, 함수나 컴포넌트 상단에 인라인으로 선언하면 반환값을 캐시합니다.
 
 > **알아 두면 좋아요:**
-> 
+>
 >   * 쿠키나 헤더를 사용해야 한다면 캐시 범위 밖에서 읽고 값을 인자로 전달하세요. 이 패턴이 권장됩니다.
 >   * 인메모리 캐시가 런타임 데이터에 충분하지 않다면 [`'use cache: remote'`](https://nextjs.org/docs/app/api-reference/directives/use-cache-remote)가 전용 캐시 핸들러를 제공하도록 플랫폼을 허용하지만, 캐시 확인을 위한 네트워크 왕복이 필요하고 일반적으로 플랫폼 비용이 발생합니다.
 >   * 규정 준수 요구 사항이 있거나 런타임 데이터를 `use cache` 범위로 인자로 전달하도록 리팩터링할 수 없다면 [`'use cache: private'`](https://nextjs.org/docs/app/api-reference/directives/use-cache-private)를 확인하세요.
-> 
+>
 
 ## 사용법[](https://nextjs.org/docs/app/api-reference/directives/use-cache#usage)
 
@@ -33,29 +31,29 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
     }
-     
+
     export default nextConfig
 [/code]
 
 그런 다음 파일, 컴포넌트, 함수 단위로 `use cache`를 추가합니다:
-[code] 
+[code]
     // File level
     'use cache'
-     
+
     export default async function Page() {
       // ...
     }
-     
+
     // Component level
     export async function MyComponent() {
       'use cache'
       return <></>
     }
-     
+
     // Function level
     export async function getData() {
       'use cache'
@@ -87,7 +85,7 @@ lib/data.ts
         // Cache key includes both userId (from closure) and filter (argument)
         return fetch(`/api/users/${userId}/data?filter=${filter}`)
       }
-     
+
       return getData('active')
     }
 [/code]
@@ -139,7 +137,7 @@ app/components/user-card.tsx
       'use cache'
       return <div>{id}</div>
     }
-     
+
     // Invalid - class instance
     async function UserProfile({ user }: { user: UserClass }) {
       'use cache'
@@ -164,7 +162,7 @@ app/components/cached-wrapper.tsx
         </div>
       )
     }
-     
+
     // Usage: children can be dynamic
     export default function Page() {
       return (
@@ -200,11 +198,11 @@ app/components/cached-form.tsx
 
 런타임 캐시 동작은 호스팅 환경에 따라 달라집니다:
 
-Environment| Runtime Caching Behavior  
----|---  
-**Serverless**|  캐시 항목이 요청 간에 유지되지 않는 것이 일반적입니다(요청마다 인스턴스가 다를 수 있음). 빌드 타임 캐싱은 정상적으로 동작합니다.  
-**Self-hosted**|  캐시 항목이 요청 간에 유지됩니다. [`cacheMaxMemorySize`](https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath)로 캐시 크기를 제어하세요.  
-  
+Environment| Runtime Caching Behavior
+---|---
+**Serverless**|  캐시 항목이 요청 간에 유지되지 않는 것이 일반적입니다(요청마다 인스턴스가 다를 수 있음). 빌드 타임 캐싱은 정상적으로 동작합니다.
+**Self-hosted**|  캐시 항목이 요청 간에 유지됩니다. [`cacheMaxMemorySize`](https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath)로 캐시 크기를 제어하세요.
+
 기본 인메모리 캐시로 충분하지 않다면 플랫폼이 전용 캐시 핸들러(예: Redis, KV 데이터베이스)를 제공할 수 있는 **[`use cache: remote`](https://nextjs.org/docs/app/api-reference/directives/use-cache-remote)**를 고려하세요. 이는 전체 트래픽에 맞게 확장되지 않은 데이터 소스에 대한 접근 횟수를 줄이는 데 도움이 되지만, 스토리지, 네트워크 지연, 플랫폼 비용이 발생합니다.
 
 매우 드물게, 규정 준수 요구 사항이 있거나 런타임 데이터를 `use cache` 범위에 인자로 전달하도록 코드를 리팩터링할 수 없는 경우 [`use cache: private`](https://nextjs.org/docs/app/api-reference/directives/use-cache-private)가 필요할 수 있습니다.
@@ -214,17 +212,17 @@ Environment| Runtime Caching Behavior
 [`React.cache`](https://react.dev/reference/react/cache)는 `use cache` 경계 내부에서 격리된 스코프로 동작합니다. `use cache` 함수 밖에서 `React.cache`로 저장한 값은 안쪽에서 보이지 않습니다.
 
 따라서 `React.cache`를 사용해 데이터를 `use cache` 범위 안으로 전달할 수 없습니다:
-[code] 
+[code]
     import { cache } from 'react'
-     
+
     const store = cache(() => ({ current: null as string | null }))
-     
+
     function Parent() {
       const shared = store()
       shared.current = 'value from parent'
       return <Child />
     }
-     
+
     async function Child() {
       'use cache'
       const shared = store()
@@ -268,7 +266,7 @@ lib/data.ts
 lib/data.ts
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     async function getData() {
       'use cache'
       cacheLife('hours') // Use built-in 'hours' profile
@@ -295,9 +293,9 @@ async function getProducts() {
 app/actions.ts
 [code]
     'use server'
-     
+
     import { updateTag } from 'next/cache'
-     
+
     export async function updateProduct() {
       await db.products.update(...)
       updateTag('products') // Invalidates all 'products' caches
@@ -317,7 +315,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     'use cache'
-     
+
     export default async function Layout({ children }: { children: ReactNode }) {
       return <div>{children}</div>
     }
@@ -330,12 +328,12 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     'use cache'
-     
+
     async function Users() {
       const users = await fetch('/api/users')
       // loop through users
     }
-     
+
     export default async function Page() {
       return (
         <main>
@@ -365,7 +363,7 @@ JavaScriptTypeScript
       }
       return //...
     }
-     
+
     interface BookingsProps {
       type: string
     }
@@ -381,7 +379,7 @@ JavaScriptTypeScript
 [code]
     export async function getData() {
       'use cache'
-     
+
       const data = await fetch('/api/data')
       return data
     }
@@ -407,7 +405,7 @@ JavaScriptTypeScript
         </CacheComponent>
       )
     }
-     
+
     async function CacheComponent({
       header, // header: a compositional slot, injected as a prop
       children, // children: another slot for nested composition
@@ -434,17 +432,17 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import ClientComponent from './ClientComponent'
-     
+
     export default async function Page() {
       const performUpdate = async () => {
         'use server'
         // Perform some server-side update
         await db.update(...)
       }
-     
+
       return <CachedComponent performUpdate={performUpdate} />
     }
-     
+
     async function CachedComponent({
       performUpdate,
     }: {
@@ -461,7 +459,7 @@ app/ClientComponent.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     export default function ClientComponent({
       action,
     }: {
@@ -478,7 +476,7 @@ JavaScriptTypeScript
 #### 상세 로깅[](https://nextjs.org/docs/app/api-reference/directives/use-cache#verbose-logging)
 
 상세한 캐시 로그를 보려면 `NEXT_PRIVATE_DEBUG_CACHE=1`을 설정하세요:
-[code] 
+[code]
     NEXT_PRIVATE_DEBUG_CACHE=1 npm run dev
     # or for production
     NEXT_PRIVATE_DEBUG_CACHE=1 npm run start
@@ -508,7 +506,7 @@ app/page.tsx
 [code]
     import { cookies } from 'next/headers'
     import { Suspense } from 'react'
-     
+
     export default function Page() {
       return (
         <Suspense fallback={<div>Loading...</div>}>
@@ -516,12 +514,12 @@ app/page.tsx
         </Suspense>
       )
     }
-     
+
     async function Dynamic() {
       const cookieStore = cookies()
       return <Cached promise={cookieStore} /> // Build hangs
     }
-     
+
     async function Cached({ promise }: { promise: Promise<unknown> }) {
       'use cache'
       const data = await promise // Waits for runtime data during build
@@ -537,9 +535,9 @@ app/page.tsx
 [code]
     // Problem: Map stores dynamic Promises, accessed by cached code
     import { Suspense } from 'react'
-     
+
     const cache = new Map<string, Promise<string>>()
-     
+
     export default function Page() {
       return (
         <>
@@ -550,7 +548,7 @@ app/page.tsx
         </>
       )
     }
-     
+
     async function Dynamic({ id }: { id: string }) {
       // Stores dynamic Promise in shared Map
       cache.set(
@@ -559,7 +557,7 @@ app/page.tsx
       )
       return <p>Dynamic</p>
     }
-     
+
     async function Cached({ id }: { id: string }) {
       'use cache'
       return <p>{await cache.get(id)}</p> // Build hangs - retrieves dynamic Promise
@@ -570,30 +568,43 @@ Next.js의 내장 `fetch()` 중복 제거를 사용하거나 캐시 컨텍스트
 
 ## 플랫폼 지원[](https://nextjs.org/docs/app/api-reference/directives/use-cache#platform-support)
 
-Deployment Option| Supported  
----|---  
-[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| 예  
-[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| 예  
-[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| 아니오  
-[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| 플랫폼별  
-  
+Deployment Option| Supported
+---|---
+[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| 예
+[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| 예
+[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| 아니오
+[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| 플랫폼별
+
 Next.js를 셀프 호스팅할 때 [캐싱을 구성](https://nextjs.org/docs/app/guides/self-hosting#caching-and-isr)하는 방법을 알아보세요.
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/directives/use-cache#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| `"use cache"`가 Cache Components 기능과 함께 활성화됩니다.  
-`v15.0.0`| `"use cache"`가 실험적 기능으로 도입됩니다.  
-  
+Version| Changes
+---|---
+`v16.0.0`| `"use cache"`가 Cache Components 기능과 함께 활성화됩니다.
+`v15.0.0`| `"use cache"`가 실험적 기능으로 도입됩니다.
+
 ## 관련 항목
 
 관련 API 레퍼런스를 확인하세요.
 
-### [use cache: private런타임 요청 API에 접근하는 함수를 캐싱하기 위해 "use cache: private" 지시어를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/directives/use-cache-private)### [cacheComponentsNext.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)### [cacheLifeNext.js에서 cacheLife 구성을 설정하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife)### [cacheHandlersNext.js에서 use cache 지시어용 사용자 정의 캐시 핸들러를 구성하세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers)### [cacheTagNext.js 애플리케이션에서 cacheTag 함수를 사용해 캐시 무효화를 관리하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheTag)### [cacheLife캐시된 함수나 컴포넌트의 만료 시간을 설정하기 위해 cacheLife 함수를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheLife)### [revalidateTagrevalidateTag 함수의 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
+- [use cache: private](https://nextjs.org/docs/app/api-reference/directives/use-cache-private)
+  - 런타임 요청 API에 접근하는 함수를 캐싱하기 위해 "use cache: private" 지시어를 사용하는 방법을 알아보세요.
 
-도움이 되었나요?
+- [cacheComponents](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+  - Next.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.
 
-지원됨.
+- [cacheLife](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife)
+  - Next.js에서 cacheLife 구성을 설정하는 방법을 알아보세요.
 
-전송
+- [cacheHandlers](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers)
+  - Next.js에서 use cache 지시어용 사용자 정의 캐시 핸들러를 구성하세요.
+
+- [cacheTag](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
+  - Next.js 애플리케이션에서 cacheTag 함수를 사용해 캐시 무효화를 관리하는 방법을 알아보세요.
+
+- [cacheLife](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
+  - 캐시된 함수나 컴포넌트의 만료 시간을 설정하기 위해 cacheLife 함수를 사용하는 방법을 알아보세요.
+
+- [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
+  - revalidateTag 함수의 API 레퍼런스입니다.

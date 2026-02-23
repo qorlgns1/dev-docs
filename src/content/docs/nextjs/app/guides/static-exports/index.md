@@ -9,8 +9,6 @@ description: 'Next.js는 정적 사이트 또는 Single-Page Application(SPA)으
 
 [App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)정적 내보내기
 
-페이지 복사
-
 # Next.js 애플리케이션에서 정적 내보내기를 만드는 방법
 
 최종 업데이트 2026년 2월 20일
@@ -32,17 +30,17 @@ next.config.js
      */
     const nextConfig = {
       output: 'export',
-     
+
       // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
       // trailingSlash: true,
-     
+
       // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
       // skipTrailingSlashRedirect: true,
-     
+
       // Optional: Change the output directory `out` -> `dist`
       // distDir: 'dist',
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -66,7 +64,7 @@ JavaScriptTypeScript
       // This fetch will run on the server during `next build`
       const res = await fetch('https://api.example.com/...')
       const data = await res.json()
-     
+
       return <main>...</main>
     }
 [/code]
@@ -80,11 +78,11 @@ app/other/page.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import useSWR from 'swr'
-     
+
     const fetcher = (url: string) => fetch(url).then((r) => r.json())
-     
+
     export default function Page() {
       const { data, error } = useSWR(
         `https://jsonplaceholder.typicode.com/posts/1`,
@@ -92,7 +90,7 @@ JavaScriptTypeScript
       )
       if (error) return 'Failed to load'
       if (!data) return 'Loading...'
-     
+
       return data.title
     }
 [/code]
@@ -104,7 +102,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <>
@@ -137,7 +135,7 @@ next.config.js
         loaderFile: './my-loader.ts',
       },
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -170,7 +168,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return <Image alt="turtles" src="/turtles.jpg" width={300} height={300} />
     }
@@ -198,15 +196,15 @@ JavaScriptTypeScript
 클라이언트 컴포넌트는 `next build` 중 HTML로 미리 렌더링됩니다. `window`, `localStorage`, `navigator` 같은 [웹 API](https://developer.mozilla.org/docs/Web/API)는 서버에서 사용할 수 없으므로, 브라우저에서 실행될 때만 안전하게 접근해야 합니다. 예:
 [code]
     'use client';
-     
+
     import { useEffect } from 'react';
-     
+
     export default function ClientComponent() {
       useEffect(() => {
         // You now have access to `window`
         console.log(window.innerHeight);
       }, [])
-     
+
       return ...;
     }
 [/code]
@@ -257,19 +255,19 @@ nginx.conf
     server {
       listen 80;
       server_name acme.com;
-     
+
       root /var/www/out;
-     
+
       location / {
           try_files $uri $uri.html $uri/ =404;
       }
-     
+
       # This is necessary when `trailingSlash: false`.
       # You can omit this when `trailingSlash: true`.
       location /blog/ {
           rewrite ^/blog/(.*)$ /blog/$1.html break;
       }
-     
+
       error_page 404 /404.html;
       location = /404.html {
           internal;
@@ -279,14 +277,8 @@ nginx.conf
 
 ## 버전 기록[](https://nextjs.org/docs/app/guides/static-exports#version-history)
 
-Version| Changes  
----|---  
-`v14.0.0`| `next export`가 `"output": "export"`로 대체되며 제거되었습니다.  
-`v13.4.0`| 앱 라우터(안정판)가 React 서버 컴포넌트와 라우트 핸들러 사용을 포함해 정적 내보내기 지원을 강화했습니다.  
-`v13.3.0`| `next export`가 더 이상 사용되지 않으며 `"output": "export"`로 대체되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+Version| Changes
+---|---
+`v14.0.0`| `next export`가 `"output": "export"`로 대체되며 제거되었습니다.
+`v13.4.0`| 앱 라우터(안정판)가 React 서버 컴포넌트와 라우트 핸들러 사용을 포함해 정적 내보내기 지원을 강화했습니다.
+`v13.3.0`| `next export`가 더 이상 사용되지 않으며 `"output": "export"`로 대체되었습니다.

@@ -7,10 +7,6 @@ description: '이러한 페이지는 이후 네이티브 Node.js 를 사용해 �
 
 소스 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)serverExternalPackages
-
-페이지 복사
-
 # serverExternalPackages
 
 마지막 업데이트 2026년 2월 20일
@@ -25,7 +21,7 @@ next.config.js
     const nextConfig = {
       serverExternalPackages: ['@acme/ui'],
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -110,9 +106,5 @@ Next.js에는 현재 호환성 작업이 진행 중이며 자동으로 제외되
   * `webpack`
   * `websocket`
   * `zeromq`
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

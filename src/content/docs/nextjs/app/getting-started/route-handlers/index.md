@@ -51,7 +51,7 @@ app/items/route.ts
 JavaScriptTypeScript
 [code]
     export const dynamic = 'force-static'
-     
+
     export async function GET() {
       const res = await fetch('https://data.mongodb-api.com/...', {
         headers: {
@@ -60,7 +60,7 @@ JavaScriptTypeScript
         },
       })
       const data = await res.json()
-     
+
       return Response.json({ data })
     }
 [/code]
@@ -98,11 +98,11 @@ app/api/random-number/route.ts
 app/api/user-agent/route.ts
 [code]
     import { headers } from 'next/headers'
-     
+
     export async function GET() {
       const headersList = await headers()
       the userAgent = headersList.get('user-agent')
-     
+
       return Response.json({ userAgent })
     }
 [/code]
@@ -114,16 +114,16 @@ app/api/user-agent/route.ts
 app/api/products/route.ts
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     export async function GET() {
       const products = await getProducts()
       return Response.json(products)
     }
-     
+
     async function getProducts() {
       'use cache'
       cacheLife('hours')
-     
+
       return await db.query('SELECT * FROM products')
     }
 [/code]
@@ -141,14 +141,12 @@ app/api/products/route.ts
   * `page`처럼 레이아웃이나 클라이언트 측 탐색에 **참여하지 않습니다**.
   * 동일한 경로에 `page.js`와 `route.js` 파일이 **함께 존재할 수 없습니다**.
 
+Page| Route| Result
+---|---|---
+`app/page.js`| `app/route.js`| Conflict
+`app/page.js`| `app/api/route.js`| Valid
+`app/[user]/page.js`| `app/api/route.js`| Valid
 
-
-Page| Route| Result  
----|---|---  
-`app/page.js`| `app/route.js`| Conflict  
-`app/page.js`| `app/api/route.js`| Valid  
-`app/[user]/page.js`| `app/api/route.js`| Valid  
-  
 각 `route.js` 또는 `page.js` 파일은 해당 경로의 모든 HTTP 메서드를 처리합니다.
 
 app/page.ts
@@ -158,7 +156,7 @@ JavaScriptTypeScript
     export default function Page() {
       return <h1>Hello, Next.js!</h1>
     }
-     
+
     // Conflict
     // `app/route.ts`
     export async function POST(request: Request) {}
@@ -175,7 +173,7 @@ app/users/[id]/route.ts
 JavaScriptTypeScript
 [code]
     import type { NextRequest } from 'next/server'
-     
+
     export async function GET(_req: NextRequest, ctx: RouteContext<'/users/[id]'>) {
       const { id } = await ctx.params
       return Response.json({ id })
@@ -183,16 +181,19 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋아요**
-> 
+>
 >   * 타입은 `next dev`, `next build` 또는 `next typegen` 중에 생성됩니다.
-> 
-
+>
 
 ## API Reference
 
 Route Handlers에 대해 더 알아보기
 
-### [route.jsRoute.js 특수 파일에 대한 API reference입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/route)### [Backend for FrontendNext.js를 백엔드 프레임워크로 사용하는 방법을 알아보세요](https://nextjs.org/docs/app/guides/backend-for-frontend)
+- [route.js](https://nextjs.org/docs/app/api-reference/file-conventions/route)
+  - Route.js 특수 파일에 대한 API reference입니다.
+
+- [백엔드 포 프론트엔드](https://nextjs.org/docs/app/guides/backend-for-frontend)
+  - Backend for FrontendNext.js를 백엔드 프레임워크로 사용하는 방법을 알아보세요
 
 Was this helpful?
 

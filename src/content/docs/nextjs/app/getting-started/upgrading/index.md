@@ -7,10 +7,6 @@ description: '최신 버전의 Next.js로 업데이트하려면  명령을 사�
 
 출처 URL: https://nextjs.org/docs/app/getting-started/upgrading
 
-[App Router](https://nextjs.org/docs/app)[Getting Started](https://nextjs.org/docs/app/getting-started)업그레이드
-
-페이지 복사
-
 # 업그레이드
 
 마지막 업데이트 2026년 2월 20일
@@ -65,16 +61,17 @@ pnpmnpmyarnbun
   * [`unauthorized.js`](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized)
   * [`authInterrupts`](https://nextjs.org/docs/app/api-reference/config/next-config-js/authInterrupts)
 
-
-
 ## 버전 가이드
 
 심층 업그레이드 지침은 버전 가이드를 참조하세요.
 
-### [버전 16Next.js 애플리케이션을 버전 15에서 16으로 업그레이드하세요.](https://nextjs.org/docs/app/guides/upgrading/version-16)### [버전 15Next.js 애플리케이션을 버전 14에서 15로 업그레이드하세요.](https://nextjs.org/docs/app/guides/upgrading/version-15)### [버전 14Next.js 애플리케이션을 버전 13에서 14로 업그레이드하세요.](https://nextjs.org/docs/app/guides/upgrading/version-14)
+- [버전 16](https://nextjs.org/docs/app/guides/upgrading/version-16)
+  - Next.js 애플리케이션을 버전 15에서 16으로 업그레이드하세요.
 
-도움이 되었나요?
+- [버전 15](https://nextjs.org/docs/app/guides/upgrading/version-15)
+  - Next.js 애플리케이션을 버전 14에서 15로 업그레이드하세요.
 
-지원됨.
+- [버전 14](https://nextjs.org/docs/app/guides/upgrading/version-14)
+  - Next.js 애플리케이션을 버전 13에서 14로 업그레이드하세요.
 
 보내기

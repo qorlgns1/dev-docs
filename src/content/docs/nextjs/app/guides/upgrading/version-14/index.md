@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/guides/upgrading/version-14
 
 [가이드](https://nextjs.org/docs/app/guides)[업그레이드](https://nextjs.org/docs/app/guides/upgrading)버전 14
 
-페이지 복사
-
 # 버전 14로 업그레이드하는 방법
 
 최종 업데이트 2026년 2월 20일
@@ -48,11 +46,5 @@ Source URL: https://nextjs.org/docs/app/guides/upgrading/version-14
   * `ImageResponse`를 위한 `next/server` 임포트가 `next/og`로 이름이 바뀌었습니다. 임포트를 안전하게 자동 변경할 수 있도록 [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#next-og-import)가 제공됩니다.
   * 내장 `next/font`를 사용하도록 `@next/font` 패키지가 완전히 제거되었습니다. 임포트를 안전하게 자동 변경할 수 있도록 [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#built-in-next-font)가 제공됩니다.
   * `next-swc`의 WASM 타깃이 제거되었습니다.
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

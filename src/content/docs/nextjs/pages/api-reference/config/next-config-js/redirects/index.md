@@ -7,10 +7,6 @@ description: '리디렉션을 사용하면 들어오는 요청 경로를 다른 
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)redirects
-
-페이지 복사
-
 # 리디렉션
 
 마지막 업데이트 2026년 2월 20일
@@ -40,8 +36,6 @@ next.config.js
   * `destination`은 라우팅하려는 경로입니다.
   * `permanent` `true` 또는 `false` \- `true`이면 클라이언트/검색 엔진에게 리디렉션을 영구적으로 캐시하도록 지시하는 308 상태 코드를, `false`이면 일시적이고 캐시되지 않는 307 상태 코드를 사용합니다.
 
-
-
 > **Next.js가 307과 308을 사용하는 이유는 무엇인가요?** 전통적으로 일시적 리디렉션에는 302, 영구 리디렉션에는 301을 사용했지만 많은 브라우저가 원래 메서드와 무관하게 리디렉션 요청 메서드를 `GET`으로 변경했습니다. 예를 들어 브라우저가 `POST /v1/users` 요청을 보냈고 상태 코드 `302`와 위치 `/v2/users`를 받았다면, 이어지는 요청이 예상한 `POST /v2/users` 대신 `GET /v2/users`가 될 수 있습니다. Next.js는 요청 메서드를 명시적으로 유지하기 위해 307 일시적 리디렉션과 308 영구 리디렉션 상태 코드를 사용합니다.
 
   * `basePath`: `false` 또는 `undefined` \- `false`이면 매칭 시 `basePath`를 포함하지 않으며, 외부 리디렉션에만 사용할 수 있습니다.
@@ -49,14 +43,12 @@ next.config.js
   * `has`는 `type`, `key`, `value` 속성을 가진 [has 객체](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects#header-cookie-and-query-matching)의 배열입니다.
   * `missing`은 `type`, `key`, `value` 속성을 가진 [missing 객체](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects#header-cookie-and-query-matching)의 배열입니다.
 
-
-
 리디렉션은 페이지와 `/public` 파일을 포함한 파일 시스템보다 먼저 확인됩니다.
 
 Pages Router를 사용할 때는 [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)가 존재하여 경로와 일치하지 않는 한 클라이언트 측 라우팅(`Link`, `router.push`)에는 리디렉션이 적용되지 않습니다.
 
 리디렉션이 적용되면 요청에 제공된 쿼리 값은 리디렉션 목적지로 그대로 전달됩니다. 예를 들어 다음 리디렉션 구성을 보세요:
-[code] 
+[code]
     {
       source: '/old-blog/:path*',
       destination: '/blog/:path*',
@@ -159,8 +151,6 @@ next.config.js
   * `key`: `String` \- 선택한 타입에서 매칭할 키입니다.
   * `value`: `String` 또는 `undefined` \- 확인할 값이며, undefined이면 모든 값과 일치합니다. `first-(?<paramName>.*)`처럼 특정 부분을 캡처하는 정규식 형태의 문자열을 사용할 수 있으며, `first-second` 값에 사용하면 `second`를 `:paramName`으로 목적지에서 참조할 수 있습니다.
 
-
-
 next.config.js
 [code]
     module.exports = {
@@ -254,7 +244,7 @@ next.config.js
 [code]
     module.exports = {
       basePath: '/docs',
-     
+
       async redirects() {
         return [
           {
@@ -285,7 +275,7 @@ next.config.js
         locales: ['en', 'fr', 'de'],
         defaultLocale: 'en',
       },
-     
+
       async redirects() {
         return [
           {
@@ -336,14 +326,10 @@ source: '/:locale/page',
 - [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)와 [`getServerSideProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props) 내부에서는 요청 시점에 특정 페이지를 리디렉션할 수 있습니다.
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects#version-history)
-버전|변경 사항  
----|---  
-`v13.3.0`| `missing` 추가.  
-`v10.2.0`| `has` 추가.  
-`v9.5.0`| `redirects` 추가.  
-
-도움이 되었나요?
-
-지원됨.
+버전|변경 사항
+---|---
+`v13.3.0`| `missing` 추가.
+`v10.2.0`| `has` 추가.
+`v9.5.0`| `redirects` 추가.
 
 보내기

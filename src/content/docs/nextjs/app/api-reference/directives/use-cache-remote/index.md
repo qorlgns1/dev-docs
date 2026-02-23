@@ -1,14 +1,12 @@
 ---
 title: '지시문: use cache: remote'
-description: '지시문은 대부분의 애플리케이션 요구 사항을 충족하지만, 캐시된 연산이 예상보다 자주 다시 실행되거나 업스트림 서비스(CMS, 데이터베이스, 외부 API 등)에 대한 요청이 늘어나는 경우가 있을 수 있습니다. 이는 가 엔트리를 메모리에 저장하기 때문에 발생하며, 다음과...'
+description: '지시문은 대부분의 애플리케이션 요구 사항을 충족하지만, 캐시된 연산이 예상보다 자주 다시 실행되거나 업스트림 서비스(CMS, 데이터베이스, 외부 API 등)에 대한 요청이 늘어나는 경우가 있을 수 있습니다. 이는 가 엔트리를 메모리에 저장하기 때문에 발생하며, 다음과 ...'
 ---
 
 # 지시문: use cache: remote | Next.js
 소스 URL: https://nextjs.org/docs/app/api-reference/directives/use-cache-remote
 
 [API 참고 문서](https://nextjs.org/docs/app/api-reference)[지시문](https://nextjs.org/docs/app/api-reference/directives)use cache: remote
-
-페이지 복사
 
 # use cache: remote
 
@@ -33,11 +31,11 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -73,14 +71,14 @@ JavaScriptTypeScript
 
 Next.js는 각기 다른 사용 사례를 위한 세 가지 캐싱 지시문을 제공합니다:
 
-Feature| `use cache`| `'use cache: remote'`| `'use cache: private'`  
----|---|---|---  
-**서버 측 캐싱**| In-memory 또는 cache handler| Remote cache handler| 없음  
-**캐시 범위**| 모든 사용자 간 공유| 모든 사용자 간 공유| 클라이언트별(브라우저)  
-**cookies/headers 직접 접근**| 불가(인수로 전달 필요)| 불가(인수로 전달 필요)| 가능  
-**서버 캐시 활용률**| 정적 셸 밖에서는 낮을 수 있음| 높음(인스턴스 간 공유)| 해당 없음  
-**추가 비용**| 없음| 인프라(스토리지, 네트워크)| 없음  
-**지연 영향**| 없음| Cache handler 조회| 없음  
+Feature| `use cache`| `'use cache: remote'`| `'use cache: private'`
+---|---|---|---
+**서버 측 캐싱**| In-memory 또는 cache handler| Remote cache handler| 없음
+**캐시 범위**| 모든 사용자 간 공유| 모든 사용자 간 공유| 클라이언트별(브라우저)
+**cookies/headers 직접 접근**| 불가(인수로 전달 필요)| 불가(인수로 전달 필요)| 가능
+**서버 캐시 활용률**| 정적 셸 밖에서는 낮을 수 있음| 높음(인스턴스 간 공유)| 해당 없음
+**추가 비용**| 없음| 인프라(스토리지, 네트워크)| 없음
+**지연 영향**| 없음| Cache handler 조회| 없음
 
 ### 런타임 데이터와 캐싱[](https://nextjs.org/docs/app/api-reference/directives/use-cache-remote#caching-with-runtime-data)
 
@@ -95,7 +93,7 @@ Feature| `use cache`| `'use cache: remote'`| `'use cache: private'`
 app/products/[category]/page.tsx
 [code]
     import { Suspense } from 'react'
-     
+
     export default async function ProductsPage({
       params,
       searchParams,
@@ -109,7 +107,7 @@ app/products/[category]/page.tsx
         </Suspense>
       )
     }
-     
+
     async function ProductList({
       params,
       searchParams,
@@ -118,22 +116,22 @@ app/products/[category]/page.tsx
       searchParams: Promise<{ minPrice?: string }>
     }) {
       const { category } = await params
-     
+
       const { minPrice } = await searchParams
-     
+
       // Cache only on category (few unique values)
       // Don't include price filter (many unique values)
       const products = await getProductsByCategory(category)
-     
+
       // Filter price in memory instead of creating cache entries
       // for every price value
       const filtered = minPrice
         ? products.filter((p) => p.price >= parseFloat(minPrice))
         : products
-     
+
       return <div>{/* render filtered products */}</div>
     }
-     
+
     async function getProductsByCategory(category: string) {
       'use cache: remote'
       // Only category is part of the cache key
@@ -155,18 +153,18 @@ app/components/welcome-message.tsx
 [code]
     import { cookies } from 'next/headers'
     import { cacheLife } from 'next/cache'
-     
+
     export async function WelcomeMessage() {
       // Extract the language preference (not unique per user)
       const language = (await cookies()).get('language')?.value || 'en'
-     
+
       // Cache based on language (few unique values: en, es, fr, de, etc.)
       // All users who prefer 'en' share the same cache entry
       const content = await getCMSContent(language)
-     
+
       return <div>{content.welcomeMessage}</div>
     }
-     
+
     async function getCMSContent(language: string) {
       'use cache: remote'
       cacheLife({ expire: 3600 })
@@ -193,19 +191,19 @@ app/components/welcome-message.tsx
   * 원격 캐시는 프라이빗 캐시(`'use cache: private'`) 안에 중첩될 수 없습니다
   * 프라이빗 캐시는 원격 캐시 안에 중첩될 수 없습니다
 
-[code] 
+[code]
     // VALID: Remote inside remote
     async function outerRemote() {
       'use cache: remote'
       const result = await innerRemote()
       return result
     }
-     
+
     async function innerRemote() {
       'use cache: remote'
       return getData()
     }
-     
+
     // VALID: Remote inside regular cache
     async function outerCache() {
       'use cache'
@@ -213,19 +211,19 @@ app/components/welcome-message.tsx
       const result = await innerRemote()
       return result
     }
-     
+
     async function innerRemote() {
       'use cache: remote'
       return getData()
     }
-     
+
     // INVALID: Remote inside private
     async function outerPrivate() {
       'use cache: private'
       const result = await innerRemote() // Error!
       return result
     }
-     
+
     async function innerRemote() {
       'use cache: remote'
       return getData()
@@ -238,7 +236,7 @@ app/components/welcome-message.tsx
       const result = await innerPrivate() // Error!
       return result
     }
-     
+
     async function innerPrivate() {
       'use cache: private'
       return getData()
@@ -260,18 +258,18 @@ JavaScriptTypeScript
     import { Suspense } from 'react'
     import { cookies } from 'next/headers'
     import { cacheTag, cacheLife } from 'next/cache'
-     
+
     export async function generateStaticParams() {
       return [{ id: '1' }, { id: '2' }, { id: '3' }]
     }
-     
+
     export default async function ProductPage({
       params,
     }: {
       params: Promise<{ id: string }>
     }) {
       const { id } = await params
-     
+
       return (
         <div>
           <ProductDetails id={id} />
@@ -281,31 +279,31 @@ JavaScriptTypeScript
         </div>
       )
     }
-     
+
     function ProductDetails({ id }: { id: string }) {
       return <div>Product: {id}</div>
     }
-     
+
     async function ProductPrice({ productId }: { productId: string }) {
       // Reading cookies defers this component to request time
       const currency = (await cookies()).get('currency')?.value ?? 'USD'
-     
+
       // Cache the price per product and currency combination
       // All users with the same currency share this cache entry
       const price = await getProductPrice(productId, currency)
-     
+
       return (
         <div>
           Price: {price} {currency}
         </div>
       )
     }
-     
+
     async function getProductPrice(productId: string, currency: string) {
       'use cache: remote'
       cacheTag(`product-price-${productId}`)
       cacheLife({ expire: 3600 }) // 1 hour
-     
+
       // Cached per (productId, currency) - few currencies means high cache utilization
       return db.products.getPrice(productId, currency)
     }
@@ -320,7 +318,7 @@ app/dashboard/page.tsx
     import { Suspense } from 'react'
     import { connection } from 'next/server'
     import { cacheLife, cacheTag } from 'next/cache'
-     
+
     export default function DashboardPage() {
       return (
         <Suspense fallback={<div>Loading stats...</div>}>
@@ -328,21 +326,21 @@ app/dashboard/page.tsx
         </Suspense>
       )
     }
-     
+
     async function DashboardStats() {
       // Defer to request time
       await connection()
-     
+
       const stats = await getGlobalStats()
-     
+
       return <StatsDisplay stats={stats} />
     }
-     
+
     async function getGlobalStats() {
       'use cache: remote'
       cacheTag('global-stats')
       cacheLife({ expire: 60 }) // 1 minute
-     
+
       // This expensive database query is cached and shared across all users,
       // reducing load on your database
       const stats = await db.analytics.aggregate({
@@ -350,7 +348,7 @@ app/dashboard/page.tsx
         active_sessions: 'count',
         revenue: 'sum',
       })
-     
+
       return stats
     }
 [/code]
@@ -366,7 +364,7 @@ app/feed/page.tsx
     import { Suspense } from 'react'
     import { connection } from 'next/server'
     import { cacheLife, cacheTag } from 'next/cache'
-     
+
     export default async function FeedPage() {
       return (
         <div>
@@ -376,21 +374,21 @@ app/feed/page.tsx
         </div>
       )
     }
-     
+
     async function FeedItems() {
       // Defer to request time
       await connection()
-     
+
       const items = await getFeedItems()
-     
+
       return items.map((item) => <FeedItem key={item.id} item={item} />)
     }
-     
+
     async function getFeedItems() {
       'use cache: remote'
       cacheTag('feed-items')
       cacheLife({ expire: 120 }) // 2 minutes
-     
+
       // This API call is cached, reducing requests to your external service
       const response = await fetch('https://api.example.com/feed')
       return response.json()
@@ -405,24 +403,24 @@ app/reports/page.tsx
 [code]
     import { connection } from 'next/server'
     import { cacheLife } from 'next/cache'
-     
+
     export default async function ReportsPage() {
       // Defer to request time (for security check)
       await connection()
-     
+
       const report = await generateReport()
-     
+
       return <ReportViewer report={report} />
     }
-     
+
     async function generateReport() {
       'use cache: remote'
       cacheLife({ expire: 3600 }) // 1 hour
-     
+
       // This expensive computation is cached and shared across all authorized users,
       // avoiding repeated calculations
       const data = await db.transactions.findMany()
-     
+
       return {
         totalRevenue: calculateRevenue(data),
         topProducts: analyzeProducts(data),
@@ -441,54 +439,54 @@ app/product/[id]/page.tsx
     import { connection } from 'next/server'
     import { cookies } from 'next/headers'
     import { cacheLife, cacheTag } from 'next/cache'
-     
+
     // Static product data - prerendered at build time
     async function getProduct(id: string) {
       'use cache'
       cacheTag(`product-${id}`)
-     
+
       // This is cached at build time and shared across all users
       return db.products.find({ where: { id } })
     }
-     
+
     // Shared pricing data - cached at runtime in remote handler
     async function getProductPrice(id: string) {
       'use cache: remote'
       cacheTag(`product-price-${id}`)
       cacheLife({ expire: 300 }) // 5 minutes
-     
+
       // This is cached at runtime and shared across all users
       return db.products.getPrice({ where: { id } })
     }
-     
+
     // User-specific recommendations - private cache per user
     async function getRecommendations(productId: string) {
       'use cache: private'
       cacheLife({ expire: 60 }) // 1 minute
-     
+
       const sessionId = (await cookies()).get('session-id')?.value
-     
+
       // This is cached per-user and never shared
       return db.recommendations.findMany({
         where: { productId, sessionId },
       })
     }
-     
+
     export default async function ProductPage({ params }) {
       const { id } = await params
-     
+
       // Static product data
       const product = await getProduct(id)
-     
+
       return (
         <div>
           <ProductDetails product={product} />
-     
+
           {/* Dynamic shared price */}
           <Suspense fallback={<PriceSkeleton />}>
             <ProductPriceComponent productId={id} />
           </Suspense>
-     
+
           {/* Dynamic personalized recommendations */}
           <Suspense fallback={<RecommendationsSkeleton />}>
             <ProductRecommendations productId={id} />
@@ -496,7 +494,7 @@ app/product/[id]/page.tsx
         </div>
       )
     }
-     
+
     function ProductDetails({ product }) {
       return (
         <div>
@@ -505,28 +503,28 @@ app/product/[id]/page.tsx
         </div>
       )
     }
-     
+
     async function ProductPriceComponent({ productId }) {
       // Defer to request time
       await connection()
-     
+
       const price = await getProductPrice(productId)
       return <div>Price: ${price}</div>
     }
-     
+
     async function ProductRecommendations({ productId }) {
       const recommendations = await getRecommendations(productId)
       return <RecommendationsList items={recommendations} />
     }
-     
+
     function PriceSkeleton() {
       return <div>Loading price...</div>
     }
-     
+
     function RecommendationsSkeleton() {
       return <div>Loading recommendations...</div>
     }
-     
+
     function RecommendationsList({ items }) {
       return (
         <ul>
@@ -539,44 +537,47 @@ app/product/[id]/page.tsx
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 원격 캐시는 서버 측 캐시 핸들러에 저장되며 모든 사용자가 공유합니다.
 >   * `'use cache: remote'`는 [`use cache`](https://nextjs.org/docs/app/api-reference/directives/use-cache)가 서버 측 캐시 적중을 제공하지 못할 수 있는 정적 셸 외부에서도 작동합니다.
 >   * [`cacheTag()`](https://nextjs.org/docs/app/api-reference/functions/cacheTag)와 [`revalidateTag()`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)를 사용하면 원격 캐시를 온디맨드로 무효화할 수 있습니다.
 >   * [`cacheLife()`](https://nextjs.org/docs/app/api-reference/functions/cacheLife)를 사용해 캐시 만료를 구성하세요.
 >   * 사용자별 데이터에는 `'use cache: remote'` 대신 [`'use cache: private'`](https://nextjs.org/docs/app/api-reference/directives/use-cache-private)를 사용하세요.
 >   * 원격 캐시는 계산하거나 가져온 데이터를 서버 측에 저장해 오리진 부하를 줄입니다.
-> 
+>
 
 ## 플랫폼 지원[](https://nextjs.org/docs/app/api-reference/directives/use-cache-remote#platform-support)
 
-Deployment Option| Supported  
----|---  
-[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| Yes  
-[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| Yes  
-[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| No  
-[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| Yes  
-  
+Deployment Option| Supported
+---|---
+[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| Yes
+[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| Yes
+[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| No
+[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| Yes
+
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/directives/use-cache-remote#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| `"use cache: remote"`가 Cache Components 기능과 함께 활성화되었습니다.  
-  
+Version| Changes
+---|---
+`v16.0.0`| `"use cache: remote"`가 Cache Components 기능과 함께 활성화되었습니다.
+
 ## 관련
 
 관련 API 레퍼런스를 확인하세요.
 
-### [use cache Next.js 애플리케이션에서 데이터를 캐시하기 위해 "use cache" 지시어를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/directives/use-cache)
-### [use cache: private 런타임 요청 API에 접근하는 함수를 캐시하기 위해 "use cache: private" 지시어를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/directives/use-cache-private)
-### [cacheComponents Next.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
-### [cacheHandlers Next.js의 use cache 지시어에 사용할 사용자 지정 캐시 핸들러를 구성하세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers)
-### [cacheLife 캐시된 함수나 컴포넌트의 만료 시간을 설정하기 위해 cacheLife 함수를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
-### [cacheTag Next.js 애플리케이션에서 캐시 무효화를 관리하기 위해 cacheTag 함수를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
-### [connection connection 함수에 대한 API 참조입니다.](https://nextjs.org/docs/app/api-reference/functions/connection)
-
-도움이 되었나요?
-
-지원됨.
+- [use cache](https://nextjs.org/docs/app/api-reference/directives/use-cache)
+  - Next.js 애플리케이션에서 데이터를 캐시하기 위해 "use cache" 지시어를 사용하는 방법을 알아보세요.
+- [use cache: private](https://nextjs.org/docs/app/api-reference/directives/use-cache-private)
+  - 런타임 요청 API에 접근하는 함수를 캐시하기 위해 "use cache: private" 지시어를 사용하는 방법을 알아보세요.
+- [cacheComponents](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+  - Next.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.
+- [cacheHandlers](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers)
+  - Next.js의 use cache 지시어에 사용할 사용자 지정 캐시 핸들러를 구성하세요.
+- [cacheLife](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
+  - 캐시된 함수나 컴포넌트의 만료 시간을 설정하기 위해 cacheLife 함수를 사용하는 방법을 알아보세요.
+- [cacheTag](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
+  - Next.js 애플리케이션에서 캐시 무효화를 관리하기 위해 cacheTag 함수를 사용하는 방법을 알아보세요.
+- [connection](https://nextjs.org/docs/app/api-reference/functions/connection)
+  - connection 함수에 대한 API 참조입니다.
 
 보내기

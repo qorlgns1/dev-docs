@@ -8,8 +8,6 @@ description: 'Pages Router는 페이지 개념을 기반으로 한 파일 시스
 
 [애플리케이션 빌드](https://nextjs.org/docs/pages/building-your-application)[라우팅](https://nextjs.org/docs/pages/building-your-application/routing)페이지와 레이아웃
 
-페이지 복사
-
 # 페이지와 레이아웃
 
 마지막 업데이트 2026년 2월 20일
@@ -21,7 +19,7 @@ Pages Router는 페이지 개념을 기반으로 한 파일 시스템 기반 라
 Next.js에서 **페이지**는 `pages` 디렉터리에 있는 `.js`, `.jsx`, `.ts`, `.tsx` 파일에서 내보내는 [React 컴포넌트](https://react.dev/learn/your-first-component)입니다. 각 페이지는 파일 이름을 기반으로 한 라우트와 연결됩니다.
 
 **예시**: 아래와 같이 React 컴포넌트를 내보내는 `pages/about.js`를 만들면 `/about`에서 접근할 수 있습니다.
-[code] 
+[code]
     export default function About() {
       return <div>About</div>
     }
@@ -55,7 +53,7 @@ components/layout.js
 [code]
     import Navbar from './navbar'
     import Footer from './footer'
-     
+
     export default function Layout({ children }) {
       return (
         <>
@@ -76,7 +74,7 @@ components/layout.js
 pages/_app.js
 [code]
     import Layout from '../components/layout'
-     
+
     export default function MyApp({ Component, pageProps }) {
       return (
         <Layout>
@@ -92,16 +90,16 @@ pages/_app.js
 
 pages/index.js
 [code]
-     
+
     import Layout from '../components/layout'
     import NestedLayout from '../components/nested-layout'
-     
+
     export default function Page() {
       return (
         /** Your content */
       )
     }
-     
+
     Page.getLayout = function getLayout(page) {
       return (
         <Layout>
@@ -116,7 +114,7 @@ pages/_app.js
     export default function MyApp({ Component, pageProps }) {
       // Use the layout defined at the page level, if available
       const getLayout = Component.getLayout ?? ((page) => page)
-     
+
       return getLayout(<Component {...pageProps} />)
     }
 [/code]
@@ -139,11 +137,11 @@ JavaScriptTypeScript
     import Layout from '../components/layout'
     import NestedLayout from '../components/nested-layout'
     import type { NextPageWithLayout } from './_app'
-     
+
     const Page: NextPageWithLayout = () => {
       return <p>hello world</p>
     }
-     
+
     Page.getLayout = function getLayout(page: ReactElement) {
       return (
         <Layout>
@@ -151,7 +149,7 @@ JavaScriptTypeScript
         </Layout>
       )
     }
-     
+
     export default Page
 [/code]
 
@@ -162,19 +160,19 @@ JavaScriptTypeScript
     import type { ReactElement, ReactNode } from 'react'
     import type { NextPage } from 'next'
     import type { AppProps } from 'next/app'
-     
+
     export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
       getLayout?: (page: ReactElement) => ReactNode
     }
-     
+
     type AppPropsWithLayout = AppProps & {
       Component: NextPageWithLayout
     }
-     
+
     export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       // Use the layout defined at the page level, if available
       const getLayout = Component.getLayout ?? ((page) => page)
-     
+
       return getLayout(<Component {...pageProps} />)
     }
 [/code]
@@ -188,13 +186,13 @@ components/layout.js
     import useSWR from 'swr'
     import Navbar from './navbar'
     import Footer from './footer'
-     
+
     export default function Layout({ children }) {
       const { data, error } = useSWR('/api/navigation', fetcher)
-     
+
       if (error) return <div>Failed to load</div>
       if (!data) return <div>Loading...</div>
-     
+
       return (
         <>
           <Navbar links={data.links} />
@@ -204,9 +202,3 @@ components/layout.js
       )
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
-
-전송

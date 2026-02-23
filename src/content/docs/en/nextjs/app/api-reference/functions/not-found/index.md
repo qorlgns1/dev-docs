@@ -1,58 +1,45 @@
 ---
-title: 'Functions: notFound'
+title: 'notFound'
 description: 'The  function allows you to render the  within a route segment as well as inject a  tag.'
 ---
 
-# Functions: notFound | Next.js
-
 Source URL: https://nextjs.org/docs/app/api-reference/functions/not-found
-
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)notFound
-
-Copy page
 
 # notFound
 
-Last updated February 20, 2026
-
 The `notFound` function allows you to render the [`not-found file`](https://nextjs.org/docs/app/api-reference/file-conventions/not-found) within a route segment as well as inject a `<meta name="robots" content="noindex" />` tag.
 
-## `notFound()`[](https://nextjs.org/docs/app/api-reference/functions/not-found#notfound)
+## `notFound()`
 
 Invoking the `notFound()` function throws a `NEXT_HTTP_ERROR_FALLBACK;404` error and terminates rendering of the route segment in which it was thrown. Specifying a [**not-found** file](https://nextjs.org/docs/app/api-reference/file-conventions/not-found) allows you to gracefully handle such errors by rendering a Not Found UI within the segment.
 
-app/user/[id]/page.js
-[code]
-    import { notFound } from 'next/navigation'
-     
-    async function fetchUser(id) {
-      const res = await fetch('https://...')
-      if (!res.ok) return undefined
-      return res.json()
-    }
-     
-    export default async function Profile({ params }) {
-      const { id } = await params
-      const user = await fetchUser(id)
-     
-      if (!user) {
-        notFound()
-      }
-     
-      // ...
-    }
-[/code]
+```jsx filename="app/user/[id]/page.js"
+import { notFound } from 'next/navigation'
 
-> **Good to know** : `notFound()` does not require you to use `return notFound()` due to using the TypeScript [`never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never) type.
+async function fetchUser(id) {
+  const res = await fetch('https://...')
+  if (!res.ok) return undefined
+  return res.json()
+}
 
-## Version History[](https://nextjs.org/docs/app/api-reference/functions/not-found#version-history)
+export default async function Profile({ params }) {
+  const { id } = await params
+  const user = await fetchUser(id)
 
-Version| Changes  
----|---  
-`v13.0.0`| `notFound` introduced.  
-  
-Was this helpful?
+  if (!user) {
+    notFound()
+  }
 
-supported.
+  // ...
+}
+```
 
-Send
+> **Good to know**: `notFound()` does not require you to use `return notFound()` due to using the TypeScript [`never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never) type.
+
+## Version History
+
+| Version   | Changes                |
+| --------- | ---------------------- |
+| `v13.0.0` | `notFound` introduced. |
+---
+

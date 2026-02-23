@@ -7,10 +7,6 @@ description: '기본적으로 Next.js는  헤더를 추가합니다. 이를 비�
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/poweredByHeader
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)poweredByHeader
-
-페이지 복사
-
 # poweredByHeader
 
 마지막 업데이트 2026년 2월 20일
@@ -23,9 +19,3 @@ next.config.js
       poweredByHeader: false,
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
-
-전송

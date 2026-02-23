@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 
 원본 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)webpack
-
-페이지 복사
-
 # 커스텀 Webpack 구성
 
 마지막 업데이트 2026년 2월 20일
@@ -24,14 +20,10 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
   * [Sass/SCSS imports](https://nextjs.org/docs/app/guides/sass)
   * [Sass/SCSS modules](https://nextjs.org/docs/app/guides/sass)
 
-
-
 자주 요청되는 몇몇 기능은 플러그인으로 제공됩니다:
 
   * [@next/mdx](https://github.com/vercel/next.js/tree/canary/packages/next-mdx)
   * [@next/bundle-analyzer](https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer)
-
-
 
 `webpack` 사용을 확장하려면 `next.config.js` 안에서 구성을 확장하는 함수를 다음과 같이 정의할 수 있습니다:
 
@@ -59,10 +51,8 @@ next.config.js
   * `defaultLoaders`: `Object` \- Next.js가 내부적으로 사용하는 기본 로더입니다:
     * `babel`: `Object` \- 기본 `babel-loader` 구성.
 
-
-
 `defaultLoaders.babel` 사용 예시:
-[code] 
+[code]
     // Example config for adding a loader that depends on babel-loader
     // This source was taken from the @next/mdx plugin source:
     // https://github.com/vercel/next.js/tree/canary/packages/next-mdx
@@ -78,7 +68,7 @@ next.config.js
             },
           ],
         })
-     
+
         return config
       },
     }
@@ -87,9 +77,5 @@ next.config.js
 #### `nextRuntime`[](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack#nextruntime)
 
 `nextRuntime`가 `"edge"` 또는 `"nodejs"`일 때 `isServer`는 `true`이며, `"edge"`인 `nextRuntime`은 현재 프록시와 Edge Runtime에서의 Server Components에만 사용됩니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

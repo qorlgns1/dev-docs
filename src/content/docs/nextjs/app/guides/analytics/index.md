@@ -7,10 +7,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 출처 URL: https://nextjs.org/docs/app/guides/analytics
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Analytics
-
-페이지 복사
-
 # Next.js 애플리케이션에 분석 기능을 추가하는 방법
 
 최종 업데이트: 2026년 2월 20일
@@ -27,7 +23,7 @@ instrumentation-client.js
 ```
 // Initialize analytics before the app starts
 console.log('Analytics initialized')
- 
+
 // Set up global error tracking
 window.addEventListener('error', (event) => {
   // Send to your error tracking service
@@ -40,9 +36,9 @@ window.addEventListener('error', (event) => {
 app/_components/web-vitals.js
 ```
 'use client'
- 
+
 import { useReportWebVitals } from 'next/web-vitals'
- 
+
 export function WebVitals() {
   useReportWebVitals((metric) => {
     console.log(metric)
@@ -53,7 +49,7 @@ export function WebVitals() {
 app/layout.js
 ```
 import { WebVitals } from './_components/web-vitals'
- 
+
 export default function Layout({ children }) {
   return (
     <html>
@@ -88,9 +84,9 @@ app/_components/web-vitals.tsx
 JavaScriptTypeScript
 ```
 'use client'
- 
+
 import { useReportWebVitals } from 'next/web-vitals'
- 
+
 export function WebVitals() {
   useReportWebVitals((metric) => {
     switch (metric.name) {
@@ -114,7 +110,7 @@ export function WebVitals() {
 useReportWebVitals((metric) => {
   const body = JSON.stringify(metric)
   const url = 'https://example.com/analytics'
- 
+
   // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
   if (navigator.sendBeacon) {
     navigator.sendBeacon(url, body)
@@ -126,7 +122,7 @@ useReportWebVitals((metric) => {
 
 > **알아두면 좋은 점**: [Google Analytics](https://analytics.google.com/analytics/web/)를 사용하는 경우 `id` 값을 활용하면 지표 분포를 수동으로 구성해(예: 백분위수 계산) 더 세밀한 분석을 수행할 수 있다.
 
-> 
+>
 > ```
 > useReportWebVitals((metric) => {
 >   // Use `window.gtag` if you initialized Google Analytics as this example:
@@ -140,11 +136,5 @@ useReportWebVitals((metric) => {
 >   })
 > })
 > ```
-> 
+>
 > [Google Analytics로 결과를 전송하는 방법](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics)에 대해 더 알아보라.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

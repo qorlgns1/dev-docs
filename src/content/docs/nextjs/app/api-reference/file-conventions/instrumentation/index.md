@@ -7,10 +7,6 @@ description: '파일은 애플리케이션에 관측 도구를 통합하여 성�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation
 
-[API 참조](https://nextjs.org/docs/app/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)instrumentation.js
-
-페이지 복사
-
 # instrumentation.js
 
 마지막 업데이트 2026년 2월 20일
@@ -30,7 +26,7 @@ instrumentation.ts
 JavaScriptTypeScript
 [code]
     import { registerOTel } from '@vercel/otel'
-     
+
     export function register() {
       registerOTel('next-app')
     }
@@ -43,14 +39,12 @@ JavaScriptTypeScript
   * `onRequestError`에서 async 작업을 실행한다면 반드시 await 하세요. `onRequestError`는 Next.js 서버가 오류를 포착할 때 트리거됩니다.
   * `error` 인스턴스는 Server Components 렌더링 중 React에서 처리된 경우 원래 오류 인스턴스와 다를 수 있습니다. 이 경우 오류의 `digest` 속성을 사용해 실제 오류 유형을 식별할 수 있습니다.
 
-
-
 instrumentation.ts
 
 JavaScriptTypeScript
 [code]
     import { type Instrumentation } from 'next'
-     
+
     export const onRequestError: Instrumentation.onRequestError = async (
       err,
       request,
@@ -101,8 +95,6 @@ Types
   * `request`: 오류와 연관된 읽기 전용 요청 정보입니다.
   * `context`: 오류가 발생한 컨텍스트입니다. 라우터 종류(App 또는 Pages Router) 및 Server Components(`'render'`), Route Handlers(`'route'`), Server Actions(`'action'`), Proxy(`'proxy'`) 중 어디에서 발생했는지 나타낼 수 있습니다.
 
-
-
 ### 런타임 지정[](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#specifying-the-runtime)
 
 `instrumentation.js` 파일은 Node.js와 Edge 런타임 모두에서 작동하지만, `process.env.NEXT_RUNTIME`을 사용해 특정 런타임을 대상으로 지정할 수 있습니다.
@@ -116,7 +108,7 @@ instrumentation.js
         return require('./register.node')
       }
     }
-     
+
     export function onRequestError() {
       if (process.env.NEXT_RUNTIME === 'edge') {
         return require('./on-request-error.edge')
@@ -128,18 +120,14 @@ instrumentation.js
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#version-history)
 
-버전| 변경 사항  
----|---  
-`v15.0.0`| `onRequestError` 도입, `instrumentation` 안정화  
-`v14.0.4`| `instrumentation`에 대한 Turbopack 지원  
-`v13.2.0`| `instrumentation` 실험적 기능으로 도입  
-  
+버전| 변경 사항
+---|---
+`v15.0.0`| `onRequestError` 도입, `instrumentation` 안정화
+`v14.0.4`| `instrumentation`에 대한 Turbopack 지원
+`v13.2.0`| `instrumentation` 실험적 기능으로 도입
+
 ## Instrumentation 추가 학습
 
-### [InstrumentationNext.js 앱에서 서버 시작 시 코드를 실행하는 방법을 알아보세요](https://nextjs.org/docs/app/guides/instrumentation)
+- [InstrumentationNext.js 앱에서 서버 시작 시 코드를 실행하는 방법을 알아보세요](https://nextjs.org/docs/app/guides/instrumentation)
 
 유용했나요?
-
-지원됨.
-
-전송

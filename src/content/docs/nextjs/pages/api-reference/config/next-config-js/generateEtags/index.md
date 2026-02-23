@@ -7,10 +7,6 @@ description: 'Next.js는 기본적으로 모든 페이지에 대해 etag를 생�
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateEtags
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)generateEtags
-
-페이지 복사
-
 # generateEtags
 
 마지막 업데이트: 2026년 2월 20일
@@ -25,9 +21,3 @@ next.config.js
       generateEtags: false,
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
-
-전송

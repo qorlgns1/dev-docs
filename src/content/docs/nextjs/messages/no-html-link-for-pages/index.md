@@ -41,7 +41,7 @@ pages/index.js
 pages/index.js
 [code]
     import Link from 'next/link'
-     
+
     function Home() {
       return (
         <div>
@@ -49,7 +49,7 @@ pages/index.js
         </div>
       )
     }
-     
+
     export default Home
 [/code]
 
@@ -75,11 +75,5 @@ eslint.config.json
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-html-link-for-pages#useful-links)
 
   * [next/link API Reference](https://nextjs.org/docs/pages/api-reference/components/link)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

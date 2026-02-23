@@ -7,10 +7,6 @@ description: '모든 라우트에서 서드파티 스크립트를 로드하려�
 
 출처 URL: https://nextjs.org/docs/pages/guides/scripts
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)스크립트
-
-페이지 복사
-
 # 스크립트를 로드하고 최적화하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -22,7 +18,7 @@ description: '모든 라우트에서 서드파티 스크립트를 로드하려�
 pages/_app.js
 [code]
     import Script from 'next/script'
-     
+
     export default function MyApp({ Component, pageProps }) {
       return (
         <>
@@ -83,7 +79,7 @@ pages/home.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function Home() {
       return (
         <>
@@ -104,7 +100,7 @@ JavaScriptTypeScript
 _pages/document.jsx
 [code]
     import { Html, Head, Main, NextScript } from 'next/document'
-     
+
     export default function Document() {
       return (
         <Html>
@@ -142,14 +138,14 @@ Partytown 구성을 수정하려면 다음 조건을 충족해야 합니다.
 ### 인라인 스크립트[](https://nextjs.org/docs/pages/guides/scripts#inline-scripts)
 
 외부 파일에서 로드하지 않는 인라인 스크립트도 Script 컴포넌트에서 지원합니다. 중괄호 안에 JavaScript를 넣어 작성할 수 있습니다.
-[code] 
+[code]
     <Script id="show-banner">
       {`document.getElementById('banner').classList.remove('hidden')`}
     </Script>
 [/code]
 
 또는 `dangerouslySetInnerHTML` 속성을 사용할 수 있습니다.
-[code] 
+[code]
     <Script
       id="show-banner"
       dangerouslySetInnerHTML={{
@@ -175,7 +171,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function Page() {
       return (
         <>
@@ -201,7 +197,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function Page() {
       return (
         <>
@@ -215,8 +211,6 @@ JavaScriptTypeScript
       )
     }
 [/code]
-
-도움이 되었나요?
 
 supported.
 

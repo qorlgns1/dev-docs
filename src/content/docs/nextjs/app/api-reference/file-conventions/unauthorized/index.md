@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)unauthorized.js
-
-페이지 복사
-
 # unauthorized.js
 
 이 기능은 현재 실험 단계이며 변경될 수 있으므로 프로덕션 환경에서는 권장되지 않습니다. [GitHub](https://github.com/vercel/next.js/issues)에서 체험 후 피드백을 공유해 주세요.
@@ -24,7 +20,7 @@ app/unauthorized.tsx
 JavaScriptTypeScript
 [code]
     import Login from '@/app/components/Login'
-     
+
     export default function Unauthorized() {
       return (
         <main>
@@ -54,14 +50,14 @@ JavaScriptTypeScript
 [code]
     import { verifySession } from '@/app/lib/dal'
     import { unauthorized } from 'next/navigation'
-     
+
     export default async function DashboardPage() {
       const session = await verifySession()
-     
+
       if (!session) {
         unauthorized()
       }
-     
+
       return <div>Dashboard</div>
     }
 [/code]
@@ -71,7 +67,7 @@ app/unauthorized.tsx
 JavaScriptTypeScript
 [code]
     import Login from '@/app/components/Login'
-     
+
     export default function UnauthorizedPage() {
       return (
         <main>
@@ -85,16 +81,13 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized#version-history)
 
-버전| 변경 사항  
----|---  
-`v15.1.0`| `unauthorized.js` 도입.  
-  
-## 
+버전| 변경 사항
+---|---
+`v15.1.0`| `unauthorized.js` 도입.
 
-### [unauthorized 함수에 대한 API Reference.](https://nextjs.org/docs/app/api-reference/functions/unauthorized)
+##
 
-도움이 되었나요?
-
-지원됨.
+- [unauthorized](https://nextjs.org/docs/app/api-reference/functions/unauthorized)
+  - 함수에 대한 API Reference.
 
 보내기

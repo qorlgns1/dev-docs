@@ -7,10 +7,6 @@ description: 'Turbopack 파일시스템 캐시는  또는  명령 전반에서 T
 
 소스 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)turbopackFileSystemCache
-
-페이지 복사
-
 # Turbopack 파일시스템 캐싱
 
 최종 업데이트 2026년 2월 20일
@@ -26,7 +22,7 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         // Enable filesystem caching for `next dev`
@@ -35,20 +31,16 @@ JavaScriptTypeScript
         turbopackFileSystemCacheForBuild: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
 ## 버전 변경 사항[](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache#version-changes)
 
-버전|변경 사항  
----|---  
-`v16.1.0`| 개발 환경에서 기본적으로 파일시스템 캐싱이 활성화됨  
-`v16.0.0`| 빌드와 개발을 위한 개별 플래그를 포함한 베타 릴리스  
-`v15.5.0`| 카나리 릴리스에서 실험적으로 지속형 캐싱 출시  
-  
-도움이 되었나요?
-
-지원됨.
+버전|변경 사항
+---|---
+`v16.1.0`| 개발 환경에서 기본적으로 파일시스템 캐싱이 활성화됨
+`v16.0.0`| 빌드와 개발을 위한 개별 플래그를 포함한 베타 릴리스
+`v15.5.0`| 카나리 릴리스에서 실험적으로 지속형 캐싱 출시
 
 보내기

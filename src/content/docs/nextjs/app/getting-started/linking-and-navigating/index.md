@@ -9,8 +9,6 @@ description: 'Next.js에서는 기본적으로 서버에서 라우트를 렌더�
 
 [App Router](https://nextjs.org/docs/app)[Getting Started](https://nextjs.org/docs/app/getting-started)링크 및 탐색
 
-페이지 복사
-
 # 링크 및 탐색
 
 마지막 업데이트: 2026년 2월 20일
@@ -52,7 +50,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       return (
         <html>
@@ -153,12 +151,12 @@ JavaScriptTypeScript
 [code]
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
-     
+
       return posts.map((post) => ({
         slug: post.slug,
       }))
     }
-     
+
     export default async function Page({
       params,
     }: {
@@ -180,9 +178,9 @@ app/ui/loading-indicator.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useLinkStatus } from 'next/link'
-     
+
     export default function LoadingIndicator() {
       const { pending } = useLinkStatus()
       return (
@@ -198,7 +196,7 @@ JavaScriptTypeScript
 ### 사전 가져오기 비활성화[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#disabling-prefetching)
 
 `<Link>` 컴포넌트의 `prefetch` prop을 `false`로 설정하면 사전 가져오기를 옵트아웃할 수 있습니다. 이는 (무한 스크롤 테이블처럼) 링크가 많은 목록을 렌더링할 때 리소스 사용을 최소화하는 데 유용합니다.
-[code] 
+[code]
     <Link prefetch={false} href="/blog">
       Blog
     </Link>
@@ -216,10 +214,10 @@ app/ui/hover-prefetch-link.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Link from 'next/link'
     import { useState } from 'react'
-     
+
     function HoverPrefetchLink({
       href,
       children,
@@ -228,7 +226,7 @@ JavaScriptTypeScript
       children: React.ReactNode
     }) {
       const [active, setActive] = useState(false)
-     
+
       return (
         <Link
           href={href}
@@ -250,8 +248,6 @@ React는 Selective Hydration으로 이를 완화하며, 다음과 같은 방법�
   * [`@next/bundle-analyzer`](https://nextjs.org/docs/app/guides/package-bundling#nextbundle-analyzer-for-webpack) 플러그인을 사용해 큰 의존성을 제거하여 번들 크기를 파악하고 줄입니다.
   * 가능한 경우 클라이언트 로직을 서버로 이동합니다. 자세한 내용은 [Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components) 문서를 참고하세요.
 
-
-
 ## 예시[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#examples)
 
 ### 네이티브 History API[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#native-history-api)
@@ -263,20 +259,20 @@ Next.js에서는 페이지를 다시 로드하지 않고도 브라우저의 히�
 #### `window.history.pushState`[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#windowhistorypushstate)
 
 브라우저 히스토리 스택에 새 항목을 추가할 때 사용하세요. 사용자는 이전 상태로 되돌아갈 수 있습니다. 예를 들어 제품 목록을 정렬하려면 다음과 같이 합니다:
-[code] 
+[code]
     'use client'
-     
+
     import { useSearchParams } from 'next/navigation'
-     
+
     export default function SortProducts() {
       const searchParams = useSearchParams()
-     
+
       function updateSorting(sortOrder: string) {
         const params = new URLSearchParams(searchParams.toString())
         params.set('sort', sortOrder)
         window.history.pushState(null, '', `?${params.toString()}`)
       }
-     
+
       return (
         <>
           <button onClick={() => updateSorting('asc')}>Sort Ascending</button>
@@ -289,20 +285,20 @@ Next.js에서는 페이지를 다시 로드하지 않고도 브라우저의 히�
 #### `window.history.replaceState`[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#windowhistoryreplacestate)
 
 브라우저 히스토리 스택의 현재 항목을 교체할 때 사용하세요. 사용자는 이전 상태로 돌아갈 수 없습니다. 예를 들어 애플리케이션 로케일을 전환하려면 다음과 같이 합니다:
-[code] 
+[code]
     'use client'
-     
+
     import { usePathname } from 'next/navigation'
-     
+
     export function LocaleSwitcher() {
       const pathname = usePathname()
-     
+
       function switchLocale(locale: string) {
         // e.g. '/en/about' or '/fr/contact'
         const newPath = `/${locale}${pathname}`
         window.history.replaceState(null, '', newPath)
       }
-     
+
       return (
         <>
           <button onClick={() => switchLocale('en')}>English</button>
@@ -314,10 +310,11 @@ Next.js에서는 페이지를 다시 로드하지 않고도 브라우저의 히�
 
 ##
 
-### [Link Component내장 `next/link` 컴포넌트로 빠른 클라이언트 측 내비게이션을 활성화하세요.](https://nextjs.org/docs/app/api-reference/components/link)### [loading.js`loading.js` 파일에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/file-conventions/loading)### [PrefetchingNext.js에서 프리페치를 구성하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/prefetching)
+- [링크 컴포넌트](https://nextjs.org/docs/app/api-reference/components/link)
+  - Link Component내장 `next/link` 컴포넌트로 빠른 클라이언트 측 내비게이션을 활성화하세요.
 
-도움이 되었나요?
+- [loading.js](https://nextjs.org/docs/app/api-reference/file-conventions/loading)
+  - `loading.js` 파일에 대한 API 레퍼런스.
 
-지원됨.
-
-전송
+- [프리페칭](https://nextjs.org/docs/app/guides/prefetching)
+  - PrefetchingNext.js에서 프리페치를 구성하는 방법을 알아보세요.

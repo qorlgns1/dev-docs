@@ -1,13 +1,11 @@
 ---
 title: '가이드: PWAs'
-description: 'Progressive Web Application(PWA)는 웹 애플리케이션의 도달성과 접근성을 네이티브 모바일 앱의 기능 및 사용자 경험과 결합합니다. Next.js를 사용하면 여러 코드베이스나 앱 스토어 승인 없이 모든 플랫폼에서 매끄럽고 앱 같은 경험을 제공하는...'
+description: 'Progressive Web Application(PWA)는 웹 애플리케이션의 도달성과 접근성을 네이티브 모바일 앱의 기능 및 사용자 경험과 결합합니다. Next.js를 사용하면 여러 코드베이스나 앱 스토어 승인 없이 모든 플랫폼에서 매끄럽고 앱 같은 경험을 제공하는 ...'
 ---
 
 # 가이드: PWAs | Next.js
 
 Source URL: https://nextjs.org/docs/app/guides/progressive-web-apps
-
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)PWAs
 
 Copy page
 
@@ -23,8 +21,6 @@ PWA를 사용하면 다음을 수행할 수 있습니다:
   * 단일 코드베이스로 크로스플랫폼 애플리케이션 구축
   * 홈 화면 설치 및 푸시 알림과 같은 네이티브 수준의 기능 제공
 
-
-
 ## Next.js로 PWA 만들기[](https://nextjs.org/docs/app/guides/progressive-web-apps#creating-a-pwa-with-nextjs)
 
 ### 1\. Web App Manifest 생성[](https://nextjs.org/docs/app/guides/progressive-web-apps#1-creating-the-web-app-manifest)
@@ -38,7 +34,7 @@ app/manifest.ts
 JavaScriptTypeScript
 [code]
     import type { MetadataRoute } from 'next'
-     
+
     export default function manifest(): MetadataRoute.Manifest {
       return {
         name: 'Next.js PWA',
@@ -77,26 +73,24 @@ JavaScriptTypeScript
   * Chromium 기반 브라우저
   * Firefox
 
-
-
 이 덕분에 PWA는 네이티브 앱의 실질적인 대안이 됩니다. 특히 오프라인 지원 없이도 설치 프롬프트를 트리거할 수 있습니다.
 
 웹 푸시 알림을 사용하면 사용자가 앱을 적극적으로 사용하고 있지 않을 때도 다시 참여시킬 수 있습니다. Next.js 애플리케이션에서 이를 구현하는 방법은 다음과 같습니다:
 
 먼저 `app/page.tsx`에서 메인 페이지 컴포넌트를 만듭니다. 더 잘 이해할 수 있도록 작은 부분으로 나눕니다. 처음에는 필요한 일부 import와 유틸리티를 추가합니다. 참조된 Server Action이 아직 없어도 괜찮습니다:
-[code] 
+[code]
     'use client'
-     
+
     import { useState, useEffect } from 'react'
     import { subscribeUser, unsubscribeUser, sendNotification } from './actions'
-     
+
     function urlBase64ToUint8Array(base64String: string) {
       const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
       const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')
-     
+
       const rawData = window.atob(base64)
       const outputArray = new Uint8Array(rawData.length)
-     
+
       for (let i = 0; i < rawData.length; ++i) {
         outputArray[i] = rawData.charCodeAt(i)
       }
@@ -105,21 +99,21 @@ JavaScriptTypeScript
 [/code]
 
 이제 구독, 구독 해제, 푸시 알림 전송을 관리하는 컴포넌트를 추가합니다.
-[code] 
+[code]
     function PushNotificationManager() {
       const [isSupported, setIsSupported] = useState(false)
       const [subscription, setSubscription] = useState<PushSubscription | null>(
         null
       )
       const [message, setMessage] = useState('')
-     
+
       useEffect(() => {
         if ('serviceWorker' in navigator && 'PushManager' in window) {
           setIsSupported(true)
           registerServiceWorker()
         }
       }, [])
-     
+
       async function registerServiceWorker() {
         const registration = await navigator.serviceWorker.register('/sw.js', {
           scope: '/',
@@ -128,7 +122,7 @@ JavaScriptTypeScript
         const sub = await registration.pushManager.getSubscription()
         setSubscription(sub)
       }
-     
+
       async function subscribeToPush() {
         const registration = await navigator.serviceWorker.ready
         const sub = await registration.pushManager.subscribe({
@@ -141,24 +135,24 @@ JavaScriptTypeScript
         const serializedSub = JSON.parse(JSON.stringify(sub))
         await subscribeUser(serializedSub)
       }
-     
+
       async function unsubscribeFromPush() {
         await subscription?.unsubscribe()
         setSubscription(null)
         await unsubscribeUser()
       }
-     
+
       async function sendTestNotification() {
         if (subscription) {
           await sendNotification(message)
           setMessage('')
         }
       }
-     
+
       if (!isSupported) {
         return <p>Push notifications are not supported in this browser.</p>
       }
-     
+
       return (
         <div>
           <h3>Push Notifications</h3>
@@ -186,23 +180,23 @@ JavaScriptTypeScript
 [/code]
 
 마지막으로, iOS 기기에서 홈 화면에 설치하도록 안내하는 메시지를 보여 주고, 이미 설치된 경우에는 표시하지 않는 컴포넌트를 만듭니다.
-[code] 
+[code]
     function InstallPrompt() {
       const [isIOS, setIsIOS] = useState(false)
       const [isStandalone, setIsStandalone] = useState(false)
-     
+
       useEffect(() => {
         setIsIOS(
           /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream
         )
-     
+
         setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)
       }, [])
-     
+
       if (isStandalone) {
         return null // Don't show install button if already installed
       }
-     
+
       return (
         <div>
           <h3>Install App</h3>
@@ -225,7 +219,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-     
+
     export default function Page() {
       return (
         <div>
@@ -247,36 +241,36 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import webpush from 'web-push'
-     
+
     webpush.setVapidDetails(
       '<mailto:your-email@example.com>',
       process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
       process.env.VAPID_PRIVATE_KEY!
     )
-     
+
     let subscription: PushSubscription | null = null
-     
+
     export async function subscribeUser(sub: PushSubscription) {
       subscription = sub
       // In a production environment, you would want to store the subscription in a database
       // For example: await db.subscriptions.create({ data: sub })
       return { success: true }
     }
-     
+
     export async function unsubscribeUser() {
       subscription = null
       // In a production environment, you would want to remove the subscription from the database
       // For example: await db.subscriptions.delete({ where: { ... } })
       return { success: true }
     }
-     
+
     export async function sendNotification(message: string) {
       if (!subscription) {
         throw new Error('No subscription available')
       }
-     
+
       try {
         await webpush.sendNotification(
           subscription,
@@ -319,10 +313,10 @@ Terminal
 [/code]
 
 출력을 복사해 `.env` 파일에 키를 붙여 넣습니다:
-[code] 
+[code]
     NEXT_PUBLIC_VAPID_PUBLIC_KEY=your_public_key_here
     VAPID_PRIVATE_KEY=your_private_key_here
-    
+
 [/code]
 
 ### 5\. 서비스 워커 만들기[](https://nextjs.org/docs/app/guides/progressive-web-apps#5-creating-a-service-worker)
@@ -347,7 +341,7 @@ public/sw.js
         event.waitUntil(self.registration.showNotification(data.title, options))
       }
     })
-     
+
     self.addEventListener('notificationclick', function (event) {
       console.log('Notification click received.')
       event.notification.close()
@@ -455,12 +449,9 @@ Next.js에서 [콘텐츠 보안 정책](https://nextjs.org/docs/app/guides/conte
   4. **보안 고려 사항**: 서비스 워커를 적절히 보호하세요. HTTPS 사용, 푸시 메시지 출처 검증, 올바른 오류 처리를 포함합니다.
   5. **사용자 경험**: 특정 PWA 기능을 브라우저가 지원하지 않는 경우에도 앱이 잘 작동하도록 프로그레시브 인핸스먼트 기법을 고려하세요.
 
-## 
+##
 
-### [manifest.json 파일을 위한 API Reference](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest)
-
-도움이 되었나요?
-
-지원됨.
+- [manifest.json](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest)
+  - 파일을 위한 API Reference
 
 보내기

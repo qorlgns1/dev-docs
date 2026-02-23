@@ -7,10 +7,6 @@ description: '파일은 Next.js가 전체 페이지 로드 후 슬롯의 활성 
 
 소스 URL: https://nextjs.org/docs/app/api-reference/file-conventions/default
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)default.js
-
-페이지 복사
-
 # default.js
 
 마지막 업데이트 2026년 2월 20일
@@ -28,7 +24,7 @@ description: '파일은 Next.js가 전체 페이지 로드 후 슬롯의 활성 
 app/@team/default.js
 [code]
     import { notFound } from 'next/navigation'
-     
+
     export default function Default() {
       notFound()
     }
@@ -55,22 +51,16 @@ JavaScriptTypeScript
     }
 [/code]
 
-예시| URL| `params`  
----|---|---  
-`app/[artist]/@sidebar/default.js`| `/zack`| `Promise<{ artist: 'zack' }>`  
-`app/[artist]/[album]/@sidebar/default.js`| `/zack/next`| `Promise<{ artist: 'zack', album: 'next' }>`  
-  
+예시| URL| `params`
+---|---|---
+`app/[artist]/@sidebar/default.js`| `/zack`| `Promise<{ artist: 'zack' }>`
+`app/[artist]/[album]/@sidebar/default.js`| `/zack/next`| `Promise<{ artist: 'zack', album: 'next' }>`
+
   * `params` prop은 프라미스이므로 값을 사용하려면 `async/await` 또는 React의 [`use`](https://react.dev/reference/react/use) 함수를 사용해야 합니다.
     * 버전 14 및 이전에서는 `params`가 동기 prop이었습니다. 하위 호환성을 위해 Next.js 15에서도 동기적으로 접근할 수 있지만, 이 동작은 미래에 더 이상 지원되지 않을 예정입니다.
 
-
-
 ## 병렬 라우트 더 알아보기
 
-### [Parallel Routes동일한 뷰에서 하나 이상의 페이지를 동시에 렌더링하고 독립적으로 탐색할 수 있게 하는 패턴으로, 매우 동적인 애플리케이션에 적합합니다.](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes)
-
-도움이 되었나요?
+- [Parallel Routes동일한 뷰에서 하나 이상의 페이지를 동시에 렌더링하고 독립적으로 탐색할 수 있게 하는 패턴으로, 매우 동적인 애플리케이션에 적합합니다.](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes)
 
 지원됩니다.
-
-전송

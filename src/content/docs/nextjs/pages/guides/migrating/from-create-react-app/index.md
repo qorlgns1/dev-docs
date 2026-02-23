@@ -9,8 +9,6 @@ description: '이 가이드는 기존 Create React App(CRA) 사이트를 Next.js
 
 [가이드](https://nextjs.org/docs/pages/guides)[마이그레이션](https://nextjs.org/docs/pages/guides/migrating)Create React App
 
-페이지 복사
-
 # Create React App에서 Next.js로 마이그레이션하는 방법
 
 최종 업데이트 2026년 2월 20일
@@ -27,8 +25,6 @@ Create React App은 순수한 클라이언트 사이드 렌더링을 사용합�
 
   1. 브라우저가 React 코드와 전체 애플리케이션 번들을 다운로드해 실행해야만, 코드가 데이터를 로드하기 위한 요청을 보낼 수 있습니다.
   2. 새로운 기능과 의존성을 추가할 때마다 애플리케이션 코드가 커집니다.
-
-
 
 ### 자동 코드 분할 없음[](https://nextjs.org/docs/pages/guides/migrating/from-create-react-app#no-automatic-code-splitting)
 
@@ -82,12 +78,12 @@ pnpmnpmyarnbun
 next.config.ts
 ```
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       output: 'export', // Outputs a Single-Page Application (SPA)
       distDir: 'build', // Changes the build output directory to `build`
     }
-     
+
     export default nextConfig
 ```
 
@@ -101,8 +97,6 @@ CRA 애플리케이션에서 루트 레이아웃 파일과 가장 유사한 것�
 
   1. `src` 폴더 안(또는 루트에 `app`을 두고 싶다면 프로젝트 루트)에 새 `app` 디렉터리를 만듭니다.
   2. `app` 디렉터리 안에 `layout.tsx`(또는 `layout.js`) 파일을 생성합니다.
-
-
 
 app/layout.tsx
 
@@ -207,12 +201,12 @@ app/layout.tsx
 JavaScriptTypeScript
 ```
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: 'React App',
       description: 'Web site created with Next.js.',
     }
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -241,14 +235,14 @@ app/layout.tsx
 JavaScriptTypeScript
 ```
     import '../index.css'
-     
+
     export const metadata = {
       title: 'React App',
       description: 'Web site created with Next.js.',
 ```
 
 }
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -274,8 +268,7 @@ Create React App은 엔트리 포인트로 `src/index.tsx`(또는 `index.js`)를
 
   1. **`app` 내부에 `[[...slug]]` 디렉터리를 만듭니다.**
 
-
-[code] 
+[code]
     app
      ┣ [[...slug]]
      ┃ ┗ page.tsx
@@ -284,8 +277,6 @@ Create React App은 엔트리 포인트로 `src/index.tsx`(또는 `index.js`)를
 
   2. **다음 내용을 `page.tsx`에 추가합니다.**
 
-
-
 app/[[...slug]]/page.tsx
 
 JavaScriptTypeScript
@@ -293,7 +284,7 @@ JavaScriptTypeScript
     export function generateStaticParams() {
       return [{ slug: [''] }]
     }
-     
+
     export default function Page() {
       return '...' // We'll update this
     }
@@ -312,11 +303,11 @@ app/[[...slug]]/client.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import dynamic from 'next/dynamic'
-     
+
     const App = dynamic(() => import('../../App'), { ssr: false })
-     
+
     export function ClientOnly() {
       return <App />
     }
@@ -325,8 +316,6 @@ JavaScriptTypeScript
   * `'use client'` 지시문은 이 파일을 **클라이언트 컴포넌트**로 지정합니다.
   * `ssr: false`가 포함된 `dynamic` import는 `<App />` 컴포넌트의 서버 사이드 렌더링을 비활성화하여 진정한 클라이언트 전용(SPA)으로 만듭니다.
 
-
-
 이제 새 컴포넌트를 사용하도록 `page.tsx`(또는 `page.js`)를 업데이트합니다:
 
 app/[[...slug]]/page.tsx
@@ -334,11 +323,11 @@ app/[[...slug]]/page.tsx
 JavaScriptTypeScript
 [code]
     import { ClientOnly } from './client'
-     
+
     export function generateStaticParams() {
       return [{ slug: [''] }]
     }
-     
+
     export default function Page() {
       return <ClientOnly />
     }
@@ -347,9 +336,9 @@ JavaScriptTypeScript
 ### 8단계: 정적 이미지 import 업데이트[](https://nextjs.org/docs/pages/guides/migrating/from-create-react-app#step-8-update-static-image-imports)
 
 CRA에서 이미지 파일을 import하면 해당 파일의 공개 URL이 문자열로 반환됩니다:
-[code] 
+[code]
     import image from './img.png'
-     
+
     export default function App() {
       return <img src={image} />
     }
@@ -362,19 +351,19 @@ Next.js에서는 정적 이미지 import가 객체를 반환합니다. 이 객�
 `<img>` 태그를 유지하면 애플리케이션의 변경량을 줄이고 위 문제를 예방할 수 있습니다. 이후 필요할 때 [로더를 구성](https://nextjs.org/docs/app/api-reference/components/image#loader)하거나 자동 이미지 최적화를 제공하는 기본 Next.js 서버로 이전하여 `<Image>` 컴포넌트로 점진적으로 전환할 수 있습니다.
 
 **`/public`에서 import한 이미지의 절대 경로를 상대 import로 변환하세요:**
-[code] 
+[code]
     // Before
     import logo from '/logo.png'
-     
+
     // After
     import logo from '../public/logo.png'
 [/code]
 
 **`<img>` 태그에는 이미지 객체 전체 대신 `src` 속성을 전달하세요:**
-[code] 
+[code]
     // Before
     <img src={logo} />
-     
+
     // After
     <img src={logo.src} />
 [/code]
@@ -441,12 +430,12 @@ CRA의 `package.json`에서 `homepage` 필드를 사용하여 특정 하위 경�
 next.config.ts
 [code]
     import { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       basePath: '/my-subpath',
       // ...
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -461,7 +450,7 @@ CRA 앱에서 `package.json`의 `proxy` 필드로 백엔드 서버에 요청을 
 next.config.ts
 [code]
     import { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       async rewrites() {
         return [
@@ -481,14 +470,14 @@ CRA에서 커스텀 webpack 또는 Babel 구성을 사용했다면, `next.config
 next.config.ts
 [code]
     import { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       webpack: (config, { isServer }) => {
         // Modify the webpack config here
         return config
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -497,7 +486,7 @@ next.config.ts
 ### TypeScript 설정[](https://nextjs.org/docs/pages/guides/migrating/from-create-react-app#typescript-setup)
 
 `tsconfig.json`이 있으면 Next.js가 자동으로 TypeScript를 설정합니다. `tsconfig.json`의 `include` 배열에 `next-env.d.ts`가 포함되어 있는지 확인하세요:
-[code] 
+[code]
     {
       "include": ["next-env.d.ts", "app/**/*", "src/**/*"]
     }
@@ -506,12 +495,12 @@ next.config.ts
 ## 번들러 호환성[](https://nextjs.org/docs/pages/guides/migrating/from-create-react-app#bundler-compatibility)
 
 Create React App은 번들링에 webpack을 사용합니다. Next.js는 이제 더 빠른 로컬 개발을 위해 [Turbopack](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack)을 기본값으로 사용합니다:
-[code] 
+[code]
     next dev  # Uses Turbopack by default
 [/code]
 
 CRA와 유사하게 Webpack을 사용하려면:
-[code] 
+[code]
     next dev --webpack
 [/code]
 
@@ -531,9 +520,5 @@ CRA와 유사하게 Webpack을 사용하려면:
   * Next.js [권장 규칙](https://nextjs.org/docs/app/api-reference/config/eslint#setup-eslint)과 함께 **ESLint를 활성화**하세요.
 
 > **참고** : 정적 내보내기(`output: 'export'`)는 `useParams` 훅이나 다른 서버 기능을 [현재 지원하지 않습니다](https://github.com/vercel/next.js/issues/54393). 모든 Next.js 기능을 사용하려면 `next.config.ts`에서 `output: 'export'`를 제거하세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

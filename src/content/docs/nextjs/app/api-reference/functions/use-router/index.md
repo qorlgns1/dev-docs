@@ -7,10 +7,6 @@ description: '훅을 사용하면 클라이언트 컴포넌트 내부에서 라�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/functions/use-router
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)useRouter
-
-페이지 복사
-
 # useRouter
 
 최종 업데이트 2026년 2월 20일
@@ -24,12 +20,12 @@ app/example-client-component.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useRouter } from 'next/navigation'
-     
+
     export default function Page() {
       const router = useRouter()
-     
+
       return (
         <button type="button" onClick={() => router.push('/dashboard')}>
           Dashboard
@@ -47,16 +43,13 @@ JavaScriptTypeScript
   * `router.back()`: 브라우저 기록 스택에서 이전 라우트로 이동합니다.
   * `router.forward()`: 브라우저 기록 스택에서 다음 페이지로 이동합니다.
 
-
-
 > **알아두면 좋은 점** :
-> 
+>
 >   * 신뢰할 수 없거나 정제되지 않은 URL을 `router.push` 또는 `router.replace`에 전달하면 사이트가 XSS 취약점에 노출될 수 있으므로 절대 전달하지 마세요. 예를 들어 `router.push` 또는 `router.replace`에 전달된 `javascript:` URL은 페이지 컨텍스트에서 실행됩니다.
 >   * `<Link>` 컴포넌트는 뷰포트에 보이는 즉시 라우트를 자동으로 프리페치합니다.
 >   * 페치 요청이 캐시된 경우 `refresh()`는 동일한 결과를 다시 생성할 수 있습니다. `cookies`와 `headers`와 같은 다른 동적 API도 응답을 변경할 수 있습니다.
 >   * `onInvalidate` 콜백은 프리페치 요청당 최대 한 번 호출됩니다. 이는 업데이트된 라우트 데이터를 위해 새 프리페치를 트리거해야 할 시점을 알리는 신호입니다.
-> 
-
+>
 
 ### `next/router`에서 마이그레이션[](https://nextjs.org/docs/app/api-reference/functions/use-router#migrating-from-nextrouter)
 
@@ -64,8 +57,6 @@ JavaScriptTypeScript
   * `pathname` 문자열이 제거되었으며 [`usePathname()`](https://nextjs.org/docs/app/api-reference/functions/use-pathname)으로 대체되었습니다.
   * `query` 객체가 제거되었으며 [`useSearchParams()`](https://nextjs.org/docs/app/api-reference/functions/use-search-params)로 대체되었습니다.
   * `router.events`가 교체되었습니다. [아래를 참고하세요.](https://nextjs.org/docs/app/api-reference/functions/use-router#router-events)
-
-
 
 [전체 마이그레이션 가이드 보기](https://nextjs.org/docs/app/guides/migrating/app-router-migration).
 
@@ -78,21 +69,21 @@ JavaScriptTypeScript
 app/components/navigation-events.js
 [code]
     'use client'
-     
+
     import { useEffect } from 'react'
     import { usePathname, useSearchParams } from 'next/navigation'
-     
+
     export function NavigationEvents() {
       const pathname = usePathname()
       const searchParams = useSearchParams()
-     
+
       useEffect(() => {
         const url = `${pathname}?${searchParams}`
         console.log(url)
         // You can now use the current URL
         // ...
       }, [pathname, searchParams])
-     
+
       return '...'
     }
 [/code]
@@ -103,13 +94,13 @@ app/layout.js
 [code]
     import { Suspense } from 'react'
     import { NavigationEvents } from './components/navigation-events'
-     
+
     export default function Layout({ children }) {
       return (
         <html lang="en">
           <body>
             {children}
-     
+
             <Suspense fallback={null}>
               <NavigationEvents />
             </Suspense>
@@ -130,12 +121,12 @@ app/example-client-component.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useRouter } from 'next/navigation'
-     
+
     export default function Page() {
       const router = useRouter()
-     
+
       return (
         <button
           type="button"
@@ -149,13 +140,9 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/use-router#version-history)
 
-Version| Changes  
----|---  
-`v15.4.0`| `router.prefetch`에 선택적 `onInvalidate` 콜백이 도입됨  
-`v13.0.0`| `next/navigation`의 `useRouter`가 도입됨.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v15.4.0`| `router.prefetch`에 선택적 `onInvalidate` 콜백이 도입됨
+`v13.0.0`| `next/navigation`의 `useRouter`가 도입됨.
 
 보내기

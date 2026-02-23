@@ -7,8 +7,6 @@ description: '이 기능은 현재 실험적이며 추후 변경될 수 있으�
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/optimizePackageImports
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)optimizePackageImports
-
 Copy page
 
 # optimizePackageImports
@@ -59,7 +57,6 @@ next.config.js
   * `react-icons/*`
   * `effect`
   * `@effect/*`
-
 
 Was this helpful?
 

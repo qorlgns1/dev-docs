@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/internationalizatio
 
 원본 URL: https://nextjs.org/docs/app/guides/internationalization
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Internationalization
-
-페이지 복사
-
 # 국제화
 
 최종 업데이트 2026년 2월 20일
@@ -24,8 +20,6 @@ Next.js는 여러 언어를 지원하도록 콘텐츠의 라우팅과 렌더링�
     * `nl-NL`: 네덜란드에서 사용하는 네덜란드어
     * `nl`: 특정 지역이 없는 네덜란드어
 
-
-
 ## 라우팅 개요[](https://nextjs.org/docs/app/guides/internationalization#routing-overview)
 
 어느 로케일을 사용할지 선택할 때는 브라우저의 사용자 언어 기본 설정을 사용하는 것이 좋습니다. 기본 언어를 변경하면 애플리케이션으로 들어오는 `Accept-Language` 헤더가 수정됩니다.
@@ -36,12 +30,12 @@ proxy.js
 [code]
     import { match } from '@formatjs/intl-localematcher'
     import Negotiator from 'negotiator'
-     
+
     let headers = { 'accept-language': 'en-US,en;q=0.5' }
     let languages = new Negotiator({ headers }).languages()
     let locales = ['en-US', 'nl-NL', 'nl']
     let defaultLocale = 'en-US'
-     
+
     match(languages, locales, defaultLocale) // -> 'en-US'
 [/code]
 
@@ -50,21 +44,21 @@ proxy.js
 proxy.js
 [code]
     import { NextResponse } from "next/server";
-     
+
     let locales = ['en-US', 'nl-NL', 'nl']
-     
+
     // Get the preferred locale, similar to the above or using a library
     function getLocale(request) { ... }
-     
+
     export function proxy(request) {
       // Check if there is any supported locale in the pathname
       const { pathname } = request.nextUrl
       const pathnameHasLocale = locales.some(
         (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
       )
-     
+
       if (pathnameHasLocale) return
-     
+
       // Redirect if there is no locale
       const locale = getLocale(request)
       request.nextUrl.pathname = `/${locale}${pathname}`
@@ -72,7 +66,7 @@ proxy.js
       // The new URL is now /en-US/products
       return NextResponse.redirect(request.nextUrl)
     }
-     
+
     export const config = {
       matcher: [
         // Skip all internal paths (_next)
@@ -132,17 +126,17 @@ app/[lang]/dictionaries.ts
 JavaScriptTypeScript
 [code]
     import 'server-only'
-     
+
     const dictionaries = {
       en: () => import('./dictionaries/en.json').then((module) => module.default),
       nl: () => import('./dictionaries/nl.json').then((module) => module.default),
     }
-     
+
     export type Locale = keyof typeof dictionaries
-     
+
     export const hasLocale = (locale: string): locale is Locale =>
       locale in dictionaries
-     
+
     export const getDictionary = async (locale: Locale) => dictionaries[locale]()
 [/code]
 
@@ -156,12 +150,12 @@ JavaScriptTypeScript
 [code]
     import { notFound } from 'next/navigation'
     import { getDictionary, hasLocale } from './dictionaries'
-     
+
     export default async function Page({ params }: PageProps<'/[lang]'>) {
       const { lang } = await params
-     
+
       if (!hasLocale(lang)) notFound()
-     
+
       const dict = await getDictionary(lang)
       return <button>{dict.products.cart}</button> // Add to Cart
     }
@@ -180,7 +174,7 @@ JavaScriptTypeScript
     export async function generateStaticParams() {
       return [{ lang: 'en-US' }, { lang: 'de' }]
     }
-     
+
     export default async function RootLayout({
       children,
       params,
@@ -204,11 +198,3 @@ JavaScriptTypeScript
   * [`tolgee`](https://tolgee.io/apps-integrations/next)
   * [`next-intlayer`](https://intlayer.org/doc/environment/nextjs)
   * [`gt-next`](https://generaltranslation.com/en/docs/next)
-
-
-
-도움이 되었나요?
-
-지원됨.
-
-전송

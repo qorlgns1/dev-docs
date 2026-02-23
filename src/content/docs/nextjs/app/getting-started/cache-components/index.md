@@ -9,8 +9,6 @@ description: '> 알아두면 좋아요: Cache Components는 선택 사항입니�
 
 [App Router](https://nextjs.org/docs/app)[Getting Started](https://nextjs.org/docs/app/getting-started)Cache Components
 
-페이지 복사
-
 # Cache Components
 
 마지막 업데이트 2026년 2월 20일
@@ -29,8 +27,6 @@ Cache Components는 경로를 미리 렌더링해 즉시 브라우저로 전송�
 
   * 컴포넌트를 React [`<Suspense>`](https://react.dev/reference/react/Suspense)로 감싸 [내용이 준비될 때까지 대체 UI](https://nextjs.org/docs/app/getting-started/cache-components#defer-rendering-to-request-time)를 표시하며 렌더링을 요청 시점으로 연기하기
   * 또는 [`use cache`](https://nextjs.org/docs/app/api-reference/directives/use-cache) 지시어로 결과를 캐시해 [정적 셸에 포함](https://nextjs.org/docs/app/getting-started/cache-components#using-use-cache)하기(요청 데이터가 필요 없는 경우)
-
-
 
 이 작업은 요청이 도착하기 전에 미리 수행되므로 사전 렌더링이라고 부릅니다. 이렇게 하면 초기 페이지 로드용 HTML과 클라이언트 내비게이션용 직렬화된 [RSC Payload](https://nextjs.org/docs/app/getting-started/server-and-client-components#on-the-server)로 구성된 정적 셸이 생성되어, 사용자가 URL에 직접 접근하든 다른 페이지에서 이동하든 브라우저가 즉시 완전한 렌더링 결과를 받습니다.
 
@@ -51,17 +47,17 @@ Next.js는 사전 렌더링 중 완료할 수 없는 컴포넌트를 명시적�
 page.tsx
 [code]
     import fs from 'node:fs'
-     
+
     export default async function Page() {
       // Synchronous file system read
       const content = fs.readFileSync('./config.json', 'utf-8')
-     
+
       // Module imports
       const constants = await import('./constants.json')
-     
+
       // Pure computations
       const processed = JSON.parse(content).items.map((item) => item.value * 2)
-     
+
       return (
         <div>
           <h1>{constants.appName}</h1>
@@ -97,20 +93,20 @@ page.tsx
 [code]
     import { Suspense } from 'react'
     import fs from 'node:fs/promises'
-     
+
     async function DynamicContent() {
       // Network request
       const data = await fetch('https://api.example.com/data')
-     
+
       // Database query
       const users = await db.query('SELECT * FROM users')
-     
+
       // Async file system operation
       const file = await fs.readFile('..', 'utf-8')
-     
+
       // Simulating external system delay
       await new Promise((resolve) => setTimeout(resolve, 100))
-     
+
       return <div>Not in the static shell</div>
     }
 [/code]
@@ -150,19 +146,17 @@ page.tsx
   * [`searchParams`](https://nextjs.org/docs/app/api-reference/file-conventions/page#searchparams-optional) \- URL 쿼리 매개변수
   * [`params`](https://nextjs.org/docs/app/api-reference/file-conventions/page#params-optional) \- 동적 라우트 매개변수(최소 하나의 샘플을 [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)로 제공하지 않는 한). 자세한 패턴은 [Cache Components와 동적 라우트](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#with-cache-components)를 참고하세요.
 
-
-
 page.tsx
 [code]
     import { cookies, headers } from 'next/headers'
     import { Suspense } from 'react'
-     
+
     async function RuntimeData({ searchParams }) {
       // Accessing request data
       const cookieStore = await cookies()
       const headerStore = await headers()
       const search = await searchParams
-     
+
       return <div>Not in the static shell</div>
     }
 [/code]
@@ -196,14 +190,14 @@ page.tsx
 ### 비결정적 연산[](https://nextjs.org/docs/app/getting-started/cache-components#non-deterministic-operations)
 
 `Math.random()`, `Date.now()`, `crypto.randomUUID()` 같은 연산은 실행될 때마다 다른 값을 생성합니다. 요청마다 고유한 값을 생성하도록 요청 시점에 실행되게 하려면, Cache Components는 이러한 연산을 동적 또는 런타임 데이터 접근 이후에 호출해 의도를 명시하도록 요구합니다.
-[code] 
+[code]
     import { connection } from 'next/server'
     import { Suspense } from 'react'
-     
+
     async function UniqueContent() {
       // Explicitly defer to request time
       await connection()
-     
+
       // Non-deterministic operations
       const random = Math.random()
       const now = Date.now()
@@ -211,7 +205,7 @@ page.tsx
 const date = new Date()
       const uuid = crypto.randomUUID()
       const bytes = crypto.getRandomValues(new Uint8Array(16))
-     
+
       return (
         <div>
           <p>{random}</p>
@@ -265,13 +259,13 @@ page.tsx
 app/page.tsx
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     export default async function Page() {
       'use cache'
       cacheLife('hours')
-     
+
       const users = await db.query('SELECT * FROM users')
-     
+
       return (
         <ul>
           {users.map((user) => (
@@ -287,7 +281,7 @@ app/page.tsx
 app/page.tsx
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     export default async function Page() {
       'use cache'
       cacheLife({
@@ -295,9 +289,9 @@ app/page.tsx
         revalidate: 7200, // 2 hours until revalidated
         expire: 86400, // 1 day until expired
       })
-     
+
       const users = await db.query('SELECT * FROM users')
-     
+
       return (
         <ul>
           {users.map((user) => (
@@ -318,7 +312,7 @@ app/profile/page.tsx
 [code]
     import { cookies } from 'next/headers'
     import { Suspense } from 'react'
-     
+
     export default function Page() {
       // Page itself creates the dynamic boundary
       return (
@@ -327,14 +321,14 @@ app/profile/page.tsx
         </Suspense>
       )
     }
-     
+
     // Component (not cached) reads runtime data
     async function ProfileContent() {
       const session = (await cookies()).get('session')?.value
-     
+
       return <CachedContent sessionId={session} />
     }
-     
+
     // Cached component/function receives data as props
     async function CachedContent({ sessionId }: { sessionId: string }) {
       'use cache'
@@ -349,10 +343,10 @@ app/profile/page.tsx
 ### 비결정적 연산과 함께[](https://nextjs.org/docs/app/getting-started/cache-components#with-non-deterministic-operations)
 
 `use cache` 스코프 안에서는 비결정적 연산이 프리렌더링 동안 실행됩니다. 이는 모든 사용자에게 동일한 렌더링 결과를 제공하고 싶을 때 유용합니다:
-[code] 
+[code]
     export default async function Page() {
       'use cache'
-     
+
       // Execute once, then cached for all requests
       const random = Math.random()
       const random2 = Math.random()
@@ -360,7 +354,7 @@ app/profile/page.tsx
       const date = new Date()
       const uuid = crypto.randomUUID()
       const bytes = crypto.getRandomValues(new Uint8Array(16))
-     
+
       return (
         <div>
           <p>
@@ -388,13 +382,13 @@ app/profile/page.tsx
 app/actions.ts
 [code]
     import { cacheTag, updateTag } from 'next/cache'
-     
+
     export async function getCart() {
       'use cache'
       cacheTag('cart')
       // fetch data
     }
-     
+
     export async function updateCart(itemId: string) {
       'use server'
       // write data using the itemId
@@ -410,13 +404,13 @@ app/actions.ts
 app/actions.ts
 [code]
     import { cacheTag, revalidateTag } from 'next/cache'
-     
+
     export async function getPosts() {
       'use cache'
       cacheTag('posts')
       // fetch data
     }
-     
+
     export async function createPost(post: FormData) {
       'use server'
       // write data using the FormData
@@ -442,7 +436,7 @@ app/blog/page.tsx
     import { cookies } from 'next/headers'
     import { cacheLife } from 'next/cache'
     import Link from 'next/link'
-     
+
     export default function BlogPage() {
       return (
         <>
@@ -453,10 +447,10 @@ app/blog/page.tsx
               <Link href="/">Home</Link> | <Link href="/about">About</Link>
             </nav>
           </header>
-     
+
           {/* Cached dynamic content - included in the static shell */}
           <BlogPosts />
-     
+
           {/* Runtime dynamic content - streams at request time */}
           <Suspense fallback={<p>Loading your preferences...</p>}>
             <UserPreferences />
@@ -464,15 +458,15 @@ app/blog/page.tsx
         </>
       )
     }
-     
+
     // Everyone sees the same blog posts (revalidated every hour)
     async function BlogPosts() {
       'use cache'
       cacheLife('hours')
-     
+
       const res = await fetch('https://api.vercel.app/blog')
       const posts = await res.json()
-     
+
       return (
         <section>
           <h2>Latest Posts</h2>
@@ -489,12 +483,12 @@ app/blog/page.tsx
         </section>
       )
     }
-     
+
     // Personalized per user based on their cookie
     async function UserPreferences() {
       const theme = (await cookies()).get('theme')?.value || 'light'
       const favoriteCategory = (await cookies()).get('category')?.value
-     
+
       return (
         <aside>
           <p>Your theme: {theme}</p>
@@ -523,11 +517,11 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -559,7 +553,7 @@ app/page.tsx
 [code]
     // Before - No longer needed
     export const dynamic = 'force-dynamic'
-     
+
     export default function Page() {
       return <div>...</div>
     }
@@ -585,7 +579,7 @@ app/page.tsx
 [code]
     // Before
     export const dynamic = 'force-static'
-     
+
     export default async function Page() {
       const data = await fetch('https://api.example.com/data')
       return <div>...</div>
@@ -595,7 +589,7 @@ app/page.tsx
 app/page.tsx
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     // After - Use 'use cache' instead
     export default async function Page() {
       'use cache'
@@ -608,10 +602,10 @@ app/page.tsx
 ### `revalidate`[](https://nextjs.org/docs/app/getting-started/cache-components#revalidate)
 
 **`cacheLife`로 대체하세요.** 라우트 세그먼트 구성 대신 `cacheLife` 함수를 사용해 캐시 기간을 정의하세요.
-[code] 
+[code]
     // Before
     export const revalidate = 3600 // 1 hour
-     
+
     export default async function Page() {
       return <div>...</div>
     }
@@ -621,7 +615,7 @@ app/page.tsx
 [code]
     // After - Use cacheLife
     import { cacheLife } from 'next/cache'
-     
+
     export default async function Page() {
       'use cache'
       cacheLife('hours')
@@ -657,10 +651,22 @@ app/page.tsx
 
 Cache Components용 구성 옵션에 대해 자세히 알아보세요.
 
-### [cacheComponentsNext.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)### [use cacheNext.js 애플리케이션에서 "use cache" 지시문을 사용해 데이터를 캐시하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/directives/use-cache)### [cacheLife캐시된 함수나 컴포넌트의 만료 시간을 설정하는 cacheLife 함수를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheLife)### [cacheTagNext.js 애플리케이션에서 캐시 무효화를 관리하는 cacheTag 함수 사용 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheTag)### [revalidateTagrevalidateTag 함수의 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)### [updateTagupdateTag 함수의 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/functions/updateTag)
+- [cacheComponents](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+  - Next.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.
 
-도움이 되었나요?
+- [use cache](https://nextjs.org/docs/app/api-reference/directives/use-cache)
+  - Next.js 애플리케이션에서 "use cache" 지시문을 사용해 데이터를 캐시하는 방법을 알아보세요.
 
-지원됨.
+- [cacheLife](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
+  - 캐시된 함수나 컴포넌트의 만료 시간을 설정하는 cacheLife 함수를 사용하는 방법을 알아보세요.
+
+- [cacheTag](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
+  - Next.js 애플리케이션에서 캐시 무효화를 관리하는 cacheTag 함수 사용 방법을 알아보세요.
+
+- [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
+  - revalidateTag 함수의 API 레퍼런스입니다.
+
+- [updateTag](https://nextjs.org/docs/app/api-reference/functions/updateTag)
+  - updateTag 함수의 API 레퍼런스입니다.
 
 보내기

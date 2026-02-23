@@ -40,7 +40,7 @@ styles.css
 pages/_app.js
 [code]
     import '../styles.css'
-     
+
     // This default export is required in a new `pages/_app.js` file.
     export default function MyApp({ Component, pageProps }) {
       return <Component {...pageProps} />
@@ -55,11 +55,5 @@ pages/_app.js
   * [레이아웃](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#layout-pattern)
   * [내장 CSS 지원](https://nextjs.org/docs/app/getting-started/css)
   * [Custom `App`](https://nextjs.org/docs/pages/building-your-application/routing/custom-app)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

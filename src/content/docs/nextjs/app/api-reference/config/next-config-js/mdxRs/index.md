@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/mdxRs
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)mdxRs
-
-페이지 복사
-
 # mdxRs
 
 이 기능은 현재 실험 단계이며 변경될 수 있으므로 프로덕션 사용은 권장되지 않습니다. 사용해 본 뒤 [GitHub](https://github.com/vercel/next.js/issues)에서 피드백을 공유해 주세요.
@@ -22,7 +18,7 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 next.config.js
 [code]
     const withMDX = require('@next/mdx')()
-     
+
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       pageExtensions: ['ts', 'tsx', 'mdx'],
@@ -30,12 +26,8 @@ next.config.js
         mdxRs: true,
       },
     }
-     
+
     module.exports = withMDX(nextConfig)
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

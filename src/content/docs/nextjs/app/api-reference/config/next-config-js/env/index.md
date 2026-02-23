@@ -7,10 +7,6 @@ description: '이 API는 레거시이며 더 이상 권장되지 않습니다. �
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/env
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)env
-
-페이지 복사
-
 # env
 
 이 API는 레거시이며 더 이상 권장되지 않습니다. 하위 호환성을 위해 계속 지원됩니다.
@@ -33,28 +29,24 @@ next.config.js
 [/code]
 
 이제 코드에서 `process.env.customKey`에 접근할 수 있습니다. 예를 들어:
-[code] 
+[code]
     function Page() {
       return <h1>The value of customKey is: {process.env.customKey}</h1>
     }
-     
+
     export default Page
 [/code]
 
 Next.js는 빌드 시점에 `process.env.customKey`를 `'my-value'`로 대체합니다. webpack [DefinePlugin](https://webpack.js.org/plugins/define-plugin/)의 특성상 `process.env` 변수를 구조 분해하려고 하면 작동하지 않습니다.
 
 예를 들어, 다음 줄은:
-[code] 
+[code]
     return <h1>The value of customKey is: {process.env.customKey}</h1>
 [/code]
 
 결과적으로 이렇게 됩니다:
-[code] 
+[code]
     return <h1>The value of customKey is: {'my-value'}</h1>
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

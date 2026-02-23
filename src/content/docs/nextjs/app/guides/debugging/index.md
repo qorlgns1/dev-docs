@@ -7,10 +7,6 @@ description: '이 문서는 VS Code 디버거, Chrome DevTools, Firefox DevTools
 
 출처 URL: https://nextjs.org/docs/app/guides/debugging
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)디버깅
-
-페이지 복사
-
 # Next.js에서 디버깅 도구 사용하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -179,9 +175,3 @@ JavaScript 디버거 사용법을 더 알아보려면 다음 문서를 살펴보
   * [Node.js debugging in VS Code: Breakpoints](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_breakpoints)
   * [Chrome DevTools: Debug JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript)
   * [Firefox DevTools: Debugger](https://firefox-source-docs.mozilla.org/devtools-user/debugger/)
-
-도움이 되었나요?
-
-지원됨.
-
-전송

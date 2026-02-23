@@ -1,23 +1,17 @@
 ---
-title: 'API Reference: Configuration'
+title: 'Configuration'
 ---
-
-# API Reference: Configuration | Next.js
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config
 
-[Pages Router](https://nextjs.org/docs/pages)[API Reference](https://nextjs.org/docs/pages/api-reference)Configuration
-
-Copy page
-
 # Configuration
 
-Last updated February 20, 2026
+- [next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)
+  - Learn about the options available in next.config.js for the Pages Router.
+- [TypeScript](https://nextjs.org/docs/pages/api-reference/config/typescript)
+  - Next.js provides a TypeScript-first development experience for building your React application.
+- [ESLint](https://nextjs.org/docs/pages/api-reference/config/eslint)
+  - Next.js reports ESLint errors and warnings during builds by default. Learn how to opt-out of this behavior here.
 
-### [next.config.js OptionsLearn about the options available in next.config.js for the Pages Router.](https://nextjs.org/docs/pages/api-reference/config/next-config-js)### [TypeScriptNext.js provides a TypeScript-first development experience for building your React application.](https://nextjs.org/docs/pages/api-reference/config/typescript)### [ESLintNext.js reports ESLint errors and warnings during builds by default. Learn how to opt-out of this behavior here.](https://nextjs.org/docs/pages/api-reference/config/eslint)
+---
 
-Was this helpful?
-
-supported.
-
-Send

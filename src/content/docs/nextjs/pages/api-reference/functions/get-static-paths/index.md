@@ -7,10 +7,6 @@ description: 'pages/repo/[name].tsx'
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/functions/get-static-paths
 
-[API Reference](https://nextjs.org/docs/pages/api-reference)[Functions](https://nextjs.org/docs/pages/api-reference/functions)getStaticPaths
-
-페이지 복사
-
 # getStaticPaths
 
 최종 업데이트 2026년 2월 20일
@@ -26,12 +22,12 @@ JavaScript TypeScript
       GetStaticProps,
       GetStaticPaths,
     } from 'next'
-     
+
     type Repo = {
       name: string
       stargazers_count: number
     }
-     
+
     export const getStaticPaths = (async () => {
       return {
         paths: [
@@ -44,7 +40,7 @@ JavaScript TypeScript
         fallback: true, // false or "blocking"
       }
     }) satisfies GetStaticPaths
-     
+
     export const getStaticProps = (async (context) => {
       const res = await fetch('https://api.github.com/repos/vercel/next.js')
       const repo = await res.json()
@@ -52,7 +48,7 @@ JavaScript TypeScript
     }) satisfies GetStaticProps<{
       repo: Repo
     }>
-     
+
     export default function Page({
       repo,
     }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -67,7 +63,7 @@ JavaScript TypeScript
 ### `paths`[](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#paths)
 
 `paths` 키는 어떤 경로를 사전 렌더링할지를 결정합니다. 예를 들어 `pages/posts/[id].js` 이름의 [Dynamic Routes](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)를 사용하는 페이지가 있다고 가정해 봅시다. 이 페이지에서 `getStaticPaths`를 export하고 `paths`에 다음을 반환하면:
-[code] 
+[code]
     return {
       paths: [
         { params: { id: '1' }},
@@ -106,34 +102,34 @@ pages/posts/[id].js
     function Post({ post }) {
       // Render post...
     }
-     
+
     // This function gets called at build time
     export async function getStaticPaths() {
       // Call an external API endpoint to get posts
       const res = await fetch('https://.../posts')
       const posts = await res.json()
-     
+
       // Get the paths we want to pre-render based on posts
       const paths = posts.map((post) => ({
         params: { id: post.id },
       }))
-     
+
       // We'll pre-render only these paths at build time.
       // { fallback: false } means other routes should 404.
       return { paths, fallback: false }
     }
-     
+
     // This also gets called at build time
     export async function getStaticProps({ params }) {
       // params contains the post `id`.
       // If the route is like /posts/1, then params.id is 1
       const res = await fetch(`https://.../posts/${params.id}`)
       const post = await res.json()
-     
+
       // Pass post data to the page via props
       return { props: { post } }
     }
-     
+
     export default Post
 [/code]
 
@@ -193,19 +189,19 @@ pages/posts/[id].js
 pages/posts/[id].js
 [code]
     import { useRouter } from 'next/router'
-     
+
     function Post({ post }) {
       const router = useRouter()
-     
+
       // If the page is not yet generated, this will be displayed
       // initially until getStaticProps() finishes running
       if (router.isFallback) {
         return <div>Loading...</div>
       }
-     
+
       // Render post...
     }
-     
+
     // This function gets called at build time
     export async function getStaticPaths() {
       return {
@@ -216,7 +212,7 @@ pages/posts/[id].js
         fallback: true,
       }
     }
-     
+
     // This also gets called at build time
     export async function getStaticProps({ params }) {
       // params contains the post `id`.
@@ -224,7 +220,7 @@ pages/posts/[id].js
       const res = await fetch(`https://.../posts/${params.id}`)
 
 const post = await res.json()
-     
+
       // Pass post data to the page via props
       return {
         props: { post },
@@ -233,22 +229,16 @@ const post = await res.json()
         revalidate: 1,
       }
     }
-     
+
     export default Post
 [/code]
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#version-history)
 
-버전| 변경 사항  
----|---  
-`v13.4.0`| 단순화된 데이터 패칭(예: [`generateStaticParams()`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params))과 함께 [App Router](https://nextjs.org/docs/app/getting-started/fetching-data)가 이제 안정화되었습니다.  
-`v12.2.0`| [온디맨드 Incremental Static Regeneration](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath)가 안정화되었습니다.  
-`v12.1.0`| [온디맨드 Incremental Static Regeneration](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath)가 추가되었습니다(베타).  
-`v9.5.0`| [Incremental Static Regeneration](https://nextjs.org/docs/pages/guides/incremental-static-regeneration)가 안정화되었습니다.  
-`v9.3.0`| `getStaticPaths`가 도입되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+버전| 변경 사항
+---|---
+`v13.4.0`| 단순화된 데이터 패칭(예: [`generateStaticParams()`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params))과 함께 [App Router](https://nextjs.org/docs/app/getting-started/fetching-data)가 이제 안정화되었습니다.
+`v12.2.0`| [온디맨드 Incremental Static Regeneration](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath)가 안정화되었습니다.
+`v12.1.0`| [온디맨드 Incremental Static Regeneration](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath)가 추가되었습니다(베타).
+`v9.5.0`| [Incremental Static Regeneration](https://nextjs.org/docs/pages/guides/incremental-static-regeneration)가 안정화되었습니다.
+`v9.3.0`| `getStaticPaths`가 도입되었습니다.

@@ -172,20 +172,57 @@ def parse_locs(xml_text: str) -> list[str]:
     return [n.text.strip() for n in root.findall(".//sm:loc", ns) if n.text]
 
 
+def parse_sitemap(xml_text: str) -> tuple[str, list[str]]:
+    """
+    Parse sitemap XML and return (kind, locs)
+    kind: "sitemapindex" | "urlset" | "unknown"
+    """
+    root = ET.fromstring(xml_text)
+    tag = root.tag.split("}")[-1].lower()
+    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    locs = [n.text.strip() for n in root.findall(".//sm:loc", ns) if n.text]
+    if tag == "sitemapindex":
+        return "sitemapindex", locs
+    if tag == "urlset":
+        return "urlset", locs
+    return "unknown", locs
+
+
 def collect_urls(base_url: str) -> list[str]:
     p = urlparse(base_url)
     scope = p.path.rstrip("/") or "/"
     origin = f"{p.scheme}://{p.netloc}"
 
-    index_xml = fetch(f"{origin}/sitemap-index.xml")
-    sitemaps = parse_locs(index_xml)
-
     urls: list[str] = []
-    for sm in sitemaps:
-        for loc in parse_locs(fetch(sm)):
-            norm = canonicalize(loc)
-            if in_scope(norm, scope):
-                urls.append(norm)
+    sitemap_entries: list[str] = []
+
+    for sitemap_url in (f"{origin}/sitemap-index.xml", f"{origin}/sitemap.xml"):
+        try:
+            xml = fetch(sitemap_url)
+        except Exception:
+            continue
+        kind, locs = parse_sitemap(xml)
+        if kind == "sitemapindex":
+            sitemap_entries.extend(locs)
+            break
+        if kind == "urlset":
+            for loc in locs:
+                norm = canonicalize(loc)
+                if in_scope(norm, scope):
+                    urls.append(norm)
+            break
+
+    for sm in sitemap_entries:
+        try:
+            sm_xml = fetch(sm)
+        except Exception:
+            continue
+        kind, locs = parse_sitemap(sm_xml)
+        if kind == "urlset":
+            for loc in locs:
+                norm = canonicalize(loc)
+                if in_scope(norm, scope):
+                    urls.append(norm)
 
     urls.append(canonicalize(base_url))
     return sorted(set(urls))

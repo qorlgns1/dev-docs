@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/pages/guides/upgrading/version-13
 
 [가이드](https://nextjs.org/docs/pages/guides)[업그레이드](https://nextjs.org/docs/pages/guides/upgrading)버전 13
 
-페이지 복사
-
 # 버전 13으로 업그레이드하는 방법
 
 최근 업데이트 2026년 2월 20일
@@ -75,14 +73,14 @@ Next.js 13부터는 이러한 새 동작이 `next/image`의 기본값이 됩니�
 [`<Link>` 컴포넌트](https://nextjs.org/docs/pages/api-reference/components/link)는 더 이상 자식으로 `<a>` 태그를 수동으로 추가할 필요가 없습니다. 이 동작은 [버전 12.2](https://nextjs.org/blog/next-12-2)에서 실험적 옵션으로 도입되었고 이제 기본값입니다. Next.js 13에서는 `<Link>`가 항상 `<a>`를 렌더링하며 기본 태그에 프롭을 전달할 수 있습니다.
 
 예시:
-[code] 
+[code]
     import Link from 'next/link'
-     
+
     // Next.js 12: `<a>`를 중첩하지 않으면 제외됩니다
     <Link href="/about">
       <a>About</a>
     </Link>
-     
+
     // Next.js 13: `<Link>`는 내부적으로 항상 `<a>`를 렌더링합니다
     <Link href="/about">
       About
@@ -100,9 +98,3 @@ Next.js 13부터는 이러한 새 동작이 `next/image`의 기본값이 됩니�
 기존에는 Next.js가 글꼴 CSS를 인라인으로 삽입해 글꼴을 최적화했습니다. 버전 13에서는 새로운 [`next/font`](https://nextjs.org/docs/pages/api-reference/components/font) 모듈을 도입하여 뛰어난 성능과 프라이버시를 유지하면서 글꼴 로딩 경험을 원하는 대로 구성할 수 있습니다.
 
 `next/font` 사용 방법은 [글꼴 최적화](https://nextjs.org/docs/pages/api-reference/components/font)를 참고하세요.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

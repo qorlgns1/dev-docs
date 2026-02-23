@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험적이며 변경될 수 있으므로 �
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/proxyClientMaxBodySize
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)proxyClientMaxBodySize
-
-페이지 복사
-
 # proxyClientMaxBodySize
 
 이 기능은 현재 실험적이며 변경될 수 있으므로 프로덕션 환경에서는 사용을 권장하지 않습니다. 직접 사용해 보고 [GitHub](https://github.com/vercel/next.js/issues)에서 피드백을 공유하세요.
@@ -32,13 +28,13 @@ next.config.ts
 JavaScriptTypeScript
 ```
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         proxyClientMaxBodySize: '1mb',
       },
     }
-     
+
     export default nextConfig
 ```
 
@@ -53,13 +49,13 @@ next.config.ts
 JavaScriptTypeScript
 ```
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         proxyClientMaxBodySize: 1048576, // 1MB in bytes
       },
     }
-     
+
     export default nextConfig
 ```
 
@@ -72,29 +68,25 @@ JavaScriptTypeScript
   3. 요청은 정상적으로 계속 처리되지만, 사용할 수 있는 본문은 부분 데이터뿐입니다.
   4. 요청이 실패하거나 클라이언트에 오류를 반환하지는 않습니다.
 
-
-
 애플리케이션이 전체 요청 본문을 처리해야 한다면 다음 중 하나를 수행하세요.
 
   * `proxyClientMaxBodySize` 한계를 높입니다.
   * 애플리케이션 로직에서 부분 본문을 적절히 처리합니다.
-
-
 
 ## Example[](https://nextjs.org/docs/app/api-reference/config/next-config-js/proxyClientMaxBodySize#example)
 
 proxy.ts
 ```
     import { NextRequest, NextResponse } from 'next/server'
-     
+
     export async function proxy(request: NextRequest) {
       // Next.js automatically buffers the body with the configured size limit
       // You can read the body in proxy...
       const body = await request.text()
-     
+
       // If the body exceeded the limit, only partial data will be available
       console.log('Body size:', body.length)
-     
+
       return NextResponse.next()
     }
 ```
@@ -102,13 +94,13 @@ proxy.ts
 app/api/upload/route.ts
 ```
     import { NextRequest, NextResponse } from 'next/server'
-     
+
     export async function POST(request: NextRequest) {
       // ...and the body is still available in your route handler
       const body = await request.text()
-     
+
       console.log('Body in route handler:', body.length)
-     
+
       return NextResponse.json({ received: body.length })
     }
 ```
@@ -119,10 +111,6 @@ app/api/upload/route.ts
   * 10MB 기본 한도는 메모리 사용량과 일반적인 사용 사례 사이의 균형을 맞추기 위해 설계되었습니다.
   * 이 한도는 모든 동시 요청에 대해 전역이 아니라 요청별로 적용됩니다.
   * 대용량 파일 업로드를 처리하는 애플리케이션이라면 필요에 따라 한도를 높이세요.
-
-
-
-도움이 되었나요?
 
 supported.
 

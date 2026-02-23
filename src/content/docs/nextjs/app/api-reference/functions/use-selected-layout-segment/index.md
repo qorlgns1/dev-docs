@@ -7,10 +7,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 소스 URL: https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)useSelectedLayoutSegment
-
-페이지 복사
-
 # useSelectedLayoutSegment
 
 최종 업데이트: 2026년 2월 20일
@@ -24,25 +20,25 @@ app/example-client-component.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useSelectedLayoutSegment } from 'next/navigation'
-     
+
     export default function ExampleClientComponent() {
       const segment = useSelectedLayoutSegment()
-     
+
       return <p>Active segment: {segment}</p>
     }
 [/code]
 
 > **알아 두면 좋은 점** :
-> 
+>
 >   * `useSelectedLayoutSegment`는 [클라이언트 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components) 훅이며, 레이아웃은 기본적으로 [서버 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components)이므로, 보통 레이아웃에 임포트되는 클라이언트 컴포넌트에서 `useSelectedLayoutSegment`를 호출합니다.
 >   * `useSelectedLayoutSegment`는 한 단계 아래의 세그먼트만 반환합니다. 모든 활성 세그먼트를 얻으려면 [`useSelectedLayoutSegments`](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments)를 참조하세요.
 >   * [캐치올](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#catch-all-segments) 라우트에서는 매칭된 세그먼트가 하나의 문자열로 연결되어 반환됩니다. 예를 들어 `app/blog/[...slug]/page.js`와 `/blog/a/b/c`를 방문할 때 `app/blog/layout.js`에서 호출하면 `'a/b/c'`가 반환됩니다.
-> 
+>
 
 ## 매개변수[](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#parameters)
-[code] 
+[code]
     const segment = useSelectedLayoutSegment(parallelRoutesKey?: string)
 [/code]
 
@@ -54,20 +50,20 @@ JavaScriptTypeScript
 
 아래 레이아웃과 URL이 주어졌을 때 반환되는 세그먼트는 다음과 같습니다:
 
-Layout|Visited URL|Returned Segment  
----|---|---  
-`app/layout.js`|`/`|`null`  
-`app/layout.js`|`/dashboard`|`'dashboard'`  
-`app/dashboard/layout.js`|`/dashboard`|`null`  
-`app/dashboard/layout.js`|`/dashboard/settings`|`'settings'`  
-`app/dashboard/layout.js`|`/dashboard/analytics`|`'analytics'`  
-`app/dashboard/layout.js`|`/dashboard/analytics/monthly`|`'analytics'`  
+Layout|Visited URL|Returned Segment
+---|---|---
+`app/layout.js`|`/`|`null`
+`app/layout.js`|`/dashboard`|`'dashboard'`
+`app/dashboard/layout.js`|`/dashboard`|`null`
+`app/dashboard/layout.js`|`/dashboard/settings`|`'settings'`
+`app/dashboard/layout.js`|`/dashboard/analytics`|`'analytics'`
+`app/dashboard/layout.js`|`/dashboard/analytics/monthly`|`'analytics'`
 
 캐치올 라우트(`[...slug]`)의 경우, 반환된 세그먼트에는 매칭된 모든 경로 세그먼트가 하나의 문자열로 결합됩니다:
 
-Layout|Visited URL|Returned Segment  
----|---|---  
-`app/blog/layout.js`|`/blog/a/b/c`|`'a/b/c'`  
+Layout|Visited URL|Returned Segment
+---|---|---
+`app/blog/layout.js`|`/blog/a/b/c`|`'a/b/c'`
 
 ## 예시[](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#examples)
 
@@ -80,10 +76,10 @@ app/blog/blog-nav-link.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Link from 'next/link'
     import { useSelectedLayoutSegment } from 'next/navigation'
-     
+
     // This *client* component will be imported into a blog layout
     export default function BlogNavLink({
       slug,
@@ -96,7 +92,7 @@ JavaScriptTypeScript
       // for the selected layout segment
       const segment = useSelectedLayoutSegment()
       const isActive = slug === segment
-     
+
       return (
         <Link
           href={`/blog/${slug}`}
@@ -116,7 +112,7 @@ JavaScriptTypeScript
     // Import the Client Component into a parent Layout (Server Component)
     import { BlogNavLink } from './blog-nav-link'
     import getFeaturedPosts from './get-featured-posts'
-     
+
     export default async function Layout({
       children,
     }: {
@@ -138,12 +134,8 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#version-history)
 
-Version|Changes  
----|---  
-`v13.0.0`|`useSelectedLayoutSegment` 도입.  
-
-도움이 되었나요?
-
-지원됨.
+Version|Changes
+---|---
+`v13.0.0`|`useSelectedLayoutSegment` 도입.
 
 보내기

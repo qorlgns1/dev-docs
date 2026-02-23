@@ -7,10 +7,6 @@ description: 'Next.js 애플리케이션에서 Server Actions 동작을 구성�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)serverActions
-
-페이지 복사
-
 # serverActions
 
 마지막 업데이트: 2026년 2월 20일
@@ -24,7 +20,7 @@ Server Actions를 호출할 수 있도록 허용할 추가 안전 출처 도메�
 next.config.js
 [code]
     /** @type {import('next').NextConfig} */
-     
+
     module.exports = {
       experimental: {
         serverActions: {
@@ -43,7 +39,7 @@ next.config.js
 next.config.js
 [code]
     /** @type {import('next').NextConfig} */
-     
+
     module.exports = {
       experimental: {
         serverActions: {
@@ -65,12 +61,6 @@ next.config.js
         serverActions: true,
       },
     }
-     
+
     module.exports = config
 [/code]
-
-도움이 되었나요?
-
-지원됨.
-
-전송

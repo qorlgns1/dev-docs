@@ -3,59 +3,53 @@ title: 'No HTML link for pages'
 description: '> Prevent usage of  elements to navigate to internal Next.js pages.'
 ---
 
-# No HTML link for pages | Next.js
-
 Source URL: https://nextjs.org/docs/messages/no-html-link-for-pages
-
-[Docs](https://nextjs.org/docs)[Errors](https://nextjs.org/docs)No HTML link for pages
 
 # No HTML link for pages
 
 > Prevent usage of `<a>` elements to navigate to internal Next.js pages.
 
-## Why This Error Occurred[](https://nextjs.org/docs/messages/no-html-link-for-pages#why-this-error-occurred)
+## Why This Error Occurred
 
 An `<a>` element was used to navigate to a page route without using the `next/link` component, causing unnecessary full-page refreshes.
 
 The `Link` component is required to enable client-side route transitions between pages and provide a single-page app experience.
 
-## Possible Ways to Fix It[](https://nextjs.org/docs/messages/no-html-link-for-pages#possible-ways-to-fix-it)
+## Possible Ways to Fix It
 
 Make sure to import the `Link` component and wrap anchor elements that route to different page routes.
 
 **Before:**
 
-pages/index.js
-[code]
-    function Home() {
-      return (
-        <div>
-          <a href="/about">About Us</a>
-        </div>
-      )
-    }
-[/code]
+```jsx filename="pages/index.js"
+function Home() {
+  return (
+    <div>
+      <a href="/about">About Us</a>
+    </div>
+  )
+}
+```
 
 **After:**
 
-pages/index.js
-[code]
-    import Link from 'next/link'
-     
-    function Home() {
-      return (
-        <div>
-          <Link href="/about">About Us</Link>
-        </div>
-      )
-    }
-     
-    export default Home
-[/code]
+```jsx filename="pages/index.js"
+import Link from 'next/link'
 
-### Options[](https://nextjs.org/docs/messages/no-html-link-for-pages#options)
+function Home() {
+  return (
+    <div>
+      <Link href="/about">About Us</Link>
+    </div>
+  )
+}
 
-#### `pagesDir`[](https://nextjs.org/docs/messages/no-html-link-for-pages#pagesdir)
+export default Home
+```
+
+### Options
+
+#### `pagesDir`
 
 This rule can normally locate your `pages` directory automatically.
 
@@ -63,23 +57,15 @@ If you're working in a monorepo, we recommend configuring the [`rootDir`](https:
 
 In some cases, you may also need to configure this rule directly by providing a `pages` directory. This can be a path or an array of paths.
 
-eslint.config.json
-[code]
-    {
-      "rules": {
-        "@next/next/no-html-link-for-pages": ["error", "packages/my-app/pages/"]
-      }
-    }
-[/code]
+```json filename="eslint.config.json"
+{
+  "rules": {
+    "@next/next/no-html-link-for-pages": ["error", "packages/my-app/pages/"]
+  }
+}
+```
 
-## Useful Links[](https://nextjs.org/docs/messages/no-html-link-for-pages#useful-links)
+## Useful Links
 
-  * [next/link API Reference](https://nextjs.org/docs/pages/api-reference/components/link)
+- [next/link API Reference](https://nextjs.org/docs/pages/api-reference/components/link)
 
-
-
-Was this helpful?
-
-supported.
-
-Send

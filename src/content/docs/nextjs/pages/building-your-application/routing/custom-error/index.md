@@ -9,8 +9,6 @@ description: '404 페이지는 자주 접근될 수 있습니다. 방문마다 �
 
 [애플리케이션 빌드](https://nextjs.org/docs/pages/building-your-application)[라우팅](https://nextjs.org/docs/pages/building-your-application/routing)사용자 정의 오류
 
-페이지 복사
-
 # 사용자 정의 오류
 
 마지막 업데이트 2026년 2월 20일
@@ -54,7 +52,7 @@ pages/500.js
 ### 더 고급 오류 페이지 사용자 정의[](https://nextjs.org/docs/pages/building-your-application/routing/custom-error#more-advanced-error-page-customizing)
 
 500 오류는 `Error` 컴포넌트가 클라이언트와 서버 양쪽에서 처리합니다. 이를 재정의하려면 `pages/_error.js` 파일을 정의하고 다음 코드를 추가하세요:
-[code] 
+[code]
     function Error({ statusCode }) {
       return (
         <p>
@@ -64,12 +62,12 @@ pages/500.js
         </p>
       )
     }
-     
+
     Error.getInitialProps = ({ res, err }) => {
       const statusCode = res ? res.statusCode : err ? err.statusCode : 404
       return { statusCode }
     }
-     
+
     export default Error
 [/code]
 
@@ -78,24 +76,24 @@ pages/500.js
 ### 기본 제공 오류 페이지 재사용[](https://nextjs.org/docs/pages/building-your-application/routing/custom-error#reusing-the-built-in-error-page)
 
 기본 제공 오류 페이지를 렌더링하려면 `Error` 컴포넌트를 가져와 사용할 수 있습니다:
-[code] 
+[code]
     import Error from 'next/error'
-     
+
     export async function getServerSideProps() {
       const res = await fetch('https://api.github.com/repos/vercel/next.js')
       const errorCode = res.ok ? false : res.status
       const json = await res.json()
-     
+
       return {
         props: { errorCode, stars: json.stargazers_count },
       }
     }
-     
+
     export default function Page({ errorCode, stars }) {
       if (errorCode) {
         return <Error statusCode={errorCode} />
       }
-     
+
       return <div>Next stars: {stars}</div>
     }
 [/code]
@@ -108,11 +106,5 @@ pages/500.js
 
   * `Error`는 현재 [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)나 [`getServerSideProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props) 같은 Next.js [데이터 패칭 메서드](https://nextjs.org/docs/pages/building-your-application/data-fetching)를 지원하지 않습니다.
   * `_error`는 `_app`과 마찬가지로 예약된 경로명입니다. `_error`는 오류 페이지의 사용자 정의 레이아웃과 동작을 정의하는 데 사용됩니다. [라우팅](https://nextjs.org/docs/pages/building-your-application/routing) 또는 [사용자 정의 서버](https://nextjs.org/docs/pages/guides/custom-server)에서 직접 `/_error`에 접근하면 404가 렌더링됩니다.
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

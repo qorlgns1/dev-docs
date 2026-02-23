@@ -9,8 +9,6 @@ description: '메타데이터 API는 애플리케이션 메타데이터를 정�
 
 [App Router](https://nextjs.org/docs/app/getting-started)[Getting Started](https://nextjs.org/docs/app/getting-started)Metadata and OG images
 
-페이지 복사
-
 # 메타데이터와 OG 이미지
 
 마지막 업데이트 2026년 2월 20일
@@ -32,7 +30,7 @@ description: '메타데이터 API는 애플리케이션 메타데이터를 정�
   * [meta charset 태그](https://developer.mozilla.org/docs/Web/HTML/Element/meta#attr-charset)는 웹사이트의 문자 인코딩을 설정합니다.
   * [meta viewport 태그](https://developer.mozilla.org/docs/Web/HTML/Viewport_meta_tag)는 다양한 기기에 맞춰 웹사이트의 뷰포트 너비와 배율을 설정합니다.
 
-[code] 
+[code]
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 [/code]
@@ -48,12 +46,12 @@ app/blog/layout.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: 'My Blog',
       description: '...',
     }
-     
+
     export default function Layout() {}
 [/code]
 
@@ -68,29 +66,29 @@ app/blog/[slug]/page.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata, ResolvingMetadata } from 'next'
-     
+
     type Props = {
       params: Promise<{ slug: string }>
       searchParams: Promise<{ [key: string]: string | string[] | undefined }>
     }
-     
+
     export async function generateMetadata(
       { params, searchParams }: Props,
       parent: ResolvingMetadata
     ): Promise<Metadata> {
       const slug = (await params).slug
-     
+
       // fetch post information
       const post = await fetch(`https://api.vercel.app/blog/${slug}`).then((res) =>
         res.json()
       )
-     
+
       return {
         title: post.title,
         description: post.description,
       }
     }
-     
+
     export default function Page({ params, searchParams }: Props) {}
 [/code]
 
@@ -118,7 +116,7 @@ JavaScriptTypeScript
 [code]
     import { cache } from 'react'
     import { db } from '@/app/lib/db'
-     
+
     // getPost will be used twice, but execute only once
     export const getPost = cache(async (slug: string) => {
       const res = await db.query.posts.findFirst({ where: eq(posts.slug, slug) })
@@ -131,7 +129,7 @@ app/blog/[slug]/page.tsx
 JavaScriptTypeScript
 [code]
     import { getPost } from '@/app/lib/data'
-     
+
     export async function generateMetadata({
       params,
     }: {
@@ -143,7 +141,7 @@ JavaScriptTypeScript
         description: post.description,
       }
     }
-     
+
     export default async function Page({ params }: { params: { slug: string } }) {
       const post = await getPost(params.slug)
       return <div>{post.title}</div>
@@ -189,19 +187,19 @@ JavaScriptTypeScript
 [code]
     import { ImageResponse } from 'next/og'
     import { getPost } from '@/app/lib/data'
-     
+
     // Image metadata
     export const size = {
       width: 1200,
       height: 630,
     }
-     
+
     export const contentType = 'image/png'
-     
+
     // Image generation
     export default async function Image({ params }: { params: { slug: string } }) {
       const post = await getPost(params.slug)
-     
+
       return new ImageResponse(
         (
           // ImageResponse JSX element
@@ -226,28 +224,33 @@ JavaScriptTypeScript
 `ImageResponse`는 플렉스박스와 절대 위치를 포함한 일반적인 CSS 속성, 사용자 지정 폰트, 줄 바꿈, 중앙 정렬, 중첩 이미지를 지원합니다. [지원되는 CSS 속성 전체 목록](https://nextjs.org/docs/app/api-reference/functions/image-response)을 확인하세요.
 
 > **알아두면 좋아요** :
-> 
+>
 >   * [Vercel OG Playground](https://og-playground.vercel.app/)에서 예제를 볼 수 있습니다.
 >   * `ImageResponse`는 HTML과 CSS를 PNG로 변환하기 위해 [`@vercel/og`](https://vercel.com/docs/og-image-generation), [`satori`](https://github.com/vercel/satori), `resvg`를 사용합니다.
 >   * 플렉스박스와 일부 CSS 속성만 지원합니다. `display: grid` 같은 고급 레이아웃은 작동하지 않습니다.
-> 
+>
 
 ## API Reference
 
 이 페이지에서 언급한 메타데이터 API에 대해 더 알아보세요.
 
-### [generateMetadataNext.js 애플리케이션에 메타데이터를 추가해 검색 엔진 최적화(SEO)와 웹 공유성을 향상시키는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)
-### [generateViewportgenerateViewport 함수에 대한 API 레퍼런스를 확인하세요.](https://nextjs.org/docs/app/api-reference/functions/generate-viewport)
-### [ImageResponseImageResponse 생성자에 대한 API 레퍼런스를 확인하세요.](https://nextjs.org/docs/app/api-reference/functions/image-response)
-### [Metadata Files메타데이터 파일 규칙에 대한 API 문서를 확인하세요.](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)
-### [favicon, icon, and apple-iconFavicon, Icon, Apple Icon 파일 규칙에 대한 API 레퍼런스를 확인하세요.](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons)
-### [opengraph-image and twitter-imageOpen Graph 이미지와 Twitter 이미지 파일 규칙에 대한 API 레퍼런스를 확인하세요.](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
-### [robots.txrobots.txt 파일에 대한 API 레퍼런스를 확인하세요.](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots)
-### [sitemap.xmlsitemap.xml 파일에 대한 API 레퍼런스를 확인하세요.](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
-### [htmlLimitedBots차단 메타데이터를 받아야 하는 사용자 에이전트 목록을 지정하세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots)
-
-도움이 되었나요?
-
-지원됨.
+- [generateMetadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)
+  - Next.js 애플리케이션에 메타데이터를 추가해 검색 엔진 최적화(SEO)와 웹 공유성을 향상시키는 방법을 알아보세요.
+- [generateViewport](https://nextjs.org/docs/app/api-reference/functions/generate-viewport)
+  - generateViewport 함수에 대한 API 레퍼런스를 확인하세요.
+- [ImageResponse](https://nextjs.org/docs/app/api-reference/functions/image-response)
+  - ImageResponse 생성자에 대한 API 레퍼런스를 확인하세요.
+- [개요](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)
+  - Metadata Files메타데이터 파일 규칙에 대한 API 문서를 확인하세요.
+- [favicon, icon, and apple-icon](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons)
+  - Favicon, Icon, Apple Icon 파일 규칙에 대한 API 레퍼런스를 확인하세요.
+- [opengraph-image and twitter-image](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
+  - Open Graph 이미지와 Twitter 이미지 파일 규칙에 대한 API 레퍼런스를 확인하세요.
+- [robots.txt](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots)
+  - robots.txrobots.txt 파일에 대한 API 레퍼런스를 확인하세요.
+- [sitemap.xml](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
+  - sitemap.xml 파일에 대한 API 레퍼런스를 확인하세요.
+- [htmlLimitedBots](https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots)
+  - 차단 메타데이터를 받아야 하는 사용자 에이전트 목록을 지정하세요.
 
 보내기

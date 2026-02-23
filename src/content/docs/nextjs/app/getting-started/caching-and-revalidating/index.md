@@ -1,6 +1,6 @@
 ---
 title: '시작하기: 캐싱과 재검증'
-description: '캐싱은 데이터 페칭과 기타 연산의 결과를 저장해 동일한 데이터에 대한 향후 요청을 더 빠르게 처리하도록, 동일한 작업을 반복하지 않고도 응답할 수 있게 하는 기법입니다. 재검증은 애플리케이션 전체를 다시 빌드하지 않고도 캐시 항목을 최신 상태로 업데이트할 수 있게 해...'
+description: '캐싱은 데이터 페칭과 기타 연산의 결과를 저장해 동일한 데이터에 대한 향후 요청을 더 빠르게 처리하도록, 동일한 작업을 반복하지 않고도 응답할 수 있게 하는 기법입니다. 재검증은 애플리케이션 전체를 다시 빌드하지 않고도 캐시 항목을 최신 상태로 업데이트할 수 있게 해 ...'
 ---
 
 # 시작하기: 캐싱과 재검증 | Next.js
@@ -25,8 +25,6 @@ Next.js는 캐싱과 재검증을 처리하기 위한 여러 API를 제공합니
   * [`updateTag`](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#updatetag)
   * [`revalidatePath`](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#revalidatepath)
   * [`unstable_cache`](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#unstable_cache) (레거시)
-
-
 
 ## `fetch`[](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#fetch)
 
@@ -84,11 +82,11 @@ app/lib/data.ts
 JavaScriptTypeScript
 [code]
     import { cacheTag } from 'next/cache'
-     
+
     export async function getProducts() {
       'use cache'
       cacheTag('products')
-     
+
       const products = await db.query('SELECT * FROM products')
       return products
     }
@@ -107,8 +105,6 @@ JavaScriptTypeScript
   * **`profile="max"` 사용 시**: stale-while-revalidate 방식으로, 새 콘텐츠를 가져오는 동안 기존 콘텐츠를 제공합니다.
   * **두 번째 인수 없이** : 캐시를 즉시 만료시키는 레거시 동작(더 이상 권장되지 않음)
 
-
-
 캐시된 데이터에 태그를 지정했거나 [`fetch`](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#fetch)에서 `next.tags`를 사용했거나 [`cacheTag`](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#cachetag)를 사용했다면, [Route Handler](https://nextjs.org/docs/app/api-reference/file-conventions/route)나 서버 액션에서 `revalidateTag`를 호출할 수 있습니다.
 
 app/lib/actions.ts
@@ -116,7 +112,7 @@ app/lib/actions.ts
 JavaScriptTypeScript
 [code]
     import { revalidateTag } from 'next/cache'
-     
+
     export async function updateUser(id: string) {
       // Mutate data
       revalidateTag('user', 'max') // Recommended: Uses stale-while-revalidate
@@ -137,7 +133,7 @@ JavaScriptTypeScript
 [code]
     import { updateTag } from 'next/cache'
     import { redirect } from 'next/navigation'
-     
+
     export async function createPost(formData: FormData) {
       // Create post in database
       const post = await db.post.create({
@@ -146,11 +142,11 @@ JavaScriptTypeScript
           content: formData.get('content'),
         },
       })
-     
+
       // Immediately expire cache so the new post is visible
       updateTag('posts')
       updateTag(`post-${post.id}`)
-     
+
       redirect(`/posts/${post.id}`)
     }
 [/code]
@@ -159,8 +155,6 @@ JavaScriptTypeScript
 
   * **`updateTag`** : 서버 액션에서만 사용, 캐시를 즉시 만료, 읽기-즉시-쓰기용
   * **`revalidateTag`** : 서버 액션과 Route Handler에서 사용, `profile="max"`로 stale-while-revalidate 지원
-
-
 
 자세한 내용은 [`updateTag` API 레퍼런스](https://nextjs.org/docs/app/api-reference/functions/updateTag)를 확인하세요.
 
@@ -173,7 +167,7 @@ app/lib/actions.ts
 JavaScriptTypeScript
 [code]
     import { revalidatePath } from 'next/cache'
-     
+
     export async function updateUser(id: string) {
       // Mutate data
       revalidatePath('/profile')
@@ -207,14 +201,14 @@ JavaScriptTypeScript
 [code]
     import { unstable_cache } from 'next/cache'
     import { getUserById } from '@/app/lib/data'
-     
+
     export default async function Page({
       params,
     }: {
       params: Promise<{ userId: string }>
     }) {
       const { userId } = await params
-     
+
       const getCachedUser = unstable_cache(
         async () => {
           return getUserById(userId)
@@ -228,8 +222,6 @@ JavaScriptTypeScript
 
   * `tags`: Next.js가 캐시를 재검증할 때 사용하는 태그 배열.
   * `revalidate`: 캐시를 재검증할 초 단위 기준.
-
-
 
 app/page.tsx
 
@@ -253,9 +245,23 @@ JavaScriptTypeScript
 
 이 페이지에서 언급한 기능은 API Reference에서 더 자세히 알아볼 수 있습니다.
 
-### [fetch 확장 fetch 함수에 대한 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/functions/fetch)### [cacheTag Next.js 애플리케이션에서 캐시 무효화를 관리하기 위해 cacheTag 함수를 사용하는 방법을 설명합니다.](https://nextjs.org/docs/app/api-reference/functions/cacheTag)### [revalidateTag revalidateTag 함수에 대한 API Reference입니다.](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)### [updateTag updateTag 함수에 대한 API Reference입니다.](https://nextjs.org/docs/app/api-reference/functions/updateTag)### [revalidatePath revalidatePath 함수에 대한 API Reference입니다.](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)### [unstable_cache unstable_cache 함수에 대한 API Reference입니다.](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)
+- [fetch](https://nextjs.org/docs/app/api-reference/functions/fetch)
+  - 확장 fetch 함수에 대한 API 레퍼런스입니다.
 
-도움이 되었나요?
+- [cacheTag](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
+  - Next.js 애플리케이션에서 캐시 무효화를 관리하기 위해 cacheTag 함수를 사용하는 방법을 설명합니다.
+
+- [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
+  - revalidateTag 함수에 대한 API Reference입니다.
+
+- [updateTag](https://nextjs.org/docs/app/api-reference/functions/updateTag)
+  - updateTag 함수에 대한 API Reference입니다.
+
+- [revalidatePath](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)
+  - revalidatePath 함수에 대한 API Reference입니다.
+
+- [unstable_cache](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)
+  - unstable_cache 함수에 대한 API Reference입니다.
 
 supported.
 

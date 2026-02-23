@@ -7,37 +7,33 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/functions/
 
 원본 URL: https://nextjs.org/docs/pages/api-reference/functions/use-router
 
-[API 레퍼런스](https://nextjs.org/docs/pages/api-reference)[함수](https://nextjs.org/docs/pages/api-reference/functions)useRouter
-
-페이지 복사
-
 # useRouter
 
 마지막 업데이트 2026년 2월 20일
 
 앱의 어떤 함수 컴포넌트 안에서도 [`router` 객체](https://nextjs.org/docs/pages/api-reference/functions/use-router#router-object)에 접근하고 싶다면 `useRouter` 훅을 사용할 수 있습니다. 아래 예제를 확인하세요:
-[code] 
+[code]
     import { useRouter } from 'next/router'
-     
+
     function ActiveLink({ children, href }) {
       const router = useRouter()
       const style = {
         marginRight: 10,
         color: router.asPath === href ? 'red' : 'black',
       }
-     
+
       const handleClick = (e) => {
         e.preventDefault()
         router.push(href)
       }
-     
+
       return (
         <a href={href} onClick={handleClick} style={style}>
           {children}
         </a>
       )
     }
-     
+
     export default ActiveLink
 [/code]
 
@@ -66,7 +62,7 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/functions/
 ### router.push[](https://nextjs.org/docs/pages/api-reference/functions/use-router#routerpush)
 
 클라이언트 측 전환을 처리하며, [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link)만으로 충분하지 않은 상황에서 유용합니다.
-[code] 
+[code]
     router.push(url, as, options)
 [/code]
 
@@ -80,12 +76,12 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/functions/
 > 외부 URL에는 `router.push`를 사용할 필요가 없습니다. 그런 경우에는 [window.location](https://developer.mozilla.org/docs/Web/API/Window/location)이 더 적합합니다.
 
 사전에 정의된 라우트인 `pages/about.js`로 이동하기:
-[code] 
+[code]
     import { useRouter } from 'next/router'
-     
+
     export default function Page() {
       const router = useRouter()
-     
+
       return (
         <button type="button" onClick={() => router.push('/about')}>
           Click me
@@ -95,12 +91,12 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/functions/
 [/code]
 
 동적 라우트인 `pages/post/[pid].js`로 이동하기:
-[code] 
+[code]
     import { useRouter } from 'next/router'
-     
+
     export default function Page() {
       const router = useRouter()
-     
+
       return (
         <button type="button" onClick={() => router.push('/post/abc')}>
           Click me
@@ -110,23 +106,23 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/functions/
 [/code]
 
 [인증](https://nextjs.org/docs/pages/guides/authentication)이 필요한 페이지에서 사용자를 `pages/login.js`로 리디렉션하기:
-[code] 
+[code]
     import { useEffect } from 'react'
     import { useRouter } from 'next/router'
-     
+
     // Here you would fetch and return the user
     const useUser = () => ({ user: null, loading: false })
-     
+
     export default function Page() {
       const { user, loading } = useUser()
       const router = useRouter()
-     
+
       useEffect(() => {
         if (!(user || loading)) {
           router.push('/login')
         }
       }, [user, loading])
-     
+
       return <p>Redirecting...</p>
     }
 [/code]
@@ -140,7 +136,7 @@ pages/[slug].js
     import Link from 'next/link'
     import { useState } from 'react'
     import { useRouter } from 'next/router'
-     
+
     export default function Page(props) {
       const router = useRouter()
       const [count, setCount] = useState(0)
@@ -169,7 +165,7 @@ pages/[slug].js
 
 pages/_app.js
 [code]import { useRouter } from 'next/router'
-         
+
         export default function MyApp({ Component, pageProps }) {
           const router = useRouter()
           return <Component key={router.asPath} {...pageProps} />
@@ -179,12 +175,12 @@ pages/_app.js
 #### URL 객체 사용[](https://nextjs.org/docs/pages/api-reference/functions/use-router#with-url-object)
 
 [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link#passing-a-url-object)에 URL 객체를 전달하는 것과 동일한 방식으로 사용할 수 있습니다. `url`과 `as` 매개변수 모두에서 동작합니다.
-[code] 
+[code]
     import { useRouter } from 'next/router'
-     
+
     export default function ReadMore({ post }) {
       const router = useRouter()
-     
+
       return (
         <button
           type="button"
@@ -204,19 +200,19 @@ pages/_app.js
 ### router.replace[](https://nextjs.org/docs/pages/api-reference/functions/use-router#routerreplace)
 
 [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link)의 `replace` prop과 유사하게, `router.replace`는 `history` 스택에 새로운 URL 항목을 추가하지 않습니다.
-[code] 
+[code]
     router.replace(url, as, options)
 [/code]
 
   * `router.replace`의 API는 [`router.push`](https://nextjs.org/docs/pages/api-reference/functions/use-router#routerpush)와 완전히 동일합니다.
 
 다음 예제를 살펴보세요.
-[code] 
+[code]
     import { useRouter } from 'next/router'
-     
+
     export default function Page() {
       const router = useRouter()
-     
+
       return (
         <button type="button" onClick={() => router.replace('/home')}>
           Click me
@@ -230,7 +226,7 @@ pages/_app.js
 더 빠른 클라이언트 측 전환을 위해 페이지를 사전 가져옵니다. 이 메서드는 [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link) 없이 내비게이션할 때만 유용하며, `next/link`는 페이지 사전 가져오기를 자동으로 처리합니다.
 
 > 이는 프로덕션 전용 기능입니다. Next.js는 개발 환경에서 페이지를 사전 가져오지 않습니다.
-[code] 
+[code]
     router.prefetch(url, as, options)
 [/code]
 
@@ -240,15 +236,15 @@ pages/_app.js
     * `locale` \- 활성 로케일과 다른 로케일을 제공할 수 있습니다. `false`이면 `url`에 로케일을 포함해야 하며, 활성 로케일은 사용되지 않습니다.
 
 로그인 페이지가 있고 로그인 후 사용자에게 대시보드를 보여준다고 가정해 보겠습니다. 다음 예시처럼 대시보드를 사전 가져오면 더 빠르게 전환할 수 있습니다.
-[code] 
+[code]
     import { useCallback, useEffect } from 'react'
     import { useRouter } from 'next/router'
-     
+
     export default function Login() {
       const router = useRouter()
       const handleSubmit = useCallback((e) => {
         e.preventDefault()
-     
+
         fetch('/api/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -260,14 +256,14 @@ pages/_app.js
           if (res.ok) router.push('/dashboard')
         })
       }, [])
-     
+
       useEffect(() => {
 [/code]
 
 // Prefetch the dashboard page
         router.prefetch('/dashboard')
       }, [router])
-     
+
       return (
         <form onSubmit={handleSubmit}>
           {/* Form fields */}
@@ -280,7 +276,7 @@ pages/_app.js
 ### router.beforePopState[](https://nextjs.org/docs/pages/api-reference/functions/use-router#routerbeforepopstate)
 
 일부 경우(예: [Custom Server](https://nextjs.org/docs/pages/guides/custom-server)를 사용하는 경우)에는 [popstate](https://developer.mozilla.org/docs/Web/API/Window/popstate_event) 이벤트를 수신하고 라우터가 이를 처리하기 전에 작업을 수행하고 싶을 수 있습니다.
-[code] 
+[code]
     router.beforePopState(cb)
 [/code]
 
@@ -289,18 +285,16 @@ pages/_app.js
     * `as`: `String` \- 브라우저에 표시될 URL입니다.
     * `options`: `Object` \- [router.push](https://nextjs.org/docs/pages/api-reference/functions/use-router#routerpush)에서 전달된 추가 옵션입니다.
 
-
-
 `cb`가 `false`를 반환하면 Next.js 라우터는 `popstate`를 처리하지 않으므로, 해당 상황을 직접 처리해야 합니다. 자세한 내용은 [파일 시스템 라우팅 비활성화](https://nextjs.org/docs/pages/guides/custom-server#disabling-file-system-routing)를 참고하세요.
 
 다음 예시처럼 요청을 조작하거나 SSR 새로고침을 강제하기 위해 `beforePopState`를 사용할 수 있습니다:
-[code] 
+[code]
     import { useEffect } from 'react'
     import { useRouter } from 'next/router'
-     
+
     export default function Page() {
       const router = useRouter()
-     
+
       useEffect(() => {
         router.beforePopState(({ url, as, options }) => {
           // I only want to allow these two routes!
@@ -309,11 +303,11 @@ pages/_app.js
             window.location.href = as
             return false
           }
-     
+
           return true
         })
       }, [router])
-     
+
       return <p>Welcome to the page</p>
     }
 [/code]
@@ -321,12 +315,12 @@ pages/_app.js
 ### router.back[](https://nextjs.org/docs/pages/api-reference/functions/use-router#routerback)
 
 히스토리에서 뒤로 이동합니다. 브라우저의 뒤로 가기 버튼을 클릭하는 것과 동일하며 `window.history.back()`을 실행합니다.
-[code] 
+[code]
     import { useRouter } from 'next/router'
-     
+
     export default function Page() {
       const router = useRouter()
-     
+
       return (
         <button type="button" onClick={() => router.back()}>
           Click here to go back
@@ -338,12 +332,12 @@ pages/_app.js
 ### router.reload[](https://nextjs.org/docs/pages/api-reference/functions/use-router#routerreload)
 
 현재 URL을 다시 로드합니다. 브라우저의 새로고침 버튼을 클릭하는 것과 동일하며 `window.location.reload()`를 실행합니다.
-[code] 
+[code]
     import { useRouter } from 'next/router'
-     
+
     export default function Page() {
       const router = useRouter()
-     
+
       return (
         <button type="button" onClick={() => router.reload()}>
           Click here to reload
@@ -364,18 +358,16 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
   * `hashChangeStart(url, { shallow })` \- 페이지는 그대로 두고 해시가 바뀌려 할 때 발생
   * `hashChangeComplete(url, { shallow })` \- 페이지는 그대로 두고 해시가 변경된 뒤 발생
 
-
-
 > **알아두면 좋아요**: 여기서 `url`은 [`basePath`](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)를 포함한 브라우저에 표시되는 URL입니다.
 
 예를 들어 `routeChangeStart` 이벤트를 수신하려면 `pages/_app.js`를 열거나 생성하고 다음과 같이 이벤트에 구독하세요:
-[code] 
+[code]
     import { useEffect } from 'react'
     import { useRouter } from 'next/router'
-     
+
     export default function MyApp({ Component, pageProps }) {
       const router = useRouter()
-     
+
       useEffect(() => {
         const handleRouteChange = (url, { shallow }) => {
           console.log(
@@ -384,16 +376,16 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
             } shallow routing`
           )
         }
-     
+
         router.events.on('routeChangeStart', handleRouteChange)
-     
+
         // If the component is unmounted, unsubscribe
         // from the event with the `off` method:
         return () => {
           router.events.off('routeChangeStart', handleRouteChange)
         }
       }, [router])
-     
+
       return <Component {...pageProps} />
     }
 [/code]
@@ -403,29 +395,29 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
 라우터 이벤트는 컴포넌트가 마운트될 때([useEffect](https://react.dev/reference/react/useEffect) 또는 [componentDidMount](https://react.dev/reference/react/Component#componentdidmount) / [componentWillUnmount](https://react.dev/reference/react/Component#componentwillunmount)) 등록하거나, 특정 이벤트가 발생했을 때 명령형으로 등록해야 합니다.
 
 라우트 로드가 취소되면(예: 연속으로 두 개의 링크를 빠르게 클릭하는 경우) `routeChangeError`가 발생하며, 전달되는 `err`에는 `cancelled` 속성이 `true`로 설정됩니다. 다음 예시를 참고하세요:
-[code] 
+[code]
     import { useEffect } from 'react'
     import { useRouter } from 'next/router'
-     
+
     export default function MyApp({ Component, pageProps }) {
       const router = useRouter()
-     
+
       useEffect(() => {
         const handleRouteChangeError = (err, url) => {
           if (err.cancelled) {
             console.log(`Route to ${url} was cancelled!`)
           }
         }
-     
+
         router.events.on('routeChangeError', handleRouteChangeError)
-     
+
         // If the component is unmounted, unsubscribe
         // from the event with the `off` method:
         return () => {
           router.events.off('routeChangeError', handleRouteChangeError)
         }
       }, [router])
-     
+
       return <Component {...pageProps} />
     }
 [/code]
@@ -437,7 +429,7 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
 `next/router`와 달리 페이지 라우터가 마운트되지 않았을 때 오류를 던지지 않고, 반환 타입이 `NextRouter | null`입니다. 이를 통해 개발자는 `app` 라우터로 전환하는 동안 컴포넌트를 변환하여 `app`과 `pages` 양쪽에서 실행하도록 만들 수 있습니다.
 
 기존 컴포넌트가 다음과 같았다면:
-[code] 
+[code]
     import { useRouter } from 'next/router'
     const MyComponent = () => {
       const { isReady, query } = useRouter()
@@ -446,7 +438,7 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
 [/code]
 
 `null`은 비구조화할 수 없으므로 이를 `next/compat/router`로 변환하면 오류가 발생합니다. 대신 개발자는 새로운 훅을 활용할 수 있습니다:
-[code] 
+[code]
     import { useEffect } from 'react'
     import { useRouter } from 'next/compat/router'
     import { useSearchParams } from 'next/navigation'
@@ -467,7 +459,7 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
 [/code]
 
 이제 해당 컴포넌트는 `pages`와 `app` 디렉터리 모두에서 동작합니다. 컴포넌트가 더 이상 `pages`에서 사용되지 않으면 compat router에 대한 참조를 제거할 수 있습니다:
-[code] 
+[code]
     import { useSearchParams } from 'next/navigation'
     const MyComponent = () => {
       const searchParams = useSearchParams()
@@ -480,7 +472,7 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
 ### Using `useRouter` outside of Next.js context in pages[](https://nextjs.org/docs/pages/api-reference/functions/use-router#using-userouter-outside-of-nextjs-context-in-pages)
 
 또 다른 구체적인 사용 사례는 `pages` 디렉터리의 `getServerSideProps` 내부처럼 Next.js 애플리케이션 컨텍스트 외부에서 컴포넌트를 렌더링하는 경우입니다. 이때 compat router를 사용하면 오류를 방지할 수 있습니다:
-[code] 
+[code]
     import { renderToString } from 'react-dom/server'
     import { useRouter } from 'next/compat/router'
     const MyComponent = () => {
@@ -509,25 +501,23 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
   * `router.replace`
   * `router.prefetch`
 
-
-
 ### Potential solutions[](https://nextjs.org/docs/pages/api-reference/functions/use-router#potential-solutions)
-[code] 
+[code]
     import { useEffect } from 'react'
     import { useRouter } from 'next/router'
-     
+
     // Here you would fetch and return the user
     const useUser = () => ({ user: null, loading: false })
-     
+
     export default function Page() {
       const { user, loading } = useUser()
       const router = useRouter()
-     
+
       useEffect(() => {
         // disable the linting on the next line - This is the cleanest solution
         // eslint-disable-next-line no-floating-promises
         router.push('/login')
-     
+
         // void the Promise returned by router.push
         if (!(user || loading)) {
           void router.push('/login')
@@ -540,7 +530,7 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
         }
         void handleRouteChange()
       }, [user, loading])
-     
+
       return <p>Redirecting...</p>
     }
 [/code]
@@ -550,40 +540,36 @@ Next.js Router 내부에서 발생하는 다양한 이벤트를 수신할 수 �
 [`useRouter`](https://nextjs.org/docs/pages/api-reference/functions/use-router#router-object)가 최선의 선택이 아니라면, `withRouter`를 사용하여 동일한 [`router` 객체](https://nextjs.org/docs/pages/api-reference/functions/use-router#router-object)를 어떤 컴포넌트에도 주입할 수 있습니다.
 
 ### Usage[](https://nextjs.org/docs/pages/api-reference/functions/use-router#usage)
-[code] 
+[code]
     import { withRouter } from 'next/router'
-     
+
     function Page({ router }) {
       return <p>{router.pathname}</p>
     }
-     
+
     export default withRouter(Page)
 [/code]
 
 ### TypeScript[](https://nextjs.org/docs/pages/api-reference/functions/use-router#typescript)
 
 클래스 컴포넌트를 `withRouter`와 함께 사용하려면, 컴포넌트가 router prop을 받아야 합니다:
-[code] 
+[code]
     import React from 'react'
     import { withRouter, NextRouter } from 'next/router'
-     
+
     interface WithRouterProps {
       router: NextRouter
     }
-     
+
     interface MyComponentProps extends WithRouterProps {}
-     
+
     class MyComponent extends React.Component<MyComponentProps> {
       render() {
         return <p>{this.props.router.pathname}</p>
       }
     }
-     
+
     export default withRouter(MyComponent)
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

@@ -7,10 +7,6 @@ description: 'Jest와 React Testing Library는 단위 테스트 및 스냅샷 �
 
 출처 URL: https://nextjs.org/docs/pages/guides/testing/jest
 
-[가이드](https://nextjs.org/docs/pages/guides)[테스트](https://nextjs.org/docs/pages/guides/testing)Jest
-
-페이지 복사
-
 # Next.js에서 Jest 설정 방법
 
 마지막 업데이트: 2026년 2월 20일
@@ -62,12 +58,12 @@ JavaScriptTypeScript
 [code]
     import type { Config } from 'jest'
     import nextJest from 'next/jest.js'
-     
+
     const createJestConfig = nextJest({
       // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
       dir: './',
     })
-     
+
     // Add any custom config to be passed to Jest
     const config: Config = {
       coverageProvider: 'v8',
@@ -75,7 +71,7 @@ JavaScriptTypeScript
       // Add more setup options before each test is run
       // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     }
-     
+
     // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
     export default createJestConfig(config)
 [/code]
@@ -88,8 +84,6 @@ JavaScriptTypeScript
   * 테스트 해석 및 트랜스폼에서 `node_modules` 무시
   * 테스트 해석에서 `.next` 무시
   * SWC 트랜스폼을 활성화하는 플래그를 위해 `next.config.js` 로딩
-
-
 
 > **알아두면 좋아요**: 환경 변수를 직접 테스트하려면 별도의 설정 스크립트나 `jest.config.ts` 파일에서 수동으로 로드하세요. 자세한 내용은 [Test Environment Variables](https://nextjs.org/docs/app/guides/environment-variables#test-environment-variables)를 참고하세요.
 
@@ -118,17 +112,17 @@ jest.config.js
         // Handle CSS imports (with CSS modules)
         // https://jestjs.io/docs/webpack#mocking-css-modules
         '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-     
+
         // Handle CSS imports (without CSS modules)
         '^.+\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
-     
+
         // Handle image imports
         // https://jestjs.io/docs/webpack#handling-static-assets
         '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$': `<rootDir>/__mocks__/fileMock.js`,
-     
+
         // Handle module aliases
         '^@/components/(.*)$': '<rootDir>/components/$1',
-     
+
         // Handle @next/font
         '@next/font/(.*)': `<rootDir>/__mocks__/nextFontMock.js`,
         // Handle next/font
@@ -277,13 +271,13 @@ __tests__/index.test.js
     import '@testing-library/jest-dom'
     import { render, screen } from '@testing-library/react'
     import Home from '../pages/index'
-     
+
     describe('Home', () => {
       it('renders a heading', () => {
         render(<Home />)
-     
+
         const heading = screen.getByRole('heading', { level: 1 })
-     
+
         expect(heading).toBeInTheDocument()
       })
     })
@@ -295,7 +289,7 @@ __tests__/snapshot.js
 [code]
     import { render } from '@testing-library/react'
     import Home from '../pages/index'
-     
+
     it('renders homepage unchanged', () => {
       const { container } = render(<Home />)
       expect(container).toMatchSnapshot()
@@ -324,9 +318,5 @@ pnpmnpmyarnbun
 
 * [React Testing Library 문서](https://testing-library.com/docs/react-testing-library/intro/)
   * [Testing Playground](https://testing-playground.com/) \- 요소를 찾을 때는 우수한 테스트 작성 관행을 따르세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

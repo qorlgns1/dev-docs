@@ -7,10 +7,6 @@ description: 'Incremental Static Regeneration(ISR)은 다음을 가능하게 합
 
 출처 URL: https://nextjs.org/docs/app/guides/incremental-static-regeneration
 
-[앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)ISR
-
-페이지 복사
-
 # 증분 정적 재생성(ISR)을 구현하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -21,16 +17,12 @@ description: 'Incremental Static Regeneration(ISR)은 다음을 가능하게 합
   * [On-Demand ISR](https://on-demand-isr.vercel.app)
   * [Next.js Forms](https://github.com/vercel/next.js/tree/canary/examples/next-forms)
 
-
-
 Incremental Static Regeneration(ISR)은 다음을 가능하게 합니다:
 
   * 전체 사이트를 다시 빌드하지 않고 정적 콘텐츠를 업데이트
   * 대부분의 요청에 대해 사전 렌더링된 정적 페이지를 제공해 서버 부하 감소
   * 페이지에 적절한 `cache-control` 헤더가 자동으로 추가되도록 보장
   * 긴 `next build` 시간 없이 방대한 수의 콘텐츠 페이지 처리
-
-
 
 다음은 최소 예제입니다:
 
@@ -43,11 +35,11 @@ JavaScriptTypeScript
       title: string
       content: string
     }
-     
+
     // Next.js will invalidate the cache when a
     // request comes in, at most once every 60 seconds.
     export const revalidate = 60
-     
+
     export async function generateStaticParams() {
       const posts: Post[] = await fetch('https://api.vercel.app/blog').then((res) =>
         res.json()
@@ -56,7 +48,7 @@ JavaScriptTypeScript
         id: String(post.id),
       }))
     }
-     
+
     export default async function Page({
       params,
     }: {
@@ -84,8 +76,6 @@ JavaScriptTypeScript
   5. 생성이 완료되면 다음 요청은 업데이트된 페이지를 반환하고 이후 요청을 위해 캐시합니다.
   6. `/blog/26` 요청이 들어오고 해당 페이지가 존재하면, 페이지는 온디맨드로 생성됩니다. 이 동작은 다른 [dynamicParams](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams) 값을 사용해 변경할 수 있습니다. 하지만 게시물이 존재하지 않으면 404가 반환됩니다.
 
-
-
 ## 참고자료[](https://nextjs.org/docs/app/guides/incremental-static-regeneration#reference)
 
 ### 라우트 세그먼트 구성[](https://nextjs.org/docs/app/guides/incremental-static-regeneration#route-segment-config)
@@ -93,14 +83,10 @@ JavaScriptTypeScript
   * [`revalidate`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate)
   * [`dynamicParams`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams)
 
-
-
 ### 함수[](https://nextjs.org/docs/app/guides/incremental-static-regeneration#functions)
 
   * [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)
   * [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
-
-
 
 ## 예제[](https://nextjs.org/docs/app/guides/incremental-static-regeneration#examples)
 
@@ -117,9 +103,9 @@ JavaScriptTypeScript
       title: string
       content: string
     }
-     
+
     export const revalidate = 3600 // invalidate every hour
-     
+
     export default async function Page() {
       const data = await fetch('https://api.vercel.app/blog')
       const posts: Post[] = await data.json()
@@ -151,9 +137,9 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { revalidatePath } from 'next/cache'
-     
+
     export async function createPost() {
       // Invalidate the cache for the /posts route
       revalidatePath('/posts')
@@ -187,7 +173,7 @@ JavaScriptTypeScript
 [code]
     import { unstable_cache } from 'next/cache'
     import { db, posts } from '@/lib/db'
-     
+
     const getCachedPosts = unstable_cache(
       async () => {
         return await db.select().from(posts)
@@ -195,7 +181,7 @@ JavaScriptTypeScript
       ['posts'],
       { revalidate: 3600, tags: ['posts'] }
     )
-     
+
     export default async function Page() {
       const posts = getCachedPosts()
       // ...
@@ -209,9 +195,9 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { revalidateTag } from 'next/cache'
-     
+
     export async function createPost() {
       // Invalidate all data tagged with 'posts'
       revalidateTag('posts')
@@ -264,32 +250,26 @@ next.config.js
   * 라우트에서 사용하는 `fetch` 요청 중 하나라도 `revalidate` 시간이 `0`이거나 명시적으로 `no-store`인 경우 해당 라우트는 [동적으로 렌더링](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)됩니다.
   * 온디맨드 ISR 요청에는 프록시가 실행되지 않으므로 경로 재작성이나 프록시의 로직이 적용되지 않습니다. 정확한 경로를 재검증하도록 하세요. 예를 들어, 재작성된 `/post-1` 대신 `/post/1`을 사용해야 합니다.
 
-
-
 ## 플랫폼 지원[](https://nextjs.org/docs/app/guides/incremental-static-regeneration#platform-support)
 
-배포 옵션| 지원 여부  
----|---  
-[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| 예  
-[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| 예  
-[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| 아니요  
-[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| 플랫폼별  
-  
+배포 옵션| 지원 여부
+---|---
+[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| 예
+[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| 예
+[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| 아니요
+[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| 플랫폼별
+
 Next.js를 셀프 호스팅할 때 [ISR을 구성](https://nextjs.org/docs/app/guides/self-hosting#caching-and-isr)하는 방법을 알아보세요.
 
 ## 버전 기록[](https://nextjs.org/docs/app/guides/incremental-static-regeneration#version-history)
 
 버전| 변경 사항
 
----|---  
-`v14.1.0`| 사용자 지정 `cacheHandler`가 안정화되었습니다.  
-`v13.0.0`| App Router가 도입되었습니다.  
-`v12.2.0`| Pages Router: On-Demand ISR이 안정화되었습니다.  
-`v12.0.0`| Pages Router: [Bot-aware ISR fallback](https://nextjs.org/blog/next-12#bot-aware-isr-fallback)이 추가되었습니다.  
-`v9.5.0`| Pages Router: [Stable ISR introduced](https://nextjs.org/blog/next-9-5)이 도입되었습니다.  
-
-도움이 되었나요?
-
-지원됨.
+---|---
+`v14.1.0`| 사용자 지정 `cacheHandler`가 안정화되었습니다.
+`v13.0.0`| App Router가 도입되었습니다.
+`v12.2.0`| Pages Router: On-Demand ISR이 안정화되었습니다.
+`v12.0.0`| Pages Router: [Bot-aware ISR fallback](https://nextjs.org/blog/next-12#bot-aware-isr-fallback)이 추가되었습니다.
+`v9.5.0`| Pages Router: [Stable ISR introduced](https://nextjs.org/blog/next-9-5)이 도입되었습니다.
 
 보내기

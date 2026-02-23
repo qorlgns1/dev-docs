@@ -9,8 +9,6 @@ description: '라우트 그룹은 폴더 이름을 기준으로 경로를 팀이
 
 [API 레퍼런스](https://nextjs.org/docs/app/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)Route Groups
 
-페이지 복사
-
 # 라우트 그룹
 
 마지막 업데이트 2026년 2월 20일
@@ -34,9 +32,5 @@ description: '라우트 그룹은 폴더 이름을 기준으로 경로를 팀이
   * **전체 페이지 로드**: 서로 다른 루트 레이아웃을 사용하는 라우트 간에 이동하면 전체 페이지 새로고침이 발생합니다. 예를 들어 `/cart`에서 `app/(shop)/layout.js`를, `/blog`에서 `app/(marketing)/layout.js`를 사용하는 경우입니다. 이는 **여러 루트 레이아웃**을 사용할 때만 해당됩니다.
   * **경로 충돌**: 서로 다른 그룹의 라우트가 동일한 URL 경로로 해석되면 안 됩니다. 예를 들어 `(marketing)/about/page.js`와 `(shop)/about/page.js`는 모두 `/about`으로 해석되어 오류가 발생합니다.
   * **최상위 루트 레이아웃**: 최상위 `layout.js` 없이 여러 루트 레이아웃을 사용하는 경우 홈 라우트(/)가 반드시 하나의 라우트 그룹 안에 정의되어 있어야 합니다. 예: app/(marketing)/page.js.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

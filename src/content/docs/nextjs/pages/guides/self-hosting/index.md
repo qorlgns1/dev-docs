@@ -7,8 +7,6 @@ description: 'Next.js 앱을 배포할 때는 인프라에 따라 다양한 기�
 
 Source URL: https://nextjs.org/docs/pages/guides/self-hosting
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)Self-Hosting
-
 Copy page
 
 # Next.js 애플리케이션을 셀프 호스팅하는 방법
@@ -30,11 +28,11 @@ Next.js 앱을 [배포](https://nextjs.org/docs/app/getting-started/deploying)�
 [정적 내보내기](https://nextjs.org/docs/app/guides/static-exports#image-optimization)에서도 `next.config.js`에 사용자 정의 image loader를 정의해 Image Optimization을 사용할 수 있습니다. 이미지는 빌드가 아니라 런타임에 최적화된다는 점을 유의하세요.
 
 > **알아두면 좋아요:**
-> 
+>
 >   * glibc 기반 리눅스 시스템에서는 과도한 메모리 사용을 막기 위해 Image Optimization에 [추가 구성](https://sharp.pixelplumbing.com/install#linux-memory-allocator)이 필요할 수 있습니다.
 >   * 최적화된 이미지의 [캐싱 동작](https://nextjs.org/docs/app/api-reference/components/image#minimumcachettl)과 TTL 설정 방법을 자세히 알아보세요.
 >   * 이미지를 별도로 직접 최적화하더라도 `next/image` 사용의 이점을 유지하기 위해 [Image Optimization을 비활성화](https://nextjs.org/docs/app/api-reference/components/image#unoptimized)할 수 있습니다.
-> 
+>
 
 ## Proxy[](https://nextjs.org/docs/pages/guides/self-hosting#proxy)
 
@@ -55,9 +53,9 @@ Next.js는 빌드 타임과 런타임 환경 변수를 모두 지원합니다.
 이를 통해 서로 다른 값을 가진 여러 환경에 새로운 Docker 이미지를 프로모션할 수 있습니다.
 
 > **알아두면 좋아요:**
-> 
+>
 >   * [`register` 함수](https://nextjs.org/docs/app/guides/instrumentation)를 사용해 서버 시작 시 코드를 실행할 수 있습니다.
-> 
+>
 
 ## Caching and ISR[](https://nextjs.org/docs/pages/guides/self-hosting#caching-and-isr)
 
@@ -98,17 +96,17 @@ next.config.js
 cache-handler.js
 [code]
     const cache = new Map()
-     
+
     module.exports = class CacheHandler {
       constructor(options) {
         this.options = options
       }
-     
+
       async get(key) {
         // This could be stored anywhere, like durable storage
         return cache.get(key)
       }
-     
+
       async set(key, data, ctx) {
         // This could be stored anywhere, like durable storage
         cache.set(key, {
@@ -117,7 +115,7 @@ cache-handler.js
           tags: ctx.tags,
         })
       }
-     
+
       async revalidateTag(tags) {
         // tags is either a string or an array of strings
         tags = [tags].flat()
@@ -129,7 +127,7 @@ cache-handler.js
           }
         }
       }
-     
+
       // If you want to have temporary in memory cache for a single request that is reset
       // before the next request you can leverage this method
       resetRequestCache() {}
@@ -139,9 +137,9 @@ cache-handler.js
 사용자 정의 캐시 핸들러를 사용하면 Next.js 애플리케이션을 호스팅하는 모든 파드의 일관성을 보장할 수 있습니다. 예를 들어 [Redis](https://github.com/vercel/next.js/tree/canary/examples/cache-handler-redis)나 AWS S3 등 원하는 위치에 캐시 값을 저장할 수 있습니다.
 
 > **알아두면 좋아요:**
-> 
+>
 >   * `revalidatePath`는 캐시 태그 위에 제공되는 편의 레이어입니다. `revalidatePath`를 호출하면 지정한 페이지에 대한 기본 특수 태그로 `revalidateTag` 함수가 호출됩니다.
-> 
+>
 
 ## Build Cache[](https://nextjs.org/docs/pages/guides/self-hosting#build-cache)
 
@@ -170,7 +168,7 @@ Next.js는 클라이언트로 보내기 전에 [Server Function](https://nextjs.
 여러 서버 인스턴스를 실행할 때는 모든 인스턴스가 동일한 암호화 키를 사용해야 합니다. 그렇지 않으면 한 인스턴스가 암호화한 Server Function을 다른 인스턴스가 복호화하지 못해 "Failed to find Server Action" 오류가 발생합니다.
 
 `NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` 환경 변수를 사용해 일관된 암호화 키를 설정하세요. 이 키는 유효한 AES 키 길이(16, 24, 32바이트)의 base64 인코딩 값이어야 합니다. Next.js는 기본적으로 32바이트 키를 생성합니다.
-[code] 
+[code]
     NEXT_SERVER_ACTIONS_ENCRYPTION_KEY=your-generated-key next build
 [/code]
 
@@ -192,15 +190,11 @@ Next.js는 클라이언트로 보내기 전에 [Server Function](https://nextjs.
   * **Server Function 불일치** : 클라이언트가 이전 빌드의 ID로 Server Function을 호출하여 서버가 더 이상 인식하지 못함
   * **내비게이션 실패** : 이전 배포에서 사전 가져온 페이지 데이터가 새로운 서버와 호환되지 않음
 
-
-
 Next.js는 [`deploymentId`](https://nextjs.org/docs/app/api-reference/config/next-config-js/deploymentId)를 사용해 버전 편차를 감지하고 처리합니다. 배포 ID를 구성하면:
 
   * 정적 자산에 `?dpl=<deploymentId>` 쿼리 매개변수가 포함됩니다.
   * 클라이언트 측 내비게이션 요청에 `x-deployment-id` 헤더가 포함됩니다.
   * 서버는 클라이언트의 배포 ID와 자신의 배포 ID를 비교합니다.
-
-
 
 불일치가 감지되면 Next.js는 클라이언트 측 내비게이션 대신 하드 내비게이션(전체 페이지 새로고침)을 트리거하여 클라이언트가 일관된 배포 버전에서 자산을 가져오도록 보장합니다.
 
@@ -245,9 +239,5 @@ pages/_document.js
       })
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

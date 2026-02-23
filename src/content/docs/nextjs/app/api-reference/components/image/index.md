@@ -9,8 +9,6 @@ description: 'Next.js Image 컴포넌트는 자동 이미지 최적화를 위해
 
 [API 레퍼런스](https://nextjs.org/docs/app/api-reference)[컴포넌트](https://nextjs.org/docs/app/api-reference/components)Image 컴포넌트
 
-페이지 복사
-
 # Image 컴포넌트
 
 마지막 업데이트: 2026년 2월 20일
@@ -20,7 +18,7 @@ Next.js Image 컴포넌트는 자동 이미지 최적화를 위해 HTML `<img>` 
 app/page.js
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return (
         <Image
@@ -39,46 +37,46 @@ app/page.js
 
 다음 속성을 사용할 수 있습니다:
 
-속성| 예시| 타입| 상태  
----|---|---|---  
-[`src`](https://nextjs.org/docs/app/api-reference/components/image#src)| `src="/profile.png"`| String| 필수  
-[`alt`](https://nextjs.org/docs/app/api-reference/components/image#alt)| `alt="Picture of the author"`| String| 필수  
-[`width`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)| `width={500}`| Integer (px)| -  
-[`height`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)| `height={500}`| Integer (px)| -  
-[`fill`](https://nextjs.org/docs/app/api-reference/components/image#fill)| `fill={true}`| Boolean| -  
-[`loader`](https://nextjs.org/docs/app/api-reference/components/image#loader)| `loader={imageLoader}`| Function| -  
-[`sizes`](https://nextjs.org/docs/app/api-reference/components/image#sizes)| `sizes="(max-width: 768px) 100vw, 33vw"`| String| -  
-[`quality`](https://nextjs.org/docs/app/api-reference/components/image#quality)| `quality={80}`| Integer (1-100)| -  
-[`preload`](https://nextjs.org/docs/app/api-reference/components/image#preload)| `preload={true}`| Boolean| -  
-[`placeholder`](https://nextjs.org/docs/app/api-reference/components/image#placeholder)| `placeholder="blur"`| String| -  
-[`style`](https://nextjs.org/docs/app/api-reference/components/image#style)| `style={{objectFit: "contain"}}`| Object| -  
-[`onLoadingComplete`](https://nextjs.org/docs/app/api-reference/components/image#onloadingcomplete)| `onLoadingComplete={img => done())}`| Function| 사용 중단됨  
-[`onLoad`](https://nextjs.org/docs/app/api-reference/components/image#onload)| `onLoad={event => done())}`| Function| -  
-[`onError`](https://nextjs.org/docs/app/api-reference/components/image#onerror)| `onError(event => fail()}`| Function| -  
-[`loading`](https://nextjs.org/docs/app/api-reference/components/image#loading)| `loading="lazy"`| String| -  
-[`blurDataURL`](https://nextjs.org/docs/app/api-reference/components/image#blurdataurl)| `blurDataURL="data:image/jpeg..."`| String| -  
-[`unoptimized`](https://nextjs.org/docs/app/api-reference/components/image#unoptimized)| `unoptimized={true}`| Boolean| -  
-[`overrideSrc`](https://nextjs.org/docs/app/api-reference/components/image#overridesrc)| `overrideSrc="/seo.png"`| String| -  
-[`decoding`](https://nextjs.org/docs/app/api-reference/components/image#decoding)| `decoding="async"`| String| -  
-  
+속성| 예시| 타입| 상태
+---|---|---|---
+[`src`](https://nextjs.org/docs/app/api-reference/components/image#src)| `src="/profile.png"`| String| 필수
+[`alt`](https://nextjs.org/docs/app/api-reference/components/image#alt)| `alt="Picture of the author"`| String| 필수
+[`width`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)| `width={500}`| Integer (px)| -
+[`height`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)| `height={500}`| Integer (px)| -
+[`fill`](https://nextjs.org/docs/app/api-reference/components/image#fill)| `fill={true}`| Boolean| -
+[`loader`](https://nextjs.org/docs/app/api-reference/components/image#loader)| `loader={imageLoader}`| Function| -
+[`sizes`](https://nextjs.org/docs/app/api-reference/components/image#sizes)| `sizes="(max-width: 768px) 100vw, 33vw"`| String| -
+[`quality`](https://nextjs.org/docs/app/api-reference/components/image#quality)| `quality={80}`| Integer (1-100)| -
+[`preload`](https://nextjs.org/docs/app/api-reference/components/image#preload)| `preload={true}`| Boolean| -
+[`placeholder`](https://nextjs.org/docs/app/api-reference/components/image#placeholder)| `placeholder="blur"`| String| -
+[`style`](https://nextjs.org/docs/app/api-reference/components/image#style)| `style={{objectFit: "contain"}}`| Object| -
+[`onLoadingComplete`](https://nextjs.org/docs/app/api-reference/components/image#onloadingcomplete)| `onLoadingComplete={img => done())}`| Function| 사용 중단됨
+[`onLoad`](https://nextjs.org/docs/app/api-reference/components/image#onload)| `onLoad={event => done())}`| Function| -
+[`onError`](https://nextjs.org/docs/app/api-reference/components/image#onerror)| `onError(event => fail()}`| Function| -
+[`loading`](https://nextjs.org/docs/app/api-reference/components/image#loading)| `loading="lazy"`| String| -
+[`blurDataURL`](https://nextjs.org/docs/app/api-reference/components/image#blurdataurl)| `blurDataURL="data:image/jpeg..."`| String| -
+[`unoptimized`](https://nextjs.org/docs/app/api-reference/components/image#unoptimized)| `unoptimized={true}`| Boolean| -
+[`overrideSrc`](https://nextjs.org/docs/app/api-reference/components/image#overridesrc)| `overrideSrc="/seo.png"`| String| -
+[`decoding`](https://nextjs.org/docs/app/api-reference/components/image#decoding)| `decoding="async"`| String| -
+
 #### `src`[](https://nextjs.org/docs/app/api-reference/components/image#src)
 
 이미지의 소스입니다. 다음 중 하나일 수 있습니다:
 
 내부 경로 문자열.
-[code] 
+[code]
     <Image src="/profile.png" />
 [/code]
 
 절대 외부 URL(반드시 [remotePatterns](https://nextjs.org/docs/app/api-reference/components/image#remotepatterns)로 구성해야 함).
-[code] 
+[code]
     <Image src="https://example.com/profile.png" />
 [/code]
 
 정적 import.
-[code] 
+[code]
     import profile from './profile.png'
-     
+
     export default function Page() {
       return <Image src={profile} />
     }
@@ -99,7 +97,7 @@ app/page.js
 #### `width` 및 `height`[](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)
 
 `width`와 `height` 속성은 픽셀 단위의 [고유(intrinsic)](https://developer.mozilla.org/en-US/docs/Glossary/Intrinsic_Size) 이미지 크기를 나타냅니다. 이 속성은 브라우저가 이미지를 위한 올바른 **종횡비**를 추론해 로딩 중 레이아웃 시프트를 방지하도록 예약 공간을 확보할 때 사용됩니다. 이미지를 표시하는 실제 크기는 CSS가 제어하며, 이 속성으로 결정되지 않습니다.
-[code] 
+[code]
     <Image src="/profile.png" width={500} height={500} />
 [/code]
 
@@ -113,7 +111,7 @@ app/page.js
 #### `fill`[](https://nextjs.org/docs/app/api-reference/components/image#fill)
 
 이미지가 부모 요소 크기까지 확장되도록 하는 boolean 값입니다.
-[code] 
+[code]
     <Image src="/profile.png" fill={true} />
 [/code]
 
@@ -139,15 +137,15 @@ app/page.js
   * [`width`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)
   * [`quality`](https://nextjs.org/docs/app/api-reference/components/image#quality)
 
-[code] 
+[code]
     'use client'
-     
+
     import Image from 'next/image'
-     
+
     const imageLoader = ({ src, width, quality }) => {
       return `https://example.com/${src}?w=${width}&q=${quality || 75}`
     }
-     
+
     export default function Page() {
       return (
         <Image
@@ -168,9 +166,9 @@ app/page.js
 #### `sizes`[](https://nextjs.org/docs/app/api-reference/components/image#sizes)
 
 다양한 브레이크포인트에서 이미지 크기를 정의합니다. 브라우저가 생성된 `srcset`에서 가장 적합한 크기를 선택할 때 사용됩니다.
-[code] 
+[code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return (
         <div className="grid-element">
@@ -201,7 +199,7 @@ app/page.js
 #### `quality`[](https://nextjs.org/docs/app/api-reference/components/image#quality)
 
 최적화된 이미지의 품질을 설정하는 `1`~`100` 사이의 정수입니다. 값이 높을수록 파일 크기와 시각적 선명도가 증가하고, 낮을수록 파일 크기가 줄지만 선명도가 떨어질 수 있습니다.
-[code] 
+[code]
     // Default quality is 75
     <Image quality={75} />
 [/code]
@@ -213,14 +211,14 @@ app/page.js
 #### `style`[](https://nextjs.org/docs/app/api-reference/components/image#style)
 
 기본 이미지 요소에 CSS 스타일을 전달할 수 있습니다.
-[code] 
+[code]
     const imageStyle = {
       borderRadius: '50%',
       border: '1px solid #fff',
       width: '100px',
       height: 'auto',
     }
-     
+
     export default function ProfileImage() {
       return <Image src="..." style={imageStyle} />
     }
@@ -231,7 +229,7 @@ app/page.js
 #### `preload`[](https://nextjs.org/docs/app/api-reference/components/image#preload)
 
 이미지를 프리로드해야 하는지 여부를 나타내는 boolean 값입니다.
-[code] 
+[code]
     // Default preload is false
     <Image preload={false} />
 [/code]
@@ -260,15 +258,13 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 #### `loading`[](https://nextjs.org/docs/app/api-reference/components/image#loading)
 
 이미지가 로드를 시작할 시점을 제어합니다.
-[code] 
+[code]
     // Defaults to lazy
     <Image loading="lazy" />
 [/code]
 
   * `lazy`: 이미지가 뷰포트에서 계산된 거리까지 도달할 때까지 로드를 지연합니다.
   * `eager`: 페이지에서의 위치와 상관없이 이미지를 즉시 로드합니다.
-
-
 
 즉시 로드를 보장하고 싶은 경우에만 `eager`를 사용하세요.
 
@@ -277,7 +273,7 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 #### `placeholder`[](https://nextjs.org/docs/app/api-reference/components/image#placeholder)
 
 이미지가 로드되는 동안 사용할 플레이스홀더를 지정하여 체감 로딩 성능을 개선합니다.
-[code] 
+[code]
     // defaults to empty
     <Image placeholder="empty" />
 [/code]
@@ -286,22 +282,18 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
   * `blur`: 흐릿한 버전의 이미지를 플레이스홀더로 사용합니다. [`blurDataURL`](https://nextjs.org/docs/app/api-reference/components/image#blurdataurl) 속성과 함께 사용해야 합니다.
   * `data:image/...`: [Data URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)을 플레이스홀더로 사용합니다.
 
-
-
 **예시:**
 
   * [`blur` placeholder](https://image-component.nextjs.gallery/placeholder)
   * [Data URL `placeholder` prop으로 구현한 Shimmer 효과](https://image-component.nextjs.gallery/shimmer)
   * [`blurDataURL` prop으로 구현한 Color 효과](https://image-component.nextjs.gallery/color)
 
-
-
 > [`placeholder` attribute](https://developer.mozilla.org/docs/Web/HTML/Element/img#placeholder)에 대해 더 알아보기.
 
 #### `blurDataURL`[](https://nextjs.org/docs/app/api-reference/components/image#blurdataurl)
 
 이미지가 정상적으로 로드되기 전에 플레이스홀더 이미지로 사용할 [Data URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)입니다. 자동으로 설정되거나 [`placeholder="blur"`](https://nextjs.org/docs/app/api-reference/components/image#placeholder) 속성과 함께 사용할 수 있습니다.
-[code] 
+[code]
     <Image placeholder="blur" blurDataURL="..." />
 [/code]
 
@@ -318,8 +310,6 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
   * [png-pixel.com 같은 온라인 도구](https://png-pixel.com)
   * [Plaiceholder 같은 라이브러리](https://github.com/joe-bell/plaiceholder)
 
-
-
 큰 blurDataURL은 성능을 저하시킬 수 있습니다. 작고 단순하게 유지하세요.
 
 **예시:**
@@ -327,12 +317,10 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
   * [기본 `blurDataURL` prop](https://image-component.nextjs.gallery/placeholder)
   * [`blurDataURL` prop으로 구현한 Color 효과](https://image-component.nextjs.gallery/color)
 
-
-
 #### `onLoad`[](https://nextjs.org/docs/app/api-reference/components/image#onload)
 
 이미지가 완전히 로드되어 [placeholder](https://nextjs.org/docs/app/api-reference/components/image#placeholder)가 제거되면 호출되는 콜백 함수입니다.
-[code] 
+[code]
     <Image onLoad={(e) => console.log(e.target.naturalWidth)} />
 [/code]
 
@@ -343,7 +331,7 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 #### `onError`[](https://nextjs.org/docs/app/api-reference/components/image#onerror)
 
 이미지 로드에 실패하면 호출되는 콜백 함수입니다.
-[code] 
+[code]
     <Image onError={(e) => console.error(e.target.id)} />
 [/code]
 
@@ -352,9 +340,9 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 #### `unoptimized`[](https://nextjs.org/docs/app/api-reference/components/image#unoptimized)
 
 이미지를 최적화할지 여부를 나타내는 불리언입니다. 1KB 미만의 작은 이미지, SVG 같은 벡터 이미지, GIF 같은 애니메이션 이미지처럼 최적화가 필요 없는 경우에 유용합니다.
-[code] 
+[code]
     import Image from 'next/image'
-     
+
     const UnoptimizedImage = (props) => {
       // Default is false
       return <Image {...props} unoptimized />
@@ -363,8 +351,6 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 
   * `true`: 품질, 크기, 포맷을 변경하지 않고 `src`에서 원본 이미지를 그대로 제공합니다.
   * `false`: 원본 이미지를 최적화합니다.
-
-
 
 Next.js 12.3.0부터 다음 구성으로 `next.config.js`를 업데이트하면 모든 이미지에 이 prop을 적용할 수 있습니다.
 
@@ -420,7 +406,7 @@ output.html
 #### `decoding`[](https://nextjs.org/docs/app/api-reference/components/image#decoding)
 
 다른 콘텐츠 업데이트를 표시하기 전에 이미지가 디코딩될 때까지 기다릴지 여부를 브라우저에 알려주는 힌트입니다.
-[code] 
+[code]
     // Default is async
     <Image decoding="async" />
 [/code]
@@ -429,8 +415,6 @@ output.html
   * `sync`: 다른 콘텐츠와 동시에 표시되도록 이미지를 동기적으로 디코딩합니다.
   * `auto`: 선호 없음. 브라우저가 최적의 방식을 선택합니다.
 
-
-
 > [`decoding` attribute](https://developer.mozilla.org/docs/Web/HTML/Element/img#decoding)에 대해 더 알아보기.
 
 ### Other Props[](https://nextjs.org/docs/app/api-reference/components/image#other-props)
@@ -438,8 +422,6 @@ output.html
 다음 예외를 제외한 `<Image />` 컴포넌트의 다른 속성들은 기본 `img` 요소에 전달됩니다.
 
   * `srcSet`: [Device Sizes](https://nextjs.org/docs/app/api-reference/components/image#devicesizes)를 대신 사용하세요.
-
-
 
 ### Deprecated props[](https://nextjs.org/docs/app/api-reference/components/image#deprecated-props)
 
@@ -450,9 +432,9 @@ output.html
 이미지가 완전히 로드되어 [placeholder](https://nextjs.org/docs/app/api-reference/components/image#placeholder)가 제거되면 호출되는 콜백 함수입니다.
 
 콜백 함수는 기본 `<img>` 요소에 대한 참조 하나를 인수로 받습니다.
-[code] 
+[code]
     'use client'
-     
+
     <Image onLoadingComplete={(img) => console.log(img.naturalWidth)} />
 [/code]
 
@@ -525,8 +507,6 @@ next.config.js
   * `*`는 단일 경로 세그먼트 또는 서브도메인을 매칭합니다.
   * `**`는 끝부분의 경로 세그먼트 여러 개나 시작 부분의 서브도메인 여러 개를 매칭합니다. 패턴 중간에서는 작동하지 않습니다.
 
-
-
 next.config.js
 [code]
     module.exports = {
@@ -587,7 +567,7 @@ next.config.js
 my/image/loader.js
 [code]
     'use client'
-     
+
     export default function myImageLoader({ src, width, quality }) {
       return `https://example.com/${src}?w=${width}&q=${quality || 75}`
     }
@@ -596,8 +576,6 @@ my/image/loader.js
 **예시:**
 
   * [Custom Image Loader Configuration](https://nextjs.org/docs/app/api-reference/config/next-config-js/images#example-loader-configuration)
-
-
 
 > 대안으로, 각 `next/image` 인스턴스를 구성하려면 [`loader` prop](https://nextjs.org/docs/app/api-reference/components/image#loader)을 사용할 수 있습니다.
 
@@ -721,12 +699,12 @@ next.config.js
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 대부분의 사용 사례에서는 여전히 WebP 사용을 권장합니다.
 >   * AVIF는 WebP 대비 인코딩이 일반적으로 50% 더 오래 걸리지만 압축률은 20% 더 높습니다. 즉, 이미지를 처음 요청할 때는 더 느릴 수 있지만 캐시된 후에는 더 빠르게 제공됩니다.
 >   * 여러 포맷을 사용할 때 Next.js는 각 포맷을 별도로 캐시하므로 AVIF와 WebP 버전을 모두 저장해야 하며, 단일 포맷을 사용할 때보다 저장 공간이 더 필요합니다.
 >   * Next.js 앞단에 Proxy/CDN을 두고 셀프 호스팅한다면 Proxy가 `Accept` 헤더를 전달하도록 구성해야 합니다.
-> 
+>
 
 #### `minimumCacheTTL`[](https://nextjs.org/docs/app/api-reference/components/image#minimumcachettl)
 
@@ -869,10 +847,8 @@ next.config.js
   * SVG는 벡터 포맷이므로 손실 없이 크기를 조정할 수 있습니다.
   * SVG는 HTML/CSS와 동일한 기능을 많이 포함하므로 적절한 [Content Security Policy (CSP) 헤더](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#content-security-policy)가 없으면 취약점으로 이어질 수 있습니다.
 
-
-
 [`src`](https://nextjs.org/docs/app/api-reference/components/image#src) prop이 SVG임이 확실하다면 [`unoptimized`](https://nextjs.org/docs/app/api-reference/components/image#unoptimized) prop을 사용하는 것을 권장합니다. `src`가 `".svg"`로 끝나면 이 동작이 자동으로 적용됩니다.
-[code] 
+[code]
     <Image src="/my-image.svg" unoptimized />
 [/code]
 
@@ -947,16 +923,16 @@ next.config.js
 ### `getImageProps`[](https://nextjs.org/docs/app/api-reference/components/image#getimageprops)
 
 `getImageProps` 함수는 기본 `<img>` 요소로 전달될 props를 가져와 다른 컴포넌트나 스타일, 캔버스 등으로 전달할 때 사용할 수 있습니다.
-[code] 
+[code]
     import { getImageProps } from 'next/image'
-     
+
     const { props } = getImageProps({
       src: 'https://example.com/image.jpg',
       alt: 'A scenic mountain view',
       width: 1200,
       height: 800,
     })
-     
+
     function ImageWithCaption() {
       return (
         <figure>
@@ -980,8 +956,6 @@ next.config.js
     * [AVIF `formats`](https://nextjs.org/docs/app/api-reference/components/image#formats) 활성화
     * [`placeholder`](https://nextjs.org/docs/app/api-reference/components/image#placeholder) 사용
 
-
-
 ## 예시[](https://nextjs.org/docs/app/api-reference/components/image#examples)
 
 ### 이미지 스타일링[](https://nextjs.org/docs/app/api-reference/components/image#styling-images)
@@ -989,16 +963,16 @@ next.config.js
 Image 컴포넌트를 스타일링하는 방식은 일반 `<img>` 요소와 유사하지만, 몇 가지 지침을 기억해야 합니다.
 
 `styled-jsx` 대신 `className` 또는 `style`을 사용하세요. 대부분의 경우 `className` prop 사용을 권장합니다. 가져온 [CSS Module](https://nextjs.org/docs/app/getting-started/css), [전역 스타일시트](https://nextjs.org/docs/app/getting-started/css#global-css) 등 무엇이든 가능합니다.
-[code] 
+[code]
     import styles from './styles.module.css'
-     
+
     export default function MyImage() {
       return <Image className={styles.image} src="/my-image.png" alt="My Image" />
     }
 [/code]
 
 `style` prop을 사용해 인라인 스타일을 지정할 수도 있습니다.
-[code] 
+[code]
     export default function MyImage() {
       return (
         <Image style={{ borderRadius: '8px' }} src="/my-image.png" alt="My Image" />
@@ -1007,7 +981,7 @@ Image 컴포넌트를 스타일링하는 방식은 일반 `<img>` 요소와 유�
 [/code]
 
 `fill`을 사용할 때는 부모 요소에 `position: relative` 또는 `display: block`이 설정되어야 합니다. 해당 레이아웃 모드에서 이미지 요소가 올바르게 렌더링되도록 하기 위한 필수 조건입니다.
-[code] 
+[code]
     <div style={{ position: 'relative' }}>
       <Image fill src="/my-image.png" alt="My Image" />
     </div>
@@ -1018,10 +992,10 @@ Image 컴포넌트를 스타일링하는 방식은 일반 `<img>` 요소와 유�
 ### 정적 내보내기와 반응형 이미지[](https://nextjs.org/docs/app/api-reference/components/image#responsive-images-with-a-static-export)
 
 정적 이미지를 import하면 Next.js가 파일을 기반으로 너비와 높이를 자동으로 설정합니다. 스타일을 지정해 이미지를 반응형으로 만들 수 있습니다.
-[code] 
+[code]
     import Image from 'next/image'
     import mountains from '../public/mountains.jpg'
-     
+
     export default function Responsive() {
       return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -1050,7 +1024,7 @@ Image 컴포넌트를 스타일링하는 방식은 일반 `<img>` 요소와 유�
 components/page.js
 [code]
     import Image from 'next/image'
-     
+
     export default function Page({ photoUrl }) {
       return (
         <Image
@@ -1072,15 +1046,13 @@ components/page.js
 
   * [뷰포트에 반응하는 이미지 데모](https://image-component.nextjs.gallery/responsive)
 
-
-
 ### `fill`로 반응형 이미지[](https://nextjs.org/docs/app/api-reference/components/image#responsive-image-with-fill)
 
 이미지의 종횡비를 모를 때는 [`fill` prop](https://nextjs.org/docs/app/api-reference/components/image#fill)에 `objectFit` prop을 `cover`로 설정해 사용할 수 있습니다. 이렇게 하면 이미지가 부모 컨테이너의 전체 너비를 채웁니다.
-[code] 
+[code]
     import Image from 'next/image'
     import mountains from '../public/mountains.jpg'
-     
+
     export default function Fill() {
       return (
         <div
@@ -1110,10 +1082,10 @@ components/page.js
 ### 배경 이미지[](https://nextjs.org/docs/app/api-reference/components/image#background-image)
 
 `fill` prop을 사용해 이미지가 화면 전체를 덮도록 만들 수 있습니다.
-[code] 
+[code]
     import Image from 'next/image'
     import mountains from '../public/mountains.jpg'
-     
+
     export default function Background() {
       return (
         <Image
@@ -1140,7 +1112,7 @@ components/page.js
 app/page.js
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return (
         <Image
@@ -1187,7 +1159,7 @@ components/theme-image.module.css
     .imgDark {
       display: none;
     }
-     
+
     @media (prefers-color-scheme: dark) {
       .imgLight {
         display: none;
@@ -1204,15 +1176,15 @@ JavaScriptTypeScript
 [code]
     import styles from './theme-image.module.css'
     import Image, { ImageProps } from 'next/image'
-     
+
     type Props = Omit<ImageProps, 'src' | 'preload' | 'loading'> & {
       srcLight: string
       srcDark: string
     }
-     
+
     const ThemeImage = (props: Props) => {
       const { srcLight, srcDark, ...rest } = props
-     
+
       return (
         <>
           <Image {...rest} src={srcLight} className={styles.imgLight} />
@@ -1228,8 +1200,6 @@ JavaScriptTypeScript
 
   * [라이트/다크 모드 테마 감지 데모](https://image-component.nextjs.gallery/theme)
 
-
-
 ### Art direction[](https://nextjs.org/docs/app/api-reference/components/image#art-direction)
 
 모바일과 데스크톱에 서로 다른 이미지를 표시하고 싶다면, 일명 [Art Direction](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#art_direction)이라고 부르는 접근 방식으로, `getImageProps()`에 서로 다른 `src`, `width`, `height`, `quality` props를 전달하면 됩니다.
@@ -1237,7 +1207,7 @@ JavaScriptTypeScript
 app/page.js
 [code]
     import { getImageProps } from 'next/image'
-     
+
     export default function Home() {
       const common = { alt: 'Art Direction Example', sizes: '100vw' }
       const {
@@ -1258,7 +1228,7 @@ app/page.js
         quality: 70,
         src: '/mobile.jpg',
       })
-     
+
       return (
         <picture>
           <source media="(min-width: 1000px)" srcSet={desktop} />
@@ -1276,7 +1246,7 @@ app/page.js
 app/page.js
 [code]
     import { getImageProps } from 'next/image'
-     
+
     function getBackgroundImage(srcSet = '') {
       const imageSet = srcSet
         .split(', ')
@@ -1287,14 +1257,14 @@ app/page.js
         .join(', ')
       return `image-set(${imageSet})`
     }
-     
+
     export default function Home() {
       const {
         props: { srcSet },
       } = getImageProps({ alt: '', width: 128, height: 128, src: '/img.png' })
       const backgroundImage = getBackgroundImage(srcSet)
       const style = { height: '100vh', width: '100vw', backgroundImage }
-     
+
       return (
         <main style={style}>
           <h1>Hello World</h1>
@@ -1305,38 +1275,38 @@ app/page.js
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/components/image#version-history)
 
-Version| Changes  
----|---  
-`v16.1.2`| `maximumResponseBody` 설정이 추가되었습니다.  
-`v16.0.0`| `qualities` 기본 설정이 `[75]`로 변경되고 `preload` prop이 추가되었으며 `priority` prop이 더 이상 권장되지 않습니다. `dangerouslyAllowLocalIP` 설정과 `maximumRedirects` 설정이 추가되었습니다.  
-`v15.3.0`| `remotePatterns`가 `URL` 객체 배열을 지원합니다.  
-`v15.0.0`| `contentDispositionType` 설정 기본값이 `attachment`로 변경되었습니다.  
-`v14.2.23`| `qualities` 설정이 추가되었습니다.  
-`v14.2.15`| `decoding` prop과 `localPatterns` 설정이 추가되었습니다.  
-`v14.2.14`| `remotePatterns.search` prop이 추가되었습니다.  
-`v14.2.0`| `overrideSrc` prop이 추가되었습니다.  
-`v14.1.0`| `getImageProps()`가 안정화되었습니다.  
-`v14.0.0`| `onLoadingComplete` prop과 `domains` 설정이 더 이상 권장되지 않습니다.  
-`v13.4.14`| `placeholder` prop이 `data:/image...`를 지원합니다.  
-`v13.2.0`| `contentDispositionType` 설정이 추가되었습니다.  
-`v13.0.6`| `ref` prop이 추가되었습니다.  
-`v13.0.0`| `next/image` import가 `next/legacy/image`로 이름이 변경되었습니다. `next/future/image` import는 `next/image`로 이름이 변경되었습니다. import를 안전하게 자동으로 바꾸기 위한 [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#next-image-to-legacy-image)가 제공됩니다. `<span>` 래퍼가 제거되었고 `layout`, `objectFit`, `objectPosition`, `lazyBoundary`, `lazyRoot` props가 제거되었습니다. `alt`가 필수입니다. `onLoadingComplete`가 `img` 요소 참조를 받습니다. 기본 제공 로더 설정이 제거되었습니다.  
-`v12.3.0`| `remotePatterns`와 `unoptimized` 설정이 안정화되었습니다.  
-`v12.2.0`| 실험적 `remotePatterns`와 실험적 `unoptimized` 설정이 추가되었습니다. `layout="raw"`가 제거되었습니다.  
-`v12.1.1`| `style` prop이 추가되었습니다. `layout="raw"` 실험적 지원이 추가되었습니다.  
-`v12.1.0`| `dangerouslyAllowSVG`와 `contentSecurityPolicy` 설정이 추가되었습니다.  
-`v12.0.9`| `lazyRoot` prop이 추가되었습니다.  
-`v12.0.0`| `formats` 설정이 추가되었습니다.  
-AVIF 지원이 추가되었습니다.  
-래퍼 `<div>`가 `<span>`으로 변경되었습니다.  
-`v11.1.0`| `onLoadingComplete`와 `lazyBoundary` props가 추가되었습니다.  
-`v11.0.0`| `src` prop이 정적 import를 지원합니다.  
-`placeholder` prop이 추가되었습니다.  
-`blurDataURL` prop이 추가되었습니다.  
-`v10.0.5`| `loader` prop이 추가되었습니다.  
-`v10.0.1`| `layout` prop이 추가되었습니다.  
-`v10.0.0`| `next/image`가 도입되었습니다.  
-   
+Version| Changes
+---|---
+`v16.1.2`| `maximumResponseBody` 설정이 추가되었습니다.
+`v16.0.0`| `qualities` 기본 설정이 `[75]`로 변경되고 `preload` prop이 추가되었으며 `priority` prop이 더 이상 권장되지 않습니다. `dangerouslyAllowLocalIP` 설정과 `maximumRedirects` 설정이 추가되었습니다.
+`v15.3.0`| `remotePatterns`가 `URL` 객체 배열을 지원합니다.
+`v15.0.0`| `contentDispositionType` 설정 기본값이 `attachment`로 변경되었습니다.
+`v14.2.23`| `qualities` 설정이 추가되었습니다.
+`v14.2.15`| `decoding` prop과 `localPatterns` 설정이 추가되었습니다.
+`v14.2.14`| `remotePatterns.search` prop이 추가되었습니다.
+`v14.2.0`| `overrideSrc` prop이 추가되었습니다.
+`v14.1.0`| `getImageProps()`가 안정화되었습니다.
+`v14.0.0`| `onLoadingComplete` prop과 `domains` 설정이 더 이상 권장되지 않습니다.
+`v13.4.14`| `placeholder` prop이 `data:/image...`를 지원합니다.
+`v13.2.0`| `contentDispositionType` 설정이 추가되었습니다.
+`v13.0.6`| `ref` prop이 추가되었습니다.
+`v13.0.0`| `next/image` import가 `next/legacy/image`로 이름이 변경되었습니다. `next/future/image` import는 `next/image`로 이름이 변경되었습니다. import를 안전하게 자동으로 바꾸기 위한 [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#next-image-to-legacy-image)가 제공됩니다. `<span>` 래퍼가 제거되었고 `layout`, `objectFit`, `objectPosition`, `lazyBoundary`, `lazyRoot` props가 제거되었습니다. `alt`가 필수입니다. `onLoadingComplete`가 `img` 요소 참조를 받습니다. 기본 제공 로더 설정이 제거되었습니다.
+`v12.3.0`| `remotePatterns`와 `unoptimized` 설정이 안정화되었습니다.
+`v12.2.0`| 실험적 `remotePatterns`와 실험적 `unoptimized` 설정이 추가되었습니다. `layout="raw"`가 제거되었습니다.
+`v12.1.1`| `style` prop이 추가되었습니다. `layout="raw"` 실험적 지원이 추가되었습니다.
+`v12.1.0`| `dangerouslyAllowSVG`와 `contentSecurityPolicy` 설정이 추가되었습니다.
+`v12.0.9`| `lazyRoot` prop이 추가되었습니다.
+`v12.0.0`| `formats` 설정이 추가되었습니다.
+AVIF 지원이 추가되었습니다.
+래퍼 `<div>`가 `<span>`으로 변경되었습니다.
+`v11.1.0`| `onLoadingComplete`와 `lazyBoundary` props가 추가되었습니다.
+`v11.0.0`| `src` prop이 정적 import를 지원합니다.
+`placeholder` prop이 추가되었습니다.
+`blurDataURL` prop이 추가되었습니다.
+`v10.0.5`| `loader` prop이 추가되었습니다.
+`v10.0.1`| `layout` prop이 추가되었습니다.
+`v10.0.0`| `next/image`가 도입되었습니다.
+
 이 정보가 도움이 되었나요?
 
 supported.

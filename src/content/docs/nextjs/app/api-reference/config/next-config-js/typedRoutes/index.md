@@ -7,10 +7,6 @@ description: '> 참고: 이 옵션은 안정(stable) 버전으로 지정되었�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/typedRoutes
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)typedRoutes
-
-페이지 복사
-
 # typedRoutes
 
 마지막 업데이트 2026년 2월 20일
@@ -25,12 +21,8 @@ next.config.js
     const nextConfig = {
       typedRoutes: true,
     }
-     
+
     module.exports = nextConfig
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

@@ -7,10 +7,6 @@ description: 'Next.js는 다음과 같이 CSS를 사용해 애플리케이션을
 
 Source URL: https://nextjs.org/docs/pages/getting-started/css
 
-[페이지 라우터](https://nextjs.org/docs/pages)[시작하기](https://nextjs.org/docs/pages/getting-started)CSS
-
-페이지 복사
-
 # 애플리케이션에서 CSS 사용하는 방법
 
 2026년 2월 20일 업데이트
@@ -23,8 +19,6 @@ Next.js는 다음과 같이 CSS를 사용해 애플리케이션을 스타일링�
   * [External Stylesheets](https://nextjs.org/docs/pages/getting-started/css#external-stylesheets)
   * [Sass](https://nextjs.org/docs/app/guides/sass)
   * [CSS-in-JS](https://nextjs.org/docs/app/guides/css-in-js)
-
-
 
 ## Tailwind CSS[](https://nextjs.org/docs/pages/getting-started/css#tailwind-css)
 
@@ -62,7 +56,7 @@ styles/globals.css
 pages/_app.js
 [code]
     import '@/styles/globals.css'
-     
+
     export default function MyApp({ Component, pageProps }) {
       return <Component {...pageProps} />
     }
@@ -103,7 +97,7 @@ pages/blog/index.tsx
 JavaScriptTypeScript
 [code]
     import styles from './blog.module.css'
-     
+
     export default function Page() {
       return <main className={styles.blog}></main>
     }
@@ -118,7 +112,7 @@ JavaScriptTypeScript
 pages/_app.js
 [code]
     import '@/styles/global.css'
-     
+
     export default function MyApp({ Component, pageProps }) {
       return <Component {...pageProps} />
     }
@@ -139,7 +133,7 @@ Next.js **9.5.4** 이후에는 애플리케이션 어디에서나 `node_modules`
 pages/_app.js
 [code]
     import 'bootstrap/dist/css/bootstrap.css'
-     
+
     export default function MyApp({ Component, pageProps }) {
       return <Component {...pageProps} />
     }
@@ -153,12 +147,12 @@ components/example-dialog.js
     import { Dialog } from '@reach/dialog'
     import VisuallyHidden from '@reach/visually-hidden'
     import '@reach/dialog/styles.css'
-     
+
     function ExampleDialog(props) {
       const [showDialog, setShowDialog] = useState(false)
       const open = () => setShowDialog(true)
       const close = () => setShowDialog(false)
-     
+
       return (
         <div>
           <button onClick={open}>Open Dialog</button>
@@ -186,7 +180,7 @@ JavaScriptTypeScript
 [code]
     import { BaseButton } from './base-button'
     import styles from './page.module.css'
-     
+
     export default function Page() {
       return <BaseButton className={styles.primary} />
     }
@@ -197,7 +191,7 @@ base-button.tsx
 JavaScriptTypeScript
 [code]
     import styles from './base-button.module.css'
-     
+
     export function BaseButton() {
       return <button className={styles.primary} />
     }
@@ -216,8 +210,6 @@ CSS 순서를 예측 가능하게 유지하려면 다음을 권장합니다.
   * ESLint의 [`sort-imports`](https://eslint.org/docs/latest/rules/sort-imports)처럼 가져오기를 자동 정렬하는 린터나 포매터는 비활성화하세요.
   * `next.config.js`의 [`cssChunking`](https://nextjs.org/docs/app/api-reference/config/next-config-js/cssChunking) 옵션으로 CSS 청킹 방식을 제어할 수 있습니다.
 
-
-
 ## 개발 vs 프로덕션[](https://nextjs.org/docs/pages/getting-started/css#development-vs-production)
 
   * 개발(`next dev`)에서는 [Fast Refresh](https://nextjs.org/docs/architecture/fast-refresh)로 CSS 변경이 즉시 반영됩니다.
@@ -225,16 +217,15 @@ CSS 순서를 예측 가능하게 유지하려면 다음을 권장합니다.
   * 프로덕션에서는 JavaScript를 비활성화해도 CSS가 로드되지만, Fast Refresh를 위해 개발 환경에서는 JavaScript가 필요합니다.
   * CSS 순서는 개발 환경에서 다르게 동작할 수 있으므로 최종 CSS 순서를 확인하려면 항상 `next build`를 실행하세요.
 
-
-
 ## 다음 단계
 
 이 페이지에서 언급한 기능을 더 알아보세요.
 
-### [Tailwind CSSTailwind CSS를 사용해 Next.js 애플리케이션을 스타일링하세요.](https://nextjs.org/docs/pages/guides/tailwind-v3-css)### [SassNext.js 애플리케이션에서 Sass를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/pages/guides/sass)### [CSS-in-JSCSS-in-JS 라이브러리를 Next.js와 함께 사용하세요.](https://nextjs.org/docs/pages/guides/css-in-js)
+- [Tailwind CSS](https://nextjs.org/docs/pages/guides/tailwind-v3-css)
+  - Tailwind CSS를 사용해 Next.js 애플리케이션을 스타일링하세요.
 
-도움이 되었나요?
+- [Sass](https://nextjs.org/docs/pages/guides/sass)
+  - Next.js 애플리케이션에서 Sass를 사용하는 방법을 알아보세요.
 
-지원됨.
-
-전송
+- [CSS-in-JS](https://nextjs.org/docs/pages/guides/css-in-js)
+  - CSS-in-JS 라이브러리를 Next.js와 함께 사용하세요.

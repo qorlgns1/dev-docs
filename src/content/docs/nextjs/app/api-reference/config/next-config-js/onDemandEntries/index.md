@@ -7,10 +7,6 @@ description: 'Next.js는 개발 환경에서 빌드된 페이지를 서버가 �
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/onDemandEntries
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)onDemandEntries
-
-페이지 복사
-
 # onDemandEntries
 
 마지막 업데이트 2026년 2월 20일
@@ -30,9 +26,5 @@ next.config.js
       },
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

@@ -7,10 +7,6 @@ description: 'CLI를 사용하면 기본 템플릿이나 공개 GitHub 리포지
 
 소스 URL: https://nextjs.org/docs/app/api-reference/cli/create-next-app
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[CLI](https://nextjs.org/docs/app/api-reference/cli)create-next-app
-
-페이지 복사
-
 # create-next-app
 
 마지막 업데이트 2026년 2월 20일
@@ -30,36 +26,36 @@ Terminal
 
 다음 옵션을 사용할 수 있습니다:
 
-Options| Description  
----|---  
-`-h` 또는 `--help`| 사용 가능한 모든 옵션 표시  
-`-v` 또는 `--version`| 버전 번호 출력  
-`--no-*`| 기본 옵션을 무시합니다. 예: `--no-ts`  
-`--ts` 또는 `--typescript`| TypeScript 프로젝트로 초기화(기본값)  
-`--js` 또는 `--javascript`| JavaScript 프로젝트로 초기화  
-`--tailwind`| Tailwind CSS 구성으로 초기화(기본값)  
-`--react-compiler`| React Compiler를 활성화한 상태로 초기화  
-`--eslint`| ESLint 구성으로 초기화  
-`--biome`| Biome 구성으로 초기화  
-`--no-linter`| 린터 구성을 건너뜀  
-`--app`| App Router 프로젝트로 초기화  
-`--api`| 라우트 핸들러만 있는 프로젝트로 초기화  
-`--src-dir`| `src/` 디렉터리 안에 초기화  
-`--turbopack`| 생성된 package.json에서 Turbopack을 강제로 활성화(기본 활성화)  
-`--webpack`| 생성된 package.json에서 Webpack을 강제로 활성화  
-`--import-alias <alias-to-configure>`| 사용할 import 별칭 지정(기본값 "@/*")  
-`--empty`| 빈 프로젝트로 초기화  
-`--use-npm`| npm으로 애플리케이션을 부트스트랩하도록 명시  
-`--use-pnpm`| pnpm으로 애플리케이션을 부트스트랩하도록 명시  
-`--use-yarn`| Yarn으로 애플리케이션을 부트스트랩하도록 명시  
-`--use-bun`| Bun으로 애플리케이션을 부트스트랩하도록 명시  
-`-e` 또는 `--example [name] [github-url]`| 앱을 부트스트랩할 예제 지정  
-`--example-path <path-to-example>`| 예제 경로를 별도로 지정  
-`--reset-preferences`| 저장된 모든 환경설정을 초기화하도록 명시  
-`--skip-install`| 패키지 설치를 건너뛰도록 명시  
-`--disable-git`| git 초기화를 비활성화하도록 명시  
-`--yes`| 모든 옵션에 기존 환경설정 또는 기본값 사용  
-  
+Options| Description
+---|---
+`-h` 또는 `--help`| 사용 가능한 모든 옵션 표시
+`-v` 또는 `--version`| 버전 번호 출력
+`--no-*`| 기본 옵션을 무시합니다. 예: `--no-ts`
+`--ts` 또는 `--typescript`| TypeScript 프로젝트로 초기화(기본값)
+`--js` 또는 `--javascript`| JavaScript 프로젝트로 초기화
+`--tailwind`| Tailwind CSS 구성으로 초기화(기본값)
+`--react-compiler`| React Compiler를 활성화한 상태로 초기화
+`--eslint`| ESLint 구성으로 초기화
+`--biome`| Biome 구성으로 초기화
+`--no-linter`| 린터 구성을 건너뜀
+`--app`| App Router 프로젝트로 초기화
+`--api`| 라우트 핸들러만 있는 프로젝트로 초기화
+`--src-dir`| `src/` 디렉터리 안에 초기화
+`--turbopack`| 생성된 package.json에서 Turbopack을 강제로 활성화(기본 활성화)
+`--webpack`| 생성된 package.json에서 Webpack을 강제로 활성화
+`--import-alias <alias-to-configure>`| 사용할 import 별칭 지정(기본값 "@/*")
+`--empty`| 빈 프로젝트로 초기화
+`--use-npm`| npm으로 애플리케이션을 부트스트랩하도록 명시
+`--use-pnpm`| pnpm으로 애플리케이션을 부트스트랩하도록 명시
+`--use-yarn`| Yarn으로 애플리케이션을 부트스트랩하도록 명시
+`--use-bun`| Bun으로 애플리케이션을 부트스트랩하도록 명시
+`-e` 또는 `--example [name] [github-url]`| 앱을 부트스트랩할 예제 지정
+`--example-path <path-to-example>`| 예제 경로를 별도로 지정
+`--reset-preferences`| 저장된 모든 환경설정을 초기화하도록 명시
+`--skip-install`| 패키지 설치를 건너뛰도록 명시
+`--disable-git`| git 초기화를 비활성화하도록 명시
+`--yes`| 모든 옵션에 기존 환경설정 또는 기본값 사용
+
 ## Examples[](https://nextjs.org/docs/app/api-reference/cli/create-next-app#examples)
 
 ### 기본 템플릿 사용[](https://nextjs.org/docs/app/api-reference/cli/create-next-app#with-the-default-template)
@@ -133,8 +129,6 @@ Terminal
 [code]
     pnpm create next-app --example "https://github.com/.../" [your-project-name]
 [/code]
-
-도움이 되었나요?
 
 supported.
 

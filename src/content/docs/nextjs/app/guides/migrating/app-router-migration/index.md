@@ -9,8 +9,6 @@ description: '이 가이드를 통해 다음을 수행할 수 있습니다:'
 
 [Guides](https://nextjs.org/docs/app/guides)[Migrating](https://nextjs.org/docs/app/guides/migrating)App Router
 
-페이지 복사
-
 # Pages에서 App Router로 마이그레이션하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -20,8 +18,6 @@ description: '이 가이드를 통해 다음을 수행할 수 있습니다:'
   * [Next.js 애플리케이션을 12버전에서 13버전으로 업데이트하기](https://nextjs.org/docs/app/guides/migrating/app-router-migration#nextjs-version)
   * [`pages`와 `app` 디렉터리 모두에서 동작하는 기능 업그레이드](https://nextjs.org/docs/app/guides/migrating/app-router-migration#upgrading-new-features)
   * 기존 애플리케이션을 `pages`에서 `app`으로 점진적으로 마이그레이션하기](https://nextjs.org/docs/app/guides/migrating/app-router-migration#migrating-from-pages-to-app)
-
-
 
 ## 업그레이드[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#upgrading)
 
@@ -60,8 +56,6 @@ pnpmnpmyarnbun
   * [새 기능 업그레이드](https://nextjs.org/docs/app/guides/migrating/app-router-migration#upgrading-new-features): 개선된 Image 및 Link 컴포넌트 등 새 기능으로 업그레이드하는 방법을 안내합니다.
   * [`pages` 디렉터리에서 `app` 디렉터리로 마이그레이션](https://nextjs.org/docs/app/guides/migrating/app-router-migration#migrating-from-pages-to-app): `pages`에서 `app`으로 점진적으로 마이그레이션하는 단계별 가이드입니다.
 
-
-
 ## 새 기능 업그레이드[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#upgrading-new-features)
 
 Next.js 13은 새로운 기능과 컨벤션을 갖춘 [App Router](https://nextjs.org/docs/app)를 도입했습니다. 새 Router는 `app` 디렉터리에서 사용할 수 있으며 `pages` 디렉터리와 공존합니다.
@@ -79,21 +73,19 @@ Next.js 12에서는 임시 임포트 `next/future/image`를 통해 Image 컴포�
   * [**`next-image-to-legacy-image` 코드모드**](https://nextjs.org/docs/app/guides/upgrading/codemods#next-image-to-legacy-image): `next/image` 임포트를 `next/legacy/image`로 안전하게 자동 변경하여 기존 컴포넌트의 동작을 유지합니다.
   * [**`next-image-experimental` 코드모드**](https://nextjs.org/docs/app/guides/upgrading/codemods#next-image-experimental): 인라인 스타일을 위험하게 추가하고 사용되지 않는 props를 제거합니다. 기존 컴포넌트의 동작을 새로운 기본값에 맞게 변경합니다. 이 코드모드를 사용하려면 먼저 `next-image-to-legacy-image` 코드모드를 실행해야 합니다.
 
-
-
 ### `<Link>` 컴포넌트[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#link-component)
 
 [`<Link>` 컴포넌트](https://nextjs.org/docs/app/api-reference/components/link)는 더 이상 자식으로 `<a>` 태그를 수동으로 추가할 필요가 없습니다. 이 동작은 [12.2버전](https://nextjs.org/blog/next-12-2)에서 실험 옵션으로 추가되었으며 이제 기본 동작입니다. Next.js 13에서 `<Link>`는 항상 `<a>`를 렌더링하며, 기본 태그로 props를 전달할 수 있습니다.
 
 예시:
-[code] 
+[code]
     import Link from 'next/link'
-     
+
     // Next.js 12: `<a>`가 중첩되지 않으면 제외됩니다.
     <Link href="/about">
       <a>About</a>
     </Link>
-     
+
     // Next.js 13: `<Link>`는 내부적으로 항상 `<a>`를 렌더링합니다.
     <Link href="/about">
       About
@@ -109,8 +101,6 @@ Next.js 12에서는 임시 임포트 `next/future/image`를 통해 Image 컴포�
   * 이전에 `_document.js`에 포함했던 `beforeInteractive` 스크립트를 루트 레이아웃 파일(`app/layout.tsx`)로 이동하세요.
   * 실험적 `worker` 전략은 아직 `app`에서 작동하지 않으므로 이 전략을 사용한 스크립트는 제거하거나 다른 전략(예: `lazyOnload`)으로 수정해야 합니다.
   * `onLoad`, `onReady`, `onError` 핸들러는 Server 컴포넌트에서 동작하지 않으므로 [Client Component](https://nextjs.org/docs/app/getting-started/server-and-client-components)로 이동하거나 제거해야 합니다.
-
-
 
 ### 폰트 최적화[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#font-optimization)
 
@@ -140,8 +130,6 @@ App Router로 이동하는 것은 Server Components, Suspense 등 Next.js가 기
   * `pages/_error.js`는 더 세분화된 `error.js` 특별 파일로 대체되었습니다. [자세히 알아보기](https://nextjs.org/docs/app/getting-started/error-handling).
   * `pages/404.js`는 [`not-found.js`](https://nextjs.org/docs/app/api-reference/file-conventions/not-found) 파일로 대체되었습니다.
   * `pages/api/*` API 라우트는 [`route.js`](https://nextjs.org/docs/app/api-reference/file-conventions/route) (Route Handler) 특별 파일로 대체되었습니다.
-
-
 
 ### 1단계: `app` 디렉터리 생성[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-1-creating-the-app-directory)
 
@@ -184,8 +172,6 @@ JavaScriptTypeScript
   * 루트 레이아웃은 `pages/_app.tsx`와 `pages/_document.tsx` 파일을 대체합니다.
   * 레이아웃 파일에는 `.js`, `.jsx`, `.tsx` 확장자를 사용할 수 있습니다.
 
-
-
 `<head>` HTML 요소를 관리하려면 [내장 SEO 지원](https://nextjs.org/docs/app/getting-started/metadata-and-og-images)을 사용할 수 있습니다:
 
 app/layout.tsx
@@ -193,7 +179,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: 'Home',
       description: 'Welcome to Next.js',
@@ -229,11 +215,11 @@ components/DashboardLayout.js
 pages/dashboard/index.js
 [code]
     import DashboardLayout from '../components/DashboardLayout'
-     
+
     export default function Page() {
       return <p>My Page</p>
     }
-     
+
     Page.getLayout = function getLayout(page) {
       return <DashboardLayout>{page}</DashboardLayout>
     }
@@ -253,7 +239,7 @@ app/dashboard/page.js
 
 app/dashboard/DashboardLayout.js
 [code]'use client' // this directive should be at top of the file, before any imports.
-         
+
         // This is a Client Component
         export default function DashboardLayout({ children }) {
           return (
@@ -269,7 +255,7 @@ app/dashboard/DashboardLayout.js
 
 app/dashboard/layout.js
 [code]import DashboardLayout from './DashboardLayout'
-         
+
         // This is a Server Component
         export default function Layout({ children }) {
           return <DashboardLayout>{children}</DashboardLayout>
@@ -277,9 +263,6 @@ app/dashboard/layout.js
 [/code]
 
   * 클라이언트로 전송되는 컴포넌트 JavaScript 양을 줄이기 위해, `DashboardLayout.js`(Client Component)의 비대화형 부분을 점진적으로 `layout.js`(Server Component)로 옮길 수 있습니다.
-
-
-
 
 ### 3단계: `next/head` 마이그레이션[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-3-migrating-nexthead)
 
@@ -292,7 +275,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Head from 'next/head'
-     
+
     export default function Page() {
       return (
         <>
@@ -311,11 +294,11 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: 'My Page Title',
     }
-     
+
     export default function Page() {
       return '...'
     }
@@ -328,20 +311,16 @@ JavaScriptTypeScript
   * [`app` 디렉터리](https://nextjs.org/docs/app)의 페이지는 기본적으로 [Server Component](https://nextjs.org/docs/app/getting-started/server-and-client-components)입니다. 이는 페이지가 [Client Component](https://nextjs.org/docs/app/getting-started/server-and-client-components)인 `pages` 디렉터리와 다릅니다.
   * `app`에서는 [데이터 패칭](https://nextjs.org/docs/app/getting-started/fetching-data) 방식이 변경되었습니다. `getServerSideProps`, `getStaticProps`, `getInitialProps`가 더 간결한 API로 대체되었습니다.
   * `app` 디렉터리는 중첩 폴더로 라우트를 정의하고, 공개 라우트 세그먼트를 만들기 위해 특수한 `page.js` 파일을 사용합니다.
-  * `pages` 디렉터리| `app` 디렉터리| 라우트  
----|---|---  
-`index.js`| `page.js`| `/`  
-`about.js`| `about/page.js`| `/about`  
-`blog/[slug].js`| `blog/[slug]/page.js`| `/blog/post-1`  
-
-
+  * `pages` 디렉터리| `app` 디렉터리| 라우트
+---|---|---
+`index.js`| `page.js`| `/`
+`about.js`| `about/page.js`| `/about`
+`blog/[slug].js`| `blog/[slug]/page.js`| `/blog/post-1`
 
 페이지 마이그레이션을 두 가지 주요 단계로 나누는 것을 권장합니다.
 
   * 1단계: 기본으로 export되는 Page Component를 새로운 Client Component로 옮깁니다.
   * 2단계: 새 Client Component를 `app` 디렉터리의 새로운 `page.js` 파일로 가져옵니다.
-
-
 
 > **알아두면 좋아요**: 이 경로가 `pages` 디렉터리와 가장 유사한 동작을 제공하므로 마이그레이션이 가장 쉽습니다.
 
@@ -351,14 +330,12 @@ JavaScriptTypeScript
     * Pages Router와 마찬가지로, 초기 페이지 로드 시 Client Component를 정적 HTML로 사전 렌더링하는 [최적화 단계](https://nextjs.org/docs/app/getting-started/server-and-client-components#on-the-client-first-load)가 있습니다.
   * `pages/index.js`에서 기본 export 페이지 컴포넌트를 `app/home-page.tsx`로 옮깁니다.
 
-
-
 app/home-page.tsx
 
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     // This is a Client Component (same as components in the `pages` directory)
     // It receives data as props, has access to state and effects, and is
     // prerendered on the server during the initial page load.
@@ -386,13 +363,13 @@ app/page.tsx
 JavaScriptTypeScript
 [code]// Import your Client Component
         import HomePage from './home-page'
-         
+
         async function getPosts() {
           const res = await fetch('https://...')
           const posts = await res.json()
           return posts
         }
-         
+
         export default async function Page() {
           // Fetch data directly in a Server Component
           const recentPosts = await getPosts()
@@ -404,9 +381,6 @@ JavaScriptTypeScript
   * 이전 페이지에서 `useRouter`를 사용했다면, 새로운 라우팅 훅으로 업데이트해야 합니다. [더 알아보기](https://nextjs.org/docs/app/api-reference/functions/use-router).
 
   * 개발 서버를 시작하고 [`http://localhost:3000`](http://localhost:3000)에 접속하세요. 기존 인덱스 라우트가 이제 app 디렉터리를 통해 제공되는 것을 확인할 수 있습니다.
-
-
-
 
 ### 5단계: 라우팅 훅 마이그레이션[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-5-migrating-routing-hooks)
 
@@ -421,21 +395,19 @@ JavaScriptTypeScript
   * 페이지 변경 사항을 수신하려면 `useSearchParams`와 `usePathname`을 함께 사용할 수 있습니다. 자세한 내용은 [Router Events](https://nextjs.org/docs/app/api-reference/functions/use-router#router-events) 섹션을 참고하세요.
   * 이러한 새로운 훅은 Client Component에서만 지원됩니다. Server Component에서는 사용할 수 없습니다.
 
-
-
 app/example-client-component.tsx
 
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-     
+
     export default function ExampleClientComponent() {
       const router = useRouter()
       const pathname = usePathname()
       const searchParams = useSearchParams()
-     
+
       // ...
     }
 [/code]
@@ -448,8 +420,6 @@ JavaScriptTypeScript
   * `as` 개념이 새로운 라우터에서 제거되었으므로 `asPath`도 사라졌습니다.
   * 더 이상 필요하지 않아 `isReady`가 제거되었습니다. [정적 렌더링](https://nextjs.org/docs/app/guides/caching#static-rendering) 중에 [`useSearchParams()`](https://nextjs.org/docs/app/api-reference/functions/use-search-params) 훅을 사용하는 컴포넌트는 프리렌더링 단계를 건너뛰고 런타임에 클라이언트에서 렌더링됩니다.
   * `route`가 제거되었습니다. 대안으로 `usePathname` 또는 `useSelectedLayoutSegments()`를 사용하세요.
-
-
 
 [`useRouter()` API 레퍼런스 보기](https://nextjs.org/docs/app/api-reference/functions/use-router).
 
@@ -470,17 +440,17 @@ JavaScriptTypeScript
       // Similar to `getStaticProps`.
       // `force-cache` is the default and can be omitted.
       const staticData = await fetch(`https://...`, { cache: 'force-cache' })
-     
+
       // This request should be refetched on every request.
       // Similar to `getServerSideProps`.
       const dynamicData = await fetch(`https://...`, { cache: 'no-store' })
-     
+
       // This request should be cached with a lifetime of 10 seconds.
       // Similar to `getStaticProps` with the `revalidate` option.
       const revalidatedData = await fetch(`https://...`, {
         next: { revalidate: 10 },
       })
-     
+
       return <div>...</div>
     }
 [/code]
@@ -492,14 +462,14 @@ JavaScriptTypeScript
 pages/dashboard.js
 [code]
     // `pages` directory
-     
+
     export async function getServerSideProps() {
       const res = await fetch(`https://...`)
       const projects = await res.json()
-     
+
       return { props: { projects } }
     }
-     
+
     export default function Dashboard({ projects }) {
       return (
         <ul>
@@ -520,18 +490,18 @@ app/dashboard/page.tsx
 JavaScriptTypeScript
 [code]
     // `app` directory
-     
+
     // This function can be named anything
     async function getProjects() {
       const res = await fetch(`https://...`, { cache: 'no-store' })
       const projects = await res.json()
-     
+
       return projects
     }
-     
+
     export default async function Dashboard() {
       const projects = await getProjects()
-     
+
       return (
         <ul>
           {projects.map((project) => (
@@ -551,14 +521,14 @@ JavaScriptTypeScript
 pages/index.js
 [code]
     // `pages` directory
-     
+
     export async function getServerSideProps({ req, query }) {
       const authHeader = req.getHeaders()['authorization'];
       const theme = req.cookies['theme'];
-     
+
       return { props: { ... }}
     }
-     
+
     export default function Page(props) {
       return ...
     }
@@ -569,21 +539,19 @@ pages/index.js
   * [`headers`](https://nextjs.org/docs/app/api-reference/functions/headers): Web Headers API 기반이며, [서버 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components) 내부에서 요청 헤더를 가져올 때 사용할 수 있습니다.
   * [`cookies`](https://nextjs.org/docs/app/api-reference/functions/cookies): Web Cookies API 기반이며, [서버 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components) 내부에서 쿠키를 가져올 때 사용할 수 있습니다.
 
-
-
 app/page.tsx
 
 JavaScriptTypeScript
 [code]
     // `app` directory
     import { cookies, headers } from 'next/headers'
-     
+
     async function getData() {
       const authHeader = (await headers()).get('authorization')
-     
+
       return '...'
     }
-     
+
     export default async function Page() {
       // You can use `cookies` or `headers` inside Server Components
       // directly or in your data fetching function
@@ -600,14 +568,14 @@ JavaScriptTypeScript
 pages/index.js
 [code]
     // `pages` directory
-     
+
     export async function getStaticProps() {
       const res = await fetch(`https://...`)
       const projects = await res.json()
-     
+
       return { props: { projects } }
     }
-     
+
     export default function Index({ projects }) {
       return projects.map((project) => <div>{project.name}</div>)
     }
@@ -618,18 +586,18 @@ pages/index.js
 app/page.js
 [code]
     // `app` directory
-     
+
     // This function can be named anything
     async function getProjects() {
       const res = await fetch(`https://...`)
       const projects = await res.json()
-     
+
       return projects
     }
-     
+
     export default async function Index() {
       const projects = await getProjects()
-     
+
       return projects.map((project) => <div>{project.name}</div>)
     }
 [/code]
@@ -642,20 +610,20 @@ pages/posts/[id].js
 [code]
     // `pages` directory
     import PostLayout from '@/components/post-layout'
-     
+
     export async function getStaticPaths() {
       return {
         paths: [{ params: { id: '1' } }, { params: { id: '2' } }],
       }
     }
-     
+
     export async function getStaticProps({ params }) {
       const res = await fetch(`https://.../posts/${params.id}`)
       const post = await res.json()
-     
+
       return { props: { post } }
     }
-     
+
     export default function Post({ post }) {
       return <PostLayout post={post} />
     }
@@ -669,21 +637,21 @@ app/posts/[id]/page.js
 [code]
     // `app` directory
     import PostLayout from '@/components/post-layout'
-     
+
     export async function generateStaticParams() {
       return [{ id: '1' }, { id: '2' }]
     }
-     
+
     async function getPost(params) {
       const res = await fetch(`https://.../posts/${(await params).id}`)
       const post = await res.json()
-     
+
       return post
     }
-     
+
     export default async function Post({ params }) {
       const post = await getPost(params)
-     
+
       return <PostLayout post={post} />
     }
 [/code]
@@ -699,18 +667,18 @@ app/posts/[id]/page.js
 pages/posts/[id].js
 [code]
     // `pages` directory
-     
+
     export async function getStaticPaths() {
       return {
         paths: [],
         fallback: 'blocking'
       };
     }
-     
+
     export async function getStaticProps({ params }) {
       ...
     }
-     
+
     export default function Post({ post }) {
       return ...
     }
@@ -721,27 +689,25 @@ pages/posts/[id].js
   * **`true`** : (기본값) `generateStaticParams`에 포함되지 않은 동적 세그먼트를 온디맨드로 생성합니다.
   * **`false`** : `generateStaticParams`에 포함되지 않은 동적 세그먼트는 404를 반환합니다.
 
-
-
 이는 `pages` 디렉터리의 `getStaticPaths`에서 사용하던 `fallback: true | false | 'blocking'` 옵션을 대체합니다. 스트리밍 환경에서는 `'blocking'`과 `true`의 차이가 미미하므로 `dynamicParams`에는 `fallback: 'blocking'` 옵션이 포함되지 않습니다.
 
 app/posts/[id]/page.js
 [code]
     // `app` directory
-     
+
     export const dynamicParams = true;
-     
+
     export async function generateStaticParams() {
       return [...]
     }
-     
+
     async function getPost(params) {
       ...
     }
-     
+
     export default async function Post({ params }) {
       const post = await getPost(params);
-     
+
       return ...
     }
 [/code]
@@ -755,17 +721,17 @@ app/posts/[id]/page.js
 pages/index.js
 [code]
     // `pages` directory
-     
+
     export async function getStaticProps() {
       const res = await fetch(`https://.../posts`)
       const posts = await res.json()
-     
+
       return {
         props: { posts },
         revalidate: 60,
       }
     }
-     
+
     export default function Index({ posts }) {
       return (
         <Layout>
@@ -780,17 +746,17 @@ pages/index.js
 app/page.js
 [code]
     // `app` directory
-     
+
     async function getPosts() {
       const res = await fetch(`https://.../posts`, { next: { revalidate: 60 } })
       const data = await res.json()
-     
+
       return data.posts
     }
-     
+
     export default async function PostList() {
       const posts = await getPosts()
-     
+
       return posts.map((post) => <div>{post.name}</div>)
     }
 [/code]
@@ -845,7 +811,7 @@ tailwind.config.js
 app/layout.js
 [code]
     import '../styles/globals.css'
-     
+
     export default function RootLayout({ children }) {
       return (
         <html lang="en">
@@ -866,9 +832,5 @@ app/layout.js
 ## 코드모드[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#codemods)
 
 Next.js는 기능이 더 이상 사용되지 않을 때 코드베이스를 업그레이드하도록 돕는 Codemod 변환을 제공합니다. 자세한 내용은 [Codemods](https://nextjs.org/docs/app/guides/upgrading/codemods)를 참고하세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

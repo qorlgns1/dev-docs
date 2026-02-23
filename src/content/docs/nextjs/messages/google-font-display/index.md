@@ -24,7 +24,7 @@ Google Font에서 font-display 디스크립터가 누락되었거나 `auto`, `bl
 pages/index.js
 [code]
     import Head from 'next/head'
-     
+
     export default function IndexPage() {
       return (
         <div>
@@ -50,11 +50,5 @@ pages/index.js
   * [font-display로 폰트 성능 제어하기](https://developer.chrome.com/blog/font-display/)
   * [Google Fonts API 문서](https://developers.google.com/fonts/docs/css2#use_font-display)
   * [CSS `font-display` 속성](https://www.w3.org/TR/css-fonts-4/#font-display-desc)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

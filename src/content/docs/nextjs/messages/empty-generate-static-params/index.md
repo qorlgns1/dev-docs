@@ -23,8 +23,6 @@ Cache Components가 활성화되면 Next.js는 라우트가 런타임 동적 액
   * Cache Components를 사용하는 모든 라우트가 검증 가능한 최소 한 개의 정적 변형을 보유
   * 런타임에 실패하는 라우트를 실수로 배포하지 않음
 
-
-
 ## 가능한 해결 방법[](https://nextjs.org/docs/messages/empty-generate-static-params#possible-ways-to-fix-it)
 
 ### 옵션 1: 최소 한 개의 정적 매개변수를 반환[](https://nextjs.org/docs/messages/empty-generate-static-params#option-1-return-at-least-one-static-param)
@@ -37,7 +35,7 @@ app/blog/[slug]/page.tsx
     export async function generateStaticParams() {
       return [] // Empty array not allowed
     }
-     
+
     // Return at least one sample param
     export async function generateStaticParams() {
       return [{ slug: 'hello-world' }, { slug: 'getting-started' }]
@@ -48,8 +46,6 @@ app/blog/[slug]/page.tsx
 
   1. **빌드 시 유효성 검사** : 라우트 구조가 안전한지 확인
   2. **사전 렌더링** : 인기 라우트에 대해 즉시 로드되는 페이지 생성
-
-
 
 빌드 과정은 샘플 매개변수로 실행되는 코드 경로만 검증합니다. 런타임 매개변수가 조건부 로직을 트리거해 Suspense 없이 `cookies()` 같은 런타임 API에 접근하거나 Suspense 또는 `use cache` 없이 동적 콘텐츠를 렌더링하면 해당 분기에서 런타임 오류가 발생합니다.
 
@@ -63,19 +59,19 @@ app/blog/[slug]/page.tsx
       // Placeholder only validates one code path
       return [{ slug: '__placeholder__' }]
     }
-     
+
     export default async function Page({
       params,
     }: {
       params: Promise<{ slug: string }>
     }) {
       const { slug } = await params
-     
+
       // Handle placeholder case
       if (slug === '__placeholder__') {
         notFound()
       }
-     
+
       // Real params may trigger code paths
       // that access dynamic APIs incorrectly, causing
       // runtime errors that cannot be caught by error boundaries
@@ -91,11 +87,5 @@ app/blog/[slug]/page.tsx
   * [Cache Components 문서](https://nextjs.org/docs/app/getting-started/cache-components)
   * [generateStaticParams API 레퍼런스](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
   * [Cache Components와 함께 사용하는 동적 라우트](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#with-cache-components)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

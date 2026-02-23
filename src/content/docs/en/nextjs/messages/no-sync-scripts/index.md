@@ -3,54 +3,43 @@ title: 'No Sync Scripts'
 description: '> Prevent synchronous scripts.'
 ---
 
-# No Sync Scripts | Next.js
-
 Source URL: https://nextjs.org/docs/messages/no-sync-scripts
-
-[Docs](https://nextjs.org/docs)[Errors](https://nextjs.org/docs)No Sync Scripts
 
 # No Sync Scripts
 
 > Prevent synchronous scripts.
 
-## Why This Error Occurred[](https://nextjs.org/docs/messages/no-sync-scripts#why-this-error-occurred)
+## Why This Error Occurred
 
 A synchronous script was used which can impact your webpage performance.
 
-## Possible Ways to Fix It[](https://nextjs.org/docs/messages/no-sync-scripts#possible-ways-to-fix-it)
+## Possible Ways to Fix It
 
-### Script component (recommended)[](https://nextjs.org/docs/messages/no-sync-scripts#script-component-recommended)
+### Script component (recommended)
 
-pages/index.js
-[code]
-    import Script from 'next/script'
-     
-    function Home() {
-      return (
-        <div class="container">
-          <Script src="https://third-party-script.js"></Script>
-          <div>Home Page</div>
-        </div>
-      )
-    }
-     
-    export default Home
-[/code]
+```jsx filename="pages/index.js"
+import Script from 'next/script'
 
-### Use `async` or `defer`[](https://nextjs.org/docs/messages/no-sync-scripts#use-async-or-defer)
-[code] 
-    <script src="https://third-party-script.js" async />
-    <script src="https://third-party-script.js" defer />
-[/code]
+function Home() {
+  return (
+    <div class="container">
+      <Script src="https://third-party-script.js"></Script>
+      <div>Home Page</div>
+    </div>
+  )
+}
 
-## Useful Links[](https://nextjs.org/docs/messages/no-sync-scripts#useful-links)
+export default Home
+```
 
-  * [Efficiently load third-party JavaScript](https://web.dev/efficiently-load-third-party-javascript/)
+### Use `async` or `defer`
 
+```html
+<script src="https://third-party-script.js" async />
+<script src="https://third-party-script.js" defer />
+```
 
+## Useful Links
 
-Was this helpful?
+- [Efficiently load third-party JavaScript](https://web.dev/efficiently-load-third-party-javascript/)
 
-supported.
-
-Send

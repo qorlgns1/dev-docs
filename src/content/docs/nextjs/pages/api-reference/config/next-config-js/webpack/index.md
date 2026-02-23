@@ -7,8 +7,6 @@ description: '> 알아두면 좋아요: webpack 구성 변경은 semver 보장�
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)webpack
-
 Copy page
 
 # 사용자 지정 Webpack 구성
@@ -25,14 +23,10 @@ Copy page
   * [Sass/SCSS modules](https://nextjs.org/docs/pages/guides/sass)
   * [babel 구성 사용자 지정](https://nextjs.org/docs/pages/guides/babel)
 
-
-
 일부 자주 요청되는 기능은 플러그인으로 사용할 수 있습니다:
 
   * [@next/mdx](https://github.com/vercel/next.js/tree/canary/packages/next-mdx)
   * [@next/bundle-analyzer](https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer)
-
-
 
 `webpack` 사용을 확장하려면 `next.config.js` 내부에서 구성 객체를 확장하는 함수를 아래와 같이 정의할 수 있습니다:
 
@@ -60,10 +54,8 @@ next.config.js
   * `defaultLoaders`: `Object` - Next.js가 내부적으로 사용하는 기본 로더:
     * `babel`: `Object` - 기본 `babel-loader` 구성.
 
-
-
 `defaultLoaders.babel` 사용 예시:
-[code] 
+[code]
     // Example config for adding a loader that depends on babel-loader
     // This source was taken from the @next/mdx plugin source:
     // https://github.com/vercel/next.js/tree/canary/packages/next-mdx
@@ -79,7 +71,7 @@ next.config.js
             },
           ],
         })
-     
+
         return config
       },
     }

@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/config/nex
 
 원본 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/httpAgentOptions
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)httpAgentOptions
-
-페이지 복사
-
 # httpAgentOptions
 
 마지막 업데이트: 2026년 2월 20일
@@ -27,9 +23,3 @@ next.config.js
       },
     }
 ```
-
-도움이 되었나요?
-
-지원됨.
-
-전송

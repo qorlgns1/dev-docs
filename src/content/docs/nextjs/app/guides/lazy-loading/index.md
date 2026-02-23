@@ -24,8 +24,6 @@ Next.js에서 지연 로딩을 구현하는 방법은 두 가지입니다.
   1. `next/dynamic`과 [Dynamic Imports](https://nextjs.org/docs/app/guides/lazy-loading#nextdynamic)를 사용하는 방법
   2. [`React.lazy()`](https://react.dev/reference/react/lazy)와 [Suspense](https://react.dev/reference/react/Suspense)를 사용하는 방법
 
-
-
 기본적으로 Server Components는 자동으로 [코드 분할](https://developer.mozilla.org/docs/Glossary/Code_splitting)되며, [스트리밍](https://nextjs.org/docs/app/api-reference/file-conventions/loading)을 통해 서버에서 클라이언트로 UI 조각을 점진적으로 전송할 수 있습니다. Lazy loading은 Client Components에 적용됩니다.
 
 ## `next/dynamic`[](https://nextjs.org/docs/app/guides/lazy-loading#nextdynamic)
@@ -39,27 +37,27 @@ Next.js에서 지연 로딩을 구현하는 방법은 두 가지입니다.
 app/page.js
 [code]
     'use client'
-     
+
     import { useState } from 'react'
     import dynamic from 'next/dynamic'
-     
+
     // Client Components:
     const ComponentA = dynamic(() => import('../components/A'))
     const ComponentB = dynamic(() => import('../components/B'))
     const ComponentC = dynamic(() => import('../components/C'), { ssr: false })
-     
+
     export default function ClientComponentExample() {
       const [showMore, setShowMore] = useState(false)
-     
+
       return (
         <div>
           {/* Load immediately, but in a separate client bundle */}
           <ComponentA />
-     
+
           {/* Load on demand, only when/if the condition is met */}
           {showMore && <ComponentB />}
           <button onClick={() => setShowMore(!showMore)}>Toggle</button>
-     
+
           {/* Load only on the client side */}
           <ComponentC />
         </div>
@@ -87,10 +85,10 @@ Server Component를 동적으로 임포트하면, 해당 Server Component 자체
 app/page.js
 [code]
     import dynamic from 'next/dynamic'
-     
+
     // Server Component:
     const ServerComponent = dynamic(() => import('../components/ServerComponent'))
-     
+
     export default function ServerComponentExample() {
       return (
         <div>
@@ -109,14 +107,14 @@ app/page.js
 app/page.js
 [code]
     'use client'
-     
+
     import { useState } from 'react'
-     
+
     const names = ['Tim', 'Joe', 'Bel', 'Lee']
-     
+
     export default function Page() {
       const [results, setResults] = useState()
-     
+
       return (
         <div>
           <input
@@ -127,7 +125,7 @@ app/page.js
               // Dynamically load fuse.js
               const Fuse = (await import('fuse.js')).default
               const fuse = new Fuse(names)
-     
+
               setResults(fuse.search(value))
             }}
           />
@@ -142,16 +140,16 @@ app/page.js
 app/page.js
 [code]
     'use client'
-     
+
     import dynamic from 'next/dynamic'
-     
+
     const WithCustomLoading = dynamic(
       () => import('../components/WithCustomLoading'),
       {
         loading: () => <p>Loading...</p>,
       }
     )
-     
+
     export default function Page() {
       return (
         <div>
@@ -169,7 +167,7 @@ Named export를 동적으로 임포트하려면 [`import()`](https://developer.m
 components/hello.js
 [code]
     'use client'
-     
+
     export function Hello() {
       return <p>Hello!</p>
     }
@@ -178,7 +176,7 @@ components/hello.js
 app/page.js
 [code]
     import dynamic from 'next/dynamic'
-     
+
     const ClientComponent = dynamic(() =>
       import('../components/hello').then((mod) => mod.Hello)
     )

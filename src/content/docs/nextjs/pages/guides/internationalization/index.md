@@ -5,8 +5,6 @@ description: 'Next.js는 부터 국제화(i18n) 라우팅을 기본 지원합니
 
 # 가이드: 국제화 | Next.js
 소스 URL: https://nextjs.org/docs/pages/guides/internationalization
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)국제화
-페이지 복사
 
 # Next.js에서 국제화를 구현하는 방법
 마지막 업데이트 2026년 2월 20일
@@ -103,7 +101,7 @@ next.config.js
       i18n: {
         locales: ['en-US', 'fr', 'nl-NL', 'nl-BE'],
         defaultLocale: 'en-US',
-     
+
         domains: [
           {
             // Note: subdomains must be included in the domain value to be matched
@@ -171,9 +169,9 @@ next.config.js
 proxy.ts
 [code]
     import { NextRequest, NextResponse } from 'next/server'
-     
+
     const PUBLIC_FILE = /\.(.*)$/
-     
+
     export async function proxy(req: NextRequest) {
       if (
         req.nextUrl.pathname.startsWith('/_next') ||
@@ -182,10 +180,10 @@ proxy.ts
       ) {
         return
       }
-     
+
       if (req.nextUrl.locale === 'default') {
         const locale = req.cookies.get('NEXT_LOCALE')?.value || 'en'
-     
+
         return NextResponse.redirect(
           new URL(`/${locale}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url)
         )
@@ -228,9 +226,9 @@ Next.js 라우터를 통해 로케일 정보를 가져올 수 있습니다. 예�
 
 `next/link`에서는 현재 활성 로케일과 다른 로케일로 전환하려면 `locale` prop을 제공하면 됩니다. `locale` prop을 제공하지 않으면 클라이언트 전환 동안 현재 활성 `locale`이 사용됩니다. 예:
 
-[code] 
+[code]
     import Link from 'next/link'
-     
+
     export default function IndexPage(props) {
       return (
         <Link href="/another" locale="fr">
@@ -242,12 +240,12 @@ Next.js 라우터를 통해 로케일 정보를 가져올 수 있습니다. 예�
 
 `next/router` 메서드를 직접 사용할 때는 전환 옵션으로 사용할 `locale`을 지정할 수 있습니다. 예:
 
-[code] 
+[code]
     import { useRouter } from 'next/router'
-     
+
     export default function IndexPage(props) {
       const router = useRouter()
-     
+
       return (
         <div
           onClick={() => {
@@ -261,7 +259,7 @@ Next.js 라우터를 통해 로케일 정보를 가져올 수 있습니다. 예�
 [/code]
 
 [동적 라우트](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)의 쿼리 값이나 숨겨진 href 쿼리 값 등 모든 라우팅 정보를 유지하면서 `locale`만 전환하려면 `href` 매개변수를 객체로 전달할 수 있습니다.
-[code] 
+[code]
     import { useRouter } from 'next/router'
     const router = useRouter()
     const { pathname, asPath, query } = router
@@ -272,9 +270,9 @@ Next.js 라우터를 통해 로케일 정보를 가져올 수 있습니다. 예�
 `router.push`에서 URL 객체 구조를 사용하는 방법은 [여기](https://nextjs.org/docs/pages/api-reference/functions/use-router#with-url-object)를 참고하세요.
 
 이미 로케일이 포함된 `href`가 있다면 로케일 접두사를 자동으로 처리하는 동작을 비활성화할 수 있습니다.
-[code] 
+[code]
     import Link from 'next/link'
-     
+
     export default function IndexPage(props) {
       return (
         <Link href="/fr/another" locale={false}>
@@ -332,19 +330,19 @@ pages/blog/[slug].js
 ### 비동적 getStaticProps 페이지[](https://nextjs.org/docs/pages/guides/internationalization#non-dynamic-getstaticprops-pages)
 
 비동적 `getStaticProps` 페이지도 위와 같이 각 로케일 버전이 생성됩니다. `getStaticProps`는 렌더링되는 각 `locale`과 함께 호출됩니다. 특정 로케일을 사전 렌더링에서 제외하려면 `getStaticProps`에서 `notFound: true`를 반환하면 해당 페이지 변형이 생성되지 않습니다.
-[code] 
+[code]
     export async function getStaticProps({ locale }) {
       // Call an external API endpoint to get posts.
       // You can use any data fetching library
       const res = await fetch(`https://.../posts?locale=${locale}`)
       const posts = await res.json()
-     
+
       if (posts.length === 0) {
         return {
           notFound: true,
         }
       }
-     
+
       // By returning { props: posts }, the Blog component
       // will receive `posts` as a prop at build time
       return {
@@ -361,9 +359,5 @@ pages/blog/[slug].js
   * `domains`: 총 100개의 로케일 도메인 항목
 
 > **알아두면 좋은 점** : 이러한 한계는 [빌드 시간 성능 문제](https://nextjs.org/docs/pages/guides/internationalization#dynamic-routes-and-getstaticprops-pages)를 방지하기 위해 처음 도입되었습니다. Next.js 12에서 [Proxy](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy)를 사용하는 사용자 지정 라우팅으로 이 한계를 우회할 수 있습니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

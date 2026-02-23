@@ -7,8 +7,6 @@ description: 'Codemod은 코드베이스에 대해 프로그램 방식으로 실
 
 Source URL: https://nextjs.org/docs/app/guides/upgrading/codemods
 
-[가이드](https://nextjs.org/docs/app/guides)[업그레이드](https://nextjs.org/docs/app/guides/upgrading)Codemods
-
 Copy page
 
 # Codemods
@@ -35,8 +33,6 @@ Terminal
   * `--dry` 코드 편집 없이 드라이런 수행
   * `--print` 비교를 위해 변경된 출력을 표시
 
-
-
 ## 업그레이드[](https://nextjs.org/docs/app/guides/upgrading/codemods#upgrade)
 
 Next.js, React, React DOM을 업데이트하면서 codemod를 자동 실행해 Next.js 애플리케이션을 업그레이드합니다.
@@ -51,34 +47,31 @@ Terminal
   * `revision`(선택 사항): 업그레이드 유형(`patch`, `minor`, `major`), NPM dist 태그(예: `latest`, `canary`, `rc`), 또는 정확한 버전(예: `15.0.0`)을 지정합니다. 안정 버전에서는 기본값이 `minor`입니다.
   * `--verbose`: 업그레이드 과정에서 더 자세한 출력을 표시합니다.
 
-
-
 예시:
 
 Terminal
 [code]
     # 최신 패치로 업그레이드(예: 16.0.7 -> 16.0.8)
     npx @next/codemod upgrade patch
-     
+
     # 최신 마이너로 업그레이드(예: 15.3.7 -> 15.4.8). 기본값입니다.
     npx @next/codemod upgrade minor
-     
+
     # 최신 메이저로 업그레이드(예: 15.5.7 -> 16.0.7)
     npx @next/codemod upgrade major
-     
+
     # 특정 버전으로 업그레이드
     npx @next/codemod upgrade 16
-     
+
     # canary 릴리스로 업그레이드
     npx @next/codemod upgrade canary
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 대상 버전이 현재 버전과 같거나 더 낮으면 명령은 변경 없이 종료됩니다.
 >   * 업그레이드 중에 적용할 Next.js codemod를 선택하거나 React를 업그레이드할 때 React 19 codemod 실행 여부를 묻는 프롬프트가 나타날 수 있습니다.
-> 
-
+>
 
 ## Codemods[](https://nextjs.org/docs/app/guides/upgrading/codemods#codemods)
 
@@ -112,16 +105,16 @@ Terminal
 이 codemod는 안정화된 API에서 `unstable_` 접두사를 제거합니다.
 
 예시:
-[code] 
+[code]
     import { unstable_cacheTag as cacheTag } from 'next/cache'
-     
+
     cacheTag()
 [/code]
 
 변환 후:
-[code] 
+[code]
     import { cacheTag } from 'next/cache'
-     
+
     cacheTag()
 [/code]
 
@@ -143,14 +136,12 @@ Terminal
   * Next.js 설정 속성 `experimental.externalMiddlewareRewritesResolve`를 `experimental.externalProxyRewritesResolve`로 변경
   * Next.js 설정 속성 `skipMiddlewareUrlNormalize`를 `skipProxyUrlNormalize`로 변경
 
-
-
 예시:
 
 middleware.ts
 [code]
     import { NextResponse } from 'next/server'
-     
+
     export function middleware() {
       return NextResponse.next()
     }
@@ -161,7 +152,7 @@ middleware.ts
 proxy.ts
 [code]
     import { NextResponse } from 'next/server'
-     
+
     export function proxy() {
       return NextResponse.next()
     }
@@ -182,8 +173,6 @@ Terminal
   * `package.json` 스크립트를 `next lint` 대신 `eslint .`을 사용하도록 업데이트
   * 필요한 ESLint 의존성을 `package.json`에 추가
   * 기존 ESLint 구성이 있으면 그대로 유지
-
-
 
 예시:
 
@@ -214,14 +203,14 @@ eslint.config.mjs
     import { dirname } from 'path'
     import { fileURLToPath } from 'url'
     import { FlatCompat } from '@eslint/eslintrc'
-     
+
     const __filename = fileURLToPath(import.meta.url)
     const __dirname = dirname(__filename)
-     
+
     const compat = new FlatCompat({
       baseDirectory: __dirname,
     })
-     
+
     const eslintConfig = [
       ...compat.extends('next/core-web-vitals', 'next/typescript'),
       {
@@ -234,7 +223,7 @@ eslint.config.mjs
         ],
       },
     ]
-     
+
     export default eslintConfig
 [/code]
 
@@ -254,12 +243,12 @@ Terminal
 이 codemod는 [Route Segment Config `runtime`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime) 값 `experimental-edge`를 `edge`로 변환합니다.
 
 예시:
-[code] 
+[code]
     export const runtime = 'experimental-edge'
 [/code]
 
 변환 후:
-[code] 
+[code]
     export const runtime = 'edge'
 [/code]
 
@@ -277,26 +266,26 @@ Terminal
 이 codemod는 이제 비동기화된 동적 API(`next/headers`의 `cookies()`, `headers()`, `draftMode()`)를 상황에 맞게 `await`하거나 `React.use()`로 감싸도록 변환합니다. 자동 마이그레이션이 불가능하면 TypeScript 파일에 한해 타입 캐스트를, 그 외에는 수동 검토 및 업데이트가 필요하다는 주석을 추가합니다.
 
 예시:
-[code] 
+[code]
     import { cookies, headers } from 'next/headers'
     const token = cookies().get('token')
-     
+
     function useToken() {
       const token = cookies().get('token')
       return token
     }
-     
+
     export default function Page() {
       const name = cookies().get('name')
     }
-     
+
     function getHeader() {
       return headers().get('x-foo')
     }
 [/code]
 
 변환 후:
-[code] 
+[code]
     import { use } from 'react'
     import {
       cookies,
@@ -305,16 +294,16 @@ Terminal
       type UnsafeUnwrappedHeaders,
     } from 'next/headers'
     const token = (cookies() as unknown as UnsafeUnwrappedCookies).get('token')
-     
+
     function useToken() {
       const token = use(cookies()).get('token')
       return token
     }
-     
+
     export default async function Page() {
       const name = (await cookies()).get('name')
     }
-     
+
     function getHeader() {
       return (headers() as unknown as UnsafeUnwrappedHeaders).get('x-foo')
     }
@@ -323,7 +312,7 @@ Terminal
 `page.js`, `layout.js`, `route.js`, `default.js` 같은 페이지/라우트 항목이나 `generateMetadata` / `generateViewport` API에서 `params` 또는 `searchParams` props에 대한 프로퍼티 접근을 감지하면, 호출부를 동기 함수에서 비동기 함수로 바꾸고 프로퍼티 접근을 `await`하도록 시도합니다. 비동기로 전환할 수 없는 경우(예: Client Component)에는 `React.use`를 사용해 프로미스를 언랩합니다.
 
 예시:
-[code] 
+[code]
     // page.tsx
     export default function Page({
       params,
@@ -337,7 +326,7 @@ Terminal
         // ...
       }
     }
-     
+
     export function generateMetadata({ params }: { params: { slug: string } }) {
       const { slug } = params
       return {
@@ -347,7 +336,7 @@ Terminal
 [/code]
 
 변환 후:
-[code] 
+[code]
     // page.tsx
     export default async function Page(props: {
       params: Promise<{ slug: string }>
@@ -359,7 +348,7 @@ Terminal
         // ...
       }
     }
-     
+
     export async function generateMetadata(props: {
       params: Promise<{ slug: string }>
     }) {
@@ -385,19 +374,19 @@ Terminal
 이 코드는 `@vercel/functions`를 설치하고 `NextRequest`의 `geo`, `ip` 속성을 해당 `@vercel/functions` 기능으로 변환합니다.
 
 예:
-[code] 
+[code]
     import type { NextRequest } from 'next/server'
-     
+
     export function GET(req: NextRequest) {
       const { geo, ip } = req
     }
 [/code]
 
 아래와 같이 변환됩니다:
-[code] 
+[code]
     import type { NextRequest } from 'next/server'
     import { geolocation, ipAddress } from '@vercel/functions'
-     
+
     export function GET(req: NextRequest) {
       const geo = geolocation(req)
       const ip = ipAddress(req)
@@ -418,12 +407,12 @@ Terminal
 이 코드는 [Dynamic OG Image Generation](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#generated-open-graph-images) 사용을 위해 `next/server`에서 `next/og`로 임포트를 이동하고 변환합니다.
 
 예:
-[code] 
+[code]
     import { ImageResponse } from 'next/server'
 [/code]
 
 아래와 같이 변환됩니다:
-[code] 
+[code]
     import { ImageResponse } from 'next/og'
 [/code]
 
@@ -439,7 +428,7 @@ Terminal
 이 코드는 특정 viewport 메타데이터를 `viewport` export로 마이그레이션합니다.
 
 예:
-[code] 
+[code]
     export const metadata = {
       title: 'My App',
       themeColor: 'dark',
@@ -450,11 +439,11 @@ Terminal
 [/code]
 
 아래와 같이 변환됩니다:
-[code] 
+[code]
     export const metadata = {
       title: 'My App',
     }
-     
+
     export const viewport = {
       width: 1,
       themeColor: 'dark',
@@ -475,12 +464,12 @@ Terminal
 이 코드는 `@next/font` 패키지를 제거하고 `@next/font` 임포트를 기본 제공 `next/font`로 변환합니다.
 
 예:
-[code] 
+[code]
     import { Inter } from '@next/font/google'
 [/code]
 
 아래와 같이 변환됩니다:
-[code] 
+[code]
     import { Inter } from 'next/font/google'
 [/code]
 
@@ -503,7 +492,7 @@ pages/index.js
 [code]
     import Image1 from 'next/image'
     import Image2 from 'next/future/image'
-     
+
     export default function Home() {
       return (
         <div>
@@ -522,7 +511,7 @@ pages/index.js
     import Image1 from 'next/legacy/image'
     // 'next/future/image' becomes 'next/image'
     import Image2 from 'next/image'
-     
+
     export default function Home() {
       return (
         <div>
@@ -562,7 +551,7 @@ pages/index.js
 [Link Components](https://nextjs.org/docs/app/api-reference/components/link) 내부의 `<a>` 태그를 제거합니다.
 
 예:
-[code] 
+[code]
     <Link href="/about">
       <a>About</a>
     </Link>
@@ -570,7 +559,7 @@ pages/index.js
     <Link href="/about">
       About
     </Link>
-     
+
     <Link href="/about">
       <a onClick={() => console.log('clicked')}>About</a>
     </Link>
@@ -682,22 +671,22 @@ my-component.js
 `withAmp` HOC를 Next.js 9 페이지 설정으로 변환합니다.
 
 예:
-[code] 
+[code]
     // Before
     import { withAmp } from 'next/amp'
-     
+
     function Home() {
       return <h1>My AMP Page</h1>
     }
-     
+
     export default withAmp(Home)
 [/code]
-[code] 
+[code]
     // After
     export default function Home() {
       return <h1>My AMP Page</h1>
     }
-     
+
     export const config = {
       amp: true,
     }
@@ -744,9 +733,5 @@ my-component.js
 [/code]
 
 변환되고 테스트된 모든 사례는 [`__testfixtures__` 디렉터리](https://github.com/vercel/next.js/tree/canary/packages/next-codemod/transforms/__testfixtures__/url-to-withrouter)에서 확인할 수 있습니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

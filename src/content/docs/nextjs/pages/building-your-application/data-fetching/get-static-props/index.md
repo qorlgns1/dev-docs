@@ -7,10 +7,6 @@ description: '페이지에서 (정적 사이트 생성)라는 함수를 export�
 
 출처 URL: https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props
 
-[애플리케이션 구축](https://nextjs.org/docs/pages/building-your-application/data-fetching)[데이터 페칭](https://nextjs.org/docs/pages/building-your-application/data-fetching)getStaticProps
-
-페이지 복사
-
 # getStaticProps
 
 마지막 업데이트: 2026년 2월 20일
@@ -22,12 +18,12 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import type { InferGetStaticPropsType, GetStaticProps } from 'next'
-     
+
     type Repo = {
       name: string
       stargazers_count: number
     }
-     
+
     export const getStaticProps = (async (context) => {
       const res = await fetch('https://api.github.com/repos/vercel/next.js')
       const repo = await res.json()
@@ -35,7 +31,7 @@ JavaScriptTypeScript
     }) satisfies GetStaticProps<{
       repo: Repo
     }>
-     
+
     export default function Page({
       repo,
     }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -88,7 +84,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-     
+
     // This function gets called at build time on server-side.
     // It won't be called on client-side, so you can even do
     // direct database queries.
@@ -97,7 +93,7 @@ JavaScriptTypeScript
       // You can use any data fetching library
       const res = await fetch('https://.../posts')
       const posts = await res.json()
-     
+
       // By returning { props: { posts } }, the Blog component
       // will receive `posts` as a prop at build time
       return {
@@ -127,7 +123,7 @@ lib/load-posts.js
       // Call an external API endpoint to get posts
       const res = await fetch('https://.../posts/')
       const data = await res.json()
-     
+
       return data
     }
 [/code]
@@ -136,13 +132,13 @@ pages/blog.js
 [code]
     // pages/blog.js
     import { loadPosts } from '../lib/load-posts'
-     
+
     // This function runs only on the server side
     export async function getStaticProps() {
       // Instead of fetching your `/api` route you can call the same
       // function directly in `getStaticProps`
       const posts = await loadPosts()
-     
+
       // Props returned will be passed to the page component
       return { props: { posts } }
     }
@@ -177,9 +173,5 @@ Incremental Static Generation을 사용할 때는, 클라이언트 측 내비게
 ## Preview Mode[](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props#preview-mode)
 
 [**프리뷰 모드**](https://nextjs.org/docs/pages/guides/preview-mode)를 사용하면 정적 생성을 임시로 우회하여 빌드 시점 대신 **요청 시점**에 페이지를 렌더링할 수 있습니다. 예를 들어, 헤드리스 CMS를 사용하면서 발행 전 초안 상태를 미리 보고 싶을 때 유용합니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

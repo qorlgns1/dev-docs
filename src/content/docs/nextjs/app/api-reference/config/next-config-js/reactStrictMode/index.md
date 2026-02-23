@@ -7,10 +7,6 @@ description: '> 알아두면 좋아요 : Next.js 13.5.1부터  라우터에서�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/reactStrictMode
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)reactStrictMode
-
-페이지 복사
-
 # reactStrictMode
 
 마지막 업데이트 2026년 2월 20일
@@ -31,9 +27,3 @@ next.config.js
 ```
 
 본인이나 팀이 애플리케이션 전체에서 Strict Mode를 사용할 준비가 아직 되지 않았다면 괜찮습니다! `<React.StrictMode>`를 사용해 페이지 단위로 점진적으로 마이그레이션할 수 있습니다.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

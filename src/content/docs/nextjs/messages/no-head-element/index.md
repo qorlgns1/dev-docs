@@ -24,7 +24,7 @@ Source URL: https://nextjs.org/docs/messages/no-head-element
 pages/index.js
 [code]
     import Head from 'next/head'
-     
+
     function Index() {
       return (
         <>
@@ -35,18 +35,12 @@ pages/index.js
         </>
       )
     }
-     
+
     export default Index
 [/code]
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-head-element#useful-links)
 
   * [next/head](https://nextjs.org/docs/pages/api-reference/components/head)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

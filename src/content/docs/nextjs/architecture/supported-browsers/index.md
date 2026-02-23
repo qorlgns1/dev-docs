@@ -22,8 +22,6 @@ Next.js는 **모던 브라우저**를 추가 설정 없이 지원합니다.
   * Firefox 111+
   * Safari 16.4+
 
-
-
 ## Browserslist[](https://nextjs.org/docs/architecture/supported-browsers#browserslist)
 
 특정 브라우저나 기능을 타깃팅하고 싶다면, Next.js에서는 `package.json` 파일에서 [Browserslist](https://browsersl.ist) 구성을 지원합니다. Next.js는 기본적으로 다음 Browserslist 구성을 사용합니다:
@@ -42,8 +40,6 @@ package.json
   * [**fetch()**](https://developer.mozilla.org/docs/Web/API/Fetch_API) — 대체 대상: `whatwg-fetch`, `unfetch`.
   * [**URL**](https://developer.mozilla.org/docs/Web/API/URL) — 대체 대상: [`url` 패키지 (Node.js API)](https://nodejs.org/api/url.html).
   * [**Object.assign()**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) — 대체 대상: `object-assign`, `object.assign`, `core-js/object/assign`.
-
-
 
 이러한 폴리필이 의존성에 포함되어 있다면, 생산 빌드에서 자동으로 제거되어 중복을 방지합니다.
 
@@ -71,9 +67,9 @@ pages/_app.tsx
 JavaScriptTypeScript
 [code]
     import './polyfills'
-     
+
     import type { AppProps } from 'next/app'
-     
+
     export default function MyApp({ Component, pageProps }: AppProps) {
       return <Component {...pageProps} />
     }
@@ -88,7 +84,7 @@ hooks/analytics.ts
 JavaScriptTypeScript
 [code]
     import { useCallback } from 'react'
-     
+
     export const useAnalytics = () => {
       const tracker = useCallback(async (data: unknown) => {
         if (!('structuredClone' in globalThis)) {
@@ -96,10 +92,10 @@ JavaScriptTypeScript
             globalThis.structuredClone = mod.default
           })
         }
-     
+
         /* Do some work that uses structured clone */
       }, [])
-     
+
       return tracker
     }
 [/code]
@@ -115,8 +111,6 @@ Next.js는 최신 JavaScript 기능을 기본적으로 사용할 수 있도록 �
   * [Nullish Coalescing](https://github.com/tc39/proposal-nullish-coalescing) (ES2020)
   * [Class Fields](https://github.com/tc39/proposal-class-fields) 및 [Static Properties](https://github.com/tc39/proposal-static-class-features) (ES2022)
   * 기타 등등!
-
-
 
 ### TypeScript 기능[](https://nextjs.org/docs/architecture/supported-browsers#typescript-features)
 

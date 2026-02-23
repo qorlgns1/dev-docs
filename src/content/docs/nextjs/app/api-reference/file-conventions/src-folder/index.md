@@ -7,8 +7,6 @@ description: '프로젝트 루트에 특수한 Next.js  또는  디렉터리를 
 
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/src-folder
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)src
-
 Copy page
 
 # src 폴더
@@ -35,9 +33,8 @@ Copy page
 
 ##
 
-### [프로젝트 구조Next.js의 폴더 및 파일 규칙과 프로젝트 구성 방법을 알아보세요.](https://nextjs.org/docs/app/getting-started/project-structure)
-
-도움이 되었나요?
+- [프로젝트 구조](https://nextjs.org/docs/app/getting-started/project-structure)
+  - Next.js의 폴더 및 파일 규칙과 프로젝트 구성 방법을 알아보세요.
 
 supported.
 

@@ -9,8 +9,6 @@ description: '번들링은 애플리케이션 코드와 그 의존성을 클라�
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)패키지 번들링
 
-페이지 복사
-
 # 패키지 번들링 최적화
 
 마지막 업데이트: 2026년 2월 20일
@@ -23,8 +21,6 @@ Next.js는 코드 분할, 트리 셰이킹 등 다양한 기법으로 자동으�
 
   * [Turbopack용 Next.js 번들 분석기(실험적)](https://nextjs.org/docs/app/guides/package-bundling#nextjs-bundle-analyzer-experimental)
   * Webpack용 [`@next/bundle-analyzer` 플러그인](https://nextjs.org/docs/app/guides/package-bundling#nextbundle-analyzer-for-webpack)
-
-
 
 이 가이드는 각 도구 사용 방법과 [대용량 번들 최적화](https://nextjs.org/docs/app/guides/package-bundling#optimizing-large-bundles) 방법을 설명합니다.
 
@@ -100,18 +96,18 @@ next.config.js
 [code]
     /** @type {import('next').NextConfig} */
     const nextConfig = {}
-     
+
     const withBundleAnalyzer = require('@next/bundle-analyzer')({
       enabled: process.env.ANALYZE === 'true',
     })
-     
+
     module.exports = withBundleAnalyzer(nextConfig)
 [/code]
 
 ### 2단계: 리포트 생성[](https://nextjs.org/docs/app/guides/package-bundling#step-2-generating-a-report)
 
 다음 명령을 실행하여 번들을 분석하세요.
-[code] 
+[code]
     ANALYZE=true npm run build
     # or
     ANALYZE=true yarn build
@@ -137,7 +133,7 @@ next.config.js
         optimizePackageImports: ['icon-library'],
       },
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -154,19 +150,19 @@ next.config.js
 app/blog/[slug]/page.tsx
 [code]
     'use client'
-     
+
     import Highlight from 'prism-react-renderer'
     import theme from 'prism-react-renderer/themes/github'
-     
+
     export default function Page() {
       const code = `export function hello() {
         console.log("hi")
       }`
-     
+
       return (
         <article>
           <h1>Blog Post Title</h1>
-     
+
           {/* The prism package and its tokenization logic are shipped to the client */}
           <Highlight code={code} language="tsx" theme={theme}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -195,22 +191,22 @@ app/blog/[slug]/page.tsx
 app/blog/[slug]/page.tsx
 [code]
     import { codeToHtml } from 'shiki'
-     
+
     export default async function Page() {
       const code = `export function hello() {
         console.log("hi")
       }`
-     
+
       // The Shiki package runs on the server and is never bundled for the client.
       const highlightedHtml = await codeToHtml(code, {
         lang: 'tsx',
         theme: 'github-dark',
       })
-     
+
       return (
         <article>
           <h1>Blog Post Title</h1>
-     
+
           {/* Client receives plain markup */}
           <pre>
             <code dangerouslySetInnerHTML={{ __html: highlightedHtml }} />
@@ -232,18 +228,15 @@ next.config.js
     const nextConfig = {
       serverExternalPackages: ['package-name'],
     }
-     
+
     module.exports = nextConfig
 [/code]
 
-## 
+##
 
 프로덕션용 애플리케이션 최적화에 대해 더 알아보세요.
 
-### [프로덕션 권장 사항Next.js 애플리케이션을 프로덕션에 올리기 전에 최고의 성능과 사용자 경험을 보장하기 위한 체크리스트입니다.](https://nextjs.org/docs/app/guides/production-checklist)
-
-도움이 되었나요?
-
-지원됨.
+- [프로덕션](https://nextjs.org/docs/app/guides/production-checklist)
+  - 권장 사항Next.js 애플리케이션을 프로덕션에 올리기 전에 최고의 성능과 사용자 경험을 보장하기 위한 체크리스트입니다.
 
 보내기

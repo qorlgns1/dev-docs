@@ -7,10 +7,6 @@ description: 'Next.js 애플리케이션을 프로덕션에 배포하기 전, �
 
 소스 URL: https://nextjs.org/docs/pages/guides/production-checklist
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)프로덕션
-
-페이지 복사
-
 # 프로덕션용 Next.js 애플리케이션 최적화 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -83,9 +79,3 @@ Next.js 애플리케이션을 프로덕션에 배포하기 전, 최상의 사용
   * [Package Phobia](https://packagephobia.com/)
   * [Bundle Phobia](https://bundlephobia.com/)
   * [bundlejs](https://bundlejs.com/)
-
-도움이 되었나요?
-
-지원됨.
-
-전송

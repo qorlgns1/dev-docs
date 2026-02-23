@@ -7,10 +7,6 @@ description: 'Codemod은 코드베이스에서 프로그램적으로 실행되�
 
 출처 URL: https://nextjs.org/docs/pages/guides/upgrading/codemods
 
-[가이드](https://nextjs.org/docs/pages/guides)[업그레이드](https://nextjs.org/docs/pages/guides/upgrading)Codemods
-
-페이지 복사
-
 # Codemods
 
 마지막 업데이트 2026년 2월 20일
@@ -35,8 +31,6 @@ Next.js는 API가 업데이트되거나 사용 중단될 때 Next.js 코드베�
   * `--dry` 실제 코드를 수정하지 않는 드라이런 수행
   * `--print` 비교용으로 변경된 출력 내용을 표시
 
-
-
 ## 업그레이드[](https://nextjs.org/docs/pages/guides/upgrading/codemods#upgrade)
 
 Next.js, React, React DOM을 업데이트하고 codemod를 자동으로 실행해 Next.js 애플리케이션을 업그레이드합니다.
@@ -51,34 +45,31 @@ Next.js, React, React DOM을 업데이트하고 codemod를 자동으로 실행�
   * `revision`(선택 사항): 업그레이드 유형(`patch`, `minor`, `major`), NPM dist 태그(예: `latest`, `canary`, `rc`), 또는 정확한 버전(예: `15.0.0`)을 지정합니다. 안정 버전의 기본값은 `minor`입니다.
   * `--verbose`: 업그레이드 과정에서 더 자세한 출력을 표시합니다.
 
-
-
 예:
 
 터미널
 [code]
     # 최신 패치로 업그레이드 (예: 16.0.7 -> 16.0.8)
     npx @next/codemod upgrade patch
-     
+
     # 최신 마이너로 업그레이드 (예: 15.3.7 -> 15.4.8). 기본값입니다.
     npx @next/codemod upgrade minor
-     
+
     # 최신 메이저로 업그레이드 (예: 15.5.7 -> 16.0.7)
     npx @next/codemod upgrade major
-     
+
     # 특정 버전으로 업그레이드
     npx @next/codemod upgrade 16
-     
+
     # 카나리 릴리스로 업그레이드
     npx @next/codemod upgrade canary
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 대상 버전이 현재 버전과 같거나 낮으면 명령은 아무 변경 없이 종료됩니다.
 >   * 업그레이드 중 Next.js codemod 적용 여부나 React 업그레이드 시 React 19 codemod 실행 여부를 묻는 프롬프트가 나타날 수 있습니다.
-> 
-
+>
 
 ## Codemods[](https://nextjs.org/docs/pages/guides/upgrading/codemods#codemods)
 
@@ -112,16 +103,16 @@ app/page.tsx
 이 codemod는 안정화된 API에서 `unstable_` 접두사를 제거합니다.
 
 예:
-[code] 
+[code]
     import { unstable_cacheTag as cacheTag } from 'next/cache'
-     
+
     cacheTag()
 [/code]
 
 다음으로 변환됩니다:
-[code] 
+[code]
     import { cacheTag } from 'next/cache'
-     
+
     cacheTag()
 [/code]
 
@@ -143,14 +134,12 @@ app/page.tsx
   * Next.js 구성 속성 `experimental.externalMiddlewareRewritesResolve`를 `experimental.externalProxyRewritesResolve`로 변경
   * Next.js 구성 속성 `skipMiddlewareUrlNormalize`를 `skipProxyUrlNormalize`로 변경
 
-
-
 예:
 
 middleware.ts
 [code]
     import { NextResponse } from 'next/server'
-     
+
     export function middleware() {
       return NextResponse.next()
     }
@@ -161,7 +150,7 @@ middleware.ts
 proxy.ts
 [code]
     import { NextResponse } from 'next/server'
-     
+
     export function proxy() {
       return NextResponse.next()
     }
@@ -182,8 +171,6 @@ proxy.ts
   * `package.json` 스크립트를 `next lint` 대신 `eslint .`으로 업데이트
   * 필요한 ESLint 의존성을 `package.json`에 추가
   * 기존 ESLint 구성이 있으면 그대로 유지
-
-
 
 예:
 
@@ -214,14 +201,14 @@ eslint.config.mjs
     import { dirname } from 'path'
     import { fileURLToPath } from 'url'
     import { FlatCompat } from '@eslint/eslintrc'
-     
+
     const __filename = fileURLToPath(import.meta.url)
     const __dirname = dirname(__filename)
-     
+
     const compat = new FlatCompat({
       baseDirectory: __dirname,
     })
-     
+
     const eslintConfig = [
       ...compat.extends('next/core-web-vitals', 'next/typescript'),
       {
@@ -234,7 +221,7 @@ eslint.config.mjs
         ],
       },
     ]
-     
+
     export default eslintConfig
 [/code]
 
@@ -254,12 +241,12 @@ eslint.config.mjs
 이 codemod는 [Route Segment Config `runtime`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime) 값 `experimental-edge`를 `edge`로 변환합니다.
 
 예:
-[code] 
+[code]
     export const runtime = 'experimental-edge'
 [/code]
 
 다음으로 변환됩니다:
-[code] 
+[code]
     export const runtime = 'edge'
 [/code]
 
@@ -277,26 +264,26 @@ eslint.config.mjs
 이 codemod는 이제 비동기로 전환된 동적 API(`next/headers`의 `cookies()`, `headers()`, `draftMode()`)를 적절하게 `await`하거나 필요 시 `React.use()`로 래핑합니다. 자동 마이그레이션이 불가능한 경우 TypeScript 파일이면 타입 캐스트를, 그 외에는 수동 검토 및 업데이트가 필요하다는 주석을 추가합니다.
 
 예:
-[code] 
+[code]
     import { cookies, headers } from 'next/headers'
     const token = cookies().get('token')
-     
+
     function useToken() {
       const token = cookies().get('token')
       return token
     }
-     
+
     export default function Page() {
       const name = cookies().get('name')
     }
-     
+
     function getHeader() {
       return headers().get('x-foo')
     }
 [/code]
 
 다음으로 변환됩니다:
-[code] 
+[code]
     import { use } from 'react'
     import {
       cookies,
@@ -305,16 +292,16 @@ eslint.config.mjs
       type UnsafeUnwrappedHeaders,
     } from 'next/headers'
     const token = (cookies() as unknown as UnsafeUnwrappedCookies).get('token')
-     
+
     function useToken() {
       const token = use(cookies()).get('token')
       return token
     }
-     
+
     export default async function Page() {
       const name = (await cookies()).get('name')
     }
-     
+
     function getHeader() {
       return (headers() as unknown as UnsafeUnwrappedHeaders).get('x-foo')
     }
@@ -323,7 +310,7 @@ eslint.config.mjs
 `page.js`, `layout.js`, `route.js`, `default.js`와 같은 페이지/라우트 항목 또는 `generateMetadata` / `generateViewport` API에서 `params`나 `searchParams` props에 대한 프로퍼티 접근을 감지하면 동기 호출부를 비동기 함수로 변환하고 프로퍼티 접근을 `await`하려고 시도합니다. 클라이언트 컴포넌트처럼 비동기로 만들 수 없는 경우 `React.use`를 사용해 프로미스를 언래핑합니다.
 
 예:
-[code] 
+[code]
     // page.tsx
     export default function Page({
       params,
@@ -337,7 +324,7 @@ eslint.config.mjs
         // ...
       }
     }
-     
+
     export function generateMetadata({ params }: { params: { slug: string } }) {
       const { slug } = params
       return {
@@ -347,7 +334,7 @@ eslint.config.mjs
 [/code]
 
 다음으로 변환됩니다:
-[code] 
+[code]
     // page.tsx
     export default async function Page(props: {
       params: Promise<{ slug: string }>
@@ -359,7 +346,7 @@ eslint.config.mjs
         // ...
       }
     }
-     
+
     export async function generateMetadata(props: {
       params: Promise<{ slug: string }>
     }) {
@@ -385,19 +372,19 @@ eslint.config.mjs
 이 코드를 사용하면 `@vercel/functions`가 설치되고 `NextRequest`의 `geo` 및 `ip` 속성이 해당 `@vercel/functions` 기능으로 변환됩니다.
 
 예시:
-[code] 
+[code]
     import type { NextRequest } from 'next/server'
-     
+
     export function GET(req: NextRequest) {
       const { geo, ip } = req
     }
 [/code]
 
 다음과 같이 변환됩니다:
-[code] 
+[code]
     import type { NextRequest } from 'next/server'
     import { geolocation, ipAddress } from '@vercel/functions'
-     
+
     export function GET(req: NextRequest) {
       const geo = geolocation(req)
       const ip = ipAddress(req)
@@ -418,12 +405,12 @@ eslint.config.mjs
 이 코드는 [동적 OG 이미지 생성](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#generated-open-graph-images) 사용을 위해 `next/server`에서 `next/og`로 가져오기를 이동하고 변환합니다.
 
 예시:
-[code] 
+[code]
     import { ImageResponse } from 'next/server'
 [/code]
 
 다음과 같이 변환됩니다:
-[code] 
+[code]
     import { ImageResponse } from 'next/og'
 [/code]
 
@@ -439,7 +426,7 @@ eslint.config.mjs
 이 코드는 특정 뷰포트 메타데이터를 `viewport` 내보내기로 마이그레이션합니다.
 
 예시:
-[code] 
+[code]
     export const metadata = {
       title: 'My App',
       themeColor: 'dark',
@@ -450,11 +437,11 @@ eslint.config.mjs
 [/code]
 
 다음과 같이 변환됩니다:
-[code] 
+[code]
     export const metadata = {
       title: 'My App',
     }
-     
+
     export const viewport = {
       width: 1,
       themeColor: 'dark',
@@ -475,12 +462,12 @@ eslint.config.mjs
 이 코드는 `@next/font` 패키지를 제거하고 `@next/font` 가져오기를 기본 제공 `next/font`로 변환합니다.
 
 예시:
-[code] 
+[code]
     import { Inter } from '@next/font/google'
 [/code]
 
 다음과 같이 변환됩니다:
-[code] 
+[code]
     import { Inter } from 'next/font/google'
 [/code]
 
@@ -503,7 +490,7 @@ pages/index.js
 [code]
     import Image1 from 'next/image'
     import Image2 from 'next/future/image'
-     
+
     export default function Home() {
       return (
         <div>
@@ -522,7 +509,7 @@ pages/index.js
     import Image1 from 'next/legacy/image'
     // 'next/future/image' becomes 'next/image'
     import Image2 from 'next/image'
-     
+
     export default function Home() {
       return (
         <div>
@@ -550,8 +537,6 @@ pages/index.js
   * `lazyBoundary` prop을 제거합니다.
   * `lazyRoot` prop을 제거합니다.
 
-
-
 #### Link 컴포넌트에서 `<a>` 태그 제거[](https://nextjs.org/docs/pages/guides/upgrading/codemods#remove-a-tags-from-link-components)
 
 ##### `new-link`[](https://nextjs.org/docs/pages/guides/upgrading/codemods#new-link)
@@ -564,7 +549,7 @@ pages/index.js
 [Link 컴포넌트](https://nextjs.org/docs/pages/api-reference/components/link) 안의 `<a>` 태그를 제거합니다.
 
 예시:
-[code] 
+[code]
     <Link href="/about">
       <a>About</a>
     </Link>
@@ -572,7 +557,7 @@ pages/index.js
     <Link href="/about">
       About
     </Link>
-     
+
     <Link href="/about">
       <a onClick={() => console.log('clicked')}>About</a>
     </Link>
@@ -684,22 +669,22 @@ my-component.js
 `withAmp` HOC를 Next.js 9 페이지 구성으로 변환합니다.
 
 예시:
-[code] 
+[code]
     // Before
     import { withAmp } from 'next/amp'
-     
+
     function Home() {
       return <h1>My AMP Page</h1>
     }
-     
+
     export default withAmp(Home)
 [/code]
-[code] 
+[code]
     // After
     export default function Home() {
       return <h1>My AMP Page</h1>
     }
-     
+
     export const config = {
       amp: true,
     }
@@ -746,9 +731,5 @@ my-component.js
 [/code]
 
 이 사례를 포함한 모든 변환(및 테스트)은 [`__testfixtures__` 디렉터리](https://github.com/vercel/next.js/tree/canary/packages/next-codemod/transforms/__testfixtures__/url-to-withrouter)에 있습니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

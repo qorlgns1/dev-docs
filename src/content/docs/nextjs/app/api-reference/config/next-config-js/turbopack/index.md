@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 
 원본 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)turbopack
-
-페이지 복사
-
 # turbopack
 
 최종 업데이트 2026년 2월 20일
@@ -18,7 +14,7 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 `turbopack` 옵션을 사용하면 [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack)을 커스터마이즈하여 다양한 파일을 변환하고 모듈 해석 방식을 변경할 수 있습니다.
 
 > **참고** : `turbopack` 옵션은 Next.js 13.0.0부터 15.2.x까지 버전에서 `experimental.turbo`로 불렸습니다. `experimental.turbo` 옵션은 Next.js 16에서 제거될 예정입니다.
-> 
+>
 > 이전 버전의 Next.js를 사용 중이라면 `npx @next/codemod@latest next-experimental-turbo-to-turbopack .` 명령을 실행해 구성 파일을 자동으로 마이그레이션하세요.
 
 next.config.ts
@@ -26,21 +22,20 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       turbopack: {
         // ...
       },
     }
-     
+
     export default nextConfig
 [/code]
 
 > **참고** :
-> 
+>
 >   * Next.js용 Turbopack은 기본 제공 기능에 로더나 로더 구성이 필요하지 않습니다. Turbopack은 CSS와 최신 JavaScript 컴파일을 기본 지원하므로 `@babel/preset-env`를 사용한다면 `css-loader`, `postcss-loader`, `babel-loader`가 필요 없습니다.
-> 
-
+>
 
 ## 참고[](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#reference)
 
@@ -48,14 +43,14 @@ JavaScriptTypeScript
 
 `turbopack` 구성에서는 다음 옵션을 사용할 수 있습니다.
 
-옵션| 설명  
----|---  
-`root`| 애플리케이션 루트 디렉터리를 지정합니다. 절대 경로여야 합니다.  
-`rules`| Turbopack 실행 시 적용할 지원되는 webpack 로더 목록입니다.  
-`resolveAlias`| 별칭으로 지정된 import를 대신 로드할 모듈에 매핑합니다.  
-`resolveExtensions`| 파일 import 시 해석할 확장자 목록입니다.  
-`debugIds`| JavaScript 번들과 소스맵에서 [debug ID](https://github.com/tc39/ecma426/blob/main/proposals/debug-id.md) 생성을 활성화합니다.  
-  
+옵션| 설명
+---|---
+`root`| 애플리케이션 루트 디렉터리를 지정합니다. 절대 경로여야 합니다.
+`rules`| Turbopack 실행 시 적용할 지원되는 webpack 로더 목록입니다.
+`resolveAlias`| 별칭으로 지정된 import를 대신 로드할 모듈에 매핑합니다.
+`resolveExtensions`| 파일 import 시 해석할 확장자 목록입니다.
+`debugIds`| JavaScript 번들과 소스맵에서 [debug ID](https://github.com/tc39/ecma426/blob/main/proposals/debug-id.md) 생성을 활성화합니다.
+
 ### 지원되는 로더[](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#supported-loaders)
 
 다음 로더는 Turbopack의 webpack 로더 구현과 함께 동작하는 것이 확인되었으며, 목록에 없더라도 많은 webpack 로더가 정상 동작합니다.
@@ -69,8 +64,6 @@ JavaScriptTypeScript
   * [`sass-loader`](https://www.npmjs.com/package/sass-loader) [_(자동으로 설정됨)_](https://nextjs.org/docs/app/api-reference/turbopack#css-and-styling)
   * [`graphql-tag/loader`](https://www.npmjs.com/package/graphql-tag)
 
-
-
 #### 누락된 Webpack 로더 기능[](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#missing-webpack-loader-features)
 
 Turbopack은 webpack 로더를 실행하기 위해 [`loader-runner`](https://github.com/webpack/loader-runner) 라이브러리를 사용하며, 표준 로더 API 대부분을 제공합니다. 그러나 일부 기능은 아직 지원되지 않습니다.
@@ -80,14 +73,10 @@ Turbopack은 webpack 로더를 실행하기 위해 [`loader-runner`](https://git
   * [`importModule`](https://webpack.js.org/api/loaders/#thisimportmodule) \- 지원되지 않음
   * [`loadModule`](https://webpack.js.org/api/loaders/#thisloadmodule) \- 지원되지 않음
 
-
-
 **파일 시스템 및 출력:**
 
   * [`fs`](https://webpack.js.org/api/loaders/#thisfs) \- 부분 지원: 현재는 `fs.readFile`만 구현되어 있습니다.
   * [`emitFile`](https://webpack.js.org/api/loaders/#thisemitfile) \- 지원되지 않음
-
-
 
 **컨텍스트 속성:**
 
@@ -95,14 +84,10 @@ Turbopack은 webpack 로더를 실행하기 위해 [`loader-runner`](https://git
   * [`mode`](https://webpack.js.org/api/loaders/#thismode) \- 지원되지 않음
   * [`target`](https://webpack.js.org/api/loaders/#thistarget) \- 지원되지 않음
 
-
-
 **유틸리티:**
 
   * [`utils`](https://webpack.js.org/api/loaders/#thisutils) \- 지원되지 않음
   * [`resolve`](https://webpack.js.org/api/loaders/#thisresolve) \- 지원되지 않음 (대신 [`getResolve`](https://webpack.js.org/api/loaders/#thisgetresolve)를 사용하세요)
-
-
 
 이러한 기능에 크게 의존하는 로더가 있다면 이슈를 등록해 주세요.
 
@@ -121,8 +106,6 @@ Next.js는 다음 파일 중 하나를 찾는 방식으로 프로젝트의 루�
   * `yarn.lock`
   * `bun.lock`
   * `bun.lockb`
-
-
 
 워크스페이스를 사용하지 않는 등 프로젝트 구조가 다른 경우 `root` 옵션을 수동으로 설정할 수 있습니다.
 
@@ -148,8 +131,6 @@ next.config.js
   * JavaScript 코드를 반환하는 로더만 지원됩니다. 스타일시트나 이미지를 변환하는 로더는 현재 지원되지 않습니다.
   * webpack 로더에 전달하는 옵션은 기본 JavaScript 원시 값, 객체, 배열이어야 합니다. 예를 들어 옵션 값으로 `require()` 플러그인 모듈을 전달할 수 없습니다.
 
-
-
 로더를 구성하려면 설치한 로더 이름과 옵션을 `next.config.js`에 추가하고 파일 확장자를 로더 목록에 매핑합니다. 규칙은 선언된 순서대로 평가됩니다.
 
 다음은 `.svg` 파일을 import하여 React 컴포넌트로 렌더링할 수 있게 해 주는 [`@svgr/webpack`](https://www.npmjs.com/package/@svgr/webpack) 로더를 사용하는 예시입니다.
@@ -169,7 +150,7 @@ next.config.js
 [/code]
 
 > **참고** : `rules` 객체에서 사용하는 glob은 파일 이름 기준으로 일치하며, glob에 `/` 문자가 포함되면 프로젝트 상대 전체 파일 경로 기준으로 일치합니다. Windows 파일 경로는 유닉스 스타일의 `/` 구분자를 사용하도록 정규화됩니다.
-> 
+>
 > Turbopack은 [Rust `globset` 라이브러리](https://docs.rs/globset/latest/globset/)의 수정 버전을 사용합니다.
 
 구성 옵션이 필요한 로더의 경우 문자열 대신 객체 형식을 사용할 수 있습니다.
@@ -237,8 +218,6 @@ next.config.js
   * 지원되는 불리언 연산자는 `{all: [...]}`, `{any: [...]}`, `{not: ...}`입니다.
   * 지원되는 사용자 지정 연산자는 `{path: string | RegExp}`와 `{content: RegExp}`입니다. 동일한 객체에 `path`와 `content`를 함께 지정하면 암묵적인 `and`로 동작합니다.
 
-
-
 또한 여러 기본 제공 조건을 지원합니다.
 
   * `browser`: 클라이언트에서 실행될 코드를 일치시킵니다. 서버 코드는 `{not: 'browser'}`로 일치시킬 수 있습니다.
@@ -247,8 +226,6 @@ next.config.js
   * `production`: `next build` 사용 시 일치합니다.
   * `node`: 기본 Node.js 런타임에서 실행될 코드를 일치시킵니다.
   * `edge-light`: [Edge 런타임](https://nextjs.org/docs/app/api-reference/edge)에서 실행될 코드를 일치시킵니다.
-
-
 
 규칙은 객체 또는 객체 배열이 될 수 있습니다. 서로 겹치지 않는 조건을 모델링해야 할 때 배열이 유용합니다.
 
@@ -336,15 +313,9 @@ next.config.js
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#version-history)
 
-버전| 변경 사항  
----|---  
-`16.0.0`| `turbopack.debugIds` was added.  
-`16.0.0`| `turbopack.rules.*.condition` was added.  
-`15.3.0`| `experimental.turbo` is changed to `turbopack`.  
-`13.0.0`| `experimental.turbo` introduced.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+버전| 변경 사항
+---|---
+`16.0.0`| `turbopack.debugIds` was added.
+`16.0.0`| `turbopack.rules.*.condition` was added.
+`15.3.0`| `experimental.turbo` is changed to `turbopack`.
+`13.0.0`| `experimental.turbo` introduced.

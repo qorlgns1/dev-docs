@@ -7,8 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/forbidden
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)forbidden
-
 Copy page
 
 # forbidden
@@ -26,13 +24,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         authInterrupts: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -44,15 +42,15 @@ JavaScriptTypeScript
 [code]
     import { verifySession } from '@/app/lib/dal'
     import { forbidden } from 'next/navigation'
-     
+
     export default async function AdminPage() {
       const session = await verifySession()
-     
+
       // Check if the user has the 'admin' role
       if (session.role !== 'admin') {
         forbidden()
       }
-     
+
       // Render the admin page for authorized users
       return <></>
     }
@@ -61,8 +59,6 @@ JavaScriptTypeScript
 ## 알아두면 좋은 점[](https://nextjs.org/docs/app/api-reference/functions/forbidden#good-to-know)
 
   * `forbidden` 함수는 [root layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout)에서 호출할 수 없습니다.
-
-
 
 ## 예시[](https://nextjs.org/docs/app/api-reference/functions/forbidden#examples)
 
@@ -76,15 +72,15 @@ JavaScriptTypeScript
 [code]
     import { verifySession } from '@/app/lib/dal'
     import { forbidden } from 'next/navigation'
-     
+
     export default async function AdminPage() {
       const session = await verifySession()
-     
+
       // Check if the user has the 'admin' role
       if (session.role !== 'admin') {
         forbidden()
       }
-     
+
       // Render the admin page for authorized users
       return (
         <main>
@@ -104,19 +100,19 @@ app/actions/update-role.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { verifySession } from '@/app/lib/dal'
     import { forbidden } from 'next/navigation'
     import db from '@/app/lib/db'
-     
+
     export async function updateRole(formData: FormData) {
       const session = await verifySession()
-     
+
       // Ensure only admins can update roles
       if (session.role !== 'admin') {
         forbidden()
       }
-     
+
       // Perform the role update for authorized users
       // ...
     }
@@ -124,15 +120,14 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/forbidden#version-history)
 
-Version| Changes  
----|---  
-`v15.1.0`| `forbidden` 도입.  
-  
-## 
+Version| Changes
+---|---
+`v15.1.0`| `forbidden` 도입.
 
-### [forbidden.js의 특별 파일에 대한 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/forbidden)
+##
 
-도움이 되었나요?
+- [forbidden.js](https://nextjs.org/docs/app/api-reference/file-conventions/forbidden)
+  - 의 특별 파일에 대한 API 레퍼런스입니다.
 
 supported.
 

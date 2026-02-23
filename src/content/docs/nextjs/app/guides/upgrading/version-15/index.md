@@ -9,8 +9,6 @@ description: 'Next.js 버전 15로 업데이트하려면  코데모드를 사용
 
 [가이드](https://nextjs.org/docs/app/guides)[업그레이드](https://nextjs.org/docs/app/guides/upgrading)Version 15
 
-페이지 복사
-
 # 버전 15로 업그레이드하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -36,10 +34,9 @@ Terminal
 [/code]
 
 > **알아두면 좋아요:**
-> 
+>
 >   * 피어 종속성 경고가 표시되면 제안된 버전으로 `react`와 `react-dom`을 업데이트하거나 경고를 무시하기 위해 `--force` 또는 `--legacy-peer-deps` 플래그를 사용해야 할 수 있습니다. Next.js 15와 React 19가 모두 안정화되면 이 작업은 필요하지 않습니다.
-> 
-
+>
 
 ## React 19[](https://nextjs.org/docs/app/guides/upgrading/version-15#react-19)
 
@@ -47,8 +44,6 @@ Terminal
   * `useFormState`가 `useActionState`로 대체되었습니다. `useFormState` 훅은 React 19에서 여전히 사용할 수 있지만 더 이상 권장되지 않으며 향후 릴리스에서 제거될 예정입니다. `useActionState` 사용을 권장하며 `pending` 상태를 직접 읽을 수 있는 추가 속성을 제공합니다. [자세히 알아보기](https://react.dev/reference/react/useActionState).
   * `useFormStatus`에 이제 `data`, `method`, `action`과 같은 추가 키가 포함됩니다. React 19를 사용하지 않는 경우 `pending` 키만 사용할 수 있습니다. [자세히 알아보기](https://react.dev/reference/react-dom/hooks/useFormStatus).
   * [React 19 업그레이드 가이드](https://react.dev/blog/2024/04/25/react-19-upgrade-guide)에서 더 많은 내용을 확인하세요.
-
-
 
 > **알아두면 좋아요:** TypeScript를 사용하는 경우 `@types/react`와 `@types/react-dom`도 최신 버전으로 업그레이드하세요.
 
@@ -62,20 +57,18 @@ Terminal
   * [`layout.js`](https://nextjs.org/docs/app/api-reference/file-conventions/layout), [`page.js`](https://nextjs.org/docs/app/api-reference/file-conventions/page), [`route.js`](https://nextjs.org/docs/app/api-reference/file-conventions/route), [`default.js`](https://nextjs.org/docs/app/api-reference/file-conventions/default), [`opengraph-image`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image), [`twitter-image`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image), [`icon`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons), [`apple-icon`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons)의 `params`.
   * [`page.js`](https://nextjs.org/docs/app/api-reference/file-conventions/page)의 `searchParams`
 
-
-
 마이그레이션 부담을 줄이기 위해 [코데모드가 제공되며](https://nextjs.org/docs/app/guides/upgrading/codemods#150) 해당 API를 일시적으로 동기 방식으로 접근할 수 있습니다.
 
 ### `cookies`[](https://nextjs.org/docs/app/guides/upgrading/version-15#cookies)
 
 #### 권장 비동기 사용법[](https://nextjs.org/docs/app/guides/upgrading/version-15#recommended-async-usage)
-[code] 
+[code]
     import { cookies } from 'next/headers'
-     
+
     // Before
     const cookieStore = cookies()
     const token = cookieStore.get('token')
-     
+
     // After
     const cookieStore = await cookies()
     const token = cookieStore.get('token')
@@ -88,11 +81,11 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { cookies, type UnsafeUnwrappedCookies } from 'next/headers'
-     
+
     // Before
     const cookieStore = cookies()
     const token = cookieStore.get('token')
-     
+
     // After
     const cookieStore = cookies() as unknown as UnsafeUnwrappedCookies
     // will log a warning in dev
@@ -102,13 +95,13 @@ JavaScriptTypeScript
 ### `headers`[](https://nextjs.org/docs/app/guides/upgrading/version-15#headers)
 
 #### 권장 비동기 사용법[](https://nextjs.org/docs/app/guides/upgrading/version-15#recommended-async-usage-1)
-[code] 
+[code]
     import { headers } from 'next/headers'
-     
+
     // Before
     const headersList = headers()
     const userAgent = headersList.get('user-agent')
-     
+
     // After
     const headersList = await headers()
     const userAgent = headersList.get('user-agent')
@@ -121,11 +114,11 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { headers, type UnsafeUnwrappedHeaders } from 'next/headers'
-     
+
     // Before
     const headersList = headers()
     const userAgent = headersList.get('user-agent')
-     
+
     // After
     const headersList = headers() as unknown as UnsafeUnwrappedHeaders
     // will log a warning in dev
@@ -135,12 +128,12 @@ JavaScriptTypeScript
 ### `draftMode`[](https://nextjs.org/docs/app/guides/upgrading/version-15#draftmode)
 
 #### 권장 비동기 사용법[](https://nextjs.org/docs/app/guides/upgrading/version-15#recommended-async-usage-2)
-[code] 
+[code]
     import { draftMode } from 'next/headers'
-     
+
     // Before
     const { isEnabled } = draftMode()
-     
+
     // After
     const { isEnabled } = await draftMode()
 [/code]
@@ -152,10 +145,10 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { draftMode, type UnsafeUnwrappedDraftMode } from 'next/headers'
-     
+
     // Before
     const { isEnabled } = draftMode()
-     
+
     // After
     // will log a warning in dev
     const { isEnabled } = draftMode() as unknown as UnsafeUnwrappedDraftMode
@@ -171,11 +164,11 @@ JavaScriptTypeScript
 [code]
     // Before
     type Params = { slug: string }
-     
+
     export function generateMetadata({ params }: { params: Params }) {
       const { slug } = params
     }
-     
+
     export default async function Layout({
       children,
       params,
@@ -185,14 +178,14 @@ JavaScriptTypeScript
     }) {
       const { slug } = params
     }
-     
+
     // After
     type Params = Promise<{ slug: string }>
-     
+
     export async function generateMetadata({ params }: { params: Params }) {
       const { slug } = await params
     }
-     
+
     export default async function Layout({
       children,
       params,
@@ -212,7 +205,7 @@ JavaScriptTypeScript
 [code]
     // Before
     type Params = { slug: string }
-     
+
     export default function Layout({
       children,
       params,
@@ -222,12 +215,12 @@ JavaScriptTypeScript
     }) {
       const { slug } = params
     }
-     
+
     // After
     import { use } from 'react'
-     
+
     type Params = Promise<{ slug: string }>
-     
+
     export default function Layout(props: {
       children: React.ReactNode
       params: Params
@@ -246,7 +239,7 @@ JavaScriptTypeScript
     // Before
     type Params = { slug: string }
     type SearchParams = { [key: string]: string | string[] | undefined }
-     
+
     export function generateMetadata({
       params,
       searchParams,
@@ -257,7 +250,7 @@ JavaScriptTypeScript
       const { slug } = params
       const { query } = searchParams
     }
-     
+
     export default async function Page({
       params,
       searchParams,
@@ -268,11 +261,11 @@ JavaScriptTypeScript
       const { slug } = params
       const { query } = searchParams
     }
-     
+
     // After
     type Params = Promise<{ slug: string }>
     type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
-     
+
     export async function generateMetadata(props: {
       params: Params
       searchParams: SearchParams
@@ -282,7 +275,7 @@ JavaScriptTypeScript
       const slug = params.slug
       const query = searchParams.query
     }
-     
+
     export default async function Page(props: {
       params: Params
       searchParams: SearchParams
@@ -295,13 +288,13 @@ JavaScriptTypeScript
 [/code]
 
 #### 동기 페이지[](https://nextjs.org/docs/app/guides/upgrading/version-15#synchronous-page)
-[code] 
+[code]
     'use client'
-     
+
     // Before
     type Params = { slug: string }
     type SearchParams = { [key: string]: string | string[] | undefined }
-     
+
     export default function Page({
       params,
       searchParams,
@@ -312,13 +305,13 @@ JavaScriptTypeScript
       const { slug } = params
       const { query } = searchParams
     }
-     
+
     // After
     import { use } from 'react'
-     
+
     type Params = Promise<{ slug: string }>
     type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
-     
+
     export default function Page(props: {
       params: Params
       searchParams: SearchParams
@@ -329,23 +322,23 @@ JavaScriptTypeScript
       const query = searchParams.query
     }
 [/code]
-[code] 
+[code]
     // Before
     export default function Page({ params, searchParams }) {
       const { slug } = params
       const { query } = searchParams
     }
-     
+
     // After
     import { use } from "react"
-     
+
     export default function Page(props) {
       const params = use(props.params)
       const searchParams = use(props.searchParams)
       const slug = params.slug
       const query = searchParams.query
     }
-     
+
 [/code]
 
 #### 라우트 핸들러[](https://nextjs.org/docs/app/guides/upgrading/version-15#route-handlers)
@@ -356,15 +349,15 @@ JavaScriptTypeScript
 [code]
     // Before
     type Params = { slug: string }
-     
+
     export async function GET(request: Request, segmentData: { params: Params }) {
       const params = segmentData.params
       const slug = params.slug
     }
-     
+
     // After
     type Params = Promise<{ slug: string }>
-     
+
     export async function GET(request: Request, segmentData: { params: Params }) {
       const params = await segmentData.params
       const slug = params.slug
@@ -386,7 +379,7 @@ app/layout.js
     export default async function RootLayout() {
       const a = await fetch('https://...') // Not Cached
       const b = await fetch('https://...', { cache: 'force-cache' }) // Cached
-     
+
       // ...
     }
 [/code]
@@ -398,11 +391,11 @@ app/layout.js
     // Since this is the root layout, all fetch requests in the app
     // that don't set their own cache option will be cached.
     export const fetchCache = 'default-cache'
-     
+
     export default async function RootLayout() {
       const a = await fetch('https://...') // Cached
       const b = await fetch('https://...', { cache: 'no-store' }) // Not cached
-     
+
       // ...
     }
 [/code]
@@ -414,7 +407,7 @@ app/layout.js
 app/api/route.js
 [code]
     export const dynamic = 'force-static'
-     
+
     export async function GET() {}
 [/code]
 
@@ -435,7 +428,7 @@ next.config.js
         },
       },
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -449,7 +442,7 @@ app/layout.js
 [code]
     // Before
     import { Inter } from '@next/font/google'
-     
+
     // After
     import { Inter } from 'next/font/google'
 [/code]
@@ -466,11 +459,11 @@ next.config.js
       experimental: {
         bundlePagesExternals: true,
       },
-     
+
       // After
       bundlePagesRouterDependencies: true,
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -486,11 +479,11 @@ next.config.js
       experimental: {
         serverComponentsExternalPackages: ['package-name'],
       },
-     
+
       // After
       serverExternalPackages: ['package-name'],
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -510,10 +503,10 @@ middleware.ts
 [code]
     import { geolocation } from '@vercel/functions'
     import type { NextRequest } from 'next/server'
-     
+
     export function middleware(request: NextRequest) {
       const { city } = geolocation(request)
-     
+
       // ...
     }
 [/code]
@@ -522,10 +515,10 @@ middleware.ts
 [code]
     import { ipAddress } from '@vercel/functions'
     import type { NextRequest } from 'next/server'
-     
+
     export function middleware(request: NextRequest) {
       const ip = ipAddress(request)
-     
+
       // ...
     }
 [/code]

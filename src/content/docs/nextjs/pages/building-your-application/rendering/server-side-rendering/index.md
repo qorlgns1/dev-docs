@@ -22,17 +22,17 @@ Copy page
 페이지에 서버 사이드 렌더링을 사용하려면 `getServerSideProps`라는 `async` 함수를 `export`해야 합니다. 이 함수는 모든 요청 시 서버에서 호출됩니다.
 
 예를 들어, 페이지가 (외부 API에서 가져오는) 자주 업데이트되는 데이터를 사전 렌더링해야 한다고 가정해 보겠습니다. 아래와 같이 이 데이터를 가져와 `Page`에 전달하는 `getServerSideProps`를 작성할 수 있습니다:
-[code] 
+[code]
     export default function Page({ data }) {
       // Render data...
     }
-     
+
     // This gets called on every request
     export async function getServerSideProps() {
       // Fetch data from external API
       const res = await fetch(`https://.../data`)
       const data = await res.json()
-     
+
       // Pass data to the page via props
       return { props: { data } }
     }

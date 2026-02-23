@@ -9,8 +9,6 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/ai-agents'
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)AI 코딩 에이전트
 
-페이지 복사
-
 # AI 코딩 에이전트를 위한 Next.js 프로젝트 설정 방법
 
 마지막 업데이트: 2026년 2월 20일
@@ -20,7 +18,7 @@ Next.js는 `next` 패키지 안에 버전이 일치하는 문서를 포함해 �
 ## 작동 방식[](https://nextjs.org/docs/app/guides/ai-agents#how-it-works)
 
 `next`를 설치하면 Next.js 문서가 `node_modules/next/dist/docs/`에 번들로 포함됩니다. 이 문서는 [Next.js 문서 사이트](https://nextjs.org/docs) 구조와 동일합니다:
-[code] 
+[code]
     node_modules/next/dist/docs/
     ├── 01-app/
     │   ├── 01-getting-started/
@@ -49,7 +47,7 @@ pnpmnpmyarnbun
 [/code]
 
 에이전트 파일이 필요 없다면 `--no-agents-md`를 전달하세요:
-[code] 
+[code]
     npx create-next-app@canary --no-agents-md
 [/code]
 
@@ -62,11 +60,11 @@ Next.js `v16.2.0-canary.37` 이상인지 확인한 뒤, 다음 파일을 프로�
 AGENTS.md
 [code]
     <!-- BEGIN:nextjs-agent-rules -->
-     
+
     # Next.js: ALWAYS read docs before coding
-     
+
     Before any Next.js work, find and read the relevant doc in `node_modules/next/dist/docs/`. Your training data is outdated — the docs are the source of truth.
-     
+
     <!-- END:nextjs-agent-rules -->
 [/code]
 
@@ -89,10 +87,6 @@ CLAUDE.md
 
 ## 다음 단계
 
-### [Next.js MCP 서버코딩 에이전트가 애플리케이션 상태에 접근하도록 Next.js MCP 지원을 사용하는 방법 알아보기](https://nextjs.org/docs/app/guides/mcp)
-
-도움이 되었나요?
-
-지원됨.
+- [Next.js MCP 서버코딩 에이전트가 애플리케이션 상태에 접근하도록 Next.js MCP 지원을 사용하는 방법 알아보기](https://nextjs.org/docs/app/guides/mcp)
 
 보내기

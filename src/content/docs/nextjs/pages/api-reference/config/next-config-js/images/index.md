@@ -7,10 +7,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/images
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)images
-
-페이지 복사
-
 # images
 
 최종 업데이트: 2026년 2월 20일
@@ -60,7 +56,7 @@ my/image/loader.js
   * [Nitrogen AIO](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#nitrogen-aio)
 
 ### Akamai[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#akamai)
-[code] 
+[code]
     // Docs: https://techdocs.akamai.com/ivm/reference/test-images-on-demand
     export default function akamaiLoader({ src, width, quality }) {
       return `https://example.com/${src}?imwidth=${width}`
@@ -68,7 +64,7 @@ my/image/loader.js
 [/code]
 
 ### AWS CloudFront[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#aws-cloudfront)
-[code] 
+[code]
     // Docs: https://aws.amazon.com/developer/application-security-performance/articles/image-optimization
     export default function cloudfrontLoader({ src, width, quality }) {
       const url = new URL(`https://example.com${src}`)
@@ -80,7 +76,7 @@ my/image/loader.js
 [/code]
 
 ### Cloudinary[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#cloudinary)
-[code] 
+[code]
     // Demo: https://res.cloudinary.com/demo/image/upload/w_300,c_limit,q_auto/turtles.jpg
     export default function cloudinaryLoader({ src, width, quality }) {
       const params = ['f_auto', 'c_limit', `w_${width}`, `q_${quality || 'auto'}`]
@@ -89,7 +85,7 @@ my/image/loader.js
 [/code]
 
 ### Cloudflare[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#cloudflare)
-[code] 
+[code]
     // Docs: https://developers.cloudflare.com/images/transform-images
     export default function cloudflareLoader({ src, width, quality }) {
       const params = [`width=${width}`, `quality=${quality || 75}`, 'format=auto']
@@ -98,7 +94,7 @@ my/image/loader.js
 [/code]
 
 ### Contentful[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#contentful)
-[code] 
+[code]
     // Docs: https://www.contentful.com/developers/docs/references/images-api/
     export default function contentfulLoader({ src, width, quality }) {
       const url = new URL(`https://example.com${src}`)
@@ -110,7 +106,7 @@ my/image/loader.js
 [/code]
 
 ### Fastly[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#fastly)
-[code] 
+[code]
     // Docs: https://developer.fastly.com/reference/io/
     export default function fastlyLoader({ src, width, quality }) {
       const url = new URL(`https://example.com${src}`)
@@ -122,7 +118,7 @@ my/image/loader.js
 [/code]
 
 ### Gumlet[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#gumlet)
-[code] 
+[code]
     // Docs: https://docs.gumlet.com/reference/image-transform-size
     export default function gumletLoader({ src, width, quality }) {
       const url = new URL(`https://example.com${src}`)
@@ -134,7 +130,7 @@ my/image/loader.js
 [/code]
 
 ### ImageEngine[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#imageengine)
-[code] 
+[code]
     // Docs: https://support.imageengine.io/hc/en-us/articles/360058880672-Directives
     export default function imageengineLoader({ src, width, quality }) {
       const compression = 100 - (quality || 50)
@@ -144,7 +140,7 @@ my/image/loader.js
 [/code]
 
 ### Imgix[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#imgix)
-[code] 
+[code]
     // Demo: https://static.imgix.net/daisy.png?format=auto&fit=max&w=300
     export default function imgixLoader({ src, width, quality }) {
       const url = new URL(`https://example.com${src}`)
@@ -158,7 +154,7 @@ my/image/loader.js
 [/code]
 
 ### PixelBin[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#pixelbin)
-[code] 
+[code]
     // Doc (Resize): https://www.pixelbin.io/docs/transformations/basic/resize/#width-w
     // Doc (Optimise): https://www.pixelbin.io/docs/optimizations/quality/#image-quality-when-delivering
     // Doc (Auto Format Delivery): https://www.pixelbin.io/docs/optimizations/format/#automatic-format-selection-with-f_auto-url-parameter
@@ -170,7 +166,7 @@ my/image/loader.js
 [/code]
 
 ### Sanity[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#sanity)
-[code] 
+[code]
     // Docs: https://www.sanity.io/docs/image-urls
     export default function sanityLoader({ src, width, quality }) {
       const prj = 'zp7mbokg'
@@ -187,7 +183,7 @@ my/image/loader.js
 [/code]
 
 ### Sirv[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#sirv)
-[code] 
+[code]
     // Docs: https://sirv.com/help/articles/dynamic-imaging/
     export default function sirvLoader({ src, width, quality }) {
       const url = new URL(`https://example.com${src}`)
@@ -200,7 +196,7 @@ my/image/loader.js
 [/code]
 
 ### Supabase[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#supabase)
-[code] 
+[code]
     // Docs: https://supabase.com/docs/guides/storage/image-transformations#nextjs-loader
     export default function supabaseLoader({ src, width, quality }) {
       const url = new URL(`https://example.com${src}`)
@@ -211,7 +207,7 @@ my/image/loader.js
 [/code]
 
 ### Thumbor[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#thumbor)
-[code] 
+[code]
     // Docs: https://thumbor.readthedocs.io/en/latest/
     export default function thumborLoader({ src, width, quality }) {
       const params = [`${width}x0`, `filters:quality(${quality || 75})`]
@@ -220,7 +216,7 @@ my/image/loader.js
 [/code]
 
 ### ImageKit.io[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#imagekitio)
-[code] 
+[code]
     // Docs: https://imagekit.io/docs/image-transformation
     export default function imageKitLoader({ src, width, quality }) {
       const params = [`w-${width}`, `q-${quality || 80}`]
@@ -229,7 +225,7 @@ my/image/loader.js
 [/code]
 
 ### Nitrogen AIO[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#nitrogen-aio)
-[code] 
+[code]
     // Docs: https://docs.n7.io/aio/intergrations/
     export default function aioLoader({ src, width, quality }) {
       const url = new URL(src, window.location.href)
@@ -243,9 +239,5 @@ my/image/loader.js
       return url.href
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

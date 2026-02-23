@@ -7,8 +7,6 @@ description: '2026년 2월 20일에 마지막으로 업데이트됨'
 
 출처 URL: https://nextjs.org/docs/app/api-reference/functions/use-params
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)useParams
-
 Copy page
 
 # useParams
@@ -22,23 +20,23 @@ app/example-client-component.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useParams } from 'next/navigation'
-     
+
     export default function ExampleClientComponent() {
       const params = useParams<{ tag: string; item: string }>()
-     
+
       // Route -> /shop/[tag]/[item]
       // URL -> /shop/shoes/nike-air-max-97
       // `params` -> { tag: 'shoes', item: 'nike-air-max-97' }
       console.log(params)
-     
+
       return '...'
     }
 [/code]
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/use-params#parameters)
-[code] 
+[code]
     const params = useParams()
 [/code]
 
@@ -54,24 +52,20 @@ JavaScriptTypeScript
   * 라우트에 동적 매개변수가 없으면 `useParams`는 빈 객체를 반환합니다.
   * Pages Router에서 사용하면, 최초 렌더링 시 `useParams`가 `null`을 반환하고 라우터가 준비되면 위 규칙에 따라 속성으로 업데이트됩니다.
 
-
-
 예를 들면:
 
-Route| URL| `useParams()`  
----|---|---  
-`app/shop/page.js`| `/shop`| `{}`  
-`app/shop/[slug]/page.js`| `/shop/1`| `{ slug: '1' }`  
-`app/shop/[tag]/[item]/page.js`| `/shop/1/2`| `{ tag: '1', item: '2' }`  
-`app/shop/[...slug]/page.js`| `/shop/1/2`| `{ slug: ['1', '2'] }`  
-  
+Route| URL| `useParams()`
+---|---|---
+`app/shop/page.js`| `/shop`| `{}`
+`app/shop/[slug]/page.js`| `/shop/1`| `{ slug: '1' }`
+`app/shop/[tag]/[item]/page.js`| `/shop/1/2`| `{ tag: '1', item: '2' }`
+`app/shop/[...slug]/page.js`| `/shop/1/2`| `{ slug: ['1', '2'] }`
+
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/use-params#version-history)
 
-Version| Changes  
----|---  
-`v13.3.0`| `useParams` 도입.  
-  
-도움이 되었나요?
+Version| Changes
+---|---
+`v13.3.0`| `useParams` 도입.
 
 supported.
 

@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/guides/backend-for-frontend
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)Backend for Frontend
 
-페이지 복사
-
 # Next.js를 프런트엔드용 백엔드로 사용하는 방법
 
 최종 업데이트 2026년 2월 20일
@@ -27,19 +25,17 @@ Terminal
 [/code]
 
 > **알아두면 좋아요**: Next.js의 백엔드 기능은 완전한 백엔드 대체제가 아닙니다. 다음과 같은 API 계층 역할을 합니다:
-> 
+>
 >   * 공개적으로 접근 가능
 >   * 모든 HTTP 요청 처리
 >   * 모든 콘텐츠 유형 반환 가능
-> 
+>
 
 이 패턴을 구현하려면 다음을 사용하세요:
 
   * [라우트 핸들러](https://nextjs.org/docs/app/api-reference/file-conventions/route)
   * [`proxy`](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)
   * 페이지 라우터에서는 [API Routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)
-
-
 
 ## 공개 엔드포인트[](https://nextjs.org/docs/app/guides/backend-for-frontend#public-endpoints)
 
@@ -63,7 +59,7 @@ JavaScriptTypeScript
 JavaScriptTypeScript
 [code]
     import { submit } from '@/lib/submit'
-     
+
     export async function POST(request: Request) {
       try {
         await submit(request)
@@ -71,7 +67,7 @@ JavaScriptTypeScript
       } catch (reason) {
         const message =
           reason instanceof Error ? reason.message : 'Unexpected error'
-     
+
         return new Response(message, { status: 500 })
       }
     }
@@ -93,15 +89,11 @@ Next.js는 일반적인 엔드포인트에 대해 파일 관례를 제공합니�
   * [`manifest.json`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest)
   * [`robots.txt`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots)
 
-
-
 다음과 같은 사용자 정의 엔드포인트도 정의할 수 있습니다:
 
   * `llms.txt`
   * `rss.xml`
   * `.well-known`
-
-
 
 예를 들어 `app/rss.xml/route.ts`는 `rss.xml`용 라우트 핸들러를 만듭니다.
 
@@ -112,7 +104,7 @@ JavaScriptTypeScript
     export async function GET(request: Request) {
       const rssResponse = await fetch(/* rss endpoint */)
       const rssData = await rssResponse.json()
-     
+
       const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0">
     <channel>
@@ -131,9 +123,9 @@ JavaScriptTypeScript
      })}
     </channel>
     </rss>`
-     
+
       const headers = new Headers({ 'content-type': 'application/xml' })
-     
+
       return new Response(rssFeed, { headers })
     }
 [/code]
@@ -163,21 +155,21 @@ JavaScriptTypeScript
 JavaScriptTypeScript
 [code]
     import { sendMail, validateInputs } from '@/lib/email-transporter'
-     
+
     export async function POST(request: Request) {
       const formData = await request.formData()
       const email = formData.get('email')
       const contents = formData.get('contents')
-     
+
       try {
         await validateInputs({ email, contents })
         const info = await sendMail({ email, contents })
-     
+
         return Response.json({ messageId: info.messageId })
       } catch (reason) {
         const message =
           reason instanceof Error ? reason.message : 'Unexpected exception'
-     
+
         return new Response(message, { status: 500 })
       }
     }
@@ -192,11 +184,11 @@ JavaScriptTypeScript
     export async function POST(request: Request) {
       try {
         const clonedRequest = request.clone()
-     
+
         await request.body()
         await clonedRequest.body()
         await request.body() // Throws error
-     
+
         return new Response(null, { status: 204 })
       } catch {
         return new Response(null, { status: 500 })
@@ -209,28 +201,28 @@ JavaScriptTypeScript
 라우트 핸들러는 하나 이상의 소스에서 데이터를 변환, 필터링, 집계할 수 있습니다. 이를 통해 프런트엔드에서 로직을 분리하고 내부 시스템 노출을 방지합니다.
 
 또한 무거운 계산을 서버로 오프로드해 클라이언트의 배터리와 데이터 사용량을 줄일 수 있습니다.
-[code] 
+[code]
     import { parseWeatherData } from '@/lib/weather'
-     
+
     export async function POST(request: Request) {
       const body = await request.json()
       const searchParams = new URLSearchParams({ lat: body.lat, lng: body.lng })
-     
+
       try {
         const weatherResponse = await fetch(`${weatherEndpoint}?${searchParams}`)
-     
+
         if (!weatherResponse.ok) {
           /* handle error */
         }
-     
+
         const weatherData = await weatherResponse.text()
         const payload = parseWeatherData.asJSON(weatherData)
-     
+
         return new Response(payload, { status: 200 })
       } catch (reason) {
         const message =
           reason instanceof Error ? reason.message : 'Unexpected exception'
-     
+
         return new Response(message, { status: 500 })
       }
     }
@@ -247,26 +239,26 @@ JavaScriptTypeScript
 JavaScriptTypeScript
 [code]
     import { isValidRequest } from '@/lib/utils'
-     
+
     export async function POST(request: Request, { params }) {
       const clonedRequest = request.clone()
       const isValid = await isValidRequest(clonedRequest)
-     
+
       if (!isValid) {
         return new Response(null, { status: 400, statusText: 'Bad Request' })
       }
-     
+
       const { slug } = await params
       const pathname = slug.join('/')
       const proxyURL = new URL(pathname, 'https://nextjs.org')
       const proxyRequest = new Request(proxyURL, request)
-     
+
       try {
         return fetch(proxyRequest)
       } catch (reason) {
         const message =
           reason instanceof Error ? reason.message : 'Unexpected exception'
-     
+
         return new Response(message, { status: 500 })
       }
     }
@@ -276,8 +268,6 @@ JavaScriptTypeScript
 
   * `proxy` [재작성](https://nextjs.org/docs/app/guides/backend-for-frontend#proxy)
   * `next.config.js`의 [`rewrites`](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites)
-
-
 
 ## NextRequest와 NextResponse[](https://nextjs.org/docs/app/guides/backend-for-frontend#nextrequest-and-nextresponse)
 
@@ -296,18 +286,18 @@ Next.js는 [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request)
 JavaScriptTypeScript
 [code]
     import { type NextRequest, NextResponse } from 'next/server'
-     
+
     export async function GET(request: NextRequest) {
       const nextUrl = request.nextUrl
-     
+
       if (nextUrl.searchParams.get('redirect')) {
         return NextResponse.redirect(new URL('/', request.url))
       }
-     
+
       if (nextUrl.searchParams.get('rewrite')) {
         return NextResponse.rewrite(new URL('/', request.url))
       }
-     
+
       return NextResponse.json({ pathname: nextUrl.pathname })
     }
 [/code]
@@ -325,22 +315,22 @@ JavaScriptTypeScript
 JavaScriptTypeScript
 [code]
     import { type NextRequest, NextResponse } from 'next/server'
-     
+
     export async function GET(request: NextRequest) {
       const token = request.nextUrl.searchParams.get('token')
-     
+
       if (token !== process.env.REVALIDATE_SECRET_TOKEN) {
         return NextResponse.json({ success: false }, { status: 401 })
       }
-     
+
       const tag = request.nextUrl.searchParams.get('tag')
-     
+
       if (!tag) {
         return NextResponse.json({ success: false }, { status: 400 })
       }
-     
+
       revalidateTag(tag)
-     
+
       return NextResponse.json({ success: true })
     }
 [/code]
@@ -352,15 +342,15 @@ JavaScriptTypeScript
 JavaScriptTypeScript
 [code]
     import { type NextRequest, NextResponse } from 'next/server'
-     
+
     export async function GET(request: NextRequest) {
 [/code]
 
 const token = request.nextUrl.searchParams.get('session_token')
       const redirectUrl = request.nextUrl.searchParams.get('redirect_url')
-     
+
       const response = NextResponse.redirect(new URL(redirectUrl, request.url))
-     
+
       response.cookies.set({
         value: token,
         name: '_token',
@@ -369,7 +359,7 @@ const token = request.nextUrl.searchParams.get('session_token')
         httpOnly: true,
         expires: undefined, // session cookie
       })
-     
+
       return response
     }
 [/code]
@@ -381,7 +371,7 @@ app/api/route.ts
 JavaScriptTypeScript
 [code]
     import { redirect } from 'next/navigation'
-     
+
     export async function GET(request: Request) {
       redirect('https://nextjs.org/')
     }
@@ -400,11 +390,11 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import { isAuthenticated } from '@lib/auth'
-     
+
     export const config = {
       matcher: '/api/:function*',
     }
-     
+
     export function proxy(request: Request) {
       if (!isAuthenticated(request)) {
         return Response.json(
@@ -422,7 +412,7 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import { NextResponse } from 'next/server'
-     
+
     export function proxy(request: Request) {
       if (request.nextUrl.pathname === '/proxy-this-path') {
         const rewriteUrl = new URL('https://nextjs.org')
@@ -438,7 +428,7 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import { NextResponse } from 'next/server'
-     
+
     export function proxy(request: Request) {
       if (request.nextUrl.pathname === '/v1/docs') {
         request.nextUrl.pathname = '/v2/docs'
@@ -456,8 +446,6 @@ JavaScriptTypeScript
   * **업스트림 요청 헤더**: Proxy에서 `NextResponse.next({ request: { headers } })`는 서버가 수신하는 헤더를 수정하며 클라이언트에게 노출하지 않습니다.
   * **응답 헤더**: `new Response(..., { headers })`, `NextResponse.json(..., { headers })`, `NextResponse.next({ headers })`, 또는 `response.headers.set(...)`는 헤더를 클라이언트로 다시 보냅니다. 여기에 민감한 값을 추가하면 클라이언트가 볼 수 있습니다.
 
-
-
 [Proxy에서의 NextResponse 헤더](https://nextjs.org/docs/app/api-reference/functions/next-response#next)를 참고하세요.
 
 ### 레이트 리미팅[](https://nextjs.org/docs/app/guides/backend-for-frontend#rate-limiting)
@@ -470,14 +458,14 @@ JavaScriptTypeScript
 [code]
     import { NextResponse } from 'next/server'
     import { checkRateLimit } from '@/lib/rate-limit'
-     
+
     export async function POST(request: Request) {
       const { rateLimited } = await checkRateLimit(request)
-     
+
       if (rateLimited) {
         return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
       }
-     
+
       return new Response(null, { status: 204 })
     }
 [/code]
@@ -506,8 +494,6 @@ JavaScriptTypeScript
 
   * [CORS](https://nextjs.org/docs/app/api-reference/file-conventions/route#cors)
 
-
-
 ## 라이브러리 패턴[](https://nextjs.org/docs/app/guides/backend-for-frontend#library-patterns)
 
 커뮤니티 라이브러리는 Route Handler를 위해 팩토리 패턴을 사용하는 경우가 많습니다.
@@ -515,11 +501,11 @@ JavaScriptTypeScript
 /app/api/[...path]/route.ts
 [code]
     import { createHandler } from 'third-party-library'
-     
+
     const handler = createHandler({
       /* library-specific options */
     })
-     
+
     export const GET = handler
     // or
     export { handler as POST }
@@ -532,7 +518,7 @@ JavaScriptTypeScript
 proxy.ts
 [code]
     import { createMiddleware } from 'third-party-library'
-     
+
     export default createMiddleware()
 [/code]
 
@@ -565,8 +551,6 @@ proxy.ts
     * File API
   * 자주 폴링되는 데이터
 
-
-
 이러한 경우 [`swr`](https://swr.vercel.app/) 또는 [`react-query`](https://tanstack.com/query/latest/docs/framework/react/overview) 같은 커뮤니티 라이브러리를 사용하세요.
 
 ### 서버 액션[](https://nextjs.org/docs/app/guides/backend-for-frontend#server-actions)
@@ -586,7 +570,7 @@ proxy.ts
 app/hello-world/route.ts
 [code]
     export const dynamic = 'force-static'
-     
+
     export function GET() {
       return new Response('Hello World', { status: 200 })
     }
@@ -601,16 +585,14 @@ app/hello-world/route.ts
   * 오래 실행되는 핸들러는 타임아웃으로 종료될 수 있습니다.
   * 응답이 생성되면 연결이 종료되므로 WebSocket이 작동하지 않을 수 있습니다.
 
-
-
 ## API 레퍼런스
 
 Route Handler와 Proxy에 대해 자세히 알아보세요.
 
-### [route.js특수 파일 route.js에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/file-conventions/route)### [proxy.jsproxy.js 파일에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)
+- [route.js](https://nextjs.org/docs/app/api-reference/file-conventions/route)
+  - 특수 파일 route.js에 대한 API 레퍼런스.
 
-도움이 되었나요?
-
-지원됨.
+- [proxy.js](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)
+  - proxy.js 파일에 대한 API 레퍼런스.
 
 Send

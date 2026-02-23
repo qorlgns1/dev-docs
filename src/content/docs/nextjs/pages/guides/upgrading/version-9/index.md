@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/pages/guides/upgrading/version-9
 
 [Guides](https://nextjs.org/docs/pages/guides)[Upgrading](https://nextjs.org/docs/pages/guides/upgrading)Version 9
 
-페이지 복사
-
 # 버전 9로 업그레이드하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -46,19 +44,19 @@ Source URL: https://nextjs.org/docs/pages/guides/upgrading/version-9
 가능하다면 `pages/_app.js`에서 `getInitialProps`를 제거하는 것이 새로운 Next.js 기능을 활용하는 데 중요합니다!
 
 다음 `getInitialProps`는 아무 작업도 하지 않으므로 제거할 수 있습니다:
-[code] 
+[code]
     class MyApp extends App {
       // Remove me, I do nothing!
       static async getInitialProps({ Component, ctx }) {
         let pageProps = {}
-     
+
         if (Component.getInitialProps) {
           pageProps = await Component.getInitialProps(ctx)
         }
-     
+
         return { pageProps }
       }
-     
+
       render() {
         // ... etc
       }
@@ -82,14 +80,14 @@ TypeScript 정의는 `next` 패키지에 함께 게시되므로 충돌을 피하
 > 이 목록은 커뮤니티가 업그레이드를 돕기 위해 만들었습니다. 다른 차이점을 발견하면 다른 사용자들에게 도움이 되도록 이 목록에 풀 리퀘스트를 보내 주세요.
 
 이전:
-[code] 
+[code]
     import { NextContext } from 'next'
     import { NextAppContext, DefaultAppIProps } from 'next/app'
     import { NextDocumentContext, DefaultDocumentIProps } from 'next/document'
 [/code]
 
 이후
-[code] 
+[code]
     import { NextPageContext } from 'next'
     import { AppContext, AppInitialProps } from 'next/app'
     import { DocumentContext, DocumentInitialProps } from 'next/document'
@@ -104,9 +102,9 @@ Next.js와 무관한 용도의 `config` export는 다른 이름으로 변경해�
 ### `next/dynamic`은 로딩 중 기본으로 "loading..."을 렌더링하지 않습니다[](https://nextjs.org/docs/pages/guides/upgrading/version-9#nextdynamic-no-longer-renders-loading-by-default-while-loading)
 
 동적 컴포넌트는 로딩 중 기본적으로 아무것도 렌더링하지 않습니다. `loading` 속성을 설정해 이 동작을 계속 사용자 정의할 수 있습니다:
-[code] 
+[code]
     import dynamic from 'next/dynamic'
-     
+
     const DynamicComponentWithCustomLoading = dynamic(
       () => import('../components/hello2'),
       {
@@ -129,24 +127,24 @@ Next.js에는 이제 페이지 수준 구성 개념이 있으므로 일관성을
 수동으로 마이그레이션하거나 codemod가 생성할 결과를 확인하려면 아래를 참고하세요:
 
 **변경 전**
-[code] 
+[code]
     import { withAmp } from 'next/amp'
-     
+
     function Home() {
       return <h1>My AMP Page</h1>
     }
-     
+
     export default withAmp(Home)
     // or
     export default withAmp(Home, { hybrid: true })
 [/code]
 
 **변경 후**
-[code] 
+[code]
     export default function Home() {
       return <h1>My AMP Page</h1>
     }
-     
+
     export const config = {
       amp: true,
       // or
@@ -180,16 +178,16 @@ next.config.js
 이 동작에 의존하는 코드를 업데이트하는 것은 비교적 간단합니다! 애플리케이션 마이그레이션을 돕기 위해 변경 전/후 예제를 제공했습니다:
 
 **변경 전**
-[code] 
+[code]
     import dynamic from 'next/dynamic'
-     
+
     const HelloBundle = dynamic({
       modules: () => {
         const components = {
           Hello1: () => import('../components/hello1').then((m) => m.default),
           Hello2: () => import('../components/hello2').then((m) => m.default),
         }
-     
+
         return components
       },
       render: (props, { Hello1, Hello2 }) => (
@@ -200,21 +198,21 @@ next.config.js
         </div>
       ),
     })
-     
+
     function DynamicBundle() {
       return <HelloBundle title="Dynamic Bundle" />
     }
-     
+
     export default DynamicBundle
 [/code]
 
 **변경 후**
-[code] 
+[code]
     import dynamic from 'next/dynamic'
-     
+
     const Hello1 = dynamic(() => import('../components/hello1'))
     const Hello2 = dynamic(() => import('../components/hello2'))
-     
+
     function HelloBundle({ title }) {
       return (
         <div>
@@ -224,16 +222,10 @@ next.config.js
         </div>
       )
     }
-     
+
     function DynamicBundle() {
       return <HelloBundle title="Dynamic Bundle" />
     }
-     
+
     export default DynamicBundle
 [/code]
-
-도움이 되었나요?
-
-지원됨.
-
-전송

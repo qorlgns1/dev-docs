@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/guides/ci-build-caching
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)CI 빌드 캐싱
 
-페이지 복사
-
 # 지속적 통합(CI) 빌드 캐싱 구성 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -30,7 +28,7 @@ Next.js 캐싱은 자동으로 구성되어 있으므로 별도 작업이 필요
 ## CircleCI[](https://nextjs.org/docs/app/guides/ci-build-caching#circleci)
 
 `.circleci/config.yml`의 `save_cache` 단계를 편집하여 `.next/cache`를 포함하세요:
-[code] 
+[code]
     steps:
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
@@ -44,7 +42,7 @@ Next.js 캐싱은 자동으로 구성되어 있으므로 별도 작업이 필요
 ## Travis CI[](https://nextjs.org/docs/app/guides/ci-build-caching#travis-ci)
 
 `.travis.yml`에 다음을 추가하거나 병합하세요:
-[code] 
+[code]
     cache:
       directories:
         - $HOME/.cache/yarn
@@ -55,7 +53,7 @@ Next.js 캐싱은 자동으로 구성되어 있으므로 별도 작업이 필요
 ## GitLab CI[](https://nextjs.org/docs/app/guides/ci-build-caching#gitlab-ci)
 
 `.gitlab-ci.yml`에 다음을 추가하거나 병합하세요:
-[code] 
+[code]
     cache:
       key: ${CI_COMMIT_REF_SLUG}
       paths:
@@ -70,7 +68,7 @@ Next.js 캐싱은 자동으로 구성되어 있으므로 별도 작업이 필요
 ## AWS CodeBuild[](https://nextjs.org/docs/app/guides/ci-build-caching#aws-codebuild)
 
 `buildspec.yml`에 다음을 추가(또는 병합)하세요:
-[code] 
+[code]
     cache:
       paths:
         - 'node_modules/**/*' # Cache `node_modules` for faster `yarn` or `npm i`
@@ -80,7 +78,7 @@ Next.js 캐싱은 자동으로 구성되어 있으므로 별도 작업이 필요
 ## GitHub Actions[](https://nextjs.org/docs/app/guides/ci-build-caching#github-actions)
 
 GitHub의 [actions/cache](https://github.com/actions/cache)를 사용하여 워크플로 파일에 다음 단계를 추가하세요:
-[code] 
+[code]
     uses: actions/cache@v4
     with:
       # See here for caching with `yarn`, `bun` or other package managers https://github.com/actions/cache/blob/main/examples.md or you can leverage caching with actions/setup-node https://github.com/actions/setup-node
@@ -97,14 +95,14 @@ GitHub의 [actions/cache](https://github.com/actions/cache)를 사용하여 워�
 ## Bitbucket Pipelines[](https://nextjs.org/docs/app/guides/ci-build-caching#bitbucket-pipelines)
 
 `bitbucket-pipelines.yml`의 최상단( `pipelines`와 동일한 수준)에 다음을 추가하거나 병합하세요:
-[code] 
+[code]
     definitions:
       caches:
         nextcache: .next/cache
 [/code]
 
 그런 다음 파이프라인 `step`의 `caches` 섹션에서 이를 참조하세요:
-[code] 
+[code]
     - step:
         name: your_step_name
         caches:
@@ -115,14 +113,14 @@ GitHub의 [actions/cache](https://github.com/actions/cache)를 사용하여 워�
 ## Heroku[](https://nextjs.org/docs/app/guides/ci-build-caching#heroku)
 
 Heroku의 [커스텀 캐시](https://devcenter.heroku.com/articles/nodejs-support#custom-caching)를 사용해 최상위 package.json에 `cacheDirectories` 배열을 추가하세요:
-[code] 
+[code]
     "cacheDirectories": [".next/cache"]
 [/code]
 
 ## Azure Pipelines[](https://nextjs.org/docs/app/guides/ci-build-caching#azure-pipelines)
 
 Azure Pipelines의 [Cache 작업](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/cache)을 사용해 `next build`를 실행하기 전에 파이프라인 yaml 파일에 다음 작업을 추가하세요:
-[code] 
+[code]
     - task: Cache@2
       displayName: 'Cache .next/cache'
       inputs:
@@ -133,12 +131,12 @@ Azure Pipelines의 [Cache 작업](https://docs.microsoft.com/en-us/azure/devops/
 ## Jenkins (파이프라인)[](https://nextjs.org/docs/app/guides/ci-build-caching#jenkins-pipeline)
 
 Jenkins의 [Job Cacher](https://www.jenkins.io/doc/pipeline/steps/jobcacher/) 플러그인을 사용하여 `next build` 또는 `npm install`을 실행하는 위치에 다음 빌드 단계를 `Jenkinsfile`에 추가하세요:
-[code] 
+[code]
     stage("Restore npm packages") {
         steps {
             // Writes lock-file to cache based on the GIT_COMMIT hash
             writeFile file: "next-lock.cache", text: "$GIT_COMMIT"
-     
+
             cache(caches: [
                 arbitraryFileCache(
                     path: "node_modules",
@@ -154,7 +152,7 @@ Jenkins의 [Job Cacher](https://www.jenkins.io/doc/pipeline/steps/jobcacher/) �
         steps {
             // Writes lock-file to cache based on the GIT_COMMIT hash
             writeFile file: "next-lock.cache", text: "$GIT_COMMIT"
-     
+
             cache(caches: [
                 arbitraryFileCache(
                     path: ".next/cache",
@@ -168,9 +166,5 @@ Jenkins의 [Job Cacher](https://www.jenkins.io/doc/pipeline/steps/jobcacher/) �
         }
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

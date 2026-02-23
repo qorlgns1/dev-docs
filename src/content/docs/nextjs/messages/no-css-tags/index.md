@@ -25,7 +25,7 @@ styles.css
 [code]
     /* Root stylesheet */
     @import 'extra.css';
-     
+
     body {
       /* ... */
     }
@@ -36,7 +36,7 @@ styles.css
 pages/index.js
 [code]
     import styles from './extra.module.css'
-     
+
     export class Home {
       render() {
         return (
@@ -51,9 +51,5 @@ pages/index.js
 [/code]
 
 애플리케이션에 CSS를 포함하는 모든 방법을 알아보려면 [Built-In CSS Support](https://nextjs.org/docs/app/getting-started/css) 문서를 참고하세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

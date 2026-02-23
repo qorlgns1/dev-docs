@@ -7,10 +7,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/not-found
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)not-found.js
-
-페이지 복사
-
 # not-found.js
 
 최종 업데이트: 2026년 2월 20일
@@ -19,8 +15,6 @@ Next.js는 찾을 수 없는 상황을 처리하기 위해 두 가지 규칙을 
 
   * **`not-found.js`** : 라우트 세그먼트에서 [`notFound`](https://nextjs.org/docs/app/api-reference/functions/not-found) 함수를 호출할 때 사용됩니다.
   * **`global-not-found.js`** : 앱 전체에서 일치하지 않는 라우트에 대한 전역 404 페이지를 정의할 때 사용됩니다. 이는 라우팅 단계에서 처리되며 레이아웃이나 페이지 렌더링에 의존하지 않습니다.
-
-
 
 ## `not-found.js`[](https://nextjs.org/docs/app/api-reference/file-conventions/not-found#not-foundjs)
 
@@ -31,7 +25,7 @@ app/not-found.tsx
 JavaScriptTypeScript
 ```
     import Link from 'next/link'
-     
+
     export default function NotFound() {
       return (
         <div>
@@ -56,20 +50,18 @@ JavaScriptTypeScript
   * 앱에 여러 루트 레이아웃(예: `app/(admin)/layout.tsx`, `app/(shop)/layout.tsx`)이 있어 단일 레이아웃로 전역 404를 구성할 수 없는 경우
   * 루트 레이아웃이 최상위 동적 세그먼트(예: `app/[country]/layout.tsx`)로 정의되어 일관된 404 페이지 구성 자체가 어려운 경우
 
-
-
 이를 활성화하려면 `next.config.ts`에 `globalNotFound` 플래그를 추가합니다.
 
 next.config.ts
 ```
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         globalNotFound: true,
       },
     }
-     
+
     export default nextConfig
 ```
 
@@ -83,14 +75,14 @@ JavaScriptTypeScript
     import './globals.css'
     import { Inter } from 'next/font/google'
     import type { Metadata } from 'next'
-     
+
     const inter = Inter({ subsets: ['latin'] })
-     
+
     export const metadata: Metadata = {
       title: '404 - Page Not Found',
       description: 'The page you are looking for does not exist.',
     }
-     
+
     export default function GlobalNotFound() {
       return (
         <html lang="en" className={inter.className}>
@@ -125,7 +117,7 @@ JavaScriptTypeScript
 ```
     import Link from 'next/link'
     import { headers } from 'next/headers'
-     
+
     export default async function NotFound() {
       const headersList = await headers()
       const domain = headersList.get('host')
@@ -155,12 +147,12 @@ app/global-not-found.tsx
 JavaScriptTypeScript
 ```
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: 'Not Found',
       description: 'The page you are looking for does not exist.',
     }
-     
+
     export default function GlobalNotFound() {
       return (
         <html lang="en">
@@ -177,14 +169,10 @@ JavaScriptTypeScript
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/not-found#version-history)
 
-Version| Changes  
----|---  
-`v15.4.0`| `global-not-found.js` 도입(실험 기능).  
-`v13.3.0`| 루트 `app/not-found`가 전역 일치하지 않는 URL을 처리.  
-`v13.0.0`| `not-found` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v15.4.0`| `global-not-found.js` 도입(실험 기능).
+`v13.3.0`| 루트 `app/not-found`가 전역 일치하지 않는 URL을 처리.
+`v13.0.0`| `not-found` 도입.
 
 보내기

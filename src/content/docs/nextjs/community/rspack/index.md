@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험적이며 변경될 수 있으므로 �
 
 출처 URL: https://nextjs.org/docs/community/rspack
 
-[Next.js Docs](https://nextjs.org/docs)[Community](https://nextjs.org/docs/community)Rspack
-
-페이지 복사
-
 # Rspack 통합
 
 이 기능은 현재 실험적이며 변경될 수 있으므로 프로덕션 환경에서는 권장되지 않습니다. 직접 사용해 보고 [GitHub](https://github.com/vercel/next.js/issues)에서 피드백을 공유해 주세요.
@@ -22,9 +18,5 @@ Rspack 팀은 Rspack 팀과의 [파트너십 노력](https://rspack.rs/blog/rspa
 이 플러그인은 현재 실험 단계입니다. 문제를 발견하면 [이 토론 스레드](https://github.com/vercel/next.js/discussions/77800)에 피드백을 남겨 주세요.
 
 [Rspack 문서](https://rspack.rs/guide/tech/next)에서 더 알아보고 [이 예제](https://github.com/vercel/next.js/tree/canary/examples/with-rspack)를 직접 시도해 보세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

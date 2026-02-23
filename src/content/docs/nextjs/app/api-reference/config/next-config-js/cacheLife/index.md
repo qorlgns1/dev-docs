@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 
 원본 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife
 
-[설정](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)cacheLife
-
-페이지 복사
-
 # cacheLife
 
 최종 업데이트 2026년 2월 20일
@@ -26,7 +22,7 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
       cacheLife: {
@@ -37,7 +33,7 @@ JavaScriptTypeScript
         },
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -48,7 +44,7 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     export async function getCachedData() {
       'use cache'
       cacheLife('blog')
@@ -61,20 +57,23 @@ JavaScriptTypeScript
 
 구성 객체에는 다음 형식의 키 값이 포함됩니다:
 
-**속성**| **값**| **설명**| **요구 사항**  
----|---|---|---  
-`stale`| `number`| 클라이언트가 서버 확인 없이 값을 캐시해야 하는 기간.| 선택  
-`revalidate`| `number`| 캐시가 서버에서 새로 고쳐야 하는 빈도로, 재검증 중에는 오래된 값이 제공될 수 있습니다.| 선택  
-`expire`| `number`| 값을 동적 모드로 전환하기 전에 오래된 상태로 유지할 수 있는 최대 기간으로, `revalidate`보다 길어야 합니다.| 선택 - `revalidate`보다 길어야 함  
-  
+**속성**| **값**| **설명**| **요구 사항**
+---|---|---|---
+`stale`| `number`| 클라이언트가 서버 확인 없이 값을 캐시해야 하는 기간.| 선택
+`revalidate`| `number`| 캐시가 서버에서 새로 고쳐야 하는 빈도로, 재검증 중에는 오래된 값이 제공될 수 있습니다.| 선택
+`expire`| `number`| 값을 동적 모드로 전환하기 전에 오래된 상태로 유지할 수 있는 최대 기간으로, `revalidate`보다 길어야 합니다.| 선택 - `revalidate`보다 길어야 함
+
 ## 관련 항목
 
 관련 API 레퍼런스를 확인하세요.
 
-### [use cacheNext.js 애플리케이션에서 데이터를 캐시하기 위한 "use cache" 지시자를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/directives/use-cache)### [cacheHandlersNext.js에서 use cache 지시자에 사용할 사용자 정의 캐시 핸들러를 구성하세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers)### [cacheLife캐시된 함수나 컴포넌트의 캐시 만료 시간을 설정하기 위해 cacheLife 함수를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
+- [use cache](https://nextjs.org/docs/app/api-reference/directives/use-cache)
+  - Next.js 애플리케이션에서 데이터를 캐시하기 위한 "use cache" 지시자를 사용하는 방법을 알아보세요.
 
-도움이 되었나요?
+- [cacheHandlers](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers)
+  - Next.js에서 use cache 지시자에 사용할 사용자 정의 캐시 핸들러를 구성하세요.
 
-지원됨.
+- [cacheLife](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
+  - 캐시된 함수나 컴포넌트의 캐시 만료 시간을 설정하기 위해 cacheLife 함수를 사용하는 방법을 알아보세요.
 
 보내기

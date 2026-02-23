@@ -1,150 +1,155 @@
 ---
-title: 'File-system conventions: layout.js'
+title: 'layout.js'
 description: 'The  file is used to define a layout in your Next.js application.'
 ---
 
-# File-system conventions: layout.js | Next.js
-
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/layout
-
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)layout.js
-
-Copy page
 
 # layout.js
 
-Last updated February 20, 2026
-
 The `layout` file is used to define a layout in your Next.js application.
 
-app/dashboard/layout.tsx
+```tsx filename="app/dashboard/layout.tsx" switcher
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return <section>{children}</section>
+}
+```
 
-JavaScriptTypeScript
-[code]
-    export default function DashboardLayout({
-      children,
-    }: {
-      children: React.ReactNode
-    }) {
-      return <section>{children}</section>
-    }
-[/code]
+```jsx filename="app/dashboard/layout.js" switcher
+export default function DashboardLayout({ children }) {
+  return <section>{children}</section>
+}
+```
 
 A **root layout** is the top-most layout in the root `app` directory. It is used to define the `<html>` and `<body>` tags and other globally shared UI.
 
-app/layout.tsx
+```tsx filename="app/layout.tsx" switcher
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
 
-JavaScriptTypeScript
-[code]
-    export default function RootLayout({
-      children,
-    }: {
-      children: React.ReactNode
-    }) {
-      return (
-        <html lang="en">
-          <body>{children}</body>
-        </html>
-      )
-    }
-[/code]
+```jsx filename="app/layout.js" switcher
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
 
-## Reference[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#reference)
+## Reference
 
-### Props[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#props)
+### Props
 
-#### `children` (required)[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#children-required)
+#### `children` (required)
 
 Layout components should accept and use a `children` prop. During rendering, `children` will be populated with the route segments the layout is wrapping. These will primarily be the component of a child [Layout](https://nextjs.org/docs/app/api-reference/file-conventions/page) (if it exists) or [Page](https://nextjs.org/docs/app/api-reference/file-conventions/page), but could also be other special files like [Loading](https://nextjs.org/docs/app/api-reference/file-conventions/loading) or [Error](https://nextjs.org/docs/app/getting-started/error-handling) when applicable.
 
-#### `params` (optional)[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#params-optional)
+#### `params` (optional)
 
 A promise that resolves to an object containing the [dynamic route parameters](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes) object from the root segment down to that layout.
 
-app/dashboard/[team]/layout.tsx
+```tsx filename="app/dashboard/[team]/layout.tsx" switcher
+export default async function Layout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Promise<{ team: string }>
+}) {
+  const { team } = await params
+}
+```
 
-JavaScriptTypeScript
-[code]
-    export default async function Layout({
-      children,
-      params,
-    }: {
-      children: React.ReactNode
-      params: Promise<{ team: string }>
-    }) {
-      const { team } = await params
-    }
-[/code]
+```jsx filename="app/dashboard/[team]/layout.js" switcher
+export default async function Layout({ children, params }) {
+  const { team } = await params
+}
+```
 
-Example Route| URL| `params`  
----|---|---  
-`app/dashboard/[team]/layout.js`| `/dashboard/1`| `Promise<{ team: '1' }>`  
-`app/shop/[tag]/[item]/layout.js`| `/shop/1/2`| `Promise<{ tag: '1', item: '2' }>`  
-`app/blog/[...slug]/layout.js`| `/blog/1/2`| `Promise<{ slug: ['1', '2'] }>`  
-  
-  * Since the `params` prop is a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function to access the values.
-    * In version 14 and earlier, `params` was a synchronous prop. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.
+| Example Route                     | URL            | `params`                           |
+| --------------------------------- | -------------- | ---------------------------------- |
+| `app/dashboard/[team]/layout.js`  | `/dashboard/1` | `Promise<{ team: '1' }>`           |
+| `app/shop/[tag]/[item]/layout.js` | `/shop/1/2`    | `Promise<{ tag: '1', item: '2' }>` |
+| `app/blog/[...slug]/layout.js`    | `/blog/1/2`    | `Promise<{ slug: ['1', '2'] }>`    |
 
+* Since the `params` prop is a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function to access the values.
+  * In version 14 and earlier, `params` was a synchronous prop. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.
 
-
-### Layout Props Helper[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#layout-props-helper)
+### Layout Props Helper
 
 You can type layouts with `LayoutProps` to get a strongly typed `params` and named slots inferred from your directory structure. `LayoutProps` is a globally available helper.
 
-app/dashboard/layout.tsx
-[code]
-    export default function Layout(props: LayoutProps<'/dashboard'>) {
-      return (
-        <section>
-          {props.children}
-          {/* If you have app/dashboard/@analytics, it appears as a typed slot: */}
-          {/* {props.analytics} */}
-        </section>
-      )
-    }
-[/code]
+```tsx filename="app/dashboard/layout.tsx"
+export default function Layout(props: LayoutProps<'/dashboard'>) {
+  return (
+    <section>
+      {props.children}
+      {/* If you have app/dashboard/@analytics, it appears as a typed slot: */}
+      {/* {props.analytics} */}
+    </section>
+  )
+}
+```
 
-> **Good to know** :
-> 
->   * Types are generated during `next dev`, `next build` or `next typegen`.
->   * After type generation, the `LayoutProps` helper is globally available. It doesn't need to be imported.
-> 
+> **Good to know**:
+>
+> * Types are generated during `next dev`, `next build` or `next typegen`.
+> * After type generation, the `LayoutProps` helper is globally available. It doesn't need to be imported.
 
+### Root Layout
 
-### Root Layout[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout)
+The `app` directory **must** include a **root layout**, which is the top-most layout in the root `app` directory. Typically, the root layout is `app/layout.js`.
 
-The `app` directory **must** include a **root layout** , which is the top-most layout in the root `app` directory. Typically, the root layout is `app/layout.js`.
+```tsx filename="app/layout.tsx" switcher
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
 
-app/layout.tsx
+```jsx filename="app/layout.js" switcher
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
 
-JavaScriptTypeScript
-[code]
-    export default function RootLayout({
-      children,
-    }: {
-      children: React.ReactNode
-    }) {
-      return (
-        <html>
-          <body>{children}</body>
-        </html>
-      )
-    }
-[/code]
+* The root layout **must** define `<html>` and `<body>` tags.
+  * You should **not** manually add `<head>` tags such as `<title>` and `<meta>` to root layouts. Instead, you should use the [Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images) which automatically handles advanced requirements such as streaming and de-duplicating `<head>` elements.
+* You can create **multiple root layouts**. Any layout without a `layout.js` above it is a root layout. Two common approaches:
+  * Using [route groups](https://nextjs.org/docs/app/api-reference/file-conventions/route-groups) like `app/(shop)/layout.js` and `app/(marketing)/layout.js`
+  * Omitting `app/layout.js` so layouts in subdirectories like `app/dashboard/layout.js` and `app/blog/layout.js` each become root layouts for their respective directories.
+  * Navigating **across multiple root layouts** will cause a **full page load** (as opposed to a client-side navigation).
+* The root layout can be under a **dynamic segment**, for example when implementing [internationalization](https://nextjs.org/docs/app/guides/internationalization) with `app/[lang]/layout.js`.
 
-  * The root layout **must** define `<html>` and `<body>` tags.
-    * You should **not** manually add `<head>` tags such as `<title>` and `<meta>` to root layouts. Instead, you should use the [Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images) which automatically handles advanced requirements such as streaming and de-duplicating `<head>` elements.
-  * You can create **multiple root layouts**. Any layout without a `layout.js` above it is a root layout. Two common approaches:
-    * Using [route groups](https://nextjs.org/docs/app/api-reference/file-conventions/route-groups) like `app/(shop)/layout.js` and `app/(marketing)/layout.js`
-    * Omitting `app/layout.js` so layouts in subdirectories like `app/dashboard/layout.js` and `app/blog/layout.js` each become root layouts for their respective directories.
-    * Navigating **across multiple root layouts** will cause a **full page load** (as opposed to a client-side navigation).
-  * The root layout can be under a **dynamic segment** , for example when implementing [internationalization](https://nextjs.org/docs/app/guides/internationalization) with `app/[lang]/layout.js`.
+## Caveats
 
-
-
-## Caveats[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#caveats)
-
-### Request Object[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#request-object)
+### Request Object
 
 Layouts are cached in the client during navigation to avoid unnecessary server requests.
 
@@ -152,357 +157,531 @@ Layouts are cached in the client during navigation to avoid unnecessary server r
 
 To access the request object, you can use [`headers`](https://nextjs.org/docs/app/api-reference/functions/headers) and [`cookies`](https://nextjs.org/docs/app/api-reference/functions/cookies) APIs in [Server Components](https://nextjs.org/docs/app/getting-started/server-and-client-components) and Functions.
 
-app/shop/layout.tsx
+```tsx filename="app/shop/layout.tsx" switcher
+import { cookies } from 'next/headers'
 
-JavaScriptTypeScript
-[code]
-    import { cookies } from 'next/headers'
-     
-    export default async function Layout({ children }) {
-      const cookieStore = await cookies()
-      const theme = cookieStore.get('theme')
-      return '...'
-    }
-[/code]
+export default async function Layout({ children }) {
+  const cookieStore = await cookies()
+  const theme = cookieStore.get('theme')
+  return '...'
+}
+```
 
-### Query params[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#query-params)
+```jsx filename="app/shop/layout.js" switcher
+import { cookies } from 'next/headers'
+
+export default async function Layout({ children }) {
+  const cookieStore = await cookies()
+  const theme = cookieStore.get('theme')
+  return '...'
+}
+```
+
+### Query params
 
 Layouts do not rerender on navigation, so they cannot access search params which would otherwise become stale.
 
 To access updated query parameters, you can use the Page [`searchParams`](https://nextjs.org/docs/app/api-reference/file-conventions/page#searchparams-optional) prop, or read them inside a Client Component using the [`useSearchParams`](https://nextjs.org/docs/app/api-reference/functions/use-search-params) hook. Since Client Components re-render on navigation, they have access to the latest query parameters.
 
-app/ui/search.tsx
+```tsx filename="app/ui/search.tsx" switcher
+'use client'
 
-JavaScriptTypeScript
-[code]
-    'use client'
-     
-    import { useSearchParams } from 'next/navigation'
-     
-    export default function Search() {
-      const searchParams = useSearchParams()
-     
-      const search = searchParams.get('search')
-     
-      return '...'
-    }
-[/code]
+import { useSearchParams } from 'next/navigation'
 
-app/shop/layout.tsx
+export default function Search() {
+  const searchParams = useSearchParams()
 
-JavaScriptTypeScript
-[code]
-    import Search from '@/app/ui/search'
-     
-    export default function Layout({ children }) {
-      return (
-        <>
-          <Search />
-          {children}
-        </>
-      )
-    }
-[/code]
+  const search = searchParams.get('search')
 
-### Pathname[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#pathname)
+  return '...'
+}
+```
+
+```jsx filename="app/ui/search.js" switcher
+'use client'
+
+import { useSearchParams } from 'next/navigation'
+
+export default function Search() {
+  const searchParams = useSearchParams()
+
+  const search = searchParams.get('search')
+
+  return '...'
+}
+```
+
+```tsx filename="app/shop/layout.tsx" switcher
+import Search from '@/app/ui/search'
+
+export default function Layout({ children }) {
+  return (
+    <>
+      <Search />
+      {children}
+    </>
+  )
+}
+```
+
+```jsx filename="app/shop/layout.js" switcher
+import Search from '@/app/ui/search'
+
+export default function Layout({ children }) {
+  return (
+    <>
+      <Search />
+      {children}
+    </>
+  )
+}
+```
+
+### Pathname
 
 Layouts do not re-render on navigation, so they do not access pathname which would otherwise become stale.
 
 To access the current pathname, you can read it inside a Client Component using the [`usePathname`](https://nextjs.org/docs/app/api-reference/functions/use-pathname) hook. Since Client Components re-render during navigation, they have access to the latest pathname.
 
-app/ui/breadcrumbs.tsx
+```tsx filename="app/ui/breadcrumbs.tsx" switcher
+'use client'
 
-JavaScriptTypeScript
-[code]
-    'use client'
-     
-    import { usePathname } from 'next/navigation'
-     
-    // Simplified breadcrumbs logic
-    export default function Breadcrumbs() {
-      const pathname = usePathname()
-      const segments = pathname.split('/')
-     
-      return (
-        <nav>
-          {segments.map((segment, index) => (
-            <span key={index}>
-              {' > '}
-              {segment}
-            </span>
-          ))}
-        </nav>
-      )
-    }
-[/code]
+import { usePathname } from 'next/navigation'
 
-app/docs/layout.tsx
+// Simplified breadcrumbs logic
+export default function Breadcrumbs() {
+  const pathname = usePathname()
+  const segments = pathname.split('/')
 
-JavaScriptTypeScript
-[code]
-    import { Breadcrumbs } from '@/app/ui/Breadcrumbs'
-     
-    export default function Layout({ children }) {
-      return (
-        <>
-          <Breadcrumbs />
-          <main>{children}</main>
-        </>
-      )
-    }
-[/code]
+  return (
+    <nav>
+      {segments.map((segment, index) => (
+        <span key={index}>
+          {' > '}
+          {segment}
+        </span>
+      ))}
+    </nav>
+  )
+}
+```
 
-### Fetching Data[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#fetching-data)
+```jsx filename="app/ui/breadcrumbs.js" switcher
+'use client'
+
+import { usePathname } from 'next/navigation'
+
+// Simplified breadcrumbs logic
+export default function Breadcrumbs() {
+  const pathname = usePathname()
+  const segments = pathname.split('/')
+
+  return (
+    <nav>
+      {segments.map((segment, index) => (
+        <span key={index}>
+          {' > '}
+          {segment}
+        </span>
+      ))}
+    </nav>
+  )
+}
+```
+
+```tsx filename="app/docs/layout.tsx" switcher
+import { Breadcrumbs } from '@/app/ui/Breadcrumbs'
+
+export default function Layout({ children }) {
+  return (
+    <>
+      <Breadcrumbs />
+      <main>{children}</main>
+    </>
+  )
+}
+```
+
+```jsx filename="app/docs/layout.js" switcher
+import { Breadcrumbs } from '@/app/ui/Breadcrumbs'
+
+export default function Layout({ children }) {
+  return (
+    <>
+      <Breadcrumbs />
+      <main>{children}</main>
+    </>
+  )
+}
+```
+
+### Fetching Data
 
 Layouts cannot pass data to their `children`. However, you can fetch the same data in a route more than once, and use React [`cache`](https://react.dev/reference/react/cache) to dedupe the requests without affecting performance.
 
 Alternatively, when using [`fetch`](https://nextjs.org/docs/app/api-reference/functions/fetch)in Next.js, requests are automatically deduped.
 
-app/lib/data.ts
+```tsx filename="app/lib/data.ts" switcher
+export async function getUser(id: string) {
+  const res = await fetch(`https://.../users/${id}`)
+  return res.json()
+}
+```
 
-JavaScriptTypeScript
-[code]
-    export async function getUser(id: string) {
-      const res = await fetch(`https://.../users/${id}`)
-      return res.json()
-    }
-[/code]
+```tsx filename="app/dashboard/layout.tsx" switcher
+import { getUser } from '@/app/lib/data'
+import { UserName } from '@/app/ui/user-name'
 
-app/dashboard/layout.tsx
+export default async function Layout({ children }) {
+  const user = await getUser('1')
 
-JavaScriptTypeScript
-[code]
-    import { getUser } from '@/app/lib/data'
-    import { UserName } from '@/app/ui/user-name'
-     
-    export default async function Layout({ children }) {
-      const user = await getUser('1')
-     
-      return (
-        <>
-          <nav>
-            {/* ... */}
-            <UserName user={user.name} />
-          </nav>
-          {children}
-        </>
-      )
-    }
-[/code]
+  return (
+    <>
+      <nav>
+        {/* ... */}
+        <UserName user={user.name} />
+      </nav>
+      {children}
+    </>
+  )
+}
+```
 
-app/dashboard/page.tsx
+```jsx filename="app/dashboard/layout.js" switcher
+import { getUser } from '@/app/lib/data'
+import { UserName } from '@/app/ui/user-name'
 
-JavaScriptTypeScript
-[code]
-    import { getUser } from '@/app/lib/data'
-    import { UserName } from '@/app/ui/user-name'
-     
-    export default async function Page() {
-      const user = await getUser('1')
-     
-      return (
-        <div>
-          <h1>Welcome {user.name}</h1>
-        </div>
-      )
-    }
-[/code]
+export default async function Layout({ children }) {
+  const user = await getUser('1')
 
-### Accessing child segments[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#accessing-child-segments)
+  return (
+    <>
+      <nav>
+        {/* ... */}
+        <UserName user={user.name} />
+      </nav>
+      {children}
+    </>
+  )
+}
+```
+
+```tsx filename="app/dashboard/page.tsx" switcher
+import { getUser } from '@/app/lib/data'
+import { UserName } from '@/app/ui/user-name'
+
+export default async function Page() {
+  const user = await getUser('1')
+
+  return (
+    <div>
+      <h1>Welcome {user.name}</h1>
+    </div>
+  )
+}
+```
+
+```jsx filename="app/dashboard/page.js" switcher
+import { getUser } from '@/app/lib/data'
+import { UserName } from '@/app/ui/user-name'
+
+export default async function Page() {
+  const user = await getUser('1')
+
+  return (
+    <div>
+      <h1>Welcome {user.name}</h1>
+    </div>
+  )
+}
+```
+
+### Accessing child segments
 
 Layouts do not have access to the route segments below itself. To access all route segments, you can use [`useSelectedLayoutSegment`](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment) or [`useSelectedLayoutSegments`](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments) in a Client Component.
 
-app/ui/nav-link.tsx
+```tsx filename="app/ui/nav-link.tsx" switcher
+'use client'
 
-JavaScriptTypeScript
-[code]
-    'use client'
-     
-    import Link from 'next/link'
-    import { useSelectedLayoutSegment } from 'next/navigation'
-     
-    export default function NavLink({
-      slug,
-      children,
-    }: {
-      slug: string
-      children: React.ReactNode
-    }) {
-      const segment = useSelectedLayoutSegment()
-      const isActive = slug === segment
-     
-      return (
-        <Link
-          href={`/blog/${slug}`}
-          // Change style depending on whether the link is active
-          style={{ fontWeight: isActive ? 'bold' : 'normal' }}
-        >
-          {children}
-        </Link>
-      )
-    }
-[/code]
+import Link from 'next/link'
+import { useSelectedLayoutSegment } from 'next/navigation'
 
-app/blog/layout.tsx
+export default function NavLink({
+  slug,
+  children,
+}: {
+  slug: string
+  children: React.ReactNode
+}) {
+  const segment = useSelectedLayoutSegment()
+  const isActive = slug === segment
 
-JavaScriptTypeScript
-[code]
-    import { NavLink } from './nav-link'
-    import getPosts from './get-posts'
-     
-    export default async function Layout({
-      children,
-    }: {
-      children: React.ReactNode
-    }) {
-      const featuredPosts = await getPosts()
-      return (
-        <div>
-          {featuredPosts.map((post) => (
-            <div key={post.id}>
-              <NavLink slug={post.slug}>{post.title}</NavLink>
-            </div>
-          ))}
-          <div>{children}</div>
+  return (
+    <Link
+      href={`/blog/${slug}`}
+      // Change style depending on whether the link is active
+      style={{ fontWeight: isActive ? 'bold' : 'normal' }}
+    >
+      {children}
+    </Link>
+  )
+}
+```
+
+```jsx filename="app/ui/nav-link.js" switcher
+'use client'
+
+import Link from 'next/link'
+import { useSelectedLayoutSegment } from 'next/navigation'
+
+export default function NavLinks({ slug, children }) {
+  const segment = useSelectedLayoutSegment()
+  const isActive = slug === segment
+
+  return (
+    <Link
+      href={`/blog/${slug}`}
+      style={{ fontWeight: isActive ? 'bold' : 'normal' }}
+    >
+      {children}
+    </Link>
+  )
+}
+```
+
+```tsx filename="app/blog/layout.tsx" switcher
+import { NavLink } from './nav-link'
+import getPosts from './get-posts'
+
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const featuredPosts = await getPosts()
+  return (
+    <div>
+      {featuredPosts.map((post) => (
+        <div key={post.id}>
+          <NavLink slug={post.slug}>{post.title}</NavLink>
         </div>
-      )
-    }
-[/code]
+      ))}
+      <div>{children}</div>
+    </div>
+  )
+}
+```
 
-## Examples[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#examples)
+```jsx filename="app/blog/layout.js" switcher
+import { NavLink } from './nav-link'
+import getPosts from './get-posts'
 
-### Metadata[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#metadata)
+export default async function Layout({ children }) {
+  const featuredPosts = await getPosts()
+  return (
+    <div>
+      {featuredPosts.map((post) => (
+        <div key={post.id}>
+          <NavLink slug={post.slug}>{post.title}</NavLink>
+        </div>
+      ))}
+      <div>{children}</div>
+    </div>
+  )
+}
+```
+
+## Examples
+
+### Metadata
 
 You can modify the `<head>` HTML elements such as `title` and `meta` using the [`metadata` object](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#the-metadata-object) or [`generateMetadata` function](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function).
 
-app/layout.tsx
+```tsx filename="app/layout.tsx" switcher
+import type { Metadata } from 'next'
 
-JavaScriptTypeScript
-[code]
-    import type { Metadata } from 'next'
-     
-    export const metadata: Metadata = {
-      title: 'Next.js',
-    }
-     
-    export default function Layout({ children }: { children: React.ReactNode }) {
-      return '...'
-    }
-[/code]
+export const metadata: Metadata = {
+  title: 'Next.js',
+}
 
-> **Good to know** : You should **not** manually add `<head>` tags such as `<title>` and `<meta>` to root layouts. Instead, use the [Metadata APIs](https://nextjs.org/docs/app/api-reference/functions/generate-metadata) which automatically handles advanced requirements such as streaming and de-duplicating `<head>` elements.
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return '...'
+}
+```
 
-### Active Nav Links[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#active-nav-links)
+```jsx filename="app/layout.js" switcher
+export const metadata = {
+  title: 'Next.js',
+}
+
+export default function Layout({ children }) {
+  return '...'
+}
+```
+
+> **Good to know**: You should **not** manually add `<head>` tags such as `<title>` and `<meta>` to root layouts. Instead, use the [Metadata APIs](https://nextjs.org/docs/app/api-reference/functions/generate-metadata) which automatically handles advanced requirements such as streaming and de-duplicating `<head>` elements.
+
+### Active Nav Links
 
 You can use the [`usePathname`](https://nextjs.org/docs/app/api-reference/functions/use-pathname) hook to determine if a nav link is active.
 
 Since `usePathname` is a client hook, you need to extract the nav links into a Client Component, which can be imported into your layout:
 
-app/ui/nav-links.tsx
+```tsx filename="app/ui/nav-links.tsx" switcher
+'use client'
 
-JavaScriptTypeScript
-[code]
-    'use client'
-     
-    import { usePathname } from 'next/navigation'
-    import Link from 'next/link'
-     
-    export function NavLinks() {
-      const pathname = usePathname()
-     
-      return (
-        <nav>
-          <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">
-            Home
-          </Link>
-     
-          <Link
-            className={`link ${pathname === '/about' ? 'active' : ''}`}
-            href="/about"
-          >
-            About
-          </Link>
-        </nav>
-      )
-    }
-[/code]
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
-app/layout.tsx
+export function NavLinks() {
+  const pathname = usePathname()
 
-JavaScriptTypeScript
-[code]
-    import { NavLinks } from '@/app/ui/nav-links'
-     
-    export default function Layout({ children }: { children: React.ReactNode }) {
-      return (
-        <html lang="en">
-          <body>
-            <NavLinks />
-            <main>{children}</main>
-          </body>
-        </html>
-      )
-    }
-[/code]
+  return (
+    <nav>
+      <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">
+        Home
+      </Link>
 
-### Displaying content based on `params`[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#displaying-content-based-on-params)
+      <Link
+        className={`link ${pathname === '/about' ? 'active' : ''}`}
+        href="/about"
+      >
+        About
+      </Link>
+    </nav>
+  )
+}
+```
+
+```jsx filename="app/ui/nav-links.js" switcher
+'use client'
+
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
+
+export function Links() {
+  const pathname = usePathname()
+
+  return (
+    <nav>
+      <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">
+        Home
+      </Link>
+
+      <Link
+        className={`link ${pathname === '/about' ? 'active' : ''}`}
+        href="/about"
+      >
+        About
+      </Link>
+    </nav>
+  )
+}
+```
+
+```tsx filename="app/layout.tsx" switcher
+import { NavLinks } from '@/app/ui/nav-links'
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <NavLinks />
+        <main>{children}</main>
+      </body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import { NavLinks } from '@/app/ui/nav-links'
+
+export default function Layout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <NavLinks />
+        <main>{children}</main>
+      </body>
+    </html>
+  )
+}
+```
+
+### Displaying content based on `params`
 
 Using [dynamic route segments](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes), you can display or fetch specific content based on the `params` prop.
 
-app/dashboard/layout.tsx
+```tsx filename="app/dashboard/layout.tsx" switcher
+export default async function DashboardLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Promise<{ team: string }>
+}) {
+  const { team } = await params
 
-JavaScriptTypeScript
-[code]
-    export default async function DashboardLayout({
-      children,
-      params,
-    }: {
-      children: React.ReactNode
-      params: Promise<{ team: string }>
-    }) {
-      const { team } = await params
-     
-      return (
-        <section>
-          <header>
-            <h1>Welcome to {team}'s Dashboard</h1>
-          </header>
-          <main>{children}</main>
-        </section>
-      )
-    }
-[/code]
+  return (
+    <section>
+      <header>
+        <h1>Welcome to {team}'s Dashboard</h1>
+      </header>
+      <main>{children}</main>
+    </section>
+  )
+}
+```
 
-### Reading `params` in Client Components[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#reading-params-in-client-components)
+```jsx filename="app/dashboard/layout.js" switcher
+export default async function DashboardLayout({ children, params }) {
+  const { team } = await params
+
+  return (
+    <section>
+      <header>
+        <h1>Welcome to {team}'s Dashboard</h1>
+      </header>
+      <main>{children}</main>
+    </section>
+  )
+}
+```
+
+### Reading `params` in Client Components
 
 To use `params` in a Client Component (which cannot be `async`), you can use React's [`use`](https://react.dev/reference/react/use) function to read the promise:
 
-app/page.tsx
+```tsx filename="app/page.tsx" switcher
+'use client'
 
-JavaScriptTypeScript
-[code]
-    'use client'
-     
-    import { use } from 'react'
-     
-    export default function Page({
-      params,
-    }: {
-      params: Promise<{ slug: string }>
-    }) {
-      const { slug } = use(params)
-    }
-[/code]
+import { use } from 'react'
 
-## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#version-history)
+export default function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = use(params)
+}
+```
 
-Version| Changes  
----|---  
-`v15.0.0-RC`| `params` is now a promise. A [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150) is available.  
-`v13.0.0`| `layout` introduced.  
-  
-Was this helpful?
+```js filename="app/page.js" switcher
+'use client'
 
-supported.
+import { use } from 'react'
 
-Send
+export default function Page({ params }) {
+  const { slug } = use(params)
+}
+```
+
+## Version History
+
+| Version      | Changes                                                                                       |
+| ------------ | --------------------------------------------------------------------------------------------- |
+| `v15.0.0-RC` | `params` is now a promise. A [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150) is available. |
+| `v13.0.0`    | `layout` introduced.                                                                          |
+---
+

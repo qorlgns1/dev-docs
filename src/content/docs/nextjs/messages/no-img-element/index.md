@@ -22,9 +22,9 @@ description: '> 느린 LCP와 더 높은 대역폭 사용 때문에  요소 사�
   1. 자동 [Image Optimization](https://nextjs.org/docs/pages/api-reference/components/image)으로 성능을 개선하려면 [`next/image`](https://nextjs.org/docs/pages/api-reference/components/image)를 사용하세요.
 
 > **참고**: [managed hosting provider](https://nextjs.org/docs/pages/getting-started/deploying)에 배포한다면, 최적화된 이미지가 원본과 다른 과금 체계를 가질 수 있으니 제공업체 요금을 확인하세요.
-> 
+>
 > 일반적인 이미지 최적화 플랫폼 요금:
-> 
+>
 >   * [Vercel 요금](https://vercel.com/pricing)
 >   * [Cloudinary 요금](https://cloudinary.com/pricing)
         * [imgix 요금](https://imgix.com/pricing)
@@ -34,7 +34,7 @@ description: '> 느린 LCP와 더 높은 대역폭 사용 때문에  요소 사�
 pages/index.js
 [code]
     import Image from 'next/image'
-     
+
     function Home() {
       return (
         <Image
@@ -45,7 +45,7 @@ pages/index.js
         />
       )
     }
-     
+
     export default Home
 [/code]
 
@@ -54,7 +54,7 @@ pages/index.js
 pages/index.js
 [code]
     import Image from 'next/image'
-     
+
     const UnoptimizedImage = (props) => {
       return <Image {...props} unoptimized />
     }
@@ -98,9 +98,5 @@ next.config.js
   * [`next/image` API 레퍼런스](https://nextjs.org/docs/pages/api-reference/components/image)
   * [Largest Contentful Paint(LCP)](https://nextjs.org/learn/seo/web-performance/lcp)
   * [Next.js 구성 loaderFile 옵션](https://nextjs.org/docs/pages/api-reference/components/image#loaderfile)
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

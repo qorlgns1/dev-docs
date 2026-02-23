@@ -20,12 +20,12 @@ Next.js는 프로젝트 디렉터리 루트(예: `package.json` 옆)에 있는 `
 next.config.js
 [code]
     // @ts-check
-     
+
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       /* config options here */
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -38,14 +38,14 @@ next.config.js
 next.config.mjs
 [code]
     // @ts-check
-     
+
     /**
      * @type {import('next').NextConfig}
      */
     const nextConfig = {
       /* config options here */
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -58,7 +58,7 @@ next.config.mjs
 next.config.mjs
 [code]
     // @ts-check
-     
+
     export default (phase, { defaultConfig }) => {
       /**
        * @type {import('next').NextConfig}
@@ -77,7 +77,7 @@ Next.js 12.1.0부터는 비동기 함수를 사용할 수 있습니다:
 next.config.js
 [code]
     // @ts-check
-     
+
     module.exports = async (phase, { defaultConfig }) => {
       /**
        * @type {import('next').NextConfig}
@@ -96,16 +96,16 @@ next.config.js
 next.config.js
 [code]
     // @ts-check
-     
+
     const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
-     
+
     module.exports = (phase, { defaultConfig }) => {
       if (phase === PHASE_DEVELOPMENT_SERVER) {
         return {
           /* development only config options here */
         }
       }
-     
+
       return {
         /* config options for all phases except development here */
       }
@@ -119,11 +119,11 @@ next.config.js
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       /* config options here */
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -142,12 +142,12 @@ Next.js 15.1부터 `next/experimental/testing/server` 패키지는 `next.config.
 `unstable_getResponseFromNextConfig` 함수는 제공된 요청 정보를 사용해 `next.config.js`의 [`headers`](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers), [`redirects`](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects), [`rewrites`](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites) 함수를 실행하고 라우팅 결과가 담긴 `NextResponse`를 반환합니다.
 
 > `unstable_getResponseFromNextConfig`의 응답은 `next.config.js` 필드만 고려하며 프록시 또는 파일 시스템 라우트는 고려하지 않으므로, 프로덕션 결과가 유닛 테스트와 다를 수 있습니다.
-[code] 
+[code]
     import {
       getRedirectUrl,
       unstable_getResponseFromNextConfig,
     } from 'next/experimental/testing/server'
-     
+
     const response = await unstable_getResponseFromNextConfig({
       url: 'https://nextjs.org/test',
       nextConfig: {
@@ -160,46 +160,79 @@ Next.js 15.1부터 `next/experimental/testing/server` 패키지는 `next.config.
     expect(getRedirectUrl(response)).toEqual('https://nextjs.org/test2')
 [/code]
 
-### [experimental.adapterPathNext.js가 빌드 프로세스에 hook될 수 있도록 modifyConfig 및 buildComplete 콜백으로 사용자 지정 어댑터를 구성합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath)
-### [allowedDevOrigins`allowedDevOrigins`를 사용해 개발 서버에 요청할 수 있는 추가 origin을 구성합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/allowedDevOrigins)
-### [assetPrefixCDN을 구성하기 위해 assetPrefix 설정 옵션을 사용하는 방법을 살펴봅니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/assetPrefix)
-### [basePath`basePath`를 사용해 도메인의 하위 경로에 Next.js 애플리케이션을 배포합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/basePath)
-### [bundlePagesRouterDependenciesPages Router용 자동 종속성 번들을 활성화합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies)
-### [compressNext.js는 서버 타깃일 때만 작동하는 gzip 압축을 제공하여 렌더링된 콘텐츠와 정적 파일을 압축합니다. 자세한 내용을 확인하세요.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/compress)
-### [crossOrigin`next/script` 및 `next/head`가 생성하는 `script` 태그에 crossOrigin 태그를 추가하려면 `crossOrigin` 옵션을 사용합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/crossOrigin)
-### [deploymentId버전 스큐 보호와 캐시 무효화를 위해 사용되는 배포 식별자를 구성합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/deploymentId)
-### [devIndicators정적으로 최적화 중인지 알려 주는 인디케이터가 최적화된 페이지에 포함됩니다. 여기에서 옵트아웃할 수 있습니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/devIndicators)
-### [distDir기본 .next 디렉터리 대신 사용할 사용자 지정 빌드 디렉터리를 설정합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/distDir)
-### [env빌드 시점에 Next.js 애플리케이션에서 환경 변수를 추가하고 액세스하는 방법을 배웁니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/env)
-### [exportPathMap`next export`를 사용할 때 HTML 파일로 내보낼 페이지를 사용자 지정합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/exportPathMap)
-### [generateBuildId애플리케이션이 제공되는 현재 빌드를 식별하는 build id를 구성합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateBuildId)
-### [generateEtagsNext.js는 기본적으로 모든 페이지에 대한 etag를 생성합니다. etag 생성을 비활성화하는 방법을 알아보세요.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateEtags)
-### [headersNext.js 앱에 사용자 지정 HTTP 헤더를 추가합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers)
-### [httpAgentOptionsNext.js는 기본적으로 HTTP Keep-Alive를 사용합니다. HTTP Keep-Alive를 비활성화하는 방법을 알아보세요.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/httpAgentOptions)
-### [imagesnext/image 로더에 대한 사용자 지정 구성을 설정합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images)
-### [isolatedDevBuild프로덕션 빌드와 충돌하지 않도록 개발 빌드에 격리된 디렉터리를 사용합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/isolatedDevBuild)
-### [onDemandEntries개발 중 생성된 페이지를 Next.js가 메모리에 유지하거나 폐기하는 방식을 구성합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/onDemandEntries)
-### [optimizePackageImportsoptimizePackageImports Next.js 구성 옵션에 대한 API 레퍼런스입니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/optimizePackageImports)
-### [outputNext.js는 각 페이지에 필요한 파일을 자동으로 추적하여 애플리케이션 배포를 쉽게 합니다. 동작 방식을 알아보세요.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/output)
-### [pageExtensionsPages Router에서 페이지를 확인할 때 사용되는 기본 페이지 확장자를 확장합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions)
-### [poweredByHeaderNext.js는 기본적으로 `x-powered-by` 헤더를 추가합니다. 여기에서 옵트아웃하는 방법을 알아보세요.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/poweredByHeader)
-### [productionBrowserSourceMaps프로덕션 빌드 중 브라우저 소스맵 생성을 활성화합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/productionBrowserSourceMaps)
-### [experimental.proxyClientMaxBodySize프록시를 사용할 때 최대 요청 본문 크기를 구성합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/proxyClientMaxBodySize)
-### [reactStrictMode이제 전체 Next.js 런타임이 Strict Mode를 준수합니다. 옵트인하는 방법을 확인하세요.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/reactStrictMode)
-### [redirectsNext.js 앱에 리디렉션을 추가합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects)
-### [rewritesNext.js 앱에 리라이트를 추가합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites)
-### [serverExternalPackages`bundlePagesRouterDependencies`로 활성화된 종속성 번들링에서 특정 종속성을 옵트아웃합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages)
-### [trailingSlashNext.js 페이지가 슬래시 유무에 따라 해석되도록 구성합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/trailingSlash)
-### [transpilePackages로컬 패키지(모노레포 등)나 외부 종속성(`node_modules`)에서 가져온 종속성을 자동으로 트랜스파일하고 번들링합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/transpilePackages)
-### [turbopackTurbopack 전용 옵션으로 Next.js를 구성합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbopack)
-### [typescriptNext.js는 기본적으로 TypeScript 오류를 보고합니다. 이 동작을 옵트아웃하는 방법을 알아보세요.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/typescript)
-### [urlImports외부 URL에서 모듈을 가져올 수 있도록 Next.js를 구성합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports)
-### [useLightningcssLightning CSS에 대한 실험적 지원을 활성화합니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/useLightningcss)
-### [webpackNext.js가 사용하는 webpack 구성을 사용자 지정하는 방법을 알아보세요.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack)
-### [webVitalsAttributionWeb Vitals 문제의 근원을 파악하기 위해 webVitalsAttribution 옵션을 사용하는 방법을 알아봅니다.](https://nextjs.org/docs/pages/api-reference/config/next-config-js/webVitalsAttribution)
-
-도움이 되었나요?
-
-지원됨.
+- [experimental.adapterPath](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath)
+  - Next.js가 빌드 프로세스에 hook될 수 있도록 modifyConfig 및 buildComplete 콜백으로 사용자 지정 어댑터를 구성합니다.
+- [allowedDevOrigins](https://nextjs.org/docs/pages/api-reference/config/next-config-js/allowedDevOrigins)
+  - `allowedDevOrigins`를 사용해 개발 서버에 요청할 수 있는 추가 origin을 구성합니다.
+- [assetPrefix](https://nextjs.org/docs/pages/api-reference/config/next-config-js/assetPrefix)
+  - CDN을 구성하기 위해 assetPrefix 설정 옵션을 사용하는 방법을 살펴봅니다.
+- [basePath](https://nextjs.org/docs/pages/api-reference/config/next-config-js/basePath)
+  - `basePath`를 사용해 도메인의 하위 경로에 Next.js 애플리케이션을 배포합니다.
+- [bundlePagesRouterDependencies](https://nextjs.org/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies)
+  - Pages Router용 자동 종속성 번들을 활성화합니다.
+- [compress](https://nextjs.org/docs/pages/api-reference/config/next-config-js/compress)
+  - Next.js는 서버 타깃일 때만 작동하는 gzip 압축을 제공하여 렌더링된 콘텐츠와 정적 파일을 압축합니다. 자세한 내용을 확인하세요.
+- [crossOrigin](https://nextjs.org/docs/pages/api-reference/config/next-config-js/crossOrigin)
+  - `next/script` 및 `next/head`가 생성하는 `script` 태그에 crossOrigin 태그를 추가하려면 `crossOrigin` 옵션을 사용합니다.
+- [deploymentId](https://nextjs.org/docs/pages/api-reference/config/next-config-js/deploymentId)
+  - 버전 스큐 보호와 캐시 무효화를 위해 사용되는 배포 식별자를 구성합니다.
+- [devIndicators](https://nextjs.org/docs/pages/api-reference/config/next-config-js/devIndicators)
+  - 정적으로 최적화 중인지 알려 주는 인디케이터가 최적화된 페이지에 포함됩니다. 여기에서 옵트아웃할 수 있습니다.
+- [distDir](https://nextjs.org/docs/pages/api-reference/config/next-config-js/distDir)
+  - 기본 .next 디렉터리 대신 사용할 사용자 지정 빌드 디렉터리를 설정합니다.
+- [env](https://nextjs.org/docs/pages/api-reference/config/next-config-js/env)
+  - 빌드 시점에 Next.js 애플리케이션에서 환경 변수를 추가하고 액세스하는 방법을 배웁니다.
+- [exportPathMap](https://nextjs.org/docs/pages/api-reference/config/next-config-js/exportPathMap)
+  - `next export`를 사용할 때 HTML 파일로 내보낼 페이지를 사용자 지정합니다.
+- [generateBuildId](https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateBuildId)
+  - 애플리케이션이 제공되는 현재 빌드를 식별하는 build id를 구성합니다.
+- [generateEtags](https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateEtags)
+  - Next.js는 기본적으로 모든 페이지에 대한 etag를 생성합니다. etag 생성을 비활성화하는 방법을 알아보세요.
+- [headers](https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers)
+  - Next.js 앱에 사용자 지정 HTTP 헤더를 추가합니다.
+- [httpAgentOptions](https://nextjs.org/docs/pages/api-reference/config/next-config-js/httpAgentOptions)
+  - Next.js는 기본적으로 HTTP Keep-Alive를 사용합니다. HTTP Keep-Alive를 비활성화하는 방법을 알아보세요.
+- [images](https://nextjs.org/docs/pages/api-reference/config/next-config-js/images)
+  - next/image 로더에 대한 사용자 지정 구성을 설정합니다.
+- [isolatedDevBuild](https://nextjs.org/docs/pages/api-reference/config/next-config-js/isolatedDevBuild)
+  - 프로덕션 빌드와 충돌하지 않도록 개발 빌드에 격리된 디렉터리를 사용합니다.
+- [onDemandEntries](https://nextjs.org/docs/pages/api-reference/config/next-config-js/onDemandEntries)
+  - 개발 중 생성된 페이지를 Next.js가 메모리에 유지하거나 폐기하는 방식을 구성합니다.
+- [optimizePackageImports](https://nextjs.org/docs/pages/api-reference/config/next-config-js/optimizePackageImports)
+  - optimizePackageImports Next.js 구성 옵션에 대한 API 레퍼런스입니다.
+- [output](https://nextjs.org/docs/pages/api-reference/config/next-config-js/output)
+  - Next.js는 각 페이지에 필요한 파일을 자동으로 추적하여 애플리케이션 배포를 쉽게 합니다. 동작 방식을 알아보세요.
+- [pageExtensions](https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions)
+  - Pages Router에서 페이지를 확인할 때 사용되는 기본 페이지 확장자를 확장합니다.
+- [poweredByHeader](https://nextjs.org/docs/pages/api-reference/config/next-config-js/poweredByHeader)
+  - Next.js는 기본적으로 `x-powered-by` 헤더를 추가합니다. 여기에서 옵트아웃하는 방법을 알아보세요.
+- [productionBrowserSourceMaps](https://nextjs.org/docs/pages/api-reference/config/next-config-js/productionBrowserSourceMaps)
+  - 프로덕션 빌드 중 브라우저 소스맵 생성을 활성화합니다.
+- [experimental.proxyClientMaxBodySize](https://nextjs.org/docs/pages/api-reference/config/next-config-js/proxyClientMaxBodySize)
+  - 프록시를 사용할 때 최대 요청 본문 크기를 구성합니다.
+- [reactStrictMode](https://nextjs.org/docs/pages/api-reference/config/next-config-js/reactStrictMode)
+  - 이제 전체 Next.js 런타임이 Strict Mode를 준수합니다. 옵트인하는 방법을 확인하세요.
+- [redirects](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects)
+  - Next.js 앱에 리디렉션을 추가합니다.
+- [rewrites](https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites)
+  - Next.js 앱에 리라이트를 추가합니다.
+- [serverExternalPackages](https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages)
+  - `bundlePagesRouterDependencies`로 활성화된 종속성 번들링에서 특정 종속성을 옵트아웃합니다.
+- [trailingSlash](https://nextjs.org/docs/pages/api-reference/config/next-config-js/trailingSlash)
+  - Next.js 페이지가 슬래시 유무에 따라 해석되도록 구성합니다.
+- [transpilePackages](https://nextjs.org/docs/pages/api-reference/config/next-config-js/transpilePackages)
+  - 로컬 패키지(모노레포 등)나 외부 종속성(`node_modules`)에서 가져온 종속성을 자동으로 트랜스파일하고 번들링합니다.
+- [turbopack](https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbopack)
+  - Turbopack 전용 옵션으로 Next.js를 구성합니다.
+- [typescript](https://nextjs.org/docs/pages/api-reference/config/next-config-js/typescript)
+  - Next.js는 기본적으로 TypeScript 오류를 보고합니다. 이 동작을 옵트아웃하는 방법을 알아보세요.
+- [urlImports](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports)
+  - 외부 URL에서 모듈을 가져올 수 있도록 Next.js를 구성합니다.
+- [useLightningcss](https://nextjs.org/docs/pages/api-reference/config/next-config-js/useLightningcss)
+  - Lightning CSS에 대한 실험적 지원을 활성화합니다.
+- [webpack](https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack)
+  - Next.js가 사용하는 webpack 구성을 사용자 지정하는 방법을 알아보세요.
+- [webVitalsAttribution](https://nextjs.org/docs/pages/api-reference/config/next-config-js/webVitalsAttribution)
+  - Web Vitals 문제의 근원을 파악하기 위해 webVitalsAttribution 옵션을 사용하는 방법을 알아봅니다.
 
 보내기

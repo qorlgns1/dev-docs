@@ -1,246 +1,224 @@
 ---
-title: 'File-system conventions: Route Segment Config'
-description: '>   * The options outlined on this page are disabled if the  flag is on, and will eventually be deprecated in the future.'
+title: 'Route Segment Config'
+description: '> * The options outlined on this page are disabled if the  flag is on, and will eventually be deprecated in the future.'
 ---
-
-# File-system conventions: Route Segment Config | Next.js
 
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)Route Segment Config
-
-Copy page
-
 # Route Segment Config
 
-Last updated February 20, 2026
-
-> **Good to know** :
-> 
->   * The options outlined on this page are disabled if the [`cacheComponents`](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents) flag is on, and will eventually be deprecated in the future.
->   * Route Segment options only take effect in Server Component Pages, Layouts, or Route Handlers.
->   * `generateStaticParams` cannot be used inside a `'use client'` file.
-> 
-
+> **Good to know**:
+>
+> * The options outlined on this page are disabled if the [`cacheComponents`](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents) flag is on, and will eventually be deprecated in the future.
+> * Route Segment options only take effect in Server Component Pages, Layouts, or Route Handlers.
+> * `generateStaticParams` cannot be used inside a `'use client'` file.
 
 The Route Segment options allows you to configure the behavior of a [Page](https://nextjs.org/docs/app/api-reference/file-conventions/layout), [Layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout), or [Route Handler](https://nextjs.org/docs/app/api-reference/file-conventions/route) by directly exporting the following variables:
 
-Option| Type| Default  
----|---|---  
-[`dynamic`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic)| `'auto' | 'force-dynamic' | 'error' | 'force-static'`| `'auto'`  
-[`dynamicParams`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams)| `boolean`| `true`  
-[`revalidate`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate)| `false | 0 | number`| `false`  
-[`fetchCache`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#fetchcache)| `'auto' | 'default-cache' | 'only-cache' | 'force-cache' | 'force-no-store' | 'default-no-store' | 'only-no-store'`| `'auto'`  
-[`runtime`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime)| `'nodejs' | 'edge'`| `'nodejs'`  
-[`preferredRegion`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#preferredregion)| `'auto' | 'global' | 'home' | string | string[]`| `'auto'`  
-[`maxDuration`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#maxduration)| `number`| Set by deployment platform  
-  
-## Options[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#options)
+| Option                                | Type                                                                                                                      | Default                    |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [`dynamic`](#dynamic)                 | `'auto' \| 'force-dynamic' \| 'error' \| 'force-static'`                                                                  | `'auto'`                   |
+| [`dynamicParams`](#dynamicparams)     | `boolean`                                                                                                                 | `true`                     |
+| [`revalidate`](#revalidate)           | `false \| 0 \| number`                                                                                                    | `false`                    |
+| [`fetchCache`](#fetchcache)           | `'auto' \| 'default-cache' \| 'only-cache' \| 'force-cache' \| 'force-no-store' \| 'default-no-store' \| 'only-no-store'` | `'auto'`                   |
+| [`runtime`](#runtime)                 | `'nodejs' \| 'edge'`                                                                                                      | `'nodejs'`                 |
+| [`preferredRegion`](#preferredregion) | `'auto' \| 'global' \| 'home' \| string \| string[]`                                                                      | `'auto'`                   |
+| [`maxDuration`](#maxduration)         | `number`                                                                                                                  | Set by deployment platform |
 
-### `dynamic`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic)
+## Options
+
+### `dynamic`
 
 Change the dynamic behavior of a layout or page to fully static or fully dynamic.
 
-layout.tsx | page.tsx | route.ts
+```tsx filename="layout.tsx | page.tsx | route.ts" switcher
+export const dynamic = 'auto'
+// 'auto' | 'force-dynamic' | 'error' | 'force-static'
+```
 
-JavaScriptTypeScript
-[code]
-    export const dynamic = 'auto'
-    // 'auto' | 'force-dynamic' | 'error' | 'force-static'
-[/code]
+```js filename="layout.js | page.js | route.js" switcher
+export const dynamic = 'auto'
+// 'auto' | 'force-dynamic' | 'error' | 'force-static'
+```
 
-> **Good to know** : The new model in the `app` directory favors granular caching control at the `fetch` request level over the binary all-or-nothing model of `getServerSideProps` and `getStaticProps` at the page-level in the `pages` directory. The `dynamic` option is a way to opt back in to the previous model as a convenience and provides a simpler migration path.
+> **Good to know**: The new model in the `app` directory favors granular caching control at the `fetch` request level over the binary all-or-nothing model of `getServerSideProps` and `getStaticProps` at the page-level in the `pages` directory. The `dynamic` option is a way to opt back in to the previous model as a convenience and provides a simpler migration path.
 
-  * **`'auto'`** (default): The default option to cache as much as possible without preventing any components from opting into dynamic behavior.
+* **`'auto'`** (default): The default option to cache as much as possible without preventing any components from opting into dynamic behavior.
 
-  * **`'force-dynamic'`** : Force [dynamic rendering](https://nextjs.org/docs/app/guides/caching#dynamic-rendering), which will result in routes being rendered for each user at request time. This option is equivalent to:
+* **`'force-dynamic'`**: Force [dynamic rendering](https://nextjs.org/docs/app/guides/caching#dynamic-rendering), which will result in routes being rendered for each user at request time. This option is equivalent to:
+  * Setting the option of every `fetch()` request in a layout or page to `{ cache: 'no-store', next: { revalidate: 0 } }`.
+  * Setting the segment config to `export const fetchCache = 'force-no-store'`
 
-    * Setting the option of every `fetch()` request in a layout or page to `{ cache: 'no-store', next: { revalidate: 0 } }`.
-    * Setting the segment config to `export const fetchCache = 'force-no-store'`
-  * **`'error'`** : Force static rendering and cache the data of a layout or page by causing an error if any components use [Dynamic APIs](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) or uncached data. This option is equivalent to:
+* **`'error'`**: Force static rendering and cache the data of a layout or page by causing an error if any components use [Dynamic APIs](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) or uncached data. This option is equivalent to:
+  * `getStaticProps()` in the `pages` directory.
+  * Setting the option of every `fetch()` request in a layout or page to `{ cache: 'force-cache' }`.
+  * Setting the segment config to `fetchCache = 'only-cache'`.
 
-    * `getStaticProps()` in the `pages` directory.
-    * Setting the option of every `fetch()` request in a layout or page to `{ cache: 'force-cache' }`.
-    * Setting the segment config to `fetchCache = 'only-cache'`.
-  * **`'force-static'`** : Force static rendering and cache the data of a layout or page by forcing [`cookies`](https://nextjs.org/docs/app/api-reference/functions/cookies), [`headers()`](https://nextjs.org/docs/app/api-reference/functions/headers) and [`useSearchParams()`](https://nextjs.org/docs/app/api-reference/functions/use-search-params) to return empty values. It is possible to [`revalidate`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate), [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath), or [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag), in pages or layouts rendered with `force-static`.
+* **`'force-static'`**: Force static rendering and cache the data of a layout or page by forcing [`cookies`](https://nextjs.org/docs/app/api-reference/functions/cookies), [`headers()`](https://nextjs.org/docs/app/api-reference/functions/headers) and [`useSearchParams()`](https://nextjs.org/docs/app/api-reference/functions/use-search-params) to return empty values. It is possible to [`revalidate`](#revalidate), [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath), or [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag), in pages or layouts rendered with `force-static`.
 
+> **Good to know**:
+>
+> * Instructions on [how to migrate](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods) from `getServerSideProps` and `getStaticProps` to `dynamic: 'force-dynamic'` and `dynamic: 'error'` can be found in the [upgrade guide](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods).
 
-
-
-> **Good to know** :
-> 
->   * Instructions on [how to migrate](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods) from `getServerSideProps` and `getStaticProps` to `dynamic: 'force-dynamic'` and `dynamic: 'error'` can be found in the [upgrade guide](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods).
-> 
-
-
-### `dynamicParams`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams)
+### `dynamicParams`
 
 Control what happens when a dynamic segment is visited that was not generated with [generateStaticParams](https://nextjs.org/docs/app/api-reference/functions/generate-static-params).
 
-layout.tsx | page.tsx
+```tsx filename="layout.tsx | page.tsx" switcher
+export const dynamicParams = true // true | false
+```
 
-JavaScriptTypeScript
-[code]
-    export const dynamicParams = true // true | false
-[/code]
+```js filename="layout.js | page.js | route.js" switcher
+export const dynamicParams = true // true | false
+```
 
-  * **`true`** (default): Dynamic segments not included in `generateStaticParams` are generated on demand.
-  * **`false`** : Dynamic segments not included in `generateStaticParams` will return a 404.
+* **`true`** (default): Dynamic segments not included in `generateStaticParams` are generated on demand.
+* **`false`**: Dynamic segments not included in `generateStaticParams` will return a 404.
 
+> **Good to know**:
+>
+> * This option replaces the `fallback: true | false | blocking` option of `getStaticPaths` in the `pages` directory.
+> * To statically render all paths the first time they're visited, you'll need to return an empty array in `generateStaticParams` or utilize `export const dynamic = 'force-static'`.
+> * When `dynamicParams = true`, the segment uses [Streaming Server Rendering](https://nextjs.org/docs/app/getting-started/linking-and-navigating#streaming).
 
-
-> **Good to know** :
-> 
->   * This option replaces the `fallback: true | false | blocking` option of `getStaticPaths` in the `pages` directory.
->   * To statically render all paths the first time they're visited, you'll need to return an empty array in `generateStaticParams` or utilize `export const dynamic = 'force-static'`.
->   * When `dynamicParams = true`, the segment uses [Streaming Server Rendering](https://nextjs.org/docs/app/getting-started/linking-and-navigating#streaming).
-> 
-
-
-### `revalidate`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate)
+### `revalidate`
 
 Set the default revalidation time for a layout or page. This option does not override the `revalidate` value set by individual `fetch` requests.
 
-layout.tsx | page.tsx | route.ts
+```tsx filename="layout.tsx | page.tsx | route.ts" switcher
+export const revalidate = false
+// false | 0 | number
+```
 
-JavaScriptTypeScript
-[code]
-    export const revalidate = false
-    // false | 0 | number
-[/code]
+```js filename="layout.js | page.js | route.js" switcher
+export const revalidate = false
+// false | 0 | number
+```
 
-  * **`false`** (default): The default heuristic to cache any `fetch` requests that set their `cache` option to `'force-cache'` or are discovered before a [Dynamic API](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) is used. Semantically equivalent to `revalidate: Infinity` which effectively means the resource should be cached indefinitely. It is still possible for individual `fetch` requests to use `cache: 'no-store'` or `revalidate: 0` to avoid being cached and make the route dynamically rendered. Or set `revalidate` to a positive number lower than the route default to increase the revalidation frequency of a route.
-  * **`0`** : Ensure a layout or page is always [dynamically rendered](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) even if no Dynamic APIs or uncached data fetches are discovered. This option changes the default of `fetch` requests that do not set a `cache` option to `'no-store'` but leaves `fetch` requests that opt into `'force-cache'` or use a positive `revalidate` as is.
-  * **`number`** : (in seconds) Set the default revalidation frequency of a layout or page to `n` seconds.
+* **`false`** (default): The default heuristic to cache any `fetch` requests that set their `cache` option to `'force-cache'` or are discovered before a [Dynamic API](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) is used. Semantically equivalent to `revalidate: Infinity` which effectively means the resource should be cached indefinitely. It is still possible for individual `fetch` requests to use `cache: 'no-store'` or `revalidate: 0` to avoid being cached and make the route dynamically rendered. Or set `revalidate` to a positive number lower than the route default to increase the revalidation frequency of a route.
+* **`0`**: Ensure a layout or page is always [dynamically rendered](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) even if no Dynamic APIs or uncached data fetches are discovered. This option changes the default of `fetch` requests that do not set a `cache` option to `'no-store'` but leaves `fetch` requests that opt into `'force-cache'` or use a positive `revalidate` as is.
+* **`number`**: (in seconds) Set the default revalidation frequency of a layout or page to `n` seconds.
 
+> **Good to know**:
+>
+> * The revalidate value needs to be statically analyzable. For example `revalidate = 600` is valid, but `revalidate = 60 * 10` is not.
+> * The revalidate value is not available when using `runtime = 'edge'`.
+> * In Development, Pages are *always* rendered on-demand and are never cached. This allows you to see changes immediately without waiting for a revalidation period to pass.
 
+#### Revalidation Frequency
 
-> **Good to know** :
-> 
->   * The revalidate value needs to be statically analyzable. For example `revalidate = 600` is valid, but `revalidate = 60 * 10` is not.
->   * The revalidate value is not available when using `runtime = 'edge'`.
->   * In Development, Pages are _always_ rendered on-demand and are never cached. This allows you to see changes immediately without waiting for a revalidation period to pass.
-> 
+* The lowest `revalidate` across each layout and page of a single route will determine the revalidation frequency of the *entire* route. This ensures that child pages are revalidated as frequently as their parent layouts.
+* Individual `fetch` requests can set a lower `revalidate` than the route's default `revalidate` to increase the revalidation frequency of the entire route. This allows you to dynamically opt-in to more frequent revalidation for certain routes based on some criteria.
 
+### `fetchCache`
 
-#### Revalidation Frequency[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidation-frequency)
-
-  * The lowest `revalidate` across each layout and page of a single route will determine the revalidation frequency of the _entire_ route. This ensures that child pages are revalidated as frequently as their parent layouts.
-  * Individual `fetch` requests can set a lower `revalidate` than the route's default `revalidate` to increase the revalidation frequency of the entire route. This allows you to dynamically opt-in to more frequent revalidation for certain routes based on some criteria.
-
-
-
-### `fetchCache`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#fetchcache)
-
-This is an advanced option that should only be used if you specifically need to override the default behavior.
+<details>
+<summary>This is an advanced option that should only be used if you specifically need to override the default behavior.</summary>
 
 By default, Next.js **will cache** any `fetch()` requests that are reachable **before** any [Dynamic APIs](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) are used and **will not cache** `fetch` requests that are discovered **after** Dynamic APIs are used.
 
 `fetchCache` allows you to override the default `cache` option of all `fetch` requests in a layout or page.
 
-layout.tsx | page.tsx | route.ts
+```tsx filename="layout.tsx | page.tsx | route.ts" switcher
+export const fetchCache = 'auto'
+// 'auto' | 'default-cache' | 'only-cache'
+// 'force-cache' | 'force-no-store' | 'default-no-store' | 'only-no-store'
+```
 
-JavaScriptTypeScript
-[code]
-    export const fetchCache = 'auto'
-    // 'auto' | 'default-cache' | 'only-cache'
-    // 'force-cache' | 'force-no-store' | 'default-no-store' | 'only-no-store'
-[/code]
+```js filename="layout.js | page.js | route.js" switcher
+export const fetchCache = 'auto'
+// 'auto' | 'default-cache' | 'only-cache'
+// 'force-cache' | 'force-no-store' | 'default-no-store' | 'only-no-store'
+```
 
-  * **`'auto'`** (default): The default option to cache `fetch` requests before Dynamic APIs with the `cache` option they provide and not cache `fetch` requests after Dynamic APIs.
-  * **`'default-cache'`** : Allow any `cache` option to be passed to `fetch` but if no option is provided then set the `cache` option to `'force-cache'`. This means that even `fetch` requests after Dynamic APIs are considered static.
-  * **`'only-cache'`** : Ensure all `fetch` requests opt into caching by changing the default to `cache: 'force-cache'` if no option is provided and causing an error if any `fetch` requests use `cache: 'no-store'`.
-  * **`'force-cache'`** : Ensure all `fetch` requests opt into caching by setting the `cache` option of all `fetch` requests to `'force-cache'`.
-  * **`'default-no-store'`** : Allow any `cache` option to be passed to `fetch` but if no option is provided then set the `cache` option to `'no-store'`. This means that even `fetch` requests before Dynamic APIs are considered dynamic.
-  * **`'only-no-store'`** : Ensure all `fetch` requests opt out of caching by changing the default to `cache: 'no-store'` if no option is provided and causing an error if any `fetch` requests use `cache: 'force-cache'`
-  * **`'force-no-store'`** : Ensure all `fetch` requests opt out of caching by setting the `cache` option of all `fetch` requests to `'no-store'`. This forces all `fetch` requests to be re-fetched every request even if they provide a `'force-cache'` option.
+* **`'auto'`** (default): The default option to cache `fetch` requests before Dynamic APIs with the `cache` option they provide and not cache `fetch` requests after Dynamic APIs.
+* **`'default-cache'`**: Allow any `cache` option to be passed to `fetch` but if no option is provided then set the `cache` option to `'force-cache'`. This means that even `fetch` requests after Dynamic APIs are considered static.
+* **`'only-cache'`**: Ensure all `fetch` requests opt into caching by changing the default to `cache: 'force-cache'` if no option is provided and causing an error if any `fetch` requests use `cache: 'no-store'`.
+* **`'force-cache'`**: Ensure all `fetch` requests opt into caching by setting the `cache` option of all `fetch` requests to `'force-cache'`.
+* **`'default-no-store'`**: Allow any `cache` option to be passed to `fetch` but if no option is provided then set the `cache` option to `'no-store'`. This means that even `fetch` requests before Dynamic APIs are considered dynamic.
+* **`'only-no-store'`**: Ensure all `fetch` requests opt out of caching by changing the default to `cache: 'no-store'` if no option is provided and causing an error if any `fetch` requests use `cache: 'force-cache'`
+* **`'force-no-store'`**: Ensure all `fetch` requests opt out of caching by setting the `cache` option of all `fetch` requests to `'no-store'`. This forces all `fetch` requests to be re-fetched every request even if they provide a `'force-cache'` option.
 
+#### Cross-route segment behavior
 
+* Any options set across each layout and page of a single route need to be compatible with each other.
+  * If both the `'only-cache'` and `'force-cache'` are provided, then `'force-cache'` wins. If both `'only-no-store'` and `'force-no-store'` are provided, then `'force-no-store'` wins. The force option changes the behavior across the route so a single segment with `'force-*'` would prevent any errors caused by `'only-*'`.
+  * The intention of the `'only-*'` and `'force-*'` options is to guarantee the whole route is either fully static or fully dynamic. This means:
+    * A combination of `'only-cache'` and `'only-no-store'` in a single route is not allowed.
+    * A combination of `'force-cache'` and `'force-no-store'` in a single route is not allowed.
+  * A parent cannot provide `'default-no-store'` if a child provides `'auto'` or `'*-cache'` since that could make the same fetch have different behavior.
+* It is generally recommended to leave shared parent layouts as `'auto'` and customize the options where child segments diverge.
 
-#### Cross-route segment behavior[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#cross-route-segment-behavior)
+</details>
 
-  * Any options set across each layout and page of a single route need to be compatible with each other.
-    * If both the `'only-cache'` and `'force-cache'` are provided, then `'force-cache'` wins. If both `'only-no-store'` and `'force-no-store'` are provided, then `'force-no-store'` wins. The force option changes the behavior across the route so a single segment with `'force-*'` would prevent any errors caused by `'only-*'`.
-    * The intention of the `'only-*'` and `'force-*'` options is to guarantee the whole route is either fully static or fully dynamic. This means:
-      * A combination of `'only-cache'` and `'only-no-store'` in a single route is not allowed.
-      * A combination of `'force-cache'` and `'force-no-store'` in a single route is not allowed.
-    * A parent cannot provide `'default-no-store'` if a child provides `'auto'` or `'*-cache'` since that could make the same fetch have different behavior.
-  * It is generally recommended to leave shared parent layouts as `'auto'` and customize the options where child segments diverge.
-
-
-
-### `runtime`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime)
+### `runtime`
 
 We recommend using the Node.js runtime for rendering your application. This option cannot be used in [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy).
 
-> **Good to know** : Using `runtime: 'edge'` is **not supported** for Cache Components.
+> **Good to know**: Using `runtime: 'edge'` is **not supported** for Cache Components.
 
-layout.tsx | page.tsx | route.ts
+```tsx filename="layout.tsx | page.tsx | route.ts" switcher
+export const runtime = 'nodejs'
+// 'nodejs' | 'edge'
+```
 
-JavaScriptTypeScript
-[code]
-    export const runtime = 'nodejs'
-    // 'nodejs' | 'edge'
-[/code]
+```js filename="layout.js | page.js | route.js" switcher
+export const runtime = 'nodejs'
+// 'nodejs' | 'edge'
+```
 
-  * **`'nodejs'`** (default)
-  * **`'edge'`**
+* **`'nodejs'`** (default)
+* **`'edge'`**
 
+### `preferredRegion`
 
+```tsx filename="layout.tsx | page.tsx | route.ts" switcher
+export const preferredRegion = 'auto'
+// 'auto' | 'global' | 'home' | ['iad1', 'sfo1']
+```
 
-### `preferredRegion`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#preferredregion)
-
-layout.tsx | page.tsx | route.ts
-
-JavaScriptTypeScript
-[code]
-    export const preferredRegion = 'auto'
-    // 'auto' | 'global' | 'home' | ['iad1', 'sfo1']
-[/code]
+```js filename="layout.js | page.js | route.js" switcher
+export const preferredRegion = 'auto'
+// 'auto' | 'global' | 'home' | ['iad1', 'sfo1']
+```
 
 Support for `preferredRegion`, and regions supported, is dependent on your deployment platform.
 
-> **Good to know** :
-> 
->   * If a `preferredRegion` is not specified, it will inherit the option of the nearest parent layout.
->   * The root layout defaults to `all` regions.
-> 
+> **Good to know**:
+>
+> * If a `preferredRegion` is not specified, it will inherit the option of the nearest parent layout.
+> * The root layout defaults to `all` regions.
 
+### `maxDuration`
 
-### `maxDuration`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#maxduration)
+By default, Next.js does not limit the execution of server-side logic (rendering a page or handling an API).
+Deployment platforms can use `maxDuration` from the Next.js build output to add specific execution limits.
 
-By default, Next.js does not limit the execution of server-side logic (rendering a page or handling an API). Deployment platforms can use `maxDuration` from the Next.js build output to add specific execution limits.
+**Note**: This setting requires Next.js `13.4.10` or higher.
 
-**Note** : This setting requires Next.js `13.4.10` or higher.
+```tsx filename="layout.tsx | page.tsx | route.ts" switcher
+export const maxDuration = 5
+```
 
-layout.tsx | page.tsx | route.ts
+```js filename="layout.js | page.js | route.js" switcher
+export const maxDuration = 5
+```
 
-JavaScriptTypeScript
-[code]
-    export const maxDuration = 5
-[/code]
+> **Good to know**:
+>
+> * If using [Server Actions](https://nextjs.org/docs/app/getting-started/updating-data), set the `maxDuration` at the page level to change the default timeout of all Server Actions used on the page.
 
-> **Good to know** :
-> 
->   * If using [Server Actions](https://nextjs.org/docs/app/getting-started/updating-data), set the `maxDuration` at the page level to change the default timeout of all Server Actions used on the page.
-> 
-
-
-### `generateStaticParams`[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#generatestaticparams)
+### `generateStaticParams`
 
 The `generateStaticParams` function can be used in combination with [dynamic route segments](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes) to define the list of route segment parameters that will be statically generated at build time instead of on-demand at request time.
 
 See the [API reference](https://nextjs.org/docs/app/api-reference/functions/generate-static-params) for more details.
 
-## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#version-history)
+## Version History
 
-Version|   
----|---  
-`v16.0.0`| `export const experimental_ppr = true` removed. A [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#remove-experimental_ppr-route-segment-config-from-app-router-pages-and-layouts) is available.  
-`v15.0.0-RC`| `export const runtime = "experimental-edge"` deprecated. A [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#transform-app-router-route-segment-config-runtime-value-from-experimental-edge-to-edge) is available.  
-  
-Was this helpful?
+| Version      |                                                                                                                                                                                                                |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v16.0.0`    | `export const experimental_ppr = true` removed. A [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#remove-experimental_ppr-route-segment-config-from-app-router-pages-and-layouts) is available.                  |
+| `v15.0.0-RC` | `export const runtime = "experimental-edge"` deprecated. A [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#transform-app-router-route-segment-config-runtime-value-from-experimental-edge-to-edge) is available. |
+---
 
-supported.
-
-Send

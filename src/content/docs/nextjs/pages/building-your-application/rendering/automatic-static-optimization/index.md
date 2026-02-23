@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/pages/building-your-application/rendering/au
 
 [애플리케이션 빌드](https://nextjs.org/docs/pages/building-your-application)[렌더링](https://nextjs.org/docs/pages/building-your-application/rendering)자동 정적 최적화
 
-페이지 복사
-
 # 자동 정적 최적화
 
 마지막 업데이트 2026년 2월 20일
@@ -60,9 +58,3 @@ Terminal
   * `getInitialProps`가 있는 [사용자 정의 `App`](https://nextjs.org/docs/pages/building-your-application/routing/custom-app)을 사용하면 [정적 생성](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)이 없는 페이지에서는 이 최적화가 비활성화됩니다.
   * `getInitialProps`가 있는 [사용자 정의 `Document`](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)를 사용하는 경우 페이지가 서버 사이드 렌더링된다고 가정하기 전에 반드시 `ctx.req`가 정의되어 있는지 확인하세요. 사전 렌더링된 페이지에서는 `ctx.req`가 `undefined`입니다.
   * 라우터의 `isReady` 필드가 `true`가 될 때까지 렌더링 트리에서 [`next/router`](https://nextjs.org/docs/pages/api-reference/functions/use-router#router-object)의 `asPath` 값을 사용하는 것을 피하세요. 정적으로 최적화된 페이지는 서버가 아닌 클라이언트에서만 `asPath`를 알 수 있으므로 이를 prop으로 사용하면 불일치 오류가 발생할 수 있습니다. [`active-class-name` 예제](https://github.com/vercel/next.js/tree/canary/examples/active-class-name)는 `asPath`를 prop으로 사용하는 한 가지 방법을 보여줍니다.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

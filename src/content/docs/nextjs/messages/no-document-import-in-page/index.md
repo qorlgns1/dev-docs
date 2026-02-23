@@ -24,19 +24,17 @@ Source URL: https://nextjs.org/docs/messages/no-document-import-in-page
 pages/_document.js
 [code]
     import Document, { Html, Head, Main, NextScript } from 'next/document'
-     
+
     class MyDocument extends Document {
       //...
     }
-     
+
     export default MyDocument
 [/code]
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-document-import-in-page#useful-links)
 
   * [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
-
-
 
 이 정보가 도움이 되었나요?
 

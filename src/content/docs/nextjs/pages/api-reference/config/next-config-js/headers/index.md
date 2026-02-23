@@ -7,10 +7,6 @@ description: '헤더를 사용하면 특정 경로로 들어오는 요청에 대
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)헤더
-
-페이지 복사
-
 # 헤더
 
 최종 업데이트 2026년 2월 20일
@@ -313,7 +309,7 @@ next.config.js
 [code]
     module.exports = {
       basePath: '/docs',
-     
+
       async headers() {
         return [
           {
@@ -351,7 +347,7 @@ next.config.js
         locales: ['en', 'fr', 'de'],
         defaultLocale: 'en',
       },
-     
+
       async headers() {
         return [
           {
@@ -417,11 +413,11 @@ pages/api/hello.ts
 JavaScriptTypeScript
 [code]
     import type { NextApiRequest, NextApiResponse } from 'next'
-     
+
     type ResponseData = {
       message: string
     }
-     
+
     export default function handler(
       req: NextApiRequest,
       res: NextApiResponse<ResponseData>
@@ -438,7 +434,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
-     
+
     // This value is considered fresh for ten seconds (s-maxage=10).
     // If a request is repeated within the next 10 seconds, the previously
     // cached value will still be fresh. If the request is repeated before 59 seconds,
@@ -451,7 +447,7 @@ JavaScriptTypeScript
         'Cache-Control',
         'public, s-maxage=10, stale-while-revalidate=59'
       )
-     
+
       return {
         props: {},
       }
@@ -463,7 +459,7 @@ JavaScriptTypeScript
 ### CORS[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers#cors)
 
 [교차 출처 리소스 공유(CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS)는 어떤 사이트가 리소스에 접근할 수 있는지를 제어할 수 있게 해주는 보안 기능입니다. 특정 출처가 API Endpoints에 접근하도록 허용하려면 `Access-Control-Allow-Origin` 헤더를 설정할 수 있습니다.
-[code] 
+[code]
     async headers() {
         return [
           {
@@ -490,7 +486,7 @@ JavaScriptTypeScript
 ### X-DNS-Prefetch-Control[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers#x-dns-prefetch-control)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control)는 DNS 프리패칭을 제어하여 브라우저가 외부 링크, 이미지, CSS, JavaScript 등을 미리 도메인 이름 해석하도록 허용합니다. 프리패칭은 백그라운드에서 수행되므로 참조된 항목이 필요해질 시점에는 [DNS](https://developer.mozilla.org/docs/Glossary/DNS)가 이미 해석되어 있을 가능성이 높습니다. 이를 통해 사용자가 링크를 클릭할 때 지연 시간이 줄어듭니다.
-[code] 
+[code]
     {
       key: 'X-DNS-Prefetch-Control',
       value: 'on'
@@ -500,7 +496,7 @@ JavaScriptTypeScript
 ### Strict-Transport-Security[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers#strict-transport-security)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/Strict-Transport-Security)는 브라우저에 HTTP 대신 HTTPS로만 접근해야 한다고 알립니다. 아래 구성에서는 현재와 미래의 모든 하위 도메인이 2년(`max-age=63072000`) 동안 HTTPS를 사용하도록 강제합니다. 이는 HTTP로만 제공되는 페이지나 하위 도메인에 대한 접근을 차단합니다.
-[code] 
+[code]
     {
       key: 'Strict-Transport-Security',
       value: 'max-age=63072000; includeSubDomains; preload'
@@ -512,7 +508,7 @@ JavaScriptTypeScript
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Frame-Options)는 사이트가 `iframe` 안에 표시될 수 있는지를 나타내며, 클릭재킹 공격을 방지할 수 있습니다.
 
 **이 헤더는 CSP의 `frame-ancestors` 옵션으로 대체되었으며**, 최신 브라우저에서 더 나은 지원을 제공합니다(구성 방법은 [Content Security Policy](https://nextjs.org/docs/app/guides/content-security-policy)를 참조하세요).
-[code] 
+[code]
     {
       key: 'X-Frame-Options',
       value: 'SAMEORIGIN'
@@ -522,7 +518,7 @@ JavaScriptTypeScript
 ### Permissions-Policy[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers#permissions-policy)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy)를 사용하면 브라우저에서 어떤 기능과 API를 사용할 수 있는지 제어할 수 있습니다. 이전에는 `Feature-Policy`라는 이름이었습니다.
-[code] 
+[code]
     {
       key: 'Permissions-Policy',
       value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()'
@@ -534,7 +530,7 @@ JavaScriptTypeScript
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Content-Type-Options)는 `Content-Type` 헤더가 명시적으로 설정되지 않은 경우 브라우저가 콘텐츠 유형을 추측하려는 시도를 막습니다. 이는 사용자가 파일 업로드와 공유를 할 수 있는 웹사이트에서 XSS 공격을 예방할 수 있습니다.
 
 예를 들어 사용자가 이미지를 다운로드하려고 했지만 실행 파일과 같은 다른 `Content-Type`으로 처리되는 경우, 악성일 수 있습니다. 이 헤더는 브라우저 확장 프로그램을 다운로드할 때도 적용됩니다. 이 헤더에 사용할 수 있는 유일한 값은 `nosniff`입니다.
-[code] 
+[code]
     {
       key: 'X-Content-Type-Options',
       value: 'nosniff'
@@ -544,7 +540,7 @@ JavaScriptTypeScript
 ### Referrer-Policy[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers#referrer-policy)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy)는 현재 웹사이트(오리진)에서 다른 곳으로 이동할 때 브라우저가 얼마나 많은 정보를 포함할지를 제어합니다.
-[code] 
+[code]
     {
       key: 'Referrer-Policy',
       value: 'origin-when-cross-origin'
@@ -557,14 +553,10 @@ JavaScriptTypeScript
 
 ## Version History[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers#version-history)
 
-Version| Changes  
----|---  
-`v13.3.0`| `missing` 추가.  
-`v10.2.0`| `has` 추가.  
-`v9.5.0`| Headers 추가.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v13.3.0`| `missing` 추가.
+`v10.2.0`| `has` 추가.
+`v9.5.0`| Headers 추가.
 
 보내기

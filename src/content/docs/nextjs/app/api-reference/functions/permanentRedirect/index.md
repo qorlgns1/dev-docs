@@ -7,10 +7,6 @@ description: '함수는 사용자를 다른 URL로 리디렉션하도록 해 줍
 
 출처 URL: https://nextjs.org/docs/app/api-reference/functions/permanentRedirect
 
-[API 참조](https://nextjs.org/docs/app/api-reference)[함수](https://nextjs.org/docs/app/api-reference/functions)permanentRedirect
-
-페이지 복사
-
 # permanentRedirect
 
 마지막 업데이트 2026년 2월 20일
@@ -26,21 +22,21 @@ description: '함수는 사용자를 다른 URL로 리디렉션하도록 해 줍
 ## 매개변수[](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect#parameters)
 
 `permanentRedirect` 함수는 두 개의 인수를 받습니다:
-[code] 
+[code]
     permanentRedirect(path, type)
 [/code]
 
-Parameter| Type| Description  
----|---|---  
-`path`| `string`| 리디렉션할 URL입니다. 상대 또는 절대 경로 모두 가능합니다.  
-`type`| `'replace'` (기본값) 또는 `'push'` (서버 액션의 기본값)| 수행할 리디렉션 유형입니다.  
-  
+Parameter| Type| Description
+---|---|---
+`path`| `string`| 리디렉션할 URL입니다. 상대 또는 절대 경로 모두 가능합니다.
+`type`| `'replace'` (기본값) 또는 `'push'` (서버 액션의 기본값)| 수행할 리디렉션 유형입니다.
+
 기본적으로 `permanentRedirect`는 [서버 액션](https://nextjs.org/docs/app/getting-started/updating-data)에서 `push`(브라우저 히스토리 스택에 새 항목 추가)를, 다른 모든 곳에서는 `replace`(브라우저 히스토리 스택의 현재 URL 교체)를 사용합니다. `type` 매개변수를 지정해 이 동작을 덮어쓸 수 있습니다.
 
 `RedirectType` 객체에는 `type` 매개변수에 사용할 수 있는 옵션이 포함되어 있습니다.
-[code] 
+[code]
     import { permanentRedirect, RedirectType } from 'next/navigation'
-     
+
     permanentRedirect('/redirect-to', RedirectType.replace)
     // or
     permanentRedirect('/redirect-to', RedirectType.push)
@@ -59,32 +55,29 @@ Parameter| Type| Description
 app/team/[id]/page.js
 [code]
     import { permanentRedirect } from 'next/navigation'
-     
+
     async function fetchTeam(id) {
       const res = await fetch('https://...')
       if (!res.ok) return undefined
       return res.json()
     }
-     
+
     export default async function Profile({ params }) {
       const { id } = await params
       const team = await fetchTeam(id)
       if (!team) {
         permanentRedirect('/login')
       }
-     
+
       // ...
     }
 [/code]
 
 > **알아두면 좋아요** : `permanentRedirect`는 TypeScript [`never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never) 타입을 사용하기 때문에 `return permanentRedirect()`를 사용할 필요가 없습니다.
 
-## 
+##
 
-### [redirect 함수에 대한 API 참조.](https://nextjs.org/docs/app/api-reference/functions/redirect)
-
-도움이 되었나요?
-
-지원됨.
+- [redirect](https://nextjs.org/docs/app/api-reference/functions/redirect)
+  - 함수에 대한 API 참조.
 
 보내기

@@ -7,8 +7,6 @@ description: '함수는 라우트 세그먼트 내에서  파일을 렌더링하
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/not-found
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)notFound
-
 Copy page
 
 # notFound
@@ -24,21 +22,21 @@ Copy page
 app/user/[id]/page.js
 [code]
     import { notFound } from 'next/navigation'
-     
+
     async function fetchUser(id) {
       const res = await fetch('https://...')
       if (!res.ok) return undefined
       return res.json()
     }
-     
+
     export default async function Profile({ params }) {
       const { id } = await params
       const user = await fetchUser(id)
-     
+
       if (!user) {
         notFound()
       }
-     
+
       // ...
     }
 [/code]
@@ -47,10 +45,10 @@ app/user/[id]/page.js
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/not-found#version-history)
 
-Version| Changes  
----|---  
-`v13.0.0`| `notFound`가 도입되었습니다.  
-  
+Version| Changes
+---|---
+`v13.0.0`| `notFound`가 도입되었습니다.
+
 Was this helpful?
 
 supported.

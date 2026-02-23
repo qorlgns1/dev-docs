@@ -1,15 +1,11 @@
 ---
 title: '테스트: Playwright'
-description: 'Playwright는 하나의 API로 Chromium, Firefox, WebKit을 자동화할 수 있는 테스트 프레임워크입니다. 이를 사용해 엔드 투 엔드(E2E) 테스트를 작성할 수 있습니다. 이 가이드는 Playwright를 Next.js와 함께 설정하고 첫 번째...'
+description: 'Playwright는 하나의 API로 Chromium, Firefox, WebKit을 자동화할 수 있는 테스트 프레임워크입니다. 이를 사용해 엔드 투 엔드(E2E) 테스트를 작성할 수 있습니다. 이 가이드는 Playwright를 Next.js와 함께 설정하고 첫 번째 ...'
 ---
 
 # 테스트: Playwright | Next.js
 
 출처 URL: https://nextjs.org/docs/app/guides/testing/playwright
-
-[가이드](https://nextjs.org/docs/app/guides)[테스트](https://nextjs.org/docs/app/guides/testing)Playwright
-
-페이지 복사
 
 # Playwright를 Next.js에 설정하는 방법
 
@@ -48,7 +44,7 @@ pnpmnpmyarnbun
 app/page.tsx
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <div>
@@ -62,7 +58,7 @@ app/page.tsx
 app/about/page.tsx
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <div>
@@ -78,7 +74,7 @@ app/about/page.tsx
 tests/example.spec.ts
 [code]
     import { test, expect } from '@playwright/test'
-     
+
     test('should navigate to the about page', async ({ page }) => {
       // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
       await page.goto('http://localhost:3000/')
@@ -110,9 +106,3 @@ Playwright와 지속적 통합에 대해 더 자세히 알아보려면 다음 �
   * [Playwright가 포함된 Next.js 예제](https://github.com/vercel/next.js/tree/canary/examples/with-playwright)
   * [CI 공급자에서 Playwright 사용](https://playwright.dev/docs/ci)
   * [Playwright Discord](https://discord.com/invite/playwright-807756831384403968)
-
-도움이 되었나요?
-
-지원됨.
-
-전송

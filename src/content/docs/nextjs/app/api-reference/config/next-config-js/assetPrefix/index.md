@@ -7,10 +7,6 @@ description: '> 주의: Vercel에 배포하면 Next.js 프로젝트에 대한 �
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/assetPrefix
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)assetPrefix
-
-페이지 복사
-
 # assetPrefix
 
 마지막 업데이트: 2026년 2월 20일
@@ -29,7 +25,7 @@ next.config.mjs
 ```
 // @ts-check
 import { PHASE_DEVELOPMENT_SERVER } from 'next/constants'
- 
+
 export default (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER
   /**
@@ -57,8 +53,6 @@ CDN에 파일을 업로드하는 정확한 방식은 선택한 CDN에 따라 달
 `assetPrefix`는 `_next/static`에 대한 요청만 다루며, 다음 경로에는 영향을 주지 않습니다:
 
 - [public](https://nextjs.org/docs/app/api-reference/file-conventions/public-folder) 폴더 내 파일. 해당 자산을 CDN으로 제공하려면 직접 prefix를 추가해야 합니다.
-
-도움이 되었나요?
 
 지원됩니다.
 

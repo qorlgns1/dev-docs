@@ -7,10 +7,6 @@ description: '이 문서는 VS Code 디버거, Chrome DevTools, Firefox DevTools
 
 출처 URL: https://nextjs.org/docs/pages/guides/debugging
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)디버깅
-
-페이지 복사
-
 # Next.js에서 디버깅 도구를 사용하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -99,21 +95,15 @@ Chrome:
   * Chrome 개발자 도구를 엽니다(Windows/Linux는 `Ctrl+Shift+J`, macOS는 `⌥+⌘+I`)
   * **Sources** 탭으로 이동합니다
 
-
-
 Firefox:
 
   * Firefox 개발자 도구를 엽니다(Windows/Linux는 `Ctrl+Shift+I`, macOS는 `⌥+⌘+I`)
   * **Debugger** 탭으로 이동합니다
 
-
-
 두 브라우저 모두 클라이언트 사이드 코드가 [`debugger`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/debugger) 문에 도달하면 실행이 일시 중지되고 해당 파일이 디버그 영역에 표시됩니다. 파일을 검색해 직접 브레이크포인트를 설정할 수도 있습니다.
 
   * Chrome: Windows/Linux는 `Ctrl+P`, macOS는 `⌘+P`
   * Firefox: Windows/Linux는 `Ctrl+P`, macOS는 `⌘+P`, 또는 왼쪽 패널의 파일 트리를 사용
-
-
 
 검색할 때 소스 파일 경로는 `webpack://_N_E/./`로 시작한다는 점을 참고하세요.
 
@@ -124,8 +114,6 @@ React 전용 디버깅을 위해 [React Developer Tools](https://react.dev/learn
   * React 컴포넌트 검사
   * props와 state 편집
   * 성능 문제 식별
-
-
 
 ### 서버 사이드 코드[](https://nextjs.org/docs/pages/guides/debugging#server-side-code)
 
@@ -158,8 +146,6 @@ Chrome:
   3. 별도 DevTools 창을 열기 위해 **inspect**를 클릭합니다
   4. **Sources** 탭으로 이동합니다
 
-
-
 Firefox:
 
   1. 새 탭을 열고 `about:debugging`으로 이동합니다
@@ -167,8 +153,6 @@ Firefox:
   3. **Remote Targets** 아래에서 Next.js 애플리케이션을 찾습니다
   4. 디버거를 열려면 **Inspect**를 클릭합니다
   5. **Debugger** 탭으로 이동합니다
-
-
 
 서버 사이드 디버깅은 클라이언트 사이드 디버깅과 거의 동일하게 동작합니다. 파일을 검색할 때(`Ctrl+P`/`⌘+P`) 소스 파일 경로는 `webpack://{application-name}/./`로 시작합니다(`{application-name}`은 `package.json`에 정의된 앱 이름으로 바뀝니다).
 
@@ -191,11 +175,3 @@ JavaScript 디버거 사용법을 더 알아보려면 다음 문서를 참고하
   * [VS Code의 Node.js 디버깅: Breakpoints](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_breakpoints)
   * [Chrome DevTools: Debug JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript)
   * [Firefox DevTools: Debugger](https://firefox-source-docs.mozilla.org/devtools-user/debugger/)
-
-
-
-도움이 되었나요?
-
-지원됨.
-
-전송

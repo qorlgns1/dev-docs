@@ -7,8 +7,6 @@ description: '는 Sitemaps XML 포맷과 일치하는 특별한 파일로, 검�
 
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
 
-[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)[Metadata Files](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)sitemap.xml
-
 Copy page
 
 # sitemap.xml
@@ -56,7 +54,7 @@ app/sitemap.ts
 JavaScriptTypeScript
 [code]
     import type { MetadataRoute } from 'next'
-     
+
     export default function sitemap(): MetadataRoute.Sitemap {
       return [
         {
@@ -116,7 +114,7 @@ app/sitemap.ts
 JavaScriptTypeScript
 [code]
     import type { MetadataRoute } from 'next'
-     
+
     export default function sitemap(): MetadataRoute.Sitemap {
       return [
         {
@@ -160,7 +158,7 @@ app/sitemap.ts
 JavaScriptTypeScript
 [code]
     import type { MetadataRoute } from 'next'
-     
+
     export default function sitemap(): MetadataRoute.Sitemap {
       return [
         {
@@ -210,7 +208,7 @@ app/sitemap.ts
 JavaScriptTypeScript
 [code]
     import type { MetadataRoute } from 'next'
-     
+
     export default function sitemap(): MetadataRoute.Sitemap {
       return [
         {
@@ -300,8 +298,6 @@ acme.com/sitemap.xml
   * `sitemap.(xml|js|ts)`를 여러 라우트 세그먼트에 중첩하는 방법. 예: `app/sitemap.xml`, `app/products/sitemap.xml`.
   * [`generateSitemaps`](https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps) 함수를 사용하는 방법.
 
-
-
 예를 들어 `generateSitemaps`를 사용해 사이트맵을 분할하려면 사이트맵 `id`가 포함된 객체 배열을 반환합니다. 그런 다음 `id`를 사용해 고유한 사이트맵을 생성합니다.
 
 app/product/sitemap.ts
@@ -310,12 +306,12 @@ JavaScriptTypeScript
 [code]
     import type { MetadataRoute } from 'next'
     import { BASE_URL } from '@/app/lib/constants'
-     
+
     export async function generateSitemaps() {
       // Fetch the total number of products and calculate the number of sitemaps needed
       return [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]
     }
-     
+
     export default async function sitemap(props: {
       id: Promise<string>
     }): Promise<MetadataRoute.Sitemap> {
@@ -340,7 +336,7 @@ JavaScriptTypeScript
 ## Returns[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#returns)
 
 `sitemap.(xml|ts|js)`에서 내보내는 기본 함수는 다음 속성을 가진 객체 배열을 반환해야 합니다:
-[code] 
+[code]
     type Sitemap = Array<{
       url: string
       lastModified?: string | Date
@@ -361,18 +357,19 @@ JavaScriptTypeScript
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| `id`가 이제 `string`으로 resolve되는 promise입니다.  
-`v14.2.0`| 현지화(localizations) 지원을 추가했습니다.  
-`v13.4.14`| 사이트맵에 `changeFrequency`, `priority` 속성을 추가했습니다.  
-`v13.3.0`| `sitemap`이 도입되었습니다.  
-  
+Version| Changes
+---|---
+`v16.0.0`| `id`가 이제 `string`으로 resolve되는 promise입니다.
+`v14.2.0`| 현지화(localizations) 지원을 추가했습니다.
+`v13.4.14`| 사이트맵에 `changeFrequency`, `priority` 속성을 추가했습니다.
+`v13.3.0`| `sitemap`이 도입되었습니다.
+
 ## Next Steps
 
 generateSitemaps 함수를 사용하는 방법을 알아보세요.
 
-### [generateSitemaps애플리케이션에 여러 사이트맵을 만들기 위해 generateSiteMaps 함수를 사용하는 방법을 배워보세요.](https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps)
+- [generateSitemaps](https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps)
+  - 애플리케이션에 여러 사이트맵을 만들기 위해 generateSiteMaps 함수를 사용하는 방법을 배워보세요.
 
 Was this helpful?
 

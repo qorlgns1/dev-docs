@@ -7,8 +7,6 @@ description: '> 경고: Server Components와 Streaming 같은 최신 React 기�
 
 Source URL: https://nextjs.org/docs/app/guides/css-in-js
 
-[앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)CSS-in-JS
-
 Copy page
 
 # CSS-in-JS 라이브러리 사용 방법
@@ -56,11 +54,11 @@ app/registry.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import React, { useState } from 'react'
     import { useServerInsertedHTML } from 'next/navigation'
     import { StyleRegistry, createStyleRegistry } from 'styled-jsx'
-     
+
     export default function StyledJsxRegistry({
       children,
     }: {
@@ -69,13 +67,13 @@ JavaScriptTypeScript
       // Only create stylesheet once with lazy initial state
       // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
       const [jsxStyleRegistry] = useState(() => createStyleRegistry())
-     
+
       useServerInsertedHTML(() => {
         const styles = jsxStyleRegistry.styles()
         jsxStyleRegistry.flush()
         return <>{styles}</>
       })
-     
+
       return <StyleRegistry registry={jsxStyleRegistry}>{children}</StyleRegistry>
     }
 [/code]
@@ -87,7 +85,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import StyledJsxRegistry from './registry'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -127,11 +125,11 @@ lib/registry.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import React, { useState } from 'react'
     import { useServerInsertedHTML } from 'next/navigation'
     import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
-     
+
     export default function StyledComponentsRegistry({
       children,
     }: {
@@ -140,15 +138,15 @@ JavaScriptTypeScript
       // Only create stylesheet once with lazy initial state
       // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
       const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet())
-     
+
       useServerInsertedHTML(() => {
         const styles = styledComponentsStyleSheet.getStyleElement()
         styledComponentsStyleSheet.instance.clearTag()
         return <>{styles}</>
       })
-     
+
       if (typeof window !== 'undefined') return <>{children}</>
-     
+
       return (
         <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
           {children}
@@ -164,7 +162,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import StyledComponentsRegistry from './lib/registry'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -183,12 +181,12 @@ JavaScriptTypeScript
 [예시는 여기에서 확인하세요](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components).
 
 > **알아두면 좋은 정보** :
-> 
+>
 >   * 서버 렌더링 동안 스타일은 전역 레지스트리로 추출되어 HTML의 `<head>`에 플러시됩니다. 이렇게 하면 스타일 규칙이 해당 규칙을 사용할 수 있는 콘텐츠보다 먼저 위치하게 됩니다. 앞으로는 스타일을 어디에 주입할지 결정하기 위해 곧 공개될 React 기능을 사용할 수도 있습니다.
 >   * 스트리밍 중에는 각 청크의 스타일이 수집되어 기존 스타일에 추가됩니다. 클라이언트 측 하이드레이션이 완료되면 `styled-components`가 기존 방식대로 동적 스타일을 계속 주입합니다.
 >   * 트리 최상위에 클라이언트 컴포넌트를 사용해 스타일 레지스트리를 두는 이유는 CSS 규칙을 추출하는 더 효율적인 방법이기 때문입니다. 이렇게 하면 이후 서버 렌더에서 스타일을 다시 생성하지 않아도 되고, 서버 컴포넌트 페이로드에 스타일이 포함되는 것도 방지할 수 있습니다.
 >   * styled-components 컴파일의 개별 속성을 구성해야 하는 고급 사용 사례에서는 [Next.js styled-components API 레퍼런스](https://nextjs.org/docs/architecture/nextjs-compiler#styled-components)를 참고하세요.
-> 
+>
 
 Was this helpful?
 

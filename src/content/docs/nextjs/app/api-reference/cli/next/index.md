@@ -9,8 +9,6 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/cli/next'
 
 [API Reference](https://nextjs.org/docs/app/api-reference)[CLI](https://nextjs.org/docs/app/api-reference/cli)next CLI
 
-페이지 복사
-
 # next CLI
 
 최종 업데이트: 2026년 2월 20일
@@ -32,46 +30,46 @@ pnpmnpmyarnbun
 
 다음 옵션을 사용할 수 있습니다:
 
-Options| Description  
----|---  
-`-h` or `--help`| 사용 가능한 모든 옵션을 표시  
-`-v` or `--version`| Next.js 버전 번호를 출력  
-  
+Options| Description
+---|---
+`-h` or `--help`| 사용 가능한 모든 옵션을 표시
+`-v` or `--version`| Next.js 버전 번호를 출력
+
 ### Commands[](https://nextjs.org/docs/app/api-reference/cli/next#commands)
 
 다음 명령을 사용할 수 있습니다:
 
-Command| Description  
----|---  
-[`dev`](https://nextjs.org/docs/app/api-reference/cli/next#next-dev-options)| 핫 모듈 리로딩, 오류 보고 등과 함께 개발 모드에서 Next.js를 시작합니다.  
-[`build`](https://nextjs.org/docs/app/api-reference/cli/next#next-build-options)| 애플리케이션의 최적화된 프로덕션 빌드를 생성하며 각 라우트 정보를 표시합니다.  
-[`start`](https://nextjs.org/docs/app/api-reference/cli/next#next-start-options)| 프로덕션 모드에서 Next.js를 시작합니다. 먼저 `next build`로 컴파일되어 있어야 합니다.  
-[`info`](https://nextjs.org/docs/app/api-reference/cli/next#next-info-options)| Next.js 버그 보고에 활용할 수 있는 현재 시스템 정보를 출력합니다.  
-[`telemetry`](https://nextjs.org/docs/app/api-reference/cli/next#next-telemetry-options)| Next.js의 완전 익명 텔레메트리 수집을 활성화하거나 비활성화합니다.  
-[`typegen`](https://nextjs.org/docs/app/api-reference/cli/next#next-typegen-options)| 전체 빌드 없이 라우트, 페이지, 레이아웃, 라우트 핸들러에 대한 TypeScript 정의를 생성합니다.  
-[`upgrade`](https://nextjs.org/docs/app/api-reference/cli/next#next-upgrade-options)| Next.js 애플리케이션을 최신 버전으로 업그레이드합니다.  
-[`experimental-analyze`](https://nextjs.org/docs/app/api-reference/cli/next#next-experimental-analyze-options)| Turbopack을 사용해 번들 출력을 분석하며 빌드 아티팩트는 생성하지 않습니다.  
-  
+Command| Description
+---|---
+[`dev`](https://nextjs.org/docs/app/api-reference/cli/next#next-dev-options)| 핫 모듈 리로딩, 오류 보고 등과 함께 개발 모드에서 Next.js를 시작합니다.
+[`build`](https://nextjs.org/docs/app/api-reference/cli/next#next-build-options)| 애플리케이션의 최적화된 프로덕션 빌드를 생성하며 각 라우트 정보를 표시합니다.
+[`start`](https://nextjs.org/docs/app/api-reference/cli/next#next-start-options)| 프로덕션 모드에서 Next.js를 시작합니다. 먼저 `next build`로 컴파일되어 있어야 합니다.
+[`info`](https://nextjs.org/docs/app/api-reference/cli/next#next-info-options)| Next.js 버그 보고에 활용할 수 있는 현재 시스템 정보를 출력합니다.
+[`telemetry`](https://nextjs.org/docs/app/api-reference/cli/next#next-telemetry-options)| Next.js의 완전 익명 텔레메트리 수집을 활성화하거나 비활성화합니다.
+[`typegen`](https://nextjs.org/docs/app/api-reference/cli/next#next-typegen-options)| 전체 빌드 없이 라우트, 페이지, 레이아웃, 라우트 핸들러에 대한 TypeScript 정의를 생성합니다.
+[`upgrade`](https://nextjs.org/docs/app/api-reference/cli/next#next-upgrade-options)| Next.js 애플리케이션을 최신 버전으로 업그레이드합니다.
+[`experimental-analyze`](https://nextjs.org/docs/app/api-reference/cli/next#next-experimental-analyze-options)| Turbopack을 사용해 번들 출력을 분석하며 빌드 아티팩트는 생성하지 않습니다.
+
 > **알아두면 좋아요**: 명령 없이 `next`를 실행하면 `next dev`의 별칭입니다.
 
 ### `next dev` options[](https://nextjs.org/docs/app/api-reference/cli/next#next-dev-options)
 
 `next dev`는 핫 모듈 리로딩(HMR), 오류 보고 등을 포함한 개발 모드로 애플리케이션을 시작합니다. `next dev` 실행 시 다음 옵션을 사용할 수 있습니다:
 
-Option| Description  
----|---  
-`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.  
-`[directory]`| 애플리케이션을 빌드할 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.  
-`--turbopack`| [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack)을 강제로 활성화합니다(기본 활성화). `--turbo`로도 사용할 수 있습니다.  
-`--webpack`| 개발용 기본 번들러인 [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) 대신 Webpack을 사용합니다.  
-`-p` or `--port <port>`| 애플리케이션을 시작할 포트 번호를 지정합니다. 기본값: 3000, env: PORT  
-`-H`or `--hostname <hostname>`| 애플리케이션을 시작할 호스트 이름을 지정합니다. 네트워크의 다른 디바이스에서 접근 가능하게 할 때 유용합니다. 기본값: 0.0.0.0  
-`--experimental-https`| HTTPS로 서버를 시작하고 자체 서명 인증서를 생성합니다.  
-`--experimental-https-key <path>`| HTTPS 키 파일 경로입니다.  
-`--experimental-https-cert <path>`| HTTPS 인증서 파일 경로입니다.  
-`--experimental-https-ca <path>`| HTTPS 인증 기관 파일 경로입니다.  
-`--experimental-upload-trace <traceUrl>`| 디버깅 트레이스 일부를 원격 HTTP URL로 전송합니다.  
-  
+Option| Description
+---|---
+`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.
+`[directory]`| 애플리케이션을 빌드할 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.
+`--turbopack`| [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack)을 강제로 활성화합니다(기본 활성화). `--turbo`로도 사용할 수 있습니다.
+`--webpack`| 개발용 기본 번들러인 [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) 대신 Webpack을 사용합니다.
+`-p` or `--port <port>`| 애플리케이션을 시작할 포트 번호를 지정합니다. 기본값: 3000, env: PORT
+`-H`or `--hostname <hostname>`| 애플리케이션을 시작할 호스트 이름을 지정합니다. 네트워크의 다른 디바이스에서 접근 가능하게 할 때 유용합니다. 기본값: 0.0.0.0
+`--experimental-https`| HTTPS로 서버를 시작하고 자체 서명 인증서를 생성합니다.
+`--experimental-https-key <path>`| HTTPS 키 파일 경로입니다.
+`--experimental-https-cert <path>`| HTTPS 인증서 파일 경로입니다.
+`--experimental-https-ca <path>`| HTTPS 인증 기관 파일 경로입니다.
+`--experimental-upload-trace <traceUrl>`| 디버깅 트레이스 일부를 원격 HTTP URL로 전송합니다.
+
 ### `next build` options[](https://nextjs.org/docs/app/api-reference/cli/next#next-build-options)
 
 `next build`는 애플리케이션의 최적화된 프로덕션 빌드를 생성하며 출력에는 각 라우트 정보가 포함됩니다. 예:
@@ -81,43 +79,43 @@ Option| Description
     Route (app)
     ┌ ○ /_not-found
     └ ƒ /products/[id]
-     
+
     ○  (Static)   prerendered as static content
     ƒ  (Dynamic)  server-rendered on demand
 [/code]
 
 `next build` 명령에서는 다음 옵션을 사용할 수 있습니다:
 
-Option| Description  
----|---  
-`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.  
-`[directory]`| 애플리케이션을 빌드할 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.  
-`--turbopack`| [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack)을 강제로 활성화합니다(기본 활성화). `--turbo`로도 사용할 수 있습니다.  
-`--webpack`| Webpack으로 빌드합니다.  
-`-d` or `--debug`| 더 자세한 빌드 출력을 활성화합니다. 이 플래그를 사용하면 rewrite, redirect, header 등의 추가 빌드 정보가 표시됩니다.  
-|   
-`--profile`| 프로덕션 [React 프로파일링](https://react.dev/reference/react/Profiler)을 활성화합니다.  
-`--no-lint`| 린팅을 비활성화합니다. _참고: Next 16에서는 `next build`에서 린팅이 제거됩니다. Next 15.5+에서 `eslint`가 아닌 린터를 사용 중이라면 빌드 중 린팅이 실행되지 않습니다._  
-`--no-mangling`| [mangling](https://en.wikipedia.org/wiki/Name_mangling)을 비활성화합니다. 성능에 영향을 줄 수 있으므로 디버깅 목적에만 사용하세요.  
-`--experimental-app-only`| App Router 라우트만 빌드합니다.  
-`--experimental-build-mode [mode]`| 실험적 빌드 모드를 사용합니다. (선택: "compile", "generate", 기본값: "default")  
-`--debug-prerender`| 개발 중 프리렌더 오류를 디버그합니다.  
-`--debug-build-paths=<patterns>`| 디버깅을 위해 특정 라우트만 빌드합니다.  
-  
+Option| Description
+---|---
+`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.
+`[directory]`| 애플리케이션을 빌드할 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.
+`--turbopack`| [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack)을 강제로 활성화합니다(기본 활성화). `--turbo`로도 사용할 수 있습니다.
+`--webpack`| Webpack으로 빌드합니다.
+`-d` or `--debug`| 더 자세한 빌드 출력을 활성화합니다. 이 플래그를 사용하면 rewrite, redirect, header 등의 추가 빌드 정보가 표시됩니다.
+|
+`--profile`| 프로덕션 [React 프로파일링](https://react.dev/reference/react/Profiler)을 활성화합니다.
+`--no-lint`| 린팅을 비활성화합니다. _참고: Next 16에서는 `next build`에서 린팅이 제거됩니다. Next 15.5+에서 `eslint`가 아닌 린터를 사용 중이라면 빌드 중 린팅이 실행되지 않습니다._
+`--no-mangling`| [mangling](https://en.wikipedia.org/wiki/Name_mangling)을 비활성화합니다. 성능에 영향을 줄 수 있으므로 디버깅 목적에만 사용하세요.
+`--experimental-app-only`| App Router 라우트만 빌드합니다.
+`--experimental-build-mode [mode]`| 실험적 빌드 모드를 사용합니다. (선택: "compile", "generate", 기본값: "default")
+`--debug-prerender`| 개발 중 프리렌더 오류를 디버그합니다.
+`--debug-build-paths=<patterns>`| 디버깅을 위해 특정 라우트만 빌드합니다.
+
 ### `next start` options[](https://nextjs.org/docs/app/api-reference/cli/next#next-start-options)
 
 `next start`는 애플리케이션을 프로덕션 모드로 시작합니다. 먼저 [`next build`](https://nextjs.org/docs/app/api-reference/cli/next#next-build-options)로 컴파일해야 합니다.
 
 `next start` 명령에서는 다음 옵션을 사용할 수 있습니다:
 
-Option| Description  
----|---  
-`-h` or `--help`| 사용 가능한 모든 옵션을 표시합니다.  
-`[directory]`| 애플리케이션을 시작할 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.  
-`-p` or `--port <port>`| 애플리케이션을 시작할 포트 번호를 지정합니다. (기본값: 3000, env: PORT)  
-`-H` or `--hostname <hostname>`| 애플리케이션을 시작할 호스트 이름을 지정합니다(기본값: 0.0.0.0).  
-`--keepAliveTimeout <keepAliveTimeout>`| 비활성 연결을 닫기 전까지 대기할 최대 밀리초를 지정합니다.  
-  
+Option| Description
+---|---
+`-h` or `--help`| 사용 가능한 모든 옵션을 표시합니다.
+`[directory]`| 애플리케이션을 시작할 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.
+`-p` or `--port <port>`| 애플리케이션을 시작할 포트 번호를 지정합니다. (기본값: 3000, env: PORT)
+`-H` or `--hostname <hostname>`| 애플리케이션을 시작할 호스트 이름을 지정합니다(기본값: 0.0.0.0).
+`--keepAliveTimeout <keepAliveTimeout>`| 비활성 연결을 닫기 전까지 대기할 최대 밀리초를 지정합니다.
+
 ### `next info` options[](https://nextjs.org/docs/app/api-reference/cli/next#next-info-options)
 
 `next info`는 [GitHub issue](https://github.com/vercel/next.js/issues)를 열 때 Next.js 버그를 보고하는 데 사용할 수 있는 현재 시스템 관련 정보를 출력합니다. 여기에는 OS 플랫폼/아키텍처/버전, 바이너리(Node.js, npm, Yarn, pnpm), 패키지 버전(`next`, `react`, `react-dom`) 등이 포함됩니다.
@@ -149,23 +147,23 @@ Option| Description
 
 `next info` 명령에서는 다음 옵션을 사용할 수 있습니다:
 
-Option| Description  
----|---  
-`-h` or `--help`| 사용 가능한 모든 옵션을 표시  
-`--verbose`| 디버깅을 위한 추가 정보를 수집  
-  
+Option| Description
+---|---
+`-h` or `--help`| 사용 가능한 모든 옵션을 표시
+`--verbose`| 디버깅을 위한 추가 정보를 수집
+
 ### `next telemetry` options[](https://nextjs.org/docs/app/api-reference/cli/next#next-telemetry-options)
 
 Next.js는 일반 사용에 대한 **완전 익명** 텔레메트리 데이터를 수집합니다. 이 익명 프로그램 참여는 선택 사항이며 원하지 않으면 언제든지 옵트아웃할 수 있습니다.
 
 `next telemetry` 명령에서는 다음 옵션을 사용할 수 있습니다:
 
-Option| Description  
----|---  
-`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.  
-`--enable`| Next.js 텔레메트리 수집을 활성화합니다.  
-`--disable`| Next.js 텔레메트리 수집을 비활성화합니다.  
-  
+Option| Description
+---|---
+`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.
+`--enable`| Next.js 텔레메트리 수집을 활성화합니다.
+`--disable`| Next.js 텔레메트리 수집을 비활성화합니다.
+
 [Telemetry](https://nextjs.org/telemetry)에 대해 더 알아보기.
 
 ### `next typegen` options[](https://nextjs.org/docs/app/api-reference/cli/next#next-typegen-options)
@@ -178,18 +176,18 @@ Option| Description
 [code]
     # Generate route types first, then validate with TypeScript
     next typegen && tsc --noEmit
-     
+
     # Or in CI workflows for type checking without building
     next typegen && npm run type-check
 [/code]
 
 `next typegen` 명령에서는 다음 옵션을 사용할 수 있습니다:
 
-Option| Description  
----|---  
-`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.  
-`[directory]`| 타입을 생성할 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.  
-  
+Option| Description
+---|---
+`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.
+`[directory]`| 타입을 생성할 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.
+
 출력 파일은 `<distDir>/types`(일반적으로 `.next/dev/types` 또는 `.next/types`, [`isolatedDevBuild`](https://nextjs.org/docs/app/api-reference/config/next-config-js/isolatedDevBuild) 참고)에 작성됩니다:
 
 터미널
@@ -213,13 +211,13 @@ Option| Description
 
 `next upgrade` 명령에서는 다음 옵션을 사용할 수 있습니다:
 
-Option| Description  
----|---  
-`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.  
-`[directory]`| 업그레이드할 Next.js 애플리케이션이 있는 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.  
-`--revision <revision>`| 업그레이드할 Next.js 버전 또는 태그를 지정합니다(예: `latest`, `canary`, `15.0.0`). 기본값은 현재 설치된 릴리스 채널입니다.  
-`--verbose`| 업그레이드 중 자세한 출력을 표시합니다.  
-  
+Option| Description
+---|---
+`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.
+`[directory]`| 업그레이드할 Next.js 애플리케이션이 있는 디렉터리입니다. 지정하지 않으면 현재 디렉터리를 사용합니다.
+`--revision <revision>`| 업그레이드할 Next.js 버전 또는 태그를 지정합니다(예: `latest`, `canary`, `15.0.0`). 기본값은 현재 설치된 릴리스 채널입니다.
+`--verbose`| 업그레이드 중 자세한 출력을 표시합니다.
+
 ### `next experimental-analyze` options[](https://nextjs.org/docs/app/api-reference/cli/next#next-experimental-analyze-options)
 
 `next experimental-analyze`는 [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack)을 사용해 애플리케이션 번들 출력을 분석합니다. JavaScript, CSS, 기타 에셋을 포함해 번들의 크기와 구성을 파악하는 데 도움이 되며 애플리케이션 빌드는 생성하지 않습니다.
@@ -245,21 +243,21 @@ pnpmnpmyarnbun
 [code]
     # Write output to .next/diagnostics/analyze
     npx next experimental-analyze --output
-     
+
     # Copy the output for comparison with a future analysis
     cp -r .next/diagnostics/analyze ./analyze-before-refactor
 [/code]
 
 `next experimental-analyze` 명령에는 다음 옵션이 있습니다:
 
-옵션| 설명  
----|---  
-`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.  
-`[directory]`| 애플리케이션을 분석할 디렉터리입니다. 제공하지 않으면 현재 디렉터리를 사용합니다.  
-`--no-mangling`| [mangling](https://en.wikipedia.org/wiki/Name_mangling)을 비활성화합니다. 성능에 영향을 줄 수 있으므로 디버깅 용도로만 사용하세요.  
-`--profile`| 프로덕션 [React 프로파일링](https://react.dev/reference/react/Profiler)을 활성화합니다. 성능에 영향을 줄 수 있습니다.  
-`-o, --output`| 서버를 시작하지 않고 분석 파일을 디스크에 기록합니다. 출력은 `.next/diagnostics/analyze`에 기록됩니다.  
-`--port <port>`| 애널라이저를 제공할 포트 번호를 지정합니다. (기본값: 4000, 환경 변수: PORT)  
+옵션| 설명
+---|---
+`-h, --help`| 사용 가능한 모든 옵션을 표시합니다.
+`[directory]`| 애플리케이션을 분석할 디렉터리입니다. 제공하지 않으면 현재 디렉터리를 사용합니다.
+`--no-mangling`| [mangling](https://en.wikipedia.org/wiki/Name_mangling)을 비활성화합니다. 성능에 영향을 줄 수 있으므로 디버깅 용도로만 사용하세요.
+`--profile`| 프로덕션 [React 프로파일링](https://react.dev/reference/react/Profiler)을 활성화합니다. 성능에 영향을 줄 수 있습니다.
+`-o, --output`| 서버를 시작하지 않고 분석 파일을 디스크에 기록합니다. 출력은 `.next/diagnostics/analyze`에 기록됩니다.
+`--port <port>`| 애널라이저를 제공할 포트 번호를 지정합니다. (기본값: 4000, 환경 변수: PORT)
 
 ## 예제[](https://nextjs.org/docs/app/api-reference/cli/next#examples)
 
@@ -296,10 +294,10 @@ pnpmnpmyarnbun
 [code]
     # Build a specific route
     next build --debug-build-paths="app/page.tsx"
-     
+
     # Build more than one route
     next build --debug-build-paths="app/page.tsx,pages/index.tsx"
-     
+
     # Use glob patterns
     next build --debug-build-paths="app/**/page.tsx"
     next build --debug-build-paths="pages/*.tsx"
@@ -365,15 +363,11 @@ pnpmnpmyarnbun
     NODE_OPTIONS='--inspect' next
 [/code]
 
-버전| 변경 사항  
----|---  
-`v16.1.0`| `next experimental-analyze` 명령이 추가되었습니다  
-`v16.0.0`| JS 번들 크기 메트릭이 `next build`에서 제거되었습니다  
-`v15.5.0`| `next typegen` 명령이 추가되었습니다  
-`v15.4.0`| 프리렌더 오류를 디버깅할 수 있도록 `next build`에 `--debug-prerender` 옵션이 추가되었습니다  
-
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`v16.1.0`| `next experimental-analyze` 명령이 추가되었습니다
+`v16.0.0`| JS 번들 크기 메트릭이 `next build`에서 제거되었습니다
+`v15.5.0`| `next typegen` 명령이 추가되었습니다
+`v15.4.0`| 프리렌더 오류를 디버깅할 수 있도록 `next build`에 `--debug-prerender` 옵션이 추가되었습니다
 
 보내기

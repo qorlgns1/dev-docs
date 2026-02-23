@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverComponentsHmrCache
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)serverComponentsHmrCache
-
-페이지 복사
-
 # serverComponentsHmrCache
 
 이 기능은 현재 실험 단계이며 변경될 수 있으므로 프로덕션 환경에서는 권장되지 않습니다. 로컬 개발에서 사용해 보고 [GitHub](https://github.com/vercel/next.js/issues)에서 피드백을 공유해 주세요.
@@ -28,20 +24,14 @@ next.config.ts
 JavaScriptTypeScript
 ```
 import type { NextConfig } from 'next'
- 
+
 const nextConfig: NextConfig = {
   experimental: {
     serverComponentsHmrCache: false, // defaults to true
   },
 }
- 
+
 export default nextConfig
 ```
 
 > **참고:** 관측성을 높이려면 개발 중 콘솔에서 fetch 캐시 적중/미스를 기록해 주는 [`logging.fetches`](https://nextjs.org/docs/app/api-reference/config/next-config-js/logging) 옵션 사용을 권장합니다.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

@@ -7,10 +7,6 @@ description: 'Next.js는 React 애플리케이션과 서버 측 코드를 컴파
 
 Source URL: https://nextjs.org/docs/pages/guides/babel
 
-[페이지 라우터](https://nextjs.org/docs/pages)[가이드](https://nextjs.org/docs/pages/guides)Babel
-
-페이지 복사
-
 # Next.js에서 Babel 구성 방법
 
 최종 업데이트 2026년 2월 20일
@@ -18,8 +14,6 @@ Source URL: https://nextjs.org/docs/pages/guides/babel
 예시
 
   * [Babel 구성 사용자 지정](https://github.com/vercel/next.js/tree/canary/examples/with-custom-babel-config)
-
-
 
 Next.js는 React 애플리케이션과 서버 측 코드를 컴파일하는 데 필요한 모든 항목을 포함한 `next/babel` 프리셋을 앱에 기본 제공합니다. 그러나 기본 Babel 구성을 확장하고 싶다면 그렇게 할 수도 있습니다.
 
@@ -74,14 +68,7 @@ Next.js는 React 애플리케이션과 서버 측 코드를 컴파일하는 데 
 각 구성에서 사용 가능한 옵션을 더 알아보려면 babel [문서](https://babeljs.io/docs/) 사이트를 방문하세요.
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * Next.js는 서버 측 컴파일에 [**현재** Node.js 버전](https://github.com/nodejs/release#release-schedule)을 사용합니다.
 >   * `"preset-env"`의 `modules` 옵션은 `false`로 유지해야 하며, 그렇지 않으면 webpack 코드 분할이 비활성화됩니다.
-> 
-
-
-도움이 되었나요?
-
-지원됨.
-
-전송
+>

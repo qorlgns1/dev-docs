@@ -7,8 +7,6 @@ description: '옵션을 사용하면 배포에 대한 식별자를 설정할 수
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/deploymentId
 
-[Configuration](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)deploymentId
-
 Copy page
 
 # deploymentId
@@ -68,17 +66,15 @@ module.exports = {
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/deploymentId#version-history)
 
-Version| Changes  
----|---  
-`v14.1.4`| `deploymentId`가 최상위 구성 옵션으로 안정화되었습니다.  
-`v13.4.10`| `experimental.deploymentId`가 도입되었습니다.  
-  
+Version| Changes
+---|---
+`v14.1.4`| `deploymentId`가 최상위 구성 옵션으로 안정화되었습니다.
+`v13.4.10`| `experimental.deploymentId`가 도입되었습니다.
+
 ## 관련 문서[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/deploymentId#related)
 
   * [Self-Hosting - Version Skew](https://nextjs.org/docs/app/guides/self-hosting#version-skew)
   * [generateBuildId](https://nextjs.org/docs/app/api-reference/config/next-config-js/generateBuildId)
-
-
 
 Was this helpful?
 

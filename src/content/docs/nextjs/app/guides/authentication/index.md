@@ -7,10 +7,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 Source URL: https://nextjs.org/docs/app/guides/authentication
 
-[앱 라우터](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Authentication
-
-페이지 복사
-
 # Next.js에서 인증을 구현하는 방법
 
 최종 업데이트: 2026년 2월 20일
@@ -22,8 +18,6 @@ Source URL: https://nextjs.org/docs/app/guides/authentication
   1. **[Authentication](https://nextjs.org/docs/app/guides/authentication#authentication)** : 사용자가 자신이 주장하는 사람인지 확인합니다. 사용자 이름과 비밀번호처럼 사용자가 가진 것으로 신원을 증명해야 합니다.
   2. **[Session Management](https://nextjs.org/docs/app/guides/authentication#session-management)** : 요청 전반에 걸쳐 사용자의 인증 상태를 추적합니다.
   3. **[Authorization](https://nextjs.org/docs/app/guides/authentication#authorization)** : 사용자가 접근할 수 있는 라우트와 데이터를 결정합니다.
-
-
 
 이 다이어그램은 React와 Next.js 기능을 사용한 인증 플로우를 보여줍니다:
 
@@ -48,7 +42,7 @@ app/ui/signup-form.tsx
 JavaScriptTypeScript
 [code]
     import { signup } from '@/app/actions/auth'
-     
+
     export function SignupForm() {
       return (
         <form action={signup}>
@@ -88,7 +82,7 @@ app/lib/definitions.ts
 JavaScriptTypeScript
 [code]
     import * as z from 'zod'
-     
+
     export const SignupFormSchema = z.object({
       name: z
         .string()
@@ -105,7 +99,7 @@ JavaScriptTypeScript
         })
         .trim(),
     })
-     
+
     export type FormState =
       | {
           errors?: {
@@ -125,7 +119,7 @@ app/actions/auth.ts
 JavaScriptTypeScript
 [code]
     import { SignupFormSchema, FormState } from '@/app/lib/definitions'
-     
+
     export async function signup(state: FormState, formData: FormData) {
       // Validate form fields
       const validatedFields = SignupFormSchema.safeParse({
@@ -133,14 +127,14 @@ JavaScriptTypeScript
         email: formData.get('email'),
         password: formData.get('password'),
       })
-     
+
       // If any form fields are invalid, return early
       if (!validatedFields.success) {
         return {
           errors: validatedFields.error.flatten().fieldErrors,
         }
       }
-     
+
       // Call the provider or db to create a user...
     }
 [/code]
@@ -152,13 +146,13 @@ app/ui/signup-form.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { signup } from '@/app/actions/auth'
     import { useActionState } from 'react'
-     
+
     export default function SignupForm() {
       const [state, action, pending] = useActionState(signup, undefined)
-     
+
       return (
         <form action={action}>
           <div>
@@ -166,13 +160,13 @@ JavaScriptTypeScript
             <input id="name" name="name" placeholder="Name" />
           </div>
           {state?.errors?.name && <p>{state.errors.name}</p>}
-     
+
           <div>
             <label htmlFor="email">Email</label>
             <input id="email" name="email" placeholder="Email" />
           </div>
           {state?.errors?.email && <p>{state.errors.email}</p>}
-     
+
           <div>
             <label htmlFor="password">Password</label>
             <input id="password" name="password" type="password" />
@@ -196,11 +190,10 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋아요:**
-> 
+>
 >   * React 19에서는 `useFormStatus`가 data, method, action처럼 추가 키를 반환합니다. React 19를 사용하지 않는다면 `pending` 키만 사용할 수 있습니다.
 >   * 데이터를 변경하기 전에 사용자가 해당 작업을 수행할 권한이 있는지 항상 확인해야 합니다. [Authentication and Authorization](https://nextjs.org/docs/app/guides/authentication#authorization)을 참고하세요.
-> 
-
+>
 
 #### 3\. 사용자 생성 또는 자격 증명 확인[](https://nextjs.org/docs/app/guides/authentication#3-create-a-user-or-check-user-credentials)
 
@@ -215,12 +208,12 @@ JavaScriptTypeScript
     export async function signup(state: FormState, formData: FormData) {
       // 1. Validate form fields
       // ...
-     
+
       // 2. Prepare data for insertion into database
       const { name, email, password } = validatedFields.data
       // e.g. Hash the user's password before storing it
       const hashedPassword = await bcrypt.hash(password, 10)
-     
+
       // 3. Insert the user into the database or call an Auth Library's API
       const data = await db
         .insert(users)
@@ -230,15 +223,15 @@ JavaScriptTypeScript
           password: hashedPassword,
         })
         .returning({ id: users.id })
-     
+
       const user = data[0]
-     
+
       if (!user) {
         return {
           message: 'An error occurred while creating your account.',
         }
       }
-     
+
       // TODO:
       // 4. Create user session
       // 5. Redirect user
@@ -248,11 +241,10 @@ JavaScriptTypeScript
 사용자 계정을 성공적으로 생성하거나 자격 증명을 확인한 후에는 세션을 생성해 사용자의 인증 상태를 관리할 수 있습니다. 세션 관리 전략에 따라 세션은 쿠키, 데이터베이스 또는 둘 다에 저장할 수 있습니다. 자세한 내용은 [Session Management](https://nextjs.org/docs/app/guides/authentication#session-management) 섹션을 확인하세요.
 
 > **팁:**
-> 
+>
 >   * 위 예제는 교육 목적상 인증 단계를 자세히 분해했기 때문에 장황합니다. 이를 통해 직접 안전한 솔루션을 구현하는 일이 빠르게 복잡해질 수 있음을 보여줍니다. 프로세스를 단순화하려면 [Auth Library](https://nextjs.org/docs/app/guides/authentication#auth-libraries) 사용을 고려하세요.
 >   * 사용자 경험을 개선하기 위해 등록 흐름 초반에 중복 이메일이나 사용자 이름을 확인하고 싶을 수 있습니다. 예를 들어 사용자가 사용자 이름을 입력하는 동안 또는 입력 필드가 포커스를 잃을 때 확인하면 불필요한 폼 제출을 방지하고 즉각적인 피드백을 제공할 수 있습니다. 이러한 확인 빈도를 관리하려면 [use-debounce](https://www.npmjs.com/package/use-debounce) 같은 라이브러리로 요청을 디바운스하세요.
-> 
-
+>
 
 ## Session Management[](https://nextjs.org/docs/app/guides/authentication#session-management)
 
@@ -262,8 +254,6 @@ JavaScriptTypeScript
 
   1. [**Stateless**](https://nextjs.org/docs/app/guides/authentication#stateless-sessions): 세션 데이터(또는 토큰)가 브라우저의 쿠키에 저장됩니다. 쿠키가 각 요청과 함께 전송되어 서버에서 세션을 검증할 수 있습니다. 구현이 잘못되면 보안이 떨어질 수 있지만, 방법 자체는 단순합니다.
   2. [**Database**](https://nextjs.org/docs/app/guides/authentication#database-sessions): 세션 데이터가 데이터베이스에 저장되고, 사용자의 브라우저는 암호화된 세션 ID만 받습니다. 더 안전하지만 복잡도가 높고 서버 리소스를 더 많이 사용할 수 있습니다.
-
-
 
 > **알아두면 좋아요:** 두 방법 중 하나 또는 둘 다 사용할 수 있지만, [iron-session](https://github.com/vvo/iron-session)이나 [Jose](https://github.com/panva/jose) 같은 세션 관리 라이브러리를 사용하는 것이 좋습니다.
 
@@ -313,10 +303,10 @@ JavaScriptTypeScript
     import 'server-only'
     import { SignJWT, jwtVerify } from 'jose'
     import { SessionPayload } from '@/app/lib/definitions'
-     
+
     const secretKey = process.env.SESSION_SECRET
     const encodedKey = new TextEncoder().encode(secretKey)
-     
+
     export async function encrypt(payload: SessionPayload) {
       return new SignJWT(payload)
         .setProtectedHeader({ alg: 'HS256' })
@@ -324,7 +314,7 @@ JavaScriptTypeScript
         .setExpirationTime('7d')
         .sign(encodedKey)
     }
-     
+
     export async function decrypt(session: string | undefined = '') {
       try {
         const { payload } = await jwtVerify(session, encodedKey, {
@@ -338,9 +328,9 @@ JavaScriptTypeScript
 [/code]
 
 > **팁** :
-> 
+>
 >   * 페이로드에는 이후 요청에서 사용할 최소한의 고유 사용자 데이터(예: 사용자 ID, 역할 등)만 포함하세요. 전화번호, 이메일, 신용카드 정보와 같은 개인 식별 정보나 비밀번호 같은 민감한 데이터는 포함하지 않아야 합니다.
-> 
+>
 
 #### 3\. 쿠키 설정(권장 옵션)[](https://nextjs.org/docs/app/guides/authentication#3-setting-cookies-recommended-options)
 
@@ -360,12 +350,12 @@ JavaScriptTypeScript
 [code]
     import 'server-only'
     import { cookies } from 'next/headers'
-     
+
     export async function createSession(userId: string) {
       const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
       const session = await encrypt({ userId, expiresAt })
       const cookieStore = await cookies()
-     
+
       cookieStore.set('session', session, {
         httpOnly: true,
         secure: true,
@@ -383,13 +373,13 @@ app/actions/auth.ts
 JavaScriptTypeScript
 [code]
     import { createSession } from '@/app/lib/session'
-     
+
     export async function signup(state: FormState, formData: FormData) {
       // Previous steps:
       // 1. Validate form fields
       // 2. Prepare data for insertion into database
       // 3. Insert the user into the database or call an Library API
-     
+
       // Current steps:
       // 4. Create user session
       await createSession(user.id)
@@ -399,10 +389,10 @@ JavaScriptTypeScript
 [/code]
 
 > **팁** :
-> 
+>
 >   * **쿠키는 서버에서 설정**해 클라이언트 측 변조를 방지하세요.
 >   * 🎥 시청: Next.js로 상태 비저장 세션과 인증을 이해하기 → [YouTube (11분)](https://www.youtube.com/watch?v=DJvM2lSPn6w).
-> 
+>
 
 #### 세션 업데이트(또는 새로 고침)[](https://nextjs.org/docs/app/guides/authentication#updating-or-refreshing-sessions)
 
@@ -415,17 +405,17 @@ JavaScriptTypeScript
     import 'server-only'
     import { cookies } from 'next/headers'
     import { decrypt } from '@/app/lib/session'
-     
+
     export async function updateSession() {
       const session = (await cookies()).get('session')?.value
       const payload = await decrypt(session)
-     
+
       if (!session || !payload) {
         return null
       }
-     
+
       const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-     
+
       const cookieStore = await cookies()
       cookieStore.set('session', session, {
         httpOnly: true,
@@ -449,7 +439,7 @@ JavaScriptTypeScript
 [code]
     import 'server-only'
     import { cookies } from 'next/headers'
-     
+
     export async function deleteSession() {
       const cookieStore = await cookies()
       cookieStore.delete('session')
@@ -464,7 +454,7 @@ JavaScriptTypeScript
 [code]
     import { cookies } from 'next/headers'
     import { deleteSession } from '@/app/lib/session'
-     
+
     export async function logout() {
       await deleteSession()
       redirect('/login')
@@ -488,10 +478,10 @@ JavaScriptTypeScript
     import cookies from 'next/headers'
     import { db } from '@/app/lib/db'
     import { encrypt } from '@/app/lib/session'
-     
+
     export async function createSession(id: number) {
       const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-     
+
       // 1. Create a session in the database
       const data = await db
         .insert(sessions)
@@ -501,12 +491,12 @@ JavaScriptTypeScript
         })
         // Return the session ID
         .returning({ id: sessions.id })
-     
+
       const sessionId = data[0].id
-     
+
       // 2. Encrypt the session ID
       const session = await encrypt({ sessionId, expiresAt })
-     
+
       // 3. Store the session in cookies for optimistic auth checks
       const cookieStore = await cookies()
       cookieStore.set('session', session, {
@@ -520,10 +510,10 @@ JavaScriptTypeScript
 [/code]
 
 > **팁** :
-> 
+>
 >   * 더 빠른 접근을 위해 세션 기간 동안 서버 캐시를 추가하는 것을 고려할 수 있습니다. 또한 세션 데이터를 기본 데이터베이스에 유지하고, 데이터 요청을 결합해 쿼리 수를 줄일 수 있습니다.
 >   * 사용자가 마지막으로 로그인한 시간, 활성 기기 수 추적 또는 모든 기기에서 로그아웃할 수 있는 기능 등 고급 사용 사례를 위해 데이터베이스 세션을 선택할 수 있습니다.
-> 
+>
 
 세션 관리 구현 후에는 애플리케이션 내에서 사용자가 접근하고 수행할 수 있는 작업을 제어하기 위한 권한 부여 로직을 추가해야 합니다. 자세한 내용은 [Authorization](https://nextjs.org/docs/app/guides/authentication#authorization) 섹션을 계속 확인하세요.
 
@@ -560,28 +550,28 @@ JavaScriptTypeScript
     import { NextRequest, NextResponse } from 'next/server'
     import { decrypt } from '@/app/lib/session'
     import { cookies } from 'next/headers'
-     
+
     // 1. Specify protected and public routes
     const protectedRoutes = ['/dashboard']
 [/code]
 
 const publicRoutes = ['/login', '/signup', '/']
-     
+
     export default async function proxy(req: NextRequest) {
       // 2. Check if the current route is protected or public
       const path = req.nextUrl.pathname
       const isProtectedRoute = protectedRoutes.includes(path)
       const isPublicRoute = publicRoutes.includes(path)
-     
+
       // 3. Decrypt the session from the cookie
       const cookie = (await cookies()).get('session')?.value
       const session = await decrypt(cookie)
-     
+
       // 4. Redirect to /login if the user is not authenticated
       if (isProtectedRoute && !session?.userId) {
         return NextResponse.redirect(new URL('/login', req.nextUrl))
       }
-     
+
       // 5. Redirect to /dashboard if the user is authenticated
       if (
         isPublicRoute &&
@@ -590,10 +580,10 @@ const publicRoutes = ['/login', '/signup', '/']
       ) {
         return NextResponse.redirect(new URL('/dashboard', req.nextUrl))
       }
-     
+
       return NextResponse.next()
     }
-     
+
     // Routes Proxy should not run on
     export const config = {
       matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
@@ -603,12 +593,11 @@ const publicRoutes = ['/login', '/signup', '/']
 Proxy는 초기 점검에 유용하지만, 데이터를 보호하기 위한 유일한 방어선이 되어서는 안 됩니다. 보안 점검 대부분은 데이터 소스와 가능한 한 가까운 지점에서 수행되어야 하며, 자세한 내용은 [Data Access Layer](https://nextjs.org/docs/app/guides/authentication#creating-a-data-access-layer-dal)를 참조하세요.
 
 > **Tips** :
-> 
+>
 >   * Proxy에서는 `req.cookies.get('session').value`를 사용해 쿠키를 읽을 수도 있습니다.
 >   * Proxy는 Node.js 런타임을 사용하므로, Auth 라이브러리와 세션 관리 라이브러리가 호환되는지 확인하세요. Auth 라이브러리가 [Edge Runtime](https://nextjs.org/docs/app/api-reference/edge)만 지원한다면 [Middleware](https://github.com/vercel/next.js/blob/v15.5.6/docs/01-app/03-api-reference/03-file-conventions/middleware.mdx)를 사용해야 할 수도 있습니다.
 >   * Proxy에서 `matcher` 속성을 사용해 Proxy가 실행되어야 하는 라우트를 지정할 수 있습니다. 다만 인증 목적이라면 전체 라우트에서 Proxy를 실행하는 것이 권장됩니다.
-> 
-
+>
 
 ### 데이터 액세스 레이어(DAL) 만들기[](https://nextjs.org/docs/app/guides/authentication#creating-a-data-access-layer-dal)
 
@@ -623,18 +612,18 @@ app/lib/dal.ts
 JavaScriptTypeScript
 [code]
     import 'server-only'
-     
+
     import { cookies } from 'next/headers'
     import { decrypt } from '@/app/lib/session'
-     
+
     export const verifySession = cache(async () => {
       const cookie = (await cookies()).get('session')?.value
       const session = await decrypt(cookie)
-     
+
       if (!session?.userId) {
         redirect('/login')
       }
-     
+
       return { isAuth: true, userId: session.userId }
     })
 [/code]
@@ -648,7 +637,7 @@ JavaScriptTypeScript
     export const getUser = cache(async () => {
       const session = await verifySession()
       if (!session) return null
-     
+
       try {
         const data = await db.query.users.findMany({
           where: eq(users.id, session.userId),
@@ -659,9 +648,9 @@ JavaScriptTypeScript
             email: true,
           },
         })
-     
+
         const user = data[0]
-     
+
         return user
       } catch (error) {
         console.log('Failed to fetch user')
@@ -671,12 +660,11 @@ JavaScriptTypeScript
 [/code]
 
 > **Tip** :
-> 
+>
 >   * DAL은 요청 시점에 가져오는 데이터를 보호하는 데 사용할 수 있습니다. 그러나 사용자 간에 데이터를 공유하는 정적 라우트에서는 데이터가 요청 시점이 아니라 빌드 시점에 가져옵니다. 정적 라우트를 보호하려면 [Proxy](https://nextjs.org/docs/app/guides/authentication#optimistic-checks-with-proxy-optional)를 사용하세요.
 >   * 보안을 강화하려면 세션 ID를 데이터베이스와 비교해 세션 유효성을 확인하세요. 렌더 패스 동안 데이터베이스에 불필요한 중복 요청을 피하려면 React의 [cache](https://react.dev/reference/react/cache) 함수를 사용하세요.
 >   * 관련 데이터 요청을 JavaScript 클래스에 모아두고, 어떤 메서드든 실행 전에 `verifySession()`을 호출하도록 구성할 수 있습니다.
-> 
-
+>
 
 ### 데이터 전송 객체(DTO) 사용하기[](https://nextjs.org/docs/app/guides/authentication#using-data-transfer-objects-dto)
 
@@ -690,24 +678,24 @@ JavaScriptTypeScript
 [code]
     import 'server-only'
     import { getUser } from '@/app/lib/dal'
-     
+
     function canSeeUsername(viewer: User) {
       return true
     }
-     
+
     function canSeePhoneNumber(viewer: User, team: string) {
       return viewer.isAdmin || team === viewer.team
     }
-     
+
     export async function getProfileDTO(slug: string) {
       const data = await db.query.users.findMany({
         where: eq(users.slug, slug),
         // Return specific columns here
       })
       const user = data[0]
-     
+
       const currentUser = await getUser(user.id)
-     
+
       // Or return only what's specific to the query here
       return {
         username: canSeeUsername(currentUser) ? user.username : null,
@@ -721,11 +709,10 @@ JavaScriptTypeScript
 DAL에서 데이터 요청과 권한 로직을 중앙화하고 DTO를 사용하면 모든 데이터 요청의 보안과 일관성을 보장할 수 있어, 애플리케이션이 확장될 때 유지보수·감사·디버깅이 쉬워집니다.
 
 > **알아두면 좋아요** :
-> 
+>
 >   * DTO를 정의하는 방법은 `toJSON()` 사용부터 위 예시와 같은 개별 함수, 혹은 JS 클래스까지 다양합니다. 이는 React나 Next.js 기능이 아니라 JavaScript 패턴이므로, 애플리케이션에 가장 적합한 패턴을 찾기 위해 조사를 권장합니다.
 >   * [Security in Next.js article](https://nextjs.org/blog/security-nextjs-server-components-actions)에서 보안 모범 사례를 더 알아보세요.
-> 
-
+>
 
 ### 서버 컴포넌트[](https://nextjs.org/docs/app/guides/authentication#server-components)
 
@@ -736,11 +723,11 @@ app/dashboard/page.tsx
 JavaScriptTypeScript
 [code]
     import { verifySession } from '@/app/lib/dal'
-     
+
     export default async function Dashboard() {
       const session = await verifySession()
       const userRole = session?.user?.role // Assuming 'role' is part of the session object
-     
+
       if (userRole === 'admin') {
         return <AdminDashboard />
       } else if (userRole === 'user') {
@@ -772,13 +759,13 @@ app/dashboard/page.tsx
 JavaScriptTypeScript
 [code]
     import { verifySession } from '@/app/lib/dal'
-     
+
     export default async function DashboardPage() {
       const session = await verifySession()
-     
+
       // Fetch user-specific data from your database or data source
       const user = await getUserData(session.userId)
-     
+
       return (
         <div>
           <h1>Welcome, {user.name}</h1>
@@ -797,15 +784,15 @@ app/ui/admin-actions.tsx
 JavaScriptTypeScript
 [code]
     import { verifySession } from '@/app/lib/dal'
-     
+
     export default async function AdminActions() {
       const session = await verifySession()
       const userRole = session?.user?.role
-     
+
       if (userRole !== 'admin') {
         return null
       }
-     
+
       return (
         <div>
           <button>Delete User</button>
@@ -818,11 +805,10 @@ JavaScriptTypeScript
 이 패턴을 사용하면 각 컴포넌트 렌더 시 인증 검사를 수행하면서 사용자 권한에 따라 UI 요소를 표시하거나 숨길 수 있습니다.
 
 > **알아두면 좋아요:**
-> 
+>
 >   * SPA에서 흔한 패턴은 사용자가 승인되지 않았을 때 레이아웃이나 최상위 컴포넌트에서 `return null`을 하는 것입니다. Next.js 애플리케이션에는 여러 진입점이 있으므로 이 패턴은 중첩 라우트 세그먼트와 Server Actions 접근을 막지 못해 **권장되지 않습니다**.
 >   * 이러한 컴포넌트에서 호출되는 모든 Server Actions 역시 자체적인 권한 검사를 수행해야 합니다. 클라이언트 UI만으로는 보안을 보장할 수 없습니다.
-> 
-
+>
 
 ### Server Actions[](https://nextjs.org/docs/app/guides/authentication#server-actions)
 
@@ -836,11 +822,11 @@ JavaScriptTypeScript
 [code]
     'use server'
     import { verifySession } from '@/app/lib/dal'
-     
+
     export async function serverAction(formData: FormData) {
       const session = await verifySession()
       const userRole = session?.user?.role
-     
+
       // Return early if user is not authorized to perform the action
       if (userRole !== 'admin') {
         return null
@@ -861,23 +847,23 @@ app/api/route.ts
 JavaScriptTypeScript
 [code]
     import { verifySession } from '@/app/lib/dal'
-     
+
     export async function GET() {
       // User authentication and role verification
       const session = await verifySession()
-     
+
       // Check if the user is authenticated
       if (!session) {
         // User is not authenticated
         return new Response(null, { status: 401 })
       }
-     
+
       // Check if the user has the 'admin' role
       if (session.user.role !== 'admin') {
         // User is authenticated but does not have the right permissions
         return new Response(null, { status: 403 })
       }
-     
+
       // Continue for authorized users
     }
 [/code]
@@ -895,7 +881,7 @@ app/layout.ts
 JavaScriptTypeScript
 [code]
     import { ContextProvider } from 'auth-lib'
-     
+
     export default function RootLayout({ children }) {
       return (
         <html lang="en">
@@ -908,13 +894,13 @@ JavaScriptTypeScript
 [/code]
 [code]
     'use client';
-     
+
     import { useSession } from "auth-lib";
-     
+
     export default function Profile() {
       const { userId } = useSession();
       const { data } = useSWR(`/api/user/${userId}`, fetcher)
-     
+
       return (
         // ...
       );
@@ -942,14 +928,10 @@ JavaScriptTypeScript
   * [Stytch](https://stytch.com/docs/guides/quickstarts/nextjs)
   * [WorkOS](https://workos.com/docs/user-management/nextjs)
 
-
-
 ### 세션 관리 라이브러리[](https://nextjs.org/docs/app/guides/authentication#session-management-libraries)
 
   * [Iron Session](https://github.com/vvo/iron-session)
   * [Jose](https://github.com/panva/jose)
-
-
 
 ## 추가 학습 자료[](https://nextjs.org/docs/app/guides/authentication#further-reading)
 
@@ -959,11 +941,5 @@ JavaScriptTypeScript
   * [Understanding XSS Attacks](https://vercel.com/guides/understanding-xss-attacks)
   * [Understanding CSRF Attacks](https://vercel.com/guides/understanding-csrf-attacks)
   * [The Copenhagen Book](https://thecopenhagenbook.com/)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

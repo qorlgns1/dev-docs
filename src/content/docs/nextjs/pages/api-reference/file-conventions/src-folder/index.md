@@ -9,8 +9,6 @@ description: '프로젝트 루트에 있는 Next.js의 특수  또는  디렉터
 
 [API Reference](https://nextjs.org/docs/pages/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/pages/api-reference/file-conventions)src 디렉터리
 
-페이지 복사
-
 # src 디렉터리
 
 마지막 업데이트 2026년 2월 20일
@@ -22,7 +20,7 @@ description: '프로젝트 루트에 있는 Next.js의 특수  또는  디렉터
 `src` 폴더를 사용하려면 `app` 라우터 폴더나 `pages` 라우터 폴더를 각각 `src/app` 또는 `src/pages`로 이동하세요.
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `/public` 디렉터리는 프로젝트 루트에 유지해야 합니다.
 >   * `package.json`, `next.config.js`, `tsconfig.json` 같은 구성 파일은 프로젝트 루트에 유지해야 합니다.
 >   * `.env.*` 파일은 프로젝트 루트에 유지해야 합니다.
@@ -31,10 +29,6 @@ description: '프로젝트 루트에 있는 Next.js의 특수  또는  디렉터
 >   * 프록시를 사용 중이라면 반드시 `src` 폴더 내부에 배치하세요.
 >   * Tailwind CSS를 사용 중이면 [content 섹션](https://tailwindcss.com/docs/content-configuration)의 `tailwind.config.js` 파일에 `/src` 접두사를 추가해야 합니다.
 >   * `@/*`처럼 TypeScript 경로로 import를 사용 중이면 `tsconfig.json`의 `paths` 객체에 `src/`를 포함하도록 업데이트하세요.
-> 
-
-도움이 되었나요?
-
-지원됨.
+>
 
 보내기

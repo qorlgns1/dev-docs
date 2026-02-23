@@ -34,7 +34,7 @@ app/page.js
     async function getRecentArticles() {
       return db.query(...)
     }
-     
+
     export default async function Page() {
       const articles = await getRecentArticles(token);
       return <ArticleList articles={articles}>
@@ -46,7 +46,7 @@ app/page.js
 app/page.js
 [code]
     import { cacheTag, cacheLife } from 'next/cache'
-     
+
     async function getRecentArticles() {
       "use cache"
       // This cache can be revalidated by webhook or server action
@@ -57,7 +57,7 @@ app/page.js
       cacheLife('hours')
       return db.query(...)
     }
-     
+
     export default async function Page() {
       const articles = await getRecentArticles(token);
       return <ArticleList articles={articles}>
@@ -73,7 +73,7 @@ app/page.js
     async function getLatestTransactions() {
       return db.query(...)
     }
-     
+
     export default async function Page() {
       const transactions = await getLatestTransactions(token);
       return <TransactionList transactions={transactions}>
@@ -85,16 +85,16 @@ app/page.js
 app/page.js
 [code]
     import { Suspense } from 'react'
-     
+
     async function TransactionList() {
       const transactions = await db.query(...)
       return ...
     }
-     
+
     function TransactionSkeleton() {
       return <ul>...</ul>
     }
-     
+
     export default async function Page() {
       return (
         <Suspense fallback={<TransactionSkeleton />}>
@@ -127,9 +127,9 @@ app/inbox.js
 app/page.js
 [code]
     import { cookies } from 'next/headers'
-     
+
     import { Inbox } from './inbox'
-     
+
     export default async function Page() {
       const token = (await cookies()).get('token')
       return (
@@ -145,7 +145,7 @@ app/page.js
 app/inbox.js
 [code]
     import { cookies } from 'next/headers'
-     
+
     export async function Inbox() {
       const token = (await cookies()).get('token')
       const email = await getEmail(token)
@@ -162,7 +162,7 @@ app/inbox.js
 app/page.js
 [code]
     import { Inbox } from './inbox'
-     
+
     export default async function Page() {
       return (
         <Suspense fallback="loading your inbox...">
@@ -191,9 +191,9 @@ app/map.js
 app/page.js
 [code]
     import { cookies } from 'next/headers'
-     
+
     import { Map } from './map'
-     
+
     export default async function Page({ searchParams }) {
       const { lat, lng } = await searchParams;
       return (
@@ -218,9 +218,9 @@ app/map.js
 app/page.js
 [code]
     import { cookies } from 'next/headers'
-     
+
     import { Map } from './map'
-     
+
     export default async function Page({ searchParams }) {
       const coords = searchParams.then(sp => ({ lat: sp.lat, lng: sp.lng }))
       return (
@@ -242,7 +242,7 @@ app/blog/[slug]/page.js
     export async function generateStaticParams() {
       return [{ slug: 'hello-world' }]
     }
-     
+
     export default async function Page({ params }) {
       const { slug } = await params //  Valid with generateStaticParams
       return <div>Blog post: {slug}</div>
@@ -262,7 +262,7 @@ app/blog/[slug]/page.js
 app/page.js
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     async function getDashboard() {
       "use cache"
       // This cache will revalidate after 1 second. It is so short
@@ -271,7 +271,7 @@ app/page.js
       cacheLife('seconds')
       return db.query(...)
     }
-     
+
     export default async function Page() {
       const data = await getDashboard(token);
       return <Dashboard data={data}>
@@ -283,7 +283,7 @@ app/page.js
 app/page.js
 [code]
     import { cacheLife } from 'next/cache'
-     
+
     async function getDashboard() {
       "use cache"
       // This cache will revalidate after 1 minute. It's long enough that
@@ -291,7 +291,7 @@ app/page.js
       cacheLife('minutes')
       return db.query(...)
     }
-     
+
     export default async function Page() {
       const data = await getDashboard(token);
       return <Dashboard data={data}>
@@ -309,11 +309,5 @@ app/page.js
   * [`connection` 함수](https://nextjs.org/docs/app/api-reference/functions/connection)
   * [`cacheLife` 함수](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
   * [`cacheTag` 함수](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

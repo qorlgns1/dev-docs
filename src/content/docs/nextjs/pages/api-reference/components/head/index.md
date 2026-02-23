@@ -7,8 +7,6 @@ description: '다음과 같이 페이지의 에 요소를 추가하는 내장 �
 
 Source URL: https://nextjs.org/docs/pages/api-reference/components/head
 
-[API Reference](https://nextjs.org/docs/pages/api-reference)[Components](https://nextjs.org/docs/pages/api-reference/components)Head
-
 Copy page
 
 # Head
@@ -16,9 +14,9 @@ Copy page
 마지막 업데이트 2026년 2월 20일
 
 다음과 같이 페이지의 `head`에 요소를 추가하는 내장 컴포넌트를 제공합니다:
-[code] 
+[code]
     import Head from 'next/head'
-     
+
     function IndexPage() {
       return (
         <div>
@@ -29,16 +27,16 @@ Copy page
         </div>
       )
     }
-     
+
     export default IndexPage
 [/code]
 
 ## 중복 태그 피하기[](https://nextjs.org/docs/pages/api-reference/components/head#avoid-duplicated-tags)
 
 `head`에서 태그가 중복되지 않도록 `key` 속성을 사용하면 태그가 한 번만 렌더링되도록 보장합니다. 다음 예제를 참고하세요:
-[code] 
+[code]
     import Head from 'next/head'
-     
+
     function IndexPage() {
       return (
         <div>
@@ -53,7 +51,7 @@ Copy page
         </div>
       )
     }
-     
+
     export default IndexPage
 [/code]
 

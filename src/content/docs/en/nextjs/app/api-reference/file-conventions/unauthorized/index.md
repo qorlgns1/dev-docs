@@ -1,100 +1,121 @@
 ---
-title: 'File-system conventions: unauthorized.js'
-description: "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on GitHub."
+title: 'unauthorized.js'
+description: '> This feature is currently experimental and subject to change, it is not recommended for production.'
 ---
-
-# File-system conventions: unauthorized.js | Next.js
 
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)unauthorized.js
-
-Copy page
-
 # unauthorized.js
 
-This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
-
-Last updated February 20, 2026
+> This feature is currently experimental and subject to change, it is not recommended for production.
 
 The **unauthorized** file is used to render UI when the [`unauthorized`](https://nextjs.org/docs/app/api-reference/functions/unauthorized) function is invoked during authentication. Along with allowing you to customize the UI, Next.js will return a `401` status code.
 
-app/unauthorized.tsx
+```tsx filename="app/unauthorized.tsx" switcher
+import Login from '@/app/components/Login'
 
-JavaScriptTypeScript
-[code]
-    import Login from '@/app/components/Login'
-     
-    export default function Unauthorized() {
-      return (
-        <main>
-          <h1>401 - Unauthorized</h1>
-          <p>Please log in to access this page.</p>
-          <Login />
-        </main>
-      )
-    }
-[/code]
+export default function Unauthorized() {
+  return (
+    <main>
+      <h1>401 - Unauthorized</h1>
+      <p>Please log in to access this page.</p>
+      <Login />
+    </main>
+  )
+}
+```
 
-## Reference[](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized#reference)
+```jsx filename="app/unauthorized.js" switcher
+import Login from '@/app/components/Login'
 
-### Props[](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized#props)
+export default function Unauthorized() {
+  return (
+    <main>
+      <h1>401 - Unauthorized</h1>
+      <p>Please log in to access this page.</p>
+      <Login />
+    </main>
+  )
+}
+```
+
+## Reference
+
+### Props
 
 `unauthorized.js` components do not accept any props.
 
-## Examples[](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized#examples)
+## Examples
 
-### Displaying login UI to unauthenticated users[](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized#displaying-login-ui-to-unauthenticated-users)
+### Displaying login UI to unauthenticated users
 
 You can use [`unauthorized`](https://nextjs.org/docs/app/api-reference/functions/unauthorized) function to render the `unauthorized.js` file with a login UI.
 
-app/dashboard/page.tsx
+```tsx filename="app/dashboard/page.tsx" switcher
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
 
-JavaScriptTypeScript
-[code]
-    import { verifySession } from '@/app/lib/dal'
-    import { unauthorized } from 'next/navigation'
-     
-    export default async function DashboardPage() {
-      const session = await verifySession()
-     
-      if (!session) {
-        unauthorized()
-      }
-     
-      return <div>Dashboard</div>
-    }
-[/code]
+export default async function DashboardPage() {
+  const session = await verifySession()
 
-app/unauthorized.tsx
+  if (!session) {
+    unauthorized()
+  }
 
-JavaScriptTypeScript
-[code]
-    import Login from '@/app/components/Login'
-     
-    export default function UnauthorizedPage() {
-      return (
-        <main>
-          <h1>401 - Unauthorized</h1>
-          <p>Please log in to access this page.</p>
-          <Login />
-        </main>
-      )
-    }
-[/code]
+  return <div>Dashboard</div>
+}
+```
 
-## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized#version-history)
+```jsx filename="app/dashboard/page.js" switcher
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
 
-Version| Changes  
----|---  
-`v15.1.0`| `unauthorized.js` introduced.  
-  
-## 
+export default async function DashboardPage() {
+  const session = await verifySession()
 
-### [unauthorizedAPI Reference for the unauthorized function.](https://nextjs.org/docs/app/api-reference/functions/unauthorized)
+  if (!session) {
+    unauthorized()
+  }
 
-Was this helpful?
+  return <div>Dashboard</div>
+}
+```
 
-supported.
+```tsx filename="app/unauthorized.tsx" switcher
+import Login from '@/app/components/Login'
 
-Send
+export default function UnauthorizedPage() {
+  return (
+    <main>
+      <h1>401 - Unauthorized</h1>
+      <p>Please log in to access this page.</p>
+      <Login />
+    </main>
+  )
+}
+```
+
+```jsx filename="app/unauthorized.js" switcher
+import Login from '@/app/components/Login'
+
+export default function UnauthorizedPage() {
+  return (
+    <main>
+      <h1>401 - Unauthorized</h1>
+      <p>Please log in to access this page.</p>
+      <Login />
+    </main>
+  )
+}
+```
+
+## Version History
+
+| Version   | Changes                       |
+| --------- | ----------------------------- |
+| `v15.1.0` | `unauthorized.js` introduced. |
+- [unauthorized](https://nextjs.org/docs/app/api-reference/functions/unauthorized)
+  - API Reference for the unauthorized function.
+
+---
+

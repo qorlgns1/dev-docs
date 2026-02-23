@@ -7,8 +7,6 @@ description: 'Next.js는 렌더링 작업과 데이터 요청을 캐싱해 애�
 
 Source URL: https://nextjs.org/docs/app/guides/caching
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Caching
-
 Copy page
 
 # Next.js의 캐싱
@@ -23,13 +21,13 @@ Next.js는 렌더링 작업과 데이터 요청을 캐싱해 애플리케이션 
 
 아래는 주요 캐싱 메커니즘과 목적에 대한 상위 수준 요약입니다:
 
-Mechanism| What| Where| Purpose| Duration  
----|---|---|---|---  
-[Request Memoization](https://nextjs.org/docs/app/guides/caching#request-memoization)| 함수 반환 값| 서버| React 컴포넌트 트리에서 데이터 재사용| 요청별 라이프사이클  
-[Data Cache](https://nextjs.org/docs/app/guides/caching#data-cache)| 데이터| 서버| 사용자 요청과 배포 간 데이터 저장| 지속(재검증 가능)  
-[Full Route Cache](https://nextjs.org/docs/app/guides/caching#full-route-cache)| HTML 및 RSC 페이로드| 서버| 렌더링 비용 절감 및 성능 향상| 지속(재검증 가능)  
-[Router Cache](https://nextjs.org/docs/app/guides/caching#client-side-router-cache)| RSC 페이로드| 클라이언트| 탐색 시 서버 요청 감소| 사용자 세션 또는 시간 기반  
-  
+Mechanism| What| Where| Purpose| Duration
+---|---|---|---|---
+[Request Memoization](https://nextjs.org/docs/app/guides/caching#request-memoization)| 함수 반환 값| 서버| React 컴포넌트 트리에서 데이터 재사용| 요청별 라이프사이클
+[Data Cache](https://nextjs.org/docs/app/guides/caching#data-cache)| 데이터| 서버| 사용자 요청과 배포 간 데이터 저장| 지속(재검증 가능)
+[Full Route Cache](https://nextjs.org/docs/app/guides/caching#full-route-cache)| HTML 및 RSC 페이로드| 서버| 렌더링 비용 절감 및 성능 향상| 지속(재검증 가능)
+[Router Cache](https://nextjs.org/docs/app/guides/caching#client-side-router-cache)| RSC 페이로드| 클라이언트| 탐색 시 서버 요청 감소| 사용자 세션 또는 시간 기반
+
 기본적으로 Next.js는 성능을 높이고 비용을 줄이기 위해 가능한 많은 것을 캐싱합니다. 즉, 경로는 **정적으로 렌더링**되고 데이터 요청은 **캐싱**되며, 명시적으로 제외하지 않는 한 그렇습니다. 아래 다이어그램은 기본 캐싱 동작을 보여줍니다. 이는 경로가 빌드 시점에 정적으로 렌더링될 때와 정적 경로를 처음 방문할 때를 나타냅니다.
 
 캐싱 동작은 경로가 정적 또는 동적으로 렌더링되는지, 데이터가 캐시되는지 여부, 그리고 요청이 초기 방문인지 후속 탐색인지에 따라 달라집니다. 사용 사례에 따라 개별 경로와 데이터 요청의 캐싱 동작을 구성할 수 있습니다.
@@ -58,8 +56,6 @@ Next.js에서 캐싱이 어떻게 동작하는지 이해하려면 사용 가능�
   * [`unstable_noStore`](https://nextjs.org/docs/app/api-reference/functions/unstable_noStore)
   * `{ cache: 'no-store' }` 옵션의 [`fetch`](https://nextjs.org/docs/app/api-reference/functions/fetch)
 
-
-
 동적 경로는 Full Route Cache에 캐시되지 않지만, 데이터 요청에 대해서는 [Data Cache](https://nextjs.org/docs/app/guides/caching#data-cache)를 사용할 수 있습니다.
 
 > **알아두면 좋아요**: 동일한 경로 내에서 정적 렌더링과 동적 렌더링을 혼합하려면 [Cache Components](https://nextjs.org/docs/app/getting-started/cache-components)를 사용할 수 있습니다.
@@ -80,10 +76,10 @@ JavaScriptTypeScript
       const res = await fetch('https://.../item/1')
       return res.json()
     }
-     
+
     // This function is called twice, but only executed the first time
     const item = await getItem() // cache MISS
-     
+
     // The second call could be anywhere in your route
     const item = await getItem() // cache HIT
 [/code]
@@ -95,18 +91,15 @@ JavaScriptTypeScript
   * 동일 렌더링 패스에서 해당 요청이 다시 호출되면 캐시 `HIT`가 되어, 함수를 다시 실행하지 않고 메모리에서 데이터를 반환합니다.
   * 경로가 렌더링되고 렌더링 패스가 완료되면 메모리가 "리셋"되며 모든 request memoization 항목이 지워집니다.
 
-
-
 > **알아두면 좋아요**:
-> 
+>
 >   * Request memoization은 Next.js 기능이 아닌 React 기능입니다. 다른 캐싱 메커니즘과의 상호 작용을 설명하기 위해 포함되었습니다.
 >   * 메모이제이션은 `fetch` 요청의 `GET` 메서드에만 적용됩니다.
 >   * 메모이제이션은 React 컴포넌트 트리에만 적용됩니다. 즉:
 >     * `generateMetadata`, `generateStaticParams`, 레이아웃, 페이지, 기타 서버 컴포넌트의 `fetch` 요청에는 적용됩니다.
 >     * React 컴포넌트 트리의 일부가 아닌 Route Handler의 `fetch` 요청에는 적용되지 않습니다.
 >   * `fetch`가 적합하지 않은 경우(예: 일부 데이터베이스 클라이언트, CMS 클라이언트, GraphQL 클라이언트) [React `cache` 함수](https://nextjs.org/docs/app/guides/caching#react-cache-function)로 함수를 메모이즈할 수 있습니다.
-> 
-
+>
 
 ### 지속 시간[](https://nextjs.org/docs/app/guides/caching#duration)
 
@@ -146,10 +139,8 @@ Next.js에는 들어오는 **서버 요청**과 **배포** 전반에 걸쳐 데�
   * 캐시되지 않은 데이터(예: `cache` 옵션이 없거나 `{ cache: 'no-store' }` 사용)는 항상 데이터 소스에서 가져오고, 결과는 메모이즈됩니다.
   * 데이터가 캐시되었든 아니든, 동일한 데이터를 위한 중복 요청을 피하기 위해 요청은 항상 메모이즈됩니다.
 
-
-
 > **Data Cache와 Request Memoization 간 차이점**
-> 
+>
 > 두 메커니즘 모두 캐시된 데이터를 재사용해 성능을 높이지만, Data Cache는 들어오는 요청과 배포 전반에 지속되며, 메모이제이션은 단일 요청의 수명 동안만 지속됩니다.
 
 ### 지속 시간[](https://nextjs.org/docs/app/guides/caching#duration-1)
@@ -163,12 +154,10 @@ Data Cache는 재검증하거나 옵트아웃하지 않는 한 들어오는 요�
   * **시간 기반 재검증**: 특정 시간이 경과하고 새 요청이 들어오면 데이터를 다시 검증합니다. 변경이 드물고 신선도가 덜 중요한 데이터에 적합합니다.
   * **온디맨드 재검증**: 이벤트(예: 양식 제출)에 따라 데이터를 재검증합니다. 온디맨드 재검증은 태그 기반 또는 경로 기반 접근으로 데이터 그룹을 한 번에 재검증할 수 있습니다. (예: 헤드리스 CMS 콘텐츠가 업데이트되면) 최신 데이터를 즉시 보여주고 싶을 때 유용합니다.
 
-
-
 #### 시간 기반 재검증[](https://nextjs.org/docs/app/guides/caching#time-based-revalidation)
 
 정해진 간격으로 데이터를 재검증하려면 `fetch`의 `next.revalidate` 옵션을 사용해 리소스의 캐시 수명(초)을 설정하세요.
-[code] 
+[code]
     // Revalidate at most every hour
     fetch('https://...', { next: { revalidate: 3600 } })
 [/code]
@@ -200,14 +189,14 @@ Alternatively, you can use [Route Segment Config options](https://nextjs.org/doc
 ### 선택 해제[](https://nextjs.org/docs/app/guides/caching#opting-out-1)
 
 `fetch` 응답을 캐시하지 않으려면 다음과 같이 할 수 있습니다.
-[code] 
+[code]
     let data = await fetch('https://api.vercel.app/blog', { cache: 'no-store' })
 [/code]
 
 ## Full Route Cache[](https://nextjs.org/docs/app/guides/caching#full-route-cache)
 
 > **관련 용어** :
-> 
+>
 > 빌드 시 애플리케이션의 라우트를 렌더링하고 캐싱하는 프로세스를 지칭할 때 **Automatic Static Optimization**, **Static Site Generation**, **Static Rendering**이라는 용어가 서로 바꿔 사용될 수 있습니다.
 
 Next.js는 빌드 시 라우트를 자동으로 렌더링하고 캐싱합니다. 이렇게 하면 모든 요청마다 서버에서 렌더링하는 대신 캐시된 라우트를 제공하여 페이지 로드 속도가 빨라집니다.
@@ -226,14 +215,14 @@ Full Route Cache가 어떻게 작동하는지 이해하려면 React가 렌더링
 이 덕분에 모든 렌더링이 끝날 때까지 기다리지 않고도 작업을 캐시하거나 응답을 보낼 수 있습니다. 대신 작업이 완료되는 대로 응답을 스트리밍할 수 있습니다.
 
 > **React Server Component Payload란?**
-> 
+>
 > React Server Component Payload는 렌더링된 React 서버 컴포넌트 트리를 압축한 바이너리 표현입니다. React가 클라이언트에서 브라우저 DOM을 업데이트하는 데 사용합니다. React Server Component Payload에는 다음이 포함됩니다.
-> 
+>
 >   * 서버 컴포넌트의 렌더링 결과
 >   * 클라이언트 컴포넌트를 렌더링할 위치와 해당 JavaScript 파일에 대한 참조
 >   * 서버 컴포넌트에서 클라이언트 컴포넌트로 전달되는 모든 props
-> 
-> 
+>
+>
 > 더 알아보려면 [Server Components](https://nextjs.org/docs/app/getting-started/server-and-client-components) 문서를 참고하세요.
 
 ### 2\. 서버에서의 Next.js 캐싱 (Full Route Cache)[](https://nextjs.org/docs/app/guides/caching#2-nextjs-caching-on-the-server-full-route-cache)
@@ -322,8 +311,6 @@ Router Cache를 무효화하는 방법은 두 가지입니다.
 * [`cookies.set`](https://nextjs.org/docs/app/api-reference/functions/cookies#setting-a-cookie) 또는 [`cookies.delete`](https://nextjs.org/docs/app/api-reference/functions/cookies#deleting-cookies)를 사용하면 Router Cache가 무효화되어 쿠키를 사용하는 라우트(예: 인증)가 최신 상태로 유지됩니다.
   * [`router.refresh`](https://nextjs.org/docs/app/api-reference/functions/use-router)를 호출하면 Router Cache가 무효화되고 현재 라우트에 대해 서버에 새 요청을 보냅니다.
 
-
-
 ### 옵트아웃[](https://nextjs.org/docs/app/guides/caching#opting-out-3)
 
 Next.js 15부터 페이지 세그먼트는 기본적으로 옵트아웃됩니다.
@@ -339,38 +326,34 @@ Next.js 15부터 페이지 세그먼트는 기본적으로 옵트아웃됩니다
   * Data Cache를 재검증하거나 옵트아웃하면 렌더 출력이 데이터에 의존하므로 Full Route Cache가 무효화됩니다.
   * Full Route Cache를 무효화하거나 옵트아웃하더라도 Data Cache에는 영향을 주지 않습니다. 캐시된 데이터와 비캐시 데이터를 모두 포함하는 라우트를 동적으로 렌더링할 수 있습니다. 페이지 대부분은 캐시된 데이터를 사용하지만 일부 컴포넌트는 요청 시 가져와야 하는 데이터에 의존할 때 유용합니다. 모든 데이터를 다시 가져오는 성능 영향을 걱정하지 않고 동적으로 렌더링할 수 있습니다.
 
-
-
 ### Data Cache와 Client-side Router cache[](https://nextjs.org/docs/app/guides/caching#data-cache-and-client-side-router-cache)
 
   * [Server Action](https://nextjs.org/docs/app/getting-started/updating-data)에서 [`revalidatePath`](https://nextjs.org/docs/app/guides/caching#revalidatepath) 또는 [`revalidateTag`](https://nextjs.org/docs/app/guides/caching#fetch-optionsnexttags-and-revalidatetag)를 사용하면 Data Cache와 Router cache를 즉시 무효화할 수 있습니다.
   * [Route Handler](https://nextjs.org/docs/app/api-reference/file-conventions/route)에서 Data Cache를 재검증해도 Route Handler가 특정 라우트에 묶여 있지 않기 때문에 Router Cache는 즉시 무효화되지 않습니다. 따라서 강제 새로고침 또는 자동 무효화 기간이 지날 때까지 Router Cache는 이전 페이로드를 계속 제공합니다.
 
-
-
 ## APIs[](https://nextjs.org/docs/app/guides/caching#apis)
 
 다음 표는 다양한 Next.js API가 캐싱에 어떤 영향을 미치는지 개요를 제공합니다:
 
-API| Router Cache| Full Route Cache| Data Cache| React Cache  
----|---|---|---|---  
-[`<Link prefetch>`](https://nextjs.org/docs/app/guides/caching#link)| Cache| | |   
-[`router.prefetch`](https://nextjs.org/docs/app/guides/caching#routerprefetch)| Cache| | |   
-[`router.refresh`](https://nextjs.org/docs/app/guides/caching#routerrefresh)| Revalidate| | |   
-[`fetch`](https://nextjs.org/docs/app/guides/caching#fetch)| | | Cache| Cache (GET 및 HEAD)  
-[`fetch` `options.cache`](https://nextjs.org/docs/app/guides/caching#fetch-optionscache)| | | Cache 또는 Opt out|   
-[`fetch` `options.next.revalidate`](https://nextjs.org/docs/app/guides/caching#fetch-optionsnextrevalidate)| | Revalidate| Revalidate|   
-[`fetch` `options.next.tags`](https://nextjs.org/docs/app/guides/caching#fetch-optionsnexttags-and-revalidatetag)| | Cache| Cache|   
-[`revalidateTag`](https://nextjs.org/docs/app/guides/caching#fetch-optionsnexttags-and-revalidatetag)| Revalidate (Server Action)| Revalidate| Revalidate|   
-[`revalidatePath`](https://nextjs.org/docs/app/guides/caching#revalidatepath)| Revalidate (Server Action)| Revalidate| Revalidate|   
-[`const revalidate`](https://nextjs.org/docs/app/guides/caching#segment-config-options)| | Revalidate 또는 Opt out| Revalidate 또는 Opt out|   
-[`const dynamic`](https://nextjs.org/docs/app/guides/caching#segment-config-options)| | Cache 또는 Opt out| Cache 또는 Opt out|   
-[`cookies`](https://nextjs.org/docs/app/guides/caching#cookies)| Revalidate (Server Action)| Opt out| |   
-[`headers`, `searchParams`](https://nextjs.org/docs/app/guides/caching#dynamic-apis)| | Opt out| |   
-[`generateStaticParams`](https://nextjs.org/docs/app/guides/caching#generatestaticparams)| | Cache| |   
-[`React.cache`](https://nextjs.org/docs/app/guides/caching#react-cache-function)| | | | Cache  
-[`unstable_cache`](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)| | | Cache|   
-  
+API| Router Cache| Full Route Cache| Data Cache| React Cache
+---|---|---|---|---
+[`<Link prefetch>`](https://nextjs.org/docs/app/guides/caching#link)| Cache| | |
+[`router.prefetch`](https://nextjs.org/docs/app/guides/caching#routerprefetch)| Cache| | |
+[`router.refresh`](https://nextjs.org/docs/app/guides/caching#routerrefresh)| Revalidate| | |
+[`fetch`](https://nextjs.org/docs/app/guides/caching#fetch)| | | Cache| Cache (GET 및 HEAD)
+[`fetch` `options.cache`](https://nextjs.org/docs/app/guides/caching#fetch-optionscache)| | | Cache 또는 Opt out|
+[`fetch` `options.next.revalidate`](https://nextjs.org/docs/app/guides/caching#fetch-optionsnextrevalidate)| | Revalidate| Revalidate|
+[`fetch` `options.next.tags`](https://nextjs.org/docs/app/guides/caching#fetch-optionsnexttags-and-revalidatetag)| | Cache| Cache|
+[`revalidateTag`](https://nextjs.org/docs/app/guides/caching#fetch-optionsnexttags-and-revalidatetag)| Revalidate (Server Action)| Revalidate| Revalidate|
+[`revalidatePath`](https://nextjs.org/docs/app/guides/caching#revalidatepath)| Revalidate (Server Action)| Revalidate| Revalidate|
+[`const revalidate`](https://nextjs.org/docs/app/guides/caching#segment-config-options)| | Revalidate 또는 Opt out| Revalidate 또는 Opt out|
+[`const dynamic`](https://nextjs.org/docs/app/guides/caching#segment-config-options)| | Cache 또는 Opt out| Cache 또는 Opt out|
+[`cookies`](https://nextjs.org/docs/app/guides/caching#cookies)| Revalidate (Server Action)| Opt out| |
+[`headers`, `searchParams`](https://nextjs.org/docs/app/guides/caching#dynamic-apis)| | Opt out| |
+[`generateStaticParams`](https://nextjs.org/docs/app/guides/caching#generatestaticparams)| | Cache| |
+[`React.cache`](https://nextjs.org/docs/app/guides/caching#react-cache-function)| | | | Cache
+[`unstable_cache`](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)| | | Cache|
+
 ### `<Link>`[](https://nextjs.org/docs/app/guides/caching#link)
 
 기본적으로 `<Link>` 컴포넌트는 Full Route Cache에서 라우트를 자동으로 prefetch하고 React Server Component Payload를 Router Cache에 추가합니다.
@@ -402,14 +385,12 @@ Prefetching을 비활성화하려면 `prefetch` prop을 `false`로 설정할 수
   * [동적 렌더링](https://nextjs.org/docs/app/guides/caching#dynamic-rendering): 매 요청마다 `fetch`가 실행되며 항상 최신 데이터를 반환합니다.
   * [정적 렌더링](https://nextjs.org/docs/app/guides/caching#static-rendering): 가져온 데이터는 [Data Cache](https://nextjs.org/docs/app/guides/caching#data-cache)에 저장되고 렌더링 출력은 [Full Route Cache](https://nextjs.org/docs/app/guides/caching#full-route-cache)에 저장됩니다. Next.js는 경로가 재검증될 때까지 이 캐시된 결과를 제공합니다.
 
-
-
 [`fetch` API Reference](https://nextjs.org/docs/app/api-reference/functions/fetch)에서 더 많은 옵션을 확인하세요.
 
 ### `fetch options.cache`[](https://nextjs.org/docs/app/guides/caching#fetch-optionscache)
 
 `cache` 옵션을 `force-cache`로 설정하여 개별 `fetch` 호출을 캐싱하도록 선택할 수 있습니다:
-[code] 
+[code]
     // 캐싱을 사용
     fetch(`https://...`, { cache: 'force-cache' })
 [/code]
@@ -419,7 +400,7 @@ Prefetching을 비활성화하려면 `prefetch` prop을 `false`로 설정할 수
 ### `fetch options.next.revalidate`[](https://nextjs.org/docs/app/guides/caching#fetch-optionsnextrevalidate)
 
 `fetch`의 `next.revalidate` 옵션을 사용하면 개별 `fetch` 요청의 재검증 주기(초 단위)를 설정할 수 있습니다. 이는 Data Cache를 재검증하고, 이어서 Full Route Cache도 재검증합니다. 새로운 데이터가 가져와지고 컴포넌트가 서버에서 다시 렌더링됩니다.
-[code] 
+[code]
     // 최대 1시간마다 재검증
     fetch(`https://...`, { next: { revalidate: 3600 } })
 [/code]
@@ -433,16 +414,14 @@ Next.js에는 정밀한 데이터 캐싱과 재검증을 위한 캐시 태깅 �
   1. `fetch` 또는 [`unstable_cache`](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)를 사용할 때 하나 이상의 태그로 캐시 항목을 태깅할 수 있습니다.
   2. 그런 다음 `revalidateTag`를 호출하여 해당 태그와 연결된 캐시 항목을 제거할 수 있습니다.
 
-
-
 예를 들어, 데이터를 가져올 때 태그를 설정할 수 있습니다:
-[code] 
+[code]
     // 태그와 함께 데이터 캐시
     fetch(`https://...`, { next: { tags: ['a', 'b', 'c'] } })
 [/code]
 
 그런 다음 캐시 항목을 제거하려면 `revalidateTag`를 태그와 함께 호출합니다:
-[code] 
+[code]
     // 특정 태그의 항목을 재검증
     revalidateTag('a')
 [/code]
@@ -452,12 +431,10 @@ Next.js에는 정밀한 데이터 캐싱과 재검증을 위한 캐시 태깅 �
   1. [Route Handlers](https://nextjs.org/docs/app/api-reference/file-conventions/route) \- 서드파티 이벤트(예: 웹훅)에 응답하여 데이터를 재검증합니다. Route Handler는 특정 라우트에 묶여 있지 않으므로 Router Cache는 즉시 무효화되지 않습니다.
   2. [Server Actions](https://nextjs.org/docs/app/getting-started/updating-data) \- 사용자 동작(예: 양식 제출) 후 데이터를 재검증합니다. 이는 해당 라우트의 Router Cache를 무효화합니다.
 
-
-
 ### `revalidatePath`[](https://nextjs.org/docs/app/guides/caching#revalidatepath)
 
 `revalidatePath`는 단일 작업으로 특정 경로 아래의 데이터와 라우트 세그먼트를 수동으로 재검증하고 다시 렌더링할 수 있습니다. `revalidatePath`를 호출하면 Data Cache가 재검증되고, 이어서 Full Route Cache가 무효화됩니다.
-[code] 
+[code]
     revalidatePath('/')
 [/code]
 
@@ -466,14 +443,12 @@ Next.js에는 정밀한 데이터 캐싱과 재검증을 위한 캐시 태깅 �
   1. [Route Handlers](https://nextjs.org/docs/app/api-reference/file-conventions/route) \- 서드파티 이벤트(예: 웹훅)에 응답해 데이터를 재검증합니다.
   2. [Server Actions](https://nextjs.org/docs/app/getting-started/updating-data) \- 사용자 상호작용(예: 양식 제출, 버튼 클릭) 후 데이터를 재검증합니다.
 
-
-
 [`revalidatePath` API reference](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)를 확인하세요.
 
 > **`revalidatePath`** vs. **`router.refresh`** :
-> 
+>
 > `router.refresh`를 호출하면 Router cache가 지워지고 Data Cache나 Full Route Cache를 무효화하지 않은 채 서버에서 라우트 세그먼트를 다시 렌더링합니다.
-> 
+>
 > 차이점은 `revalidatePath`는 Data Cache와 Full Route Cache를 제거하지만, `router.refresh()`는 클라이언트 측 API로서 Data Cache와 Full Route Cache를 변경하지 않는다는 점입니다.
 
 ### Dynamic APIs[](https://nextjs.org/docs/app/guides/caching#dynamic-apis)
@@ -494,13 +469,9 @@ Route Segment Config 옵션은 라우트 세그먼트 기본값을 재정의하�
 
   * `const dynamic = 'force-dynamic'`
 
-
-
 이 구성 옵션은 모든 fetch를 Data Cache에서 옵트아웃합니다(즉, `no-store`):
 
   * `const fetchCache = 'default-no-store'`
-
-
 
 자세한 옵션은 [`fetchCache`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#fetchcache)를 참조하세요.
 
@@ -516,7 +487,7 @@ app/blog/[slug]/page.js
 ```
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
-     
+
       return posts.map((post) => ({
         slug: post.slug,
       }))
@@ -529,7 +500,7 @@ app/blog/[slug]/page.js
 ```
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
-     
+
       // Render the first 10 posts at build time
       return posts.slice(0, 10).map((post) => ({
         slug: post.slug,
@@ -567,15 +538,11 @@ JavaScriptTypeScript
 ```
     import { cache } from 'react'
     import db from '@/lib/db'
-     
+
     export const getItem = cache(async (id: string) => {
       const item = await db.item.findUnique({ id })
       return item
     })
 ```
-
-도움이 되었나요?
-
-지원됨.
 
 Send

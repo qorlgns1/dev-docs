@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/webVitalsAttribution
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)webVitalsAttribution
-
-페이지 복사
-
 # webVitalsAttribution
 
 이 기능은 현재 실험 단계이며 변경될 수 있으므로 프로덕션 환경에는 권장되지 않습니다. 대신 사용해 보고 [GitHub](https://github.com/vercel/next.js/issues)에서 피드백을 공유해주세요.
@@ -33,9 +29,5 @@ next.config.js
 ```
 
 유효한 attribution 값은 [`NextWebVitalsMetric`](https://github.com/vercel/next.js/blob/442378d21dd56d6e769863eb8c2cb521a463a2e0/packages/next/shared/lib/utils.ts#L43) 타입에 지정된 모든 `web-vitals` 지표입니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

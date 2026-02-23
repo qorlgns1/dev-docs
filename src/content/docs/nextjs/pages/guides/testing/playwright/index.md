@@ -7,10 +7,6 @@ description: 'Playwright는 단일 API로 Chromium, Firefox, WebKit을 자동화
 
 출처 URL: https://nextjs.org/docs/pages/guides/testing/playwright
 
-[가이드](https://nextjs.org/docs/pages/guides)[테스트](https://nextjs.org/docs/pages/guides/testing)Playwright
-
-페이지 복사
-
 # Next.js에서 Playwright 설정 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -48,7 +44,7 @@ pnpmnpmyarnbun
 pages/index.ts
 [code]
     import Link from 'next/link'
-     
+
     export default function Home() {
       return (
         <div>
@@ -62,7 +58,7 @@ pages/index.ts
 pages/about.ts
 [code]
     import Link from 'next/link'
-     
+
     export default function About() {
       return (
         <div>
@@ -78,7 +74,7 @@ pages/about.ts
 tests/example.spec.ts
 [code]
     import { test, expect } from '@playwright/test'
-     
+
     test('should navigate to the about page', async ({ page }) => {
       // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
       await page.goto('http://localhost:3000/')
@@ -110,10 +106,6 @@ Playwright와 지속적 통합에 대해 더 알아보려면 다음 자료를 �
   * [Next.js with Playwright 예제](https://github.com/vercel/next.js/tree/canary/examples/with-playwright)
   * [CI 제공업체에서 Playwright 사용하기](https://playwright.dev/docs/ci)
   * [Playwright Discord](https://discord.com/invite/playwright-807756831384403968)
-
-
-
-도움이 되었나요?
 
 supported.
 

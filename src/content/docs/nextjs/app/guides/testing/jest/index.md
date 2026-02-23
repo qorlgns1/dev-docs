@@ -7,8 +7,6 @@ description: 'Jest와 React Testing Library는 단위 테스트와 스냅샷 테
 
 Source URL: https://nextjs.org/docs/app/guides/testing/jest
 
-[Guides](https://nextjs.org/docs/app/guides)[Testing](https://nextjs.org/docs/app/guides/testing)Jest
-
 Copy page
 
 # Next.js에서 Jest 설정 방법
@@ -62,12 +60,12 @@ JavaScriptTypeScript
 [code]
     import type { Config } from 'jest'
     import nextJest from 'next/jest.js'
-     
+
     const createJestConfig = nextJest({
       // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
       dir: './',
     })
-     
+
     // Add any custom config to be passed to Jest
     const config: Config = {
       coverageProvider: 'v8',
@@ -75,7 +73,7 @@ JavaScriptTypeScript
       // Add more setup options before each test is run
       // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     }
-     
+
     // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
     export default createJestConfig(config)
 [/code]
@@ -169,7 +167,7 @@ package.json
 app/page.js
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <div>
@@ -185,13 +183,13 @@ __tests__/page.test.jsx
     import '@testing-library/jest-dom'
     import { render, screen } from '@testing-library/react'
     import Page from '../app/page'
-     
+
     describe('Page', () => {
       it('renders a heading', () => {
         render(<Page />)
-     
+
         const heading = screen.getByRole('heading', { level: 1 })
-     
+
         expect(heading).toBeInTheDocument()
       })
     })
@@ -203,7 +201,7 @@ __tests__/snapshot.js
 [code]
     import { render } from '@testing-library/react'
     import Page from '../app/page'
-     
+
     it('renders homepage unchanged', () => {
       const { container } = render(<Page />)
       expect(container).toMatchSnapshot()
@@ -229,8 +227,6 @@ Terminal
   * [Jest Docs](https://jestjs.io/docs/getting-started)
   * [React Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/)
   * [Testing Playground](https://testing-playground.com/) \- 올바른 테스트 관행으로 요소를 찾는 데 활용하세요.
-
-
 
 Was this helpful?
 

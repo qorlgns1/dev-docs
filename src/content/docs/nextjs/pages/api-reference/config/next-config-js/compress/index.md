@@ -6,10 +6,6 @@ description: '기본적으로 Next.js는  또는 커스텀 서버를 사용할 �
 # next.config.js 옵션: compress | Next.js
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/compress
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)compress
-
-페이지 복사
-
 # compress
 
 마지막 업데이트 2026년 2월 20일
@@ -30,9 +26,3 @@ next.config.js
 [/code]
 
 압축은 대역폭 사용량을 줄이고 애플리케이션 성능을 향상시키므로, 서버에 이미 압축이 구성되어 있는 경우가 아니라면 압축을 비활성화하지 않는 것이 좋습니다. 예를 들어 [nginx](https://nginx.org/)를 사용하면서 `brotli`로 전환하려는 경우, `compress` 옵션을 `false`로 설정해 nginx가 압축을 처리하도록 하세요.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

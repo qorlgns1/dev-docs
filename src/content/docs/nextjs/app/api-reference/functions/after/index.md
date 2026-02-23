@@ -7,8 +7,6 @@ description: '는 응답(또는 사전 렌더링)이 완료된 뒤에 실행할 
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/after
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)after
-
 Copy page
 
 # after
@@ -28,7 +26,7 @@ JavaScriptTypeScript
     import { after } from 'next/server'
     // Custom logging function
     import { log } from '@/app/utils'
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       after(() => {
         // Execute after the layout is rendered and sent to the user
@@ -46,8 +44,6 @@ JavaScriptTypeScript
 
   * 응답(또는 사전 렌더링)이 완료된 뒤 실행될 콜백 함수.
 
-
-
 ### Duration[](https://nextjs.org/docs/app/api-reference/functions/after#duration)
 
 `after`는 라우트에 설정된 플랫폼 기본값 또는 구성된 최대 기간 동안 실행됩니다. 플랫폼이 지원한다면 [`maxDuration`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#maxduration) 라우트 세그먼트 구성을 사용해 타임아웃 한도를 설정할 수 있습니다.
@@ -57,8 +53,6 @@ JavaScriptTypeScript
   * 응답이 정상적으로 완료되지 않아도 `after`는 실행됩니다. 오류가 발생하거나 `notFound`, `redirect`가 호출된 경우도 포함됩니다.
   * `after` 내부에서 호출되는 함수를 중복 제거하려면 React `cache`를 사용할 수 있습니다.
   * `after`는 다른 `after` 호출 안에 중첩할 수 있습니다. 예를 들어, 추가 기능을 붙이기 위해 `after` 호출을 감싸는 유틸리티 함수를 만들 수 있습니다.
-
-
 
 ## Examples[](https://nextjs.org/docs/app/api-reference/functions/after#examples)
 
@@ -77,20 +71,20 @@ JavaScriptTypeScript
     import { after } from 'next/server'
     import { cookies, headers } from 'next/headers'
     import { logUserAction } from '@/app/utils'
-     
+
     export async function POST(request: Request) {
       // Perform mutation
       // ...
-     
+
       // Log user activity for analytics
       after(async () => {
         const userAgent = (await headers()).get('user-agent') || 'unknown'
         const sessionCookie =
           (await cookies()).get('session-id')?.value || 'anonymous'
-     
+
         logUserAction({ sessionCookie, userAgent })
       })
-     
+
       return new Response(JSON.stringify({ status: 'success' }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
@@ -111,19 +105,19 @@ JavaScriptTypeScript
     import { after } from 'next/server'
     import { cookies, headers } from 'next/headers'
     import { logUserAction } from '@/app/utils'
-     
+
     export default async function Page() {
       // Read request data before `after` — this is allowed
       // These calls will be read during the component's rendering lifecycle
       const userAgent = (await headers()).get('user-agent') || 'unknown'
       const sessionCookie =
         (await cookies()).get('session-id')?.value || 'anonymous'
-     
+
       after(() => {
         // Use the values read above
         logUserAction({ sessionCookie, userAgent })
       })
-     
+
       return <h1>My Page</h1>
     }
 [/code]
@@ -144,7 +138,7 @@ JavaScriptTypeScript
     import { after } from 'next/server'
     import { cookies } from 'next/headers'
     import { logUserAction } from '@/app/utils'
-     
+
     export default function Page() {
       return (
         <>
@@ -155,16 +149,16 @@ JavaScriptTypeScript
         </>
       )
     }
-     
+
     async function DynamicContent() {
       const sessionCookie =
         (await cookies()).get('session-id')?.value || 'anonymous'
-     
+
       // Schedule work after the response is sent
       after(() => {
         logUserAction({ sessionCookie })
       })
-     
+
       return <p>Your session: {sessionCookie}</p>
     }
 [/code]
@@ -173,13 +167,13 @@ JavaScriptTypeScript
 
 ## Platform Support[](https://nextjs.org/docs/app/api-reference/functions/after#platform-support)
 
-Deployment Option| Supported  
----|---  
-[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| Yes  
-[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| Yes  
-[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| No  
-[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| Platform-specific  
-  
+Deployment Option| Supported
+---|---
+[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| Yes
+[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| Yes
+[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| No
+[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| Platform-specific
+
 Next.js를 셀프 호스팅할 때 [`after` 구성](https://nextjs.org/docs/app/guides/self-hosting#after) 방법을 알아보세요.
 
 Reference: serverless 플랫폼에서 `after` 지원
@@ -200,7 +194,7 @@ Reference: serverless 플랫폼에서 `after` 지원
     type NextRequestContext = {
       get(): NextRequestContextValue | undefined
     }
-     
+
     type NextRequestContextValue = {
       waitUntil?: (promise: Promise<any>) => void
     }
@@ -209,9 +203,9 @@ Reference: serverless 플랫폼에서 `after` 지원
 구현 예시는 다음과 같습니다.
 [code]
     import { AsyncLocalStorage } from 'node:async_hooks'
-     
+
     const RequestContextStorage = new AsyncLocalStorage<NextRequestContextValue>()
-     
+
     // Define and inject the accessor that next.js will use
     const RequestContext: NextRequestContext = {
       get() {
@@ -219,7 +213,7 @@ Reference: serverless 플랫폼에서 `after` 지원
       },
     }
     globalThis[Symbol.for('@next/request-context')] = RequestContext
-     
+
     const handler = (req, res) => {
       const contextValue = { waitUntil: YOUR_WAITUNTIL }
       // Provide the value
@@ -229,11 +223,11 @@ Reference: serverless 플랫폼에서 `after` 지원
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/after#version-history)
 
-Version| Changes  
----|---  
-`v15.1.0`| `after`가 안정화되었습니다.  
-`v15.0.0-rc`| `unstable_after`가 도입되었습니다.  
-  
+Version| Changes
+---|---
+`v15.1.0`| `after`가 안정화되었습니다.
+`v15.0.0-rc`| `unstable_after`가 도입되었습니다.
+
 Was this helpful?
 
 supported.

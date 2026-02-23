@@ -7,10 +7,6 @@ description: 'Next.js는 애플리케이션에서 흔히 발생하는 문제를 
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/eslint
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Configuration](https://nextjs.org/docs/app/api-reference/config)ESLint
-
-페이지 복사
-
 # ESLint 플러그인
 
 마지막 업데이트 2026년 2월 20일
@@ -22,13 +18,9 @@ Next.js는 애플리케이션에서 흔히 발생하는 문제를 쉽게 찾을 
   * **`eslint-config-next`** : Next.js, React, React Hooks 규칙이 포함된 기본 구성으로 JavaScript와 TypeScript 파일을 모두 지원합니다.
   * **`eslint-config-next/core-web-vitals`** : 기본 구성의 모든 내용을 포함하며 [Core Web Vitals](https://web.dev/vitals/)에 영향을 주는 규칙을 경고에서 오류로 상향합니다. 대부분의 프로젝트에 권장됩니다.
 
-
-
 또한 TypeScript 프로젝트의 경우:
 
   * **`eslint-config-next/typescript`** : [`typescript-eslint`](https://typescript-eslint.io/)에서 제공하는 TypeScript 전용 린트 규칙을 추가합니다. 기본 또는 core-web-vitals 구성과 함께 사용하세요.
-
-
 
 ## ESLint 설정[](https://nextjs.org/docs/app/api-reference/config/eslint#setup-eslint)
 
@@ -47,7 +39,7 @@ Terminal
 eslint.config.mjs
 [code]import { defineConfig, globalIgnores } from 'eslint/config'
          import nextVitals from 'eslint-config-next/core-web-vitals'
-          
+
          const eslintConfig = defineConfig([
            ...nextVitals,
            // Override default ignores of eslint-config-next.
@@ -59,7 +51,7 @@ eslint.config.mjs
              'next-env.d.ts',
            ]),
          ])
-          
+
          export default eslintConfig
 [/code]
 
@@ -71,9 +63,6 @@ Terminal
 [code]pnpm exec eslint .
 [/code]
 
-
-
-
 ## 참고 자료[](https://nextjs.org/docs/app/api-reference/config/eslint#reference)
 
 `eslint-config-next` 패키지는 다음 ESLint 플러그인의 `recommended` 규칙 세트를 포함합니다:
@@ -82,36 +71,34 @@ Terminal
   * [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks)
   * [`@next/eslint-plugin-next`](https://www.npmjs.com/package/@next/eslint-plugin-next)
 
-
-
 ### 규칙[](https://nextjs.org/docs/app/api-reference/config/eslint#rules)
 
 포함된 `@next/eslint-plugin-next` 규칙은 다음과 같습니다:
 
-Enabled in recommended config| Rule| Description  
----|---|---  
-| [@next/next/google-font-display](https://nextjs.org/docs/messages/google-font-display)| Google Fonts에서 font-display 동작을 강제합니다.  
-| [@next/next/google-font-preconnect](https://nextjs.org/docs/messages/google-font-preconnect)| Google Fonts에 `preconnect`를 사용하도록 보장합니다.  
-| [@next/next/inline-script-id](https://nextjs.org/docs/messages/inline-script-id)| 인라인 콘텐츠가 있는 `next/script` 컴포넌트에 `id` 속성을 강제합니다.  
-| [@next/next/next-script-for-ga](https://nextjs.org/docs/messages/next-script-for-ga)| Google Analytics 인라인 스크립트를 사용할 때 `next/script` 컴포넌트를 권장합니다.  
-| [@next/next/no-assign-module-variable](https://nextjs.org/docs/messages/no-assign-module-variable)| `module` 변수에 대한 할당을 방지합니다.  
-| [@next/next/no-async-client-component](https://nextjs.org/docs/messages/no-async-client-component)| 클라이언트 컴포넌트를 async 함수로 만드는 것을 방지합니다.  
-| [@next/next/no-before-interactive-script-outside-document](https://nextjs.org/docs/messages/no-before-interactive-script-outside-document)| `pages/_document.js` 외부에서 `next/script`의 `beforeInteractive` 전략 사용을 방지합니다.  
-| [@next/next/no-css-tags](https://nextjs.org/docs/messages/no-css-tags)| 수동 스타일시트 태그 사용을 방지합니다.  
-| [@next/next/no-document-import-in-page](https://nextjs.org/docs/messages/no-document-import-in-page)| `pages/_document.js` 외부에서 `next/document`를 가져오는 것을 방지합니다.  
-| [@next/next/no-duplicate-head](https://nextjs.org/docs/messages/no-duplicate-head)| `pages/_document.js`에서 `<Head>`를 중복으로 사용하는 것을 방지합니다.  
-| [@next/next/no-head-element](https://nextjs.org/docs/messages/no-head-element)| `<head>` 요소 사용을 방지합니다.  
-| [@next/next/no-head-import-in-document](https://nextjs.org/docs/messages/no-head-import-in-document)| `pages/_document.js`에서 `next/head` 사용을 방지합니다.  
-| [@next/next/no-html-link-for-pages](https://nextjs.org/docs/messages/no-html-link-for-pages)| Next.js 내부 페이지 이동에 `<a>` 요소 사용을 방지합니다.  
-| [@next/next/no-img-element](https://nextjs.org/docs/messages/no-img-element)| LCP 지연과 높은 대역폭 사용 때문에 `<img>` 요소 사용을 방지합니다.  
-| [@next/next/no-page-custom-font](https://nextjs.org/docs/messages/no-page-custom-font)| 페이지 전용 커스텀 폰트를 방지합니다.  
-| [@next/next/no-script-component-in-head](https://nextjs.org/docs/messages/no-script-component-in-head)| `next/head` 컴포넌트에서 `next/script` 사용을 방지합니다.  
-| [@next/next/no-styled-jsx-in-document](https://nextjs.org/docs/messages/no-styled-jsx-in-document)| `pages/_document.js`에서 `styled-jsx` 사용을 방지합니다.  
-| [@next/next/no-sync-scripts](https://nextjs.org/docs/messages/no-sync-scripts)| 동기 스크립트를 방지합니다.  
-| [@next/next/no-title-in-document-head](https://nextjs.org/docs/messages/no-title-in-document-head)| `next/document`의 `Head` 컴포넌트와 함께 `<title>` 사용을 방지합니다.  
-| @next/next/no-typos| [Next.js 데이터 페칭 함수](https://nextjs.org/docs/pages/building-your-application/data-fetching)에서 흔한 오타를 방지합니다.  
-| [@next/next/no-unwanted-polyfillio](https://nextjs.org/docs/messages/no-unwanted-polyfillio)| Polyfill.io에서 중복 폴리필을 방지합니다.  
-  
+Enabled in recommended config| Rule| Description
+---|---|---
+| [@next/next/google-font-display](https://nextjs.org/docs/messages/google-font-display)| Google Fonts에서 font-display 동작을 강제합니다.
+| [@next/next/google-font-preconnect](https://nextjs.org/docs/messages/google-font-preconnect)| Google Fonts에 `preconnect`를 사용하도록 보장합니다.
+| [@next/next/inline-script-id](https://nextjs.org/docs/messages/inline-script-id)| 인라인 콘텐츠가 있는 `next/script` 컴포넌트에 `id` 속성을 강제합니다.
+| [@next/next/next-script-for-ga](https://nextjs.org/docs/messages/next-script-for-ga)| Google Analytics 인라인 스크립트를 사용할 때 `next/script` 컴포넌트를 권장합니다.
+| [@next/next/no-assign-module-variable](https://nextjs.org/docs/messages/no-assign-module-variable)| `module` 변수에 대한 할당을 방지합니다.
+| [@next/next/no-async-client-component](https://nextjs.org/docs/messages/no-async-client-component)| 클라이언트 컴포넌트를 async 함수로 만드는 것을 방지합니다.
+| [@next/next/no-before-interactive-script-outside-document](https://nextjs.org/docs/messages/no-before-interactive-script-outside-document)| `pages/_document.js` 외부에서 `next/script`의 `beforeInteractive` 전략 사용을 방지합니다.
+| [@next/next/no-css-tags](https://nextjs.org/docs/messages/no-css-tags)| 수동 스타일시트 태그 사용을 방지합니다.
+| [@next/next/no-document-import-in-page](https://nextjs.org/docs/messages/no-document-import-in-page)| `pages/_document.js` 외부에서 `next/document`를 가져오는 것을 방지합니다.
+| [@next/next/no-duplicate-head](https://nextjs.org/docs/messages/no-duplicate-head)| `pages/_document.js`에서 `<Head>`를 중복으로 사용하는 것을 방지합니다.
+| [@next/next/no-head-element](https://nextjs.org/docs/messages/no-head-element)| `<head>` 요소 사용을 방지합니다.
+| [@next/next/no-head-import-in-document](https://nextjs.org/docs/messages/no-head-import-in-document)| `pages/_document.js`에서 `next/head` 사용을 방지합니다.
+| [@next/next/no-html-link-for-pages](https://nextjs.org/docs/messages/no-html-link-for-pages)| Next.js 내부 페이지 이동에 `<a>` 요소 사용을 방지합니다.
+| [@next/next/no-img-element](https://nextjs.org/docs/messages/no-img-element)| LCP 지연과 높은 대역폭 사용 때문에 `<img>` 요소 사용을 방지합니다.
+| [@next/next/no-page-custom-font](https://nextjs.org/docs/messages/no-page-custom-font)| 페이지 전용 커스텀 폰트를 방지합니다.
+| [@next/next/no-script-component-in-head](https://nextjs.org/docs/messages/no-script-component-in-head)| `next/head` 컴포넌트에서 `next/script` 사용을 방지합니다.
+| [@next/next/no-styled-jsx-in-document](https://nextjs.org/docs/messages/no-styled-jsx-in-document)| `pages/_document.js`에서 `styled-jsx` 사용을 방지합니다.
+| [@next/next/no-sync-scripts](https://nextjs.org/docs/messages/no-sync-scripts)| 동기 스크립트를 방지합니다.
+| [@next/next/no-title-in-document-head](https://nextjs.org/docs/messages/no-title-in-document-head)| `next/document`의 `Head` 컴포넌트와 함께 `<title>` 사용을 방지합니다.
+| @next/next/no-typos| [Next.js 데이터 페칭 함수](https://nextjs.org/docs/pages/building-your-application/data-fetching)에서 흔한 오타를 방지합니다.
+| [@next/next/no-unwanted-polyfillio](https://nextjs.org/docs/messages/no-unwanted-polyfillio)| Polyfill.io에서 중복 폴리필을 방지합니다.
+
 개발 중 코드 에디터에서 경고와 오류를 바로 확인하려면 적절한 [통합](https://eslint.org/docs/user-guide/integrations#editors) 사용을 권장합니다.
 
 `next lint` 제거
@@ -130,7 +117,7 @@ eslint.config.mjs
 [code]
     import { defineConfig } from 'eslint/config'
     import eslintNextPlugin from '@next/eslint-plugin-next'
-     
+
     const eslintConfig = defineConfig([
       {
         files: ['**/*.{js,jsx,ts,tsx}'],
@@ -144,7 +131,7 @@ eslint.config.mjs
         },
       },
     ])
-     
+
     export default eslintConfig
 [/code]
 
@@ -158,7 +145,7 @@ eslint.config.mjs
 [code]
     import { defineConfig, globalIgnores } from 'eslint/config'
     import nextVitals from 'eslint-config-next/core-web-vitals'
-     
+
     const eslintConfig = defineConfig([
       ...nextVitals,
       {
@@ -176,7 +163,7 @@ eslint.config.mjs
         'next-env.d.ts',
       ]),
     ])
-     
+
     export default eslintConfig
 [/code]
 
@@ -188,7 +175,7 @@ eslint.config.mjs
 [code]
     import { defineConfig, globalIgnores } from 'eslint/config'
     import nextVitals from 'eslint-config-next/core-web-vitals'
-     
+
     const eslintConfig = defineConfig([
       ...nextVitals,
       // Override default ignores of eslint-config-next.
@@ -200,7 +187,7 @@ eslint.config.mjs
         'next-env.d.ts',
       ]),
     ])
-     
+
     export default eslintConfig
 [/code]
 
@@ -217,7 +204,7 @@ eslint.config.mjs
     import { defineConfig, globalIgnores } from 'eslint/config'
     import nextVitals from 'eslint-config-next/core-web-vitals'
     import nextTs from 'eslint-config-next/typescript'
-     
+
     const eslintConfig = defineConfig([
       ...nextVitals,
       ...nextTs,
@@ -230,7 +217,7 @@ eslint.config.mjs
         'next-env.d.ts',
       ]),
     ])
-     
+
     export default eslintConfig
 [/code]
 
@@ -256,7 +243,7 @@ eslint.config.mjs
     import { defineConfig, globalIgnores } from 'eslint/config'
     import nextVitals from 'eslint-config-next/core-web-vitals'
     import prettier from 'eslint-config-prettier/flat'
-     
+
     const eslintConfig = defineConfig([
       ...nextVitals,
       prettier,
@@ -269,7 +256,7 @@ eslint.config.mjs
         'next-env.d.ts',
       ]),
     ])
-     
+
     export default eslintConfig
 [/code]
 
@@ -280,12 +267,12 @@ eslint.config.mjs
 .lintstagedrc.js
 [code]
     const path = require('path')
-     
+
     const buildEslintCommand = (filenames) =>
       `eslint --fix ${filenames
         .map((f) => `"${path.relative(process.cwd(), f)}"`)
         .join(' ')}`
-     
+
     module.exports = {
       '*.{js,jsx,ts,tsx}': [buildEslintCommand],
     }
@@ -324,7 +311,7 @@ eslint.config.mjs
 [code]
     import { defineConfig } from 'eslint/config'
     import nextPlugin from '@next/eslint-plugin-next'
-     
+
     const eslintConfig = defineConfig([
       // Your other configurations...
       {
@@ -337,7 +324,7 @@ eslint.config.mjs
         },
       },
     ])
-     
+
     export default eslintConfig
 [/code]
 
@@ -351,12 +338,12 @@ eslint.config.mjs
 [code]
     import nextConfig from 'eslint-config-next/core-web-vitals'
     // Your other config imports...
-     
+
     const eslintConfig = [
       // Your other configurations...
       ...nextConfig,
     ]
-     
+
     export default eslintConfig
 [/code]
 
@@ -364,12 +351,6 @@ eslint.config.mjs
 
 > **알아두면 좋아요:** 이 방법은 단순한 설정에서 잘 작동합니다. 특정 파일 패턴이나 플러그인 구성이 충돌할 수 있는 복잡한 기존 구성을 사용 중이라면, 보다 세밀한 제어를 위해 (위에서 설명한) 플러그인을 직접 사용하는 방식을 고려하세요.
 
-버전| 변경 사항  
----|---  
-`v16.0.0`| `next lint`와 `eslint` next.config.js 옵션은 ESLint CLI를 사용하도록 대체되면서 제거되었습니다. 마이그레이션을 돕기 위한 [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#migrate-from-next-lint-to-eslint-cli)가 제공됩니다.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+버전| 변경 사항
+---|---
+`v16.0.0`| `next lint`와 `eslint` next.config.js 옵션은 ESLint CLI를 사용하도록 대체되면서 제거되었습니다. 마이그레이션을 돕기 위한 [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#migrate-from-next-lint-to-eslint-cli)가 제공됩니다.

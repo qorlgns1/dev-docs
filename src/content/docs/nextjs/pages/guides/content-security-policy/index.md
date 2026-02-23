@@ -9,8 +9,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 [Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)콘텐츠 보안 정책
 
-페이지 복사
-
 # Next.js 애플리케이션에 Content Security Policy (CSP)를 설정하는 방법
 
 최종 업데이트: 2026년 2월 20일
@@ -22,8 +20,6 @@ CSP를 사용하면 개발자가 콘텐츠 소스, 스크립트, 스타일시트
 예시
 
   * [Strict CSP](https://github.com/vercel/next.js/tree/canary/examples/with-strict-csp)
-
-
 
 ## 논스[](https://nextjs.org/docs/pages/guides/content-security-policy#nonces)
 
@@ -50,7 +46,7 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import { NextRequest, NextResponse } from 'next/server'
-     
+
     export function proxy(request: NextRequest) {
       const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
       const isDev = process.env.NODE_ENV === 'development'
@@ -70,15 +66,15 @@ JavaScriptTypeScript
       const contentSecurityPolicyHeaderValue = cspHeader
         .replace(/\s{2,}/g, ' ')
         .trim()
-     
+
       const requestHeaders = new Headers(request.headers)
       requestHeaders.set('x-nonce', nonce)
-     
+
       requestHeaders.set(
         'Content-Security-Policy',
         contentSecurityPolicyHeaderValue
       )
-     
+
       const response = NextResponse.next({
         request: {
           headers: requestHeaders,
@@ -88,7 +84,7 @@ JavaScriptTypeScript
         'Content-Security-Policy',
         contentSecurityPolicyHeaderValue
       )
-     
+
       return response
     }
 [/code]
@@ -135,8 +131,6 @@ JavaScriptTypeScript
      * Next.js가 생성한 인라인 스타일 및 스크립트
      * `nonce` prop을 사용하는 모든 `<Script>` 컴포넌트
 
-
-
 이 자동 동작 덕분에 각 태그에 논스를 수동으로 추가할 필요가 없습니다.
 
 ### 동적 렌더링 강제하기[](https://nextjs.org/docs/pages/guides/content-security-policy#forcing-dynamic-rendering)
@@ -148,7 +142,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { connection } from 'next/server'
-     
+
     export default async function Page() {
       // wait for an incoming request to render this page
       await connection()
@@ -165,9 +159,9 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     import type { GetServerSideProps } from 'next'
-     
+
     export default function Page({ nonce }) {
       return (
         <Script
@@ -177,7 +171,7 @@ JavaScriptTypeScript
         />
       )
     }
-     
+
     export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       const nonce = req.headers['x-nonce']
       return { props: { nonce } }
@@ -198,27 +192,27 @@ JavaScriptTypeScript
       DocumentContext,
       DocumentInitialProps,
     } from 'next/document'
-     
+
     interface ExtendedDocumentProps extends DocumentInitialProps {
       nonce?: string
     }
-     
+
     class MyDocument extends Document<ExtendedDocumentProps> {
       static async getInitialProps(
         ctx: DocumentContext
       ): Promise<ExtendedDocumentProps> {
         const initialProps = await Document.getInitialProps(ctx)
         const nonce = ctx.req?.headers?.['x-nonce'] as string | undefined
-     
+
         return {
           ...initialProps,
           nonce,
         }
       }
-     
+
       render() {
         const { nonce } = this.props
-     
+
         return (
           <Html lang="en">
             <Head nonce={nonce} />
@@ -230,7 +224,7 @@ JavaScriptTypeScript
         )
       }
     }
-     
+
     export default MyDocument
 [/code]
 
@@ -248,8 +242,6 @@ CSP에 논스를 사용하면 **모든 페이지가 동적으로 렌더링**되�
   * 추가 구성이 없다면 CDN이 페이지를 캐시할 수 없습니다
   * 정적 셸 스크립트가 논스에 접근할 수 없으므로 **Partial Prerendering(PPR)은 논스 기반 CSP와 호환되지 않습니다**
 
-
-
 ### 성능 영향[](https://nextjs.org/docs/pages/guides/content-security-policy#performance-implications)
 
 정적 렌더링에서 동적 렌더링으로 전환하면 성능에 영향을 줍니다.
@@ -258,8 +250,6 @@ CSP에 논스를 사용하면 **모든 페이지가 동적으로 렌더링**되�
   * **서버 부하 증가**: 모든 요청이 서버 측 렌더링을 필요로 합니다
   * **CDN 캐시 불가**: 기본적으로 동적 페이지는 엣지에서 캐시할 수 없습니다
   * **호스팅 비용 증가**: 동적 렌더링에는 더 많은 서버 리소스가 필요합니다
-
-
 
 ### 논스를 사용할 시점[](https://nextjs.org/docs/pages/guides/content-security-policy#when-to-use-nonces)
 
@@ -270,8 +260,6 @@ CSP에 논스를 사용하면 **모든 페이지가 동적으로 렌더링**되�
   * 특정 인라인 스크립트만 허용하고 나머지는 차단해야 하는 경우
   * 준수 요구 사항이 엄격한 CSP를 명시하는 경우
 
-
-
 ## 논스를 사용하지 않는 경우[](https://nextjs.org/docs/pages/guides/content-security-policy#without-nonces)
 
 논스가 필요 없는 애플리케이션은 [`next.config.js`](https://nextjs.org/docs/app/api-reference/config/next-config-js) 파일에서 CSP 헤더를 직접 설정할 수 있습니다:
@@ -279,7 +267,7 @@ CSP에 논스를 사용하면 **모든 페이지가 동적으로 렌더링**되�
 next.config.js
 [code]
     const isDev = process.env.NODE_ENV === 'development'
-     
+
     const cspHeader = `
         default-src 'self';
         script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
@@ -292,7 +280,7 @@ next.config.js
         frame-ancestors 'none';
         upgrade-insecure-requests;
     `
-     
+
     module.exports = {
       async headers() {
         return [
@@ -325,7 +313,7 @@ JavaScriptTypeScript
     export function proxy(request: NextRequest) {
       const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
       const isDev = process.env.NODE_ENV === 'development'
-     
+
       const cspHeader = `
 [/code]
 
@@ -340,7 +328,7 @@ default-src 'self';
         frame-ancestors 'none';
         upgrade-insecure-requests;
     `
-     
+
       // Rest of proxy implementation
     }
 [/code]
@@ -352,8 +340,6 @@ default-src 'self';
   * **Nonce가 적용되지 않음**: 프록시가 필요한 모든 라우트에서 동작하는지 확인하세요
   * **정적 자산이 차단됨**: CSP가 Next.js 정적 자산을 허용하는지 검증하세요
   * **서드파티 스크립트**: 필요한 도메인을 CSP 정책에 추가하세요
-
-
 
 ## 문제 해결[](https://nextjs.org/docs/pages/guides/content-security-policy#troubleshooting)
 
@@ -367,10 +353,10 @@ JavaScriptTypeScript
 [code]
     import type { AppProps } from 'next/app'
     import Script from 'next/script'
-     
+
     export default function App({ Component, pageProps }: AppProps) {
       const nonce = pageProps.nonce
-     
+
       return (
         <>
           <Component {...pageProps} />
@@ -405,17 +391,11 @@ JavaScriptTypeScript
   3. **WebAssembly**: WebAssembly를 사용하는 경우 `'wasm-unsafe-eval'`을 추가하세요
   4. **서비스 워커**: 서비스 워커 스크립트에 적절한 정책을 추가하세요
 
-
-
 ## 버전 기록[](https://nextjs.org/docs/pages/guides/content-security-policy#version-history)
 
-Version| Changes  
----|---  
-`v14.0.0`| 해시 기반 CSP를 위한 실험적 SRI 지원이 추가됨  
-`v13.4.20`| 올바른 nonce 처리와 CSP 헤더 파싱을 위해 권장됨.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v14.0.0`| 해시 기반 CSP를 위한 실험적 SRI 지원이 추가됨
+`v13.4.20`| 올바른 nonce 처리와 CSP 헤더 파싱을 위해 권장됨.
 
 보내기

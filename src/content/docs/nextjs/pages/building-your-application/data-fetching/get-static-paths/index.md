@@ -7,8 +7,6 @@ description: '페이지가 동적 라우트를 사용하고 를 정의한다면,
 
 Source URL: https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths
 
-[애플리케이션 빌드](https://nextjs.org/docs/pages/building-your-application)[데이터 패칭](https://nextjs.org/docs/pages/building-your-application/data-fetching)getStaticPaths
-
 Copy page
 
 # getStaticPaths
@@ -28,12 +26,12 @@ JavaScriptTypeScript
       GetStaticProps,
       GetStaticPaths,
     } from 'next'
-     
+
     type Repo = {
       name: string
       stargazers_count: number
     }
-     
+
     export const getStaticPaths = (async () => {
       return {
         paths: [
@@ -46,7 +44,7 @@ JavaScriptTypeScript
         fallback: true, // false or "blocking"
       }
     }) satisfies GetStaticPaths
-     
+
     export const getStaticProps = (async (context) => {
       const res = await fetch('https://api.github.com/repos/vercel/next.js')
       const repo = await res.json()
@@ -54,7 +52,7 @@ JavaScriptTypeScript
     }) satisfies GetStaticProps<{
       repo: Repo
     }>
-     
+
     export default function Page({
       repo,
     }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -74,8 +72,6 @@ JavaScriptTypeScript
   * 데이터가 공개적으로 캐시될 수 있는 경우(사용자별 데이터가 아님)
   * 페이지가 사전 렌더링되어야 하고(SEO용) 매우 빠른 속도를 요구하는 경우 — `getStaticProps`는 `HTML`과 `JSON` 파일을 생성하며, CDN이 모두 캐시할 수 있어 성능에 유리합니다.
 
-
-
 ## getStaticPaths는 언제 실행되나요?[](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths#when-does-getstaticpaths-run)
 
 `getStaticPaths`는 프로덕션에서 빌드 중에만 실행되며 런타임에는 호출되지 않습니다. [이 도구](https://next-code-elimination.vercel.app/)를 사용하면 `getStaticPaths` 내부에 작성한 코드가 클라이언트 번들에서 제거되었는지 검증할 수 있습니다.
@@ -86,8 +82,6 @@ JavaScriptTypeScript
   * `fallback: true`를 사용하는 경우 백그라운드에서 `getStaticProps`가 실행됩니다.
   * `fallback: blocking`을 사용하는 경우 초기 렌더 전에 `getStaticProps`가 호출됩니다.
 
-
-
 ## 어디에서 getStaticPaths를 사용할 수 있나요?[](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths#where-can-i-use-getstaticpaths)
 
   * `getStaticPaths`는 반드시 `getStaticProps`와 함께 사용해야 합니다.
@@ -95,8 +89,6 @@ JavaScriptTypeScript
   * [동적 라우트](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)에서 `getStaticProps`와 함께 `getStaticPaths`를 export할 수 있습니다.
   * 페이지가 아닌 파일(예: `components` 폴더)에서 `getStaticPaths`를 export할 수 없습니다.
   * 페이지 컴포넌트의 속성이 아니라 독립된 함수로 `getStaticPaths`를 export해야 합니다.
-
-
 
 ## 개발 환경에서는 모든 요청마다 실행됩니다[](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths#runs-on-every-request-in-development)
 
@@ -120,18 +112,18 @@ pages/posts/[id].js
           fallback: 'blocking',
         }
       }
-     
+
       // Call an external API endpoint to get posts
       const res = await fetch('https://.../posts')
       const posts = await res.json()
-     
+
       // Get the paths we want to prerender based on posts
       // In production environments, prerender all pages
       // (slower builds, but faster initial page load)
       const paths = posts.map((post) => ({
         params: { id: post.id },
       }))
-     
+
       // { fallback: false } means other routes should 404
       return { paths, fallback: false }
     }

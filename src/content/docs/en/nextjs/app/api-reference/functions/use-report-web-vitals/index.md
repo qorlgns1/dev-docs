@@ -1,153 +1,158 @@
 ---
-title: 'Functions: useReportWebVitals'
+title: 'useReportWebVitals'
 description: 'The  hook allows you to report Core Web Vitals, and can be used in combination with your analytics service.'
 ---
 
-# Functions: useReportWebVitals | Next.js
-
 Source URL: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)useReportWebVitals
-
-Copy page
-
 # useReportWebVitals
-
-Last updated February 20, 2026
 
 The `useReportWebVitals` hook allows you to report [Core Web Vitals](https://web.dev/vitals/), and can be used in combination with your analytics service.
 
 New functions passed to `useReportWebVitals` are called with the available metrics up to that point. To prevent reporting duplicated data, ensure that the callback function reference does not change (as shown in the code examples below).
 
-app/_components/web-vitals.js
-[code]
-    'use client'
-     
-    import { useReportWebVitals } from 'next/web-vitals'
-     
-    const logWebVitals = (metric) => {
-      console.log(metric)
-    }
-     
-    export function WebVitals() {
-      useReportWebVitals(logWebVitals)
-     
-      return null
-    }
-[/code]
+```jsx filename="app/_components/web-vitals.js"
+'use client'
 
-app/layout.js
-[code]
-    import { WebVitals } from './_components/web-vitals'
-     
-    export default function Layout({ children }) {
-      return (
-        <html>
-          <body>
-            <WebVitals />
-            {children}
-          </body>
-        </html>
-      )
-    }
-[/code]
+import { useReportWebVitals } from 'next/web-vitals'
+
+const logWebVitals = (metric) => {
+  console.log(metric)
+}
+
+export function WebVitals() {
+  useReportWebVitals(logWebVitals)
+
+  return null
+}
+```
+
+```jsx filename="app/layout.js"
+import { WebVitals } from './_components/web-vitals'
+
+export default function Layout({ children }) {
+  return (
+    <html>
+      <body>
+        <WebVitals />
+        {children}
+      </body>
+    </html>
+  )
+}
+```
 
 > Since the `useReportWebVitals` hook requires the `'use client'` directive, the most performant approach is to create a separate component that the root layout imports. This confines the client boundary exclusively to the `WebVitals` component.
 
-## useReportWebVitals[](https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals#usereportwebvitals)
+## useReportWebVitals
 
 The `metric` object passed as the hook's argument consists of a number of properties:
 
-  * `id`: Unique identifier for the metric in the context of the current page load
-  * `name`: The name of the performance metric. Possible values include names of [Web Vitals](https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals#web-vitals) metrics (TTFB, FCP, LCP, FID, CLS) specific to a web application.
-  * `delta`: The difference between the current value and the previous value of the metric. The value is typically in milliseconds and represents the change in the metric's value over time.
-  * `entries`: An array of [Performance Entries](https://developer.mozilla.org/docs/Web/API/PerformanceEntry) associated with the metric. These entries provide detailed information about the performance events related to the metric.
-  * `navigationType`: Indicates the [type of navigation](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/type) that triggered the metric collection. Possible values include `"navigate"`, `"reload"`, `"back_forward"`, and `"prerender"`.
-  * `rating`: A qualitative rating of the metric value, providing an assessment of the performance. Possible values are `"good"`, `"needs-improvement"`, and `"poor"`. The rating is typically determined by comparing the metric value against predefined thresholds that indicate acceptable or suboptimal performance.
-  * `value`: The actual value or duration of the performance entry, typically in milliseconds. The value provides a quantitative measure of the performance aspect being tracked by the metric. The source of the value depends on the specific metric being measured and can come from various [Performance API](https://developer.mozilla.org/docs/Web/API/Performance_API)s.
+* `id`: Unique identifier for the metric in the context of the current page load
+* `name`: The name of the performance metric. Possible values include names of [Web Vitals](#web-vitals) metrics (TTFB, FCP, LCP, FID, CLS) specific to a web application.
+* `delta`: The difference between the current value and the previous value of the metric. The value is typically in milliseconds and represents the change in the metric's value over time.
+* `entries`: An array of [Performance Entries](https://developer.mozilla.org/docs/Web/API/PerformanceEntry) associated with the metric. These entries provide detailed information about the performance events related to the metric.
+* `navigationType`: Indicates the [type of navigation](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/type) that triggered the metric collection. Possible values include `"navigate"`, `"reload"`, `"back_forward"`, and `"prerender"`.
+* `rating`: A qualitative rating of the metric value, providing an assessment of the performance. Possible values are `"good"`, `"needs-improvement"`, and `"poor"`. The rating is typically determined by comparing the metric value against predefined thresholds that indicate acceptable or suboptimal performance.
+* `value`: The actual value or duration of the performance entry, typically in milliseconds. The value provides a quantitative measure of the performance aspect being tracked by the metric. The source of the value depends on the specific metric being measured and can come from various [Performance API](https://developer.mozilla.org/docs/Web/API/Performance_API)s.
 
+## Web Vitals
 
+[Web Vitals](https://web.dev/vitals/) are a set of useful metrics that aim to capture the user
+experience of a web page. The following web vitals are all included:
 
-## Web Vitals[](https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals#web-vitals)
-
-[Web Vitals](https://web.dev/vitals/) are a set of useful metrics that aim to capture the user experience of a web page. The following web vitals are all included:
-
-  * [Time to First Byte](https://developer.mozilla.org/docs/Glossary/Time_to_first_byte) (TTFB)
-  * [First Contentful Paint](https://developer.mozilla.org/docs/Glossary/First_contentful_paint) (FCP)
-  * [Largest Contentful Paint](https://web.dev/lcp/) (LCP)
-  * [First Input Delay](https://web.dev/fid/) (FID)
-  * [Cumulative Layout Shift](https://web.dev/cls/) (CLS)
-  * [Interaction to Next Paint](https://web.dev/inp/) (INP)
-
-
+* [Time to First Byte](https://developer.mozilla.org/docs/Glossary/Time_to_first_byte) (TTFB)
+* [First Contentful Paint](https://developer.mozilla.org/docs/Glossary/First_contentful_paint) (FCP)
+* [Largest Contentful Paint](https://web.dev/lcp/) (LCP)
+* [First Input Delay](https://web.dev/fid/) (FID)
+* [Cumulative Layout Shift](https://web.dev/cls/) (CLS)
+* [Interaction to Next Paint](https://web.dev/inp/) (INP)
 
 You can handle all the results of these metrics using the `name` property.
 
-app/components/web-vitals.tsx
+```tsx filename="app/components/web-vitals.tsx" switcher
+'use client'
 
-JavaScriptTypeScript
-[code]
-    'use client'
-     
-    import { useReportWebVitals } from 'next/web-vitals'
-     
-    type ReportWebVitalsCallback = Parameters<typeof useReportWebVitals>[0]
-     
-    const handleWebVitals: ReportWebVitalsCallback = (metric) => {
-      switch (metric.name) {
-        case 'FCP': {
-          // handle FCP results
-        }
-        case 'LCP': {
-          // handle LCP results
-        }
-        // ...
-      }
+import { useReportWebVitals } from 'next/web-vitals'
+
+type ReportWebVitalsCallback = Parameters<typeof useReportWebVitals>[0]
+
+const handleWebVitals: ReportWebVitalsCallback = (metric) => {
+  switch (metric.name) {
+    case 'FCP': {
+      // handle FCP results
     }
-     
-    export function WebVitals() {
-      useReportWebVitals(handleWebVitals)
+    case 'LCP': {
+      // handle LCP results
     }
-[/code]
+    // ...
+  }
+}
 
-## Sending results to external systems[](https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals#sending-results-to-external-systems)
+export function WebVitals() {
+  useReportWebVitals(handleWebVitals)
+}
+```
 
-You can send results to any endpoint to measure and track real user performance on your site. For example:
-[code] 
-    function postWebVitals(metrics) {
-      const body = JSON.stringify(metric)
-      const url = 'https://example.com/analytics'
-     
-      // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(url, body)
-      } else {
-        fetch(url, { body, method: 'POST', keepalive: true })
-      }
+```jsx filename="app/components/web-vitals.js" switcher
+'use client'
+
+import { useReportWebVitals } from 'next/web-vitals'
+
+const handleWebVitals = (metric) => {
+  switch (metric.name) {
+    case 'FCP': {
+      // handle FCP results
     }
-     
-    useReportWebVitals(postWebVitals)
-[/code]
+    case 'LCP': {
+      // handle LCP results
+    }
+    // ...
+  }
+}
 
-> **Good to know** : If you use [Google Analytics](https://analytics.google.com/analytics/web/), using the `id` value can allow you to construct metric distributions manually (to calculate percentiles, etc.)
+export function WebVitals() {
+  useReportWebVitals(handleWebVitals)
+}
+```
 
-> 
-[code]
->     useReportWebVitals(metric => {
->       // Use `window.gtag` if you initialized Google Analytics as this example:
->       // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics
->       window.gtag('event', metric.name, {
->         value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value), // values must be integers
->         event_label: metric.id, // id unique to current page load
->         non_interaction: true, // avoids affecting bounce rate.
->       });
->     }
-[/code]
-> 
+## Sending results to external systems
+
+You can send results to any endpoint to measure and track
+real user performance on your site. For example:
+
+```js
+function postWebVitals(metrics) {
+  const body = JSON.stringify(metric)
+  const url = 'https://example.com/analytics'
+
+  // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
+  if (navigator.sendBeacon) {
+    navigator.sendBeacon(url, body)
+  } else {
+    fetch(url, { body, method: 'POST', keepalive: true })
+  }
+}
+
+useReportWebVitals(postWebVitals)
+```
+
+> **Good to know**: If you use [Google Analytics](https://analytics.google.com/analytics/web/), using the
+> `id` value can allow you to construct metric distributions manually (to calculate percentiles,
+> etc.)
+
+> ```js
+> useReportWebVitals(metric => {
+>   // Use `window.gtag` if you initialized Google Analytics as this example:
+>   // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics
+>   window.gtag('event', metric.name, {
+>     value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value), // values must be integers
+>     event_label: metric.id, // id unique to current page load
+>     non_interaction: true, // avoids affecting bounce rate.
+>   });
+> }
+> ```
+>
 > Read more about [sending results to Google Analytics](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics).
+---
 
-Was this helpful?
-
-supported.
-
-Send

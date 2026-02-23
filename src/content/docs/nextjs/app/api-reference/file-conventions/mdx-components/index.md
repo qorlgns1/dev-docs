@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/file-convent
 
 원본 URL: https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)mdx-components.js
-
-페이지 복사
-
 # mdx-components.js
 
 마지막 업데이트: 2026년 2월 20일
@@ -24,9 +20,9 @@ mdx-components.tsx
 JavaScriptTypeScript
 [code]
     import type { MDXComponents } from 'mdx/types'
-     
+
     const components: MDXComponents = {}
-     
+
     export function useMDXComponents(): MDXComponents {
       return components
     }
@@ -43,9 +39,9 @@ mdx-components.tsx
 JavaScriptTypeScript
 [code]
     import type { MDXComponents } from 'mdx/types'
-     
+
     const components: MDXComponents = {}
-     
+
     export function useMDXComponents(): MDXComponents {
       return components
     }
@@ -53,16 +49,12 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#version-history)
 
-버전| 변경 사항  
----|---  
-`v13.1.2`| MDX 컴포넌트 추가  
-  
+버전| 변경 사항
+---|---
+`v13.1.2`| MDX 컴포넌트 추가
+
 ## MDX 컴포넌트 더 알아보기
 
-### [MDXNext.js 앱에서 MDX를 구성하고 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/mdx)
-
-도움이 되었나요?
-
-지원됨.
+- [MDXNext.js 앱에서 MDX를 구성하고 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/mdx)
 
 보내기

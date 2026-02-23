@@ -7,8 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 
 원본 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)optimizePackageImports
-
 복사 페이지
 
 # optimizePackageImports
@@ -59,11 +57,3 @@ next.config.js
   * `react-icons/*`
   * `effect`
   * `@effect/*`
-
-
-
-도움이 되었나요?
-
-지원됨.
-
-전송

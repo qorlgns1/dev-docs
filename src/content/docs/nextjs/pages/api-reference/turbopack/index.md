@@ -1,13 +1,11 @@
 ---
 title: 'API Reference: Turbopack'
-description: 'Turbopack은 Rust로 작성된 증분 번들러로, JavaScript와 TypeScript에 최적화되어 있으며 Next.js에 내장되어 있습니다. Pages Router와 App Router 모두에서 Turbopack을 사용하면 훨씬 빠른 로컬 개발 환경을 경험할...'
+description: 'Turbopack은 Rust로 작성된 증분 번들러로, JavaScript와 TypeScript에 최적화되어 있으며 Next.js에 내장되어 있습니다. Pages Router와 App Router 모두에서 Turbopack을 사용하면 훨씬 빠른 로컬 개발 환경을 경험할 ...'
 ---
 
 # API Reference: Turbopack | Next.js
 
 Source URL: https://nextjs.org/docs/pages/api-reference/turbopack
-
-[Pages Router](https://nextjs.org/docs/pages)[API Reference](https://nextjs.org/docs/pages/api-reference)Turbopack
 
 Copy page
 
@@ -62,59 +60,59 @@ Next.js에서 Turbopack은 일반적인 사용 사례에 대해 **zero-configura
 
 ### Language features[](https://nextjs.org/docs/pages/api-reference/turbopack#language-features)
 
-Feature| Status| Notes  
----|---|---  
-**JavaScript & TypeScript**| **Supported**|  내부적으로 SWC를 사용합니다. 타입 체크는 Turbopack이 수행하지 않으므로 `tsc --watch`를 실행하거나 IDE에 의존하세요.  
-**ECMAScript (ESNext)**| **Supported**|  Turbopack은 최신 ECMAScript 기능을 지원하며 SWC 커버리지와 일치합니다.  
-**CommonJS**| **Supported**| `require()` 구문을 즉시 처리합니다.  
-**ESM**| **Supported**|  정적 및 동적 `import`를 완전히 지원합니다.  
-**Babel**| **Supported**|  Next.js 16부터 구성 파일이 감지되면 Turbopack이 자동으로 Babel을 사용합니다. webpack과 달리 SWC는 항상 Next.js 내부 변환과 구 ECMAScript 다운레벨링에 사용됩니다. Next.js에서 webpack을 사용할 때는 Babel 구성 파일이 있으면 SWC를 비활성화합니다. `node_modules`의 파일은 제외되지만, [직접 `babel-loader`를 구성](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#configuring-webpack-loaders)하면 포함할 수 있습니다.  
-  
+Feature| Status| Notes
+---|---|---
+**JavaScript & TypeScript**| **Supported**|  내부적으로 SWC를 사용합니다. 타입 체크는 Turbopack이 수행하지 않으므로 `tsc --watch`를 실행하거나 IDE에 의존하세요.
+**ECMAScript (ESNext)**| **Supported**|  Turbopack은 최신 ECMAScript 기능을 지원하며 SWC 커버리지와 일치합니다.
+**CommonJS**| **Supported**| `require()` 구문을 즉시 처리합니다.
+**ESM**| **Supported**|  정적 및 동적 `import`를 완전히 지원합니다.
+**Babel**| **Supported**|  Next.js 16부터 구성 파일이 감지되면 Turbopack이 자동으로 Babel을 사용합니다. webpack과 달리 SWC는 항상 Next.js 내부 변환과 구 ECMAScript 다운레벨링에 사용됩니다. Next.js에서 webpack을 사용할 때는 Babel 구성 파일이 있으면 SWC를 비활성화합니다. `node_modules`의 파일은 제외되지만, [직접 `babel-loader`를 구성](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#configuring-webpack-loaders)하면 포함할 수 있습니다.
+
 ### Framework and React features[](https://nextjs.org/docs/pages/api-reference/turbopack#framework-and-react-features)
 
-Feature| Status| Notes  
----|---|---  
-**JSX / TSX**| **Supported**|  SWC가 JSX/TSX 컴파일을 처리합니다.  
-**Fast Refresh**| **Supported**|  추가 설정이 필요 없습니다.  
-**React Server Components (RSC)**| **Supported**|  Next.js App Router용입니다. Turbopack이 서버/클라이언트 번들링을 정확히 보장합니다.  
-**Root layout creation**|  Unsupported| App Router에서 루트 레이아웃 자동 생성은 지원되지 않습니다. Turbopack이 수동 생성을 안내합니다.  
-  
+Feature| Status| Notes
+---|---|---
+**JSX / TSX**| **Supported**|  SWC가 JSX/TSX 컴파일을 처리합니다.
+**Fast Refresh**| **Supported**|  추가 설정이 필요 없습니다.
+**React Server Components (RSC)**| **Supported**|  Next.js App Router용입니다. Turbopack이 서버/클라이언트 번들링을 정확히 보장합니다.
+**Root layout creation**|  Unsupported| App Router에서 루트 레이아웃 자동 생성은 지원되지 않습니다. Turbopack이 수동 생성을 안내합니다.
+
 ### CSS and styling[](https://nextjs.org/docs/pages/api-reference/turbopack#css-and-styling)
 
-Feature| Status| Notes  
----|---|---  
-**Global CSS**| **Supported**|  애플리케이션에서 `.css` 파일을 직접 가져올 수 있습니다.  
-**CSS Modules**| **Supported**| `.module.css` 파일이 네이티브로 동작합니다 (Lightning CSS).  
-**CSS Nesting**| **Supported**|  Lightning CSS가 [최신 CSS 네스팅](https://lightningcss.dev/)을 지원합니다.  
-**@import syntax**| **Supported**|  여러 CSS 파일을 결합할 수 있습니다.  
-**PostCSS**| **Supported**|  `postcss.config.js`를 Node.js 워커 풀에서 자동 처리합니다. Tailwind, Autoprefixer 등에 유용합니다.  
-**Sass / SCSS**| **Supported** (Next.js)| Next.js에서는 Sass가 기본 지원됩니다. 사용자 정의 Sass 함수(`sassOptions.functions`)는 Turbopack의 Rust 기반 아키텍처가 webpack의 Node.js 환경처럼 JavaScript 함수를 직접 실행할 수 없으므로 지원되지 않습니다. 이 기능이 필요하면 webpack을 사용하세요. 향후 독립 실행형 Turbopack 사용 시 로더 구성이 필요할 가능성이 큽니다.  
-**Less**|  Planned via plugins| 아직 기본 지원되지 않습니다. 커스텀 로더가 안정화되면 로더 구성이 필요할 전망입니다.  
-**Lightning CSS**| **In Use**|  CSS 변환을 처리합니다. 일부 사용 빈도가 낮은 CSS Modules 기능(`:local/:global`을 독립적인 의사 클래스 등)은 아직 미지원입니다. [아래에서 자세한 내용을 확인하세요.](https://nextjs.org/docs/pages/api-reference/turbopack#unsupported-and-unplanned-features)  
-  
+Feature| Status| Notes
+---|---|---
+**Global CSS**| **Supported**|  애플리케이션에서 `.css` 파일을 직접 가져올 수 있습니다.
+**CSS Modules**| **Supported**| `.module.css` 파일이 네이티브로 동작합니다 (Lightning CSS).
+**CSS Nesting**| **Supported**|  Lightning CSS가 [최신 CSS 네스팅](https://lightningcss.dev/)을 지원합니다.
+**@import syntax**| **Supported**|  여러 CSS 파일을 결합할 수 있습니다.
+**PostCSS**| **Supported**|  `postcss.config.js`를 Node.js 워커 풀에서 자동 처리합니다. Tailwind, Autoprefixer 등에 유용합니다.
+**Sass / SCSS**| **Supported** (Next.js)| Next.js에서는 Sass가 기본 지원됩니다. 사용자 정의 Sass 함수(`sassOptions.functions`)는 Turbopack의 Rust 기반 아키텍처가 webpack의 Node.js 환경처럼 JavaScript 함수를 직접 실행할 수 없으므로 지원되지 않습니다. 이 기능이 필요하면 webpack을 사용하세요. 향후 독립 실행형 Turbopack 사용 시 로더 구성이 필요할 가능성이 큽니다.
+**Less**|  Planned via plugins| 아직 기본 지원되지 않습니다. 커스텀 로더가 안정화되면 로더 구성이 필요할 전망입니다.
+**Lightning CSS**| **In Use**|  CSS 변환을 처리합니다. 일부 사용 빈도가 낮은 CSS Modules 기능(`:local/:global`을 독립적인 의사 클래스 등)은 아직 미지원입니다. [아래에서 자세한 내용을 확인하세요.](https://nextjs.org/docs/pages/api-reference/turbopack#unsupported-and-unplanned-features)
+
 ### Assets[](https://nextjs.org/docs/pages/api-reference/turbopack#assets)
 
-Feature| Status| Notes  
----|---|---  
-**Static Assets** (images, fonts)| **Supported**|  `import img from './img.png'`과 같은 가져오기가 즉시 동작합니다. Next.js에서는 `<Image />` 컴포넌트를 위한 객체를 반환합니다.  
-**JSON Imports**| **Supported**|  `.json`에서 이름 기반 혹은 기본 import가 지원됩니다.  
-  
+Feature| Status| Notes
+---|---|---
+**Static Assets** (images, fonts)| **Supported**|  `import img from './img.png'`과 같은 가져오기가 즉시 동작합니다. Next.js에서는 `<Image />` 컴포넌트를 위한 객체를 반환합니다.
+**JSON Imports**| **Supported**|  `.json`에서 이름 기반 혹은 기본 import가 지원됩니다.
+
 ### Module resolution[](https://nextjs.org/docs/pages/api-reference/turbopack#module-resolution)
 
-Feature| Status| Notes  
----|---|---  
-**Path Aliases**| **Supported**|  `tsconfig.json`의 `paths`와 `baseUrl`을 읽어 Next.js 동작과 일치합니다.  
-**Manual Aliases**| **Supported**| [`next.config.js`에서 `resolveAlias`를 구성](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#resolving-aliases)하세요 (`webpack.resolve.alias`와 유사).  
-**Custom Extensions**| **Supported**| [`next.config.js`에서 `resolveExtensions`를 구성](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#resolving-custom-extensions)하세요.  
-**AMD**|  Partially Supported| 기본 변환은 동작하지만 고급 AMD 사용은 제한적입니다.  
-  
+Feature| Status| Notes
+---|---|---
+**Path Aliases**| **Supported**|  `tsconfig.json`의 `paths`와 `baseUrl`을 읽어 Next.js 동작과 일치합니다.
+**Manual Aliases**| **Supported**| [`next.config.js`에서 `resolveAlias`를 구성](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#resolving-aliases)하세요 (`webpack.resolve.alias`와 유사).
+**Custom Extensions**| **Supported**| [`next.config.js`에서 `resolveExtensions`를 구성](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#resolving-custom-extensions)하세요.
+**AMD**|  Partially Supported| 기본 변환은 동작하지만 고급 AMD 사용은 제한적입니다.
+
 ### Performance and Fast Refresh[](https://nextjs.org/docs/pages/api-reference/turbopack#performance-and-fast-refresh)
 
-Feature| Status| Notes  
----|---|---  
-**Fast Refresh**| **Supported**|  JavaScript, TypeScript, CSS를 전체 새로고침 없이 업데이트합니다.  
-**Incremental Bundling**| **Supported**|  Turbopack은 dev 서버가 요청한 것만 지연 빌드하여 큰 앱 속도를 높입니다.  
-  
+Feature| Status| Notes
+---|---|---
+**Fast Refresh**| **Supported**|  JavaScript, TypeScript, CSS를 전체 새로고침 없이 업데이트합니다.
+**Incremental Bundling**| **Supported**|  Turbopack은 dev 서버가 요청한 것만 지연 빌드하여 큰 앱 속도를 높입니다.
+
 ## Known gaps with webpack[](https://nextjs.org/docs/pages/api-reference/turbopack#known-gaps-with-webpack)
 
 webpack에서 Turbopack으로 마이그레이션할 때 유의해야 하는 비사소한 동작 차이가 여러 가지 있습니다. 일반적으로 새 애플리케이션에서는 덜 중요한 문제들입니다.
@@ -215,8 +213,6 @@ Turbopack은 webpack 플러그인을 지원하지 않습니다. 이 때문에 we
     * `experimental.sri.algorithm`
     * `experimental.fallbackNodePolyfills` 향후 지원할 계획입니다.
 
-
-
 각 기능 플래그와 상태에 대한 전체 상세 설명은 [Turbopack API Reference](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack)를 확인하세요.
 
 ## Configuration[](https://nextjs.org/docs/pages/api-reference/turbopack#configuration)
@@ -226,8 +222,6 @@ Turbopack은 `next.config.js`(또는 `next.config.ts`)의 `turbopack` 키를 통
   * **`rules`** 파일 변환을 위한 추가 [webpack loaders](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#configuring-webpack-loaders)를 정의합니다.
   * **`resolveAlias`** webpack의 `resolve.alias`와 유사하게 수동 별칭을 만듭니다.
   * **`resolveExtensions`** 모듈 해석에 사용할 파일 확장자를 변경하거나 확장합니다.
-
-
 
 next.config.js
 [code]
@@ -247,7 +241,7 @@ next.config.js
 ## Generating trace files for performance debugging[](https://nextjs.org/docs/pages/api-reference/turbopack#generating-trace-files-for-performance-debugging)
 
 성능 또는 메모리 문제를 겪고 Next.js 팀의 진단을 돕고 싶다면 개발 명령에 `NEXT_TURBOPACK_TRACING=1`을 추가하여 추적 파일을 생성할 수 있습니다:
-[code] 
+[code]
     NEXT_TURBOPACK_TRACING=1 next dev
 [/code]
 
@@ -261,15 +255,11 @@ Turbopack은 로컬 개발과 빌드를 특히 대규모 애플리케이션에�
 
 ## Version Changes[](https://nextjs.org/docs/pages/api-reference/turbopack#version-changes)
 
-Version| Changes  
----|---  
-`v16.0.0`| Turbopack이 Next.js의 기본 번들러가 됩니다. 구성 파일이 발견되면 Babel을 자동 지원합니다.  
-`v15.5.0`| `build` 베타에 대해 Turbopack을 지원합니다.  
-`v15.3.0`| `build`에 대한 실험적 지원.  
-`v15.0.0`| 안정적인 `dev`용 Turbopack.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v16.0.0`| Turbopack이 Next.js의 기본 번들러가 됩니다. 구성 파일이 발견되면 Babel을 자동 지원합니다.
+`v15.5.0`| `build` 베타에 대해 Turbopack을 지원합니다.
+`v15.3.0`| `build`에 대한 실험적 지원.
+`v15.0.0`| 안정적인 `dev`용 Turbopack.
 
 보내기

@@ -7,10 +7,6 @@ description: 'Next.js는 애플리케이션에서 제공 중인 버전을 식별
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateBuildId
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)generateBuildId
-
-페이지 복사
-
 # generateBuildId
 
 최종 업데이트 2026년 2월 20일
@@ -28,9 +24,3 @@ next.config.js
       },
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
-
-전송

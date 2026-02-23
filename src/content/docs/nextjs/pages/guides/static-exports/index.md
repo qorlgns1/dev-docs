@@ -9,8 +9,6 @@ description: 'Next.js는 정적 사이트 또는 단일 페이지 애플리케�
 
 [Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)Static Exports
 
-페이지 복사
-
 # Next.js 애플리케이션의 정적 내보내기를 생성하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -32,17 +30,17 @@ next.config.js
      */
     const nextConfig = {
       output: 'export',
-     
+
       // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
       // trailingSlash: true,
-     
+
       // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
       // skipTrailingSlashRedirect: true,
-     
+
       // Optional: Change the output directory `out` -> `dist`
       // distDir: 'dist',
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -63,8 +61,6 @@ next.config.js
   * [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)
   * [`getStaticPaths`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths)
 
-
-
 ### 이미지 최적화[](https://nextjs.org/docs/pages/guides/static-exports#image-optimization)
 
 `next/image`를 통한 [이미지 최적화](https://nextjs.org/docs/app/api-reference/components/image)는 `next.config.js`에서 커스텀 이미지 로더를 정의하면 정적 내보내기와 함께 사용할 수 있습니다. 예를 들어 Cloudinary 같은 서비스를 사용해 이미지를 최적화할 수 있습니다:
@@ -79,7 +75,7 @@ next.config.js
         loaderFile: './my-loader.ts',
       },
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -112,7 +108,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return <Image alt="turtles" src="/turtles.jpg" width={300} height={300} />
     }
@@ -135,8 +131,6 @@ Node.js 서버가 필요하거나 빌드 과정에서 계산할 수 없는 동�
   * [`fallback: 'blocking'`이 있는 `getStaticPaths`](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-blocking)
   * [`getServerSideProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props)
 
-
-
 ## 배포[](https://nextjs.org/docs/pages/guides/static-exports#deploying)
 
 정적 내보내기를 사용하면 HTML/CSS/JS 정적 에셋을 제공할 수 있는 모든 웹 서버에 Next.js를 배포하고 호스팅할 수 있습니다.
@@ -146,16 +140,12 @@ Node.js 서버가 필요하거나 빌드 과정에서 계산할 수 없는 동�
   * `/`
   * `/blog/[id]`
 
-
-
 `next build` 실행 후 Next.js는 다음 파일을 생성합니다.
 
   * `/out/index.html`
   * `/out/404.html`
   * `/out/blog/post-1.html`
   * `/out/blog/post-2.html`
-
-
 
 Nginx와 같은 정적 호스트를 사용하는 경우, 들어오는 요청을 올바른 파일로 리라이트하도록 구성할 수 있습니다.
 
@@ -164,19 +154,19 @@ nginx.conf
     server {
       listen 80;
       server_name acme.com;
-     
+
       root /var/www/out;
-     
+
       location / {
           try_files $uri $uri.html $uri/ =404;
       }
-     
+
       # This is necessary when `trailingSlash: false`.
       # You can omit this when `trailingSlash: true`.
       location /blog/ {
           rewrite ^/blog/(.*)$ /blog/$1.html break;
       }
-     
+
       error_page 404 /404.html;
       location = /404.html {
           internal;
@@ -186,14 +176,10 @@ nginx.conf
 
 ## 버전 기록[](https://nextjs.org/docs/pages/guides/static-exports#version-history)
 
-버전| 변경 사항  
----|---  
-`v14.0.0`| `next export`가 `"output": "export"`로 대체되며 제거되었습니다.  
-`v13.4.0`| App Router(안정 버전)가 React Server Components와 Route Handlers 사용을 포함해 강화된 정적 내보내기 지원을 추가했습니다.  
-`v13.3.0`| `next export`가 더 이상 권장되지 않으며 `"output": "export"`로 대체되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`v14.0.0`| `next export`가 `"output": "export"`로 대체되며 제거되었습니다.
+`v13.4.0`| App Router(안정 버전)가 React Server Components와 Route Handlers 사용을 포함해 강화된 정적 내보내기 지원을 추가했습니다.
+`v13.3.0`| `next export`가 더 이상 권장되지 않으며 `"output": "export"`로 대체되었습니다.
 
 보내기

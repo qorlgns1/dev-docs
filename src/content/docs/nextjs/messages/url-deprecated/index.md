@@ -28,7 +28,7 @@ Next 5부터는 Next.js 라우터 객체를 페이지와 그 하위 컴포넌트
 pages/index.js
 ````code
     import { withRouter } from 'next/router'
-     
+
     class Page extends React.Component {
       render() {
         const { router } = this.props
@@ -36,16 +36,10 @@ pages/index.js
         return <div>{router.pathname}</div>
       }
     }
-     
+
     export default withRouter(Page)
 ````
 
 `url` 속성 사용을 `withRouter`로 자동 변환하는 codemod(코드 간 변환)를 제공합니다.
 
 이 codemod와 실행 방법은 여기에서 확인할 수 있습니다: [Use `withRouter`](https://nextjs.org/docs/pages/guides/upgrading/codemods#url-to-withrouter)
-
-도움이 되었나요?
-
-지원됨.
-
-전송

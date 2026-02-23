@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/pages/api-reference/functions/use-params
 
 [API Reference](https://nextjs.org/docs/pages/api-reference) [Functions](https://nextjs.org/docs/pages/api-reference/functions) useParams
 
-페이지 복사
-
 # useParams
 
 마지막 업데이트: 2026년 2월 20일
@@ -22,15 +20,15 @@ pages/shop/[slug].tsx
 JavaScript / TypeScript
 [code]
     import { useParams } from 'next/navigation'
-     
+
     export default function ShopPage() {
       const params = useParams<{ slug: string }>()
-     
+
       if (!params) {
         // Render fallback UI while params are not yet available
         return null
       }
-     
+
       // Route -> /shop/[slug]
       // URL -> /shop/shoes
       // `params` -> { slug: 'shoes' }
@@ -39,7 +37,7 @@ JavaScript / TypeScript
 [/code]
 
 ## 매개변수[](https://nextjs.org/docs/pages/api-reference/functions/use-params#parameters)
-[code] 
+[code]
     const params = useParams()
 [/code]
 
@@ -54,17 +52,15 @@ JavaScript / TypeScript
   * 속성 값은 [동적 세그먼트 유형](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)에 따라 `string` 또는 `string` 배열 중 하나입니다.
   * 라우트에 동적 매개변수가 없으면 `useParams`는 빈 객체를 반환합니다.
 
-
-
 예를 들면 다음과 같습니다:
 
-Route| URL| `useParams()`  
----|---|---  
-`pages/shop/page.js`| `/shop`| `{}`  
-`pages/shop/[slug].js`| `/shop/1`| `{ slug: '1' }`  
-`pages/shop/[tag]/[item].js`| `/shop/1/2`| `{ tag: '1', item: '2' }`  
-`pages/shop/[...slug].js`| `/shop/1/2`| `{ slug: ['1', '2'] }`  
-  
+Route| URL| `useParams()`
+---|---|---
+`pages/shop/page.js`| `/shop`| `{}`
+`pages/shop/[slug].js`| `/shop/1`| `{ slug: '1' }`
+`pages/shop/[tag]/[item].js`| `/shop/1/2`| `{ tag: '1', item: '2' }`
+`pages/shop/[...slug].js`| `/shop/1/2`| `{ slug: ['1', '2'] }`
+
 > **알아두면 좋아요**: `useParams`는 [React 훅](https://react.dev/learn#using-hooks)이므로 클래스에서는 사용할 수 없습니다.
 
 ## 동작[](https://nextjs.org/docs/pages/api-reference/functions/use-params#behavior)
@@ -80,16 +76,16 @@ pages/shop/[slug].tsx
 JavaScript / TypeScript
 [code]
     import { useParams } from 'next/navigation'
-     
+
     export default function ShopPage() {
       const params = useParams<{ slug: string }>()
-     
+
       if (!params) {
         // Return a fallback UI while params are loading
         // This prevents hydration mismatches
         return <ShopPageSkeleton />
       }
-     
+
       return <>Shop: {params.slug}</>
     }
 [/code]
@@ -103,10 +99,10 @@ pages/shop/[slug].tsx
 JavaScript / TypeScript
 [code]
     import { useParams } from 'next/navigation'
-     
+
     export default function ShopPage() {
       const params = useParams<{ slug: string }>()
-     
+
       // With getServerSideProps, this fallback is never rendered because
       // params is always available on the server. However, keeping
       // the fallback allows this component to be reused on other pages
@@ -114,10 +110,10 @@ JavaScript / TypeScript
       if (!params) {
         return null
       }
-     
+
       return <>Shop: {params.slug}</>
     }
-     
+
     export async function getServerSideProps() {
       return { props: {} }
     }
@@ -133,16 +129,16 @@ JavaScript / TypeScript
 [code]
     import { useRouter } from 'next/router'
     import { useParams } from 'next/navigation'
-     
+
     export default function ShopPage() {
       const router = useRouter()
       const params = useParams()
-     
+
       // URL -> /shop/shoes?color=red
-     
+
       // router.query -> { slug: 'shoes', color: 'red' }
       // params -> { slug: 'shoes' }
-     
+
       // ...
     }
 [/code]
@@ -158,16 +154,16 @@ components/breadcrumb.tsx
 JavaScript / TypeScript
 [code]
     import { useParams } from 'next/navigation'
-     
+
     // This component works in both pages/ and app/
     export function Breadcrumb() {
       const params = useParams<{ slug: string }>()
-     
+
       if (!params) {
         // Fallback for Pages Router during pre-rendering
         return <nav>Home / ...</nav>
       }
-     
+
       return <nav>Home / {params.slug}</nav>
     }
 [/code]
@@ -176,12 +172,6 @@ JavaScript / TypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/functions/use-params#version-history)
 
-Version| Changes  
----|---  
-`v13.3.0`| `useParams` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+Version| Changes
+---|---
+`v13.3.0`| `useParams` 도입.

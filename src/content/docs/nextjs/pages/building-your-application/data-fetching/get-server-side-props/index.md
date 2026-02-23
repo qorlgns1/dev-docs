@@ -7,10 +7,6 @@ description: '는 Next.js 함수로, 요청 시점에 데이터를 가져와 페
 
 출처 URL: https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props
 
-[애플리케이션 빌드](https://nextjs.org/docs/pages/building-your-application)[데이터 페칭](https://nextjs.org/docs/pages/building-your-application/data-fetching)getServerSideProps
-
-페이지 복사
-
 # getServerSideProps
 
 마지막 업데이트 2026년 2월 20일
@@ -26,12 +22,12 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-     
+
     type Repo = {
       name: string
       stargazers_count: number
     }
-     
+
     export const getServerSideProps = (async () => {
       // Fetch data from external API
       const res = await fetch('https://api.github.com/repos/vercel/next.js')
@@ -39,7 +35,7 @@ JavaScriptTypeScript
       // Pass data to the page via props
       return { props: { repo } }
     }) satisfies GetServerSideProps<{ repo: Repo }>
-     
+
     export default function Page({
       repo,
     }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -67,14 +63,11 @@ JavaScriptTypeScript
   * 사용자가 [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link) 또는 [`next/router`](https://nextjs.org/docs/pages/api-reference/functions/use-router)를 통해 페이지를 방문하면 Next.js는 서버로 API 요청을 보내고, 서버에서 `getServerSideProps`가 실행됩니다.
   * `getServerSideProps`는 서버에서 실행되므로 데이터를 가져오기 위해 Next.js [API Route](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)를 호출할 필요가 없습니다. 대신 `getServerSideProps` 내부에서 CMS, 데이터베이스, 기타 서드파티 API를 직접 호출할 수 있습니다.
 
-
-
 > **알아두면 좋아요:**
-> 
+>
 >   * `getServerSideProps`와 함께 사용할 수 있는 매개변수와 props는 [`getServerSideProps` API 레퍼런스](https://nextjs.org/docs/pages/api-reference/functions/get-server-side-props)를 참고하세요.
 >   * [next-code-elimination 도구](https://next-code-elimination.vercel.app/)를 사용해 Next.js가 클라이언트 번들에서 어떤 코드를 제거하는지 확인할 수 있습니다.
-> 
-
+>
 
 ## 에러 처리[](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props#error-handling)
 
@@ -85,7 +78,7 @@ JavaScriptTypeScript
 ### 서버 사이드 렌더링(SSR)에서의 캐싱[](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr)
 
 `getServerSideProps` 내부에서 캐싱 헤더(`Cache-Control`)를 사용해 동적 응답을 캐싱할 수 있습니다. 예를 들어 [`stale-while-revalidate`](https://web.dev/stale-while-revalidate/)를 사용할 수 있습니다.
-[code] 
+[code]
     // This value is considered fresh for ten seconds (s-maxage=10).
     // If a request is repeated within the next 10 seconds, the previously
     // cached value will still be fresh. If the request is repeated before 59 seconds,
@@ -98,7 +91,7 @@ JavaScriptTypeScript
         'Cache-Control',
         'public, s-maxage=10, stale-while-revalidate=59'
       )
-     
+
       return {
         props: {},
       }
@@ -106,9 +99,3 @@ JavaScriptTypeScript
 [/code]
 
 다만 `cache-control`을 사용하기 전에, [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)와 [ISR](https://nextjs.org/docs/pages/guides/incremental-static-regeneration)이 상황에 더욱 적합한지 먼저 검토하는 것을 권장합니다.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

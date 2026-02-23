@@ -7,10 +7,6 @@ description: '의  옵션으로 TypeScript 동작을 구성하세요:'
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/typescript
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)typescript
-
-페이지 복사
-
 # typescript
 
 마지막 업데이트 2026년 2월 20일
@@ -29,11 +25,11 @@ next.config.js
 
 ## Options[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/typescript#options)
 
-옵션| 타입| 기본값| 설명  
----|---|---|---  
-`ignoreBuildErrors`| `boolean`| `false`| TypeScript 오류가 있어도 프로덕션 빌드를 완료하도록 허용합니다.  
-`tsconfigPath`| `string`| `'tsconfig.json'`| 커스텀 `tsconfig.json` 파일 경로입니다.  
-  
+옵션| 타입| 기본값| 설명
+---|---|---|---
+`ignoreBuildErrors`| `boolean`| `false`| TypeScript 오류가 있어도 프로덕션 빌드를 완료하도록 허용합니다.
+`tsconfigPath`| `string`| `'tsconfig.json'`| 커스텀 `tsconfig.json` 파일 경로입니다.
+
 ## `ignoreBuildErrors`[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/typescript#ignorebuilderrors)
 
 프로젝트에 TypeScript 오류가 있으면 Next.js는 **프로덕션 빌드**(`next build`)를 실패 처리합니다.
@@ -69,9 +65,5 @@ next.config.js
 [/code]
 
 자세한 내용은 [TypeScript configuration](https://nextjs.org/docs/app/api-reference/config/typescript#custom-tsconfig-path) 페이지를 참조하세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

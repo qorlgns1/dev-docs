@@ -7,8 +7,6 @@ description: 'Next.js는 Web  API를 확장해 서버에서 수행되는 각 요
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/fetch
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)fetch
-
 Copy page
 
 # fetch
@@ -45,7 +43,7 @@ Next.js는 [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_
 ### `options.cache`[](https://nextjs.org/docs/app/api-reference/functions/fetch#optionscache)
 
 요청이 Next.js [Data Cache](https://nextjs.org/docs/app/guides/caching#data-cache)와 어떻게 상호작용할지 구성합니다.
-[code] 
+[code]
     fetch(`https://...`, { cache: 'force-cache' | 'no-store' })
 [/code]
 
@@ -55,10 +53,8 @@ Next.js는 [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_
     * 일치 항목이 있고 최신이면 캐시에서 반환됩니다.
     * 일치 항목이 없거나 만료되었으면 Next.js가 원격 서버에서 리소스를 가져와 다운로드한 리소스로 캐시를 업데이트합니다.
 
-
-
 ### `options.next.revalidate`[](https://nextjs.org/docs/app/api-reference/functions/fetch#optionsnextrevalidate)
-[code] 
+[code]
     fetch(`https://...`, { next: { revalidate: false | 0 | number } })
 [/code]
 
@@ -68,18 +64,15 @@ Next.js는 [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_
   * **`0`** \- 리소스 캐싱을 방지합니다.
   * **`number`** \- (초) 리소스가 최대 `n`초 동안 캐시 수명을 갖도록 지정합니다.
 
-
-
 > **알아두면 좋은 점** :
-> 
+>
 >   * 개별 `fetch()` 요청이 경로의 [기본 `revalidate`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate)보다 낮은 `revalidate` 값을 설정하면 전체 경로의 재검증 주기가 그 값으로 단축됩니다.
 >   * 동일한 경로에서 동일한 URL을 사용하는 두 fetch 요청의 `revalidate` 값이 다르면 더 낮은 값이 사용됩니다.
 >   * `{ revalidate: 3600, cache: 'no-store' }`처럼 충돌하는 옵션은 허용되지 않으며, 둘 다 무시되고 개발 모드에서는 터미널에 경고가 출력됩니다.
-> 
-
+>
 
 ### `options.next.tags`[](https://nextjs.org/docs/app/api-reference/functions/fetch#optionsnexttags)
-[code] 
+[code]
     fetch(`https://...`, { next: { tags: ['collection'] } })
 [/code]
 
@@ -103,11 +96,9 @@ Next.js는 응답 속도를 높이고 과금되는 API 호출 비용을 줄이�
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/fetch#version-history)
 
-Version| Changes  
----|---  
-`v13.0.0`| `fetch` 도입.  
-  
-도움이 되었나요?
+Version| Changes
+---|---
+`v13.0.0`| `fetch` 도입.
 
 supported.
 

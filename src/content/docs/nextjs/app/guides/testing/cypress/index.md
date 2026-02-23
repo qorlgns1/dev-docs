@@ -7,8 +7,6 @@ description: '>   * Cypress 13.6.3 미만 버전은 가 있는 TypeScript 5를 �
 
 Source URL: https://nextjs.org/docs/app/guides/testing/cypress
 
-[Guides](https://nextjs.org/docs/app/guides)[Testing](https://nextjs.org/docs/app/guides/testing)Cypress
-
 Copy page
 
 # Next.js에서 Cypress 설정 방법
@@ -18,10 +16,9 @@ Last updated February 20, 2026
 [Cypress](https://www.cypress.io/)는 **엔드 투 엔드(E2E)** 및 **컴포넌트 테스트**를 위한 테스트 러너입니다. 이 페이지에서는 Next.js와 함께 Cypress를 설정하고 첫 번째 테스트를 작성하는 방법을 설명합니다.
 
 > **경고:**
-> 
+>
 >   * Cypress 13.6.3 미만 버전은 `moduleResolution:"bundler"`가 있는 [TypeScript 5](https://github.com/cypress-io/cypress/issues/27731)를 지원하지 않습니다. 하지만 이 문제는 Cypress 13.6.3 이상 버전에서 해결되었습니다. [cypress v13.6.3](https://docs.cypress.io/guides/references/changelog#13-6-3)
-> 
-
+>
 
 ## 빠른 시작[](https://nextjs.org/docs/app/guides/testing/cypress#quickstart)
 
@@ -80,7 +77,7 @@ cypress.config.ts
 JavaScriptTypeScript
 [code]
     import { defineConfig } from 'cypress'
-     
+
     export default defineConfig({
       e2e: {
         setupNodeEvents(on, config) {},
@@ -93,7 +90,7 @@ JavaScriptTypeScript
 app/page.js
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <div>
@@ -107,7 +104,7 @@ app/page.js
 app/about/page.js
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <div>
@@ -126,13 +123,13 @@ cypress/e2e/app.cy.js
       it('should navigate to the about page', () => {
         // Start from the index page
         cy.visit('http://localhost:3000/')
-     
+
         // Find a link with an href attribute containing "about" and click it
         cy.get('a[href*="about"]').click()
-     
+
         // The new url should include "/about"
         cy.url().should('include', '/about')
-     
+
         // The new page should contain an h1 with "About"
         cy.get('h1').contains('About')
       })
@@ -146,11 +143,10 @@ Cypress는 사용자가 애플리케이션을 탐색하는 동작을 시뮬레�
 Next.js 애플리케이션을 빌드하려면 `npm run build && npm run start`를 실행하고, 다른 터미널 창에서 `npm run cypress:open`을 실행하여 Cypress를 시작하고 E2E 테스트 스위트를 실행합니다.
 
 > **알아두면 좋아요:**
-> 
+>
 >   * `cypress.config.js` 구성 파일에 `baseUrl: 'http://localhost:3000'`를 추가하면 `cy.visit("http://localhost:3000/")` 대신 `cy.visit("/")`를 사용할 수 있습니다.
 >   * 또는 [`start-server-and-test`](https://www.npmjs.com/package/start-server-and-test) 패키지를 설치하여 Next.js 프로덕션 서버를 Cypress와 함께 실행할 수 있습니다. 설치 후 `package.json`의 scripts 필드에 `"test": "start-server-and-test start http://localhost:3000 cypress"`를 추가합니다. 새 변경 사항 후에는 애플리케이션을 다시 빌드해야 합니다.
-> 
-
+>
 
 ## 첫 번째 Cypress 컴포넌트 테스트 만들기[](https://nextjs.org/docs/app/guides/testing/cypress#creating-your-first-cypress-component-test)
 
@@ -165,7 +161,7 @@ cypress.config.ts
 JavaScriptTypeScript
 [code]
     import { defineConfig } from 'cypress'
-     
+
     export default defineConfig({
       component: {
         devServer: {
@@ -181,15 +177,15 @@ JavaScriptTypeScript
 cypress/component/about.cy.tsx
 [code]
     import Page from '../../app/page'
-     
+
     describe('<Page />', () => {
       it('should render and display expected content', () => {
         // Mount the React component for the Home page
         cy.mount(<Page />)
-     
+
         // The new page should contain an h1 with "Home"
         cy.get('h1').contains('Home')
-     
+
         // Validate that a link with the expected URL is present
         // Following the link is better suited to an E2E test
         cy.get('a[href="/about"]').should('be.visible')
@@ -198,11 +194,10 @@ cypress/component/about.cy.tsx
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * Cypress는 현재 `async` 서버 컴포넌트에 대한 Component Testing을 지원하지 않습니다. E2E 테스트 사용을 권장합니다.
 >   * 컴포넌트 테스트는 Next.js 서버가 필요하지 않으므로 서버 사용을 전제로 하는 `<Image />`와 같은 기능은 즉시 작동하지 않을 수 있습니다.
-> 
-
+>
 
 ### 컴포넌트 테스트 실행[](https://nextjs.org/docs/app/guides/testing/cypress#running-component-tests)
 
@@ -232,8 +227,6 @@ Cypress와 지속적 통합에 대해 더 알아보려면 다음 자료를 참�
   * [Cypress GitHub Actions Guide](https://on.cypress.io/github-actions)
   * [Official Cypress GitHub Action](https://github.com/cypress-io/github-action)
   * [Cypress Discord](https://discord.com/invite/cypress)
-
-
 
 Was this helpful?
 

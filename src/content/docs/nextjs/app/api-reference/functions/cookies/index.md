@@ -6,10 +6,6 @@ description: '는 Server Components에서 들어오는 HTTP 요청의 쿠키를 
 # 함수: cookies | Next.js
 출처 URL: https://nextjs.org/docs/app/api-reference/functions/cookies
 
-[API 레퍼런스](https://nextjs.org/docs/app/api-reference)[함수](https://nextjs.org/docs/app/api-reference/functions)cookies
-
-페이지 복사
-
 # cookies
 
 마지막 업데이트 2026년 2월 20일
@@ -21,7 +17,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { cookies } from 'next/headers'
-     
+
     export default async function Page() {
       const cookieStore = await cookies()
       const theme = cookieStore.get('theme')
@@ -35,33 +31,33 @@ JavaScriptTypeScript
 
 다음 메서드를 사용할 수 있습니다:
 
-메서드| 반환 타입| 설명  
----|---|---  
-`get('name')`| Object| 쿠키 이름을 받아 이름과 값을 담은 객체를 반환합니다.  
-`getAll()`| 객체 배열| 지정한 이름과 일치하는 모든 쿠키 목록을 반환합니다.  
-`has('name')`| Boolean| 쿠키 이름을 받아 해당 쿠키의 존재 여부를 boolean으로 반환합니다.  
-`set(name, value, options)`| -| 쿠키 이름, 값, 옵션을 받아 나가는 요청 쿠키를 설정합니다.  
-`delete(name)`| -| 쿠키 이름을 받아 해당 쿠키를 삭제합니다.  
-`toString()`| String| 쿠키의 문자열 표현을 반환합니다.  
-  
+메서드| 반환 타입| 설명
+---|---|---
+`get('name')`| Object| 쿠키 이름을 받아 이름과 값을 담은 객체를 반환합니다.
+`getAll()`| 객체 배열| 지정한 이름과 일치하는 모든 쿠키 목록을 반환합니다.
+`has('name')`| Boolean| 쿠키 이름을 받아 해당 쿠키의 존재 여부를 boolean으로 반환합니다.
+`set(name, value, options)`| -| 쿠키 이름, 값, 옵션을 받아 나가는 요청 쿠키를 설정합니다.
+`delete(name)`| -| 쿠키 이름을 받아 해당 쿠키를 삭제합니다.
+`toString()`| String| 쿠키의 문자열 표현을 반환합니다.
+
 ### 옵션[](https://nextjs.org/docs/app/api-reference/functions/cookies#options)
 
 쿠키를 설정할 때는 `options` 객체에서 다음 속성을 지원합니다:
 
-옵션| 타입| 설명  
----|---|---  
-`name`| String| 쿠키 이름을 지정합니다.  
-`value`| String| 쿠키에 저장할 값을 지정합니다.  
-`expires`| Date| 쿠키가 만료될 정확한 날짜를 정의합니다.  
-`maxAge`| Number| 쿠키의 수명을 초 단위로 설정합니다.  
-`domain`| String| 쿠키를 사용할 수 있는 도메인을 지정합니다.  
-`path`| String, 기본값: `'/'`| 도메인 내에서 쿠키의 적용 범위를 특정 경로로 제한합니다.  
-`secure`| Boolean| HTTPS 연결에서만 쿠키를 전송하도록 보안을 강화합니다.  
-`httpOnly`| Boolean| 쿠키를 HTTP 요청으로만 제한하여 클라이언트 측 접근을 차단합니다.  
-`sameSite`| Boolean, `'lax'`, `'strict'`, `'none'`| 쿠키의 크로스 사이트 요청 동작을 제어합니다.  
-`priority`| String (`"low"`, `"medium"`, `"high"`)| 쿠키의 우선순위를 지정합니다.  
-`partitioned`| Boolean| 쿠키가 [partitioned](https://github.com/privacycg/CHIPS)인지 나타냅니다.  
-  
+옵션| 타입| 설명
+---|---|---
+`name`| String| 쿠키 이름을 지정합니다.
+`value`| String| 쿠키에 저장할 값을 지정합니다.
+`expires`| Date| 쿠키가 만료될 정확한 날짜를 정의합니다.
+`maxAge`| Number| 쿠키의 수명을 초 단위로 설정합니다.
+`domain`| String| 쿠키를 사용할 수 있는 도메인을 지정합니다.
+`path`| String, 기본값: `'/'`| 도메인 내에서 쿠키의 적용 범위를 특정 경로로 제한합니다.
+`secure`| Boolean| HTTPS 연결에서만 쿠키를 전송하도록 보안을 강화합니다.
+`httpOnly`| Boolean| 쿠키를 HTTP 요청으로만 제한하여 클라이언트 측 접근을 차단합니다.
+`sameSite`| Boolean, `'lax'`, `'strict'`, `'none'`| 쿠키의 크로스 사이트 요청 동작을 제어합니다.
+`priority`| String (`"low"`, `"medium"`, `"high"`)| 쿠키의 우선순위를 지정합니다.
+`partitioned`| Boolean| 쿠키가 [partitioned](https://github.com/privacycg/CHIPS)인지 나타냅니다.
+
 기본값이 있는 옵션은 `path`뿐입니다.
 
 옵션에 대한 자세한 내용은 [MDN 문서](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)를 참조하세요.
@@ -104,7 +100,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { cookies } from 'next/headers'
-     
+
     export default async function Page() {
       const cookieStore = await cookies()
       const theme = cookieStore.get('theme')
@@ -121,7 +117,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { cookies } from 'next/headers'
-     
+
     export default async function Page() {
       const cookieStore = await cookies()
       return cookieStore.getAll().map((cookie) => (
@@ -142,12 +138,12 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { cookies } from 'next/headers'
-     
+
     export async function create(data) {
       const cookieStore = await cookies()
-     
+
       cookieStore.set('name', 'lee')
       // or
       cookieStore.set('name', 'lee', { secure: true })
@@ -170,7 +166,7 @@ app/page.ts
 JavaScriptTypeScript
 [code]
     import { cookies } from 'next/headers'
-     
+
     export default async function Page() {
       const cookieStore = await cookies()
       const hasCookie = cookieStore.has('theme')
@@ -189,9 +185,9 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { cookies } from 'next/headers'
-     
+
     export async function deleteCookie(data) {
       const cookieStore = await cookies()
       cookieStore.delete('name')
@@ -205,9 +201,9 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { cookies } from 'next/headers'
-     
+
     export async function deleteCookie(data) {
       const cookieStore = await cookies()
       cookieStore.set('name', '')
@@ -221,9 +217,9 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { cookies } from 'next/headers'
-     
+
     export async function deleteCookie(data) {
       const cookieStore = await cookies()
       cookieStore.set('name', 'value', { maxAge: 0 })
@@ -232,13 +228,9 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/cookies#version-history)
 
-버전| 변경 사항  
----|---  
-`v15.0.0-RC`| `cookies`가 이제 비동기 함수입니다. [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#150)를 사용할 수 있습니다.  
-`v13.0.0`| `cookies` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`v15.0.0-RC`| `cookies`가 이제 비동기 함수입니다. [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#150)를 사용할 수 있습니다.
+`v13.0.0`| `cookies` 도입.
 
 보내기

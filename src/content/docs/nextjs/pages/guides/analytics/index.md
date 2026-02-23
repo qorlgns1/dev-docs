@@ -7,10 +7,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 Source URL: https://nextjs.org/docs/pages/guides/analytics
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)Analytics
-
-페이지 복사
-
 # 애널리틱스 설정 방법
 
 최종 업데이트: 2026년 2월 20일
@@ -27,7 +23,7 @@ instrumentation-client.js
 [code]
     // Initialize analytics before the app starts
     console.log('Analytics initialized')
-     
+
     // Set up global error tracking
     window.addEventListener('error', (event) => {
       // Send to your error tracking service
@@ -40,12 +36,12 @@ instrumentation-client.js
 pages/_app.js
 [code]
     import { useReportWebVitals } from 'next/web-vitals'
-     
+
     function MyApp({ Component, pageProps }) {
       useReportWebVitals((metric) => {
         console.log(metric)
       })
-     
+
       return <Component {...pageProps} />
     }
 [/code]
@@ -63,14 +59,12 @@ pages/_app.js
   * [Cumulative Layout Shift](https://web.dev/cls/) (CLS)
   * [Interaction to Next Paint](https://web.dev/inp/) (INP)
 
-
-
 `name` 속성을 사용하면 이러한 메트릭의 모든 결과를 처리할 수 있다.
 
 pages/_app.js
 [code]
     import { useReportWebVitals } from 'next/web-vitals'
-     
+
     function MyApp({ Component, pageProps }) {
       useReportWebVitals((metric) => {
         switch (metric.name) {
@@ -83,7 +77,7 @@ pages/_app.js
           // ...
         }
       })
-     
+
       return <Component {...pageProps} />
     }
 [/code]
@@ -95,8 +89,6 @@ pages/_app.js
   * `Next.js-hydration`: 페이지가 하이드레이션을 시작해 완료하기까지 걸린 시간(ms)
   * `Next.js-route-change-to-render`: 라우트 변경 후 페이지가 렌더링을 시작하기까지 걸린 시간(ms)
   * `Next.js-render`: 라우트 변경 후 페이지가 렌더링을 완료하기까지 걸린 시간(ms)
-
-
 
 이러한 메트릭 결과를 각각 처리할 수 있다.
 [code]
@@ -122,11 +114,11 @@ pages/_app.js
 ## 외부 시스템으로 결과 전송[](https://nextjs.org/docs/pages/guides/analytics#sending-results-to-external-systems)
 
 사이트의 실제 사용자 성능을 측정하고 추적하기 위해 어떤 엔드포인트로든 결과를 전송할 수 있다. 예를 들어:
-[code] 
+[code]
     useReportWebVitals((metric) => {
       const body = JSON.stringify(metric)
       const url = 'https://example.com/analytics'
-     
+
       // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
       if (navigator.sendBeacon) {
         navigator.sendBeacon(url, body)
@@ -138,7 +130,7 @@ pages/_app.js
 
 > **알아두면 좋은 점**: [Google Analytics](https://analytics.google.com/analytics/web/)를 사용하는 경우 `id` 값을 활용해 직접 메트릭 분포를 구성(백분위 계산 등)할 수 있다.
 
-> 
+>
 [code]
 >     useReportWebVitals((metric) => {
 >       // Use `window.gtag` if you initialized Google Analytics as this example:
@@ -152,11 +144,7 @@ pages/_app.js
 >       })
 >     })
 [/code]
-> 
+>
 > [Google Analytics로 결과를 전송하는 방법](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics)에 대해 더 읽어보기.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

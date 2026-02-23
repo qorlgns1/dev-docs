@@ -3,57 +3,45 @@ title: 'No Duplicate Head'
 description: '> Prevent duplicate usage of  in .'
 ---
 
-# No Duplicate Head | Next.js
-
 Source URL: https://nextjs.org/docs/messages/no-duplicate-head
-
-[Docs](https://nextjs.org/docs)[Errors](https://nextjs.org/docs)No Duplicate Head
 
 # No Duplicate Head
 
 > Prevent duplicate usage of `<Head>` in `pages/_document.js`.
 
-## Why This Error Occurred[](https://nextjs.org/docs/messages/no-duplicate-head#why-this-error-occurred)
+## Why This Error Occurred
 
 More than a single instance of the `<Head />` component was used in a single custom document. This can cause unexpected behavior in your application.
 
-## Possible Ways to Fix It[](https://nextjs.org/docs/messages/no-duplicate-head#possible-ways-to-fix-it)
+## Possible Ways to Fix It
 
 Only use a single `<Head />` component in your custom document in `pages/_document.js`.
 
-pages/_document.js
-[code]
-    import Document, { Html, Head, Main, NextScript } from 'next/document'
-     
-    class MyDocument extends Document {
-      static async getInitialProps(ctx) {
-        //...
-      }
-     
-      render() {
-        return (
-          <Html>
-            <Head />
-            <body>
-              <Main />
-              <NextScript />
-            </body>
-          </Html>
-        )
-      }
-    }
-     
-    export default MyDocument
-[/code]
+```jsx filename="pages/_document.js"
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-## Useful Links[](https://nextjs.org/docs/messages/no-duplicate-head#useful-links)
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    //...
+  }
 
-  * [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
 
+export default MyDocument
+```
 
+## Useful Links
 
-Was this helpful?
+- [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
 
-supported.
-
-Send

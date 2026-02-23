@@ -6,10 +6,6 @@ description: 'Next.js는 와  확장자를 사용하는 패키지를 설치하�
 # 가이드: Sass | Next.js
 Source URL: https://nextjs.org/docs/pages/guides/sass
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)Sass
-
-페이지 복사
-
 # Next.js에서 Sass 사용하는 방법
 
 마지막 업데이트: 2026년 2월 20일
@@ -26,9 +22,9 @@ Terminal
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 > Sass는 확장자가 다른 [두 가지 문법](https://sass-lang.com/documentation/syntax)을 지원합니다. `.scss` 확장자는 [SCSS 문법](https://sass-lang.com/documentation/syntax#scss)을 사용해야 하고, `.sass` 확장자는 [들여쓰기 문법("Sass")](https://sass-lang.com/documentation/syntax#the-indented-syntax)을 사용해야 합니다.
-> 
+>
 > 어떤 것을 선택할지 확신이 없다면 CSS의 상위 집합이며 들여쓰기 문법("Sass")을 새로 배울 필요가 없는 `.scss` 확장자부터 시작하세요.
 
 ### Sass 옵션 커스터마이징[](https://nextjs.org/docs/pages/guides/sass#customizing-sass-options)
@@ -40,13 +36,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       sassOptions: {
         additionalData: `$var: red;`,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -59,13 +55,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       sassOptions: {
         implementation: 'sass-embedded',
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -78,7 +74,7 @@ Next.js는 CSS Module 파일에서 내보낸 Sass 변수를 지원합니다.
 app/variables.module.scss
 [code]
     $primary-color: #64ff00;
-     
+
     :export {
       primaryColor: $primary-color;
     }
@@ -87,7 +83,7 @@ app/variables.module.scss
 pages/_app.js
 [code]
     import variables from '../styles/variables.module.scss'
-     
+
     export default function MyApp({ Component, pageProps }) {
       return (
         <Layout color={variables.primaryColor}>
@@ -96,9 +92,3 @@ pages/_app.js
       )
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
-
-전송

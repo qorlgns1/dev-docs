@@ -7,8 +7,6 @@ description: '검색 엔진 크롤러에게 사이트에서 접근 가능한 URL
 
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots
 
-[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)[메타데이터 파일](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)robots.txt
-
 Copy page
 
 # robots.txt
@@ -24,7 +22,7 @@ app/robots.txt
     User-Agent: *
     Allow: /
     Disallow: /private/
-    
+
     Sitemap: https://acme.com/sitemap.xml
 [/code]
 
@@ -39,7 +37,7 @@ app/robots.ts
 JavaScriptTypeScript
 [code]
     import type { MetadataRoute } from 'next'
-     
+
     export default function robots(): MetadataRoute.Robots {
       return {
         rules: {
@@ -53,11 +51,11 @@ JavaScriptTypeScript
 [/code]
 
 출력:
-[code] 
+[code]
     User-Agent: *
     Allow: /
     Disallow: /private/
-    
+
     Sitemap: https://acme.com/sitemap.xml
 [/code]
 
@@ -70,7 +68,7 @@ app/robots.ts
 JavaScriptTypeScript
 [code]
     import type { MetadataRoute } from 'next'
-     
+
     export default function robots(): MetadataRoute.Robots {
       return {
         rules: [
@@ -90,22 +88,22 @@ JavaScriptTypeScript
 [/code]
 
 출력:
-[code] 
+[code]
     User-Agent: Googlebot
     Allow: /
     Disallow: /private/
-    
+
     User-Agent: Applebot
     Disallow: /
-    
+
     User-Agent: Bingbot
     Disallow: /
-    
+
     Sitemap: https://acme.com/sitemap.xml
 [/code]
 
 ### Robots 객체[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#robots-object)
-[code] 
+[code]
     type Robots = {
       rules:
         | {
@@ -127,11 +125,9 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#version-history)
 
-Version| Changes  
----|---  
-`v13.3.0`| `robots`가 도입됨.  
-  
-도움이 되었나요?
+Version| Changes
+---|---
+`v13.3.0`| `robots`가 도입됨.
 
 supported.
 

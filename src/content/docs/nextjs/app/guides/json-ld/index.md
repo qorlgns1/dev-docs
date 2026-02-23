@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/json-ld'
 
 원본 URL: https://nextjs.org/docs/app/guides/json-ld
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)JSON-LD
-
-페이지 복사
-
 # Next.js 애플리케이션에서 JSON-LD를 구현하는 방법
 
 최종 업데이트 2026년 2월 20일
@@ -30,7 +26,7 @@ JavaScriptTypeScript
     export default async function Page({ params }) {
       const { id } = await params
       const product = await getProduct(id)
-     
+
       const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Product',
@@ -38,7 +34,7 @@ JavaScriptTypeScript
         image: product.image,
         description: product.description,
       }
-     
+
       return (
         <section>
           {/* Add JSON-LD to your page */}
@@ -57,9 +53,9 @@ JavaScriptTypeScript
 구조화 데이터를 Google용 [Rich Results Test](https://search.google.com/test/rich-results) 또는 범용 [Schema Markup Validator](https://validator.schema.org/)로 검증하고 테스트할 수 있습니다.
 
 [`schema-dts`](https://www.npmjs.com/package/schema-dts)와 같은 커뮤니티 패키지를 사용해 TypeScript로 JSON-LD 타입을 지정할 수도 있습니다:
-[code] 
+[code]
     import { Product, WithContext } from 'schema-dts'
-     
+
     const jsonLd: WithContext<Product> = {
       '@context': 'https://schema.org',
       '@type': 'Product',
@@ -68,9 +64,5 @@ JavaScriptTypeScript
       description: 'Dynamic at the speed of static.',
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

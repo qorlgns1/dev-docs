@@ -29,7 +29,7 @@ pages/_app.js
 [code]
     import React from 'react'
     import App, { Container } from 'next/app'
-     
+
     class MyApp extends App {
       render() {
         const { Component, pageProps } = this.props
@@ -40,7 +40,7 @@ pages/_app.js
         )
       }
     }
-     
+
     export default MyApp
 [/code]
 
@@ -50,14 +50,14 @@ pages/_app.js
 [code]
     import React from 'react'
     import App from 'next/app'
-     
+
     class MyApp extends App {
       render() {
         const { Component, pageProps } = this.props
         return <Component {...pageProps} />
       }
     }
-     
+
     export default MyApp
 [/code]
 
@@ -66,11 +66,5 @@ pages/_app.js
 ## 유용한 링크[](https://nextjs.org/docs/messages/app-container-deprecated#useful-links)
 
   * [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

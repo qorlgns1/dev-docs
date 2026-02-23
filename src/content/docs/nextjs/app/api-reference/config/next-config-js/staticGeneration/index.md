@@ -7,8 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/staticGeneration
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)staticGeneration*
-
 Copy page
 
 # staticGeneration*
@@ -24,7 +22,7 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         staticGenerationRetryCount: 1,
@@ -32,7 +30,7 @@ JavaScriptTypeScript
         staticGenerationMinPagesPerWorker: 25,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -43,8 +41,6 @@ JavaScriptTypeScript
   * `staticGenerationRetryCount`: 빌드가 실패하기 전에 페이지 생성을 재시도하는 횟수입니다.
   * `staticGenerationMaxConcurrency`: 워커 한 개가 동시에 처리할 수 있는 최대 페이지 수입니다.
   * `staticGenerationMinPagesPerWorker`: 새 워커를 시작하기 전에 워커가 처리해야 하는 최소 페이지 수입니다.
-
-
 
 이 내용이 도움이 되었나요?
 

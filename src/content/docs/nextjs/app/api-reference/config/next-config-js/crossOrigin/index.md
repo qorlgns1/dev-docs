@@ -7,10 +7,6 @@ description: '옵션을 사용하면  컴포넌트가 생성하는 모든  태�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/crossOrigin
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)crossOrigin
-
-페이지 복사
-
 # crossOrigin
 
 마지막 업데이트: 2026년 2월 20일
@@ -28,11 +24,5 @@ next.config.js
 
   * `'anonymous'`: [`crossOrigin="anonymous"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin#anonymous) 속성을 추가합니다.
   * `'use-credentials'`: [`crossOrigin="use-credentials"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin#use-credentials) 속성을 추가합니다.
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

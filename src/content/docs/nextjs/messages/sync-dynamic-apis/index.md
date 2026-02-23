@@ -64,7 +64,7 @@ app/[id]/page.js
 [code]
     'use client'
     import * as React from 'react'
-     
+
     function Page({ params }) {
       // asynchronous access of `params.id`.
       const { id } = React.use(params)
@@ -75,7 +75,7 @@ app/[id]/page.js
 ### 마이그레이션할 수 없는 사례[](https://nextjs.org/docs/messages/sync-dynamic-apis#unmigratable-cases)
 
 코드모드가 마이그레이션할 수 없는 항목을 발견하면 `@next-codemod-error` 접두사가 포함된 주석과 권장 조치를 남깁니다. 예를 들어, 이 경우에는 `cookies()` 호출을 수동으로 `await`하고 함수를 async로 변경한 뒤 함수 사용처를 적절히 `await`하도록 리팩터링해야 합니다:
-[code] 
+[code]
     export function MyCookiesComponent() {
       const c =
         /* @next-codemod-error Manually await this call and refactor the function to be async */
@@ -87,17 +87,13 @@ app/[id]/page.js
 ### 린터로 강제되는 마이그레이션[](https://nextjs.org/docs/messages/sync-dynamic-apis#enforced-migration-with-linter)
 
 코드모드가 남긴 `@next-codemod-error`로 시작하는 주석을 해결하지 않으면, Next.js는 dev와 build 모두에서 오류를 발생시켜 해당 문제를 해결하도록 강제합니다. 변경 사항을 검토하고 주석의 제안을 따르세요. 필요한 수정을 한 뒤 주석을 제거하거나, 수행할 작업이 없다면 `@next-codemod-error` 접두사를 `@next-codemod-ignore`로 바꿔 빌드 오류를 우회할 수 있습니다.
-[code] 
+[code]
     - /* @next-codemod-error <suggested message> */
     + /* @next-codemod-ignore */
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 > Promise를 해제(`await` 또는 `React.use`)하는 시점을 실제로 값이 필요할 때까지 미룰 수 있습니다. 이렇게 하면 Next.js가 페이지의 더 많은 부분을 정적으로 렌더링할 수 있습니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

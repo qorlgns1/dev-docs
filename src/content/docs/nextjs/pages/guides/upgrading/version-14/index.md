@@ -49,8 +49,6 @@ Terminal
   * 내장된 `next/font`를 사용하도록 `@next/font` 패키지가 완전히 제거되었습니다. 임포트를 안전하게 자동으로 바꾸는 [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#built-in-next-font)가 제공됩니다.
   * `next-swc`의 WASM 타깃이 제거되었습니다.
 
-
-
 Was this helpful?
 
 supported.

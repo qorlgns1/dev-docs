@@ -7,10 +7,6 @@ description: '는 현재 URL의 쿼리 문자열을 읽을 수 있게 해 주는
 
 소스 URL: https://nextjs.org/docs/pages/api-reference/functions/use-search-params
 
-[API 참고 문서](https://nextjs.org/docs/pages/api-reference)[함수](https://nextjs.org/docs/pages/api-reference/functions)useSearchParams
-
-페이지 복사
-
 # useSearchParams
 
 마지막 업데이트 2026년 2월 20일
@@ -24,17 +20,17 @@ pages/dashboard.tsx
 JavaScriptTypeScript
 [code]
     import { useSearchParams } from 'next/navigation'
-     
+
     export default function Dashboard() {
       const searchParams = useSearchParams()
-     
+
       if (!searchParams) {
         // Render fallback UI while search params are not yet available
         return null
       }
-     
+
       const search = searchParams.get('search')
-     
+
       // URL -> `/dashboard?search=my-project`
       // `search` -> 'my-project'
       return <>Search: {search}</>
@@ -42,7 +38,7 @@ JavaScriptTypeScript
 [/code]
 
 ## 매개변수[](https://nextjs.org/docs/pages/api-reference/functions/use-search-params#parameters)
-[code] 
+[code]
     const searchParams = useSearchParams()
 [/code]
 
@@ -56,20 +52,20 @@ JavaScriptTypeScript
 
   * [`URLSearchParams.get()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/get): 검색 매개변수와 연결된 첫 번째 값을 반환합니다. 예:
 
-URL| `searchParams.get("a")`  
----|---  
-`/dashboard?a=1`| `'1'`  
-`/dashboard?a=`| `''`  
-`/dashboard?b=3`| `null`  
-`/dashboard?a=1&a=2`| `'1'` _\- 모든 값을 가져오려면 [`getAll()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/getAll) 사용_  
-  
+URL| `searchParams.get("a")`
+---|---
+`/dashboard?a=1`| `'1'`
+`/dashboard?a=`| `''`
+`/dashboard?b=3`| `null`
+`/dashboard?a=1&a=2`| `'1'` _\- 모든 값을 가져오려면 [`getAll()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/getAll) 사용_
+
   * [`URLSearchParams.has()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/has): 주어진 매개변수가 존재하는지 나타내는 불리언 값을 반환합니다. 예:
 
-URL| `searchParams.has("a")`  
----|---  
-`/dashboard?a=1`| `true`  
-`/dashboard?b=3`| `false`  
-  
+URL| `searchParams.has("a")`
+---|---
+`/dashboard?a=1`| `true`
+`/dashboard?b=3`| `false`
+
   * [`getAll()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/getAll), [`keys()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/keys), [`values()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/values), [`entries()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/entries), [`forEach()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/forEach), [`toString()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/toString) 등을 포함한 [`URLSearchParams`](https://developer.mozilla.org/docs/Web/API/URLSearchParams)의 다른 **읽기 전용** 메서드에 대해 자세히 알아보세요.
 
 > **알아두면 좋아요** : `useSearchParams`는 [React Hook](https://react.dev/learn#using-hooks)이므로 클래스에서는 사용할 수 없습니다.
@@ -87,18 +83,18 @@ pages/dashboard.tsx
 JavaScriptTypeScript
 [code]
     import { useSearchParams } from 'next/navigation'
-     
+
     export default function Dashboard() {
       const searchParams = useSearchParams()
-     
+
       if (!searchParams) {
         // Return a fallback UI while search params are loading
         // This prevents hydration mismatches
         return <DashboardSkeleton />
       }
-     
+
       const search = searchParams.get('search')
-     
+
       return <>Search: {search}</>
     }
 [/code]
@@ -112,10 +108,10 @@ pages/dashboard.tsx
 JavaScriptTypeScript
 [code]
     import { useSearchParams } from 'next/navigation'
-     
+
     export default function Dashboard() {
       const searchParams = useSearchParams()
-     
+
       // With getServerSideProps, this fallback is never rendered because
       // searchParams is always available on the server. However, keeping
       // the fallback allows this component to be reused on other pages
@@ -123,12 +119,12 @@ JavaScriptTypeScript
       if (!searchParams) {
         return null
       }
-     
+
       const search = searchParams.get('search')
-     
+
       return <>Search: {search}</>
     }
-     
+
     export async function getServerSideProps() {
       return { props: {} }
     }
@@ -147,11 +143,11 @@ JavaScriptTypeScript
     import { useRouter } from 'next/router'
     import { useSearchParams } from 'next/navigation'
     import { useCallback } from 'react'
-     
+
     export default function Dashboard() {
       const router = useRouter()
       const searchParams = useSearchParams()
-     
+
       const createQueryString = useCallback(
         (name: string, value: string) => {
           const params = new URLSearchParams(searchParams?.toString())
@@ -160,11 +156,11 @@ JavaScriptTypeScript
         },
         [searchParams]
       )
-     
+
       if (!searchParams) {
         return null
       }
-     
+
       return (
         <>
           <p>Sort By</p>
@@ -196,18 +192,18 @@ components/search-bar.tsx
 JavaScriptTypeScript
 [code]
     import { useSearchParams } from 'next/navigation'
-     
+
     // This component works in both pages/ and app/
     export function SearchBar() {
       const searchParams = useSearchParams()
-     
+
       if (!searchParams) {
         // Fallback for Pages Router during pre-rendering
         return <input defaultValue="" placeholder="Search..." />
       }
-     
+
       const search = searchParams.get('search') ?? ''
-     
+
       return <input defaultValue={search} placeholder="Search..." />
     }
 [/code]
@@ -216,12 +212,8 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/functions/use-search-params#version-history)
 
-버전| 변경 사항  
----|---  
-`v13.0.0`| `useSearchParams` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`v13.0.0`| `useSearchParams` 도입.
 
 보내기

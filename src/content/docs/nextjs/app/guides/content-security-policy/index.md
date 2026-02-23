@@ -23,8 +23,6 @@ Examples
 
   * [Strict CSP](https://github.com/vercel/next.js/tree/canary/examples/with-strict-csp)
 
-
-
 ## Nonces[](https://nextjs.org/docs/app/guides/content-security-policy#nonces)
 
 [nonce](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/nonce)는 일회용으로 생성되는 고유하고 무작위 문자열입니다. CSP와 함께 사용되어 특정 인라인 스크립트나 스타일을 선택적으로 허용해 엄격한 CSP 지시문을 우회할 수 있습니다.
@@ -50,7 +48,7 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import { NextRequest, NextResponse } from 'next/server'
-     
+
     export function proxy(request: NextRequest) {
       const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
       const isDev = process.env.NODE_ENV === 'development'
@@ -70,15 +68,15 @@ JavaScriptTypeScript
       const contentSecurityPolicyHeaderValue = cspHeader
         .replace(/\s{2,}/g, ' ')
         .trim()
-     
+
       const requestHeaders = new Headers(request.headers)
       requestHeaders.set('x-nonce', nonce)
-     
+
       requestHeaders.set(
         'Content-Security-Policy',
         contentSecurityPolicyHeaderValue
       )
-     
+
       const response = NextResponse.next({
         request: {
           headers: requestHeaders,
@@ -88,7 +86,7 @@ JavaScriptTypeScript
         'Content-Security-Policy',
         contentSecurityPolicyHeaderValue
       )
-     
+
       return response
     }
 [/code]
@@ -135,8 +133,6 @@ nonce를 사용하려면 페이지가 **동적 렌더링**되어야 합니다. N
      * Next.js가 생성하는 인라인 스타일과 스크립트
      * `nonce` prop을 사용하는 `<Script>` 컴포넌트
 
-
-
 이 자동 동작 덕분에 각 태그에 nonce를 수동으로 추가할 필요가 없습니다.
 
 ### 동적 렌더링 강제하기[](https://nextjs.org/docs/app/guides/content-security-policy#forcing-dynamic-rendering)
@@ -148,7 +144,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { connection } from 'next/server'
-     
+
     export default async function Page() {
       // wait for an incoming request to render this page
       await connection()
@@ -166,10 +162,10 @@ JavaScriptTypeScript
 [code]
     import { headers } from 'next/headers'
     import Script from 'next/script'
-     
+
     export default async function Page() {
       const nonce = (await headers()).get('x-nonce')
-     
+
       return (
         <Script
           src="https://www.googletagmanager.com/gtag/js"
@@ -194,8 +190,6 @@ CSP에서 nonce를 사용하면 **모든 페이지가 동적 렌더링**되어�
   * 추가 구성이 없다면 CDN이 페이지를 캐시할 수 없습니다.
   * 정적 셸 스크립트가 nonce에 접근할 수 없으므로 **Partial Prerendering(PPR)은 nonce 기반 CSP와 호환되지 않습니다**.
 
-
-
 ### 성능 영향[](https://nextjs.org/docs/app/guides/content-security-policy#performance-implications)
 
 정적 렌더링에서 동적 렌더링으로 전환하면 성능에 다음과 같은 영향이 있습니다.
@@ -204,8 +198,6 @@ CSP에서 nonce를 사용하면 **모든 페이지가 동적 렌더링**되어�
   * **서버 부하 증가**: 모든 요청이 서버 측 렌더링을 요구합니다.
   * **CDN 캐싱 불가**: 기본적으로 동적 페이지는 엣지에서 캐시할 수 없습니다.
   * **호스팅 비용 증가**: 동적 렌더링에는 더 많은 서버 리소스가 필요합니다.
-
-
 
 ### nonce 사용 시기[](https://nextjs.org/docs/app/guides/content-security-policy#when-to-use-nonces)
 
@@ -216,8 +208,6 @@ CSP에서 nonce를 사용하면 **모든 페이지가 동적 렌더링**되어�
   * 특정 인라인 스크립트만 허용하고 나머지를 차단해야 하는 경우
   * 규정 준수 요구사항이 엄격한 CSP를 요구하는 경우
 
-
-
 ## Nonce 없이 사용하기[](https://nextjs.org/docs/app/guides/content-security-policy#without-nonces)
 
 nonce가 필요하지 않은 애플리케이션은 [`next.config.js`](https://nextjs.org/docs/app/api-reference/config/next-config-js)에서 직접 CSP 헤더를 설정할 수 있습니다.
@@ -225,7 +215,7 @@ nonce가 필요하지 않은 애플리케이션은 [`next.config.js`](https://ne
 next.config.js
 [code]
     const isDev = process.env.NODE_ENV === 'development'
-     
+
     const cspHeader = `
         default-src 'self';
         script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
@@ -238,7 +228,7 @@ next.config.js
         frame-ancestors 'none';
         upgrade-insecure-requests;
     `
-     
+
     module.exports = {
       async headers() {
         return [
@@ -280,7 +270,7 @@ next.config.js
         },
       },
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -293,7 +283,7 @@ SRI를 활성화해도 기존 CSP 정책을 계속 사용할 수 있습니다. S
 next.config.js
 [code]
     const isDev = process.env.NODE_ENV === 'development'
-     
+
     const cspHeader = `
         default-src 'self';
         script-src 'self'${isDev ? " 'unsafe-eval'" : ''};
@@ -308,7 +298,7 @@ next.config.js
 
 upgrade-insecure-requests;
     `
-     
+
     module.exports = {
       experimental: {
         sri: {
@@ -338,16 +328,12 @@ upgrade-insecure-requests;
   * **향상된 성능** : 요청마다 서버 사이드 렌더링이 필요 없음
   * **빌드 타임 보안** : 해시가 빌드 시점에 생성되어 무결성을 보장함
 
-
-
 ### SRI의 제한 사항[](https://nextjs.org/docs/app/guides/content-security-policy#limitations-of-sri)
 
   * **실험적 기능** : 향후 변경되거나 제거될 수 있음
   * **Webpack 한정** : Turbopack에서는 사용할 수 없음
   * **App Router 전용** : Pages Router에서는 지원되지 않음
   * **빌드 타임 한정** : 동적으로 생성되는 스크립트를 처리할 수 없음
-
-
 
 ## 개발 vs 프로덕션 고려 사항[](https://nextjs.org/docs/app/guides/content-security-policy#development-vs-production-considerations)
 
@@ -364,7 +350,7 @@ JavaScriptTypeScript
     export function proxy(request: NextRequest) {
       const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
       const isDev = process.env.NODE_ENV === 'development'
-     
+
       const cspHeader = `
         default-src 'self';
         script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${isDev ? "'unsafe-eval'" : ''};
@@ -377,7 +363,7 @@ JavaScriptTypeScript
         frame-ancestors 'none';
         upgrade-insecure-requests;
     `
-     
+
       // Rest of proxy implementation
     }
 [/code]
@@ -389,8 +375,6 @@ JavaScriptTypeScript
   * **넌스 미적용** : 필요한 모든 라우트에서 프록시가 실행되는지 확인
   * **정적 자산 차단** : CSP가 Next.js 정적 자산을 허용하는지 검증
   * **서드파티 스크립트** : 필요한 도메인을 CSP 정책에 추가
-
-
 
 ## 문제 해결[](https://nextjs.org/docs/app/guides/content-security-policy#troubleshooting)
 
@@ -404,14 +388,14 @@ JavaScriptTypeScript
 [code]
     import { GoogleTagManager } from '@next/third-parties/google'
     import { headers } from 'next/headers'
-     
+
     export default async function RootLayout({
       children,
     }: {
       children: React.ReactNode
     }) {
       const nonce = (await headers()).get('x-nonce')
-     
+
       return (
         <html lang="en">
           <body>
@@ -444,21 +428,19 @@ JavaScriptTypeScript
   3. **WebAssembly** : WebAssembly를 사용한다면 `'wasm-unsafe-eval'`을 추가
   4. **서비스 워커** : 서비스 워커 스크립트에 맞는 정책을 추가
 
-
-
 ## 버전 기록[](https://nextjs.org/docs/app/guides/content-security-policy#version-history)
 
-Version| Changes  
----|---  
-`v14.0.0`| 해시 기반 CSP를 위한 실험적 SRI 지원 추가  
-`v13.4.20`| 적절한 넌스 처리 및 CSP 헤더 파싱을 위한 권장 버전.  
-  
-## 
+Version| Changes
+---|---
+`v14.0.0`| 해시 기반 CSP를 위한 실험적 SRI 지원 추가
+`v13.4.20`| 적절한 넌스 처리 및 CSP 헤더 파싱을 위한 권장 버전.
 
-### [proxy.js프록시 파일 `proxy.js`의 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)### [headers`headers` 함수의 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/functions/headers)
+##
 
-도움이 되었나요?
+- [proxy.js](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)
+  - 프록시 파일 `proxy.js`의 API 레퍼런스.
 
-지원됨.
+- [headers](https://nextjs.org/docs/app/api-reference/functions/headers)
+  - `headers` 함수의 API 레퍼런스.
 
 Send

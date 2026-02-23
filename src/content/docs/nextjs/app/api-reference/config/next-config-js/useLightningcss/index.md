@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험적이며 향후 변경될 수 있으�
 
 소스 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/useLightningcss
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)useLightningcss
-
-페이지 복사
-
 # useLightningcss
 
 이 기능은 현재 실험적이며 향후 변경될 수 있으므로 프로덕션에서는 권장되지 않습니다. [GitHub](https://github.com/vercel/next.js/issues)에서 사용해 보고 피드백을 공유하세요.
@@ -28,25 +24,21 @@ next.config.ts
 JavaScriptTypeScript
 ```ts
 import type { NextConfig } from 'next'
- 
+
 const nextConfig: NextConfig = {
   experimental: {
     useLightningcss: false, // default, ignored on Turbopack
   },
 }
- 
+
 export default nextConfig
 ```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/config/next-config-js/useLightningcss#version-history)
 
-버전| 변경 사항  
----|---  
-`15.1.0`| Turbopack에서 `useSwcCss` 지원이 제거되었습니다.  
-`14.2.0`| Turbopack의 기본 CSS 프로세서가 `@swc/css`에서 Lightning CSS로 변경되었습니다. Turbopack에서는 `useLightningcss`가 무시되며, 레거시 옵션인 `experimental.turbo.useSwcCss`가 추가되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`15.1.0`| Turbopack에서 `useSwcCss` 지원이 제거되었습니다.
+`14.2.0`| Turbopack의 기본 CSS 프로세서가 `@swc/css`에서 Lightning CSS로 변경되었습니다. Turbopack에서는 `useLightningcss`가 무시되며, 레거시 옵션인 `experimental.turbo.useSwcCss`가 추가되었습니다.
 
 보내기

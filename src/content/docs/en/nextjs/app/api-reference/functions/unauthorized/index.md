@@ -1,179 +1,241 @@
 ---
-title: 'Functions: unauthorized'
-description: "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on GitHub."
+title: 'unauthorized'
+description: '> This feature is currently experimental and subject to change, it is not recommended for production.'
 ---
-
-# Functions: unauthorized | Next.js
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/unauthorized
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)unauthorized
-
-Copy page
-
 # unauthorized
 
-This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
-
-Last updated February 20, 2026
+> This feature is currently experimental and subject to change, it is not recommended for production.
 
 The `unauthorized` function throws an error that renders a Next.js 401 error page. It's useful for handling authorization errors in your application. You can customize the UI using the [`unauthorized.js` file](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized).
 
 To start using `unauthorized`, enable the experimental [`authInterrupts`](https://nextjs.org/docs/app/api-reference/config/next-config-js/authInterrupts) configuration option in your `next.config.js` file:
 
-next.config.ts
+```ts filename="next.config.ts" switcher
+import type { NextConfig } from 'next'
 
-JavaScriptTypeScript
-[code]
-    import type { NextConfig } from 'next'
-     
-    const nextConfig: NextConfig = {
-      experimental: {
-        authInterrupts: true,
-      },
-    }
-     
-    export default nextConfig
-[/code]
+const nextConfig: NextConfig = {
+  experimental: {
+    authInterrupts: true,
+  },
+}
+
+export default nextConfig
+```
+
+```js filename="next.config.js" switcher
+module.exports = {
+  experimental: {
+    authInterrupts: true,
+  },
+}
+```
 
 `unauthorized` can be invoked in [Server Components](https://nextjs.org/docs/app/getting-started/server-and-client-components), [Server Functions](https://nextjs.org/docs/app/getting-started/updating-data), and [Route Handlers](https://nextjs.org/docs/app/api-reference/file-conventions/route).
 
-app/dashboard/page.tsx
+```tsx filename="app/dashboard/page.tsx" switcher
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
 
-JavaScriptTypeScript
-[code]
-    import { verifySession } from '@/app/lib/dal'
-    import { unauthorized } from 'next/navigation'
-     
-    export default async function DashboardPage() {
-      const session = await verifySession()
-     
-      if (!session) {
-        unauthorized()
-      }
-     
-      // Render the dashboard for authenticated users
-      return (
-        <main>
-          <h1>Welcome to the Dashboard</h1>
-          <p>Hi, {session.user.name}.</p>
-        </main>
-      )
-    }
-[/code]
+export default async function DashboardPage() {
+  const session = await verifySession()
 
-## Good to know[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#good-to-know)
+  if (!session) {
+    unauthorized()
+  }
 
-  * The `unauthorized` function cannot be called in the [root layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout).
+  // Render the dashboard for authenticated users
+  return (
+    <main>
+      <h1>Welcome to the Dashboard</h1>
+      <p>Hi, {session.user.name}.</p>
+    </main>
+  )
+}
+```
 
+```jsx filename="app/dashboard/page.js" switcher
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
 
+export default async function DashboardPage() {
+  const session = await verifySession()
 
-## Examples[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#examples)
+  if (!session) {
+    unauthorized()
+  }
 
-### Displaying login UI to unauthenticated users[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#displaying-login-ui-to-unauthenticated-users)
+  // Render the dashboard for authenticated users
+  return (
+    <main>
+      <h1>Welcome to the Dashboard</h1>
+      <p>Hi, {session.user.name}.</p>
+    </main>
+  )
+}
+```
+
+## Good to know
+
+* The `unauthorized` function cannot be called in the [root layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout).
+
+## Examples
+
+### Displaying login UI to unauthenticated users
 
 You can use `unauthorized` function to display the `unauthorized.js` file with a login UI.
 
-app/dashboard/page.tsx
+```tsx filename="app/dashboard/page.tsx" switcher
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
 
-JavaScriptTypeScript
-[code]
-    import { verifySession } from '@/app/lib/dal'
-    import { unauthorized } from 'next/navigation'
-     
-    export default async function DashboardPage() {
-      const session = await verifySession()
-     
-      if (!session) {
-        unauthorized()
-      }
-     
-      return <div>Dashboard</div>
-    }
-[/code]
+export default async function DashboardPage() {
+  const session = await verifySession()
 
-app/unauthorized.tsx
+  if (!session) {
+    unauthorized()
+  }
 
-JavaScriptTypeScript
-[code]
-    import Login from '@/app/components/Login'
-     
-    export default function UnauthorizedPage() {
-      return (
-        <main>
-          <h1>401 - Unauthorized</h1>
-          <p>Please log in to access this page.</p>
-          <Login />
-        </main>
-      )
-    }
-[/code]
+  return <div>Dashboard</div>
+}
+```
 
-### Mutations with Server Actions[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#mutations-with-server-actions)
+```jsx filename="app/dashboard/page.js" switcher
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
+
+export default async function DashboardPage() {
+  const session = await verifySession()
+
+  if (!session) {
+    unauthorized()
+  }
+
+  return <div>Dashboard</div>
+}
+```
+
+```tsx filename="app/unauthorized.tsx" switcher
+import Login from '@/app/components/Login'
+
+export default function UnauthorizedPage() {
+  return (
+    <main>
+      <h1>401 - Unauthorized</h1>
+      <p>Please log in to access this page.</p>
+      <Login />
+    </main>
+  )
+}
+```
+
+```jsx filename="app/unauthorized.js" switcher
+import Login from '@/app/components/Login'
+
+export default function UnauthorizedPage() {
+  return (
+    <main>
+      <h1>401 - Unauthorized</h1>
+      <p>Please log in to access this page.</p>
+      <Login />
+    </main>
+  )
+}
+```
+
+### Mutations with Server Actions
 
 You can invoke `unauthorized` in Server Actions to ensure only authenticated users can perform specific mutations.
 
-app/actions/update-profile.ts
+```ts filename="app/actions/update-profile.ts" switcher
+'use server'
 
-JavaScriptTypeScript
-[code]
-    'use server'
-     
-    import { verifySession } from '@/app/lib/dal'
-    import { unauthorized } from 'next/navigation'
-    import db from '@/app/lib/db'
-     
-    export async function updateProfile(data: FormData) {
-      const session = await verifySession()
-     
-      // If the user is not authenticated, return a 401
-      if (!session) {
-        unauthorized()
-      }
-     
-      // Proceed with mutation
-      // ...
-    }
-[/code]
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
+import db from '@/app/lib/db'
 
-### Fetching data with Route Handlers[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#fetching-data-with-route-handlers)
+export async function updateProfile(data: FormData) {
+  const session = await verifySession()
+
+  // If the user is not authenticated, return a 401
+  if (!session) {
+    unauthorized()
+  }
+
+  // Proceed with mutation
+  // ...
+}
+```
+
+```js filename="app/actions/update-profile.js" switcher
+'use server'
+
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
+import db from '@/app/lib/db'
+
+export async function updateProfile(data) {
+  const session = await verifySession()
+
+  // If the user is not authenticated, return a 401
+  if (!session) {
+    unauthorized()
+  }
+
+  // Proceed with mutation
+  // ...
+}
+```
+
+### Fetching data with Route Handlers
 
 You can use `unauthorized` in Route Handlers to ensure only authenticated users can access the endpoint.
 
-app/api/profile/route.ts
+```tsx filename="app/api/profile/route.ts" switcher
+import { NextRequest, NextResponse } from 'next/server'
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
 
-JavaScriptTypeScript
-[code]
-    import { NextRequest, NextResponse } from 'next/server'
-    import { verifySession } from '@/app/lib/dal'
-    import { unauthorized } from 'next/navigation'
-     
-    export async function GET(req: NextRequest): Promise<NextResponse> {
-      // Verify the user's session
-      const session = await verifySession()
-     
-      // If no session exists, return a 401 and render unauthorized.tsx
-      if (!session) {
-        unauthorized()
-      }
-     
-      // Fetch data
-      // ...
-    }
-[/code]
+export async function GET(req: NextRequest): Promise<NextResponse> {
+  // Verify the user's session
+  const session = await verifySession()
 
-## Version History[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#version-history)
+  // If no session exists, return a 401 and render unauthorized.tsx
+  if (!session) {
+    unauthorized()
+  }
 
-Version| Changes  
----|---  
-`v15.1.0`| `unauthorized` introduced.  
-  
-## 
+  // Fetch data
+  // ...
+}
+```
 
-### [unauthorized.jsAPI reference for the unauthorized.js special file.](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized)
+```jsx filename="app/api/profile/route.js" switcher
+import { verifySession } from '@/app/lib/dal'
+import { unauthorized } from 'next/navigation'
 
-Was this helpful?
+export async function GET() {
+  const session = await verifySession()
 
-supported.
+  // If the user is not authenticated, return a 401 and render unauthorized.tsx
+  if (!session) {
+    unauthorized()
+  }
 
-Send
+  // Fetch data
+  // ...
+}
+```
+
+## Version History
+
+| Version   | Changes                    |
+| --------- | -------------------------- |
+| `v15.1.0` | `unauthorized` introduced. |
+- [unauthorized.js](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized)
+  - API reference for the unauthorized.js special file.
+
+---
+

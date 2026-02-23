@@ -9,8 +9,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 [App Router](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)환경 변수
 
-페이지 복사
-
 # Next.js에서 환경 변수를 사용하는 방법
 
 최종 업데이트: 2026년 2월 20일
@@ -19,8 +17,6 @@ Next.js에는 환경 변수를 위한 기본 지원이 포함되어 있어 다�
 
   * [`.env`를 사용해 환경 변수 로드](https://nextjs.org/docs/app/guides/environment-variables#loading-environment-variables)
   * [`NEXT_PUBLIC_` 접두사를 붙여 브라우저용으로 환경 변수 번들링](https://nextjs.org/docs/app/guides/environment-variables#bundling-environment-variables-for-the-browser)
-
-
 
 > **경고:** 기본 `create-next-app` 템플릿은 모든 `.env` 파일이 `.gitignore`에 포함되도록 보장합니다. 이러한 파일을 저장소에 커밋하는 일은 거의 없어야 합니다.
 
@@ -36,16 +32,16 @@ Next.js는 `.env*` 파일의 환경 변수를 `process.env`로 불러오는 기�
 [/code]
 
 > **참고**: Next.js는 `.env*` 파일 안에서 여러 줄로 된 변수를 지원합니다.
-[code] 
+[code]
 >     # .env
->      
+>
 >     # 줄바꿈을 포함해 작성할 수 있습니다
 >     PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----
 >     ...
 >     Kh9NV...
 >     ...
 >     -----END DSA PRIVATE KEY-----"
->      
+>
 >     # 또는 큰따옴표 안에 `\n`을 사용할 수 있습니다
 >     PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\nKh9NV...\n-----END DSA PRIVATE KEY-----\n"
 [/code]
@@ -86,7 +82,7 @@ envConfig.ts
 JavaScriptTypeScript
 [code]
     import { loadEnvConfig } from '@next/env'
-     
+
     const projectDir = process.cwd()
     loadEnvConfig(projectDir)
 [/code]
@@ -98,7 +94,7 @@ orm.config.ts
 JavaScriptTypeScript
 [code]
     import './envConfig.ts'
-     
+
     export default defineConfig({
       dbCredentials: {
         connectionString: process.env.DATABASE_URL!,
@@ -138,24 +134,24 @@ Next.js는 `.env*` 파일에서 `$VARIABLE`처럼 `$`로 다른 변수를 참조
 pages/index.js
 [code]
     import setupAnalyticsService from '../lib/my-analytics-service'
-     
+
     // 'NEXT_PUBLIC_ANALYTICS_ID'는 'NEXT_PUBLIC_' 접두사가 붙었으므로 여기서 사용할 수 있습니다.
     // 빌드 시 `setupAnalyticsService('abcdefghijk')`로 변환됩니다.
     setupAnalyticsService(process.env.NEXT_PUBLIC_ANALYTICS_ID)
-     
+
     function HomePage() {
       return <h1>Hello World</h1>
     }
-     
+
     export default HomePage
 [/code]
 
 다음과 같은 동적 조회는 인라인되지 않습니다.
-[code] 
+[code]
     // 변수명을 사용하므로 인라인되지 않습니다.
     const varName = 'NEXT_PUBLIC_ANALYTICS_ID'
     setupAnalyticsService(process.env[varName])
-     
+
     // 객체를 사용하므로 인라인되지 않습니다.
     const env = process.env
     setupAnalyticsService(env.NEXT_PUBLIC_ANALYTICS_ID)
@@ -174,7 +170,7 @@ app/page.ts
 JavaScriptTypeScript
 [code]
     import { connection } from 'next/server'
-     
+
     export default async function Component() {
       await connection()
       // cookies, headers 등 기타 Dynamic API도
@@ -191,8 +187,6 @@ JavaScriptTypeScript
 
   * [`register` 함수](https://nextjs.org/docs/app/guides/instrumentation)를 사용해 서버 시작 시 코드를 실행할 수 있습니다.
 
-
-
 ## 테스트 환경 변수[](https://nextjs.org/docs/app/guides/environment-variables#test-environment-variables)
 
 `development`와 `production` 외에도 `test`라는 세 번째 옵션이 있습니다. 개발 또는 프로덕션 환경의 기본값을 설정하듯이, `testing` 환경을 위해 `.env.test` 파일에 기본값을 설정할 수 있습니다(앞선 둘만큼 일반적이진 않음). `testing` 환경에서는 `.env.development`나 `.env.production`에서 환경 변수를 로드하지 않습니다.
@@ -204,10 +198,10 @@ JavaScriptTypeScript
 > **알아두면 좋아요**: 기본 환경 변수와 마찬가지로 `.env.test` 파일은 저장소에 포함되어야 하지만, `.env*.local`이 `.gitignore`로 무시되도록 되어 있으므로 `.env.test.local`은 포함하지 않아야 합니다.
 
 단위 테스트를 실행할 때는 `@next/env` 패키지의 `loadEnvConfig` 함수를 활용해 Next.js와 동일한 방식으로 환경 변수를 로드할 수 있습니다.
-[code] 
+[code]
     // 아래 코드는 Jest 전역 설정 파일 등에서 테스트 설정용으로 사용할 수 있습니다.
     import { loadEnvConfig } from '@next/env'
-     
+
     export default async () => {
       const projectDir = process.cwd()
       loadEnvConfig(projectDir)
@@ -224,8 +218,6 @@ JavaScriptTypeScript
   4. `.env.$(NODE_ENV)`
   5. `.env`
 
-
-
 예를 들어 `NODE_ENV`가 `development`이고 `.env.development.local`과 `.env` 둘 다에 변수를 정의하면 `.env.development.local`의 값이 사용됩니다.
 
 > **알아두면 좋아요**: `NODE_ENV`의 허용 값은 `production`, `development`, `test`입니다.
@@ -235,16 +227,10 @@ JavaScriptTypeScript
   * [`/src` 디렉터리](https://nextjs.org/docs/app/api-reference/file-conventions/src-folder)를 사용하는 경우 `.env.*` 파일은 프로젝트 루트에 두어야 합니다.
   * 환경 변수 `NODE_ENV`가 지정되지 않은 경우 Next.js는 `next dev` 명령에는 자동으로 `development`를, 다른 모든 명령에는 `production`을 할당합니다.
 
-
-
 ## 버전 기록[](https://nextjs.org/docs/app/guides/environment-variables#version-history)
 
-Version| Changes  
----|---  
-`v9.4.0`| `.env` 및 `NEXT_PUBLIC_` 지원을 도입했습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v9.4.0`| `.env` 및 `NEXT_PUBLIC_` 지원을 도입했습니다.
 
 Send

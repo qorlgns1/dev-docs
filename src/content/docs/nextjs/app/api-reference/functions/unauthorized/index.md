@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/unauthorized
 
-[API 레퍼런스](https://nextjs.org/docs/app/api-reference)[함수](https://nextjs.org/docs/app/api-reference/functions)unauthorized
-
-페이지 복사
-
 # unauthorized
 
 이 기능은 현재 실험 단계이며 변경될 수 있으므로 프로덕션 사용은 권장되지 않습니다. 대신 테스트해 보고 [GitHub](https://github.com/vercel/next.js/issues)에서 피드백을 공유해주세요.
@@ -26,13 +22,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         authInterrupts: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -44,14 +40,14 @@ JavaScriptTypeScript
 [code]
     import { verifySession } from '@/app/lib/dal'
     import { unauthorized } from 'next/navigation'
-     
+
     export default async function DashboardPage() {
       const session = await verifySession()
-     
+
       if (!session) {
         unauthorized()
       }
-     
+
       // Render the dashboard for authenticated users
       return (
         <main>
@@ -66,8 +62,6 @@ JavaScriptTypeScript
 
   * `unauthorized` 함수는 [루트 레이아웃](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout)에서 호출할 수 없습니다.
 
-
-
 ## 예시[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#examples)
 
 ### 인증되지 않은 사용자에게 로그인 UI 표시[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#displaying-login-ui-to-unauthenticated-users)
@@ -80,14 +74,14 @@ JavaScriptTypeScript
 [code]
     import { verifySession } from '@/app/lib/dal'
     import { unauthorized } from 'next/navigation'
-     
+
     export default async function DashboardPage() {
       const session = await verifySession()
-     
+
       if (!session) {
         unauthorized()
       }
-     
+
       return <div>Dashboard</div>
     }
 [/code]
@@ -97,7 +91,7 @@ app/unauthorized.tsx
 JavaScriptTypeScript
 [code]
     import Login from '@/app/components/Login'
-     
+
     export default function UnauthorizedPage() {
       return (
         <main>
@@ -118,19 +112,19 @@ app/actions/update-profile.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { verifySession } from '@/app/lib/dal'
     import { unauthorized } from 'next/navigation'
     import db from '@/app/lib/db'
-     
+
     export async function updateProfile(data: FormData) {
       const session = await verifySession()
-     
+
       // If the user is not authenticated, return a 401
       if (!session) {
         unauthorized()
       }
-     
+
       // Proceed with mutation
       // ...
     }
@@ -147,16 +141,16 @@ JavaScriptTypeScript
     import { NextRequest, NextResponse } from 'next/server'
     import { verifySession } from '@/app/lib/dal'
     import { unauthorized } from 'next/navigation'
-     
+
     export async function GET(req: NextRequest): Promise<NextResponse> {
       // Verify the user's session
       const session = await verifySession()
-     
+
       // If no session exists, return a 401 and render unauthorized.tsx
       if (!session) {
         unauthorized()
       }
-     
+
       // Fetch data
       // ...
     }
@@ -164,16 +158,13 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#version-history)
 
-Version| Changes  
----|---  
-`v15.1.0`| `unauthorized` 도입  
-  
-## 
+Version| Changes
+---|---
+`v15.1.0`| `unauthorized` 도입
 
-### [unauthorized.js특수 파일 unauthorized.js에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized)
+##
 
-도움이 되었나요?
-
-지원됨.
+- [unauthorized.js](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized)
+  - 특수 파일 unauthorized.js에 대한 API 레퍼런스.
 
 보내기

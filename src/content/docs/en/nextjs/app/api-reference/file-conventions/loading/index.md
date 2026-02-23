@@ -1,79 +1,81 @@
 ---
-title: 'File-system conventions: loading.js'
+title: 'loading.js'
 description: 'The special file  helps you create meaningful Loading UI with React Suspense. With this convention, you can show an instant loading state from the ser...'
 ---
 
-# File-system conventions: loading.js | Next.js
-
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/loading
-
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)loading.js
-
-Copy page
 
 # loading.js
 
-Last updated February 20, 2026
+The special file `loading.js` helps you create meaningful Loading UI with [React Suspense](https://react.dev/reference/react/Suspense). With this convention, you can show an [instant loading state](#instant-loading-states) from the server while the content of a route segment streams in. The new content is automatically swapped in once complete.
 
-The special file `loading.js` helps you create meaningful Loading UI with [React Suspense](https://react.dev/reference/react/Suspense). With this convention, you can show an [instant loading state](https://nextjs.org/docs/app/api-reference/file-conventions/loading#instant-loading-states) from the server while the content of a route segment streams in. The new content is automatically swapped in once complete.
+![Loading UI](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/loading-ui.png)
 
-app/feed/loading.tsx
+```tsx filename="app/feed/loading.tsx" switcher
+export default function Loading() {
+  // Or a custom loading skeleton component
+  return <p>Loading...</p>
+}
+```
 
-JavaScriptTypeScript
-[code]
-    export default function Loading() {
-      // Or a custom loading skeleton component
-      return <p>Loading...</p>
-    }
-[/code]
+```jsx filename="app/feed/loading.js" switcher
+export default function Loading() {
+  // Or a custom loading skeleton component
+  return <p>Loading...</p>
+}
+```
 
 Inside the `loading.js` file, you can add any light-weight loading UI. You may find it helpful to use the [React Developer Tools](https://react.dev/learn/react-developer-tools) to manually toggle Suspense boundaries.
 
-By default, this file is a [Server Component](https://nextjs.org/docs/app/getting-started/server-and-client-components) \- but can also be used as a Client Component through the `"use client"` directive.
+By default, this file is a [Server Component](https://nextjs.org/docs/app/getting-started/server-and-client-components) - but can also be used as a Client Component through the `"use client"` directive.
 
-## Reference[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#reference)
+## Reference
 
-### Parameters[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#parameters)
+### Parameters
 
 Loading UI components do not accept any parameters.
 
-## Behavior[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#behavior)
+## Behavior
 
-### Navigation[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#navigation)
+### Navigation
 
-  * The Fallback UI is [prefetched](https://nextjs.org/docs/app/getting-started/linking-and-navigating#prefetching), making navigation immediate unless prefetching hasn't completed.
-  * Navigation is interruptible, meaning changing routes does not need to wait for the content of the route to fully load before navigating to another route.
-  * Shared layouts remain interactive while new route segments load.
+* The Fallback UI is [prefetched](https://nextjs.org/docs/app/getting-started/linking-and-navigating#prefetching), making navigation immediate unless prefetching hasn't completed.
+* Navigation is interruptible, meaning changing routes does not need to wait for the content of the route to fully load before navigating to another route.
+* Shared layouts remain interactive while new route segments load.
 
-
-
-### Instant Loading States[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#instant-loading-states)
+### Instant Loading States
 
 An instant loading state is fallback UI that is shown immediately upon navigation. You can pre-render loading indicators such as skeletons and spinners, or a small but meaningful part of future screens such as a cover photo, title, etc. This helps users understand the app is responding and provides a better user experience.
 
 Create a loading state by adding a `loading.js` file inside a folder.
 
-app/dashboard/loading.tsx
+![loading.js special file](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/loading-special-file.png)
 
-JavaScriptTypeScript
-[code]
-    export default function Loading() {
-      // You can add any UI inside Loading, including a Skeleton.
-      return <LoadingSkeleton />
-    }
-[/code]
+```tsx filename="app/dashboard/loading.tsx" switcher
+export default function Loading() {
+  // You can add any UI inside Loading, including a Skeleton.
+  return <LoadingSkeleton />
+}
+```
+
+```jsx filename="app/dashboard/loading.js" switcher
+export default function Loading() {
+  // You can add any UI inside Loading, including a Skeleton.
+  return <LoadingSkeleton />
+}
+```
 
 In the same folder, `loading.js` will be nested inside `layout.js`. It will automatically wrap the `page.js` file and any children below in a `<Suspense>` boundary.
 
-### SEO[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#seo)
+![loading.js overview](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/loading-overview.png)
 
-  * For bots that only scrape static HTML, and cannot execute JavaScript like a full browser, such as Twitterbot, Next.js resolves [`generateMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-metadata) before streaming UI, and metadata is placed in the `<head>` of the initial HTML.
-  * Otherwise, [streaming metadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#streaming-metadata) may be used. Next.js automatically detects user agents to choose between blocking and streaming behavior.
-  * Since streaming is server-rendered, it does not impact SEO. You can use the [Rich Results Test](https://search.google.com/test/rich-results) tool from Google to see how your page appears to Google's web crawlers and view the serialized HTML ([source](https://web.dev/rendering-on-the-web/#seo-considerations)).
+### SEO
 
+* For bots that only scrape static HTML, and cannot execute JavaScript like a full browser, such as Twitterbot, Next.js resolves [`generateMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-metadata) before streaming UI, and metadata is placed in the `<head>` of the initial HTML.
+* Otherwise, [streaming metadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#streaming-metadata) may be used. Next.js automatically detects user agents to choose between blocking and streaming behavior.
+* Since streaming is server-rendered, it does not impact SEO. You can use the [Rich Results Test](https://search.google.com/test/rich-results) tool from Google to see how your page appears to Google's web crawlers and view the serialized HTML ([source](https://web.dev/rendering-on-the-web/#seo-considerations)).
 
-
-### Status Codes[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#status-codes)
+### Status Codes
 
 When streaming, a `200` status code will be returned to signal that the request was successful.
 
@@ -87,73 +89,85 @@ If you need a 404 status, for compliance or analytics, ensure the resource exist
 
 You can run this check in [`proxy`](https://nextjs.org/docs/app/api-reference/file-conventions/proxy) to rewrite missing slugs to a not-found route, or [produce a 404 response](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#producing-a-response). Keep proxy checks fast, and avoid fetching full content there.
 
-When is the response body streamed?
+<details>
+<summary>When is the response body streamed?</summary>
 
 The response body starts streaming when a Suspense fallback renders (for example, a `loading.tsx`) or when a Server Component suspends under a `Suspense` boundary. Place `notFound()` before those boundaries and before any `await` that may suspend.
 
 To start streaming, the response headers must be set. This is why it is not possible to change the status code after streaming started.
 
-### Browser limits[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#browser-limits)
+</details>
+
+### Browser limits
 
 [Some browsers](https://bugs.webkit.org/show_bug.cgi?id=252413) buffer a streaming response. You may not see the streamed response until the response exceeds 1024 bytes. This typically only affects “hello world” applications, but not real applications.
 
-## Platform Support[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#platform-support)
+## Platform Support
 
-Deployment Option| Supported  
----|---  
-[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| Yes  
-[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| Yes  
-[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| No  
-[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| Platform-specific  
-  
+| Deployment Option                                                   | Supported         |
+| ------------------------------------------------------------------- | ----------------- |
+| [Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server) | Yes               |
+| [Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)      | Yes               |
+| [Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)  | No                |
+| [Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)            | Platform-specific |
+
 Learn how to [configure streaming](https://nextjs.org/docs/app/guides/self-hosting#streaming-and-suspense) when self-hosting Next.js.
 
-## Examples[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#examples)
+## Examples
 
-### Streaming with Suspense[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#streaming-with-suspense)
+### Streaming with Suspense
 
 In addition to `loading.js`, you can also manually create Suspense Boundaries for your own UI components. The App Router supports streaming with [Suspense](https://react.dev/reference/react/Suspense).
 
 `<Suspense>` works by wrapping a component that performs an asynchronous action (e.g. fetch data), showing fallback UI (e.g. skeleton, spinner) while it's happening, and then swapping in your component once the action completes.
 
-app/dashboard/page.tsx
+```tsx filename="app/dashboard/page.tsx" switcher
+import { Suspense } from 'react'
+import { PostFeed, Weather } from './Components'
 
-JavaScriptTypeScript
-[code]
-    import { Suspense } from 'react'
-    import { PostFeed, Weather } from './Components'
-     
-    export default function Posts() {
-      return (
-        <section>
-          <Suspense fallback={<p>Loading feed...</p>}>
-            <PostFeed />
-          </Suspense>
-          <Suspense fallback={<p>Loading weather...</p>}>
-            <Weather />
-          </Suspense>
-        </section>
-      )
-    }
-[/code]
+export default function Posts() {
+  return (
+    <section>
+      <Suspense fallback={<p>Loading feed...</p>}>
+        <PostFeed />
+      </Suspense>
+      <Suspense fallback={<p>Loading weather...</p>}>
+        <Weather />
+      </Suspense>
+    </section>
+  )
+}
+```
+
+```jsx filename="app/dashboard/page.js" switcher
+import { Suspense } from 'react'
+import { PostFeed, Weather } from './Components'
+
+export default function Posts() {
+  return (
+    <section>
+      <Suspense fallback={<p>Loading feed...</p>}>
+        <PostFeed />
+      </Suspense>
+      <Suspense fallback={<p>Loading weather...</p>}>
+        <Weather />
+      </Suspense>
+    </section>
+  )
+}
+```
 
 By using Suspense, you get the benefits of:
 
-  1. **Streaming Server Rendering** \- Progressively rendering HTML from the server to the client.
-  2. **Selective Hydration** \- React prioritizes what components to make interactive first based on user interaction.
-
-
+1. **Streaming Server Rendering** - Progressively rendering HTML from the server to the client.
+2. **Selective Hydration** - React prioritizes what components to make interactive first based on user interaction.
 
 For more Suspense examples and use cases, please see the [React Documentation](https://react.dev/reference/react/Suspense).
 
-## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#version-history)
+## Version History
 
-Version| Changes  
----|---  
-`v13.0.0`| `loading` introduced.  
-  
-Was this helpful?
+| Version   | Changes               |
+| --------- | --------------------- |
+| `v13.0.0` | `loading` introduced. |
+---
 
-supported.
-
-Send

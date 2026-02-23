@@ -7,10 +7,6 @@ description: '특수 파일 는 React Suspense를 사용해 의미 있는 로딩
 
 출처 URL: https://nextjs.org/docs/app/api-reference/file-conventions/loading
 
-[API 레퍼런스](https://nextjs.org/docs/app/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)loading.js
-
-페이지 복사
-
 # loading.js
 
 마지막 업데이트 2026년 2월 20일
@@ -95,13 +91,13 @@ JavaScriptTypeScript
 
 ## 플랫폼 지원[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#platform-support)
 
-배포 옵션| 지원 여부  
----|---  
-[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| 예  
-[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| 예  
-[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| 아니오  
-[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| 플랫폼별  
-  
+배포 옵션| 지원 여부
+---|---
+[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| 예
+[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| 예
+[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| 아니오
+[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| 플랫폼별
+
 Next.js를 셀프 호스팅할 때 [스트리밍 구성](https://nextjs.org/docs/app/guides/self-hosting#streaming-and-suspense) 방법을 알아보세요.
 
 ## 예시[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#examples)
@@ -118,7 +114,7 @@ JavaScriptTypeScript
 [code]
     import { Suspense } from 'react'
     import { PostFeed, Weather } from './Components'
-     
+
     export default function Posts() {
       return (
         <section>
@@ -135,19 +131,13 @@ JavaScriptTypeScript
 
 Suspense를 사용하면 다음과 같은 이점을 얻습니다.
 
-1. **Streaming Server Rendering** - 서버에서 클라이언트로 HTML을 점진적으로 렌더링합니다.  
+1. **Streaming Server Rendering** - 서버에서 클라이언트로 HTML을 점진적으로 렌더링합니다.
 2. **Selective Hydration** - React가 사용자 상호작용에 따라 우선적으로 상호작용성을 부여할 컴포넌트를 결정합니다.
 
 Suspense의 추가 예제와 사용 사례는 [React 문서](https://react.dev/reference/react/Suspense)를 참고하세요.
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/loading#version-history)
 
-버전| 변경 사항  
----|---  
-`v13.0.0`| `loading` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+버전| 변경 사항
+---|---
+`v13.0.0`| `loading` 도입.

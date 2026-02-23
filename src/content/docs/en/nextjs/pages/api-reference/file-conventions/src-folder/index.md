@@ -1,19 +1,11 @@
 ---
-title: 'File-system conventions: src Directory'
+title: 'src Directory'
 description: 'As an alternative to having the special Next.js  or  directories in the root of your project, Next.js also supports the common pattern of placing appl...'
 ---
 
-# File-system conventions: src Directory | Next.js
-
 Source URL: https://nextjs.org/docs/pages/api-reference/file-conventions/src-folder
 
-[API Reference](https://nextjs.org/docs/pages/api-reference)[File-system conventions](https://nextjs.org/docs/pages/api-reference/file-conventions)src Directory
-
-Copy page
-
 # src Directory
-
-Last updated February 20, 2026
 
 As an alternative to having the special Next.js `app` or `pages` directories in the root of your project, Next.js also supports the common pattern of placing application code under the `src` folder.
 
@@ -21,21 +13,17 @@ This separates application code from project configuration files which mostly li
 
 To use the `src` folder, move the `app` Router folder or `pages` Router folder to `src/app` or `src/pages` respectively.
 
-> **Good to know** :
-> 
->   * The `/public` directory should remain in the root of your project.
->   * Config files like `package.json`, `next.config.js` and `tsconfig.json` should remain in the root of your project.
->   * `.env.*` files should remain in the root of your project.
->   * `src/app` or `src/pages` will be ignored if `app` or `pages` are present in the root directory.
->   * If you're using `src`, you'll probably also move other application folders such as `/components` or `/lib`.
->   * If you're using Proxy, ensure it is placed inside the `src` folder.
->   * If you're using Tailwind CSS, you'll need to add the `/src` prefix to the `tailwind.config.js` file in the [content section](https://tailwindcss.com/docs/content-configuration).
->   * If you are using TypeScript paths for imports such as `@/*`, you should update the `paths` object in `tsconfig.json` to include `src/`.
-> 
+![An example folder structure with the src folder](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/project-organization-src-directory.png)
 
+> **Good to know**:
+>
+> * The `/public` directory should remain in the root of your project.
+> * Config files like `package.json`, `next.config.js` and `tsconfig.json` should remain in the root of your project.
+> * `.env.*` files should remain in the root of your project.
+> * `src/app` or `src/pages` will be ignored if `app` or `pages` are present in the root directory.
+> * If you're using `src`, you'll probably also move other application folders such as `/components` or `/lib`.
+> * If you're using Proxy, ensure it is placed inside the `src` folder.
+> * If you're using Tailwind CSS, you'll need to add the `/src` prefix to the `tailwind.config.js` file in the [content section](https://tailwindcss.com/docs/content-configuration).
+> * If you are using TypeScript paths for imports such as `@/*`, you should update the `paths` object in `tsconfig.json` to include `src/`.
+---
 
-Was this helpful?
-
-supported.
-
-Send

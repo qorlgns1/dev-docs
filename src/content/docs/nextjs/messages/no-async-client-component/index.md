@@ -16,9 +16,9 @@ description: '원본 URL: https://nextjs.org/docs/messages/no-async-client-compo
 ## 이 오류가 발생한 이유[](https://nextjs.org/docs/messages/no-async-client-component#why-this-error-occurred)
 
 Client Component를 async 함수로 정의하려고 할 때 오류가 발생합니다. React Client Component는 [async 함수를 지원하지 않습니다](https://github.com/acdlite/rfcs/blob/first-class-promises/text/0000-first-class-support-for-promises.md#why-cant-client-components-be-async-functions). 예를 들어:
-[code] 
+[code]
     'use client'
-     
+
     // This will cause an error
     async function ClientComponent() {
       // ...
@@ -60,11 +60,11 @@ app/page.tsx
 app/context.tsx
 [code]
     'use client'
-     
+
     import { createContext, useContext } from 'react'
-     
+
     export const BlogContext = createContext<Promise<any> | null>(null)
-     
+
     export function BlogProvider({
       children,
       blogPromise,
@@ -76,7 +76,7 @@ app/context.tsx
         <BlogContext.Provider value={blogPromise}>{children}</BlogContext.Provider>
       )
     }
-     
+
     export function useBlogContext() {
       const context = useContext(BlogContext)
       if (!context) {
@@ -91,12 +91,12 @@ app/context.tsx
 app/page.tsx
 [code]
     import { BlogProvider } from './context'
-     
+
     export default function Page() {
       const blogPromise = fetch('https://api.vercel.app/blog').then((res) =>
         res.json()
       )
-     
+
       return (
         <BlogProvider blogPromise={blogPromise}>
           <BlogPosts />
@@ -110,14 +110,14 @@ app/page.tsx
 app/blog-posts.tsx
 [code]
     'use client'
-     
+
     import { use } from 'react'
     import { useBlogContext } from './context'
-     
+
     export function BlogPosts() {
       const blogPromise = useBlogContext()
       const posts = use(blogPromise)
-     
+
       return <div>{posts.length} blog posts</div>
     }
 [/code]
@@ -131,12 +131,12 @@ app/blog-posts.tsx
 app/page.tsx
 [code]
     'use client'
-     
+
     import { useState, useEffect } from 'react'
-     
+
     export function Posts() {
       const [posts, setPosts] = useState(null)
-     
+
       useEffect(() => {
         async function fetchPosts() {
           const res = await fetch('https://api.vercel.app/blog')
@@ -145,9 +145,9 @@ app/page.tsx
         }
         fetchPosts()
       }, [])
-     
+
       if (!posts) return <div>Loading...</div>
-     
+
       return (
         <ul>
           {posts.map((post) => (
@@ -157,9 +157,5 @@ app/page.tsx
       )
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

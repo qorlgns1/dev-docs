@@ -7,8 +7,6 @@ description: 'Vitest와 React Testing Library는 단위 테스트에 자주 함�
 
 Source URL: https://nextjs.org/docs/pages/guides/testing/vitest
 
-[Guides](https://nextjs.org/docs/pages/guides)[Testing](https://nextjs.org/docs/pages/guides/testing)Vitest
-
 Copy page
 
 # Next.js에서 Vitest 설정 방법
@@ -53,7 +51,7 @@ JavaScriptTypeScript
     import { defineConfig } from 'vitest/config'
     import react from '@vitejs/plugin-react'
     import tsconfigPaths from 'vite-tsconfig-paths'
-     
+
     export default defineConfig({
       plugins: [tsconfigPaths(), react()],
       test: {
@@ -89,7 +87,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <div>
@@ -107,7 +105,7 @@ JavaScriptTypeScript
     import { expect, test } from 'vitest'
     import { render, screen } from '@testing-library/react'
     import Page from '../pages/index'
-     
+
     test('Page', () => {
       render(<Page />)
       expect(screen.getByRole('heading', { level: 1, name: 'Home' })).toBeDefined()
@@ -132,8 +130,6 @@ Terminal
   * [Next.js with Vitest example](https://github.com/vercel/next.js/tree/canary/examples/with-vitest)
   * [Vitest Docs](https://vitest.dev/guide/)
   * [React Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/)
-
-
 
 Was this helpful?
 

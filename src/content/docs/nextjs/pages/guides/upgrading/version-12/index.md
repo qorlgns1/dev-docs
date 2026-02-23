@@ -9,8 +9,6 @@ description: '원본 URL: https://nextjs.org/docs/pages/guides/upgrading/version
 
 [가이드](https://nextjs.org/docs/pages/guides)[업그레이드](https://nextjs.org/docs/pages/guides/upgrading)버전 12
 
-페이지 복사
-
 # 버전 12로 업그레이드하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -52,11 +50,11 @@ description: '원본 URL: https://nextjs.org/docs/pages/guides/upgrading/version
 터미널
 [code]
     npm install react@latest react-dom@latest
-     
+
     yarn add react@latest react-dom@latest
-     
+
     pnpm update react@latest react-dom@latest
-     
+
     bun add react@latest react-dom@latest
 [/code]
 
@@ -112,7 +110,7 @@ Rust 기반 컴파일러 위에 styled-jsx Babel 변환에서 사용하는 것�
 이전에는 Next.js가 HMR 이벤트를 받기 위해 [server-sent events](https://developer.mozilla.org/docs/Web/API/Server-sent_events) 연결을 사용했습니다. 이제 Next.js 12는 WebSocket 연결을 사용합니다.
 
 Next.js 개발 서버로 요청을 프록시하는 경우 업그레이드 요청이 올바로 처리되도록 해야 합니다. 예를 들어 `nginx`에서는 다음 구성을 추가해야 합니다:
-[code] 
+[code]
     location /_next/webpack-hmr {
         proxy_pass http://localhost:3000/_next/webpack-hmr;
         proxy_http_version 1.1;
@@ -122,7 +120,7 @@ Next.js 개발 서버로 요청을 프록시하는 경우 업그레이드 요청
 [/code]
 
 Apache(2.x)를 사용하는 경우 서버에서 웹소켓을 활성화하려면 다음 구성을 추가할 수 있습니다. 포트, 호스트 이름, 서버 이름을 확인하세요.
-[code] 
+[code]
     <VirtualHost *:443>
      # ServerName yourwebsite.local
      ServerName "${WEBSITE_SERVER_NAME}"
@@ -139,11 +137,11 @@ Apache(2.x)를 사용하는 경우 서버에서 웹소켓을 활성화하려면 
         ProxyPassReverse ws://localhost:3000/_next/webpack-hmr
      </Location>
     </VirtualHost>
-    
+
 [/code]
 
 `express` 같은 커스텀 서버의 경우, 요청이 올바르게 전달되도록 `app.all`을 사용해야 할 수 있습니다. 예시는 다음과 같습니다:
-[code] 
+[code]
     app.all('/_next/webpack-hmr', (req, res) => {
       nextjsRequestHandler(req, res)
     })
@@ -166,9 +164,5 @@ target 옵션은 페이지 실행에 필요한 의존성을 추적하는 기본 
 `next build` 중 Next.js는 각 페이지와 그 의존성을 자동으로 추적해 애플리케이션 프로덕션 배포에 필요한 모든 파일을 파악합니다.
 
 현재 `target` 옵션을 `serverless`로 설정하고 있다면 [새 출력 활용 방법에 대한 문서](https://nextjs.org/docs/pages/api-reference/config/next-config-js/output)를 읽어 보세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

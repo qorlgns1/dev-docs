@@ -9,8 +9,6 @@ description: '오류는 예상된 오류와 처리되지 않은 예외 두 가�
 
 [앱 라우터](https://nextjs.org/docs/app)[시작하기](https://nextjs.org/docs/app/getting-started)오류 처리
 
-페이지 복사
-
 # 오류 처리
 
 마지막 업데이트 2026년 2월 20일
@@ -32,17 +30,17 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     export async function createPost(prevState: any, formData: FormData) {
       const title = formData.get('title')
       const content = formData.get('content')
-     
+
       const res = await fetch('https://api.vercel.app/posts', {
         method: 'POST',
         body: { title, content },
       })
       const json = await res.json()
-     
+
       if (!res.ok) {
         return { message: 'Failed to create post' }
       }
@@ -56,17 +54,17 @@ app/ui/form.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useActionState } from 'react'
     import { createPost } from '@/app/actions'
-     
+
     const initialState = {
       message: '',
     }
-     
+
     export function Form() {
       const [state, formAction, pending] = useActionState(createPost, initialState)
-     
+
       return (
         <form action={formAction}>
           <label htmlFor="title">Title</label>
@@ -91,11 +89,11 @@ JavaScriptTypeScript
     export default async function Page() {
       const res = await fetch(`https://...`)
       const data = await res.json()
-     
+
       if (!res.ok) {
         return 'There was an error.'
       }
-     
+
       return '...'
     }
 [/code]
@@ -109,15 +107,15 @@ app/blog/[slug]/page.tsx
 JavaScriptTypeScript
 [code]
     import { getPostBySlug } from '@/lib/posts'
-     
+
     export default async function Page({ params }: { params: { slug: string } }) {
       const { slug } = await params
       const post = getPostBySlug(slug)
-     
+
       if (!post) {
         notFound()
       }
-     
+
       return <div>{post.title}</div>
     }
 [/code]
@@ -146,9 +144,9 @@ app/dashboard/error.tsx
 JavaScriptTypeScript
 [code]
     'use client' // Error boundaries must be Client Components
-     
+
     import { useEffect } from 'react'
-     
+
     export default function ErrorPage({
       error,
       reset,
@@ -160,7 +158,7 @@ JavaScriptTypeScript
         // Log the error to an error reporting service
         console.error(error)
       }, [error])
-     
+
       return (
         <div>
           <h2>Something went wrong!</h2>
@@ -184,14 +182,14 @@ JavaScriptTypeScript
 일반적으로 이벤트 핸들러나 async 코드에서 발생하는 오류는 렌더링 이후 실행되기 때문에 오류 경계에서 처리되지 않습니다.
 
 이러한 경우, 오류를 직접 잡고 `useState` 또는 `useReducer`에 저장한 다음 UI를 업데이트해 사용자에게 알리세요.
-[code] 
+[code]
     'use client'
-     
+
     import { useState } from 'react'
-     
+
     export function Button() {
       const [error, setError] = useState(null)
-     
+
       const handleClick = () => {
         try {
           // do some work that might fail
@@ -200,11 +198,11 @@ JavaScriptTypeScript
           setError(reason)
         }
       }
-     
+
       if (error) {
         /* render fallback UI */
       }
-     
+
       return (
         <button type="button" onClick={handleClick}>
           Click me
@@ -214,19 +212,19 @@ JavaScriptTypeScript
 [/code]
 
 `useTransition`의 `startTransition` 안에서 처리되지 않은 오류는 가장 가까운 오류 경계로 전파된다는 점에 유의하세요.
-[code] 
+[code]
     'use client'
-     
+
     import { useTransition } from 'react'
-     
+
     export function Button() {
       const [pending, startTransition] = useTransition()
-     
+
       const handleClick = () =>
         startTransition(() => {
           throw new Error('Exception')
         })
-     
+
       return (
         <button type="button" onClick={handleClick}>
           Click me
@@ -244,7 +242,7 @@ app/global-error.tsx
 JavaScriptTypeScript
 [code]
     'use client' // Error boundaries must be Client Components
-     
+
     export default function GlobalError({
       error,
       reset,
@@ -268,10 +266,16 @@ JavaScriptTypeScript
 
 API Reference를 읽어 이 페이지에서 언급된 기능을 더 자세히 알아보세요.
 
-### [redirect리디렉션 함수에 대한 API Reference.](https://nextjs.org/docs/app/api-reference/functions/redirect)### [error.jserror.js 특수 파일에 대한 API Reference.](https://nextjs.org/docs/app/api-reference/file-conventions/error)### [notFoundnotFound 함수에 대한 API Reference.](https://nextjs.org/docs/app/api-reference/functions/not-found)### [not-found.jsnot-found.js 파일에 대한 API Reference.](https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
+- [redirect](https://nextjs.org/docs/app/api-reference/functions/redirect)
+  - 리디렉션 함수에 대한 API Reference.
 
-도움이 되었나요?
+- [error.js](https://nextjs.org/docs/app/api-reference/file-conventions/error)
+  - error.js 특수 파일에 대한 API Reference.
 
-지원됨.
+- [notFound](https://nextjs.org/docs/app/api-reference/functions/not-found)
+  - notFound 함수에 대한 API Reference.
+
+- [not-found.js](https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
+  - not-found.js 파일에 대한 API Reference.
 
 보내기

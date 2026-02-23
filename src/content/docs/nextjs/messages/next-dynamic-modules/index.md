@@ -26,14 +26,14 @@ description: '에서 여러 모듈을 한 번에 로드하는 기능이 React �
 example.js
 [code]
     import dynamic from 'next/dynamic'
-     
+
     const HelloBundle = dynamic({
       modules: () => {
         const components = {
           Hello1: () => import('../components/hello1').then((m) => m.default),
           Hello2: () => import('../components/hello2').then((m) => m.default),
         }
-     
+
         return components
       },
       render: (props, { Hello1, Hello2 }) => (
@@ -44,11 +44,11 @@ example.js
         </div>
       ),
     })
-     
+
     function DynamicBundle() {
       return <HelloBundle title="Dynamic Bundle" />
     }
-     
+
     export default DynamicBundle
 [/code]
 
@@ -57,10 +57,10 @@ example.js
 example.js
 [code]
     import dynamic from 'next/dynamic'
-     
+
     const Hello1 = dynamic(() => import('../components/hello1'))
     const Hello2 = dynamic(() => import('../components/hello2'))
-     
+
     function HelloBundle({ title }) {
       return (
         <div>
@@ -70,16 +70,10 @@ example.js
         </div>
       )
     }
-     
+
     function DynamicBundle() {
       return <HelloBundle title="Dynamic Bundle" />
     }
-     
+
     export default DynamicBundle
 [/code]
-
-도움이 되었나요?
-
-지원됨.
-
-전송

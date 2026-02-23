@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/guides/local-development
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)개발 환경
 
-페이지 복사
-
 # 로컬 개발 환경을 최적화하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -34,16 +32,12 @@ Windows에서는 프로젝트를 [Microsoft Defender Antivirus 제외 목록](ht
   1. **"Windows 보안"** 앱을 열고 **"바이러스 및 위협 방지"** → **"설정 관리"** → **"제외 추가 또는 제거"**를 선택합니다.
   2. **"폴더"** 제외를 추가하고, 프로젝트 폴더를 선택합니다.
 
-
-
 macOS에서는 터미널에서 [Gatekeeper](https://support.apple.com/guide/security/gatekeeper-and-runtime-protection-sec5599b66df/web)를 비활성화할 수 있습니다.
 
   1. 터미널에서 `sudo spctl developer-mode enable-terminal`을 실행합니다.
   2. **"시스템 설정"** 앱을 열고 **"개인정보 보호 및 보안"** → **"개발자 도구"**를 선택합니다.
   3. 터미널이 목록에 표시되어 있고 활성화되어 있는지 확인합니다. iTerm 또는 Ghostty 같은 서드파티 터미널을 사용한다면 목록에 추가합니다.
   4. 터미널을 재시작합니다.
-
-
 
 사용자 또는 회사가 다른 백신 솔루션을 구성했다면 해당 제품의 설정을 점검하세요.
 
@@ -79,10 +73,10 @@ Terminal
 #### 아이콘 라이브러리[](https://nextjs.org/docs/app/guides/local-development#icon-libraries)
 
 `@material-ui/icons`, `@phosphor-icons/react`, `react-icons` 같은 라이브러리는 몇 개만 사용해도 수천 개의 아이콘을 import할 수 있습니다. 필요한 아이콘만 import하도록 해보세요:
-[code] 
+[code]
     // Instead of this:
     import { TriangleIcon } from '@phosphor-icons/react'
-     
+
     // Do this:
     import { TriangleIcon } from '@phosphor-icons/react/dist/csr/Triangle'
 [/code]
@@ -98,8 +92,6 @@ Terminal
   * `tb` (tabler-icons)
   * `cg` (cssgg)
 
-
-
 각 세트에서 하나씩만 사용하더라도 컴파일러는 수만 개의 모듈을 처리해야 합니다.
 
 #### 배럴 파일[](https://nextjs.org/docs/app/guides/local-development#barrel-files)
@@ -111,7 +103,7 @@ Terminal
 #### 패키지 import 최적화[](https://nextjs.org/docs/app/guides/local-development#optimize-package-imports)
 
 Next.js는 특정 패키지의 import를 자동으로 최적화할 수 있습니다. 배럴 파일을 사용하는 패키지를 사용한다면 `next.config.js`에 추가하세요:
-[code] 
+[code]
     module.exports = {
       experimental: {
         optimizePackageImports: ['package-name'],
@@ -149,9 +141,6 @@ Tailwind CSS 3.4.8 이상은 빌드를 느려지게 할 수 있는 설정에 대
          }
 [/code]
 
-
-
-
 ### 5\. 커스텀 webpack 설정 점검[](https://nextjs.org/docs/app/guides/local-development#5-check-custom-webpack-settings)
 
 추가한 커스텀 webpack 설정이 있다면 컴파일 속도를 늦출 수 있습니다.
@@ -184,8 +173,6 @@ Mac과 Windows에서 Docker의 파일 시스템 접근 방식은 로컬 개발�
   * Docker는 프로덕션 배포와 프로덕션 빌드 테스트에만 사용하세요
   * 개발에 반드시 Docker를 사용해야 한다면 Linux 머신 또는 VM에서 Docker를 사용하세요
 
-
-
 프로덕션용 [Docker 배포](https://nextjs.org/docs/app/getting-started/deploying#docker)에 대해 더 알아보세요.
 
 ## 문제를 찾는 도구[](https://nextjs.org/docs/app/guides/local-development#tools-for-finding-problems)
@@ -193,7 +180,7 @@ Mac과 Windows에서 Docker의 파일 시스템 접근 방식은 로컬 개발�
 ### 상세 fetch 로깅[](https://nextjs.org/docs/app/guides/local-development#detailed-fetch-logging)
 
 개발 중에 무슨 일이 일어나는지 자세히 확인하려면 `next.config.js` 파일에서 `logging.fetches` 옵션을 사용하세요:
-[code] 
+[code]
     module.exports = {
       logging: {
         fetches: {
@@ -237,17 +224,10 @@ Terminal
 
   8. 기본적으로 트레이스 뷰어는 시간을 집계합니다. 각 개별 시간을 보려면 뷰어 오른쪽 상단에서 "Aggregated in order"를 "Spans in order"로 전환하세요.
 
-
-
-
 > **참고**: 트레이스 파일은 기본적으로 `.next/dev`인 개발 서버 디렉터리에 저장됩니다. 이 위치는 Next 구성 파일의 [`isolatedDevBuild`](https://nextjs.org/docs/app/api-reference/config/next-config-js/isolatedDevBuild) 플래그로 제어할 수 있습니다.
 
 ### 아직 문제가 있나요?[](https://nextjs.org/docs/app/guides/local-development#still-having-problems)
 
 [Turbopack Tracing](https://nextjs.org/docs/app/guides/local-development#turbopack-tracing) 섹션에서 생성된 trace 파일을 공유하고 [GitHub Discussions](https://github.com/vercel/next.js/discussions) 또는 [Discord](https://nextjs.org/discord)에 게시하세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

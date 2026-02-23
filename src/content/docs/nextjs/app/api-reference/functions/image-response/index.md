@@ -7,10 +7,6 @@ description: '생성자는 JSX와 CSS를 사용해 동적 이미지를 생성할
 
 출처 URL: https://nextjs.org/docs/app/api-reference/functions/image-response
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[함수](https://nextjs.org/docs/app/api-reference/functions)ImageResponse
-
-페이지 복사
-
 # ImageResponse
 
 마지막 업데이트 2026년 2월 20일
@@ -22,9 +18,9 @@ description: '생성자는 JSX와 CSS를 사용해 동적 이미지를 생성할
 ### 매개변수[](https://nextjs.org/docs/app/api-reference/functions/image-response#parameters)
 
 다음 매개변수를 `ImageResponse`에서 사용할 수 있습니다:
-[code] 
+[code]
     import { ImageResponse } from 'next/og'
-     
+
     new ImageResponse(
       element: ReactElement,
       options: {
@@ -38,7 +34,7 @@ description: '생성자는 JSX와 CSS를 사용해 동적 이미지를 생성할
           style: 'normal' | 'italic'
         }[]
         debug?: boolean = false
-     
+
         // Options that will be passed to the HTTP response
         status?: number = 200
         statusText?: string
@@ -62,8 +58,6 @@ description: '생성자는 JSX와 CSS를 사용해 동적 이미지를 생성할
   * 번들 최대 크기는 `500KB`입니다. 번들 크기에는 JSX, CSS, 폰트, 이미지 및 기타 자산이 모두 포함됩니다. 제한을 초과하면 자산 크기를 줄이거나 런타임에서 가져오는 방법을 고려하세요.
   * `ttf`, `otf`, `woff` 폰트 형식만 지원됩니다. 폰트 파싱 속도를 높이려면 `ttf` 또는 `otf` 사용을 권장합니다.
 
-
-
 ## 예제[](https://nextjs.org/docs/app/api-reference/functions/image-response#examples)
 
 ### 라우트 핸들러[](https://nextjs.org/docs/app/api-reference/functions/image-response#route-handlers)
@@ -73,7 +67,7 @@ description: '생성자는 JSX와 CSS를 사용해 동적 이미지를 생성할
 app/api/route.js
 [code]
     import { ImageResponse } from 'next/og'
-     
+
     export async function GET() {
       try {
         return new ImageResponse(
@@ -132,16 +126,16 @@ app/api/route.js
 app/opengraph-image.tsx
 [code]
     import { ImageResponse } from 'next/og'
-     
+
     // Image metadata
     export const alt = 'My site'
     export const size = {
       width: 1200,
       height: 630,
     }
-     
+
     export const contentType = 'image/png'
-     
+
     // Image generation
     export default async function Image() {
       return new ImageResponse(
@@ -180,23 +174,23 @@ app/opengraph-image.tsx
     import { ImageResponse } from 'next/og'
     import { readFile } from 'node:fs/promises'
     import { join } from 'node:path'
-     
+
     // Image metadata
     export const alt = 'My site'
     export const size = {
       width: 1200,
       height: 630,
     }
-     
+
     export const contentType = 'image/png'
-     
+
     // Image generation
     export default async function Image() {
       // Font loading, process.cwd() is Next.js project directory
       const interSemiBold = await readFile(
         join(process.cwd(), 'assets/Inter-SemiBold.ttf')
       )
-     
+
       return new ImageResponse(
         (
           // ...
@@ -221,14 +215,10 @@ app/opengraph-image.tsx
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/image-response#version-history)
 
-버전| 변경 사항  
----|---  
-`v14.0.0`| `ImageResponse`가 `next/server`에서 `next/og`로 이동했습니다.  
-`v13.3.0`| `ImageResponse`를 `next/server`에서 가져올 수 있습니다.  
-`v13.0.0`| `ImageResponse`가 `@vercel/og` 패키지를 통해 도입되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`v14.0.0`| `ImageResponse`가 `next/server`에서 `next/og`로 이동했습니다.
+`v13.3.0`| `ImageResponse`를 `next/server`에서 가져올 수 있습니다.
+`v13.0.0`| `ImageResponse`가 `@vercel/og` 패키지를 통해 도입되었습니다.
 
 보내기

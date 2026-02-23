@@ -7,10 +7,6 @@ description: '브라우저에 웹 애플리케이션 정보를 제공하려면  
 
 소스 URL: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest
 
-[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)[메타데이터 파일](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)manifest.json
-
-페이지 복사
-
 # manifest.json
 
 마지막 업데이트 2026년 2월 20일
@@ -41,7 +37,7 @@ app/manifest.ts
 JavaScriptTypeScript
 [code]
     import type { MetadataRoute } from 'next'
-     
+
     export default function manifest(): MetadataRoute.Manifest {
       return {
         name: 'Next.js App',
@@ -65,9 +61,5 @@ JavaScriptTypeScript
 ### Manifest 객체[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest#manifest-object)
 
 manifest 객체에는 새로운 웹 표준으로 인해 변경될 수 있는 다양한 옵션이 포함되어 있습니다. 모든 최신 옵션 정보는 [TypeScript](https://nextjs.org/docs/app/api-reference/config/typescript#ide-plugin)를 사용하는 경우 코드 편집기에서 `MetadataRoute.Manifest` 타입을 참고하거나 [MDN](https://developer.mozilla.org/docs/Web/Manifest) 문서를 확인하세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

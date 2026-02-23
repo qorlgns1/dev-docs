@@ -7,10 +7,6 @@ description: '계측은 코드를 사용해 모니터링 및 로깅 도구를 �
 
 출처 URL: https://nextjs.org/docs/pages/guides/instrumentation
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)계측
-
-페이지 복사
-
 # 계측 설정 방법
 
 최종 업데이트 2026년 2월 20일
@@ -30,7 +26,7 @@ instrumentation.ts
 JavaScriptTypeScript
 [code]
     import { registerOTel } from '@vercel/otel'
-     
+
     export function register() {
       registerOTel('next-app')
     }
@@ -39,10 +35,10 @@ JavaScriptTypeScript
 전체 구현은 [Next.js with OpenTelemetry 예제](https://github.com/vercel/next.js/tree/canary/examples/with-opentelemetry)를 참고하세요.
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `instrumentation` 파일은 프로젝트 루트에 있어야 하며 `app` 또는 `pages` 디렉터리 내부에 두면 안 됩니다. `src` 폴더를 사용하는 경우 `pages`, `app`과 나란히 `src` 안에 파일을 배치하세요.
 >   * [`pageExtensions` 설정 옵션](https://nextjs.org/docs/app/api-reference/config/next-config-js/pageExtensions)으로 접미사를 추가한다면, `instrumentation` 파일 이름도 그에 맞게 업데이트해야 합니다.
-> 
+>
 
 ## 예시[](https://nextjs.org/docs/pages/guides/instrumentation#examples)
 
@@ -62,7 +58,7 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋아요:**
-> 
+>
 > 파일 최상단이 아니라 `register` 함수 내부에서 import 하기를 권장합니다. 이렇게 하면 모든 부수 효과를 코드의 한 곳에 모아둘 수 있고, 파일 최상단에서 전역으로 import 할 때 발생할 수 있는 의도치 않은 결과를 피할 수 있습니다.
 
 ### 런타임별 코드 가져오기[](https://nextjs.org/docs/pages/guides/instrumentation#importing-runtime-specific-code)
@@ -77,15 +73,11 @@ JavaScriptTypeScript
       if (process.env.NEXT_RUNTIME === 'nodejs') {
         await import('./instrumentation-node')
       }
-     
+
       if (process.env.NEXT_RUNTIME === 'edge') {
         await import('./instrumentation-edge')
       }
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

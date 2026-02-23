@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험적이며 변경될 수 있으므로 �
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/browserDebugInfoInTerminal
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)browserDebugInfoInTerminal
-
-페이지 복사
-
 # browserDebugInfoInTerminal
 
 이 기능은 현재 실험적이며 변경될 수 있으므로 프로덕션 사용은 권장되지 않습니다. 직접 사용해 보고 [GitHub](https://github.com/vercel/next.js/issues)에 의견을 공유해 주세요.
@@ -30,13 +26,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         browserDebugInfoInTerminal: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -47,14 +43,12 @@ JavaScriptTypeScript
   * **depthLimit** : (선택 사항) 중첩 객체/배열의 문자열화 깊이 제한. 기본값: 5
   * **edgeLimit** : (선택 사항) 객체 또는 배열당 포함할 최대 프로퍼티/요소 수. 기본값: 100
 
-
-
 next.config.ts
 
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         browserDebugInfoInTerminal: {
@@ -63,7 +57,7 @@ JavaScriptTypeScript
         },
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -74,7 +68,7 @@ JavaScriptTypeScript
 app/page.tsx
 [code]
     'use client'
-     
+
     export default function Home() {
       return (
         <button
@@ -100,14 +94,12 @@ app/page.tsx
 
   * **showSourceLocation** : 가능할 때 소스 위치 정보를 포함합니다.
 
-
-
 next.config.ts
 
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         browserDebugInfoInTerminal: {
@@ -115,16 +107,12 @@ JavaScriptTypeScript
         },
       },
     }
-     
+
     export default nextConfig
 [/code]
 
-Version| Changes  
----|---  
-`v15.4.0`| 실험적 `browserDebugInfoInTerminal` 도입  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v15.4.0`| 실험적 `browserDebugInfoInTerminal` 도입
 
 보내기

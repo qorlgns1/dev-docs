@@ -7,8 +7,6 @@ description: 'Next.js는 다음과 같이 애플리케이션을 CSS로 스타일
 
 Source URL: https://nextjs.org/docs/app/getting-started/css
 
-[App Router](https://nextjs.org/docs/app)[Getting Started](https://nextjs.org/docs/app/getting-started)CSS
-
 Copy page
 
 # CSS
@@ -23,8 +21,6 @@ Next.js는 다음과 같이 애플리케이션을 CSS로 스타일링할 수 있
   * [External Stylesheets](https://nextjs.org/docs/app/getting-started/css#external-stylesheets)
   * [Sass](https://nextjs.org/docs/app/guides/sass)
   * [CSS-in-JS](https://nextjs.org/docs/app/guides/css-in-js)
-
-
 
 ## Tailwind CSS[](https://nextjs.org/docs/app/getting-started/css#tailwind-css)
 
@@ -64,7 +60,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import './globals.css'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -113,7 +109,7 @@ app/blog/page.tsx
 JavaScriptTypeScript
 [code]
     import styles from './blog.module.css'
-     
+
     export default function Page() {
       return <main className={styles.blog}></main>
     }
@@ -140,7 +136,7 @@ JavaScriptTypeScript
 [code]
     // These styles apply to every route in the application
     import './global.css'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -165,7 +161,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import 'bootstrap/dist/css/bootstrap.css'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -193,7 +189,7 @@ JavaScriptTypeScript
 [code]
     import { BaseButton } from './base-button'
     import styles from './page.module.css'
-     
+
     export default function Page() {
       return <BaseButton className={styles.primary} />
     }
@@ -204,7 +200,7 @@ base-button.tsx
 JavaScriptTypeScript
 [code]
     import styles from './base-button.module.css'
-     
+
     export function BaseButton() {
       return <button className={styles.primary} />
     }
@@ -223,8 +219,6 @@ CSS 순서를 예측 가능하게 유지하려면:
   * ESLint의 [`sort-imports`](https://eslint.org/docs/latest/rules/sort-imports)처럼 가져오기를 자동 정렬하는 린터나 포매터는 끄세요.
   * CSS 청킹 방식을 제어하려면 `next.config.js`에서 [`cssChunking`](https://nextjs.org/docs/app/api-reference/config/next-config-js/cssChunking) 옵션을 사용할 수 있습니다.
 
-
-
 ## Development vs Production[](https://nextjs.org/docs/app/getting-started/css#development-vs-production)
 
   * 개발(`next dev`)에서는 [Fast Refresh](https://nextjs.org/docs/architecture/fast-refresh) 덕분에 CSS 업데이트가 즉시 적용됩니다.
@@ -232,15 +226,18 @@ CSS 순서를 예측 가능하게 유지하려면:
   * 프로덕션에서는 JavaScript가 비활성화되어도 CSS가 로드되지만, 개발에서는 Fast Refresh를 위해 JavaScript가 필요합니다.
   * 개발과 프로덕션 간에 CSS 순서가 다르게 동작할 수 있으니, 최종 CSS 순서를 확인하려면 항상 빌드(`next build`)를 점검하세요.
 
-
-
 ## Next Steps
 
 애플리케이션에서 CSS를 사용하는 다양한 방법을 더 알아보세요.
 
-### [Tailwind CSS v3Tailwind CSS v3를 사용해 Next.js 애플리케이션을 스타일링하고 더 넓은 브라우저 호환성을 확보하세요.](https://nextjs.org/docs/app/guides/tailwind-v3-css)### [SassSass를 사용해 Next.js 애플리케이션을 스타일링하세요.](https://nextjs.org/docs/app/guides/sass)### [CSS-in-JSCSS-in-JS 라이브러리를 Next.js와 함께 사용하세요](https://nextjs.org/docs/app/guides/css-in-js)
+- [Tailwind CSS v3](https://nextjs.org/docs/app/guides/tailwind-v3-css)
+  - Tailwind CSS v3를 사용해 Next.js 애플리케이션을 스타일링하고 더 넓은 브라우저 호환성을 확보하세요.
 
-도움이 되었나요?
+- [Sass](https://nextjs.org/docs/app/guides/sass)
+  - Sass를 사용해 Next.js 애플리케이션을 스타일링하세요.
+
+- [CSS-in-JS](https://nextjs.org/docs/app/guides/css-in-js)
+  - CSS-in-JS 라이브러리를 Next.js와 함께 사용하세요
 
 supported.
 

@@ -9,8 +9,6 @@ description: '애플리케이션이 성장하고 기능이 풍부해질수록 �
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)메모리 사용량
 
-페이지 복사
-
 # 메모리 사용량 최적화 방법
 
 최종 업데이트 2026년 2월 20일
@@ -42,7 +40,7 @@ Next.js에서 메모리를 최적화하고 일반적인 메모리 문제를 해�
 메모리 문제를 찾기 위해 Node.js에서 힙 프로파일을 기록하고 Chrome DevTools에서 로드해 잠재적인 메모리 누수 원인을 확인할 수 있습니다.
 
 터미널에서 Next.js 빌드를 시작할 때 Node.js에 `--heap-prof` 플래그를 전달하세요:
-[code] 
+[code]
     node --heap-prof node_modules/next/dist/bin/next build
 [/code]
 
@@ -97,7 +95,7 @@ next.config.mjs
         return config
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -117,13 +115,11 @@ next.config.mjs
         ignoreBuildErrors: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
   * [TypeScript 오류 무시하기](https://nextjs.org/docs/app/api-reference/config/typescript#disabling-typescript-errors-in-production)
-
-
 
 이렇게 하면 타입 오류로 인해 잘못된 배포가 발생할 수 있다는 점을 기억하세요. 정적 분석이 완료된 뒤에만 빌드를 프로덕션으로 승격하는 것을 강력히 권장합니다. Vercel에 배포한다면 커스텀 작업이 완료된 후 빌드를 프로덕션으로 승격하는 방법을 알아보기 위해 [스테이징 배포 가이드](https://vercel.com/docs/deployments/managing-deployments#staging-and-promoting-a-production-deployment)를 확인하세요.
 
@@ -154,20 +150,16 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const config: NextConfig = {
       experimental: {
         preloadEntriesOnStart: false,
       },
     }
-     
+
     export default config
 [/code]
 
 Next.js는 이러한 JavaScript 모듈을 언로드하지 않으므로, 이 최적화를 비활성화하더라도 모든 페이지에 결국 요청이 들어오면 Next.js 서버의 메모리 사용량은 결국 동일해집니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

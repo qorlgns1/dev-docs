@@ -7,23 +7,19 @@ description: 'Next.js는 Node.js 서버, Docker 컨테이너, 정적 내보내�
 
 출처 URL: https://nextjs.org/docs/app/getting-started/deploying
 
-[App Router](https://nextjs.org/docs/app)[Getting Started](https://nextjs.org/docs/app/getting-started)배포
-
-페이지 복사
-
 # 배포
 
 마지막 업데이트 2026년 2월 20일
 
 Next.js는 Node.js 서버, Docker 컨테이너, 정적 내보내기, 또는 다양한 플랫폼에 맞춘 어댑터 형태로 배포할 수 있습니다.
 
-배포 옵션| 기능 지원  
----|---  
-[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| 전체  
-[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| 전체  
-[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| 제한적  
-[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| 플랫폼별  
-  
+배포 옵션| 기능 지원
+---|---
+[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| 전체
+[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| 전체
+[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| 제한적
+[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| 플랫폼별
+
 ## Node.js server[](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)
 
 Next.js는 Node.js를 지원하는 모든 제공업체에 배포할 수 있습니다. `package.json`에 `"build"`와 `"start"` 스크립트가 포함되어 있는지 확인하세요:
@@ -49,8 +45,6 @@ Node.js 배포는 모든 Next.js 기능을 지원합니다. 인프라에 맞게 
   * [Railway](https://github.com/nextjs/deploy-railway)
   * [Replit](https://github.com/nextjs/deploy-replit)
 
-
-
 ## Docker[](https://nextjs.org/docs/app/getting-started/deploying#docker)
 
 Next.js는 [Docker](https://www.docker.com/) 컨테이너를 지원하는 모든 제공업체에 배포할 수 있습니다. 여기에는 Kubernetes 같은 컨테이너 오케스트레이터나 Docker를 실행하는 클라우드 제공업체가 포함됩니다.
@@ -69,8 +63,6 @@ Docker 배포는 모든 Next.js 기능을 지원합니다. 인프라에 맞게 [
   * [Render](https://github.com/nextjs/deploy-render)
   * [SST](https://github.com/nextjs/deploy-sst)
 
-
-
 ## Static export[](https://nextjs.org/docs/app/getting-started/deploying#static-export)
 
 Next.js는 정적 사이트 또는 [Single-Page Application (SPA)](https://nextjs.org/docs/app/guides/single-page-applications)로 시작한 뒤, 나중에 서버가 필요한 기능으로 업그레이드할 수 있습니다.
@@ -82,8 +74,6 @@ Next.js가 [static exports](https://nextjs.org/docs/app/guides/static-exports)�
 ### Templates[](https://nextjs.org/docs/app/getting-started/deploying#templates-2)
 
   * [GitHub Pages](https://github.com/nextjs/deploy-github-pages)
-
-
 
 ## Adapters[](https://nextjs.org/docs/app/getting-started/deploying#adapters)
 
@@ -99,12 +89,4 @@ Next.js는 다양한 플랫폼에서 해당 인프라 기능을 활용할 수 �
   * [Netlify](https://docs.netlify.com/frameworks/next-js/overview/#next-js-support-on-netlify)
   * [Vercel](https://vercel.com/docs/frameworks/nextjs)
 
-
-
 > **참고:** 현재 모든 플랫폼이 채택할 수 있는 [Deployment Adapters API](https://github.com/vercel/next.js/discussions/77740)를 개발 중입니다. 완성되면 자체 어댑터 작성 방법에 대한 문서를 추가할 예정입니다.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

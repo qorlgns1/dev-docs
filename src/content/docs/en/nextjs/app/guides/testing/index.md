@@ -1,44 +1,38 @@
 ---
-title: 'Guides: Testing'
-description: 'In React and Next.js, there are a few different types of tests you can write, each with its own purpose and use cases. This page provides an overview...'
+title: 'Testing'
+description: 'In React and Next.js, there are a few different types of tests you can write, each with its own purpose and use cases. This page provides an overview ...'
 ---
-
-# Guides: Testing | Next.js
 
 Source URL: https://nextjs.org/docs/app/guides/testing
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Testing
-
-Copy page
-
 # Testing
-
-Last updated February 20, 2026
 
 In React and Next.js, there are a few different types of tests you can write, each with its own purpose and use cases. This page provides an overview of types and commonly used tools you can use to test your application.
 
-## Types of tests[](https://nextjs.org/docs/app/guides/testing#types-of-tests)
+## Types of tests
 
-  * **Unit Testing** involves testing individual units (or blocks of code) in isolation. In React, a unit can be a single function, hook, or component.
-  * **Component Testing** is a more focused version of unit testing where the primary subject of the tests is React components. This may involve testing how components are rendered, their interaction with props, and their behavior in response to user events.
-  * **Integration Testing** involves testing how multiple units work together. This can be a combination of components, hooks, and functions.
-  * **End-to-End (E2E) Testing** involves testing user flows in an environment that simulates real user scenarios, like the browser. This means testing specific tasks (e.g. signup flow) in a production-like environment.
-  * **Snapshot Testing** involves capturing the rendered output of a component and saving it to a snapshot file. When tests run, the current rendered output of the component is compared against the saved snapshot. Changes in the snapshot are used to indicate unexpected changes in behavior.
+* **Unit Testing** involves testing individual units (or blocks of code) in isolation. In React, a unit can be a single function, hook, or component.
+* **Component Testing** is a more focused version of unit testing where the primary subject of the tests is React components. This may involve testing how components are rendered, their interaction with props, and their behavior in response to user events.
+* **Integration Testing** involves testing how multiple units work together. This can be a combination of components, hooks, and functions.
+* **End-to-End (E2E) Testing** involves testing user flows in an environment that simulates real user scenarios, like the browser. This means testing specific tasks (e.g. signup flow) in a production-like environment.
+* **Snapshot Testing** involves capturing the rendered output of a component and saving it to a snapshot file. When tests run, the current rendered output of the component is compared against the saved snapshot. Changes in the snapshot are used to indicate unexpected changes in behavior.
 
-
-
-## Async Server Components[](https://nextjs.org/docs/app/guides/testing#async-server-components)
+## Async Server Components
 
 Since `async` Server Components are new to the React ecosystem, some tools do not fully support them. In the meantime, we recommend using **End-to-End Testing** over **Unit Testing** for `async` components.
 
-## Guides[](https://nextjs.org/docs/app/guides/testing#guides)
+## Guides
 
 See the guides below to learn how to set up Next.js with these commonly used testing tools:
 
-### [CypressLearn how to set up Cypress with Next.js for End-to-End (E2E) and Component Testing.](https://nextjs.org/docs/app/guides/testing/cypress)### [JestLearn how to set up Jest with Next.js for Unit Testing and Snapshot Testing.](https://nextjs.org/docs/app/guides/testing/jest)### [PlaywrightLearn how to set up Playwright with Next.js for End-to-End (E2E) Testing.](https://nextjs.org/docs/app/guides/testing/playwright)### [VitestLearn how to set up Vitest with Next.js for Unit Testing.](https://nextjs.org/docs/app/guides/testing/vitest)
+- [Cypress](https://nextjs.org/docs/app/guides/testing/cypress)
+  - Learn how to set up Cypress with Next.js for End-to-End (E2E) and Component Testing.
+- [Jest](https://nextjs.org/docs/app/guides/testing/jest)
+  - Learn how to set up Jest with Next.js for Unit Testing and Snapshot Testing.
+- [Playwright](https://nextjs.org/docs/app/guides/testing/playwright)
+  - Learn how to set up Playwright with Next.js for End-to-End (E2E) Testing.
+- [Vitest](https://nextjs.org/docs/app/guides/testing/vitest)
+  - Learn how to set up Vitest with Next.js for Unit Testing.
 
-Was this helpful?
+---
 
-supported.
-
-Send

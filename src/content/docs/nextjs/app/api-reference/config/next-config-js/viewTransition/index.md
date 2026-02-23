@@ -7,8 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)viewTransition
-
 Copy page
 
 # viewTransition
@@ -29,7 +27,7 @@ next.config.js
         viewTransition: true,
       },
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -38,7 +36,7 @@ next.config.js
 ## Usage[](https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition#usage)
 
 애플리케이션에서 React의 [`<ViewTransition>` 컴포넌트](https://react.dev/reference/react/ViewTransition)를 import하여 사용할 수 있습니다:
-[code] 
+[code]
     import { ViewTransition } from 'react'
 [/code]
 

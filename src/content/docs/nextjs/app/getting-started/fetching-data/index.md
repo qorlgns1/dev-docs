@@ -9,8 +9,6 @@ description: '이 페이지에서는 서버 및 클라이언트 컴포넌트에�
 
 [앱 라우터](https://nextjs.org/docs/app)[시작하기](https://nextjs.org/docs/app/getting-started)데이터 가져오기
 
-페이지 복사
-
 # 데이터 가져오기
 
 마지막 업데이트: 2026년 2월 20일
@@ -26,8 +24,6 @@ description: '이 페이지에서는 서버 및 클라이언트 컴포넌트에�
   1. [`fetch` API](https://nextjs.org/docs/app/getting-started/fetching-data#with-the-fetch-api)
   2. [ORM 또는 데이터베이스](https://nextjs.org/docs/app/getting-started/fetching-data#with-an-orm-or-database)
   3. `fs`와 같은 Node.js API로 파일 시스템 읽기
-
-
 
 #### `fetch` API 사용하기[](https://nextjs.org/docs/app/getting-started/fetching-data#with-the-fetch-api)
 
@@ -51,11 +47,10 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋은 점:**
-> 
+>
 >   * `fetch` 응답은 기본적으로 캐시되지 않습니다. 그러나 Next.js는 라우트를 [사전 렌더링](https://nextjs.org/docs/app/guides/caching#static-rendering)하고 결과를 캐시하여 성능을 향상시킵니다. [동적 렌더링](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)으로 전환하려면 `{ cache: 'no-store' }` 옵션을 사용하세요. 자세한 내용은 [`fetch` API Reference](https://nextjs.org/docs/app/api-reference/functions/fetch)를 참고하세요.
 >   * 개발 중에는 가시성과 디버깅을 위해 `fetch` 호출을 로깅할 수 있습니다. [`logging` API reference](https://nextjs.org/docs/app/api-reference/config/next-config-js/logging)를 확인하세요.
-> 
-
+>
 
 #### ORM 또는 데이터베이스 사용하기[](https://nextjs.org/docs/app/getting-started/fetching-data#with-an-orm-or-database)
 
@@ -66,7 +61,7 @@ app/blog/page.tsx
 JavaScriptTypeScript
 [code]
     import { db, posts } from '@/lib/db'
-     
+
     export default async function Page() {
       const allPosts = await db.select().from(posts)
       return (
@@ -86,8 +81,6 @@ JavaScriptTypeScript
   1. React의 [`use` API](https://react.dev/reference/react/use)
   2. [SWR](https://swr.vercel.app/) 또는 [React Query](https://tanstack.com/query/latest) 같은 커뮤니티 라이브러리
 
-
-
 #### `use` API로 데이터 스트리밍하기[](https://nextjs.org/docs/app/getting-started/fetching-data#streaming-data-with-the-use-api)
 
 React의 [`use` API](https://react.dev/reference/react/use)를 사용하면 서버에서 클라이언트로 데이터를 [스트리밍](https://nextjs.org/docs/app/getting-started/fetching-data#streaming)할 수 있습니다. 먼저 서버 컴포넌트에서 데이터를 가져오고, 프라미스를 클라이언트 컴포넌트의 prop으로 전달하세요.
@@ -98,11 +91,11 @@ JavaScriptTypeScript
 [code]
     import Posts from '@/app/ui/posts'
     import { Suspense } from 'react'
-     
+
     export default function Page() {
       // Don't await the data fetching function
       const posts = getPosts()
-     
+
       return (
         <Suspense fallback={<div>Loading...</div>}>
           <Posts posts={posts} />
@@ -119,14 +112,14 @@ JavaScriptTypeScript
 [code]
     'use client'
     import { use } from 'react'
-     
+
     export default function Posts({
       posts,
     }: {
       posts: Promise<{ id: string; title: string }[]>
     }) {
       const allPosts = use(posts)
-     
+
       return (
         <ul>
           {allPosts.map((post) => (
@@ -149,18 +142,18 @@ JavaScriptTypeScript
 [code]
     'use client'
     import useSWR from 'swr'
-     
+
     const fetcher = (url) => fetch(url).then((r) => r.json())
-     
+
     export default function BlogPage() {
       const { data, error, isLoading } = useSWR(
         'https://api.vercel.app/blog',
         fetcher
       )
-     
+
       if (isLoading) return <div>Loading...</div>
       if (error) return <div>Error: {error.message}</div>
-     
+
       return (
         <ul>
           {data.map((post: { id: string; title: string }) => (
@@ -189,7 +182,7 @@ JavaScriptTypeScript
 [code]
     import { cache } from 'react'
     import { db, posts, eq } from '@/lib/db'
-     
+
     export const getPost = cache(async (id: string) => {
       const post = await db.query.posts.findFirst({
         where: eq(posts.id, parseInt(id)),
@@ -209,8 +202,6 @@ JavaScriptTypeScript
 
   1. [`loading.js` 파일](https://nextjs.org/docs/app/getting-started/fetching-data#with-loadingjs)로 페이지를 래핑
   2. [`<Suspense>`](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense)로 컴포넌트를 래핑
-
-
 
 ### `loading.js` 사용하기[](https://nextjs.org/docs/app/getting-started/fetching-data#with-loadingjs)
 
@@ -243,7 +234,7 @@ JavaScriptTypeScript
     import { Suspense } from 'react'
     import BlogList from '@/components/BlogList'
     import BlogListSkeleton from '@/components/BlogListSkeleton'
-     
+
     export default function BlogPage() {
       return (
         <div>
@@ -289,7 +280,7 @@ JavaScriptTypeScript
       const { username } = await params
       // Get artist information
       const artist = await getArtist(username)
-     
+
       return (
 
 <>
@@ -302,11 +293,11 @@ JavaScriptTypeScript
         </>
       )
     }
-     
+
     async function Playlists({ artistID }: { artistID: string }) {
       // Use the artist ID to fetch playlists
       const playlists = await getArtistPlaylists(artistID)
-     
+
       return (
         <ul>
           {playlists.map((playlist) => (
@@ -334,7 +325,7 @@ app/artist/[username]/page.tsx
 JavaScriptTypeScript
 [code]
     import { getArtist, getAlbums } from '@/app/lib/data'
-     
+
     export default async function Page({ params }) {
       // These requests will be sequential
       const { username } = await params
@@ -351,30 +342,30 @@ app/artist/[username]/page.tsx
 JavaScriptTypeScript
 [code]
     import Albums from './albums'
-     
+
     async function getArtist(username: string) {
       const res = await fetch(`https://api.example.com/artist/${username}`)
       return res.json()
     }
-     
+
     async function getAlbums(username: string) {
       const res = await fetch(`https://api.example.com/artist/${username}/albums`)
       return res.json()
     }
-     
+
     export default async function Page({
       params,
     }: {
       params: Promise<{ username: string }>
     }) {
       const { username } = await params
-     
+
       // Initiate requests
       const artistData = getArtist(username)
       const albumsData = getAlbums(username)
-     
+
       const [artist, albums] = await Promise.all([artistData, albumsData])
-     
+
       return (
         <>
           <h1>{artist.name}</h1>
@@ -397,7 +388,7 @@ app/item/[id]/page.tsx
 JavaScriptTypeScript
 [code]
     import { getItem, checkIsAvailable } from '@/lib/data'
-     
+
     export default async function Page({
       params,
     }: {
@@ -408,16 +399,16 @@ JavaScriptTypeScript
       preload(id)
       // perform another asynchronous task
       const isAvailable = await checkIsAvailable()
-     
+
       return isAvailable ? <Item id={id} /> : null
     }
-     
+
     const preload = (id: string) => {
       // void evaluates the given expression and returns undefined
       // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void
       void getItem(id)
     }
-     
+
     export async function Item({ id }: { id: string }) {
       const result = await getItem(id)
       // ...
@@ -433,11 +424,11 @@ JavaScriptTypeScript
     import { cache } from 'react'
     import 'server-only'
     import { getItem } from '@/lib/data'
-     
+
     export const preload = (id: string) => {
       void getItem(id)
     }
-     
+
     export const getItem = cache(async (id: string) => {
       // ...
     })
@@ -447,10 +438,19 @@ JavaScriptTypeScript
 
 이 페이지에서 언급된 기능에 대해 더 알아보려면 API 레퍼런스를 확인하세요.
 
-### [데이터 보안Next.js에 내장된 데이터 보안 기능을 살펴보고 애플리케이션 데이터를 보호하기 위한 모범 사례를 배우세요.](https://nextjs.org/docs/app/guides/data-security)### [fetch확장된 fetch 함수의 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/functions/fetch)### [loading.jsloading.js 파일의 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/loading)### [loggingNext.js를 개발 모드로 실행할 때 데이터 가져오기 로그를 구성합니다.](https://nextjs.org/docs/app/api-reference/config/next-config-js/logging)### [taint객체와 값을 오염(taint)하도록 활성화합니다.](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint)
+- [데이터 보안](https://nextjs.org/docs/app/guides/data-security)
+  - Next.js에 내장된 데이터 보안 기능을 살펴보고 애플리케이션 데이터를 보호하기 위한 모범 사례를 배우세요.
 
-도움이 되었나요?
+- [fetch](https://nextjs.org/docs/app/api-reference/functions/fetch)
+  - 확장된 fetch 함수의 API 레퍼런스입니다.
 
-지원됨.
+- [loading.js](https://nextjs.org/docs/app/api-reference/file-conventions/loading)
+  - loading.js 파일의 API 레퍼런스입니다.
+
+- [logging](https://nextjs.org/docs/app/api-reference/config/next-config-js/logging)
+  - Next.js를 개발 모드로 실행할 때 데이터 가져오기 로그를 구성합니다.
+
+- [taint](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint)
+  - 객체와 값을 오염(taint)하도록 활성화합니다.
 
 보내기

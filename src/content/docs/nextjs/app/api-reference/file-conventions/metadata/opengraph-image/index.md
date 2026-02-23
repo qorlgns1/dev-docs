@@ -9,8 +9,6 @@ description: '및  파일 규칙은 라우트 세그먼트에 대해 Open Graph 
 
 [파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)[메타데이터 파일](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)opengraph-image 및 twitter-image
 
-페이지 복사
-
 # opengraph-image 및 twitter-image
 
 마지막 업데이트 2026년 2월 20일
@@ -24,23 +22,21 @@ Open Graph와 Twitter 이미지를 설정하는 방법은 두 가지입니다.
   * [이미지 파일 사용(.jpg, .png, .gif)](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#image-files-jpg-png-gif)
   * [코드를 사용해 이미지 생성(.js, .ts, .tsx)](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx)
 
-
-
 ## 이미지 파일(.jpg, .png, .gif)[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#image-files-jpg-png-gif)
 
 세그먼트에 `opengraph-image` 또는 `twitter-image` 이미지 파일을 배치해 해당 라우트 세그먼트의 공유 이미지를 설정합니다.
 
 Next.js는 파일을 평가하고 앱의 `<head>` 요소에 적절한 태그를 자동으로 추가합니다.
 
-파일 규칙| 지원 파일 형식  
----|---  
-[`opengraph-image`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#opengraph-image)| `.jpg`, `.jpeg`, `.png`, `.gif`  
-[`twitter-image`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#twitter-image)| `.jpg`, `.jpeg`, `.png`, `.gif`  
-[`opengraph-image.alt`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#opengraph-imagealttxt)| `.txt`  
-[`twitter-image.alt`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#twitter-imagealttxt)| `.txt`  
-  
+파일 규칙| 지원 파일 형식
+---|---
+[`opengraph-image`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#opengraph-image)| `.jpg`, `.jpeg`, `.png`, `.gif`
+[`twitter-image`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#twitter-image)| `.jpg`, `.jpeg`, `.png`, `.gif`
+[`opengraph-image.alt`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#opengraph-imagealttxt)| `.txt`
+[`twitter-image.alt`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#twitter-imagealttxt)| `.txt`
+
 > **알아두면 좋아요** :
-> 
+>
 > `twitter-image` 파일 크기는 [5MB](https://developer.x.com/en/docs/x-for-websites/cards/overview/summary)를, `opengraph-image` 파일 크기는 [8MB](https://developers.facebook.com/docs/sharing/webmasters/images)를 초과하면 안 됩니다. 이미지 파일 크기가 이 한도를 넘으면 빌드가 실패합니다.
 
 ### `opengraph-image`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#opengraph-image)
@@ -101,17 +97,17 @@ twitter-image.alt.txt
 
 `opengraph-image` 또는 `twitter-image` 라우트를 만들고 기본 내보내기 함수에서 라우트 세그먼트의 공유 이미지를 생성하세요.
 
-파일 규칙| 지원 파일 형식  
----|---  
-`opengraph-image`| `.js`, `.ts`, `.tsx`  
-`twitter-image`| `.js`, `.ts`, `.tsx`  
-  
+파일 규칙| 지원 파일 형식
+---|---
+`opengraph-image`| `.js`, `.ts`, `.tsx`
+`twitter-image`| `.js`, `.ts`, `.tsx`
+
 > **알아두면 좋아요** :
-> 
+>
 >   * 기본적으로 생성된 이미지는 [**정적 최적화**](https://nextjs.org/docs/app/guides/caching#static-rendering)(빌드 시 생성 후 캐시)에 속하며, [Dynamic API](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)나 캐시되지 않은 데이터를 사용하지 않는 한 그렇습니다.
 >   * [`generateImageMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata)를 사용하면 하나의 파일에서 여러 이미지를 생성할 수 있습니다.
 >   * `opengraph-image.js`와 `twitter-image.js`는 특별한 Route Handler이며 [Dynamic API](https://nextjs.org/docs/app/guides/caching#dynamic-apis)나 [동적 구성](https://nextjs.org/docs/app/guides/caching#segment-config-options) 옵션을 사용하지 않는 한 기본적으로 캐시됩니다.
-> 
+>
 
 가장 쉬운 이미지 생성 방법은 `next/og`의 [ImageResponse](https://nextjs.org/docs/app/api-reference/functions/image-response) API를 사용하는 것입니다.
 
@@ -122,23 +118,23 @@ JavaScriptTypeScript
     import { ImageResponse } from 'next/og'
     import { readFile } from 'node:fs/promises'
     import { join } from 'node:path'
-     
+
     // Image metadata
     export const alt = 'About Acme'
     export const size = {
       width: 1200,
       height: 630,
     }
-     
+
     export const contentType = 'image/png'
-     
+
     // Image generation
     export default async function Image() {
       // Font loading, process.cwd() is Next.js project directory
       const interSemiBold = await readFile(
         join(process.cwd(), 'assets/Inter-SemiBold.ttf')
       )
-     
+
       return new ImageResponse(
         (
           // ImageResponse JSX element
@@ -207,12 +203,12 @@ JavaScriptTypeScript
     }
 [/code]
 
-라우트| URL| `params`  
----|---|---  
-`app/shop/opengraph-image.js`| `/shop`| `undefined`  
-`app/shop/[slug]/opengraph-image.js`| `/shop/1`| `Promise<{ slug: '1' }>`  
-`app/shop/[tag]/[item]/opengraph-image.js`| `/shop/1/2`| `Promise<{ tag: '1', item: '2' }>`  
-  
+라우트| URL| `params`
+---|---|---
+`app/shop/opengraph-image.js`| `/shop`| `undefined`
+`app/shop/[slug]/opengraph-image.js`| `/shop/1`| `Promise<{ slug: '1' }>`
+`app/shop/[tag]/[item]/opengraph-image.js`| `/shop/1/2`| `Promise<{ tag: '1', item: '2' }>`
+
 ### 반환값[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#returns)
 
 기본 내보내기 함수는 `Blob` | `ArrayBuffer` | `TypedArray` | `DataView` | `ReadableStream` | `Response` 중 하나를 반환해야 합니다.
@@ -223,12 +219,12 @@ JavaScriptTypeScript
 
 `opengraph-image` 또는 `twitter-image` 라우트에서 `alt`, `size`, `contentType` 변수를 내보내 이미지 메타데이터를 선택적으로 구성할 수 있습니다.
 
-옵션| 타입  
----|---  
-[`alt`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#alt)| `string`  
-[`size`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#size)| `{ width: number; height: number }`  
-[`contentType`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#contenttype)| `string` \- [이미지 MIME 타입](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types#image_types)  
-  
+옵션| 타입
+---|---
+[`alt`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#alt)| `string`
+[`size`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#size)| `{ width: number; height: number }`
+[`contentType`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#contenttype)| `string` \- [이미지 MIME 타입](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types#image_types)
+
 #### `alt`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#alt)
 
 opengraph-image.tsx | twitter-image.tsx
@@ -236,7 +232,7 @@ opengraph-image.tsx | twitter-image.tsx
 JavaScriptTypeScript
 [code]
     export const alt = 'My images alt text'
-     
+
     export default function Image() {}
 [/code]
 
@@ -252,7 +248,7 @@ opengraph-image.tsx | twitter-image.tsx
 JavaScriptTypeScript
 [code]
     export const size = { width: 1200, height: 630 }
-     
+
     export default function Image() {}
 [/code]
 
@@ -269,7 +265,7 @@ opengraph-image.tsx | twitter-image.tsx
 JavaScriptTypeScript
 [code]
     export const contentType = 'image/png'
-     
+
     export default function Image() {}
 [/code]
 
@@ -295,14 +291,14 @@ app/posts/[slug]/opengraph-image.tsx
 JavaScriptTypeScript
 [code]
     import { ImageResponse } from 'next/og'
-     
+
     export const alt = 'About Acme'
     export const size = {
       width: 1200,
       height: 630,
     }
     export const contentType = 'image/png'
-     
+
     export default async function Image({
       params,
     }: {
@@ -312,7 +308,7 @@ JavaScriptTypeScript
       const post = await fetch(`https://.../posts/${slug}`).then((res) =>
         res.json()
       )
-     
+
       return new ImageResponse(
         (
           <div
@@ -347,11 +343,11 @@ JavaScriptTypeScript
     import { ImageResponse } from 'next/og'
     import { join } from 'node:path'
     import { readFile } from 'node:fs/promises'
-     
+
     export default async function Image() {
       const logoData = await readFile(join(process.cwd(), 'logo.png'), 'base64')
       const logoSrc = `data:image/png;base64,${logoData}`
-     
+
       return new ImageResponse(
         (
           <div
@@ -377,11 +373,11 @@ JavaScriptTypeScript
     import { ImageResponse } from 'next/og'
     import { join } from 'node:path'
     import { readFile } from 'node:fs/promises'
-     
+
     export default async function Image() {
       const logoData = await readFile(join(process.cwd(), 'logo.png'))
       const logoSrc = Uint8Array.from(logoData).buffer
-     
+
       return new ImageResponse(
         (
           <div
@@ -401,13 +397,7 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| `params`가 이제 객체로 해석되는 프로미스입니다.  
-`v13.3.0`| `opengraph-image`와 `twitter-image`가 도입되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+Version| Changes
+---|---
+`v16.0.0`| `params`가 이제 객체로 해석되는 프로미스입니다.
+`v13.3.0`| `opengraph-image`와 `twitter-image`가 도입되었습니다.

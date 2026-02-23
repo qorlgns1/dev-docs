@@ -1,19 +1,11 @@
 ---
-title: 'Metadata Files: favicon, icon, and apple-icon'
+title: 'favicon, icon, and apple-icon'
 description: 'The , , or  file conventions allow you to set icons for your application.'
 ---
 
-# Metadata Files: favicon, icon, and apple-icon | Next.js
-
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons
 
-[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)[Metadata Files](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)favicon, icon, and apple-icon
-
-Copy page
-
 # favicon, icon, and apple-icon
-
-Last updated February 20, 2026
 
 The `favicon`, `icon`, or `apple-icon` file conventions allow you to set icons for your application.
 
@@ -21,230 +13,262 @@ They are useful for adding app icons that appear in places like web browser tabs
 
 There are two ways to set app icons:
 
-  * [Using image files (.ico, .jpg, .png)](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#image-files-ico-jpg-png)
-  * [Using code to generate an icon (.js, .ts, .tsx)](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#generate-icons-using-code-js-ts-tsx)
+* [Using image files (.ico, .jpg, .png)](#image-files-ico-jpg-png)
+* [Using code to generate an icon (.js, .ts, .tsx)](#generate-icons-using-code-js-ts-tsx)
 
+## Image files (.ico, .jpg, .png)
 
-
-## Image files (.ico, .jpg, .png)[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#image-files-ico-jpg-png)
-
-Use an image file to set an app icon by placing a `favicon`, `icon`, or `apple-icon` image file within your `/app` directory. The `favicon` image can only be located in the top level of `app/`.
+Use an image file to set an app icon by placing a `favicon`, `icon`, or `apple-icon` image file within your `/app` directory.
+The `favicon` image can only be located in the top level of `app/`.
 
 Next.js will evaluate the file and automatically add the appropriate tags to your app's `<head>` element.
 
-File convention| Supported file types| Valid locations  
----|---|---  
-[`favicon`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#favicon)| `.ico`| `app/`  
-[`icon`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#icon)| `.ico`, `.jpg`, `.jpeg`, `.png`, `.svg`| `app/**/*`  
-[`apple-icon`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#apple-icon)| `.jpg`, `.jpeg`, `.png`| `app/**/*`  
-  
-### `favicon`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#favicon)
+| File convention             | Supported file types                    | Valid locations |
+| --------------------------- | --------------------------------------- | --------------- |
+| [`favicon`](#favicon)       | `.ico`                                  | `app/`          |
+| [`icon`](#icon)             | `.ico`, `.jpg`, `.jpeg`, `.png`, `.svg` | `app/**/*`      |
+| [`apple-icon`](#apple-icon) | `.jpg`, `.jpeg`, `.png`                 | `app/**/*`      |
+
+### `favicon`
 
 Add a `favicon.ico` image file to the root `/app` route segment.
 
-<head> output
-[code]
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-[/code]
+```html filename="<head> output"
+<link rel="icon" href="/favicon.ico" sizes="any" />
+```
 
-### `icon`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#icon)
+### `icon`
 
 Add an `icon.(ico|jpg|jpeg|png|svg)` image file.
 
-<head> output
-[code]
-    <link
-      rel="icon"
-      href="/icon?<generated>"
-      type="image/<generated>"
-      sizes="<generated>"
-    />
-[/code]
+```html filename="<head> output"
+<link
+  rel="icon"
+  href="/icon?<generated>"
+  type="image/<generated>"
+  sizes="<generated>"
+/>
+```
 
-### `apple-icon`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#apple-icon)
+### `apple-icon`
 
 Add an `apple-icon.(jpg|jpeg|png)` image file.
 
-<head> output
-[code]
-    <link
-      rel="apple-touch-icon"
-      href="/apple-icon?<generated>"
-      type="image/<generated>"
-      sizes="<generated>"
-    />
-[/code]
+```html filename="<head> output"
+<link
+  rel="apple-touch-icon"
+  href="/apple-icon?<generated>"
+  type="image/<generated>"
+  sizes="<generated>"
+/>
+```
 
-> **Good to know** :
-> 
->   * You can set multiple icons by adding a number suffix to the file name. For example, `icon1.png`, `icon2.png`, etc. Numbered files will sort lexically.
->   * Favicons can only be set in the root `/app` segment. If you need more granularity, you can use [`icon`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#icon).
->   * The appropriate `<link>` tags and attributes such as `rel`, `href`, `type`, and `sizes` are determined by the icon type and metadata of the evaluated file.
->   * For example, a 32 by 32px `.png` file will have `type="image/png"` and `sizes="32x32"` attributes.
->   * `sizes="any"` is added to icons when the extension is `.svg` or the image size of the file is not determined. More details in this [favicon handbook](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs).
-> 
+> **Good to know**:
+>
+> * You can set multiple icons by adding a number suffix to the file name. For example, `icon1.png`, `icon2.png`, etc. Numbered files will sort lexically.
+> * Favicons can only be set in the root `/app` segment. If you need more granularity, you can use [`icon`](#icon).
+> * The appropriate `<link>` tags and attributes such as `rel`, `href`, `type`, and `sizes` are determined by the icon type and metadata of the evaluated file.
+> * For example, a 32 by 32px `.png` file will have `type="image/png"` and `sizes="32x32"` attributes.
+> * `sizes="any"` is added to icons when the extension is `.svg` or the image size of the file is not determined. More details in this [favicon handbook](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs).
 
+## Generate icons using code (.js, .ts, .tsx)
 
-## Generate icons using code (.js, .ts, .tsx)[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#generate-icons-using-code-js-ts-tsx)
-
-In addition to using [literal image files](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#image-files-ico-jpg-png), you can programmatically **generate** icons using code.
+In addition to using [literal image files](#image-files-ico-jpg-png), you can programmatically **generate** icons using code.
 
 Generate an app icon by creating an `icon` or `apple-icon` route that default exports a function.
 
-File convention| Supported file types  
----|---  
-`icon`| `.js`, `.ts`, `.tsx`  
-`apple-icon`| `.js`, `.ts`, `.tsx`  
-  
+| File convention | Supported file types |
+| --------------- | -------------------- |
+| `icon`          | `.js`, `.ts`, `.tsx` |
+| `apple-icon`    | `.js`, `.ts`, `.tsx` |
+
 The easiest way to generate an icon is to use the [`ImageResponse`](https://nextjs.org/docs/app/api-reference/functions/image-response) API from `next/og`.
 
-app/icon.tsx
+```tsx filename="app/icon.tsx" switcher
+import { ImageResponse } from 'next/og'
 
-JavaScriptTypeScript
-[code]
-    import { ImageResponse } from 'next/og'
-     
-    // Image metadata
-    export const size = {
-      width: 32,
-      height: 32,
+// Image metadata
+export const size = {
+  width: 32,
+  height: 32,
+}
+export const contentType = 'image/png'
+
+// Image generation
+export default function Icon() {
+  return new ImageResponse(
+    (
+      // ImageResponse JSX element
+      <div
+        style={{
+          fontSize: 24,
+          background: 'black',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white',
+        }}
+      >
+        A
+      </div>
+    ),
+    // ImageResponse options
+    {
+      // For convenience, we can re-use the exported icons size metadata
+      // config to also set the ImageResponse's width and height.
+      ...size,
     }
-    export const contentType = 'image/png'
-     
-    // Image generation
-    export default function Icon() {
-      return new ImageResponse(
-        (
-          // ImageResponse JSX element
-          <div
-            style={{
-              fontSize: 24,
-              background: 'black',
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-            }}
-          >
-            A
-          </div>
-        ),
-        // ImageResponse options
-        {
-          // For convenience, we can re-use the exported icons size metadata
-          // config to also set the ImageResponse's width and height.
-          ...size,
-        }
-      )
+  )
+}
+```
+
+```jsx filename="app/icon.js" switcher
+import { ImageResponse } from 'next/og'
+
+// Image metadata
+export const size = {
+  width: 32,
+  height: 32,
+}
+export const contentType = 'image/png'
+
+// Image generation
+export default function Icon() {
+  return new ImageResponse(
+    (
+      // ImageResponse JSX element
+      <div
+        style={{
+          fontSize: 24,
+          background: 'black',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white',
+        }}
+      >
+        A
+      </div>
+    ),
+    // ImageResponse options
+    {
+      // For convenience, we can re-use the exported icons size metadata
+      // config to also set the ImageResponse's width and height.
+      ...size,
     }
-[/code]
+  )
+}
+```
 
-<head> output
-[code]
-    <link rel="icon" href="/icon?<generated>" type="image/png" sizes="32x32" />
-[/code]
+```html filename="<head> output"
+<link rel="icon" href="/icon?<generated>" type="image/png" sizes="32x32" />
+```
 
-> **Good to know** :
-> 
->   * By default, generated icons are [**statically optimized**](https://nextjs.org/docs/app/guides/caching#static-rendering) (generated at build time and cached) unless they use [Dynamic APIs](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) or uncached data.
->   * You can generate multiple icons in the same file using [`generateImageMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata).
->   * You cannot generate a `favicon` icon. Use [`icon`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#icon) or a [favicon.ico](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#favicon) file instead.
->   * App icons are special Route Handlers that are cached by default unless they use a [Dynamic API](https://nextjs.org/docs/app/guides/caching#dynamic-apis) or [dynamic config](https://nextjs.org/docs/app/guides/caching#segment-config-options) option.
-> 
+> **Good to know**:
+>
+> * By default, generated icons are [**statically optimized**](https://nextjs.org/docs/app/guides/caching#static-rendering) (generated at build time and cached) unless they use [Dynamic APIs](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) or uncached data.
+> * You can generate multiple icons in the same file using [`generateImageMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata).
+> * You cannot generate a `favicon` icon. Use [`icon`](#icon) or a [favicon.ico](#favicon) file instead.
+> * App icons are special Route Handlers that are cached by default unless they use a [Dynamic API](https://nextjs.org/docs/app/guides/caching#dynamic-apis) or [dynamic config](https://nextjs.org/docs/app/guides/caching#segment-config-options) option.
 
-
-### Props[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#props)
+### Props
 
 The default export function receives the following props:
 
-#### `params` (optional)[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#params-optional)
+#### `params` (optional)
 
 A promise that resolves to an object containing the [dynamic route parameters](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes) object from the root segment down to the segment `icon` or `apple-icon` is colocated in.
 
-> **Good to know** : If you use [`generateImageMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata), the function will also receive an `id` prop that is a promise resolving to the `id` value from one of the items returned by `generateImageMetadata`.
+> **Good to know**: If you use [`generateImageMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata), the function will also receive an `id` prop that is a promise resolving to the `id` value from one of the items returned by `generateImageMetadata`.
 
-app/shop/[slug]/icon.tsx
+```tsx filename="app/shop/[slug]/icon.tsx" switcher
+export default async function Icon({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  // ...
+}
+```
 
-JavaScriptTypeScript
-[code]
-    export default async function Icon({
-      params,
-    }: {
-      params: Promise<{ slug: string }>
-    }) {
-      const { slug } = await params
-      // ...
-    }
-[/code]
+```jsx filename="app/shop/[slug]/icon.js" switcher
+export default async function Icon({ params }) {
+  const { slug } = await params
+  // ...
+}
+```
 
-Route| URL| `params`  
----|---|---  
-`app/shop/icon.js`| `/shop`| `undefined`  
-`app/shop/[slug]/icon.js`| `/shop/1`| `Promise<{ slug: '1' }>`  
-`app/shop/[tag]/[item]/icon.js`| `/shop/1/2`| `Promise<{ tag: '1', item: '2' }>`  
-  
-### Returns[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#returns)
+| Route                           | URL         | `params`                           |
+| ------------------------------- | ----------- | ---------------------------------- |
+| `app/shop/icon.js`              | `/shop`     | `undefined`                        |
+| `app/shop/[slug]/icon.js`       | `/shop/1`   | `Promise<{ slug: '1' }>`           |
+| `app/shop/[tag]/[item]/icon.js` | `/shop/1/2` | `Promise<{ tag: '1', item: '2' }>` |
+
+### Returns
 
 The default export function should return a `Blob` | `ArrayBuffer` | `TypedArray` | `DataView` | `ReadableStream` | `Response`.
 
-> **Good to know** : `ImageResponse` satisfies this return type.
+> **Good to know**: `ImageResponse` satisfies this return type.
 
-### Config exports[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#config-exports)
+### Config exports
 
 You can optionally configure the icon's metadata by exporting `size` and `contentType` variables from the `icon` or `apple-icon` route.
 
-Option| Type  
----|---  
-[`size`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#size)| `{ width: number; height: number }`  
-[`contentType`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#contenttype)| `string` \- [image MIME type](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types#image_types)  
-  
-#### `size`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#size)
+| Option                        | Type                                                                                                            |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| [`size`](#size)               | `{ width: number; height: number }`                                                                             |
+| [`contentType`](#contenttype) | `string` - [image MIME type](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types#image_types) |
 
-icon.tsx | apple-icon.tsx
+#### `size`
 
-JavaScriptTypeScript
-[code]
-    export const size = { width: 32, height: 32 }
-     
-    export default function Icon() {}
-[/code]
+```tsx filename="icon.tsx | apple-icon.tsx" switcher
+export const size = { width: 32, height: 32 }
 
-<head> output
-[code]
-    <link rel="icon" sizes="32x32" />
-[/code]
+export default function Icon() {}
+```
 
-#### `contentType`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#contenttype)
+```jsx filename="icon.js | apple-icon.js" switcher
+export const size = { width: 32, height: 32 }
 
-icon.tsx | apple-icon.tsx
+export default function Icon() {}
+```
 
-JavaScriptTypeScript
-[code]
-    export const contentType = 'image/png'
-     
-    export default function Icon() {}
-[/code]
+```html filename="<head> output"
+<link rel="icon" sizes="32x32" />
+```
 
-<head> output
-[code]
-    <link rel="icon" type="image/png" />
-[/code]
+#### `contentType`
 
-#### Route Segment Config[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#route-segment-config)
+```tsx filename="icon.tsx | apple-icon.tsx" switcher
+export const contentType = 'image/png'
+
+export default function Icon() {}
+```
+
+```jsx filename="icon.js | apple-icon.js" switcher
+export const contentType = 'image/png'
+
+export default function Icon() {}
+```
+
+```html filename="<head> output"
+<link rel="icon" type="image/png" />
+```
+
+#### Route Segment Config
 
 `icon` and `apple-icon` are specialized [Route Handlers](https://nextjs.org/docs/app/api-reference/file-conventions/route) that can use the same [route segment configuration](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config) options as Pages and Layouts.
 
-## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#version-history)
+## Version History
 
-Version| Changes  
----|---  
-`v16.0.0`| `params` is now a promise that resolves to an object  
-`v13.3.0`| `favicon` `icon` and `apple-icon` introduced  
-  
-Was this helpful?
+| Version   | Changes                                              |
+| --------- | ---------------------------------------------------- |
+| `v16.0.0` | `params` is now a promise that resolves to an object |
+| `v13.3.0` | `favicon` `icon` and `apple-icon` introduced         |
+---
 
-supported.
-
-Send

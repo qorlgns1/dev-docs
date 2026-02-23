@@ -9,8 +9,6 @@ description: '번들링은 애플리케이션 코드와 그 의존성을 클라�
 
 [Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)Package Bundling
 
-페이지 복사
-
 # 패키지 번들링 최적화 방법
 
 최종 업데이트 2026년 2월 20일
@@ -98,18 +96,18 @@ next.config.js
 [code]
     /** @type {import('next').NextConfig} */
     const nextConfig = {}
-     
+
     const withBundleAnalyzer = require('@next/bundle-analyzer')({
       enabled: process.env.ANALYZE === 'true',
     })
-     
+
     module.exports = withBundleAnalyzer(nextConfig)
 [/code]
 
 ### 2단계: 보고서 생성[](https://nextjs.org/docs/pages/guides/package-bundling#step-2-generating-a-report)
 
 다음 명령으로 번들을 분석하세요.
-[code] 
+[code]
     ANALYZE=true npm run build
     # 또는
     ANALYZE=true yarn build
@@ -135,7 +133,7 @@ next.config.js
         optimizePackageImports: ['icon-library'],
       },
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -152,19 +150,19 @@ next.config.js
 app/blog/[slug]/page.tsx
 [code]
     'use client'
-     
+
     import Highlight from 'prism-react-renderer'
     import theme from 'prism-react-renderer/themes/github'
-     
+
     export default function Page() {
       const code = `export function hello() {
         console.log("hi")
       }`
-     
+
       return (
         <article>
           <h1>Blog Post Title</h1>
-     
+
           {/* The prism package and its tokenization logic are shipped to the client */}
           <Highlight code={code} language="tsx" theme={theme}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -193,22 +191,22 @@ app/blog/[slug]/page.tsx
 app/blog/[slug]/page.tsx
 [code]
     import { codeToHtml } from 'shiki'
-     
+
     export default async function Page() {
       const code = `export function hello() {
         console.log("hi")
       }`
-     
+
       // The Shiki package runs on the server and is never bundled for the client.
       const highlightedHtml = await codeToHtml(code, {
         lang: 'tsx',
         theme: 'github-dark',
       })
-     
+
       return (
         <article>
           <h1>Blog Post Title</h1>
-     
+
           {/* Client receives plain markup */}
           <pre>
             <code dangerouslySetInnerHTML={{ __html: highlightedHtml }} />
@@ -230,7 +228,7 @@ next.config.js
     const nextConfig = {
       transpilePackages: ['package-name'],
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -242,7 +240,7 @@ next.config.js
     const nextConfig = {
       bundlePagesRouterDependencies: true,
     }
-     
+
     module.exports = nextConfig
 [/code]
 
@@ -259,18 +257,15 @@ next.config.js
       // 특정 패키지를 번들링에서 제외:
       serverExternalPackages: ['package-name'],
     }
-     
+
     module.exports = nextConfig
 [/code]
 
-## 
+##
 
 프로덕션 대비를 위한 애플리케이션 최적화 방법을 더 알아보세요.
 
-### [프로덕션 권장 사항Next.js 애플리케이션을 프로덕션에 배포하기 전에 최고의 성능과 사용자 경험을 보장하기 위한 권장 사항을 확인하세요.](https://nextjs.org/docs/pages/guides/production-checklist)
-
-도움이 되었나요?
-
-지원됨.
+- [프로덕션](https://nextjs.org/docs/pages/guides/production-checklist)
+  - 권장 사항Next.js 애플리케이션을 프로덕션에 배포하기 전에 최고의 성능과 사용자 경험을 보장하기 위한 권장 사항을 확인하세요.
 
 보내기

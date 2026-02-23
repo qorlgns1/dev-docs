@@ -7,10 +7,6 @@ description: '이 가이드는 기존 Vite 애플리케이션을 Next.js로 마�
 
 출처 URL: https://nextjs.org/docs/pages/guides/migrating/from-vite
 
-[가이드](https://nextjs.org/docs/pages/guides)[마이그레이션](https://nextjs.org/docs/pages/guides/migrating)Vite
-
-페이지 복사
-
 # Vite에서 Next.js로 마이그레이션하는 방법
 
 최종 업데이트 2026년 2월 20일
@@ -82,7 +78,7 @@ next.config.mjs
       output: 'export', // Outputs a Single-Page Application (SPA).
       distDir: './dist', // Changes the build output directory to `./dist/`.
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -244,19 +240,17 @@ JavaScriptTypeScript
 
   6. 마지막으로 Next.js는 [Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images)를 통해 마지막 `<head>` 태그를 관리할 수 있습니다. 최종 메타데이터 정보를 내보낸 [`metadata` 객체](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-object)로 옮기세요.
 
-
-
 app/layout.tsx
 
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: 'My App',
       description: 'My App is a...',
     }
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -280,26 +274,22 @@ Next.js에서는 `page.tsx` 파일을 생성해 애플리케이션의 엔트리�
 
   1. **`app` 디렉터리에 `[[...slug]]` 디렉터리를 만듭니다.**
 
-
-
 이 가이드에서는 먼저 Next.js를 SPA(Single Page Application)로 설정하는 것이 목표이므로, 페이지 엔트리포인트가 애플리케이션의 모든 가능한 라우트를 포착해야 합니다. 이를 위해 `app` 디렉터리에 새로운 `[[...slug]]` 디렉터리를 만드세요.
 
 이 디렉터리는 [선택적 캐치올 라우트 세그먼트](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#optional-catch-all-segments)라고 합니다. Next.js는 폴더를 사용해 라우트를 정의하는 파일 시스템 기반 라우터를 사용합니다. 이 특수 디렉터리는 애플리케이션의 모든 라우트가 그 안의 `page.tsx` 파일로 전달되도록 해 줍니다.
 
   2. **`app/[[...slug]]` 디렉터리 안에 다음 내용을 가진 새 `page.tsx` 파일을 만듭니다.**
 
-
-
 app/[[...slug]]/page.tsx
 
 JavaScriptTypeScript
 [code]
     import '../../index.css'
-     
+
     export function generateStaticParams() {
       return [{ slug: [''] }]
     }
-     
+
     export default function Page() {
       return '...' // We'll update this
     }
@@ -318,12 +308,12 @@ app/[[...slug]]/client.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import React from 'react'
     import dynamic from 'next/dynamic'
-     
+
     const App = dynamic(() => import('../../App'), { ssr: false })
-     
+
     export function ClientOnly() {
       return <App />
     }
@@ -332,7 +322,7 @@ JavaScriptTypeScript
 이 파일은 `'use client'` 지시문으로 정의된 [클라이언트 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components)입니다. 클라이언트 컴포넌트는 클라이언트로 전송되기 전에 서버에서 [HTML로 프리렌더링](https://nextjs.org/docs/app/getting-started/server-and-client-components#how-do-server-and-client-components-work-in-nextjs)됩니다.
 
 클라이언트 전용 애플리케이션으로 시작하려는 경우, `App` 컴포넌트 이하에서 프리렌더링을 비활성화하도록 Next.js를 구성할 수 있습니다.
-[code] 
+[code]
     const App = dynamic(() => import('../../App'), { ssr: false })
 [/code]
 
@@ -344,11 +334,11 @@ JavaScriptTypeScript
 [code]
     import '../../index.css'
     import { ClientOnly } from './client'
-     
+
     export function generateStaticParams() {
       return [{ slug: [''] }]
     }
-     
+
     export default function Page() {
       return <ClientOnly />
     }
@@ -361,7 +351,7 @@ Next.js는 Vite와 약간 다르게 정적 이미지 import를 처리합니다. 
 App.tsx
 [code]
     import image from './img.png' // `image` will be '/assets/img.2d8efhg.png' in production
-     
+
     export default function App() {
       return <img src={image} />
     }
@@ -375,22 +365,20 @@ Next.js에서는 정적 이미지 import가 객체를 반환합니다. 이 객�
 
   1. **`/public`에서 import한 이미지의 절대 import 경로를 상대 import로 변환하세요.**
 
-
-[code] 
+[code]
     // Before
     import logo from '/logo.png'
-     
+
     // After
     import logo from '../public/logo.png'
 [/code]
 
   2. **전체 이미지 객체 대신 이미지의 `src` 속성을 `<img>` 태그에 전달하세요.**
 
-
-[code] 
+[code]
     // Before
     <img src={logo} />
-     
+
     // After
     <img src={logo.src} />
 [/code]
@@ -405,8 +393,6 @@ Next.js는 Vite와 유사하게 `.env` [환경 변수](https://nextjs.org/docs/a
 
   * `VITE_` 접두사가 있는 모든 환경 변수를 `NEXT_PUBLIC_`로 바꾸세요.
 
-
-
 Vite는 Next.js에서 지원하지 않는 몇 가지 내장 환경 변수를 특수 객체 `import.meta.env`에 노출합니다. 사용 방법을 다음과 같이 업데이트해야 합니다.
 
   * `import.meta.env.MODE` ⇒ `process.env.NODE_ENV`
@@ -414,13 +400,9 @@ Vite는 Next.js에서 지원하지 않는 몇 가지 내장 환경 변수를 특
   * `import.meta.env.DEV` ⇒ `process.env.NODE_ENV !== 'production'`
   * `import.meta.env.SSR` ⇒ `typeof window !== 'undefined'`
 
-
-
 Next.js는 내장 `BASE_URL` 환경 변수를 제공하지 않습니다. 하지만 필요하다면 여전히 설정할 수 있습니다.
 
   1. **`.env` 파일에 다음을 추가하세요.**
-
-
 
 .env
 [code]
@@ -430,8 +412,6 @@ Next.js는 내장 `BASE_URL` 환경 변수를 제공하지 않습니다. 하지�
 
   2. **`next.config.mjs` 파일에서 [`basePath`](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)를 `process.env.NEXT_PUBLIC_BASE_PATH`로 설정하세요.**
 
-
-
 next.config.mjs
 [code]
     /** @type {import('next').NextConfig} */
@@ -440,13 +420,11 @@ next.config.mjs
       distDir: './dist', // Changes the build output directory to `./dist/`.
       basePath: process.env.NEXT_PUBLIC_BASE_PATH, // Sets the base path to `/some-base-path`.
     }
-     
+
     export default nextConfig
 [/code]
 
   3. **`import.meta.env.BASE_URL` 사용을 `process.env.NEXT_PUBLIC_BASE_PATH`로 업데이트하세요.**
-
-
 
 ### Step 8: Update Scripts in `package.json`[](https://nextjs.org/docs/pages/guides/migrating/from-vite#step-8-update-scripts-in-packagejson)
 
@@ -486,8 +464,6 @@ package.json
   * `vite.config.ts` 삭제
   * Vite 의존성 제거
 
-
-
 ## Next Steps[](https://nextjs.org/docs/pages/guides/migrating/from-vite#next-steps)
 
 모든 것이 계획대로 진행되었다면 이제 단일 페이지 애플리케이션으로 실행되는 Next.js 애플리케이션을 갖게 됩니다. 아직 Next.js의 대부분 이점을 활용하고 있지는 않지만, 이제 점진적으로 변경해 모든 이점을 누릴 수 있습니다. 다음과 같은 작업을 고려해 보세요.
@@ -500,11 +476,5 @@ package.json
   * [`next/font`](https://nextjs.org/docs/app/api-reference/components/font)로 폰트 최적화
   * [`<Script>` 컴포넌트](https://nextjs.org/docs/app/guides/scripts)로 서드파티 스크립트 최적화
   * [Next.js 규칙을 지원하도록 ESLint 구성 업데이트](https://nextjs.org/docs/app/api-reference/config/eslint)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 Send

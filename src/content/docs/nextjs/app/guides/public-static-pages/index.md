@@ -9,8 +9,6 @@ description: '공개 페이지는 모든 사용자에게 동일한 콘텐츠를 
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)공개 페이지
 
-페이지 복사
-
 # 공개 페이지 구축하기
 
 최종 업데이트 2026년 2월 20일
@@ -33,8 +31,6 @@ description: '공개 페이지는 모든 사용자에게 동일한 콘텐츠를 
   * [데모](https://cache-components-public-pages.labs.vercel.dev/)
   * [코드](https://github.com/vercel-labs/cache-components-public-pages)
 
-
-
 ### 1단계: 간단한 헤더 추가[](https://nextjs.org/docs/app/guides/public-static-pages#step-1-add-a-simple-header)
 
 간단한 헤더부터 시작하겠습니다.
@@ -45,7 +41,7 @@ app/products/page.tsx
     function Header() {
       return <h1>Shop</h1>
     }
-     
+
     export default async function Page() {
       return (
         <>
@@ -68,7 +64,7 @@ app/products/page.tsx
     Route (app)      Revalidate  Expire
     ┌ ○ /products           15m      1y
     └ ○ /_not-found
-     
+
     ○  (Static)  prerendered as static content
 [/code]
 
@@ -82,15 +78,15 @@ app/products/page.tsx
 [code]
     import db from '@/db'
     import { List } from '@/app/products/ui'
-     
+
     function Header() {}
-     
+
     // Dynamic component
     async function ProductList() {
       const products = await db.product.findMany()
       return <List items={products} />
     }
-     
+
     export default async function Page() {
       return (
         <>
@@ -120,8 +116,6 @@ app/products/page.tsx
   * 컴포넌트를 [**Cache**](https://nextjs.org/docs/app/glossary#cache-components)해 **안정적**으로 만든 뒤 페이지의 나머지와 함께 사전 렌더링합니다.
   * 컴포넌트를 [**Stream**](https://nextjs.org/docs/app/glossary#streaming)해 **논블로킹**으로 만들고 페이지의 나머지가 기다리지 않게 합니다.
 
-
-
 우리 사례에서는 제품 카탈로그가 모든 사용자에게 공유되므로 캐싱이 올바른 선택입니다.
 
 ### 캐시 컴포넌트[](https://nextjs.org/docs/app/guides/public-static-pages#cache-components)
@@ -132,16 +126,16 @@ app/products/page.tsx
 [code]
     import db from '@/db'
     import { List } from '@/app/products/ui'
-     
+
     function Header() {}
-     
+
     // Cache component
     async function ProductList() {
       'use cache'
       const products = await db.product.findMany()
       return <List items={products} />
     }
-     
+
     export default async function Page() {
       return (
         <>
@@ -163,7 +157,7 @@ app/products/page.tsx
     Route (app)      Revalidate  Expire
     ┌ ○ /products           15m      1y
     └ ○ /_not-found
-     
+
     ○  (Static)  prerendered as static content
 [/code]
 
@@ -178,17 +172,17 @@ app/products/page.tsx
     import db from '@/db'
     import { List, Promotion } from '@/app/products/ui'
     import { getPromotion } from '@/app/products/data'
-     
+
     function Header() {}
-     
+
     async function ProductList() {}
-     
+
     // Dynamic component
     async function PromotionContent() {
       const promotion = await getPromotion()
       return <Promotion data={promotion} />
     }
-     
+
     export default async function Page() {
       return (
         <>
@@ -216,17 +210,17 @@ app/products/page.tsx
     import db from '@/db'
     import { List, Promotion, PromotionSkeleton } from '@/app/products/ui'
     import { getPromotion } from '@/app/products/data'
-     
+
     function Header() {}
-     
+
     async function ProductList() {}
-     
+
     // Dynamic component (streamed)
     async function PromotionContent() {
       const promotion = await getPromotion()
       return <Promotion data={promotion} />
     }
-     
+
     export default async function Page() {
       return (
         <>
@@ -251,7 +245,7 @@ app/products/page.tsx
     Route (app)      Revalidate  Expire
     ┌ ◐ /products    15m      1y
     └ ◐ /_not-found
-     
+
     ◐  (Partial Prerender)  Prerendered as static HTML with dynamic server-streamed content
 [/code]
 
@@ -274,11 +268,5 @@ app/products/page.tsx
   * 사전 렌더링된 페이지나 캐시된 데이터를 재검증하는 방법.
   * 경로 매개변수로 동일한 페이지의 변형을 만드는 방법.
   * 개인화된 사용자 데이터를 사용하는 비공개 페이지를 만드는 방법.
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

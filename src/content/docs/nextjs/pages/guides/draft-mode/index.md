@@ -1,6 +1,6 @@
 ---
 title: '가이드: 드래프트 모드'
-description: '정적 생성은 페이지가 헤드리스 CMS에서 데이터를 가져올 때 유용합니다. 그러나 헤드리스 CMS에서 초안을 작성하면서 즉시 페이지에서 보고 싶다면 적합하지 않습니다. 이런 경우에는 Next.js가 빌드 시점이 아니라 요청 시점에 페이지를 렌더링하고, 게시본 대신 초안...'
+description: '정적 생성은 페이지가 헤드리스 CMS에서 데이터를 가져올 때 유용합니다. 그러나 헤드리스 CMS에서 초안을 작성하면서 즉시 페이지에서 보고 싶다면 적합하지 않습니다. 이런 경우에는 Next.js가 빌드 시점이 아니라 요청 시점에 페이지를 렌더링하고, 게시본 대신 초안 ...'
 ---
 
 # 가이드: 드래프트 모드 | Next.js
@@ -8,8 +8,6 @@ description: '정적 생성은 페이지가 헤드리스 CMS에서 데이터를 
 Source URL: https://nextjs.org/docs/pages/guides/draft-mode
 
 [페이지 라우터](https://nextjs.org/docs/pages)[가이드](https://nextjs.org/docs/pages/guides)드래프트 모드
-
-페이지 복사
 
 # Next.js에서 드래프트 모드로 콘텐츠 미리보기 방법
 
@@ -28,7 +26,7 @@ Next.js에는 이 문제를 해결하는 **드래프트 모드** 기능이 있�
 먼저 **API 경로**를 만듭니다. 이름은 자유롭게 정할 수 있습니다(예: `pages/api/draft.ts`).
 
 이 API 경로에서는 응답 객체에서 `setDraftMode`를 호출해야 합니다.
-[code] 
+[code]
     export default function handler(req, res) {
       // ...
       res.setDraftMode({ enable: true })
@@ -78,26 +76,26 @@ pages/api/draft.ts
   *   * `res.setDraftMode`를 호출합니다.
   * 그런 다음 브라우저를 `slug`에 지정된 경로로 리디렉션합니다(아래 예시는 [307 리디렉션](https://developer.mozilla.org/docs/Web/HTTP/Status/307)을 사용).
 
-[code] 
+[code]
     export default async (req, res) => {
       // Check the secret and next parameters
       // This secret should only be known to this API route and the CMS
       if (req.query.secret !== 'MY_SECRET_TOKEN' || !req.query.slug) {
         return res.status(401).json({ message: 'Invalid token' })
       }
-     
+
       // Fetch the headless CMS to check if the provided `slug` exists
       // getPostBySlug would implement the required fetching logic to the headless CMS
       const post = await getPostBySlug(req.query.slug)
-     
+
       // If the slug doesn't exist prevent draft mode from being enabled
       if (!post) {
         return res.status(401).json({ message: 'Invalid slug' })
       }
-     
+
       // Enable Draft Mode by setting the cookie
       res.setDraftMode({ enable: true })
-     
+
       // Redirect to the path from the fetched post
       // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
       res.redirect(post.slug)
@@ -113,7 +111,7 @@ pages/api/draft.ts
 `res.setDraftMode`로 쿠키가 설정된 상태에서 `getStaticProps`가 있는 페이지를 요청하면, `getStaticProps`는 빌드 시점이 아니라 **요청 시점**에 호출됩니다.
 
 또한 `context.draftMode`가 `true`인 `context` 객체와 함께 호출됩니다.
-[code] 
+[code]
     export async function getStaticProps(context) {
       if (context.draftMode) {
         // dynamic data
@@ -130,7 +128,7 @@ pages/api/draft.ts
 `context.draftMode`에 따라 다른 데이터를 가져오도록 `getStaticProps`를 업데이트할 수 있습니다.
 
 예를 들어 헤드리스 CMS가 드래프트 게시물용 다른 API 엔드포인트를 제공한다면 다음과 같이 엔드포인트 URL을 바꿀 수 있습니다:
-[code] 
+[code]
     export async function getStaticProps(context) {
       const url = context.draftMode
         ? 'https://draft.example.com'
@@ -175,7 +173,7 @@ pages/api/disable-draft.ts
 ### API Routes와 함께 작동[](https://nextjs.org/docs/pages/guides/draft-mode#works-with-api-routes)
 
 API Routes는 요청 객체에서 `draftMode`에 접근할 수 있습니다. 예:
-[code] 
+[code]
     export default function myApiRoute(req, res) {
       if (req.draftMode) {
         // get draft data
@@ -190,9 +188,5 @@ API Routes는 요청 객체에서 `draftMode`에 접근할 수 있습니다. 예
 이렇게 하면 바이패스 쿠키를 추측할 수 없습니다.
 
 > **알아두면 좋아요**: 로컬에서 HTTP로 드래프트 모드를 테스트하려면 브라우저가 타사 쿠키와 로컬 스토리지 접근을 허용해야 합니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

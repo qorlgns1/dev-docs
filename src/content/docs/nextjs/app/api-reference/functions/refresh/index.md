@@ -7,8 +7,6 @@ description: '는 서버 액션 내부에서 클라이언트 라우터를 새로
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/refresh
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)refresh
-
 Copy page
 
 # refresh
@@ -22,7 +20,7 @@ Copy page
 `refresh`는 **오직** 서버 액션 내부에서만 호출할 수 있습니다. 라우트 핸들러, 클라이언트 컴포넌트 또는 다른 어떤 컨텍스트에서도 사용할 수 없습니다.
 
 ## 매개변수[](https://nextjs.org/docs/app/api-reference/functions/refresh#parameters)
-[code] 
+[code]
     refresh(): void;
 [/code]
 
@@ -37,18 +35,18 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { refresh } from 'next/cache'
-     
+
     export async function createPost(formData: FormData) {
       const title = formData.get('title')
       const content = formData.get('content')
-     
+
       // Create the post in your database
       const post = await db.post.create({
         data: { title, content },
       })
-     
+
       refresh()
     }
 [/code]
@@ -60,14 +58,12 @@ app/api/posts/route.ts
 JavaScriptTypeScript
 [code]
     import { refresh } from 'next/cache'
-     
+
     export async function POST() {
       // This will throw an error
       refresh()
     }
 [/code]
-
-도움이 되었나요?
 
 supported.
 

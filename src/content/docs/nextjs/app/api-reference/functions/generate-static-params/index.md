@@ -7,10 +7,6 @@ description: '함수는 동적 라우트 세그먼트와 함께 사용해 요청
 
 출처 URL: https://nextjs.org/docs/app/api-reference/functions/generate-static-params
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)generateStaticParams
-
-페이지 복사
-
 # generateStaticParams
 
 마지막 업데이트: 2026년 2월 20일
@@ -23,8 +19,6 @@ description: '함수는 동적 라우트 세그먼트와 함께 사용해 요청
   * [Layouts](https://nextjs.org/docs/app/api-reference/file-conventions/layout) (`layout.tsx`/`layout.js`)
   * [Route Handlers](https://nextjs.org/docs/app/api-reference/file-conventions/route) (`route.ts`/`route.js`)
 
-
-
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
@@ -32,12 +26,12 @@ JavaScriptTypeScript
     // Return a list of `params` to populate the [slug] dynamic segment
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
-     
+
       return posts.map((post) => ({
         slug: post.slug,
       }))
     }
-     
+
     // Multiple versions of this page will be statically generated
     // using the `params` returned by `generateStaticParams`
     export default async function Page({
@@ -51,15 +45,14 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * [`dynamicParams`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams) 세그먼트 구성 옵션을 사용하면 `generateStaticParams`로 생성되지 않은 동적 세그먼트를 방문했을 때의 동작을 제어할 수 있습니다.
 >   * [런타임에서 경로를 재검증(ISR)](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#all-paths-at-runtime)하려면 [`generateStaticParams`에서 빈 배열을 반환](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#all-paths-at-build-time)하거나 [`export const dynamic = 'force-static'`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic)을 사용해야 합니다.
 >   * `next dev` 동안에는 라우트로 이동할 때 `generateStaticParams`가 호출됩니다.
 >   * `next build` 동안에는 해당 Layout 또는 Page가 생성되기 전에 `generateStaticParams`가 실행됩니다.
 >   * 재검증(ISR) 중에는 `generateStaticParams`가 다시 호출되지 않습니다.
 >   * `generateStaticParams`는 Pages Router의 [`getStaticPaths`](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths) 함수를 대체합니다.
-> 
-
+>
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#parameters)
 
@@ -76,14 +69,12 @@ JavaScriptTypeScript
   * 객체의 각 속성은 라우트에서 채워야 할 동적 세그먼트를 의미합니다.
   * 속성 이름은 세그먼트 이름이며, 속성 값은 해당 세그먼트에 채워 넣을 값입니다.
 
+Example Route| `generateStaticParams` 반환 타입
+---|---
+`/product/[id]`| `{ id: string }[]`
+`/products/[category]/[product]`| `{ category: string, product: string }[]`
+`/products/[...slug]`| `{ slug: string[] }[]`
 
-
-Example Route| `generateStaticParams` 반환 타입  
----|---  
-`/product/[id]`| `{ id: string }[]`  
-`/products/[category]/[product]`| `{ category: string, product: string }[]`  
-`/products/[...slug]`| `{ slug: string[] }[]`  
-  
 ## Single Dynamic Segment[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#single-dynamic-segment)
 
 app/product/[id]/page.tsx
@@ -93,7 +84,7 @@ JavaScriptTypeScript
     export function generateStaticParams() {
       return [{ id: '1' }, { id: '2' }, { id: '3' }]
     }
-     
+
     // Three versions of this page will be statically generated
     // using the `params` returned by `generateStaticParams`
     // - /product/1
@@ -122,7 +113,7 @@ JavaScriptTypeScript
         { category: 'c', product: '3' },
       ]
     }
-     
+
     // Three versions of this page will be statically generated
     // using the `params` returned by `generateStaticParams`
     // - /products/a/1
@@ -147,7 +138,7 @@ JavaScriptTypeScript
     export function generateStaticParams() {
       return [{ slug: ['a', '1'] }, { slug: ['b', '2'] }, { slug: ['c', '3'] }]
     }
-     
+
     // Three versions of this page will be statically generated
     // using the `params` returned by `generateStaticParams`
     // - /product/a/1
@@ -177,7 +168,7 @@ JavaScriptTypeScript
 [code]
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
-     
+
       return posts.map((post) => ({
         slug: post.slug,
       }))
@@ -194,7 +185,7 @@ JavaScriptTypeScript
 [code]
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
-     
+
       // Render the first 10 posts at build time
       return posts.slice(0, 10).map((post) => ({
         slug: post.slug,
@@ -210,11 +201,11 @@ JavaScriptTypeScript
 [code]
     // All posts besides the top 10 will be a 404
     export const dynamicParams = false
-     
+
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
       const topPosts = posts.slice(0, 10)
-     
+
       return topPosts.map((post) => ({
         slug: post.slug,
       }))
@@ -233,10 +224,9 @@ app/blog/[slug]/page.js
 [/code]
 
 > **알아두면 좋은 점:**
-> 
+>
 >   * 비어 있더라도 `generateStaticParams`에서 항상 배열을 반환해야 합니다. 그렇지 않으면 라우트가 동적으로 렌더링됩니다.
-> 
-
+>
 
 app/changelog/[slug]/page.js
 [code]
@@ -262,7 +252,7 @@ JavaScriptTypeScript
     export async function generateStaticParams() {
       return [{ id: '1' }, { id: '2' }, { id: '3' }]
     }
-     
+
     export async function GET(
       request: Request,
       { params }: RouteContext<'/api/posts/[id]'>
@@ -282,14 +272,14 @@ app/api/posts/[id]/route.ts
     export async function generateStaticParams() {
       return [{ id: '1' }, { id: '2' }, { id: '3' }]
     }
-     
+
     async function getPost(id: Promise<string>) {
       'use cache'
       const resolvedId = await id
       const response = await fetch(`https://api.example.com/posts/${resolvedId}`)
       return response.json()
     }
-     
+
     export async function GET(
       request: Request,
       { params }: RouteContext<'/api/posts/[id]'>
@@ -312,8 +302,6 @@ app/api/posts/[id]/route.ts
   * `app/products/[category]/[product]/page.js`에서 `[category]`와 `[product]` 두 세그먼트 모두의 파라미터를 생성할 수 있습니다.
   * `app/products/[category]/layout.js`에서는 `[category]`의 파라미터만 생성할 수 있습니다.
 
-
-
 동적 세그먼트가 여러 개인 라우트의 파라미터를 생성하는 방법은 두 가지가 있습니다:
 
 #### 하위에서 상위로 파라미터 생성[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#generate-params-from-the-bottom-up)
@@ -327,13 +315,13 @@ JavaScriptTypeScript
     // Generate segments for both [category] and [product]
     export async function generateStaticParams() {
       const products = await fetch('https://.../products').then((res) => res.json())
-     
+
       return products.map((product) => ({
         category: product.category.slug,
         product: product.id,
       }))
     }
-     
+
     export default function Page({
       params,
     }: {
@@ -354,12 +342,12 @@ JavaScriptTypeScript
     // Generate segments for [category]
     export async function generateStaticParams() {
       const products = await fetch('https://.../products').then((res) => res.json())
-     
+
       return products.map((product) => ({
         category: product.category.slug,
       }))
     }
-     
+
     export default function Layout({
       params,
     }: {
@@ -387,12 +375,12 @@ JavaScriptTypeScript
       const products = await fetch(
         `https://.../products?category=${category}`
       ).then((res) => res.json())
-     
+
       return products.map((product) => ({
         product: product.id,
       }))
     }
-     
+
     export default function Page({
       params,
     }: {
@@ -418,7 +406,7 @@ JavaScriptTypeScript
       const products = await fetch(
         `https://.../products?category=${category}`
       ).then((res) => res.json())
-     
+
       return products.map((product) => ({
         product: product.id,
       }))
@@ -429,12 +417,6 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#version-history)
 
-Version| Changes  
----|---  
-`v13.0.0`| `generateStaticParams` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+Version| Changes
+---|---
+`v13.0.0`| `generateStaticParams` 도입.

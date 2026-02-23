@@ -7,8 +7,6 @@ description: '실험적 옵션인 는 개발 및 프로덕션 빌드 출력을 �
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/isolatedDevBuild
 
-[Configuration](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)isolatedDevBuild
-
 Copy page
 
 # isolatedDevBuild
@@ -30,22 +28,22 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         isolatedDevBuild: false, // defaults to true
       },
     }
-     
+
     export default nextConfig
 [/code]
 
 ## Version History[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/isolatedDevBuild#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| `experimental.isolatedDevBuild`가 도입되었습니다.  
-  
+Version| Changes
+---|---
+`v16.0.0`| `experimental.isolatedDevBuild`가 도입되었습니다.
+
 Was this helpful?
 
 supported.

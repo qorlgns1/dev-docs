@@ -7,10 +7,6 @@ description: 'Next.js는 내장 CSS 지원을 위해 CSS를 PostCSS로 컴파일
 
 출처 URL: https://nextjs.org/docs/pages/guides/post-css
 
-[페이지 라우터](https://nextjs.org/docs/pages)[가이드](https://nextjs.org/docs/pages/guides)PostCSS
-
-페이지 복사
-
 # Next.js에서 PostCSS를 구성하는 방법
 
 마지막 업데이트: 2026년 2월 20일
@@ -33,7 +29,7 @@ Next.js는 [내장 CSS 지원](https://nextjs.org/docs/app/getting-started/css)�
 기본적으로 [CSS Grid](https://www.w3.org/TR/css-grid-1/)와 [사용자 정의 속성](https://developer.mozilla.org/docs/Web/CSS/var)(CSS 변수)은 IE11 지원을 위해 **컴파일되지 않습니다**.
 
 [CSS Grid Layout](https://developer.mozilla.org/docs/Web/CSS/grid)을 IE11용으로 컴파일하려면 CSS 파일 상단에 다음 주석을 추가하세요.
-[code] 
+[code]
     /* autoprefixer grid: autoplace */
 [/code]
 
@@ -150,7 +146,7 @@ postcss.config.js
 PostCSS 플러그인을 가져올 때는 **`require()`를 사용하지 마세요**. 플러그인은 문자열로 제공해야 합니다.
 
 > **알아두면 좋아요** : 동일한 프로젝트에서 `postcss.config.js`가 다른 비-Next.js 도구도 지원해야 한다면, 다음과 같이 상호 운용 가능한 객체 기반 형식을 사용해야 합니다.
-[code] 
+[code]
 >     module.exports = {
 >       plugins: {
 >         'postcss-flexbugs-fixes': {},
@@ -166,9 +162,5 @@ PostCSS 플러그인을 가져올 때는 **`require()`를 사용하지 마세요
 >       },
 >     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

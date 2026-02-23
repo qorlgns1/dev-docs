@@ -1,15 +1,11 @@
 ---
 title: '가이드: MDX'
-description: 'Next.js는 애플리케이션 내부의 로컬 MDX 콘텐츠는 물론, 서버에서 동적으로 가져온 원격 MDX 파일도 지원합니다. Next.js 플러그인은 마크다운과 React 컴포넌트를 HTML로 변환하며, App Router에서 기본인 서버 컴포넌트에서도 사용할 수 있도록...'
+description: 'Next.js는 애플리케이션 내부의 로컬 MDX 콘텐츠는 물론, 서버에서 동적으로 가져온 원격 MDX 파일도 지원합니다. Next.js 플러그인은 마크다운과 React 컴포넌트를 HTML로 변환하며, App Router에서 기본인 서버 컴포넌트에서도 사용할 수 있도록 ...'
 ---
 
 # 가이드: MDX | Next.js
 
 소스 URL: https://nextjs.org/docs/app/guides/mdx
-
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)MDX
-
-페이지 복사
 
 # Next.js에서 마크다운과 MDX를 사용하는 방법
 
@@ -18,12 +14,12 @@ description: 'Next.js는 애플리케이션 내부의 로컬 MDX 콘텐츠는 �
 [Markdown](https://daringfireball.net/projects/markdown/syntax)은 텍스트 서식을 지정할 수 있는 경량 마크업 언어입니다. 일반 텍스트 문법으로 작성한 뒤 구조적으로 유효한 HTML로 변환할 수 있으며, 웹사이트나 블로그의 콘텐츠 작성에 자주 쓰입니다.
 
 You write...
-[code] 
+[code]
     I **love** using [Next.js](https://nextjs.org/)
 [/code]
 
 출력:
-[code] 
+[code]
     <p>I <strong>love</strong> using <a href="https://nextjs.org/">Next.js</a></p>
 [/code]
 
@@ -53,18 +49,18 @@ Terminal
 next.config.mjs
 [code]
     import createMDX from '@next/mdx'
-     
+
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       // Configure `pageExtensions` to include markdown and MDX files
       pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
       // Optionally, add any other Next.js config below
     }
-     
+
     const withMDX = createMDX({
       // Add markdown plugins here, as desired
     })
-     
+
     // Merge MDX config with Next.js config
     export default withMDX(nextConfig)
 [/code]
@@ -91,20 +87,20 @@ mdx-components.tsx
 JavaScriptTypeScript
 [code]
     import type { MDXComponents } from 'mdx/types'
-     
+
     const components: MDXComponents = {}
-     
+
     export function useMDXComponents(): MDXComponents {
       return components
     }
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * App Router에서 `@next/mdx`를 사용하려면 `mdx-components.tsx`가 **필수**이며, 없으면 작동하지 않습니다.
 >   * [`mdx-components.tsx` 파일 컨벤션](https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components)에 대해 자세히 알아보세요.
 >   * [사용자 정의 스타일과 컴포넌트를 사용하는 방법](https://nextjs.org/docs/app/guides/mdx#using-custom-styles-and-components)을 살펴보세요.
-> 
+>
 
 ## MDX 렌더링[](https://nextjs.org/docs/app/guides/mdx#rendering-mdx)
 
@@ -127,21 +123,21 @@ App Router 앱에서는 [메타데이터](https://nextjs.org/docs/app/getting-st
 [/code]
 
 이 파일들에서 MDX를 사용할 수 있으며, MDX 페이지 안에서 React 컴포넌트를 직접 import할 수도 있습니다:
-[code] 
+[code]
     import { MyComponent } from 'my-component'
-     
+
     # Welcome to my MDX page!
-     
+
     This is some **bold** and _italics_ text.
-     
+
     This is a list in markdown:
-     
+
     - One
     - Two
     - Three
-     
+
     Checkout my React component:
-     
+
     <MyComponent />
 [/code]
 
@@ -170,7 +166,7 @@ app/mdx-page/page.tsx
 JavaScriptTypeScript
 [code]
     import Welcome from '@/markdown/welcome.mdx'
-     
+
     export default function Page() {
       return <Welcome />
     }
@@ -197,14 +193,14 @@ JavaScriptTypeScript
     }) {
       const { slug } = await params
       const { default: Post } = await import(`@/content/${slug}.mdx`)
-     
+
       return <Post />
     }
-     
+
     export function generateStaticParams() {
       return [{ slug: 'welcome' }, { slug: 'about' }]
     }
-     
+
     export const dynamicParams = false
 [/code]
 
@@ -213,22 +209,22 @@ JavaScriptTypeScript
 ## 사용자 정의 스타일과 컴포넌트 사용[](https://nextjs.org/docs/app/guides/mdx#using-custom-styles-and-components)
 
 마크다운이 렌더링되면 기본 HTML 요소에 매핑됩니다. 예를 들어, 다음 마크다운을 작성하면:
-[code] 
+[code]
     ## This is a heading
-     
+
     This is a list in markdown:
-     
+
     - One
     - Two
     - Three
 [/code]
 
 다음 HTML이 생성됩니다:
-[code] 
+[code]
     <h2>This is a heading</h2>
-     
+
     <p>This is a list in markdown:</p>
-     
+
     <ul>
       <li>One</li>
       <li>Two</li>
@@ -248,12 +244,12 @@ JavaScriptTypeScript
 [code]
     import type { MDXComponents } from 'mdx/types'
     import Image, { ImageProps } from 'next/image'
-     
+
     // This file allows you to provide custom React components
     // to be used in MDX files. You can import and use any
     // React component you want, including inline styles,
     // components from other libraries, and more.
-     
+
     const components = {
       // Allows customizing built-in components, e.g. to add styling.
       h1: ({ children }) => (
@@ -267,7 +263,7 @@ JavaScriptTypeScript
         />
       ),
     } satisfies MDXComponents
-     
+
     export function useMDXComponents(): MDXComponents {
       return components
     }
@@ -282,15 +278,15 @@ app/mdx-page/page.tsx
 JavaScriptTypeScript
 [code]
     import Welcome from '@/markdown/welcome.mdx'
-     
+
     function CustomH1({ children }) {
       return <h1 style={{ color: 'blue', fontSize: '100px' }}>{children}</h1>
     }
-     
+
     const overrideComponents = {
       h1: CustomH1,
     }
-     
+
     export default function Page() {
       return <Welcome components={overrideComponents} />
     }
@@ -341,8 +337,6 @@ JavaScriptTypeScript
 * [remark-mdx-frontmatter](https://github.com/remcohaszing/remark-mdx-frontmatter)
   * [gray-matter](https://github.com/jonschlinkert/gray-matter)
 
-
-
 `@next/mdx`는 다른 JavaScript 컴포넌트와 동일하게 export를 사용할 수 있도록 **지원합니다**:
 
 이제 MDX 파일 바깥에서도 메타데이터를 참조할 수 있습니다:
@@ -352,7 +346,7 @@ app/blog/page.tsx
 JavaScriptTypeScript
 [code]
     import BlogPost, { metadata } from '@/content/blog-post.mdx'
-     
+
     export default function Page() {
       console.log('metadata: ', metadata)
       //=> { author: 'John Doe' }
@@ -363,11 +357,10 @@ JavaScriptTypeScript
 이는 MDX 모음에서 반복 처리하며 데이터를 추출하고 싶을 때 흔히 사용됩니다. 예를 들어 모든 블로그 게시글에서 블로그 인덱스 페이지를 만드는 경우입니다. [Node의 `fs` 모듈](https://nodejs.org/api/fs.html)이나 [globby](https://www.npmjs.com/package/globby) 같은 패키지를 사용해 게시글 디렉터리를 읽고 메타데이터를 추출할 수 있습니다.
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `fs`, `globby` 등은 서버 측에서만 사용할 수 있습니다.
 >   * 완전한 작동 예시는 [Portfolio Starter Kit](https://vercel.com/templates/next.js/portfolio-starter-kit) 템플릿을 참고하세요.
-> 
-
+>
 
 ## remark 및 rehype 플러그인[](https://nextjs.org/docs/app/guides/mdx#remark-and-rehype-plugins)
 
@@ -381,14 +374,14 @@ next.config.mjs
 [code]
     import remarkGfm from 'remark-gfm'
     import createMDX from '@next/mdx'
-     
+
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       // Allow .mdx extensions for files
       pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
       // Optionally, add any other Next.js config below
     }
-     
+
     const withMDX = createMDX({
       // Add markdown plugins here, as desired
       options: {
@@ -396,7 +389,7 @@ next.config.mjs
         rehypePlugins: [],
       },
     })
-     
+
     // Combine MDX and Next.js config
     export default withMDX(nextConfig)
 [/code]
@@ -408,12 +401,12 @@ next.config.mjs
 next.config.mjs
 [code]
     import createMDX from '@next/mdx'
-     
+
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
     }
-     
+
     const withMDX = createMDX({
       options: {
         remarkPlugins: [
@@ -430,29 +423,29 @@ next.config.mjs
         ],
       },
     })
-     
+
     export default withMDX(nextConfig)
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 > 직렬화 가능한 옵션이 없는 remark와 rehype 플러그인은 JavaScript 함수를 Rust로 전달할 수 없기 때문에 아직 [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack)에서 사용할 수 없습니다.
-> 
+>
 
 ## 심층 탐구: 마크다운을 HTML로 어떻게 변환하나요?[](https://nextjs.org/docs/app/guides/mdx#deep-dive-how-do-you-transform-markdown-into-html)
 
 React는 기본적으로 마크다운을 이해하지 못합니다. 마크다운 평문은 먼저 HTML로 변환되어야 합니다. 이는 `remark`와 `rehype`로 수행할 수 있습니다.
 
 `remark`는 마크다운을 중심으로 한 도구 생태계이며, `rehype`는 HTML을 위한 동일한 개념입니다. 예를 들어 다음 코드 스니펫은 마크다운을 HTML로 변환합니다:
-[code] 
+[code]
     import { unified } from 'unified'
     import remarkParse from 'remark-parse'
     import remarkRehype from 'remark-rehype'
     import rehypeSanitize from 'rehype-sanitize'
     import rehypeStringify from 'rehype-stringify'
-     
+
     main()
-     
+
     async function main() {
       const file = await unified()
         .use(remarkParse) // Convert into markdown AST
@@ -460,7 +453,7 @@ React는 기본적으로 마크다운을 이해하지 못합니다. 마크다운
         .use(rehypeSanitize) // Sanitize HTML input
         .use(rehypeStringify) // Convert AST into serialized HTML
         .process('Hello, Next.js!')
-     
+
       console.log(String(file)) // <p>Hello, Next.js!</p>
     }
 [/code]
@@ -504,11 +497,5 @@ next.config.js
   * [remark](https://github.com/remarkjs/remark)
   * [rehype](https://github.com/rehypejs/rehype)
   * [Markdoc](https://markdoc.dev/docs/nextjs)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

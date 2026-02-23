@@ -7,10 +7,6 @@ description: 'Next.js  컴포넌트는 HTML  요소를 확장해 다음을 제�
 
 Source URL: https://nextjs.org/docs/pages/getting-started/images
 
-[Pages Router](https://nextjs.org/docs/pages)[Getting Started](https://nextjs.org/docs/pages/getting-started)Images
-
-페이지 복사
-
 # 이미지 최적화
 
 마지막 업데이트 2026년 2월 20일
@@ -29,7 +25,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return <Image src="" alt="" />
     }
@@ -48,7 +44,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return (
         <Image
@@ -69,7 +65,7 @@ JavaScriptTypeScript
 [code]
     import Image from 'next/image'
     import ProfileImage from './profile.png'
-     
+
     export default function Page() {
       return (
         <Image
@@ -93,7 +89,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return (
         <Image
@@ -115,7 +111,7 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const config: NextConfig = {
       images: {
         remotePatterns: [
@@ -129,7 +125,7 @@ JavaScriptTypeScript
         ],
       },
     }
-     
+
     export default config
 [/code]
 
@@ -137,10 +133,5 @@ JavaScriptTypeScript
 
 Next.js Image의 전체 기능 세트는 API 레퍼런스에서 확인하세요.
 
-### [ImageNext.js 애플리케이션에서 기본 제공 `next/image` 컴포넌트로 이미지를 최적화하세요.](https://nextjs.org/docs/pages/api-reference/components/image)
-
-도움이 되었나요?
-
-지원됨.
-
-전송
+- [이미지](https://nextjs.org/docs/pages/api-reference/components/image)
+  - ImageNext.js 애플리케이션에서 기본 제공 `next/image` 컴포넌트로 이미지를 최적화하세요.

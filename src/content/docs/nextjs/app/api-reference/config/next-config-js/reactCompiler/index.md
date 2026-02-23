@@ -7,8 +7,6 @@ description: 'Next.js는 컴포넌트 렌더링을 자동으로 최적화해 성
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)reactCompiler
-
 Copy page
 
 # reactCompiler
@@ -41,11 +39,11 @@ next.config.ts
 JavaScript TypeScript
 ```ts
 import type { NextConfig } from 'next'
- 
+
 const nextConfig: NextConfig = {
   reactCompiler: true,
 }
- 
+
 export default nextConfig
 ```
 
@@ -58,13 +56,13 @@ next.config.ts
 JavaScript TypeScript
 ```ts
 import type { NextConfig } from 'next'
- 
+
 const nextConfig: NextConfig = {
   reactCompiler: {
     compilationMode: 'annotation',
   },
 }
- 
+
 export default nextConfig
 ```
 

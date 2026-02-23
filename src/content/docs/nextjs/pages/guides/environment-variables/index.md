@@ -20,8 +20,6 @@ Next.js는 환경 변수를 위한 기본 제공 지원을 제공하며, 다음 
   * [`.env`로 환경 변수 로드](https://nextjs.org/docs/pages/guides/environment-variables#loading-environment-variables)
   * [`NEXT_PUBLIC_` 접두사를 사용해 브라우저용으로 환경 변수 번들링](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser)
 
-
-
 > **Warning:** 기본 `create-next-app` 템플릿은 모든 `.env` 파일이 `.gitignore`에 추가되도록 합니다. 이러한 파일을 저장소에 커밋해야 하는 경우는 거의 없습니다.
 
 ## 환경 변수 로드[](https://nextjs.org/docs/pages/guides/environment-variables#loading-environment-variables)
@@ -71,7 +69,7 @@ envConfig.ts
 JavaScriptTypeScript
 [code]
     import { loadEnvConfig } from '@next/env'
-     
+
     const projectDir = process.cwd()
     loadEnvConfig(projectDir)
 [/code]
@@ -83,7 +81,7 @@ orm.config.ts
 JavaScriptTypeScript
 [code]
     import './envConfig.ts'
-     
+
     export default defineConfig({
       dbCredentials: {
         connectionString: process.env.DATABASE_URL!,
@@ -123,24 +121,24 @@ Next.js는 `.env*` 파일 안에서 `$VARIABLE`처럼 `$`를 사용해 다른 �
 pages/index.js
 [code]
     import setupAnalyticsService from '../lib/my-analytics-service'
-     
+
     // 'NEXT_PUBLIC_ANALYTICS_ID' can be used here as it's prefixed by 'NEXT_PUBLIC_'.
     // It will be transformed at build time to `setupAnalyticsService('abcdefghijk')`.
     setupAnalyticsService(process.env.NEXT_PUBLIC_ANALYTICS_ID)
-     
+
     function HomePage() {
       return <h1>Hello World</h1>
     }
-     
+
     export default HomePage
 [/code]
 
 다음과 같은 동적 조회는 인라인되지 않습니다.
-[code] 
+[code]
     // This will NOT be inlined, because it uses a variable
     const varName = 'NEXT_PUBLIC_ANALYTICS_ID'
     setupAnalyticsService(process.env[varName])
-     
+
     // This will NOT be inlined, because it uses a variable
     const env = process.env
     setupAnalyticsService(env.NEXT_PUBLIC_ANALYTICS_ID)
@@ -160,8 +158,6 @@ Next.js는 빌드 타임과 런타임 환경 변수를 모두 지원합니다.
 
   * [`register` 함수](https://nextjs.org/docs/app/guides/instrumentation)를 사용해 서버 시작 시 코드를 실행할 수 있습니다.
 
-
-
 ## 테스트 환경 변수[](https://nextjs.org/docs/pages/guides/environment-variables#test-environment-variables)
 
 `development`, `production` 외에 `test`라는 세 번째 옵션이 있습니다. 개발 또는 프로덕션 환경에서 기본값을 지정할 수 있는 것과 동일하게 `testing` 환경용 `.env.test` 파일을 사용할 수 있습니다(다만 앞선 두 환경만큼 흔하지는 않습니다). Next.js는 `testing` 환경에서 `.env.development` 또는 `.env.production`의 환경 변수를 로드하지 않습니다.
@@ -173,10 +169,10 @@ Next.js는 빌드 타임과 런타임 환경 변수를 모두 지원합니다.
 > **Good to know** : 기본 환경 변수와 마찬가지로 `.env.test` 파일은 저장소에 포함해야 하지만 `.env.test.local`은 포함하지 말아야 합니다. `.env*.local`은 `.gitignore`로 무시하도록 설계되었기 때문입니다.
 
 유닛 테스트를 실행하는 동안에도 `@next/env` 패키지의 `loadEnvConfig` 함수를 활용하여 Next.js와 동일한 방식으로 환경 변수를 로드할 수 있습니다.
-[code] 
+[code]
     // The below can be used in a Jest global setup file or similar for your testing set-up
     import { loadEnvConfig } from '@next/env'
-     
+
     export default async () => {
       const projectDir = process.cwd()
       loadEnvConfig(projectDir)
@@ -193,8 +189,6 @@ Next.js는 빌드 타임과 런타임 환경 변수를 모두 지원합니다.
   4. `.env.$(NODE_ENV)`
   5. `.env`
 
-
-
 예를 들어 `NODE_ENV`가 `development`이고 `.env.development.local`과 `.env` 모두에 변수를 정의했다면 `.env.development.local` 값을 사용합니다.
 
 > **Good to know** : `NODE_ENV`에 허용되는 값은 `production`, `development`, `test`입니다.
@@ -204,14 +198,12 @@ Next.js는 빌드 타임과 런타임 환경 변수를 모두 지원합니다.
   * [`/src` 디렉터리](https://nextjs.org/docs/app/api-reference/file-conventions/src-folder)를 사용한다면 `.env.*` 파일은 프로젝트 루트에 그대로 보관해야 합니다.
   * 환경 변수 `NODE_ENV`가 지정되지 않은 경우, Next.js는 `next dev` 명령 실행 시 자동으로 `development`를, 그 외 모든 명령에는 `production`을 설정합니다.
 
-
-
 ## 버전 기록[](https://nextjs.org/docs/pages/guides/environment-variables#version-history)
 
-Version| Changes  
----|---  
-`v9.4.0`| `.env`와 `NEXT_PUBLIC_` 지원이 도입됨.  
-  
+Version| Changes
+---|---
+`v9.4.0`| `.env`와 `NEXT_PUBLIC_` 지원이 도입됨.
+
 Was this helpful?
 
 supported.

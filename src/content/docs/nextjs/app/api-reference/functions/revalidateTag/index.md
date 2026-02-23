@@ -7,10 +7,6 @@ description: '는 특정 캐시 태그에 대해 캐시된 데이터를 온디�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/functions/revalidateTag
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)revalidateTag
-
-페이지 복사
-
 # revalidateTag
 
 최종 업데이트 2026년 2월 20일
@@ -36,7 +32,7 @@ description: '는 특정 캐시 태그에 대해 캐시된 데이터를 온디�
 > **유용한 정보**: `profile="max"`를 사용할 때 `revalidateTag`는 태그가 지정된 데이터를 오래된 것으로 표시하지만, 해당 태그를 사용하는 페이지가 다음에 방문될 때만 새 데이터를 가져옵니다. 즉, `revalidateTag`를 호출한다고 해서 즉시 많은 재검증이 일어나지 않고, 해당 태그를 사용하는 페이지가 다음에 방문될 때 무효화가 발생합니다.
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/revalidateTag#parameters)
-[code] 
+[code]
     revalidateTag(tag: string, profile: string | { expire?: number }): void;
 [/code]
 
@@ -47,15 +43,15 @@ description: '는 특정 캐시 태그에 대해 캐시된 데이터를 온디�
 
   * 외부 API 요청을 캐시하기 위해 `fetch`의 [`next.tags`](https://nextjs.org/docs/app/guides/caching#fetch-optionsnexttags-and-revalidatetag) 옵션 사용:
 
-[code] 
+[code]
     fetch(url, { next: { tags: ['posts'] } })
 [/code]
 
   * `'use cache'` 지시문과 함께 캐시된 함수나 컴포넌트 내부에서 [`cacheTag`](https://nextjs.org/docs/app/api-reference/functions/cacheTag) 사용:
 
-[code] 
+[code]
     import { cacheTag } from 'next/cache'
-     
+
     async function getData() {
       'use cache'
       cacheTag('posts')
@@ -86,9 +82,9 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { revalidateTag } from 'next/cache'
-     
+
     export default async function submit() {
       await addPost()
       revalidateTag('posts', 'max')
@@ -103,15 +99,15 @@ JavaScriptTypeScript
 [code]
     import type { NextRequest } from 'next/server'
     import { revalidateTag } from 'next/cache'
-     
+
     export async function GET(request: NextRequest) {
       const tag = request.nextUrl.searchParams.get('tag')
-     
+
       if (tag) {
         revalidateTag(tag, 'max')
         return Response.json({ revalidated: true, now: Date.now() })
       }
-     
+
       return Response.json({
         revalidated: false,
         now: Date.now(),
@@ -121,9 +117,3 @@ JavaScriptTypeScript
 [/code]
 
 > **유용한 정보**: 즉시 만료가 필요한 웹훅이나 서드파티 서비스에는 두 번째 인자로 `{ expire: 0 }`을 전달해 `revalidateTag(tag, { expire: 0 })`를 사용할 수 있습니다. 외부 시스템이 라우트 핸들러를 호출하고 데이터를 즉시 만료시켜야 할 때 필요한 패턴입니다. 그 밖의 대부분 상황에서는 즉각적인 업데이트를 위해 서버 액션에서 [`updateTag`](https://nextjs.org/docs/app/api-reference/functions/updateTag)를 사용하는 것이 좋습니다.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

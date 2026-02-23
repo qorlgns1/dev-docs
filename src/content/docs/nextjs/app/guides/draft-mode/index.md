@@ -9,8 +9,6 @@ description: '이 문서는 Draft Mode를 활성화하고 사용하는 방법을
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)Draft Mode
 
-페이지 복사
-
 # Next.js에서 Draft Mode로 콘텐츠 미리 보는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -39,7 +37,7 @@ app/api/draft/route.ts
 JavaScriptTypeScript
 [code]
     import { draftMode } from 'next/headers'
-     
+
     export async function GET(request: Request) {
       const draft = await draftMode()
       draft.enable()
@@ -60,8 +58,6 @@ JavaScriptTypeScript
   1. 원하는 토큰 생성기를 사용해 **비밀 토큰 문자열**을 만듭니다. 이 비밀 값은 Next.js 앱과 헤드리스 CMS만 알고 있어야 합니다.
   2. 헤드리스 CMS가 사용자 지정 초안 URL을 지원한다면 초안 URL을 지정합니다(여기서는 Route Handler가 `app/api/draft/route.ts`에 있다고 가정). 예시는 다음과 같습니다.
 
-
-
 Terminal
 [code]
     https://<your-site>/api/draft?secret=<token>&slug=<path>
@@ -70,14 +66,12 @@ Terminal
 >   * `<your-site>`에는 배포 도메인을 입력합니다.
 >   * `<token>`에는 생성한 비밀 토큰을 넣습니다.
 >   * `<path>`에는 확인하려는 페이지의 경로를 넣습니다. 예를 들어 `/posts/one`을 보고 싶다면 `&slug=/posts/one`을 사용합니다.
-> 
+>
 
-> 
+>
 > 일부 헤드리스 CMS는 `<path>`를 CMS 데이터에 따라 동적으로 설정할 수 있도록 초안 URL에 변수를 포함하는 기능을 제공합니다. 예: `&slug=/posts/{entry.fields.slug}`
 
   3. Route Handler에서 비밀 값이 일치하는지, `slug` 매개변수가 존재하는지 확인하고(없으면 요청을 실패시켜야 합니다) `draftMode.enable()`을 호출해 쿠키를 설정한 뒤, `slug`로 지정된 경로로 브라우저를 리디렉션합니다:
-
-
 
 app/api/draft/route.ts
 
@@ -85,32 +79,32 @@ JavaScriptTypeScript
 [code]
     import { draftMode } from 'next/headers'
     import { redirect } from 'next/navigation'
-     
+
     export async function GET(request: Request) {
       // Parse query string parameters
       const { searchParams } = new URL(request.url)
       const secret = searchParams.get('secret')
       const slug = searchParams.get('slug')
-     
+
       // Check the secret and next parameters
       // This secret should only be known to this Route Handler and the CMS
       if (secret !== 'MY_SECRET_TOKEN' || !slug) {
         return new Response('Invalid token', { status: 401 })
       }
-     
+
       // Fetch the headless CMS to check if the provided `slug` exists
       // getPostBySlug would implement the required fetching logic to the headless CMS
       const post = await getPostBySlug(slug)
-     
+
       // If the slug doesn't exist prevent draft mode from being enabled
       if (!post) {
         return new Response('Invalid slug', { status: 401 })
       }
-     
+
       // Enable Draft Mode by setting the cookie
       const draft = await draftMode()
       draft.enable()
-     
+
       // Redirect to the path from the fetched post
       // We don't redirect to searchParams.slug as that might lead to open redirect vulnerabilities
       redirect(post.slug)
@@ -133,22 +127,22 @@ JavaScriptTypeScript
 [code]
     // page that fetches data
     import { draftMode } from 'next/headers'
-     
+
     async function getData() {
       const { isEnabled } = await draftMode()
-     
+
       const url = isEnabled
         ? 'https://draft.example.com'
         : 'https://production.example.com'
-     
+
       const res = await fetch(url)
-     
+
       return res.json()
     }
-     
+
     export default async function Page() {
       const { title, desc } = await getData()
-     
+
       return (
         <main>
           <h1>{title}</h1>
@@ -164,10 +158,7 @@ JavaScriptTypeScript
 
 Draft Mode 사용 방법에 대한 추가 정보는 API 레퍼런스를 참고하세요.
 
-### [draftMode함수의 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/functions/draft-mode)
-
-도움이 되었나요?
-
-지원됨.
+- [draftMode](https://nextjs.org/docs/app/api-reference/functions/draft-mode)
+  - 함수의 API 레퍼런스.
 
 보내기

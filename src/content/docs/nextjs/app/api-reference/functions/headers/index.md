@@ -7,8 +7,6 @@ description: '는 Server Component에서 들어오는 HTTP 요청 헤더를 읽�
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/headers
 
-[API 레퍼런스](https://nextjs.org/docs/app/api-reference)[함수](https://nextjs.org/docs/app/api-reference/functions)headers
-
 Copy page
 
 # headers
@@ -22,7 +20,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { headers } from 'next/headers'
-     
+
     export default async function Page() {
       const headersList = await headers()
       const userAgent = headersList.get('user-agent')
@@ -46,16 +44,12 @@ JavaScriptTypeScript
   * [`Headers.keys()`](https://developer.mozilla.org/docs/Web/API/Headers/keys): 이 객체에 포함된 키/값 쌍의 모든 키를 순회할 수 있는 [`iterator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Iteration_protocols)를 반환합니다.
   * [`Headers.values()`](https://developer.mozilla.org/docs/Web/API/Headers/values): 이 객체에 포함된 키/값 쌍의 모든 값을 순회할 수 있는 [`iterator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Iteration_protocols)를 반환합니다.
 
-
-
 ## 알아두기[](https://nextjs.org/docs/app/api-reference/functions/headers#good-to-know)
 
   * `headers`는 **비동기** 함수이며 promise를 반환합니다. `async/await` 또는 React의 [`use`](https://react.dev/reference/react/use) 함수를 사용해야 합니다.
     * 14 이전 버전에서는 `headers`가 동기 함수였습니다. 하위 호환을 위해 Next.js 15에서도 동기적으로 접근할 수 있지만, 이 동작은 앞으로 사용 중단될 예정입니다.
   * `headers`는 읽기 전용이므로 나가는 요청 헤더에 대해 `set`이나 `delete`를 사용할 수 없습니다.
   * `headers`는 반환값을 사전에 알 수 없는 [동적 API](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)입니다. 이를 사용하면 해당 라우트는 **[동적 렌더링](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)**을 선택하게 됩니다.
-
-
 
 ## 예시[](https://nextjs.org/docs/app/api-reference/functions/headers#examples)
 
@@ -64,26 +58,24 @@ JavaScriptTypeScript
 app/page.js
 [code]
     import { headers } from 'next/headers'
-     
+
     export default async function Page() {
       const authorization = (await headers()).get('authorization')
       const res = await fetch('...', {
         headers: { authorization }, // Forward the authorization header
       })
       const user = await res.json()
-     
+
       return <h1>{user.name}</h1>
     }
 [/code]
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/headers#version-history)
 
-Version| Changes  
----|---  
-`v15.0.0-RC`| `headers`가 이제 비동기 함수입니다. [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150)를 사용할 수 있습니다.  
-`v13.0.0`| `headers` 도입.  
-  
-도움이 되었나요?
+Version| Changes
+---|---
+`v15.0.0-RC`| `headers`가 이제 비동기 함수입니다. [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150)를 사용할 수 있습니다.
+`v13.0.0`| `headers` 도입.
 
 supported.
 

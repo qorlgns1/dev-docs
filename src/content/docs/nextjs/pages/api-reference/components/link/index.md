@@ -7,10 +7,6 @@ description: '은 HTML  요소를 확장하여 prefetching과 라우트 간 클�
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/components/link
 
-[API Reference](https://nextjs.org/docs/pages/api-reference)[Components](https://nextjs.org/docs/pages/api-reference/components)Link
-
-페이지 복사
-
 # Link
 
 마지막 업데이트: 2026년 2월 20일
@@ -24,7 +20,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Home() {
       return <Link href="/dashboard">Dashboard</Link>
     }
@@ -34,17 +30,17 @@ JavaScriptTypeScript
 
 다음 프로퍼티를 `<Link>` 컴포넌트에 전달할 수 있습니다.
 
-Prop| Example| Type| Required  
----|---|---|---  
-[`href`](https://nextjs.org/docs/pages/api-reference/components/link#href-required)| `href="/dashboard"`| String or Object| Yes  
-[`as`](https://nextjs.org/docs/pages/api-reference/components/link#as)| `as="/post/abc"`| String or Object| -  
-[`replace`](https://nextjs.org/docs/pages/api-reference/components/link#replace)| `replace={false}`| Boolean| -  
-[`scroll`](https://nextjs.org/docs/pages/api-reference/components/link#scroll)| `scroll={false}`| Boolean| -  
-[`prefetch`](https://nextjs.org/docs/pages/api-reference/components/link#prefetch)| `prefetch={false}`| Boolean| -  
-[`shallow`](https://nextjs.org/docs/pages/api-reference/components/link#shallow)| `shallow={false}`| Boolean| -  
-[`locale`](https://nextjs.org/docs/pages/api-reference/components/link#locale)| `locale="fr"`| String or Boolean| -  
-[`onNavigate`](https://nextjs.org/docs/pages/api-reference/components/link#onnavigate)| `onNavigate={(e) => {}}`| Function| -  
-  
+Prop| Example| Type| Required
+---|---|---|---
+[`href`](https://nextjs.org/docs/pages/api-reference/components/link#href-required)| `href="/dashboard"`| String or Object| Yes
+[`as`](https://nextjs.org/docs/pages/api-reference/components/link#as)| `as="/post/abc"`| String or Object| -
+[`replace`](https://nextjs.org/docs/pages/api-reference/components/link#replace)| `replace={false}`| Boolean| -
+[`scroll`](https://nextjs.org/docs/pages/api-reference/components/link#scroll)| `scroll={false}`| Boolean| -
+[`prefetch`](https://nextjs.org/docs/pages/api-reference/components/link#prefetch)| `prefetch={false}`| Boolean| -
+[`shallow`](https://nextjs.org/docs/pages/api-reference/components/link#shallow)| `shallow={false}`| Boolean| -
+[`locale`](https://nextjs.org/docs/pages/api-reference/components/link#locale)| `locale="fr"`| String or Boolean| -
+[`onNavigate`](https://nextjs.org/docs/pages/api-reference/components/link#onnavigate)| `onNavigate={(e) => {}}`| Function| -
+
 > **알아두면 좋은 사항** : `className` 또는 `target="_blank"`와 같은 `<a>` 태그 속성을 `<Link>`에 프로퍼티로 추가하면 기본 `<a>` 요소로 전달됩니다.
 
 ### `href` (required)[](https://nextjs.org/docs/pages/api-reference/components/link#href-required)
@@ -56,7 +52,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     // Navigate to /about?name=test
     export default function Home() {
       return (
@@ -81,7 +77,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Home() {
       return (
         <Link href="/dashboard" replace>
@@ -104,7 +100,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Home() {
       return (
         <Link href="/dashboard" scroll={false}>
@@ -123,14 +119,12 @@ JavaScriptTypeScript
   * **`true` (default)**: 라우트 전체와 해당 데이터가 프리패칭됩니다.
   * `false`: 뷰포트에 진입할 때는 프리패칭하지 않지만, 호버 시에는 진행됩니다. 호버 시에도 완전히 비활성화하려면 `<a>` 태그를 사용하거나 프리패칭을 호버에서도 끌 수 있는 App Router를 [점진적으로 도입](https://nextjs.org/docs/app/guides/migrating/app-router-migration)하는 것을 고려하세요.
 
-
-
 pages/index.tsx
 
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Home() {
       return (
         <Link href="/dashboard" prefetch={false}>
@@ -149,7 +143,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Home() {
       return (
         <Link href="/dashboard" shallow={false}>
@@ -168,18 +162,18 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Home() {
       return (
         <>
           {/* Default behavior: locale is prepended */}
           <Link href="/dashboard">Dashboard (with locale)</Link>
-     
+
           {/* Disable locale prepending */}
           <Link href="/dashboard" locale={false}>
             Dashboard (without locale)
           </Link>
-     
+
           {/* Specify a different locale */}
           <Link href="/dashboard" locale="fr">
             Dashboard (French)
@@ -204,7 +198,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <Link
@@ -212,7 +206,7 @@ JavaScriptTypeScript
           onNavigate={(e) => {
             // Only executes during SPA navigation
             console.log('Navigating...')
-     
+
             // Optionally prevent navigation
             // e.preventDefault()
           }}
@@ -224,12 +218,11 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋은 사항** : `onClick`과 `onNavigate`는 비슷해 보이지만 용도가 다릅니다. `onClick`은 모든 클릭 이벤트에서 실행되지만 `onNavigate`는 클라이언트 측 내비게이션에서만 실행됩니다. 주요 차이점은 다음과 같습니다.
-> 
+>
 >   * 수정 키(`Ctrl`/`Cmd` + 클릭)를 사용할 때 새 탭 내비게이션을 막기 때문에 `onClick`은 실행되지만 `onNavigate`는 실행되지 않습니다.
 >   * 외부 URL은 클라이언트 측/동일 출처 내비게이션이 아니므로 `onNavigate`를 트리거하지 않습니다.
 >   * `download` 속성이 있는 링크는 브라우저가 다운로드로 처리하므로 `onClick`과는 동작하지만 `onNavigate`와는 동작하지 않습니다.
-> 
-
+>
 
 ## Examples[](https://nextjs.org/docs/pages/api-reference/components/link#examples)
 
@@ -246,7 +239,7 @@ pages/blog/index.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     function Posts({ posts }) {
       return (
         <ul>
@@ -263,9 +256,9 @@ JavaScriptTypeScript
 ### Scrolling to an `id`[](https://nextjs.org/docs/pages/api-reference/components/link#scrolling-to-an-id)
 
 내비게이션 시 특정 `id`로 스크롤하려면 URL에 `#` 해시 링크를 추가하거나 `href` 프로퍼티에 해시 링크만 전달하면 됩니다. `<Link>`가 `<a>` 요소로 렌더링되기 때문에 가능합니다.
-[code] 
+[code]
     <Link href="/dashboard#settings">Settings</Link>
-     
+
     // Output
     <a href="/dashboard#settings">Settings</a>
 [/code]
@@ -279,7 +272,7 @@ pages/index.ts
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     function Home() {
       return (
         <ul>
@@ -306,7 +299,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-     
+
     export default Home
 [/code]
 
@@ -314,8 +307,6 @@ JavaScriptTypeScript
 
   * 미리 정의된 라우트: `/about?name=test`
   * [동적 라우트](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#convention): `/blog/my-post`
-
-
 
 [Node.js URL 모듈 문서](https://nodejs.org/api/url.html#url_url_strings_and_url_objects)에 정의된 모든 속성을 사용할 수 있습니다.
 
@@ -328,7 +319,7 @@ pages/index.js
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Home() {
       return (
         <Link href="/about" replace>
@@ -347,7 +338,7 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Home() {
       return (
         <Link href="/#hashid" scroll={false}>
@@ -368,7 +359,7 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import { NextResponse } from 'next/server'
-     
+
     export function proxy(request: Request) {
       const nextUrl = request.nextUrl
       if (nextUrl.pathname === '/dashboard') {
@@ -388,10 +379,10 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Link from 'next/link'
     import useIsAuthed from './hooks/useIsAuthed' // Your auth hook
-     
+
     export default function Home() {
       const isAuthed = useIsAuthed()
       const path = isAuthed ? '/auth/dashboard' : '/public/dashboard'
@@ -407,17 +398,13 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/components/link#version-history)
 
-Version| Changes  
----|---  
-`v15.4.0`| 기본 `prefetch` 동작에 대한 `auto` 별칭 추가.  
-`v15.3.0`| `onNavigate` API 추가  
-`v13.0.0`| 더 이상 자식 `<a>` 태그가 필요하지 않음. 코드베이스를 자동으로 업데이트할 수 있는 [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#remove-a-tags-from-link-components)가 제공됨.  
-`v10.0.0`| 동적 라우트를 가리키는 `href` props가 자동으로 해석되어 `as` prop이 더는 필요하지 않음.  
-`v8.0.0`| 프리페치 성능 향상.  
-`v1.0.0`| `next/link` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v15.4.0`| 기본 `prefetch` 동작에 대한 `auto` 별칭 추가.
+`v15.3.0`| `onNavigate` API 추가
+`v13.0.0`| 더 이상 자식 `<a>` 태그가 필요하지 않음. 코드베이스를 자동으로 업데이트할 수 있는 [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#remove-a-tags-from-link-components)가 제공됨.
+`v10.0.0`| 동적 라우트를 가리키는 `href` props가 자동으로 해석되어 `as` prop이 더는 필요하지 않음.
+`v8.0.0`| 프리페치 성능 향상.
+`v1.0.0`| `next/link` 도입.
 
 보내기

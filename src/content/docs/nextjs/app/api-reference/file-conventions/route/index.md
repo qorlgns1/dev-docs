@@ -7,10 +7,6 @@ description: 'Route Handler를 사용하면 Web Request 및 Response API를 이�
 
 Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/route
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)route.js
-
-페이지 복사
-
 # route.js
 
 마지막 업데이트: 2026년 2월 20일
@@ -37,17 +33,17 @@ route.ts
 JavaScriptTypeScript
 [code]
     export async function GET(request: Request) {}
-     
+
     export async function HEAD(request: Request) {}
-     
+
     export async function POST(request: Request) {}
-     
+
     export async function PUT(request: Request) {}
-     
+
     export async function DELETE(request: Request) {}
-     
+
     export async function PATCH(request: Request) {}
-     
+
     // If `OPTIONS` is not defined, Next.js will automatically implement `OPTIONS` and set the appropriate Response `Allow` header depending on the other methods defined in the Route Handler.
     export async function OPTIONS(request: Request) {}
 [/code]
@@ -63,7 +59,7 @@ route.ts
 JavaScriptTypeScript
 [code]
     import type { NextRequest } from 'next/server'
-     
+
     export async function GET(request: NextRequest) {
       const url = request.nextUrl
     }
@@ -72,8 +68,6 @@ JavaScriptTypeScript
 #### `context` (optional)[](https://nextjs.org/docs/app/api-reference/file-conventions/route#context-optional)
 
   * **`params`**: 현재 라우트의 [동적 라우트 매개변수](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes)를 포함하는 객체로 해결되는 프로미스입니다.
-
-
 
 app/dashboard/[team]/route.ts
 
@@ -87,12 +81,12 @@ JavaScriptTypeScript
     }
 [/code]
 
-예시| URL| `params`  
----|---|---  
-`app/dashboard/[team]/route.js`| `/dashboard/1`| `Promise<{ team: '1' }>`  
-`app/shop/[tag]/[item]/route.js`| `/shop/1/2`| `Promise<{ tag: '1', item: '2' }>`  
-`app/blog/[...slug]/route.js`| `/blog/1/2`| `Promise<{ slug: ['1', '2'] }>`  
-  
+예시| URL| `params`
+---|---|---
+`app/dashboard/[team]/route.js`| `/dashboard/1`| `Promise<{ team: '1' }>`
+`app/shop/[tag]/[item]/route.js`| `/shop/1/2`| `Promise<{ tag: '1', item: '2' }>`
+`app/blog/[...slug]/route.js`| `/blog/1/2`| `Promise<{ slug: ['1', '2'] }>`
+
 ### Route Context Helper[](https://nextjs.org/docs/app/api-reference/file-conventions/route#route-context-helper)
 
 라우트 리터럴에서 강한 타입의 `params`를 얻기 위해 `RouteContext`를 사용하여 Route Handler 컨텍스트에 타입을 지정할 수 있습니다. `RouteContext`는 전역적으로 사용할 수 있는 헬퍼입니다.
@@ -100,7 +94,7 @@ JavaScriptTypeScript
 app/users/[id]/route.ts
 [code]
     import type { NextRequest } from 'next/server'
-     
+
     export async function GET(_req: NextRequest, ctx: RouteContext<'/users/[id]'>) {
       const { id } = await ctx.params
       return Response.json({ id })
@@ -108,11 +102,10 @@ app/users/[id]/route.ts
 [/code]
 
 > **알아두면 좋아요**
-> 
+>
 >   * 타입은 `next dev`, `next build` 또는 `next typegen` 중에 생성됩니다.
 >   * 타입 생성 이후에는 `RouteContext` 헬퍼가 전역적으로 제공되므로 import 할 필요가 없습니다.
-> 
-
+>
 
 ## Examples[](https://nextjs.org/docs/app/api-reference/file-conventions/route#examples)
 
@@ -125,10 +118,10 @@ route.ts
 JavaScriptTypeScript
 [code]
     import { cookies } from 'next/headers'
-     
+
     export async function GET(request: NextRequest) {
       const cookieStore = await cookies()
-     
+
       const a = cookieStore.get('a')
       const b = cookieStore.set('b', '1')
       const c = cookieStore.delete('c')
@@ -142,11 +135,11 @@ app/api/route.ts
 JavaScriptTypeScript
 [code]
     import { cookies } from 'next/headers'
-     
+
     export async function GET(request: Request) {
       const cookieStore = await cookies()
       const token = cookieStore.get('token')
-     
+
       return new Response('Hello, Next.js!', {
         status: 200,
         headers: { 'Set-Cookie': `token=${token.value}` },
@@ -161,7 +154,7 @@ app/api/route.ts
 JavaScriptTypeScript
 [code]
     import { type NextRequest } from 'next/server'
-     
+
     export async function GET(request: NextRequest) {
       const token = request.cookies.get('token')
     }
@@ -177,7 +170,7 @@ JavaScriptTypeScript
 [code]
     import { headers } from 'next/headers'
     import type { NextRequest } from 'next/server'
-     
+
     export async function GET(request: NextRequest) {
       const headersList = await headers()
       const referer = headersList.get('referer')
@@ -191,11 +184,11 @@ app/api/route.ts
 JavaScriptTypeScript
 [code]
     import { headers } from 'next/headers'
-     
+
     export async function GET(request: Request) {
       const headersList = await headers()
       const referer = headersList.get('referer')
-     
+
       return new Response('Hello, Next.js!', {
         status: 200,
         headers: { referer: referer },
@@ -210,7 +203,7 @@ app/api/route.ts
 JavaScriptTypeScript
 [code]
     import { type NextRequest } from 'next/server'
-     
+
     export async function GET(request: NextRequest) {
       const requestHeaders = new Headers(request.headers)
     }
@@ -225,11 +218,11 @@ app/posts/route.ts
 JavaScriptTypeScript
 [code]
     export const revalidate = 60
-     
+
     export async function GET() {
       const data = await fetch('https://api.vercel.app/blog')
       const posts = await data.json()
-     
+
       return Response.json(posts)
     }
 [/code]
@@ -241,7 +234,7 @@ app/api/route.ts
 JavaScriptTypeScript
 [code]
     import { redirect } from 'next/navigation'
-     
+
     export async function GET(request: Request) {
       redirect('https://nextjs.org/')
     }
@@ -263,12 +256,12 @@ JavaScriptTypeScript
     }
 [/code]
 
-Route| 예시 URL| `params`  
----|---|---  
-`app/items/[slug]/route.js`| `/items/a`| `Promise<{ slug: 'a' }>`  
-`app/items/[slug]/route.js`| `/items/b`| `Promise<{ slug: 'b' }>`  
-`app/items/[slug]/route.js`| `/items/c`| `Promise<{ slug: 'c' }>`  
-  
+Route| 예시 URL| `params`
+---|---|---
+`app/items/[slug]/route.js`| `/items/a`| `Promise<{ slug: 'a' }>`
+`app/items/[slug]/route.js`| `/items/b`| `Promise<{ slug: 'b' }>`
+`app/items/[slug]/route.js`| `/items/c`| `Promise<{ slug: 'c' }>`
+
 #### Static Generation with `generateStaticParams`[](https://nextjs.org/docs/app/api-reference/file-conventions/route#static-generation-with-generatestaticparams)
 
 동적 Route Handler와 [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)를 함께 사용하면 특정 매개변수에 대해 빌드 타임에 응답을 정적으로 생성하고, 나머지 매개변수는 요청 시 동적으로 처리할 수 있습니다.
@@ -286,7 +279,7 @@ app/api/search/route.ts
 JavaScriptTypeScript
 [code]
     import { type NextRequest } from 'next/server'
-     
+
     export function GET(request: NextRequest) {
       const searchParams = request.nextUrl.searchParams
       const query = searchParams.get('query')
@@ -304,14 +297,14 @@ JavaScriptTypeScript
 [code]
     import { openai } from '@ai-sdk/openai'
     import { StreamingTextResponse, streamText } from 'ai'
-     
+
     export async function POST(req: Request) {
       const { messages } = await req.json()
       const result = await streamText({
         model: openai('gpt-4-turbo'),
         messages,
       })
-     
+
       return new StreamingTextResponse(result.toAIStream())
     }
 [/code]
@@ -327,7 +320,7 @@ JavaScriptTypeScript
       return new ReadableStream({
         async pull(controller) {
           const { value, done } = await iterator.next()
-     
+
           if (done) {
             controller.close()
           } else {
@@ -336,15 +329,15 @@ JavaScriptTypeScript
         },
       })
     }
-     
+
     function sleep(time: number) {
       return new Promise((resolve) => {
         setTimeout(resolve, time)
       })
     }
-     
+
     const encoder = new TextEncoder()
-     
+
     async function* makeIterator() {
       yield encoder.encode('<p>One</p>')
       await sleep(200)
@@ -352,13 +345,13 @@ JavaScriptTypeScript
       await sleep(200)
       yield encoder.encode('<p>Three</p>')
     }
-     
+
     export async function GET() {
       const iterator = makeIterator()
 [/code]
 
 const stream = iteratorToStream(iterator)
-     
+
       return new Response(stream)
     }
 [/code]
@@ -416,9 +409,9 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * 여러 Route Handler에 CORS 헤더를 추가하려면 [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#cors) 또는 [`next.config.js` 파일](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#cors)을 사용할 수 있습니다.
-> 
+>
 
 ### Webhooks[](https://nextjs.org/docs/app/api-reference/file-conventions/route#webhooks)
 
@@ -437,7 +430,7 @@ JavaScriptTypeScript
           status: 400,
         })
       }
-     
+
       return new Response('Success!', {
         status: 200,
       })
@@ -458,13 +451,13 @@ JavaScriptTypeScript
       return new Response(
         `<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0">
-     
+
     <channel>
       <title>Next.js Documentation</title>
       <link>https://nextjs.org/docs</link>
       <description>The React Framework for the Web</description>
     </channel>
-     
+
     </rss>`,
         {
           headers: {
@@ -495,14 +488,8 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/route#version-history)
 
-버전| 변경 사항  
----|---  
-`v15.0.0-RC`| `context.params`가 이제 프로미스입니다. [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150)이 제공됩니다  
-`v15.0.0-RC`| `GET` 핸들러의 기본 캐싱이 정적에서 동적으로 변경되었습니다  
-`v13.2.0`| Route Handler가 도입되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+버전| 변경 사항
+---|---
+`v15.0.0-RC`| `context.params`가 이제 프로미스입니다. [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150)이 제공됩니다
+`v15.0.0-RC`| `GET` 핸들러의 기본 캐싱이 정적에서 동적으로 변경되었습니다
+`v13.2.0`| Route Handler가 도입되었습니다.

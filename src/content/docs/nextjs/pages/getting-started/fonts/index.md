@@ -7,8 +7,6 @@ description: '이 모듈에는 모든 폰트 파일에 대한 내장 셀프 호�
 
 Source URL: https://nextjs.org/docs/pages/getting-started/fonts
 
-[Pages Router](https://nextjs.org/docs/pages)[Getting Started](https://nextjs.org/docs/pages/getting-started)Fonts
-
 Copy page
 
 # 폰트 사용 방법
@@ -27,11 +25,11 @@ JavaScriptTypeScript
 [code]
     import { Geist } from 'next/font/google'
     import type { AppProps } from 'next/app'
-     
+
     const geist = Geist({
       subsets: ['latin'],
     })
-     
+
     export default function MyApp({ Component, pageProps }: AppProps) {
       return (
         <main className={geist.className}>
@@ -49,11 +47,11 @@ JavaScriptTypeScript
 [code]
     import { Html, Head, Main, NextScript } from 'next/document'
     import { Geist } from 'next/font/google'
-     
+
     const geist = Geist({
       subsets: ['latin'],
     })
-     
+
     export default function Document() {
       return (
         <Html lang="en" className={geist.className}>
@@ -79,11 +77,11 @@ JavaScriptTypeScript
 [code]
     import { Geist } from 'next/font/google'
     import type { AppProps } from 'next/app'
-     
+
     const geist = Geist({
       subsets: ['latin'],
     })
-     
+
     export default function MyApp({ Component, pageProps }: AppProps) {
       return (
         <main className={geist.className}>
@@ -101,12 +99,12 @@ JavaScriptTypeScript
 [code]
     import { Roboto } from 'next/font/google'
     import type { AppProps } from 'next/app'
-     
+
     const roboto = Roboto({
       weight: '400',
       subsets: ['latin'],
     })
-     
+
     export default function MyApp({ Component, pageProps }: AppProps) {
       return (
         <main className={roboto.className}>
@@ -126,11 +124,11 @@ JavaScriptTypeScript
 [code]
     import localFont from 'next/font/local'
     import type { AppProps } from 'next/app'
-     
+
     const myFont = localFont({
       src: './my-font.woff2',
     })
-     
+
     export default function MyApp({ Component, pageProps }: AppProps) {
       return (
         <main className={myFont.className}>
@@ -141,7 +139,7 @@ JavaScriptTypeScript
 [/code]
 
 하나의 폰트 패밀리에 여러 파일을 사용하려면 `src`를 배열로 지정할 수 있습니다.
-[code] 
+[code]
     const roboto = localFont({
       src: [
         {
@@ -172,9 +170,8 @@ JavaScriptTypeScript
 
 Next.js Font의 전체 기능을 확인하려면 API Reference를 참고하세요.
 
-### [Font 모듈용 FontAPI Reference](https://nextjs.org/docs/pages/api-reference/components/font)
-
-도움이 되었나요?
+- [폰트](https://nextjs.org/docs/pages/api-reference/components/font)
+  - Font 모듈용 FontAPI Reference
 
 supported.
 

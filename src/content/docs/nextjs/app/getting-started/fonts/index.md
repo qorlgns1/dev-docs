@@ -26,11 +26,11 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { Geist } from 'next/font/google'
-     
+
     const geist = Geist({
       subsets: ['latin'],
     })
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       return (
         <html lang="en" className={geist.className}>
@@ -53,11 +53,11 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { Geist } from 'next/font/google'
-     
+
     const geist = Geist({
       subsets: ['latin'],
     })
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -78,12 +78,12 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { Roboto } from 'next/font/google'
-     
+
     const roboto = Roboto({
       weight: '400',
       subsets: ['latin'],
     })
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -106,11 +106,11 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import localFont from 'next/font/local'
-     
+
     const myFont = localFont({
       src: './my-font.woff2',
     })
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -125,7 +125,7 @@ JavaScriptTypeScript
 [/code]
 
 단일 폰트 패밀리에 여러 파일을 사용하려면 `src`를 배열로 지정할 수 있습니다:
-[code] 
+[code]
     const roboto = localFont({
       src: [
         {
@@ -156,7 +156,8 @@ JavaScriptTypeScript
 
 Next.js Font의 전체 기능 세트는 API Reference를 확인하세요.
 
-### [FontOptimizing loading web fonts with the built-in `next/font` loaders.](https://nextjs.org/docs/app/api-reference/components/font)
+- [폰트](https://nextjs.org/docs/app/api-reference/components/font)
+  - FontOptimizing loading web fonts with the built-in `next/font` loaders.
 
 Was this helpful?
 

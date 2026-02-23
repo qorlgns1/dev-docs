@@ -7,10 +7,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 출처 URL: https://nextjs.org/docs/pages/guides/forms
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)Forms
-
-페이지 복사
-
 # API Routes로 폼을 만드는 방법
 
 최종 업데이트: 2026년 2월 20일
@@ -26,7 +22,7 @@ pages/api/submit.ts
 JavaScriptTypeScript
 [code]
     import type { NextApiRequest, NextApiResponse } from 'next'
-     
+
     export default async function handler(
       req: NextApiRequest,
       res: NextApiResponse
@@ -44,22 +40,22 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import { FormEvent } from 'react'
-     
+
     export default function Page() {
       async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-     
+
         const formData = new FormData(event.currentTarget)
         const response = await fetch('/api/submit', {
           method: 'POST',
           body: formData,
         })
-     
+
         // Handle response if necessary
         const data = await response.json()
         // ...
       }
-     
+
       return (
         <form onSubmit={onSubmit}>
           <input type="text" name="name" />
@@ -70,11 +66,10 @@ JavaScriptTypeScript
 [/code]
 
 > **참고하세요:**
-> 
+>
 >   * API Routes는 [CORS 헤더를 지정하지 않습니다](https://developer.mozilla.org/docs/Web/HTTP/CORS). 따라서 기본적으로 동일 출처에서만 사용할 수 있습니다.
 >   * API Routes는 서버에서 실행되므로 [Environment Variables](https://nextjs.org/docs/pages/guides/environment-variables)를 통해 API 키 같은 민감한 값을 클라이언트에 노출하지 않고 사용할 수 있습니다. 이는 애플리케이션 보안에 매우 중요합니다.
-> 
-
+>
 
 ## Form validation[](https://nextjs.org/docs/pages/guides/forms#form-validation)
 
@@ -88,11 +83,11 @@ JavaScriptTypeScript
 [code]
     import type { NextApiRequest, NextApiResponse } from 'next'
     import { z } from 'zod'
-     
+
     const schema = z.object({
       // ...
     })
-     
+
     export default async function handler(
       req: NextApiRequest,
       res: NextApiResponse
@@ -111,27 +106,27 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import React, { useState, FormEvent } from 'react'
-     
+
     export default function Page() {
       const [isLoading, setIsLoading] = useState<boolean>(false)
       const [error, setError] = useState<string | null>(null)
-     
+
       async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
         setIsLoading(true)
         setError(null) // Clear previous errors when a new request starts
-     
+
         try {
           const formData = new FormData(event.currentTarget)
           const response = await fetch('/api/submit', {
             method: 'POST',
             body: formData,
           })
-     
+
           if (!response.ok) {
             throw new Error('Failed to submit the data. Please try again.')
           }
-     
+
           // Handle response if necessary
           const data = await response.json()
           // ...
@@ -143,7 +138,7 @@ JavaScriptTypeScript
           setIsLoading(false)
         }
       }
-     
+
       return (
         <div>
           {error && <div style={{ color: 'red' }}>{error}</div>}
@@ -167,21 +162,21 @@ pages/index.tsx
 JavaScriptTypeScript
 [code]
     import React, { useState, FormEvent } from 'react'
-     
+
     export default function Page() {
       const [isLoading, setIsLoading] = useState<boolean>(false)
-     
+
       async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
         setIsLoading(true) // Set loading to true when the request starts
-     
+
         try {
           const formData = new FormData(event.currentTarget)
           const response = await fetch('/api/submit', {
             method: 'POST',
             body: formData,
           })
-     
+
           // Handle response if necessary
           const data = await response.json()
           // ...
@@ -192,7 +187,7 @@ JavaScriptTypeScript
           setIsLoading(false) // Set loading to false when the request completes
         }
       }
-     
+
       return (
         <form onSubmit={onSubmit}>
           <input type="text" name="name" />
@@ -213,7 +208,7 @@ pages/api/submit.ts
 JavaScriptTypeScript
 [code]
     import type { NextApiRequest, NextApiResponse } from 'next'
-     
+
     export default async function handler(
       req: NextApiRequest,
       res: NextApiResponse
@@ -224,7 +219,5 @@ JavaScriptTypeScript
 [/code]
 
 이 문서가 도움이 되었나요?
-
-지원됨.
 
 Send

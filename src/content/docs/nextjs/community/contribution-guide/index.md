@@ -9,8 +9,6 @@ description: 'Next.js 문서 기여 가이드에 오신 것을 환영합니다! 
 
 [Next.js Docs](https://nextjs.org/docs)[Community](https://nextjs.org/docs/community)기여 가이드
 
-페이지 복사
-
 # 문서 기여 가이드
 
 마지막 업데이트 2026년 2월 20일
@@ -82,7 +80,7 @@ VSCode 사용자에게 다음 확장을 권장합니다.
 파일 구조는 사이트에서 볼 수 있는 내비게이션을 반영하며, 기본적으로 내비게이션 항목은 알파벳 순으로 정렬됩니다. 다만 폴더나 파일 이름 앞에 두 자리 숫자(`00-`)를 붙이면 정렬 순서를 바꿀 수 있습니다.
 
 예를 들어 [functions API Reference](https://nextjs.org/docs/app/api-reference/functions)에서는 개발자가 특정 함수를 찾기 쉽도록 페이지가 알파벳 순으로 정렬됩니다:
-[code] 
+[code]
     04-functions
     ├── after.mdx
     ├── cacheLife.mdx
@@ -91,7 +89,7 @@ VSCode 사용자에게 다음 확장을 권장합니다.
 [/code]
 
 하지만 [app router 섹션](https://nextjs.org/docs/app)에서는 파일 이름에 두 자리 숫자를 붙여 개발자가 학습해야 하는 순서대로 정렬합니다:
-[code] 
+[code]
     01-getting-started
     ├── 01-installation.mdx
     ├── 02-project-structure.mdx
@@ -102,7 +100,7 @@ VSCode 사용자에게 다음 확장을 권장합니다.
 VSCode에서 `⌘ + P`(Mac) 또는 `Ctrl + P`(Windows)를 눌러 검색 창을 연 뒤 찾고 싶은 페이지의 슬러그를 입력하면 원하는 페이지를 빠르게 찾을 수 있습니다. 예: `installation`
 
 > **왜 매니페스트를 사용하지 않나요?**
-> 
+>
 > 내비게이션을 생성하는 또 다른 일반적인 방법인 매니페스트 파일 사용을 검토했지만, 파일과 쉽게 동기화가 어긋난다는 점을 발견했습니다. 파일 시스템 라우팅을 사용하면 문서 구조를 지속적으로 고민하게 되고 Next.js 방식과도 더 자연스럽게 맞습니다.
 
 ## 메타데이터[](https://nextjs.org/docs/community/contribution-guide#metadata)
@@ -113,11 +111,11 @@ VSCode에서 `⌘ + P`(Mac) 또는 `Ctrl + P`(Windows)를 눌러 검색 창을 �
 
 다음 필드는 **필수**입니다:
 
-필드|설명  
----|---  
-`title`| 페이지의 `<h1>` 제목으로, SEO와 OG 이미지에 사용됩니다.  
-`description`| 페이지 설명으로, SEO를 위한 `<meta name="description">` 태그에 사용됩니다.  
-  
+필드|설명
+---|---
+`title`| 페이지의 `<h1>` 제목으로, SEO와 OG 이미지에 사용됩니다.
+`description`| 페이지 설명으로, SEO를 위한 `<meta name="description">` 태그에 사용됩니다.
+
 required-fields.mdx
 [code]
     ---
@@ -132,13 +130,13 @@ required-fields.mdx
 
 다음 필드는 **선택 사항**입니다:
 
-필드|설명  
----|---  
-`nav_title`| 내비게이션에서 페이지 제목을 덮어씁니다. 제목이 길어 들어가지 않을 때 유용합니다. 지정하지 않으면 `title` 필드가 사용됩니다.  
-`source`| 콘텐츠를 공유 페이지로 끌어옵니다. [Shared Pages](https://nextjs.org/docs/community/contribution-guide#shared-pages)를 참조하세요.  
-`related`| 문서 하단에 표시되는 관련 페이지 목록입니다. 자동으로 카드로 변환됩니다. [Related Links](https://nextjs.org/docs/community/contribution-guide#related-links)를 참조하세요.  
-`version`| 개발 단계입니다. 예: `experimental`,`legacy`,`unstable`,`RC`  
-  
+필드|설명
+---|---
+`nav_title`| 내비게이션에서 페이지 제목을 덮어씁니다. 제목이 길어 들어가지 않을 때 유용합니다. 지정하지 않으면 `title` 필드가 사용됩니다.
+`source`| 콘텐츠를 공유 페이지로 끌어옵니다. [Shared Pages](https://nextjs.org/docs/community/contribution-guide#shared-pages)를 참조하세요.
+`related`| 문서 하단에 표시되는 관련 페이지 목록입니다. 자동으로 카드로 변환됩니다. [Related Links](https://nextjs.org/docs/community/contribution-guide#related-links)를 참조하세요.
+`version`| 개발 단계입니다. 예: `experimental`,`legacy`,`unstable`,`RC`
+
 optional-fields.mdx
 [code]
     ---
@@ -166,7 +164,7 @@ app/.../link.mdx
     title: <Link>
     description: API reference for the <Link> component.
     ---
-     
+
     This API reference will help you understand how to use the props
     and configuration options available for the Link Component.
 [/code]
@@ -178,7 +176,7 @@ pages/.../link.mdx
     description: API reference for the <Link> component.
     source: app/api-reference/components/link
     ---
-     
+
     {/* DO NOT EDIT THIS PAGE. */}
     {/* The content of this page is pulled from the source above. */}
 [/code]
@@ -194,13 +192,13 @@ pages/.../link.mdx
 app/.../link.mdx
 [code]
     This content is shared between App and Pages.
-     
+
     <PagesOnly>
-     
+
     This content will only be shown on the Pages docs.
-     
+
     </PagesOnly>
-     
+
     This content is shared between App and Pages.
 [/code]
 
@@ -215,7 +213,7 @@ app/.../link.mdx
 app/page.tsx
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return <Link href="/about">About</Link>
     }
@@ -243,15 +241,15 @@ code-example.mdx
     ```bash package="pnpm"
     pnpm create next-app
     ```
-     
+
     ```bash package="npm"
     npx create-next-app@latest
     ```
-     
+
     ```bash package="yarn"
     yarn create next-app
     ```
-     
+
     ```bash package="bun"
     bun create next-app
     ```
@@ -261,20 +259,19 @@ code-example.mdx
 
 JavaScript 코드 블록을 작성할 때는 다음 언어와 확장자 조합을 사용합니다.
 
-유형| 언어| 확장자  
----|---|---  
-JSX 코드를 포함한 JavaScript 파일| ```jsx| .js  
-JSX가 없는 JavaScript 파일| ```js| .js  
-JSX를 포함한 TypeScript 파일| ```tsx| .tsx  
-JSX가 없는 TypeScript 파일| ```ts| .ts  
-  
+유형| 언어| 확장자
+---|---|---
+JSX 코드를 포함한 JavaScript 파일| ```jsx| .js
+JSX가 없는 JavaScript 파일| ```js| .js
+JSX를 포함한 TypeScript 파일| ```tsx| .tsx
+JSX가 없는 TypeScript 파일| ```ts| .ts
+
 > **알아두면 좋아요** :
 >
 
 >   * **JSX** 코드가 포함된 JavaScript 파일에는 반드시 **`.js`** 확장자를 사용하세요.
 >   * 예를 들어, ```jsx filename="app/layout.js"
-> 
-
+>
 
 ### TS and JS Switcher[](https://nextjs.org/docs/community/contribution-guide#ts-and-js-switcher)
 
@@ -285,11 +282,11 @@ TypeScript와 JavaScript 간 토글이 가능한 언어 전환 스위처를 추�
 code-example.mdx
 [code]
     ```tsx filename="app/page.tsx" switcher
-     
+
     ```
-     
+
     ```jsx filename="app/page.js" switcher
-     
+
     ```
 [/code]
 
@@ -304,7 +301,7 @@ code-example.mdx
 app/page.tsx
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return <Link href="/about">About</Link>
     }
@@ -315,7 +312,7 @@ app/page.tsx
 app/page.tsx
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return <Link href="/about">About</Link>
     }
@@ -326,7 +323,7 @@ app/page.tsx
 app/page.tsx
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return <Link href="/about">About</Link>
     }
@@ -353,7 +350,7 @@ mdx-icon.mdx
 notes.mdx
 [code]
     > **Good to know**: This is a single line note.
-     
+
     > **Good to know**:
     >
     > - We also use this format for multi-line notes.
@@ -365,11 +362,10 @@ notes.mdx
 > **Good to know** : This is a single line note.
 
 > **Good to know** :
-> 
+>
 >   * We also use this format for multi-line notes.
 >   * There are sometimes multiple items worth knowing or keeping in mind.
-> 
-
+>
 
 ## Related Links[](https://nextjs.org/docs/community/contribution-guide#related-links)
 
@@ -377,8 +373,6 @@ Related Links는 사용자에게 논리적인 다음 단계를 안내하는 링�
 
   * 링크는 페이지 본문 아래의 카드에 표시됩니다.
   * 자식 페이지가 있는 경우 자동으로 링크가 생성됩니다.
-
-
 
 페이지 메타데이터의 `related` 필드를 사용해 관련 링크를 생성하세요.
 
@@ -396,12 +390,12 @@ example.mdx
 
 ### Nested Fields[](https://nextjs.org/docs/community/contribution-guide#nested-fields)
 
-Field| Required?| Description  
----|---|---  
-`title`| Optional| 카드 목록의 제목입니다. 기본값은 **Next Steps**입니다.  
-`description`| Optional| 카드 목록에 대한 설명입니다.  
-`links`| Required| 다른 문서 페이지로 연결되는 링크 목록입니다. 각 목록 항목은 상대 URL 경로(선행 슬래시 없이)여야 합니다. 예: `app/api-reference/file-conventions/page`  
-  
+Field| Required?| Description
+---|---|---
+`title`| Optional| 카드 목록의 제목입니다. 기본값은 **Next Steps**입니다.
+`description`| Optional| 카드 목록에 대한 설명입니다.
+`links`| Required| 다른 문서 페이지로 연결되는 링크 목록입니다. 각 목록 항목은 상대 URL 경로(선행 슬래시 없이)여야 합니다. 예: `app/api-reference/file-conventions/page`
+
 ## Diagrams[](https://nextjs.org/docs/community/contribution-guide#diagrams)
 
 도표는 복잡한 개념을 설명하기에 훌륭한 수단입니다. 우리는 Vercel 디자인 가이드를 따라 [Figma](https://www.figma.com/)에서 도표를 만듭니다.
@@ -428,8 +422,6 @@ Field| Required?| Description
   * **API Tables** : API 페이지는 가능하다면 페이지 상단에 섹션 이동 링크가 포함된 개요 표가 있어야 합니다.
   * **Next Steps (Related Links)** : 사용자의 학습 여정을 안내하기 위해 관련 페이지 링크를 추가하세요.
 
-
-
 필요에 따라 이러한 섹션을 자유롭게 추가하세요.
 
 ### Page Types[](https://nextjs.org/docs/community/contribution-guide#page-types)
@@ -438,8 +430,6 @@ Field| Required?| Description
 
   * **Conceptual** 페이지는 개념이나 기능을 설명합니다. 일반적으로 더 길고 정보량이 많습니다. Next.js 문서에서는 **Building Your Application** 섹션에서 찾을 수 있습니다.
   * **Reference** 페이지는 특정 API를 설명합니다. 보통 더 짧고 집중적입니다. Next.js 문서에서는 **API Reference** 섹션에 있습니다.
-
-
 
 > **참고** : 기여하려는 페이지에 따라 다른 음성과 스타일을 따라야 할 수 있습니다. 예를 들어, 개념형 페이지는 더 설명적이며 사용자에게 _you_를 사용합니다. 레퍼런스 페이지는 더 기술적이며 "create, update, accept"처럼 명령형 단어를 사용하고 _you_를 생략하는 경향이 있습니다.
 
@@ -461,15 +451,11 @@ Field| Required?| Description
   * 성 중립적 언어를 사용하세요. 독자를 지칭할 때 _developers_, _users_, _readers_ 등을 사용하세요.
   * 코드 예제를 추가할 경우 올바른 포맷과 작동 여부를 확인하세요.
 
-
-
 이 가이드라인이 전부는 아니지만 시작하는 데 도움이 될 것입니다. 기술 문서 작성에 대해 더 깊이 배우고 싶다면 [Google Technical Writing Course](https://developers.google.com/tech-writing/overview)를 참고하세요.
 
 * * *
 
 Next.js 커뮤니티의 일원이 되어 문서에 기여해 주셔서 감사합니다!
-
-도움이 되었나요?
 
 supported.
 

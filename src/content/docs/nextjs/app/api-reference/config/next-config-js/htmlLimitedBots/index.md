@@ -7,10 +7,6 @@ description: '구성은 스트리밍 메타데이터 대신 차단 메타데이�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)htmlLimitedBots
-
-페이지 복사
-
 # htmlLimitedBots
 
 최종 업데이트 2026년 2월 20일
@@ -22,11 +18,11 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const config: NextConfig = {
       htmlLimitedBots: /MySpecialBot|MyAnotherSpecialBot|SimpleCrawler/,
     }
-     
+
     export default config
 [/code]
 
@@ -50,7 +46,7 @@ JavaScriptTypeScript
     const config: NextConfig = {
       htmlLimitedBots: /MySpecialBot|MyAnotherSpecialBot|SimpleCrawler/,
     }
-     
+
     export default config
 [/code]
 
@@ -61,22 +57,16 @@ JavaScriptTypeScript
 next.config.ts
 [code]
     import type { NextConfig } from 'next'
-     
+
     const config: NextConfig = {
       htmlLimitedBots: /.*/,
     }
-     
+
     export default config
 [/code]
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots#version-history)
 
-버전| 변경 사항  
----|---  
-15.2.0| `htmlLimitedBots` 옵션 도입.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+버전| 변경 사항
+---|---
+15.2.0| `htmlLimitedBots` 옵션 도입.

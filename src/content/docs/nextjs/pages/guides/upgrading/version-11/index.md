@@ -54,9 +54,9 @@ Webpack 5는 이제 모든 Next.js 애플리케이션의 기본값입니다. 커
 Next.js 11은 애플리케이션이 실행될 포트를 설정하기 위해 `PORT` 환경 변수를 지원합니다. 여전히 `-p`/`--port` 사용을 권장하지만, 어떤 이유로든 `-p`를 사용할 수 없었다면 이제 대안으로 `PORT`를 사용할 수 있습니다:
 
 Example:
-[code] 
+[code]
     PORT=4000 next start
-    
+
 [/code]
 
 ### 이미지를 가져오기 위한 `next.config.js` 커스터마이징[](https://nextjs.org/docs/pages/guides/upgrading/version-11#nextconfigjs-customization-to-import-images)
@@ -111,10 +111,10 @@ next.config.js
 Moment.js는 기본적으로 많은 로케일 번역을 포함합니다. Next.js는 이제 Moment.js를 사용하는 애플리케이션의 번들 크기를 최적화하기 위해 기본적으로 이러한 로케일을 제외합니다.
 
 특정 로케일을 로드하려면 다음 스니펫을 사용하세요:
-[code] 
+[code]
     import moment from 'moment'
     import 'moment/locale/ja'
-     
+
     moment.locale('ja')
 [/code]
 
@@ -123,7 +123,7 @@ Moment.js는 기본적으로 많은 로케일 번역을 포함합니다. Next.js
 ### `router.events` 사용 업데이트[](https://nextjs.org/docs/pages/guides/upgrading/version-11#update-usage-of-routerevents)
 
 렌더링 중 `router.events`에 접근하고 있다면, Next.js 11에서는 사전 렌더링 동안 `router.events`가 더 이상 제공되지 않습니다. `useEffect`에서 `router.events`에 접근하도록 하세요:
-[code] 
+[code]
     useEffect(() => {
       const handleRouteChange = (url, { shallow }) => {
         console.log(
@@ -132,9 +132,9 @@ Moment.js는 기본적으로 많은 로케일 번역을 포함합니다. Next.js
           } shallow routing`
         )
       }
-     
+
       router.events.on('routeChangeStart', handleRouteChange)
-     
+
       // If the component is unmounted, unsubscribe
       // from the event with the `off` method:
       return () => {
@@ -152,15 +152,15 @@ React 17은 [새로운 JSX 변환](https://reactjs.org/blog/2020/09/22/introduci
 대부분의 애플리케이션이 이미 최신 React 버전을 사용하고 있으며, Next.js 11에서는 최소 React 버전이 17.0.2로 업데이트되었습니다.
 
 업그레이드하려면 다음 명령을 실행하세요:
-[code] 
+[code]
     npm install react@latest react-dom@latest
-    
+
 [/code]
 
 또는 `yarn` 사용 시:
-[code] 
+[code]
     yarn add react@latest react-dom@latest
-    
+
 [/code]
 
 Was this helpful?

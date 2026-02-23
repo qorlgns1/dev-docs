@@ -7,10 +7,6 @@ description: '훅을 사용하면 의 pending 상태를 추적할 수 있습니�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/functions/use-link-status
 
-[API 레퍼런스](https://nextjs.org/docs/app/api-reference)[함수](https://nextjs.org/docs/app/api-reference/functions)useLinkStatus
-
-페이지 복사
-
 # useLinkStatus
 
 마지막 업데이트 2026년 2월 20일
@@ -22,24 +18,22 @@ description: '훅을 사용하면 의 pending 상태를 추적할 수 있습니�
   * [프리패칭](https://nextjs.org/docs/app/getting-started/linking-and-navigating#prefetching)이 비활성화되었거나 진행 중이라 내비게이션이 막혀 있을 때
   * 목적지 라우트가 동적이고 [`loading.js`](https://nextjs.org/docs/app/api-reference/file-conventions/loading) 파일이 없어 즉시 내비게이션을 제공하지 못할 때
 
-
-
 app/hint.tsx
 
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Link from 'next/link'
     import { useLinkStatus } from 'next/link'
-     
+
     function Hint() {
       const { pending } = useLinkStatus()
       return (
         <span aria-hidden className={`link-hint ${pending ? 'is-pending' : ''}`} />
       )
     }
-     
+
     export default function Header() {
       return (
         <header>
@@ -52,15 +46,14 @@ JavaScriptTypeScript
 [/code]
 
 > **참고하면 좋아요** :
-> 
+>
 >   * `useLinkStatus`는 반드시 `Link` 컴포넌트 하위 컴포넌트 안에서 사용해야 합니다
 >   * `prefetch={false}`가 `Link` 컴포넌트에 설정된 경우 이 훅이 가장 유용합니다
 >   * 연결된 라우트가 이미 프리패치된 경우 pending 상태는 건너뜁니다
 >   * 짧은 시간 안에 여러 링크를 클릭하면 마지막 링크의 pending 상태만 표시됩니다
 >   * 이 훅은 Pages Router에서는 지원되지 않으며 항상 `{ pending: false }`를 반환합니다
 >   * 인라인 지표는 레이아웃 시프트를 유발하기 쉽습니다. 고정 크기로 항상 렌더링되는 힌트 요소를 두고 불투명도만 토글하거나 애니메이션을 사용하세요.
-> 
-
+>
 
 ## `useLinkStatus`가 필요하지 않을 수도 있음[](https://nextjs.org/docs/app/api-reference/functions/use-link-status#you-might-not-need-uselinkstatus)
 
@@ -69,12 +62,10 @@ JavaScriptTypeScript
   * 목적지가 정적이고 프로덕션에서 프리패치되는 경우 pending 단계가 건너뛰어질 수 있습니다.
   * 라우트에 `loading.js` 파일이 있어 라우트 수준 폴백으로 즉시 전환할 수 있습니다.
 
-
-
 내비게이션은 보통 빠릅니다. 느린 전환을 발견했을 때 `useLinkStatus`로 재빨리 보완하고, 이후 프리패칭이나 `loading.js` 폴백으로 근본 원인을 해결하세요.
 
 ## 매개변수[](https://nextjs.org/docs/app/api-reference/functions/use-link-status#parameters)
-[code] 
+[code]
     const { pending } = useLinkStatus()
 [/code]
 
@@ -84,10 +75,10 @@ JavaScriptTypeScript
 
 `useLinkStatus`는 단일 속성을 가진 객체를 반환합니다:
 
-속성| 유형| 설명  
----|---|---  
-pending| boolean| 기록이 업데이트되기 전에는 `true`, 이후에는 `false`  
-  
+속성| 유형| 설명
+---|---|---
+pending| boolean| 기록이 업데이트되기 전에는 `true`, 이후에는 `false`
+
 ## 예시[](https://nextjs.org/docs/app/api-reference/functions/use-link-status#example)
 
 ### 인라인 링크 힌트[](https://nextjs.org/docs/app/api-reference/functions/use-link-status#inline-link-hint)
@@ -99,9 +90,9 @@ app/components/loading-indicator.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useLinkStatus } from 'next/link'
-     
+
     export default function LoadingIndicator() {
       const { pending } = useLinkStatus()
       return (
@@ -116,13 +107,13 @@ JavaScriptTypeScript
 [code]
     import Link from 'next/link'
     import LoadingIndicator from './components/loading-indicator'
-     
+
     const links = [
       { href: '/shop/electronics', label: 'Electronics' },
       { href: '/shop/clothing', label: 'Clothing' },
       { href: '/shop/books', label: 'Books' },
     ]
-     
+
     function Menubar() {
       return (
         <div>
@@ -134,7 +125,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       return (
         <div>
@@ -161,7 +152,7 @@ app/styles/global.css
       opacity: 0;
       visibility: hidden; /* reserve space without showing the hint */
     }
-     
+
     .link-hint.is-pending {
       /* Animation 1: fade in after 100ms and keep final opacity */
       /* Animation 2: subtle pulsing while pending */
@@ -174,7 +165,7 @@ app/styles/global.css
       animation-iteration-count: 1, infinite;
       animation-fill-mode: forwards, none;
     }
-     
+
     @keyframes fadeIn {
       to {
         opacity: 0.35;
@@ -189,18 +180,18 @@ app/styles/global.css
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/use-link-status#version-history)
 
-버전| 변경 사항  
----|---  
-`v15.3.0`| `useLinkStatus` 도입.  
-  
+버전| 변경 사항
+---|---
+`v15.3.0`| `useLinkStatus` 도입.
+
 ## 다음 단계
 
 API 레퍼런스를 읽고 이 페이지에서 언급한 기능을 더 알아보세요.
 
-### [Link Component내장된 `next/link` 컴포넌트로 빠른 클라이언트 측 내비게이션을 활성화합니다.](https://nextjs.org/docs/app/api-reference/components/link)### [loading.js`loading.js` 파일에 대한 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/file-conventions/loading)
+- [링크 컴포넌트](https://nextjs.org/docs/app/api-reference/components/link)
+  - Link Component내장된 `next/link` 컴포넌트로 빠른 클라이언트 측 내비게이션을 활성화합니다.
 
-도움이 되었나요?
-
-지원됨.
+- [loading.js](https://nextjs.org/docs/app/api-reference/file-conventions/loading)
+  - `loading.js` 파일에 대한 API 레퍼런스.
 
 보내기

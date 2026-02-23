@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/api-reference/directives/use-client
 
 [API Reference](https://nextjs.org/docs/app/api-reference)[Directives](https://nextjs.org/docs/app/api-reference/directives)use client
 
-페이지 복사
-
 # use client
 
 마지막 업데이트 2026년 2월 20일
@@ -30,12 +28,12 @@ app/components/counter.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useState } from 'react'
-     
+
     export default function Counter() {
       const [count, setCount] = useState(0)
-     
+
       return (
         <div>
           <p>Count: {count}</p>
@@ -52,7 +50,7 @@ app/components/counter.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     export default function Counter({
       onClick /* ❌ Function is not serializable */,
     }) {
@@ -83,7 +81,7 @@ JavaScriptTypeScript
 [code]
     import Header from './header'
     import Counter from './counter' // This is a Client Component
-     
+
     export default function Page() {
       return (
         <div>
@@ -97,9 +95,5 @@ JavaScriptTypeScript
 ## 참고자료[](https://nextjs.org/docs/app/api-reference/directives/use-client#reference)
 
 `'use client'`에 대한 자세한 내용은 [React 문서](https://react.dev/reference/rsc/use-client)를 참고하세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

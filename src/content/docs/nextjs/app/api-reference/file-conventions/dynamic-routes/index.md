@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-r
 
 [API Reference](https://nextjs.org/docs/app/api-reference)[File-system conventions](https://nextjs.org/docs/app/api-reference/file-conventions)Dynamic Segments
 
-페이지 복사
-
 # 동적 라우트 세그먼트
 
 마지막 업데이트 2026년 2월 20일
@@ -37,12 +35,12 @@ JavaScriptTypeScript
 
 동적 세그먼트는 [`layout`](https://nextjs.org/docs/app/api-reference/file-conventions/layout), [`page`](https://nextjs.org/docs/app/api-reference/file-conventions/page), [`route`](https://nextjs.org/docs/app/api-reference/file-conventions/route), [`generateMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function) 함수에 `params` prop으로 전달됩니다.
 
-경로| 예시 URL| `params`  
----|---|---  
-`app/blog/[slug]/page.js`| `/blog/a`| `{ slug: 'a' }`  
-`app/blog/[slug]/page.js`| `/blog/b`| `{ slug: 'b' }`  
-`app/blog/[slug]/page.js`| `/blog/c`| `{ slug: 'c' }`  
-  
+경로| 예시 URL| `params`
+---|---|---
+`app/blog/[slug]/page.js`| `/blog/a`| `{ slug: 'a' }`
+`app/blog/[slug]/page.js`| `/blog/b`| `{ slug: 'b' }`
+`app/blog/[slug]/page.js`| `/blog/c`| `{ slug: 'c' }`
+
 ### 클라이언트 컴포넌트에서[](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#in-client-components)
 
 클라이언트 컴포넌트 **page** 의 props에서 온 동적 세그먼트는 [`use`](https://react.dev/reference/react/use) API를 사용해 접근할 수 있습니다.
@@ -53,14 +51,14 @@ JavaScriptTypeScript
 [code]
     'use client'
     import { use } from 'react'
-     
+
     export default function BlogPostPage({
       params,
     }: {
       params: Promise<{ slug: string }>
     }) {
       const { slug } = use(params)
-     
+
       return (
         <div>
           <p>{slug}</p>
@@ -77,12 +75,12 @@ JavaScriptTypeScript
 
 예를 들어 `app/shop/[...slug]/page.js`는 `/shop/clothes`뿐만 아니라 `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts` 등도 매칭합니다.
 
-경로| 예시 URL| `params`  
----|---|---  
-`app/shop/[...slug]/page.js`| `/shop/a`| `{ slug: ['a'] }`  
-`app/shop/[...slug]/page.js`| `/shop/a/b`| `{ slug: ['a', 'b'] }`  
-`app/shop/[...slug]/page.js`| `/shop/a/b/c`| `{ slug: ['a', 'b', 'c'] }`  
-  
+경로| 예시 URL| `params`
+---|---|---
+`app/shop/[...slug]/page.js`| `/shop/a`| `{ slug: ['a'] }`
+`app/shop/[...slug]/page.js`| `/shop/a/b`| `{ slug: ['a', 'b'] }`
+`app/shop/[...slug]/page.js`| `/shop/a/b/c`| `{ slug: ['a', 'b', 'c'] }`
+
 ### 선택적 캐치올 세그먼트[](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#optional-catch-all-segments)
 
 대괄호를 이중으로 감싸 `[[...folderName]]` 형태로 만들면 캐치올 세그먼트를 **선택적**으로 만들 수 있습니다.
@@ -91,26 +89,26 @@ JavaScriptTypeScript
 
 **캐치올**과 **선택적 캐치올** 세그먼트의 차이는 선택적 세그먼트의 경우 파라미터가 없는 라우트(`/shop`)도 함께 매칭된다는 점입니다.
 
-경로| 예시 URL| `params`  
----|---|---  
-`app/shop/[[...slug]]/page.js`| `/shop`| `{ slug: undefined }`  
-`app/shop/[[...slug]]/page.js`| `/shop/a`| `{ slug: ['a'] }`  
-`app/shop/[[...slug]]/page.js`| `/shop/a/b`| `{ slug: ['a', 'b'] }`  
-`app/shop/[[...slug]]/page.js`| `/shop/a/b/c`| `{ slug: ['a', 'b', 'c'] }`  
-  
+경로| 예시 URL| `params`
+---|---|---
+`app/shop/[[...slug]]/page.js`| `/shop`| `{ slug: undefined }`
+`app/shop/[[...slug]]/page.js`| `/shop/a`| `{ slug: ['a'] }`
+`app/shop/[[...slug]]/page.js`| `/shop/a/b`| `{ slug: ['a', 'b'] }`
+`app/shop/[[...slug]]/page.js`| `/shop/a/b/c`| `{ slug: ['a', 'b', 'c'] }`
+
 ### TypeScript[](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#typescript)
 
 TypeScript를 사용할 때는 설정된 라우트 세그먼트에 따라 `params` 타입을 추가할 수 있습니다. `page`, `layout`, `route` 각각에 대해 [`PageProps<'/route'>`](https://nextjs.org/docs/app/api-reference/file-conventions/page#page-props-helper), [`LayoutProps<'/route'>`](https://nextjs.org/docs/app/api-reference/file-conventions/layout#layout-props-helper), [`RouteContext<'/route'>`](https://nextjs.org/docs/app/api-reference/file-conventions/route#route-context-helper)를 사용해 `params`를 타이핑하세요.
 
 라우트 `params` 값은 런타임까지 알 수 없으므로 `string`, `string[]`, `undefined`(선택적 캐치올 세그먼트)로 타입이 지정됩니다. 사용자는 주소창에 어떤 URL이든 입력할 수 있고, 이러한 폭넓은 타입을 통해 애플리케이션 코드가 가능한 모든 경우를 처리하도록 돕습니다.
 
-경로| `params` 타입 정의  
----|---  
-`app/blog/[slug]/page.js`| `{ slug: string }`  
-`app/shop/[...slug]/page.js`| `{ slug: string[] }`  
-`app/shop/[[...slug]]/page.js`| `{ slug?: string[] }`  
-`app/[categoryId]/[itemId]/page.js`| `{ categoryId: string, itemId: string }`  
-  
+경로| `params` 타입 정의
+---|---
+`app/blog/[slug]/page.js`| `{ slug: string }`
+`app/shop/[...slug]/page.js`| `{ slug: string[] }`
+`app/shop/[[...slug]]/page.js`| `{ slug?: string[] }`
+`app/[categoryId]/[itemId]/page.js`| `{ categoryId: string, itemId: string }`
+
 `params`가 유효한 값 집합 중 하나로만 제한되는 라우트를 작업 중이라면(예: 알려진 언어 코드 집합을 갖는 `[locale]` 파라미터), 런타임 검증을 사용해 사용자가 입력한 잘못된 파라미터를 처리하고, 애플리케이션의 나머지는 알려진 집합에서 온 더 좁은 타입으로 작업할 수 있습니다.
 
 /app/[locale]/page.tsx
@@ -118,11 +116,11 @@ TypeScript를 사용할 때는 설정된 라우트 세그먼트에 따라 `param
     import { notFound } from 'next/navigation'
     import type { Locale } from '@i18n/types'
     import { isValidLocale } from '@i18n/utils'
-     
+
     function assertValidLocale(value: string): asserts value is Locale {
       if (!isValidLocale(value)) notFound()
     }
-     
+
     export default async function Page(props: PageProps<'/[locale]'>) {
       const { locale } = await props.params // locale is typed as string
       assertValidLocale(locale)
@@ -134,8 +132,6 @@ TypeScript를 사용할 때는 설정된 라우트 세그먼트에 따라 `param
 
   * `params` prop은 프로미스이므로 값을 읽으려면 `async`/`await` 또는 React의 use 함수를 사용해야 합니다.
     * 14 버전 이전에는 `params`가 동기 prop이었습니다. 하위 호환을 돕기 위해 Next.js 15에서도 동기적으로 접근할 수 있지만, 이 동작은 향후 더 이상 지원되지 않습니다.
-
-
 
 ### Cache Components와 함께 사용할 때[](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#with-cache-components)
 
@@ -156,7 +152,7 @@ TypeScript를 사용할 때는 설정된 라우트 세그먼트에 따라 `param
 app/blog/[slug]/page.tsx
 [code]
     import { Suspense } from 'react'
-     
+
     export default function Page({ params }: PageProps<'/blog/[slug]'>) {
       return (
         <div>
@@ -169,11 +165,11 @@ app/blog/[slug]/page.tsx
         </div>
       )
     }
-     
+
     async function Content({ slug }: { slug: string }) {
       const res = await fetch(`https://api.vercel.app/blog/${slug}`)
       const post = await res.json()
-     
+
       return (
         <article>
           <h2>{post.title}</h2>
@@ -192,14 +188,14 @@ app/blog/[slug]/page.tsx
 app/blog/[slug]/page.tsx
 [code]
     import { Suspense } from 'react'
-     
+
     export async function generateStaticParams() {
       return [{ slug: '1' }, { slug: '2' }, { slug: '3' }]
     }
-     
+
     export default async function Page({ params }: PageProps<'/blog/[slug]'>) {
       const { slug } = await params
-     
+
       return (
         <div>
           <h1>Blog Post</h1>
@@ -207,7 +203,7 @@ app/blog/[slug]/page.tsx
         </div>
       )
     }
-     
+
     async function Content({ slug }: { slug: string }) {
       const post = await getPost(slug)
       return (
@@ -217,7 +213,7 @@ app/blog/[slug]/page.tsx
         </article>
       )
     }
-     
+
     async function getPost(slug: string) {
       'use cache'
       const res = await fetch(`https://api.vercel.app/blog/${slug}`)
@@ -230,23 +226,23 @@ app/blog/[slug]/page.tsx
 app/blog/[slug]/page.tsx
 [code]
     import { cookies } from 'next/headers'
-     
+
     export async function generateStaticParams() {
       return [{ slug: 'public-post' }, { slug: 'hello-world' }]
     }
-     
+
     export default async function Page({ params }: PageProps<'/blog/[slug]'>) {
       const { slug } = await params
-     
+
       if (slug.startsWith('private-')) {
         // This branch is never executed at build time
         // Runtime requests for 'private-*' slugs will error
         return <PrivatePost slug={slug} />
       }
-     
+
       return <PublicPost slug={slug} />
     }
-     
+
     async function PrivatePost({ slug }: { slug: string }) {
       const token = (await cookies()).get('token')
       // ... fetch and render private post using token for auth
@@ -261,14 +257,14 @@ app/blog/[slug]/page.tsx
 [code]
     import { Suspense } from 'react'
     import { cookies } from 'next/headers'
-     
+
     export async function generateStaticParams() {
       return [{ slug: 'public-post' }, { slug: 'hello-world' }]
     }
-     
+
     export default async function Page({ params }: PageProps<'/blog/[slug]'>) {
       const { slug } = await params
-     
+
       if (slug.startsWith('private-')) {
         return (
 [/code]
@@ -278,10 +274,10 @@ app/blog/[slug]/page.tsx
           </Suspense>
         )
       }
-     
+
       return <PublicPost slug={slug} />
     }
-     
+
     async function PrivatePost({ slug }: { slug: string }) {
       const token = (await cookies()).get('token')
       // ... fetch and render private post using token for auth
@@ -300,7 +296,7 @@ JavaScriptTypeScript
 [code]
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
-     
+
       return posts.map((post) => ({
         slug: post.slug,
       }))
@@ -321,23 +317,23 @@ JavaScriptTypeScript
       const posts: { id: number }[] = await fetch(
         'https://api.vercel.app/blog'
       ).then((res) => res.json())
-     
+
       return posts.map((post) => ({
         id: `${post.id}`,
       }))
     }
-     
+
     export async function GET(
       request: Request,
       { params }: RouteContext<'/api/posts/[id]'>
     ) {
       const { id } = await params
       const res = await fetch(`https://api.vercel.app/blog/${id}`)
-     
+
       if (!res.ok) {
         return Response.json({ error: 'Post not found' }, { status: 404 })
       }
-     
+
       const post = await res.json()
       return Response.json(post)
     }
@@ -349,10 +345,7 @@ JavaScriptTypeScript
 
 다음에 무엇을 해야 하는지 더 자세히 알고 싶다면 아래 섹션을 참고하세요.
 
-### [generateStaticParams 함수에 대한 generateStaticParams API reference.](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
-
-도움이 되었나요?
-
-지원됨.
+- [generateStaticParams](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
+  - 함수에 대한 generateStaticParams API reference.
 
 보내기

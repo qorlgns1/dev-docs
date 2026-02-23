@@ -7,8 +7,6 @@ description: '정적  객체나 동적  함수를 사용해 페이지의 초기 
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)generateViewport
-
 Copy page
 
 # generateViewport
@@ -18,12 +16,11 @@ Copy page
 정적 `viewport` 객체나 동적 `generateViewport` 함수를 사용해 페이지의 초기 뷰포트를 사용자 지정할 수 있습니다.
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * `viewport` 객체와 `generateViewport` 함수 export는 **Server Components에서만 지원**됩니다.
 >   * 동일한 라우트 세그먼트에서 `viewport` 객체와 `generateViewport` 함수를 동시에 export할 수 없습니다.
 >   * `metadata` export에서 마이그레이션하는 경우 [metadata-to-viewport-export codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#metadata-to-viewport-export)으로 변경 사항을 업데이트할 수 있습니다.
-> 
-
+>
 
 ## The `viewport` object[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#the-viewport-object)
 
@@ -34,11 +31,11 @@ layout.tsx | page.tsx
 JavaScriptTypeScript
 [code]
     import type { Viewport } from 'next'
-     
+
     export const viewport: Viewport = {
       themeColor: 'black',
     }
-     
+
     export default function Page() {}
 [/code]
 
@@ -60,10 +57,9 @@ JavaScriptTypeScript
 TypeScript에서는 `generateViewport`가 정의된 위치에 따라 `params` 인수를 [`PageProps<'/route'>`](https://nextjs.org/docs/app/api-reference/file-conventions/page#page-props-helper) 또는 [`LayoutProps<'/route'>`](https://nextjs.org/docs/app/api-reference/file-conventions/layout#layout-props-helper)로 타이핑할 수 있습니다.
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * 뷰포트가 런타임 정보에 의존하지 않는다면 `generateViewport` 대신 정적 [`viewport` 객체](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#the-viewport-object)에 정의해야 합니다.
-> 
-
+>
 
 ## Viewport Fields[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#viewport-fields)
 
@@ -78,7 +74,7 @@ layout.tsx | page.tsx
 JavaScriptTypeScript
 [code]
     import type { Viewport } from 'next'
-     
+
     export const viewport: Viewport = {
       themeColor: 'black',
     }
@@ -96,7 +92,7 @@ layout.tsx | page.tsx
 JavaScriptTypeScript
 [code]
     import type { Viewport } from 'next'
-     
+
     export const viewport: Viewport = {
       themeColor: [
         { media: '(prefers-color-scheme: light)', color: 'cyan' },
@@ -120,7 +116,7 @@ layout.tsx | page.tsx
 JavaScriptTypeScript
 [code]
     import type { Viewport } from 'next'
-     
+
     export const viewport: Viewport = {
       width: 'device-width',
       initialScale: 1,
@@ -148,7 +144,7 @@ layout.tsx | page.tsx
 JavaScriptTypeScript
 [code]
     import type { Viewport } from 'next'
-     
+
     export const viewport: Viewport = {
       colorScheme: 'dark',
     }
@@ -182,14 +178,14 @@ app/layout.tsx
 [code]
     import { Suspense } from 'react'
     import { cookies } from 'next/headers'
-     
+
     export async function generateViewport() {
       const cookieJar = await cookies()
       return {
         themeColor: cookieJar.get('theme-color')?.value,
       }
     }
-     
+
     export default function RootLayout({ children }) {
       return (
         <Suspense>
@@ -210,9 +206,9 @@ app/layout.tsx
 `Viewport` 타입을 사용하면 뷰포트 객체에 타입 안전성을 추가할 수 있습니다. IDE에서 [내장 TypeScript 플러그인](https://nextjs.org/docs/app/api-reference/config/typescript)을 사용하는 경우 타입을 수동으로 추가할 필요는 없지만 원한다면 명시적으로 추가할 수 있습니다.
 
 ### `viewport` object[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#viewport-object)
-[code] 
+[code]
     import type { Viewport } from 'next'
-     
+
     export const viewport: Viewport = {
       themeColor: 'black',
     }
@@ -221,9 +217,9 @@ app/layout.tsx
 ### `generateViewport` function[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#generateviewport-function-1)
 
 #### Regular function[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#regular-function)
-[code] 
+[code]
     import type { Viewport } from 'next'
-     
+
     export function generateViewport(): Viewport {
       return {
         themeColor: 'black',
@@ -232,27 +228,27 @@ app/layout.tsx
 [/code]
 
 #### With segment props[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#with-segment-props)
-[code] 
+[code]
     import type { Viewport } from 'next'
-     
+
     type Props = {
       params: Promise<{ id: string }>
       searchParams: Promise<{ [key: string]: string | string[] | undefined }>
     }
-     
+
     export function generateViewport({ params, searchParams }: Props): Viewport {
       return {
         themeColor: 'black',
       }
     }
-     
+
     export default function Page({ params, searchParams }: Props) {}
 [/code]
 
 #### JavaScript Projects[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#javascript-projects)
 
 JavaScript 프로젝트에서는 JSDoc을 사용해 타입 안전성을 추가할 수 있습니다.
-[code] 
+[code]
     /** @type {import("next").Viewport} */
     export const viewport = {
       themeColor: 'black',
@@ -261,15 +257,22 @@ JavaScript 프로젝트에서는 JSDoc을 사용해 타입 안전성을 추가�
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#version-history)
 
-Version| Changes  
----|---  
-`v14.0.0`| `viewport` 및 `generateViewport` 도입.  
-  
+Version| Changes
+---|---
+`v14.0.0`| `viewport` 및 `generateViewport` 도입.
+
 ## Next Steps
 
 모든 Metadata API 옵션을 확인하세요.
 
-### [Metadata Files메타데이터 파일 컨벤션에 대한 API 문서.](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)### [Cache ComponentsCache Components를 사용하고 정적·동적 렌더링의 장점을 결합하는 방법 알아보기.](https://nextjs.org/docs/app/getting-started/cache-components)### [cacheComponentsNext.js에서 cacheComponents 플래그를 활성화하는 방법 알아보기.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+- [개요](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)
+  - Metadata Files메타데이터 파일 컨벤션에 대한 API 문서.
+
+- [컴포넌트 캐시](https://nextjs.org/docs/app/getting-started/cache-components)
+  - Cache ComponentsCache Components를 사용하고 정적·동적 렌더링의 장점을 결합하는 방법 알아보기.
+
+- [cacheComponents](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+  - Next.js에서 cacheComponents 플래그를 활성화하는 방법 알아보기.
 
 Was this helpful?
 

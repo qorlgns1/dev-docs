@@ -9,8 +9,6 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/data-security'
 
 [App Router](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)데이터 보안
 
-페이지 복사
-
 # Next.js에서 데이터 보안을 생각하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -27,8 +25,6 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/data-security'
   * [데이터 액세스 레이어](https://nextjs.org/docs/app/guides/data-security#data-access-layer): 신규 프로젝트에 권장합니다.
   * [컴포넌트 수준 데이터 액세스](https://nextjs.org/docs/app/guides/data-security#component-level-data-access): 프로토타입과 학습용에 적합합니다.
 
-
-
 데이터 패칭 접근 방식은 하나만 선택해 혼용을 피하는 것이 좋습니다. 이렇게 하면 코드베이스에서 작업하는 개발자와 보안 감사자 모두가 예상할 수 있는 경계를 갖게 됩니다.
 
 ### 외부 HTTP API[](https://nextjs.org/docs/app/guides/data-security#external-http-apis)
@@ -38,18 +34,18 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/data-security'
 app/page.tsx
 [code]
     import { cookies } from 'next/headers'
-     
+
     export default async function Page() {
       const cookieStore = cookies()
       const token = cookieStore.get('AUTH_TOKEN')?.value
-     
+
       const res = await fetch('https://api.example.com/profile', {
         headers: {
           Cookie: `AUTH_TOKEN=${token}`,
           // Other headers
         },
       })
-     
+
       // ....
     }
 [/code]
@@ -58,8 +54,6 @@ app/page.tsx
 
   * 이미 보안 관행이 갖춰져 있을 때.
   * 별도 백엔드 팀이 다른 언어를 사용하거나 API를 독립적으로 관리할 때.
-
-
 
 ### 데이터 액세스 레이어[](https://nextjs.org/docs/app/guides/data-security#data-access-layer)
 
@@ -71,15 +65,13 @@ app/page.tsx
   * 인가 검사를 수행합니다.
   * 안전하고 최소한의 **데이터 전송 객체(DTO)**를 반환합니다.
 
-
-
 이 접근 방식은 모든 데이터 액세스 로직을 중앙집중화해 일관된 데이터 접근을 강제하고 인가 버그 위험을 줄입니다. 또한 요청의 여러 부분에서 메모리 내 캐시를 공유하는 이점도 얻습니다.
 
 data/auth.ts
 [code]
     import { cache } from 'react'
     import { cookies } from 'next/headers'
-     
+
     // Cached helper methods makes it easy to get the same value in many places
     // without manually passing it around. This discourages passing it from Server
     // Component to Server Component which minimizes risk of passing it to a Client
@@ -97,26 +89,26 @@ data/user-dto.tsx
 [code]
     import 'server-only'
     import { getCurrentUser } from './auth'
-     
+
     function canSeeUsername(viewer: User) {
       // Public info for now, but can change
       return true
     }
-     
+
     function canSeePhoneNumber(viewer: User, team: string) {
       // Privacy rules
       return viewer.isAdmin || team === viewer.team
     }
-     
+
     export async function getProfileDTO(slug: string) {
       // Don't pass values, read back cached values, also solves context and easier to make it lazy
-     
+
       // use a database API that supports safe templating of queries
       const [rows] = await sql`SELECT * FROM user WHERE slug = ${slug}`
       const userData = rows[0]
-     
+
       const currentUser = await getCurrentUser()
-     
+
       // only return the data relevant for this query and not everything
       // <https://www.w3.org/2001/tag/doc/APIMinimization>
       return {
@@ -131,7 +123,7 @@ data/user-dto.tsx
 app/page.tsx
 [code]
     import { getProfile } from '../../data/user'
-     
+
     export async function Page({ params: { slug } }) {
       // This page can now safely pass around this profile knowing
       // that it shouldn't contain anything sensitive.
@@ -151,7 +143,7 @@ app/page.tsx
 app/page.tsx
 [code]
     import Profile from './components/profile.tsx'
-     
+
     export async function Page({ params: { slug } }) {
       const [rows] = await sql`SELECT * FROM user WHERE slug = ${slug}`
       const userData = rows[0]
@@ -164,7 +156,7 @@ app/page.tsx
 app/ui/profile.tsx
 [code]
     'use client'
-     
+
     // BAD: This is a bad props interface because it accepts way more data than the
     // Client Component needs and it encourages server components to pass all that
     // data down. A better solution would be to accept a limited object with just
@@ -184,11 +176,11 @@ app/ui/profile.tsx
 data/user.ts
 [code]
     import { sql } from './db'
-     
+
     export async function getUser(slug: string) {
       const [rows] = await sql`SELECT * FROM user WHERE slug = ${slug}`
       const user = rows[0]
-     
+
       // Return only the public fields
       return {
         name: user.name,
@@ -200,7 +192,7 @@ app/page.tsx
 [code]
     import { getUser } from '../data/user'
     import Profile from './ui/profile'
-     
+
     export default async function Page({
       params: { slug },
     }: {
@@ -222,14 +214,10 @@ app/page.tsx
   * 서버에서만 실행됩니다.
   * 환경 변수, 비밀, 데이터베이스, 내부 API에 안전하게 접근할 수 있습니다.
 
-
-
 **Client Components:**
 
   * 프리렌더링 동안에는 서버에서 실행되지만 브라우저에서 실행되는 코드와 동일한 보안 가정을 따라야 합니다.
   * 권한 있는 데이터나 서버 전용 모듈에 접근해서는 안 됩니다.
-
-
 
 이 설계 덕분에 앱은 기본적으로 안전하지만, 데이터를 가져오거나 컴포넌트로 전달하는 방식에 따라 개인 데이터가 실수로 노출될 수 있습니다.
 
@@ -239,8 +227,6 @@ app/page.tsx
 
   * 데이터 객체용 [`experimental_taintObjectReference`](https://react.dev/reference/react/experimental_taintObjectReference)
   * 특정 값용 [`experimental_taintUniqueValue`](https://react.dev/reference/react/experimental_taintUniqueValue)
-
-
 
 Next.js 앱에서는 `next.config.js`의 [`experimental.taint`](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint) 옵션으로 활성화할 수 있습니다.
 
@@ -256,11 +242,10 @@ next.config.js
 이렇게 하면 taint된 객체나 값을 클라이언트로 전달하지 못합니다. 다만 이는 추가적인 방어 계층일 뿐이므로, React 렌더링 컨텍스트에 전달하기 전에 [DAL](https://nextjs.org/docs/app/guides/data-security#data-access-layer)에서 데이터를 필터링하고 정제해야 합니다.
 
 > **알아두면 좋아요:**
-> 
+>
 >   * 기본적으로 환경 변수는 서버에서만 사용할 수 있습니다. Next.js는 `NEXT_PUBLIC_` 접두사가 붙은 환경 변수를 클라이언트에 노출합니다. [자세히 알아보기](https://nextjs.org/docs/app/guides/environment-variables)
 >   * 함수와 클래스는 기본적으로 Client Components로 전달되지 않도록 차단됩니다.
-> 
-
+>
 
 ### 서버 전용 코드의 클라이언트 실행 방지[](https://nextjs.org/docs/app/guides/data-security#preventing-client-side-execution-of-server-only-code)
 
@@ -276,7 +261,7 @@ Terminal
 lib/data.ts
 [code]
     import 'server-only'
-     
+
     //...
 [/code]
 
@@ -295,12 +280,10 @@ Server Action을 생성해 export하면 기본적으로 공개 HTTP 엔드포인
   * **보안 액션 ID:** Next.js는 클라이언트가 Server Action을 참조하고 호출할 수 있도록 암호화된 비결정적 ID를 생성합니다. 이 ID는 보안을 강화하기 위해 빌드 사이사이에 주기적으로 재계산됩니다.
   * **데드 코드 제거:** 사용되지 않는 Server Action(ID로 참조됨)은 클라이언트 번들에서 제거되어 공개 접근을 방지합니다.
 
-
-
 > **알아두면 좋아요** :
-> 
+>
 > ID는 컴파일 중 생성되며 최대 14일 동안 캐시됩니다. 새 빌드가 시작되거나 빌드 캐시가 무효화되면 다시 생성됩니다. 이 보안 개선은 인증 레이어가 누락된 경우의 위험을 줄여주지만, 여전히 Server Actions를 공개 HTTP 엔드포인트처럼 다뤄야 합니다.
-[code] 
+[code]
     // app/actions.js
     'use server'
 [/code]
@@ -309,7 +292,7 @@ Server Action을 생성해 export하면 기본적으로 공개 HTTP 엔드포인
     // will create a secure ID to allow the client to reference
     // and call the Server Action.
     export async function updateUserAction(formData) {}
-     
+
     // If this action **is not** used in our application, Next.js
     // will automatically remove this code during `next build`
     // and will not create a public endpoint.
@@ -330,15 +313,15 @@ app/page.tsx
         return <AdminPanel />
       }
     }
-     
+
     // GOOD: Re-verify every time
     import { cookies } from 'next/headers'
     import { verifyAdmin } from './auth'
-     
+
     export default async function Page() {
       const token = cookies().get('AUTH_TOKEN')
       const isAdmin = await verifyAdmin(token)
-     
+
       if (isAdmin) {
         return <AdminPanel />
       }
@@ -352,15 +335,15 @@ app/page.tsx
 app/actions.ts
 [code]
     'use server'
-     
+
     import { auth } from './lib'
-     
+
     export function addItem() {
       const { user } = auth()
       if (!user) {
         throw new Error('You must be signed in to perform this action')
       }
-     
+
       // ...
     }
 [/code]
@@ -377,7 +360,7 @@ JavaScriptTypeScript
 [code]
     export default async function Page() {
       const publishVersion = await getLatestVersion();
-     
+
       async function publish() {
         "use server";
         if (publishVersion !== await getLatestVersion()) {
@@ -385,7 +368,7 @@ JavaScriptTypeScript
         }
         ...
       }
-     
+
       return (
         <form>
           <button formAction={publish}>Publish</button>
@@ -407,7 +390,7 @@ Next.js 애플리케이션을 여러 서버에 **자가 호스팅**하는 경우
 이를 완화하려면 `process.env.NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` 환경 변수를 사용해 암호화 키를 덮어쓸 수 있습니다. 이 변수를 지정하면 빌드 간에도 암호화 키가 유지되며 모든 서버 인스턴스가 동일한 키를 사용합니다.
 
 키는 base64로 인코딩된 값이어야 하며, 디코딩했을 때 길이가 유효한 AES 키 크기(16, 24, 32바이트)와 일치해야 합니다. Next.js는 기본적으로 32바이트 키를 생성합니다. 예를 들어 다음과 같이 플랫폼의 암호화 도구를 사용해 호환 키를 생성할 수 있습니다:
-[code] 
+[code]
     openssl rand -base64 32
 [/code]
 
@@ -448,7 +431,7 @@ app/page.tsx
       if (searchParams.get('logout')) {
         cookies().delete('AUTH_TOKEN')
       }
-     
+
       return <UserProfile />
     }
 [/code]
@@ -459,7 +442,7 @@ app/page.tsx
 [code]
     // GOOD: Using Server Actions to handle mutations
     import { logout } from './actions'
-     
+
     export default function Page() {
       return (
         <>
@@ -484,16 +467,17 @@ Next.js 프로젝트를 감사하는 경우 다음 영역을 특히 살펴보길
   * **`/[param]/.`** 대괄호가 있는 폴더는 사용자 입력입니다. 파라미터가 검증되나요?
   * **`proxy.ts` 및 `route.ts`:** 매우 강력합니다. 전통적인 기법으로 이 파일들을 추가로 감사하세요. 팀의 소프트웨어 개발 생명주기에 맞춰 침투 테스트 또는 취약성 스캐닝을 정기적으로 수행하세요.
 
-
-
 ## 다음 단계
 
 이 가이드에서 언급한 주제에 대해 더 알아보세요.
 
-### [AuthenticationNext.js 애플리케이션에서 인증을 구현하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/authentication)### [Content Security PolicyNext.js 애플리케이션에 콘텐츠 보안 정책(CSP)을 설정하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/content-security-policy)### [FormsReact Server Actions와 함께 Next.js에서 폼을 만드는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/forms)
+- [인증](https://nextjs.org/docs/app/guides/authentication)
+  - AuthenticationNext.js 애플리케이션에서 인증을 구현하는 방법을 알아보세요.
 
-도움이 되었나요?
+- [콘텐츠 보안 정책](https://nextjs.org/docs/app/guides/content-security-policy)
+  - Content Security PolicyNext.js 애플리케이션에 콘텐츠 보안 정책(CSP)을 설정하는 방법을 알아보세요.
 
-지원됨.
+- [폼](https://nextjs.org/docs/app/guides/forms)
+  - FormsReact Server Actions와 함께 Next.js에서 폼을 만드는 방법을 알아보세요.
 
 보내기

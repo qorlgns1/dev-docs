@@ -7,10 +7,6 @@ description: '관측 가능성은 Next.js 앱의 동작과 성능을 이해하�
 
 출처 URL: https://nextjs.org/docs/pages/guides/open-telemetry
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)OpenTelemetry
-
-페이지 복사
-
 # OpenTelemetry로 Next.js 앱 계측하기
 
 마지막 업데이트: 2026년 2월 20일
@@ -49,7 +45,7 @@ your-project/instrumentation.ts
 JavaScriptTypeScript
 [code]
     import { registerOTel } from '@vercel/otel'
-     
+
     export function register() {
       registerOTel({ serviceName: 'next-app' })
     }
@@ -58,12 +54,11 @@ JavaScriptTypeScript
 추가 구성 옵션은 [`@vercel/otel` 문서](https://www.npmjs.com/package/@vercel/otel)를 참고하세요.
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * `instrumentation` 파일은 프로젝트 루트에 있어야 하며 `app` 또는 `pages` 디렉터리 내부에 두면 안 됩니다. `src` 폴더를 사용한다면 `pages`, `app`과 나란히 `src` 내부에 파일을 두세요.
 >   * [`pageExtensions` 구성 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions)으로 접미사를 추가했다면 `instrumentation` 파일 이름도 동일하게 업데이트해야 합니다.
 >   * 활용할 수 있도록 기본 [with-opentelemetry](https://github.com/vercel/next.js/tree/canary/examples/with-opentelemetry) 예제를 제공했습니다.
-> 
-
+>
 
 ### 수동 OpenTelemetry 구성[](https://nextjs.org/docs/pages/guides/open-telemetry#manual-opentelemetry-configuration)
 
@@ -100,7 +95,7 @@ JavaScriptTypeScript
     import { NodeSDK } from '@opentelemetry/sdk-node'
     import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-node'
     import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions'
-     
+
     const sdk = new NodeSDK({
       resource: resourceFromAttributes({
         [ATTR_SERVICE_NAME]: 'next-app',
@@ -156,9 +151,9 @@ Terminal
 [/code]
 
 다음 예시는 GitHub 스타를 가져오고 `fetchGithubStars` 커스텀 스팬을 추가해 fetch 요청 결과를 추적하는 함수를 보여줍니다:
-[code] 
+[code]
     import { trace } from '@opentelemetry/api'
-     
+
     export async function fetchGithubStars() {
       return await trace
         .getTracer('nextjs-example')
@@ -189,13 +184,9 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
     * `page.ts`, `layout.ts`, `loading.ts` 등 특수 파일로 가는 라우트로 생각할 수 있습니다.
     * `/layout`은 `/(groupA)/layout.ts`와 `/(groupB)/layout.ts`를 모두 가리킬 수 있으므로 `next.route`와 함께 사용할 때만 고유 식별자로 활용할 수 있습니다.
 
-
-
 ### `[http.method] [next.route]`[](https://nextjs.org/docs/pages/guides/open-telemetry#httpmethod-nextroute)
 
   * `next.span_type`: `BaseServer.handleRequest`
-
-
 
 이 스팬은 Next.js 애플리케이션으로 들어오는 각 요청의 루트 스팬을 나타냅니다. 요청의 HTTP 메서드, 라우트, 타깃, 상태 코드를 추적합니다.
 
@@ -211,13 +202,9 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
   * `next.span_type`
   * `next.route`
 
-
-
 ### `render route (app) [next.route]`[](https://nextjs.org/docs/pages/guides/open-telemetry#render-route-app-nextroute)
 
   * `next.span_type`: `AppRender.getBodyResult`.
-
-
 
 이 스팬은 앱 라우터에서 라우트를 렌더링하는 과정을 나타냅니다.
 
@@ -227,13 +214,9 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
   * `next.span_type`
   * `next.route`
 
-
-
 ### `fetch [http.method] [http.url]`[](https://nextjs.org/docs/pages/guides/open-telemetry#fetch-httpmethod-httpurl)
 
   * `next.span_type`: `AppRender.fetch`
-
-
 
 이 스팬은 코드에서 실행된 fetch 요청을 나타냅니다.
 
@@ -247,8 +230,6 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
     * `net.peer.port` (지정한 경우에만)
   * `next.span_name`
   * `next.span_type`
-
-
 
 이 스팬은 환경에서 `NEXT_OTEL_FETCH_DISABLED=1`로 설정하면 끌 수 있습니다. 커스텀 fetch 계측 라이브러리를 사용하려는 경우에 유용합니다.
 
@@ -264,13 +245,9 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
   * `next.span_type`
   * `next.route`
 
-
-
 ### `getServerSideProps [next.route]`[](https://nextjs.org/docs/pages/guides/open-telemetry#getserversideprops-nextroute)
 
   * `next.span_type`: `Render.getServerSideProps`.
-
-
 
 이 스팬은 특정 라우트에 대한 `getServerSideProps` 실행을 나타냅니다.
 
@@ -280,13 +257,9 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
   * `next.span_type`
   * `next.route`
 
-
-
 ### `getStaticProps [next.route]`[](https://nextjs.org/docs/pages/guides/open-telemetry#getstaticprops-nextroute)
 
   * `next.span_type`: `Render.getStaticProps`.
-
-
 
 이 스팬은 특정 라우트에 대한 `getStaticProps` 실행을 나타냅니다.
 
@@ -296,13 +269,9 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
   * `next.span_type`
   * `next.route`
 
-
-
 ### `render route (pages) [next.route]`[](https://nextjs.org/docs/pages/guides/open-telemetry#render-route-pages-nextroute)
 
   * `next.span_type`: `Render.renderDocument`.
-
-
 
 이 스팬은 특정 라우트의 문서를 렌더링하는 과정을 나타냅니다.
 
@@ -312,13 +281,9 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
   * `next.span_type`
   * `next.route`
 
-
-
 ### `generateMetadata [next.page]`[](https://nextjs.org/docs/pages/guides/open-telemetry#generatemetadata-nextpage)
 
   * `next.span_type`: `ResolveMetadata.generateMetadata`.
-
-
 
 이 스팬은 특정 페이지에 대한 메타데이터를 생성하는 과정을 나타냅니다(단일 라우트에 여러 개의 스팬이 존재할 수 있음).
 
@@ -328,13 +293,9 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
   * `next.span_type`
   * `next.page`
 
-
-
 ### `resolve page components`[](https://nextjs.org/docs/pages/guides/open-telemetry#resolve-page-components)
 
   * `next.span_type`: `NextNodeServer.findPageComponents`.
-
-
 
 이 스팬은 특정 페이지의 페이지 컴포넌트를 해석하는 과정을 나타냅니다.
 
@@ -344,13 +305,9 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
   * `next.span_type`
   * `next.route`
 
-
-
 ### `resolve segment modules`[](https://nextjs.org/docs/pages/guides/open-telemetry#resolve-segment-modules)
 
   * `next.span_type`: `NextNodeServer.getLayoutOrPageModule`.
-
-
 
 이 스팬은 레이아웃 또는 페이지를 위한 코드 모듈을 로드하는 과정을 나타냅니다.
 
@@ -360,18 +317,10 @@ Next.js는 애플리케이션 성능에 대한 유용한 통찰을 제공하기 
   * `next.span_type`
   * `next.segment`
 
-
-
 ### `start response`[](https://nextjs.org/docs/pages/guides/open-telemetry#start-response)
 
   * `next.span_type`: `NextNodeServer.startResponse`.
 
-
-
 이 길이 0의 스팬은 응답에서 첫 바이트가 전송된 시점을 나타냅니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

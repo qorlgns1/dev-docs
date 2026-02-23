@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/file-conve
 
 원본 URL: https://nextjs.org/docs/pages/api-reference/file-conventions/instrumentation
 
-[API 참고](https://nextjs.org/docs/pages/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/pages/api-reference/file-conventions)instrumentation.js
-
-페이지 복사
-
 # instrumentation.js
 
 최종 업데이트 2026년 2월 20일
@@ -30,7 +26,7 @@ instrumentation.ts
 JavaScriptTypeScript
 [code]
     import { registerOTel } from '@vercel/otel'
-     
+
     export function register() {
       registerOTel('next-app')
     }
@@ -43,14 +39,12 @@ JavaScriptTypeScript
   * `onRequestError` 안에서 비동기 작업을 수행한다면 반드시 await 하세요. Next.js 서버가 오류를 포착할 때 `onRequestError` 가 호출됩니다.
   * `error` 인스턴스는 React 가 Server Components 렌더링 중에 오류를 처리한 경우 원래 발생한 오류 인스턴스가 아닐 수도 있습니다. 이 경우 오류의 `digest` 속성을 사용해 실제 오류 유형을 식별할 수 있습니다.
 
-
-
 instrumentation.ts
 
 JavaScriptTypeScript
 [code]
     import { type Instrumentation } from 'next'
-     
+
     export const onRequestError: Instrumentation.onRequestError = async (
       err,
       request,
@@ -101,8 +95,6 @@ JavaScriptTypeScript
   * `request`: 오류와 연관된 읽기 전용 요청 정보입니다.
   * `context`: 오류가 발생한 컨텍스트입니다. 라우터 종류(App Router 또는 Pages Router)와 Server Components(`'render'`), Route Handlers(`'route'`), Server Actions(`'action'`), Proxy(`'proxy'`) 가운데 어떤 컨텍스트인지가 포함될 수 있습니다.
 
-
-
 ### 런타임 지정하기[](https://nextjs.org/docs/pages/api-reference/file-conventions/instrumentation#specifying-the-runtime)
 
 `instrumentation.js` 파일은 Node.js 와 Edge 런타임 모두에서 동작하지만, 특정 런타임을 대상으로 하려면 `process.env.NEXT_RUNTIME` 을 사용할 수 있습니다.
@@ -116,7 +108,7 @@ instrumentation.js
         return require('./register.node')
       }
     }
-     
+
     export function onRequestError() {
       if (process.env.NEXT_RUNTIME === 'edge') {
         return require('./on-request-error.edge')
@@ -128,14 +120,10 @@ instrumentation.js
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/file-conventions/instrumentation#version-history)
 
-Version| Changes  
----|---  
-`v15.0.0`| `onRequestError` 도입, `instrumentation` 안정화  
-`v14.0.4`| `instrumentation` 의 Turbopack 지원  
-`v13.2.0`| 실험적 기능으로 `instrumentation` 도입  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v15.0.0`| `onRequestError` 도입, `instrumentation` 안정화
+`v14.0.4`| `instrumentation` 의 Turbopack 지원
+`v13.2.0`| 실험적 기능으로 `instrumentation` 도입
 
 보내기

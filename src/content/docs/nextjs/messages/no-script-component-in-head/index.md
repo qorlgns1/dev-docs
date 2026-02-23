@@ -27,7 +27,7 @@ pages/index.js
 [code]
     import Script from 'next/script'
     import Head from 'next/head'
-     
+
     export default function Index() {
       return (
         <Head>
@@ -44,7 +44,7 @@ pages/index.js
 [code]
     import Script from 'next/script'
     import Head from 'next/head'
-     
+
     export default function Index() {
       return (
         <>
@@ -61,10 +61,6 @@ pages/index.js
 
   * [next/head](https://nextjs.org/docs/pages/api-reference/components/head)
   * [next/script](https://nextjs.org/docs/pages/guides/scripts)
-
-
-
-도움이 되었나요?
 
 supported.
 

@@ -7,8 +7,6 @@ description: '증분 정적 재생성(ISR)을 사용하면 다음을 수행할 �
 
 Source URL: https://nextjs.org/docs/pages/guides/incremental-static-regeneration
 
-[Pages Router](https://nextjs.org/docs/pages)[가이드](https://nextjs.org/docs/pages/guides)ISR
-
 Copy page
 
 # 증분 정적 재생성(ISR) 구현 방법
@@ -21,16 +19,12 @@ Last updated February 20, 2026
   * [On-Demand ISR](https://on-demand-isr.vercel.app)
   * [Next.js Forms](https://github.com/vercel/next.js/tree/canary/examples/next-forms)
 
-
-
 증분 정적 재생성(ISR)을 사용하면 다음을 수행할 수 있습니다.
 
   * 전체 사이트를 다시 빌드하지 않고도 정적 콘텐츠를 업데이트
   * 대부분의 요청에 대해 사전 렌더링된 정적 페이지를 제공하여 서버 부하 감소
   * 페이지에 적절한 `cache-control` 헤더가 자동으로 추가되도록 보장
   * 긴 `next build` 시간 없이 대량의 콘텐츠 페이지 처리
-
-
 
 다음은 최소 예시입니다:
 
@@ -39,17 +33,17 @@ pages/blog/[id].tsx
 JavaScriptTypeScript
 [code]
     import type { GetStaticPaths, GetStaticProps } from 'next'
-     
+
     interface Post {
       id: string
       title: string
       content: string
     }
-     
+
     interface Props {
       post: Post
     }
-     
+
     export const getStaticPaths: GetStaticPaths = async () => {
       const posts = await fetch('https://api.vercel.app/blog').then((res) =>
         res.json()
@@ -57,10 +51,10 @@ JavaScriptTypeScript
       const paths = posts.map((post: Post) => ({
         params: { id: String(post.id) },
       }))
-     
+
       return { paths, fallback: 'blocking' }
     }
-     
+
     export const getStaticProps: GetStaticProps<Props> = async ({
       params,
     }: {
@@ -69,7 +63,7 @@ JavaScriptTypeScript
       const post = await fetch(`https://api.vercel.app/blog/${params.id}`).then(
         (res) => res.json()
       )
-     
+
       return {
         props: { post },
         // Next.js will invalidate the cache when a
@@ -77,7 +71,7 @@ JavaScriptTypeScript
         revalidate: 60,
       }
     }
-     
+
     export default function Page({ post }: Props) {
       return (
         <main>
@@ -97,16 +91,12 @@ JavaScriptTypeScript
   5. 생성이 성공하면 다음 요청은 업데이트된 페이지를 반환하고 향후 요청을 위해 캐시합니다
   6. `/blog/26`이 요청되고 존재한다면, 해당 페이지는 온디맨드로 생성됩니다. 이 동작은 다른 [fallback](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-false) 값을 사용해 변경할 수 있습니다. 하지만 게시물이 존재하지 않으면 404가 반환됩니다.
 
-
-
 ## Reference[](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#reference)
 
 ### Functions[](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#functions-1)
 
   * [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)
   * [`res.revalidate`](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#response-helpers)
-
-
 
 ## Examples[](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#examples)
 
@@ -121,7 +111,7 @@ pages/api/revalidate.ts
 JavaScriptTypeScript
 [code]
     import type { NextApiRequest, NextApiResponse } from 'next'
-     
+
     export default async function handler(
       req: NextApiRequest,
       res: NextApiResponse
@@ -130,7 +120,7 @@ JavaScriptTypeScript
       if (req.query.secret !== process.env.MY_SECRET_TOKEN) {
         return res.status(401).json({ message: 'Invalid token' })
       }
-     
+
       try {
         // This should be the actual path not a rewritten path
         // e.g. for "/posts/[id]" this should be "/posts/1"
@@ -155,17 +145,17 @@ pages/blog/[id].tsx
 JavaScriptTypeScript
 [code]
     import type { GetStaticProps } from 'next'
-     
+
     interface Post {
       id: string
       title: string
       content: string
     }
-     
+
     interface Props {
       post: Post
     }
-     
+
     export const getStaticProps: GetStaticProps<Props> = async ({
       params,
     }: {
@@ -176,14 +166,14 @@ JavaScriptTypeScript
       // retry getStaticProps on the next request.
       const res = await fetch(`https://api.vercel.app/blog/${params.id}`)
       const post: Post = await res.json()
-     
+
       if (!res.ok) {
         // If there is a server error, you might want to
         // throw an error instead of returning so that the cache is not updated
         // until the next successful request.
         throw new Error(`Failed to fetch posts, received status ${res.status}`)
       }
-     
+
       return {
         props: { post },
         // Next.js will invalidate the cache when a
@@ -233,29 +223,27 @@ next.config.js
   * [Static Export](https://nextjs.org/docs/app/guides/static-exports)를 생성할 때는 ISR이 지원되지 않습니다.
   * 온디맨드 ISR 요청에는 Proxy가 실행되지 않으므로 경로 재작성이나 Proxy 로직이 적용되지 않습니다. 정확한 경로를 재검증하도록 하세요. 예를 들어, 재작성된 `/post-1` 대신 `/post/1`을 사용합니다.
 
-
-
 ## Platform Support[](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#platform-support)
 
-Deployment Option| Supported  
----|---  
-[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| Yes  
-[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| Yes  
-[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| No  
-[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| Platform-specific  
-  
+Deployment Option| Supported
+---|---
+[Node.js server](https://nextjs.org/docs/app/getting-started/deploying#nodejs-server)| Yes
+[Docker container](https://nextjs.org/docs/app/getting-started/deploying#docker)| Yes
+[Static export](https://nextjs.org/docs/app/getting-started/deploying#static-export)| No
+[Adapters](https://nextjs.org/docs/app/getting-started/deploying#adapters)| Platform-specific
+
 Next.js를 셀프 호스팅할 때 [ISR을 구성](https://nextjs.org/docs/app/guides/self-hosting#caching-and-isr)하는 방법을 알아보세요.
 
 ## 버전 기록[](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#version-history)
 
-Version| Changes  
----|---  
-`v14.1.0`| 사용자 정의 `cacheHandler`가 안정화되었습니다.  
-`v13.0.0`| App Router가 도입되었습니다.  
-`v12.2.0`| Pages Router: 온디맨드 ISR이 안정화되었습니다  
-`v12.0.0`| Pages Router: [Bot-aware ISR fallback](https://nextjs.org/blog/next-12#bot-aware-isr-fallback)이 추가되었습니다.  
-`v9.5.0`| Pages Router: [ISR 안정화](https://nextjs.org/blog/next-9-5).  
-  
+Version| Changes
+---|---
+`v14.1.0`| 사용자 정의 `cacheHandler`가 안정화되었습니다.
+`v13.0.0`| App Router가 도입되었습니다.
+`v12.2.0`| Pages Router: 온디맨드 ISR이 안정화되었습니다
+`v12.0.0`| Pages Router: [Bot-aware ISR fallback](https://nextjs.org/blog/next-12#bot-aware-isr-fallback)이 추가되었습니다.
+`v9.5.0`| Pages Router: [ISR 안정화](https://nextjs.org/blog/next-9-5).
+
 Was this helpful?
 
 supported.

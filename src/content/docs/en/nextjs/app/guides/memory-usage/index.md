@@ -1,60 +1,54 @@
 ---
-title: 'Guides: Memory Usage'
+title: 'How to optimize memory usage'
 description: 'As applications grow and become more feature rich, they can demand more resources when developing locally or creating production builds.'
 ---
 
-# Guides: Memory Usage | Next.js
-
 Source URL: https://nextjs.org/docs/app/guides/memory-usage
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Memory Usage
-
-Copy page
-
 # How to optimize memory usage
-
-Last updated February 20, 2026
 
 As applications grow and become more feature rich, they can demand more resources when developing locally or creating production builds.
 
 Let's explore some strategies and techniques to optimize memory and address common memory issues in Next.js.
 
-## Reduce number of dependencies[](https://nextjs.org/docs/app/guides/memory-usage#reduce-number-of-dependencies)
+## Reduce number of dependencies
 
 Applications with a large amount of dependencies will use more memory.
 
 The [Bundle Analyzer](https://nextjs.org/docs/app/guides/package-bundling) can help you investigate large dependencies in your application that may be able to be removed to improve performance and memory usage.
 
-## Try `experimental.webpackMemoryOptimizations`[](https://nextjs.org/docs/app/guides/memory-usage#try-experimentalwebpackmemoryoptimizations)
+## Try `experimental.webpackMemoryOptimizations`
 
 Starting in `v15.0.0`, you can add `experimental.webpackMemoryOptimizations: true` to your `next.config.js` file to change behavior in Webpack that reduces max memory usage but may increase compilation times by a slight amount.
 
-> **Good to know** : This feature is currently experimental to test on more projects first, but it is considered to be low-risk.
+> **Good to know**: This feature is currently experimental to test on more projects first, but it is considered to be low-risk.
 
-## Run `next build` with `--experimental-debug-memory-usage`[](https://nextjs.org/docs/app/guides/memory-usage#run-next-build-with---experimental-debug-memory-usage)
+## Run `next build` with `--experimental-debug-memory-usage`
 
 Starting in `14.2.0`, you can run `next build --experimental-debug-memory-usage` to run the build in a mode where Next.js will print out information about memory usage continuously throughout the build, such as heap usage and garbage collection statistics. Heap snapshots will also be taken automatically when memory usage gets close to the configured limit.
 
-> **Good to know** : This feature is not compatible with the Webpack build worker option which is auto-enabled unless you have custom webpack config.
+> **Good to know**: This feature is not compatible with the Webpack build worker option which is auto-enabled unless you have custom webpack config.
 
-## Record a heap profile[](https://nextjs.org/docs/app/guides/memory-usage#record-a-heap-profile)
+## Record a heap profile
 
 To look for memory issues, you can record a heap profile from Node.js and load it in Chrome DevTools to identify potential sources of memory leaks.
 
 In your terminal, pass the `--heap-prof` flag to Node.js when starting your Next.js build:
-[code] 
-    node --heap-prof node_modules/next/dist/bin/next build
-[/code]
+
+```sh
+node --heap-prof node_modules/next/dist/bin/next build
+```
 
 At the end of the build, a `.heapprofile` file will be created by Node.js.
 
 In Chrome DevTools, you can open the Memory tab and click on the "Load Profile" button to visualize the file.
 
-## Analyze a snapshot of the heap[](https://nextjs.org/docs/app/guides/memory-usage#analyze-a-snapshot-of-the-heap)
+## Analyze a snapshot of the heap
 
 You can use an inspector tool to analyze the memory usage of the application.
 
-When running the `next build` or `next dev` command, add `NODE_OPTIONS=--inspect` to the beginning of the command. This will expose the inspector agent on the default port. If you wish to break before any user code starts, you can pass `--inspect-brk` instead. While the process is running, you can use a tool such as Chrome DevTools to connect to the debugging port to record and analyze a snapshot of the heap to see what memory is being retained.
+When running the `next build` or `next dev` command, add `NODE_OPTIONS=--inspect` to the beginning of the command. This will expose the inspector agent on the default port.
+If you wish to break before any user code starts, you can pass `--inspect-brk` instead. While the process is running, you can use a tool such as Chrome DevTools to connect to the debugging port to record and analyze a snapshot of the heap to see what memory is being retained.
 
 Starting in `14.2.0`, you can also run `next build` with the `--experimental-debug-memory-usage` flag to make it easier to take heap snapshots.
 
@@ -64,7 +58,7 @@ The heap snapshot will be saved to the project root of the Next.js application a
 
 See [how to record and analyze heap snapshots](https://developer.chrome.com/docs/devtools/memory-problems/heap-snapshots) for more information.
 
-## Webpack build worker[](https://nextjs.org/docs/app/guides/memory-usage#webpack-build-worker)
+## Webpack build worker
 
 The Webpack build worker allows you to run Webpack compilations inside a separate Node.js worker which will decrease memory usage of your application during builds.
 
@@ -72,76 +66,79 @@ This option is enabled by default if your application does not have a custom Web
 
 If you are using an older version of Next.js or you have a custom Webpack configuration, you can enable this option by setting `experimental.webpackBuildWorker: true` inside your `next.config.js`.
 
-> **Good to know** : This feature may not be compatible with all custom Webpack plugins.
+> **Good to know**: This feature may not be compatible with all custom Webpack plugins.
 
-## Disable Webpack cache[](https://nextjs.org/docs/app/guides/memory-usage#disable-webpack-cache)
+## Disable Webpack cache
 
-The [Webpack cache](https://webpack.js.org/configuration/cache/) saves generated Webpack modules in memory and/or to disk to improve the speed of builds. This can help with performance, but it will also increase the memory usage of your application to store the cached data.
+The [Webpack cache](https://webpack.js.org/configuration/cache/) saves generated Webpack modules in memory and/or to disk to improve the speed of builds. This can
+help with performance, but it will also increase the memory usage of your application to store the cached data.
 
 You can disable this behavior by adding a [custom Webpack configuration](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack) to your application:
 
-next.config.mjs
-[code]
-    /** @type {import('next').NextConfig} */
-    const nextConfig = {
-      webpack: (
-        config,
-        { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
-      ) => {
-        if (config.cache && !dev) {
-          config.cache = Object.freeze({
-            type: 'memory',
-          })
-        }
-        // Important: return the modified config
-        return config
-      },
+```js filename="next.config.mjs"
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  ) => {
+    if (config.cache && !dev) {
+      config.cache = Object.freeze({
+        type: 'memory',
+      })
     }
-     
-    export default nextConfig
-[/code]
+    // Important: return the modified config
+    return config
+  },
+}
 
-## Disable static analysis[](https://nextjs.org/docs/app/guides/memory-usage#disable-static-analysis)
+export default nextConfig
+```
 
-Typechecking may require a lot of memory, especially in large projects. However, most projects have a dedicated CI runner that already handles these tasks. When the build produces out-of-memory issues during the "Running TypeScript" step, you can disable this task during builds:
+## Disable static analysis
 
-next.config.mjs
-[code]
-    /** @type {import('next').NextConfig} */
-    const nextConfig = {
-      typescript: {
-        // !! WARN !!
-        // Dangerously allow production builds to successfully complete even if
-        // your project has type errors.
-        // !! WARN !!
-        ignoreBuildErrors: true,
-      },
-    }
-     
-    export default nextConfig
-[/code]
+Typechecking may require a lot of memory, especially in large projects.
+However, most projects have a dedicated CI runner that already handles these tasks.
+When the build produces out-of-memory issues during the "Running TypeScript" step, you can disable this task during builds:
 
-  * [Ignoring TypeScript Errors](https://nextjs.org/docs/app/api-reference/config/typescript#disabling-typescript-errors-in-production)
+```js filename="next.config.mjs"
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
+}
 
+export default nextConfig
+```
 
+* [Ignoring TypeScript Errors](https://nextjs.org/docs/app/api-reference/config/typescript#disabling-typescript-errors-in-production)
 
-Keep in mind that this may produce faulty deploys due to type errors. We strongly recommend only promoting builds to production after static analysis has completed. If you deploy to Vercel, you can check out the [guide for staging deployments](https://vercel.com/docs/deployments/managing-deployments#staging-and-promoting-a-production-deployment) to learn how to promote builds to production after custom tasks have succeeded.
+Keep in mind that this may produce faulty deploys due to type errors.
+We strongly recommend only promoting builds to production after static analysis has completed.
+If you deploy to Vercel, you can check out the [guide for staging deployments](https://vercel.com/docs/deployments/managing-deployments#staging-and-promoting-a-production-deployment) to learn how to promote builds to production after custom tasks have succeeded.
 
-## Disable source maps[](https://nextjs.org/docs/app/guides/memory-usage#disable-source-maps)
+## Disable source maps
 
 Generating source maps consumes extra memory during the build process.
 
 You can disable source map generation by adding `productionBrowserSourceMaps: false` and `experimental.serverSourceMaps: false` to your Next.js configuration.
 
-When using the `cacheComponents` feature, Next.js will use source maps by default during the prerender phase of `next build`. If you consistently encounter memory issues during that phase (after "Generating static pages"), you can try disabling source maps in that phase by adding `enablePrerenderSourceMaps: false` to your Next.js configuration.
+When using the `cacheComponents` feature, Next.js will use source maps by default during the prerender phase of `next build`.
+If you consistently encounter memory issues during that phase (after "Generating static pages"),
+you can try disabling source maps in that phase by adding `enablePrerenderSourceMaps: false` to your Next.js configuration.
 
-> **Good to know** : Some plugins may turn on source maps and may require custom configuration to disable.
+> **Good to know**: Some plugins may turn on source maps and may require custom configuration to disable.
 
-## Edge memory issues[](https://nextjs.org/docs/app/guides/memory-usage#edge-memory-issues)
+## Edge memory issues
 
 Next.js `v14.1.3` fixed a memory issue when using the Edge runtime. Please update to this version (or later) to see if it addresses your issue.
 
-## Preloading Entries[](https://nextjs.org/docs/app/guides/memory-usage#preloading-entries)
+## Preloading Entries
 
 When the Next.js server starts, it preloads each page's JavaScript modules into memory, rather than at request time.
 
@@ -149,25 +146,29 @@ This optimization allows for faster response times, in exchange for a larger ini
 
 To disable this optimization, set the `experimental.preloadEntriesOnStart` flag to `false`.
 
-next.config.ts
+```ts filename="next.config.ts" switcher
+import type { NextConfig } from 'next'
 
-JavaScriptTypeScript
-[code]
-    import type { NextConfig } from 'next'
-     
-    const config: NextConfig = {
-      experimental: {
-        preloadEntriesOnStart: false,
-      },
-    }
-     
-    export default config
-[/code]
+const config: NextConfig = {
+  experimental: {
+    preloadEntriesOnStart: false,
+  },
+}
+
+export default config
+```
+
+```js filename="next.config.mjs" switcher
+/** @type {import('next').NextConfig} */
+const config = {
+  experimental: {
+    preloadEntriesOnStart: false,
+  },
+}
+
+export default config
+```
 
 Next.js doesn't unload these JavaScript modules, meaning that even with this optimization disabled, the memory footprint of your Next.js server will eventually be the same if all pages are eventually requested.
+---
 
-Was this helpful?
-
-supported.
-
-Send

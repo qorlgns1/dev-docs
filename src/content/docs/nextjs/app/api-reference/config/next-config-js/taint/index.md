@@ -7,8 +7,6 @@ description: '이 기능은 현재 실험적이며 변경될 수 있으므로 �
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/taint
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)taint
-
 Copy page
 
 # taint
@@ -24,8 +22,6 @@ Copy page
   * [`experimental_taintObjectReference`](https://react.dev/reference/react/experimental_taintObjectReference)로 객체 참조를 오염시킵니다.
   * [`experimental_taintUniqueValue`](https://react.dev/reference/react/experimental_taintUniqueValue)로 고유 값을 오염시킵니다.
 
-
-
 > **알아두면 좋아요**: 이 플래그를 활성화하면 `app` 디렉터리에서 React `experimental` 채널도 함께 활성화됩니다.
 
 next.config.ts
@@ -33,13 +29,13 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         taint: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -53,8 +49,6 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
   * 직접 정의하지 않은 민감한 데이터 형태를 다뤄야 할 때
   * 서버 컴포넌트 렌더링 중에 민감한 데이터에 접근할 때
 
-
-
 민감한 데이터가 필요 없는 컨텍스트로 반환되지 않도록 데이터와 API를 모델링하는 것이 좋습니다.
 
 ## Caveats[](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint#caveats)
@@ -63,30 +57,28 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
   * taint 처리는 오염된 값에서 파생된 데이터를 추적할 수 없습니다. 파생 값 역시 오염시켜야 합니다.
   * 값은 수명 동안 참조가 스코프에 있는 한 오염된 상태로 유지됩니다. 자세한 내용은 [`experimental_taintUniqueValue` 매개변수 참조](https://react.dev/reference/react/experimental_taintUniqueValue#parameters)를 확인하세요.
 
-
-
 ## Examples[](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint#examples)
 
 ### Tainting an object reference[](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint#tainting-an-object-reference)
 
 이 예에서는 `getUserDetails` 함수가 특정 사용자에 대한 데이터를 반환합니다. 서버-클라이언트 경계를 넘지 못하도록 사용자 객체 참조를 오염시킵니다. 예를 들어 `UserCard`가 클라이언트 컴포넌트라고 가정합니다.
-[code] 
+[code]
     import { experimental_taintObjectReference } from 'react'
-     
+
     function getUserDetails(id: string): UserDetails {
       const user = await db.queryUserById(id)
-     
+
       experimental_taintObjectReference(
         'Do not use the entire user info object. Instead, select only the fields you need.',
         user
       )
-     
+
       return user
     }
 [/code]
 
 오염된 `userDetails` 객체에서도 개별 필드에는 계속 접근할 수 있습니다.
-[code] 
+[code]
     export async function ContactPage({
       params,
     }: {
@@ -94,7 +86,7 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
     }) {
       const { id } = await params
       const userDetails = await getUserDetails(id)
-     
+
       return (
         <UserCard
           firstName={userDetails.firstName}
@@ -105,14 +97,14 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
 [/code]
 
 이제 전체 객체를 클라이언트 컴포넌트에 전달하면 오류가 발생합니다.
-[code] 
+[code]
     export async function ContactPage({
       params,
     }: {
       params: Promise<{ id: string }>
     }) {
       const userDetails = await getUserDetails(id)
-     
+
       // Throws an error
       return <UserCard user={userDetails} />
     }
@@ -123,38 +115,38 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
 이 경우 `config.getConfigDetails` 호출을 await 하여 서버 구성을 가져올 수 있습니다. 그러나 시스템 구성에는 클라이언트에 노출하고 싶지 않은 `SERVICE_API_KEY`가 포함되어 있습니다.
 
 `config.SERVICE_API_KEY` 값을 오염시킬 수 있습니다.
-[code] 
+[code]
     import { experimental_taintUniqueValue } from 'react'
-     
+
     function getSystemConfig(): SystemConfig {
       const config = await config.getConfigDetails()
-     
+
       experimental_taintUniqueValue(
         'Do not pass configuration tokens to the client',
         config,
         config.SERVICE_API_KEY
       )
-     
+
       return config
     }
 [/code]
 
 `systemConfig` 객체의 다른 속성에는 여전히 접근할 수 있습니다.
-[code] 
+[code]
     export async function Dashboard() {
       const systemConfig = await getSystemConfig()
-     
+
       return <ClientDashboard version={systemConfig.SERVICE_API_VERSION} />
     }
 [/code]
 
 하지만 `SERVICE_API_KEY`를 `ClientDashboard`에 전달하면 오류가 발생합니다.
-[code] 
+[code]
     export async function Dashboard() {
       const systemConfig = await getSystemConfig()
       // Someone makes a mistake in a PR
       const version = systemConfig.SERVICE_API_KEY
-     
+
       return <ClientDashboard version={version} />
     }
 [/code]
@@ -162,12 +154,12 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
 `systemConfig.SERVICE_API_KEY`가 새 변수에 재할당되더라도, 클라이언트 컴포넌트에 전달하면 여전히 오류가 발생한다는 점에 유의하세요.
 
 반면, 오염된 고유 값에서 파생된 값은 클라이언트에 노출됩니다.
-[code] 
+[code]
     export async function Dashboard() {
       const systemConfig = await getSystemConfig()
       // Someone makes a mistake in a PR
       const version = `version::${systemConfig.SERVICE_API_KEY}`
-     
+
       return <ClientDashboard version={version} />
     }
 [/code]

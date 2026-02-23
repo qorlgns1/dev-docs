@@ -7,10 +7,6 @@ description: '모든 폰트 파일에 대해 내장 자동 셀프 호스팅을 �
 
 Source URL: https://nextjs.org/docs/app/api-reference/components/font
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Components](https://nextjs.org/docs/app/api-reference/components)Font
-
-페이지 복사
-
 # Font 모듈
 
 마지막 업데이트 2026년 2월 20일
@@ -26,13 +22,13 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { Inter } from 'next/font/google'
-     
+
     // If loading a variable font, you don't need to specify the font weight
     const inter = Inter({
       subsets: ['latin'],
       display: 'swap',
     })
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -50,20 +46,20 @@ JavaScriptTypeScript
 
 ## Reference[](https://nextjs.org/docs/app/api-reference/components/font#reference)
 
-Key| `font/google`| `font/local`| Type| Required  
----|---|---|---|---  
-[`src`](https://nextjs.org/docs/app/api-reference/components/font#src)| | | String or Array of Objects| Yes  
-[`weight`](https://nextjs.org/docs/app/api-reference/components/font#weight)| | | String or Array| Required/Optional  
-[`style`](https://nextjs.org/docs/app/api-reference/components/font#style)| | | String or Array| -  
-[`subsets`](https://nextjs.org/docs/app/api-reference/components/font#subsets)| | | Array of Strings| -  
-[`axes`](https://nextjs.org/docs/app/api-reference/components/font#axes)| | | Array of Strings| -  
-[`display`](https://nextjs.org/docs/app/api-reference/components/font#display)| | | String| -  
-[`preload`](https://nextjs.org/docs/app/api-reference/components/font#preload)| | | Boolean| -  
-[`fallback`](https://nextjs.org/docs/app/api-reference/components/font#fallback)| | | Array of Strings| -  
-[`adjustFontFallback`](https://nextjs.org/docs/app/api-reference/components/font#adjustfontfallback)| | | Boolean or String| -  
-[`variable`](https://nextjs.org/docs/app/api-reference/components/font#variable)| | | String| -  
-[`declarations`](https://nextjs.org/docs/app/api-reference/components/font#declarations)| | | Array of Objects| -  
-  
+Key| `font/google`| `font/local`| Type| Required
+---|---|---|---|---
+[`src`](https://nextjs.org/docs/app/api-reference/components/font#src)| | | String or Array of Objects| Yes
+[`weight`](https://nextjs.org/docs/app/api-reference/components/font#weight)| | | String or Array| Required/Optional
+[`style`](https://nextjs.org/docs/app/api-reference/components/font#style)| | | String or Array| -
+[`subsets`](https://nextjs.org/docs/app/api-reference/components/font#subsets)| | | Array of Strings| -
+[`axes`](https://nextjs.org/docs/app/api-reference/components/font#axes)| | | Array of Strings| -
+[`display`](https://nextjs.org/docs/app/api-reference/components/font#display)| | | String| -
+[`preload`](https://nextjs.org/docs/app/api-reference/components/font#preload)| | | Boolean| -
+[`fallback`](https://nextjs.org/docs/app/api-reference/components/font#fallback)| | | Array of Strings| -
+[`adjustFontFallback`](https://nextjs.org/docs/app/api-reference/components/font#adjustfontfallback)| | | Boolean or String| -
+[`variable`](https://nextjs.org/docs/app/api-reference/components/font#variable)| | | String| -
+[`declarations`](https://nextjs.org/docs/app/api-reference/components/font#declarations)| | | Array of Objects| -
+
 ### `src`[](https://nextjs.org/docs/app/api-reference/components/font#src)
 
 폰트 파일 경로를 문자열 또는 객체 배열(type: `Array<{path: string, weight?: string, style?: string}>`)로 지정하며, 경로는 폰트 로더 함수가 호출되는 디렉터리를 기준으로 합니다.
@@ -72,15 +68,11 @@ Key| `font/google`| `font/local`| Type| Required
 
   * 필수
 
-
-
 예시:
 
   * `src:'./fonts/my-font.woff2'`: `my-font.woff2`를 `app` 디렉터리 내부의 `fonts` 디렉터리에 배치
   * `src:[{path: './inter/Inter-Thin.ttf', weight: '100',},{path: './inter/Inter-Regular.ttf',weight: '400',},{path: './inter/Inter-Bold-Italic.ttf', weight: '700',style: 'italic',},]`
   * `app/page.tsx`에서 `src:'../styles/fonts/my-font.ttf'`로 폰트 로더 함수를 호출한다면, `my-font.ttf`는 프로젝트 루트의 `styles/fonts`에 위치
-
-
 
 ### `weight`[](https://nextjs.org/docs/app/api-reference/components/font#weight)
 
@@ -89,21 +81,15 @@ Key| `font/google`| `font/local`| Type| Required
   * 특정 폰트에서 사용 가능한 굵기 값 또는 [variable](https://fonts.google.com/variablefonts) 폰트인 경우 범위를 나타내는 문자열
   * 폰트가 [variable google font](https://fonts.google.com/variablefonts)가 아닐 때 굵기 값들의 배열. `next/font/google`에만 적용됩니다.
 
-
-
 `next/font/google` 및 `next/font/local`에서 사용합니다.
 
   * 사용하는 폰트가 [variable](https://fonts.google.com/variablefonts)이 **아닐 때** 필수
-
-
 
 예시:
 
   * `weight: '400'`: 단일 굵기를 나타내는 문자열. [`Inter`](https://fonts.google.com/specimen/Inter?query=inter)의 가능한 값은 `'100'`, `'200'`, `'300'`, `'400'`, `'500'`, `'600'`, `'700'`, `'800'`, `'900'`, `'variable'`이며 기본값은 `'variable'`
   * `weight: '100 900'`: variable 폰트에서 `100`부터 `900`까지 범위를 나타내는 문자열
   * `weight: ['100','400','900']`: variable 폰트가 아닌 경우 가능한 3개의 값을 갖는 배열
-
-
 
 ### `style`[](https://nextjs.org/docs/app/api-reference/components/font#style)
 
@@ -112,21 +98,15 @@ Key| `font/google`| `font/local`| Type| Required
   * 기본값이 `'normal'`인 문자열 [value](https://developer.mozilla.org/docs/Web/CSS/font-style#values)
   * 폰트가 [variable google font](https://fonts.google.com/variablefonts)가 아닐 때 스타일 값 배열. `next/font/google`에만 적용됩니다.
 
-
-
 `next/font/google` 및 `next/font/local`에서 사용합니다.
 
   * 선택 사항
-
-
 
 예시:
 
   * `style: 'italic'`: 문자열. `next/font/google`에서는 `normal` 또는 `italic`
   * `style: 'oblique'`: 문자열. `next/font/local`에서는 어떤 값이든 사용할 수 있지만 [표준 폰트 스타일](https://developer.mozilla.org/docs/Web/CSS/font-style)에서 가져오는 것이 기대됩니다.
   * `style: ['italic','normal']`: `next/font/google`용 2개 값의 배열로, 값은 `normal`, `italic`
-
-
 
 ### `subsets`[](https://nextjs.org/docs/app/api-reference/components/font#subsets)
 
@@ -136,13 +116,9 @@ Key| `font/google`| `font/local`| Type| Required
 
   * 선택 사항
 
-
-
 예시:
 
   * `subsets: ['latin']`: `latin` 서브셋 하나를 포함한 배열
-
-
 
 Google Fonts의 해당 폰트 페이지에서 모든 서브셋 목록을 확인할 수 있습니다.
 
@@ -154,13 +130,9 @@ Google Fonts의 해당 폰트 페이지에서 모든 서브셋 목록을 확인�
 
   * 선택 사항
 
-
-
 예시:
 
   * `axes: ['slnt']`: `Inter` variable 폰트의 추가 `axes` 값인 `slnt`를 포함하는 배열. 가능한 `axes` 값은 [Google variable fonts 페이지](https://fonts.google.com/variablefonts#font-families)의 필터를 사용해 `wght` 외의 축을 확인할 수 있습니다.
-
-
 
 ### `display`[](https://nextjs.org/docs/app/api-reference/components/font#display)
 
@@ -170,13 +142,9 @@ Google Fonts의 해당 폰트 페이지에서 모든 서브셋 목록을 확인�
 
   * 선택 사항
 
-
-
 예시:
 
   * `display: 'optional'`: `optional` 값으로 지정한 문자열
-
-
 
 ### `preload`[](https://nextjs.org/docs/app/api-reference/components/font#preload)
 
@@ -186,13 +154,9 @@ Google Fonts의 해당 폰트 페이지에서 모든 서브셋 목록을 확인�
 
   * 선택 사항
 
-
-
 예시:
 
   * `preload: false`
-
-
 
 ### `fallback`[](https://nextjs.org/docs/app/api-reference/components/font#fallback)
 
@@ -200,35 +164,25 @@ Google Fonts의 해당 폰트 페이지에서 모든 서브셋 목록을 확인�
 
   * 선택 사항
 
-
-
 `next/font/google` 및 `next/font/local`에서 사용합니다.
 
 예시:
 
   * `fallback: ['system-ui', 'arial']`: 폴백 폰트를 `system-ui` 또는 `arial`로 설정하는 배열
 
-
-
 ### `adjustFontFallback`[](https://nextjs.org/docs/app/api-reference/components/font#adjustfontfallback)
 
   * `next/font/google`: 자동 폴백 폰트를 사용해 [Cumulative Layout Shift](https://web.dev/cls/)를 줄일지 여부를 설정하는 불리언 값. 기본값은 `true`.
   * `next/font/local`: 자동 폴백 폰트를 사용할지 여부를 설정하는 문자열 또는 불리언 `false`. 가능한 값은 `'Arial'`, `'Times New Roman'`, `false`. 기본값은 `'Arial'`.
 
-
-
 `next/font/google` 및 `next/font/local`에서 사용합니다.
 
   * 선택 사항
-
-
 
 예시:
 
   * `adjustFontFallback: false`: `next/font/google`용
   * `adjustFontFallback: 'Times New Roman'`: `next/font/local`용
-
-
 
 ### `variable`[](https://nextjs.org/docs/app/api-reference/components/font#variable)
 
@@ -238,13 +192,9 @@ Google Fonts의 해당 폰트 페이지에서 모든 서브셋 목록을 확인�
 
   * 선택 사항
 
-
-
 예시:
 
   * `variable: '--my-font'`: CSS 변수 `--my-font`를 선언
-
-
 
 ### `declarations`[](https://nextjs.org/docs/app/api-reference/components/font#declarations)
 
@@ -254,13 +204,9 @@ Google Fonts의 해당 폰트 페이지에서 모든 서브셋 목록을 확인�
 
   * 선택 사항
 
-
-
 예시:
 
   * `declarations: [{ prop: 'ascent-override', value: '90%' }]`
-
-
 
 ## Examples[](https://nextjs.org/docs/app/api-reference/components/font#examples)
 
@@ -273,13 +219,13 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { Inter } from 'next/font/google'
-     
+
     // If loading a variable font, you don't need to specify the font weight
     const inter = Inter({
       subsets: ['latin'],
       display: 'swap',
     })
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -300,13 +246,13 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { Roboto } from 'next/font/google'
-     
+
     const roboto = Roboto({
       weight: '400',
       subsets: ['latin'],
       display: 'swap',
     })
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -360,12 +306,12 @@ app/fonts.ts
 JavaScriptTypeScript
 [code]
     import { Inter, Roboto_Mono } from 'next/font/google'
-     
+
     export const inter = Inter({
       subsets: ['latin'],
       display: 'swap',
     })
-     
+
     export const roboto_mono = Roboto_Mono({
       subsets: ['latin'],
       display: 'swap',
@@ -377,7 +323,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { inter } from './fonts'
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       return (
         <html lang="en" className={inter.className}>
@@ -394,7 +340,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { roboto_mono } from './fonts'
-     
+
     export default function Page() {
       return (
         <>
@@ -414,19 +360,19 @@ JavaScriptTypeScript
 [code]
     import { Inter, Roboto_Mono } from 'next/font/google'
     import styles from './global.css'
-     
+
     const inter = Inter({
       subsets: ['latin'],
       variable: '--font-inter',
       display: 'swap',
     })
-     
+
     const roboto_mono = Roboto_Mono({
       subsets: ['latin'],
       variable: '--font-roboto-mono',
       display: 'swap',
     })
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -448,7 +394,7 @@ app/global.css
     html {
       font-family: var(--font-inter);
     }
-     
+
     h1 {
       font-family: var(--font-roboto-mono);
     }
@@ -467,13 +413,13 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import localFont from 'next/font/local'
-     
+
     // Font files can be colocated inside of `app`
     const myFont = localFont({
       src: './my-font.woff2',
       display: 'swap',
     })
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -488,7 +434,7 @@ JavaScriptTypeScript
 [/code]
 
 단일 폰트 패밀리에 여러 파일을 사용하려면 `src`를 배열로 지정할 수 있습니다:
-[code] 
+[code]
     const roboto = localFont({
       src: [
         {
@@ -530,19 +476,19 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { Inter, Roboto_Mono } from 'next/font/google'
-     
+
     const inter = Inter({
       subsets: ['latin'],
       display: 'swap',
       variable: '--font-inter',
     })
-     
+
     const roboto_mono = Roboto_Mono({
       subsets: ['latin'],
       display: 'swap',
       variable: '--font-roboto-mono',
     })
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -564,7 +510,7 @@ JavaScriptTypeScript
 global.css
 [code]
     @import 'tailwindcss';
-     
+
     @theme inline {
       --font-sans: var(--font-inter);
       --font-mono: var(--font-roboto-mono);
@@ -595,7 +541,7 @@ tailwind.config.js
 [/code]
 
 이제 `font-sans`, `font-mono` 유틸리티 클래스를 사용해 요소에 폰트를 적용할 수 있습니다.
-[code] 
+[code]
     <p class="font-sans ...">The quick brown fox ...</p>
     <p class="font-mono ...">The quick brown fox ...</p>
 [/code]
@@ -608,19 +554,17 @@ tailwind.config.js
   * [`style`](https://nextjs.org/docs/app/api-reference/components/font#style-1)
   * [CSS Variables](https://nextjs.org/docs/app/api-reference/components/font#css-variables)
 
-
-
 #### `className`[](https://nextjs.org/docs/app/api-reference/components/font#classname)
 
 로드된 폰트를 HTML 요소에 전달할 수 있는 읽기 전용 CSS `className`을 반환합니다.
-[code] 
+[code]
     <p className={inter.className}>Hello, Next.js!</p>
 [/code]
 
 #### `style`[](https://nextjs.org/docs/app/api-reference/components/font#style-1)
 
 로드된 폰트를 HTML 요소에 전달할 수 있는 읽기 전용 CSS `style` 객체를 반환하며, `style.fontFamily`를 통해 폰트 패밀리 이름과 폴백 폰트에 접근할 수 있습니다.
-[code] 
+[code]
     <p style={inter.style}>Hello World</p>
 [/code]
 
@@ -636,7 +580,7 @@ JavaScriptTypeScript
 [code]
     import { Inter } from 'next/font/google'
     import styles from '../styles/component.module.css'
-     
+
     const inter = Inter({
       variable: '--font-inter',
     })
@@ -680,7 +624,7 @@ JavaScriptTypeScript
 [code]
     import { Inter, Lora, Source_Sans_3 } from 'next/font/google'
     import localFont from 'next/font/local'
-     
+
     // define your variable fonts
     const inter = Inter()
     const lora = Lora()
@@ -689,7 +633,7 @@ JavaScriptTypeScript
     const sourceCodePro700 = Source_Sans_3({ weight: '700' })
     // define a custom local font where GreatVibes-Regular.ttf is stored in the styles folder
     const greatVibes = localFont({ src: './GreatVibes-Regular.ttf' })
-     
+
     export { inter, lora, sourceCodePro400, sourceCodePro700, greatVibes }
 [/code]
 
@@ -700,7 +644,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import { inter, lora, sourceCodePro700, greatVibes } from '../styles/fonts'
-     
+
     export default function Page() {
       return (
         <div>
@@ -745,17 +689,11 @@ JavaScriptTypeScript
   * [레이아웃](https://nextjs.org/docs/app/api-reference/file-conventions/layout)이라면, 해당 레이아웃이 감싸는 모든 라우트에서 프리로딩됩니다.
   * [루트 레이아웃](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout)이라면, 모든 라우트에서 프리로딩됩니다.
 
-
-
 ## 버전 변경 사항[](https://nextjs.org/docs/app/api-reference/components/font#version-changes)
 
-Version| Changes  
----|---  
-`v13.2.0`| `@next/font`가 `next/font`로 이름이 변경되었습니다. 설치가 더 이상 필요하지 않습니다.  
-`v13.0.0`| `@next/font`가 추가되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v13.2.0`| `@next/font`가 `next/font`로 이름이 변경되었습니다. 설치가 더 이상 필요하지 않습니다.
+`v13.0.0`| `@next/font`가 추가되었습니다.
 
 Send

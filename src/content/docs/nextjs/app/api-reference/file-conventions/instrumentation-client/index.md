@@ -6,10 +6,6 @@ description: '파일을 사용하면 애플리케이션이 인터랙티브 상�
 # 파일 시스템 규칙: instrumentation-client.js | Next.js
 출처 URL: https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client
 
-[API 레퍼런스](https://nextjs.org/docs/app/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)instrumentation-client.js
-
-페이지 복사
-
 # instrumentation-client.js
 
 마지막 업데이트: 2026년 2월 20일
@@ -28,10 +24,10 @@ JavaScriptTypeScript
 [code]
     // Set up performance monitoring
     performance.mark('app-init')
-     
+
     // Initialize analytics
     console.log('Analytics initialized')
-     
+
     // Set up error tracking
     window.addEventListener('error', (event) => {
       // Send to your error tracking service
@@ -50,7 +46,7 @@ instrumentation-client.ts
 JavaScriptTypeScript
 [code]
     performance.mark('app-init')
-     
+
     export function onRouterTransitionStart(
       url: string,
       navigationType: 'push' | 'replace' | 'traverse'
@@ -92,9 +88,9 @@ instrumentation-client.ts
 JavaScriptTypeScript
 [code]
     import Monitor from './lib/monitoring'
-     
+
     Monitor.initialize()
-     
+
     export function onRouterTransitionStart(url: string) {
       Monitor.pushEvent({
         message: `Navigation to ${url}`,
@@ -112,9 +108,9 @@ instrumentation-client.ts
 JavaScriptTypeScript
 [code]
     import { analytics } from './lib/analytics'
-     
+
     analytics.init()
-     
+
     export function onRouterTransitionStart(url: string, navigationType: string) {
       analytics.track('page_navigation', {
         url,
@@ -133,7 +129,7 @@ instrumentation-client.ts
 JavaScriptTypeScript
 [code]
     const startTime = performance.now()
-     
+
     const observer = new PerformanceObserver(
       (list: PerformanceObserverEntryList) => {
         for (const entry of list.getEntries()) {
@@ -143,9 +139,9 @@ JavaScriptTypeScript
         }
       }
     )
-     
+
     observer.observe({ entryTypes: ['navigation'] })
-     
+
     export function onRouterTransitionStart(url: string) {
       performance.mark(`nav-start-${url}`)
     }
@@ -160,7 +156,7 @@ instrumentation-client.ts
 JavaScriptTypeScript
 [code]
     import './lib/polyfills'
-     
+
     if (!window.ResizeObserver) {
       import('./lib/polyfills/resize-observer').then((mod) => {
         window.ResizeObserver = mod.default
@@ -170,12 +166,6 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client#version-history)
 
-버전| 변경 사항  
----|---  
-`v15.3`| `instrumentation-client` 도입  
-
-도움이 되었나요?
-
-지원됨.
-
-전송
+버전| 변경 사항
+---|---
+`v15.3`| `instrumentation-client` 도입

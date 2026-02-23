@@ -3,8 +3,6 @@ title: 'Next.js Docs'
 description: 'Welcome to the Next.js documentation!'
 ---
 
-# Next.js Docs | Next.js
-
 Source URL: https://nextjs.org/docs
 
 # Next.js Docs
@@ -27,8 +25,6 @@ The docs are organized into 3 sections:
   * [Guides](https://nextjs.org/docs/app/guides): Tutorials on specific use cases, choose what's relevant to you.
   * [API Reference](https://nextjs.org/docs/app/api-reference): Detailed technical reference for every feature.
 
-
-
 Use the sidebar to navigate through the sections, or search (`Ctrl+K` or `Cmd+K`) to quickly find a page.
 
 ## App Router and Pages Router[](https://nextjs.org/docs#app-router-and-pages-router)
@@ -37,8 +33,6 @@ Next.js has two different routers:
 
   * **App Router** : The newer router that supports new React features like Server Components.
   * **Pages Router** : The original router, still supported and being improved.
-
-
 
 At the top of the sidebar, you'll notice a dropdown menu that allows you to switch between the [App Router](https://nextjs.org/docs/app) and the [Pages Router](https://nextjs.org/docs/pages) docs.
 
@@ -50,9 +44,6 @@ The App Router and Pages Router handle React versions differently:
 
   * **Pages Router** : Uses the React version installed in your project's `package.json`.
 
-
-
-
 This approach ensures new React features work reliably in the App Router while maintaining backwards compatibility for existing Pages Router applications.
 
 ## Pre-requisite knowledge[](https://nextjs.org/docs#pre-requisite-knowledge)
@@ -63,8 +54,6 @@ Our documentation assumes some familiarity with web development. Before getting 
   * CSS
   * JavaScript
   * React
-
-
 
 If you're new to React or need a refresher, we recommend starting with our [React Foundations course](https://nextjs.org/learn/react-foundations), and the [Next.js Foundations course](https://nextjs.org/learn/dashboard-app) that has you building an application as you learn.
 
@@ -80,10 +69,5 @@ If you have questions about anything related to Next.js, you're always welcome t
 
 Create your first application and learn the core Next.js features.
 
-### [Getting StartedLearn how to create full-stack web applications with the Next.js App Router.](https://nextjs.org/docs/app/getting-started)
+- [Getting StartedLearn how to create full-stack web applications with the Next.js App Router.](https://nextjs.org/docs/app/getting-started)
 
-Was this helpful?
-
-supported.
-
-Send

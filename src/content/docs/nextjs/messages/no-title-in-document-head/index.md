@@ -24,7 +24,7 @@ Source URL: https://nextjs.org/docs/messages/no-title-in-document-head
 pages/index.js
 [code]
     import Head from 'next/head'
-     
+
     export function Home() {
       return (
         <div>
@@ -40,11 +40,5 @@ pages/index.js
 
   * [next/head](https://nextjs.org/docs/pages/api-reference/components/head)
   * [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

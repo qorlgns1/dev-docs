@@ -7,10 +7,6 @@ description: '인증을 이해하는 것은 애플리케이션 데이터를 보�
 
 출처 URL: https://nextjs.org/docs/pages/guides/authentication
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)인증
-
-페이지 복사
-
 # Next.js에서 인증을 구현하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -22,8 +18,6 @@ description: '인증을 이해하는 것은 애플리케이션 데이터를 보�
   1. **[Authentication](https://nextjs.org/docs/pages/guides/authentication#authentication)** : 사용자가 본인이 맞는지 확인합니다. 사용자 이름과 비밀번호처럼 사용자가 가진 것으로 신원을 증명해야 합니다.
   2. **[Session Management](https://nextjs.org/docs/pages/guides/authentication#session-management)** : 요청 전반에서 사용자의 인증 상태를 추적합니다.
   3. **[Authorization](https://nextjs.org/docs/pages/guides/authentication#authorization)** : 사용자가 접근할 수 있는 라우트와 데이터를 결정합니다.
-
-
 
 다음 다이어그램은 React와 Next.js 기능을 사용한 인증 흐름을 보여줍니다:
 
@@ -38,8 +32,6 @@ description: '인증을 이해하는 것은 애플리케이션 데이터를 보�
   3. 검증이 성공하면 프로세스가 완료되어 사용자의 인증이 성공했음을 나타냅니다.
   4. 검증이 실패하면 에러 메시지를 표시합니다.
 
-
-
 사용자가 자격 증명을 입력할 수 있는 로그인 폼을 생각해 보세요:
 
 pages/login.tsx
@@ -48,30 +40,30 @@ JavaScriptTypeScript
 [code]
     import { FormEvent } from 'react'
     import { useRouter } from 'next/router'
-     
+
     export default function LoginPage() {
       const router = useRouter()
-     
+
       async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-     
+
         const formData = new FormData(event.currentTarget)
         const email = formData.get('email')
         const password = formData.get('password')
-     
+
         const response = await fetch('/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password }),
         })
-     
+
         if (response.ok) {
           router.push('/profile')
         } else {
           // Handle errors
         }
       }
-     
+
       return (
         <form onSubmit={handleSubmit}>
           <input type="email" name="email" placeholder="Email" required />
@@ -92,7 +84,7 @@ JavaScriptTypeScript
 [code]
     import type { NextApiRequest, NextApiResponse } from 'next'
     import { signIn } from '@/auth'
-     
+
     export default async function handler(
       req: NextApiRequest,
       res: NextApiResponse
@@ -100,7 +92,7 @@ JavaScriptTypeScript
       try {
         const { email, password } = req.body
         await signIn('credentials', { email, password })
-     
+
         res.status(200).json({ success: true })
       } catch (error) {
         if (error.type === 'CredentialsSignin') {
@@ -121,8 +113,6 @@ JavaScriptTypeScript
   1. [**Stateless**](https://nextjs.org/docs/pages/guides/authentication#stateless-sessions): 세션 데이터(또는 토큰)를 브라우저 쿠키에 저장합니다. 쿠키는 각 요청마다 전송되어 서버에서 세션을 검증할 수 있게 합니다. 구현이 간단하지만 올바르게 구현하지 않으면 보안성이 떨어질 수 있습니다.
   2. [**Database**](https://nextjs.org/docs/pages/guides/authentication#database-sessions): 세션 데이터를 데이터베이스에 저장하고, 사용자의 브라우저에는 암호화된 세션 ID만 전달합니다. 더 안전하지만 복잡하고 서버 리소스를 더 사용할 수 있습니다.
 
-
-
 > **알아두면 좋아요:** 두 방법 중 하나 또는 둘 다 사용할 수 있지만, [iron-session](https://github.com/vvo/iron-session)이나 [Jose](https://github.com/panva/jose) 같은 세션 관리 라이브러리를 사용하는 것을 권장합니다.
 
 ### Stateless Sessions[](https://nextjs.org/docs/pages/guides/authentication#stateless-sessions)
@@ -138,11 +128,11 @@ JavaScriptTypeScript
     import { serialize } from 'cookie'
     import type { NextApiRequest, NextApiResponse } from 'next'
     import { encrypt } from '@/app/lib/session'
-     
+
     export default function handler(req: NextApiRequest, res: NextApiResponse) {
       const sessionData = req.body
       const encryptedSessionData = encrypt(sessionData)
-     
+
       const cookie = serialize('session', encryptedSessionData, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
@@ -162,8 +152,6 @@ JavaScriptTypeScript
   2. 세션을 삽입, 업데이트, 삭제하는 기능을 구현합니다.
   3. 세션 ID를 사용자의 브라우저에 저장하기 전에 암호화하고, 데이터베이스와 쿠키가 동기 상태를 유지하도록 합니다(선택 사항이지만 [Proxy](https://nextjs.org/docs/pages/guides/authentication#optimistic-checks-with-proxy-optional)의 낙관적 인증 체크에 권장됩니다).
 
-
-
 **서버에서 세션 생성** :
 
 pages/api/create-session.ts
@@ -172,7 +160,7 @@ JavaScriptTypeScript
 [code]
     import db from '../../lib/db'
     import type { NextApiRequest, NextApiResponse } from 'next'
-     
+
     export default async function handler(
       req: NextApiRequest,
       res: NextApiResponse
@@ -185,7 +173,7 @@ JavaScriptTypeScript
           userId: user.id,
           createdAt: new Date(),
         })
-     
+
         res.status(200).json({ sessionId })
       } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' })
@@ -202,15 +190,11 @@ JavaScriptTypeScript
   1. **Optimistic** : 쿠키에 저장된 세션 데이터를 사용해 사용자가 라우트에 접근하거나 작업을 수행할 자격이 있는지 확인합니다. UI 요소의 표시/숨김이나 권한 및 역할에 따른 리디렉션 같이 빠른 작업에 유용합니다.
   2. **Secure** : 데이터베이스에 저장된 세션 데이터를 사용해 사용자가 라우트에 접근하거나 작업을 수행할 자격이 있는지 확인합니다. 민감한 데이터 접근이나 중요한 작업에 필요한 보다 안전한 체크입니다.
 
-
-
 두 경우 모두 다음을 권장합니다:
 
   * 권한 부여 로직을 중앙화하기 위해 [Data Access Layer](https://nextjs.org/docs/pages/guides/authentication#creating-a-data-access-layer-dal)를 만듭니다.
   * 필요한 데이터만 반환하도록 [Data Transfer Objects (DTO)](https://nextjs.org/docs/pages/guides/authentication#using-data-transfer-objects-dto)를 사용합니다.
   * 선택적으로 [Proxy](https://nextjs.org/docs/pages/guides/authentication#optimistic-checks-with-proxy-optional)를 사용해 낙관적 체크를 수행합니다.
-
-
 
 ### Proxy를 사용한 낙관적 체크(선택 사항)[](https://nextjs.org/docs/pages/guides/authentication#optimistic-checks-with-proxy-optional)
 
@@ -218,8 +202,6 @@ JavaScriptTypeScript
 
   * 낙관적 체크를 수행하기 위해. Proxy는 모든 라우트에서 실행되므로 리디렉션 로직을 중앙화하고 권한이 없는 사용자를 미리 필터링하기에 좋습니다.
   * 사용자 간에 데이터를 공유하는 정적 라우트(예: 유료 벽 뒤의 콘텐츠)를 보호하기 위해.
-
-
 
 그러나 Proxy는 [prefetched](https://nextjs.org/docs/app/getting-started/linking-and-navigating#prefetching) 라우트를 포함해 모든 라우트에서 실행되므로, 쿠키에서 세션만 읽는 낙관적 체크에 집중하고 성능 문제를 피하기 위해 데이터베이스 체크는 피하는 것이 중요합니다.
 
@@ -232,26 +214,26 @@ JavaScriptTypeScript
     import { NextRequest, NextResponse } from 'next/server'
     import { decrypt } from '@/app/lib/session'
     import { cookies } from 'next/headers'
-     
+
     // 1. Specify protected and public routes
     const protectedRoutes = ['/dashboard']
     const publicRoutes = ['/login', '/signup', '/']
-     
+
     export default async function proxy(req: NextRequest) {
       // 2. Check if the current route is protected or public
       const path = req.nextUrl.pathname
       const isProtectedRoute = protectedRoutes.includes(path)
       const isPublicRoute = publicRoutes.includes(path)
-     
+
       // 3. Decrypt the session from the cookie
       const cookie = (await cookies()).get('session')?.value
       const session = await decrypt(cookie)
-     
+
       // 4. Redirect to /login if the user is not authenticated
       if (isProtectedRoute && !session?.userId) {
         return NextResponse.redirect(new URL('/login', req.nextUrl))
       }
-     
+
       // 5. Redirect to /dashboard if the user is authenticated
       if (
         isPublicRoute &&
@@ -260,10 +242,10 @@ JavaScriptTypeScript
       ) {
         return NextResponse.redirect(new URL('/dashboard', req.nextUrl))
       }
-     
+
       return NextResponse.next()
     }
-     
+
     // Routes Proxy should not run on
     export const config = {
       matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
@@ -273,7 +255,7 @@ JavaScriptTypeScript
 Proxy는 초기 체크에 유용하지만 데이터를 보호하는 유일한 방어선이 되어서는 안 됩니다. 대부분의 보안 체크는 데이터 소스에 가능한 한 가깝게 배치해야 하며, 자세한 내용은 [Data Access Layer](https://nextjs.org/docs/pages/guides/authentication#creating-a-data-access-layer-dal)를 참고하세요.
 
 > **팁** :
-> 
+>
 >   * Proxy에서 `req.cookies.get('session').value`를 사용해 쿠키를 읽을 수도 있습니다.
 
 > * Proxy는 Node.js 런타임을 사용하므로, 사용하는 Auth 라이브러리와 세션 관리 라이브러리가 호환되는지 확인하세요. Auth 라이브러리가 [Edge Runtime](https://nextjs.org/docs/app/api-reference/edge)만 지원한다면 [Middleware](https://github.com/vercel/next.js/blob/v15.5.6/docs/01-app/03-api-reference/03-file-conventions/middleware.mdx)를 사용해야 할 수 있습니다.
@@ -293,13 +275,13 @@ pages/api/route.ts
 JavaScriptTypeScript
 [code]
     import { NextApiRequest, NextApiResponse } from 'next'
-     
+
     export default async function handler(
       req: NextApiRequest,
       res: NextApiResponse
     ) {
       const session = await getSession(req)
-     
+
       // Check if the user is authenticated
       if (!session) {
         res.status(401).json({
@@ -307,7 +289,7 @@ JavaScriptTypeScript
         })
         return
       }
-     
+
       // Check if the user has the 'admin' role
       if (session.user.role !== 'admin') {
         res.status(401).json({
@@ -315,7 +297,7 @@ JavaScriptTypeScript
         })
         return
       }
-     
+
       // Proceed with the route for authorized users
       // ... implementation of the API Route
     }
@@ -355,9 +337,3 @@ JavaScriptTypeScript
   * [XSS 공격 이해하기](https://vercel.com/guides/understanding-xss-attacks)
   * [CSRF 공격 이해하기](https://vercel.com/guides/understanding-csrf-attacks)
   * [The Copenhagen Book](https://thecopenhagenbook.com/)
-
-도움이 되었나요?
-
-지원됨.
-
-전송

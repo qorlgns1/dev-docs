@@ -7,8 +7,6 @@ description: '이 기능은 현재 카나리 채널에서만 사용할 수 있�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/authInterrupts
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)authInterrupts
-
 Copy page
 
 # authInterrupts
@@ -24,19 +22,29 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       experimental: {
         authInterrupts: true,
       },
     }
-     
+
     export default nextConfig
 [/code]
 
-## 
+##
 
-### [forbidden금지 함수에 대한 API Reference입니다.](https://nextjs.org/docs/app/api-reference/functions/forbidden)### [unauthorizedunauthorized 함수에 대한 API Reference입니다.](https://nextjs.org/docs/app/api-reference/functions/unauthorized)### [forbidden.jsforbidden.js 특수 파일에 대한 API Reference입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/forbidden)### [unauthorized.jsunauthorized.js 특수 파일에 대한 API Reference입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized)
+- [forbidden](https://nextjs.org/docs/app/api-reference/functions/forbidden)
+  - 금지 함수에 대한 API Reference입니다.
+
+- [unauthorized](https://nextjs.org/docs/app/api-reference/functions/unauthorized)
+  - unauthorized 함수에 대한 API Reference입니다.
+
+- [forbidden.js](https://nextjs.org/docs/app/api-reference/file-conventions/forbidden)
+  - forbidden.js 특수 파일에 대한 API Reference입니다.
+
+- [unauthorized.js](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized)
+  - unauthorized.js 특수 파일에 대한 API Reference입니다.
 
 Was this helpful?
 

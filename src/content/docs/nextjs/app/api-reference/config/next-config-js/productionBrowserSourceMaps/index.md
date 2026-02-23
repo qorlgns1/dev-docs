@@ -7,10 +7,6 @@ description: '개발 중에는 소스 맵이 기본적으로 활성화됩니다.
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/productionBrowserSourceMaps
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)productionBrowserSourceMaps
-
-페이지 복사
-
 # productionBrowserSourceMaps
 
 2026년 2월 20일 업데이트
@@ -30,11 +26,5 @@ next.config.js
 
   * 소스 맵을 추가하면 `next build` 시간이 늘어날 수 있습니다.
   * `next build` 중 메모리 사용량이 증가합니다.
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

@@ -35,11 +35,3 @@ pages/_document.js
   * [필요한 출처에 Preconnect](https://web.dev/uses-rel-preconnect/)
   * [Preconnect와 dns-prefetch](https://web.dev/preconnect-and-dns-prefetch/#resolve-domain-name-early-with-reldns-prefetch)
   * [Next.js Font Optimization](https://nextjs.org/docs/pages/api-reference/components/font)
-
-
-
-도움이 되었나요?
-
-지원됨.
-
-전송

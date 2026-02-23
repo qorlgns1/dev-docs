@@ -6,10 +6,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 # next.config.js: urlImports | Next.js
 출처 URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)urlImports
-
-페이지 복사
-
 # urlImports
 
 이 기능은 현재 실험 단계이며 변경될 수 있으므로 프로덕션 환경에서 사용하는 것은 권장되지 않습니다. 사용해 보고 [GitHub](https://github.com/vercel/next.js/issues)에 피드백을 공유해 주세요.
@@ -32,7 +28,7 @@ next.config.js
 [/code]
 
 그다음, URL에서 직접 모듈을 import할 수 있습니다:
-[code] 
+[code]
     import { a, b, c } from 'https://example.com/assets/some/module.js'
 [/code]
 
@@ -54,10 +50,10 @@ URL import를 사용할 때 Next.js는 lockfile과 가져온 자산이 들어 �
 ## 예시[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#examples)
 
 ### Skypack[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#skypack)
-[code] 
+[code]
     import confetti from 'https://cdn.skypack.dev/canvas-confetti'
     import { useEffect } from 'react'
-     
+
     export default () => {
       useEffect(() => {
         confetti()
@@ -67,10 +63,10 @@ URL import를 사용할 때 Next.js는 lockfile과 가져온 자산이 들어 �
 [/code]
 
 ### 정적 이미지 import[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#static-image-imports)
-[code] 
+[code]
     import Image from 'next/image'
     import logo from 'https://example.com/assets/logo.png'
-     
+
     export default () => (
       <div>
         <Image src={logo} placeholder="blur" />
@@ -79,23 +75,19 @@ URL import를 사용할 때 Next.js는 lockfile과 가져온 자산이 들어 �
 [/code]
 
 ### CSS의 URL[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#urls-in-css)
-[code] 
+[code]
     .className {
       background: url('https://example.com/assets/hero.jpg');
     }
 [/code]
 
 ### 자산 import[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#asset-imports)
-[code] 
+[code]
     const logo = new URL('https://example.com/assets/file.txt', import.meta.url)
-     
+
     console.log(logo.pathname)
-     
+
     // prints "/_next/static/media/file.a9727b5d.txt"
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

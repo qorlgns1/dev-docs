@@ -24,7 +24,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return <Link href="/dashboard">Dashboard</Link>
     }
@@ -34,14 +34,14 @@ JavaScriptTypeScript
 
 다음 props를 `<Link>` 컴포넌트에 전달할 수 있습니다:
 
-Prop| Example| Type| Required  
----|---|---|---  
-[`href`](https://nextjs.org/docs/app/api-reference/components/link#href-required)| `href="/dashboard"`| String or Object| Yes  
-[`replace`](https://nextjs.org/docs/app/api-reference/components/link#replace)| `replace={false}`| Boolean| -  
-[`scroll`](https://nextjs.org/docs/app/api-reference/components/link#scroll)| `scroll={false}`| Boolean| -  
-[`prefetch`](https://nextjs.org/docs/app/api-reference/components/link#prefetch)| `prefetch={false}`| Boolean or null| -  
-[`onNavigate`](https://nextjs.org/docs/app/api-reference/components/link#onnavigate)| `onNavigate={(e) => {}}`| Function| -  
-  
+Prop| Example| Type| Required
+---|---|---|---
+[`href`](https://nextjs.org/docs/app/api-reference/components/link#href-required)| `href="/dashboard"`| String or Object| Yes
+[`replace`](https://nextjs.org/docs/app/api-reference/components/link#replace)| `replace={false}`| Boolean| -
+[`scroll`](https://nextjs.org/docs/app/api-reference/components/link#scroll)| `scroll={false}`| Boolean| -
+[`prefetch`](https://nextjs.org/docs/app/api-reference/components/link#prefetch)| `prefetch={false}`| Boolean or null| -
+[`onNavigate`](https://nextjs.org/docs/app/api-reference/components/link#onnavigate)| `onNavigate={(e) => {}}`| Function| -
+
 > **알아두면 좋아요** : `className`이나 `target="_blank"` 같은 `<a>` 태그 속성은 `<Link>`에 props로 추가할 수 있으며, 내부 `<a>` 요소로 전달됩니다.
 
 ### `href` (required)[](https://nextjs.org/docs/app/api-reference/components/link#href-required)
@@ -53,7 +53,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     // Navigate to /about?name=test
     export default function Page() {
       return (
@@ -78,7 +78,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <Link href="/dashboard" replace>
@@ -101,7 +101,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <Link href="/dashboard" scroll={false}>
@@ -121,14 +121,12 @@ JavaScriptTypeScript
   * `true`: 정적, 동적 경로 모두 전체 경로를 프리패칭합니다.
   * `false`: 뷰포트 진입 시와 호버 시 모두 프리패칭을 수행하지 않습니다.
 
-
-
 app/page.tsx
 
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <Link href="/dashboard" prefetch={false}>
@@ -147,7 +145,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <Link
@@ -155,7 +153,7 @@ JavaScriptTypeScript
           onNavigate={(e) => {
             // Only executes during SPA navigation
             console.log('Navigating...')
-     
+
             // Optionally prevent navigation
             // e.preventDefault()
           }}
@@ -167,12 +165,11 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋아요** : `onClick`과 `onNavigate`는 비슷해 보이지만 목적이 다릅니다. `onClick`은 모든 클릭 이벤트에서 실행되지만, `onNavigate`는 클라이언트 측 내비게이션 중에만 실행됩니다. 주요 차이점:
-> 
+>
 >   * 보조 키(`Ctrl`/`Cmd` + 클릭)를 사용할 때 `onClick`은 실행되지만, Next.js가 새 탭용 기본 내비게이션을 막기 때문에 `onNavigate`는 실행되지 않습니다.
 >   * 외부 URL은 클라이언트 측 및 동일 출처 내비게이션에만 해당하므로 `onNavigate`를 트리거하지 않습니다.
 >   * `download` 속성이 있는 링크는 브라우저가 해당 URL을 다운로드로 처리하므로 `onClick`에서는 동작하지만 `onNavigate`에서는 동작하지 않습니다.
-> 
-
+>
 
 ## Examples[](https://nextjs.org/docs/app/api-reference/components/link#examples)
 
@@ -187,13 +184,13 @@ app/blog/post-list.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     interface Post {
       id: number
       title: string
       slug: string
     }
-     
+
     export default function PostList({ posts }: { posts: Post[] }) {
       return (
         <ul>
@@ -216,19 +213,19 @@ app/ui/nav-links.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { usePathname } from 'next/navigation'
     import Link from 'next/link'
-     
+
     export function Links() {
       const pathname = usePathname()
-     
+
       return (
         <nav>
           <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">
             Home
           </Link>
-     
+
           <Link
             className={`link ${pathname === '/about' ? 'active' : ''}`}
             href="/about"
@@ -243,18 +240,17 @@ JavaScriptTypeScript
 ### `id`로 스크롤하기[](https://nextjs.org/docs/app/api-reference/components/link#scrolling-to-an-id)
 
 내비게이션 시 특정 `id`로 스크롤하려면 URL에 `#` 해시 링크를 추가하거나 해시 링크만 `href` prop에 전달하면 됩니다. `<Link>`가 `<a>` 요소로 렌더링되기 때문에 가능합니다.
-[code] 
+[code]
     <Link href="/dashboard#settings">Settings</Link>
-     
+
     // Output
     <a href="/dashboard#settings">Settings</a>
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 내비게이션 시 페이지가 뷰포트에 보이지 않으면 Next.js가 [Page](https://nextjs.org/docs/app/api-reference/file-conventions/page)로 스크롤합니다.
-> 
-
+>
 
 ### push 대신 URL 교체하기[](https://nextjs.org/docs/app/api-reference/components/link#replace-the-url-instead-of-push)
 
@@ -265,7 +261,7 @@ app/page.js
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <Link href="/about" replace>
@@ -286,7 +282,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Link from 'next/link'
-     
+
     export default function Page() {
       return (
         <Link href="/#hashid" scroll={false}>
@@ -300,9 +296,9 @@ JavaScriptTypeScript
 [code]
     // useRouter
     import { useRouter } from 'next/navigation'
-     
+
     const router = useRouter()
-     
+
     router.push('/dashboard', { scroll: false })
 [/code]
 
@@ -317,7 +313,7 @@ proxy.ts
 JavaScriptTypeScript
 [code]
     import { NextResponse } from 'next/server'
-     
+
     export function proxy(request: Request) {
       const nextUrl = request.nextUrl
       if (nextUrl.pathname === '/dashboard') {
@@ -337,10 +333,10 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Link from 'next/link'
     import useIsAuthed from './hooks/useIsAuthed' // Your auth hook
-     
+
     export default function Page() {
       const isAuthed = useIsAuthed()
       const path = isAuthed ? '/auth/dashboard' : '/public/dashboard'
@@ -361,34 +357,34 @@ app/contexts/navigation-blocker.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { createContext, useState, useContext } from 'react'
-     
+
     interface NavigationBlockerContextType {
       isBlocked: boolean
       setIsBlocked: (isBlocked: boolean) => void
     }
-     
+
     export const NavigationBlockerContext =
       createContext<NavigationBlockerContextType>({
         isBlocked: false,
         setIsBlocked: () => {},
       })
-     
+
     export function NavigationBlockerProvider({
       children,
     }: {
       children: React.ReactNode
     }) {
       const [isBlocked, setIsBlocked] = useState(false)
-     
+
       return (
         <NavigationBlockerContext.Provider value={{ isBlocked, setIsBlocked }}>
           {children}
         </NavigationBlockerContext.Provider>
       )
     }
-     
+
     export function useNavigationBlocker() {
       return useContext(NavigationBlockerContext)
     }
@@ -401,12 +397,12 @@ app/components/form.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useNavigationBlocker } from '../contexts/navigation-blocker'
-     
+
     export default function Form() {
       const { setIsBlocked } = useNavigationBlocker()
-     
+
       return (
         <form
           onSubmit={(e) => {
@@ -429,17 +425,17 @@ app/components/custom-link.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Link from 'next/link'
     import { useNavigationBlocker } from '../contexts/navigation-blocker'
-     
+
     interface CustomLinkProps extends React.ComponentProps<typeof Link> {
       children: React.ReactNode
     }
-     
+
     export function CustomLink({ children, ...props }: CustomLinkProps) {
       const { isBlocked } = useNavigationBlocker()
-     
+
       return (
         <Link
           onNavigate={(e) => {
@@ -465,9 +461,9 @@ app/components/nav.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { CustomLink as Link } from './custom-link'
-     
+
     export default function Nav() {
       return (
         <nav>
@@ -485,7 +481,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { NavigationBlockerProvider } from './contexts/navigation-blocker'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -509,7 +505,7 @@ JavaScriptTypeScript
 [code]
     import Nav from './components/nav'
     import Form from './components/form'
-     
+
     export default function Page() {
       return (
         <div>
@@ -527,17 +523,13 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/components/link#version-history)
 
-Version| Changes  
----|---  
-`v15.4.0`| 기본 `prefetch` 동작의 별칭으로 `auto`를 추가했습니다.  
-`v15.3.0`| `onNavigate` API를 추가했습니다.  
-`v13.0.0`| 더 이상 자식 `<a>` 태그가 필요하지 않습니다. 코드베이스를 자동으로 업데이트하는 [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#remove-a-tags-from-link-components)가 제공됩니다.  
-`v10.0.0`| 동적 라우트를 가리키는 `href` prop이 자동으로 해석되며 더 이상 `as` prop이 필요하지 않습니다.  
-`v8.0.0`| 프리페치 성능이 향상되었습니다.  
-`v1.0.0`| `next/link`가 도입되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v15.4.0`| 기본 `prefetch` 동작의 별칭으로 `auto`를 추가했습니다.
+`v15.3.0`| `onNavigate` API를 추가했습니다.
+`v13.0.0`| 더 이상 자식 `<a>` 태그가 필요하지 않습니다. 코드베이스를 자동으로 업데이트하는 [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#remove-a-tags-from-link-components)가 제공됩니다.
+`v10.0.0`| 동적 라우트를 가리키는 `href` prop이 자동으로 해석되며 더 이상 `as` prop이 필요하지 않습니다.
+`v8.0.0`| 프리페치 성능이 향상되었습니다.
+`v1.0.0`| `next/link`가 도입되었습니다.
 
 보내기

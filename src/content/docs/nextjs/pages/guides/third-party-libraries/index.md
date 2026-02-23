@@ -8,8 +8,6 @@ Source URL: https://nextjs.org/docs/pages/guides/third-party-libraries
 
 [페이지 라우터](https://nextjs.org/docs/pages)[가이드](https://nextjs.org/docs/pages/guides)서드파티 라이브러리
 
-페이지 복사
-
 # 서드파티 라이브러리를 최적화하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -44,7 +42,7 @@ Google에서 지원되는 모든 서드파티 라이브러리는 `@next/third-pa
 pages/_app.js
 [code]
     import { GoogleTagManager } from '@next/third-parties/google'
-     
+
     export default function MyApp({ Component, pageProps }) {
       return (
         <>
@@ -60,7 +58,7 @@ pages/_app.js
 pages/index.js
 [code]
     import { GoogleTagManager } from '@next/third-parties/google'
-     
+
     export default function Page() {
       return <GoogleTagManager gtmId="GTM-XYZ" />
     }
@@ -73,7 +71,7 @@ pages/index.js
 pages/index.js
 [code]
     import { sendGTMEvent } from '@next/third-parties/google'
-     
+
     export function EventButton() {
       return (
         <div>
@@ -97,15 +95,15 @@ pages/index.js
 
 Google Tag Manager에 전달할 수 있는 옵션입니다. 전체 옵션 목록은 [Google Tag Manager 문서](https://developers.google.com/tag-platform/tag-manager/datalayer)를 참조하세요.
 
-Name| Type| Description  
----|---|---  
-`gtmId`| Required*| GTM 컨테이너 ID입니다. 일반적으로 `GTM-` 으로 시작합니다.  
-`gtmScriptUrl`| Optional*| GTM 스크립트 URL입니다. 기본값은 `https://www.googletagmanager.com/gtm.js` 입니다.  
-`dataLayer`| Optional| 컨테이너를 초기화할 데이터 레이어 객체입니다.  
-`dataLayerName`| Optional| 데이터 레이어 이름입니다. 기본값은 `dataLayer` 입니다.  
-`auth`| Optional| 환경 스니펫을 위한 인증 매개변수(`gtm_auth`) 값입니다.  
-`preview`| Optional| 환경 스니펫을 위한 미리보기 매개변수(`gtm_preview`) 값입니다.  
-  
+Name| Type| Description
+---|---|---
+`gtmId`| Required*| GTM 컨테이너 ID입니다. 일반적으로 `GTM-` 으로 시작합니다.
+`gtmScriptUrl`| Optional*| GTM 스크립트 URL입니다. 기본값은 `https://www.googletagmanager.com/gtm.js` 입니다.
+`dataLayer`| Optional| 컨테이너를 초기화할 데이터 레이어 객체입니다.
+`dataLayerName`| Optional| 데이터 레이어 이름입니다. 기본값은 `dataLayer` 입니다.
+`auth`| Optional| 환경 스니펫을 위한 인증 매개변수(`gtm_auth`) 값입니다.
+`preview`| Optional| 환경 스니펫을 위한 미리보기 매개변수(`gtm_preview`) 값입니다.
+
 *`gtmId` 는 [광고주용 Google 태그 게이트웨이](https://developers.google.com/tag-platform/tag-manager/gateway/setup-guide?setup=manual)를 지원하기 위해 `gtmScriptUrl` 이 제공될 때 생략할 수 있습니다.
 
 ### Google Analytics[](https://nextjs.org/docs/pages/guides/third-party-libraries#google-analytics)
@@ -119,7 +117,7 @@ Name| Type| Description
 pages/_app.js
 [code]
     import { GoogleAnalytics } from '@next/third-parties/google'
-     
+
     export default function MyApp({ Component, pageProps }) {
       return (
         <>
@@ -135,7 +133,7 @@ pages/_app.js
 pages/index.js
 [code]
     import { GoogleAnalytics } from '@next/third-parties/google'
-     
+
     export default function Page() {
       return <GoogleAnalytics gaId="G-XYZ" />
     }
@@ -148,7 +146,7 @@ pages/index.js
 pages/index.js
 [code]
     import { sendGAEvent } from '@next/third-parties/google'
-     
+
     export function EventButton() {
       return (
         <div>
@@ -176,12 +174,12 @@ Google Analytics는 브라우저 히스토리 상태가 변경될 때 자동으�
 
 `<GoogleAnalytics>` 컴포넌트에 전달할 수 있는 옵션입니다.
 
-Name| Type| Description  
----|---|---  
-`gaId`| Required| [측정 ID](https://support.google.com/analytics/answer/12270356)입니다. 일반적으로 `G-` 로 시작합니다.  
-`dataLayerName`| Optional| 데이터 레이어 이름입니다. 기본값은 `dataLayer` 입니다.  
-`nonce`| Optional| [nonce](https://nextjs.org/docs/app/guides/content-security-policy#nonces) 입니다.  
-  
+Name| Type| Description
+---|---|---
+`gaId`| Required| [측정 ID](https://support.google.com/analytics/answer/12270356)입니다. 일반적으로 `G-` 로 시작합니다.
+`dataLayerName`| Optional| 데이터 레이어 이름입니다. 기본값은 `dataLayer` 입니다.
+`nonce`| Optional| [nonce](https://nextjs.org/docs/app/guides/content-security-policy#nonces) 입니다.
+
 ### Google Maps Embed[](https://nextjs.org/docs/pages/guides/third-party-libraries#google-maps-embed)
 
 `GoogleMapsEmbed` 컴포넌트를 사용하면 페이지에 [Google Maps Embed](https://developers.google.com/maps/documentation/embed/embedding-map)를 추가할 수 있습니다. 기본적으로 `loading` 속성을 사용하여 화면 아래쪽에서 임베드를 지연 로드합니다.
@@ -189,7 +187,7 @@ Name| Type| Description
 pages/index.js
 [code]
     import { GoogleMapsEmbed } from '@next/third-parties/google'
-     
+
     export default function Page() {
       return (
         <GoogleMapsEmbed
@@ -207,22 +205,22 @@ pages/index.js
 
 Google Maps Embed에 전달할 수 있는 옵션입니다. 전체 옵션 목록은 [Google Map Embed 문서](https://developers.google.com/maps/documentation/embed/embedding-map)를 참고하세요.
 
-Name| Type| Description  
----|---|---  
-`apiKey`| Required| API 키입니다.  
-`mode`| Required| [지도 모드](https://developers.google.com/maps/documentation/embed/embedding-map#choosing_map_modes)입니다.  
-`height`| Optional| 임베드 높이입니다. 기본값은 `auto` 입니다.  
-`width`| Optional| 임베드 너비입니다. 기본값은 `auto` 입니다.  
-`style`| Optional| iframe에 적용할 스타일입니다.  
-`allowfullscreen`| Optional| 지도의 일부를 전체 화면으로 표시할 수 있게 하는 속성입니다.  
-`loading`| Optional| 기본값은 lazy입니다. 접힘선 위에 임베드가 위치한다면 변경을 고려하세요.  
-`q`| Optional| 지도 마커 위치를 정의합니다. _지도 모드에 따라 필수일 수 있습니다._  
-`center`| Optional| 지도 뷰의 중심을 정의합니다.  
-`zoom`| Optional| 지도 초기 줌 레벨을 설정합니다.  
-`maptype`| Optional| 로드할 지도 타일 유형을 정의합니다.  
-`language`| Optional| UI 요소와 지도 타일 레이블에 사용할 언어를 정의합니다.  
-`region`| Optional| 지정학적 민감도에 따라 적절한 경계와 레이블을 정의합니다.  
-  
+Name| Type| Description
+---|---|---
+`apiKey`| Required| API 키입니다.
+`mode`| Required| [지도 모드](https://developers.google.com/maps/documentation/embed/embedding-map#choosing_map_modes)입니다.
+`height`| Optional| 임베드 높이입니다. 기본값은 `auto` 입니다.
+`width`| Optional| 임베드 너비입니다. 기본값은 `auto` 입니다.
+`style`| Optional| iframe에 적용할 스타일입니다.
+`allowfullscreen`| Optional| 지도의 일부를 전체 화면으로 표시할 수 있게 하는 속성입니다.
+`loading`| Optional| 기본값은 lazy입니다. 접힘선 위에 임베드가 위치한다면 변경을 고려하세요.
+`q`| Optional| 지도 마커 위치를 정의합니다. _지도 모드에 따라 필수일 수 있습니다._
+`center`| Optional| 지도 뷰의 중심을 정의합니다.
+`zoom`| Optional| 지도 초기 줌 레벨을 설정합니다.
+`maptype`| Optional| 로드할 지도 타일 유형을 정의합니다.
+`language`| Optional| UI 요소와 지도 타일 레이블에 사용할 언어를 정의합니다.
+`region`| Optional| 지정학적 민감도에 따라 적절한 경계와 레이블을 정의합니다.
+
 ### YouTube Embed[](https://nextjs.org/docs/pages/guides/third-party-libraries#youtube-embed)
 
 `YouTubeEmbed` 컴포넌트는 YouTube 임베드를 로드하고 표시하는 데 사용할 수 있습니다. 이 컴포넌트는 내부적으로 [`lite-youtube-embed`](https://github.com/paulirish/lite-youtube-embed)를 사용해 더 빠르게 로드됩니다.
@@ -230,7 +228,7 @@ Name| Type| Description
 pages/index.js
 [code]
     import { YouTubeEmbed } from '@next/third-parties/google'
-     
+
     export default function Page() {
       return <YouTubeEmbed videoid="ogfYd705cRs" height={400} params="controls=0" />
     }
@@ -238,19 +236,13 @@ pages/index.js
 
 #### 옵션[](https://nextjs.org/docs/pages/guides/third-party-libraries#options-3)
 
-Name| Type| Description  
----|---|---  
-`videoid`| Required| YouTube 비디오 ID입니다.  
-`width`| Optional| 비디오 컨테이너 너비입니다. 기본값은 `auto` 입니다.  
-`height`| Optional| 비디오 컨테이너 높이입니다. 기본값은 `auto` 입니다.  
-`playlabel`| Optional| 접근성을 위한 재생 버튼 시각 숨김 라벨입니다.  
-`params`| Optional| [여기](https://developers.google.com/youtube/player_parameters#Parameters)에 정의된 비디오 플레이어 매개변수입니다.   
-매개변수는 쿼리 파라미터 문자열로 전달됩니다.   
-예: `params="controls=0&start=10&end=30"`  
-`style`| Optional| 비디오 컨테이너에 스타일을 적용하는 데 사용됩니다.  
-  
-도움이 되었나요?
-
-지원됨.
-
-전송
+Name| Type| Description
+---|---|---
+`videoid`| Required| YouTube 비디오 ID입니다.
+`width`| Optional| 비디오 컨테이너 너비입니다. 기본값은 `auto` 입니다.
+`height`| Optional| 비디오 컨테이너 높이입니다. 기본값은 `auto` 입니다.
+`playlabel`| Optional| 접근성을 위한 재생 버튼 시각 숨김 라벨입니다.
+`params`| Optional| [여기](https://developers.google.com/youtube/player_parameters#Parameters)에 정의된 비디오 플레이어 매개변수입니다.
+매개변수는 쿼리 파라미터 문자열로 전달됩니다.
+예: `params="controls=0&start=10&end=30"`
+`style`| Optional| 비디오 컨테이너에 스타일을 적용하는 데 사용됩니다.

@@ -49,8 +49,6 @@ Examples
   * [WordPress Example](https://github.com/vercel/next.js/tree/canary/examples/cms-wordpress) ([Demo](https://next-blog-wordpress.vercel.app/))
   * [Blog Starter Example](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) ([Demo](https://next-blog-starter.vercel.app/))
 
-
-
 [Pages 문서](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts)와 [Data Fetching 문서](https://nextjs.org/docs/pages/building-your-application/data-fetching)에서는 `getStaticProps`와 `getStaticPaths`를 사용해 빌드 시점(**Static Generation**)에 페이지를 사전 렌더링하는 방법을 다뤘습니다.
 
 Static Generation은 페이지가 헤드리스 CMS에서 데이터를 가져올 때 유용합니다. 하지만 헤드리스 CMS에서 초안을 작성하고 곧바로 페이지에서 **미리 보기**를 하고 싶다면 적절하지 않습니다. 이런 경우 Next.js가 빌드 시점이 아닌 **요청 시점**에 페이지를 렌더링하고 게시된 콘텐츠 대신 초안 콘텐츠를 가져오길 원하게 됩니다. 오직 이 특정 상황에서만 Static Generation을 우회해야 합니다.
@@ -64,7 +62,7 @@ Next.js에는 이 문제를 해결하는 **Preview Mode** 기능이 있습니다
 먼저 **preview API route**를 만듭니다. 이름은 자유롭게 정할 수 있습니다. 예: `pages/api/preview.js` (TypeScript 사용 시 `.ts`).
 
 이 API route에서 응답 객체의 `setPreviewData`를 호출해야 합니다. `setPreviewData`에 전달하는 인수는 객체여야 하며, 이후 `getStaticProps`에서 사용할 수 있습니다(뒤에서 설명). 지금은 `{}`를 사용하겠습니다.
-[code] 
+[code]
     export default function handler(req, res) {
       // ...
       res.setPreviewData({})
@@ -106,8 +104,6 @@ Terminal
   * `<token>`에는 앞에서 생성한 secret token을 넣습니다.
   * `<path>`에는 미리 보려는 페이지 경로를 적습니다. `/posts/foo`를 미리 보려면 `&slug=/posts/foo`를 사용하면 됩니다.
 
-
-
 헤드리스 CMS에서 preview URL에 변수를 포함할 수 있도록 지원한다면 `<path>`를 CMS 데이터 기반으로 동적으로 설정할 수 있습니다. 예: `&slug=/posts/{entry.fields.slug}`
 
 **마지막으로**, preview API route에서 다음을 수행합니다:
@@ -116,27 +112,26 @@ Terminal
   *   * `res.setPreviewData`를 호출합니다.
   * 그런 다음 브라우저를 `slug`에 지정된 경로로 리디렉션합니다. (아래 예제는 [307 redirect](https://developer.mozilla.org/docs/Web/HTTP/Status/307)를 사용합니다.)
 
-
-[code] 
+[code]
     export default async (req, res) => {
       // Check the secret and next parameters
       // This secret should only be known to this API route and the CMS
       if (req.query.secret !== 'MY_SECRET_TOKEN' || !req.query.slug) {
         return res.status(401).json({ message: 'Invalid token' })
       }
-     
+
       // Fetch the headless CMS to check if the provided `slug` exists
       // getPostBySlug would implement the required fetching logic to the headless CMS
       const post = await getPostBySlug(req.query.slug)
-     
+
       // If the slug doesn't exist prevent preview mode from being enabled
       if (!post) {
         return res.status(401).json({ message: 'Invalid slug' })
       }
-     
+
       // Enable Preview Mode by setting the cookies
       res.setPreviewData({})
-     
+
       // Redirect to the path from the fetched post
       // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
       res.redirect(post.slug)
@@ -156,8 +151,7 @@ preview mode 쿠키(`res.setPreviewData`를 통해 설정)를 가진 상태로 `
   * `context.preview` 값은 `true`입니다.
   * `context.previewData`는 `setPreviewData`에 전달했던 인수와 동일합니다.
 
-
-[code] 
+[code]
     export async function getStaticProps(context) {
       // If you request this page with the preview mode cookies set:
       //
@@ -176,7 +170,7 @@ preview API route에서 `res.setPreviewData({})`를 사용했으므로 `context.
 `context.preview`나 `context.previewData`에 따라 다른 데이터를 가져오도록 `getStaticProps`를 업데이트할 수 있습니다.
 
 예를 들어 헤드리스 CMS에 초안 게시물 전용 API endpoint가 있다면, 아래와 같이 `context.preview`를 활용해 API endpoint URL을 수정할 수 있습니다:
-[code] 
+[code]
     export async function getStaticProps(context) {
       // If context.preview is true, append "/preview" to the API endpoint
       // to request draft data instead of published data. This will vary
@@ -206,7 +200,7 @@ preview API route에서 `res.setPreviewData({})`를 사용했으므로 `context.
   * `maxAge`: 프리뷰 세션이 유지될 시간(초)을 지정합니다.
   * `path`: 쿠키를 적용할 경로를 지정합니다. 기본값은 `/`로 모든 경로에서 프리뷰 모드를 활성화합니다.
 
-[code] 
+[code]
     setPreviewData(data, {
       maxAge: 60 * 60, // The preview mode cookies expire in 1 hour
       path: '/about', // The preview mode cookies apply to paths with /about
@@ -234,7 +228,7 @@ pages/api/clear-preview-mode-cookies.js
 [code]
     export default function handler(req, res) {
       const { path } = req.query
-     
+
       res.clearPreviewData({ path })
     }
 [/code]
@@ -253,7 +247,7 @@ pages/api/clear-preview-mode-cookies.js
 
 API 경로는 요청 객체에서 `preview`와 `previewData`에 접근할 수 있습니다. 예:
 
-[code] 
+[code]
     export default function myApiRoute(req, res) {
       const isPreview = req.preview
       const previewData = req.previewData
@@ -266,9 +260,5 @@ API 경로는 요청 객체에서 `preview`와 `previewData`에 접근할 수 �
 `next build`가 완료될 때마다 bypass 쿠키 값과 `previewData`를 암호화하는 개인 키가 바뀝니다. 이를 통해 bypass 쿠키가 추측되지 않도록 보장합니다.
 
 > **알아두면 좋아요** : HTTP 환경에서 로컬로 프리뷰 모드를 테스트하려면 브라우저에서 서드파티 쿠키와 로컬 스토리지 접근을 허용해야 합니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

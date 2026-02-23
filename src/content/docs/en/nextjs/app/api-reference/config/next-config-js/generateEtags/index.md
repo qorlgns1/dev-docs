@@ -1,33 +1,20 @@
 ---
-title: 'next.config.js: generateEtags'
+title: 'generateEtags'
 description: 'Next.js will generate etags for every page by default. You may want to disable etag generation for HTML pages depending on your cache strategy.'
 ---
 
-# next.config.js: generateEtags | Next.js
-
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/generateEtags
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)generateEtags
-
-Copy page
-
 # generateEtags
-
-Last updated February 20, 2026
 
 Next.js will generate [etags](https://en.wikipedia.org/wiki/HTTP_ETag) for every page by default. You may want to disable etag generation for HTML pages depending on your cache strategy.
 
 Open `next.config.js` and disable the `generateEtags` option:
 
-next.config.js
-[code]
-    module.exports = {
-      generateEtags: false,
-    }
-[/code]
+```js filename="next.config.js"
+module.exports = {
+  generateEtags: false,
+}
+```
+---
 
-Was this helpful?
-
-supported.
-
-Send

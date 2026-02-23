@@ -7,8 +7,6 @@ description: 'Next.js 팀은 모든 개발자(및 최종 사용자)가 Next.js�
 
 Source URL: https://nextjs.org/docs/architecture/accessibility
 
-[Next.js Docs](https://nextjs.org/docs)[Architecture](https://nextjs.org/docs/architecture)Accessibility
-
 Copy page
 
 # 접근성
@@ -35,8 +33,6 @@ Next.js는 Next.js 전용 커스텀 규칙을 포함한 [통합 ESLint 환경](h
   * [role-has-required-aria-props](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/role-has-required-aria-props.md?rgh-link-date=2021-06-04T02%3A10%3A36Z)
   * [role-supports-aria-props](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/role-supports-aria-props.md?rgh-link-date=2021-06-04T02%3A10%3A36Z)
 
-
-
 예를 들어, 이 플러그인은 `img` 태그에 alt 텍스트를 추가하고, 올바른 `aria-*` 속성과 `role` 속성을 사용하는 등 다양한 접근성 요구 사항을 충족하도록 도와줍니다.
 
 ## 접근성 리소스[](https://nextjs.org/docs/architecture/accessibility#accessibility-resources)
@@ -46,8 +42,6 @@ Next.js는 Next.js 전용 커스텀 규칙을 포함한 [통합 ESLint 환경](h
   * [The A11y Project](https://www.a11yproject.com/)
   * 전경과 배경 요소 간의 [색 대비 비율](https://developer.mozilla.org/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast)을 확인하세요.
   * 애니메이션 작업 시 [`prefers-reduced-motion`](https://web.dev/prefers-reduced-motion/)을 활용하세요.
-
-
 
 유용했나요?
 

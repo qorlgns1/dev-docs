@@ -7,8 +7,6 @@ description: '훅은 Core Web Vitals을 보고할 수 있게 해 주며, 애널�
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)useReportWebVitals
-
 Copy page
 
 # useReportWebVitals
@@ -22,16 +20,16 @@ Copy page
 app/_components/web-vitals.js
 [code]
     'use client'
-     
+
     import { useReportWebVitals } from 'next/web-vitals'
-     
+
     const logWebVitals = (metric) => {
       console.log(metric)
     }
-     
+
     export function WebVitals() {
       useReportWebVitals(logWebVitals)
-     
+
       return null
     }
 [/code]
@@ -39,7 +37,7 @@ app/_components/web-vitals.js
 app/layout.js
 [code]
     import { WebVitals } from './_components/web-vitals'
-     
+
     export default function Layout({ children }) {
       return (
         <html>
@@ -66,8 +64,6 @@ app/layout.js
   * `rating`: 메트릭 값에 대한 정성적 평가로, 성능을 진단합니다. 가능한 값은 `"good"`, `"needs-improvement"`, `"poor"`이며, 일반적으로 허용 가능한 성능과 비최적 성능을 구분하는 사전 정의 임계값과 비교하여 결정됩니다.
   * `value`: 성능 엔트리의 실제 값 또는 지속 시간으로, 일반적으로 밀리초 단위입니다. 이는 해당 메트릭이 추적하는 성능 요소에 대한 정량적 측정을 제공합니다. 값의 출처는 측정 중인 특정 메트릭에 따라 다르며 다양한 [Performance API](https://developer.mozilla.org/docs/Web/API/Performance_API)에서 비롯될 수 있습니다.
 
-
-
 ## Web Vitals[](https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals#web-vitals)
 
 [Web Vitals](https://web.dev/vitals/)는 웹 페이지의 사용자 경험을 포착하기 위한 유용한 메트릭 집합입니다. 다음 웹 바이탈이 모두 포함됩니다.
@@ -79,8 +75,6 @@ app/layout.js
   * [Cumulative Layout Shift](https://web.dev/cls/) (CLS)
   * [Interaction to Next Paint](https://web.dev/inp/) (INP)
 
-
-
 이들 메트릭의 모든 결과는 `name` 속성을 사용해 처리할 수 있습니다.
 
 app/components/web-vitals.tsx
@@ -88,11 +82,11 @@ app/components/web-vitals.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useReportWebVitals } from 'next/web-vitals'
-     
+
     type ReportWebVitalsCallback = Parameters<typeof useReportWebVitals>[0]
-     
+
     const handleWebVitals: ReportWebVitalsCallback = (metric) => {
       switch (metric.name) {
         case 'FCP': {
@@ -104,7 +98,7 @@ JavaScriptTypeScript
         // ...
       }
     }
-     
+
     export function WebVitals() {
       useReportWebVitals(handleWebVitals)
     }
@@ -114,11 +108,11 @@ JavaScriptTypeScript
 
 사이트에서 실제 사용자 성능을 측정·추적하기 위해 어떤 엔드포인트로든 결과를 전송할 수 있습니다. 예시:
 
-[code] 
+[code]
     function postWebVitals(metrics) {
       const body = JSON.stringify(metric)
       const url = 'https://example.com/analytics'
-     
+
       // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
       if (navigator.sendBeacon) {
         navigator.sendBeacon(url, body)
@@ -126,13 +120,13 @@ JavaScriptTypeScript
         fetch(url, { body, method: 'POST', keepalive: true })
       }
     }
-     
+
     useReportWebVitals(postWebVitals)
 [/code]
 
 > **알아두면 좋아요**: [Google Analytics](https://analytics.google.com/analytics/web/)를 사용하는 경우 `id` 값을 활용해 메트릭 분포를 수동으로 구성(백분위 계산 등)할 수 있습니다.
 
-> 
+>
 [code]
 >     useReportWebVitals(metric => {
 >       // Use `window.gtag` if you initialized Google Analytics as this example:
@@ -144,7 +138,7 @@ JavaScriptTypeScript
 >       });
 >     }
 [/code]
-> 
+>
 > [Google Analytics로 결과를 전송하는 방법](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics)에 대해 더 알아보세요.
 
 Was this helpful?

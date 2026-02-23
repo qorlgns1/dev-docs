@@ -1,419 +1,547 @@
 ---
-title: 'Guides: Content Security Policy'
+title: 'How to set a Content Security Policy (CSP) for your Next.js application'
 description: 'By using CSP, developers can specify which origins are permissible for content sources, scripts, stylesheets, images, fonts, objects, media (audio, vi...'
 ---
 
-# Guides: Content Security Policy | Next.js
-
 Source URL: https://nextjs.org/docs/pages/guides/content-security-policy
 
-[Pages Router](https://nextjs.org/docs/pages)[Guides](https://nextjs.org/docs/pages/guides)Content Security Policy
-
-Copy page
-
 # How to set a Content Security Policy (CSP) for your Next.js application
-
-Last updated February 20, 2026
 
 [Content Security Policy (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP) is important to guard your Next.js application against various security threats such as cross-site scripting (XSS), clickjacking, and other code injection attacks.
 
 By using CSP, developers can specify which origins are permissible for content sources, scripts, stylesheets, images, fonts, objects, media (audio, video), iframes, and more.
 
-Examples
+<details>
+<summary>Examples</summary>
 
-  * [Strict CSP](https://github.com/vercel/next.js/tree/canary/examples/with-strict-csp)
+* [Strict CSP](https://github.com/vercel/next.js/tree/canary/examples/with-strict-csp)
 
+</details>
 
-
-## Nonces[](https://nextjs.org/docs/pages/guides/content-security-policy#nonces)
+## Nonces
 
 A [nonce](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/nonce) is a unique, random string of characters created for a one-time use. It is used in conjunction with CSP to selectively allow certain inline scripts or styles to execute, bypassing strict CSP directives.
 
-### Why use a nonce?[](https://nextjs.org/docs/pages/guides/content-security-policy#why-use-a-nonce)
+### Why use a nonce?
 
 CSP can block both inline and external scripts to prevent attacks. A nonce lets you safely allow specific scripts to run—only if they include the matching nonce value.
 
 If an attacker wanted to load a script into your page, they'd need to guess the nonce value. That's why the nonce must be unpredictable and unique for every request.
 
-### Adding a nonce with Proxy[](https://nextjs.org/docs/pages/guides/content-security-policy#adding-a-nonce-with-proxy)
+### Adding a nonce with Proxy
 
 [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy) enables you to add headers and generate nonces before the page renders.
 
-Every time a page is viewed, a fresh nonce should be generated. This means that you **must use[dynamic rendering](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) to add nonces**.
+Every time a page is viewed, a fresh nonce should be generated. This means that you **must use [dynamic rendering](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) to add nonces**.
 
 For example:
 
-> **Good to know** : In development, `'unsafe-eval'` is required because React uses `eval` to provide enhanced debugging information, such as reconstructing server-side error stacks in the browser. `unsafe-eval` is not required for production. Neither React nor Next.js use `eval` in production by default.
+> **Good to know**: In development, `'unsafe-eval'` is required because React uses `eval` to provide enhanced debugging information, such as reconstructing server-side error stacks in the browser. `unsafe-eval` is not required for production. Neither React nor Next.js use `eval` in production by default.
 
-proxy.ts
+```ts filename="proxy.ts" switcher
+import { NextRequest, NextResponse } from 'next/server'
 
-JavaScriptTypeScript
-[code]
-    import { NextRequest, NextResponse } from 'next/server'
-     
-    export function proxy(request: NextRequest) {
-      const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
-      const isDev = process.env.NODE_ENV === 'development'
-      const cspHeader = `
-        default-src 'self';
-        script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''};
-        style-src 'self' 'nonce-${nonce}';
-        img-src 'self' blob: data:;
-        font-src 'self';
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-        frame-ancestors 'none';
-        upgrade-insecure-requests;
-    `
-      // Replace newline characters and spaces
-      const contentSecurityPolicyHeaderValue = cspHeader
-        .replace(/\s{2,}/g, ' ')
-        .trim()
-     
-      const requestHeaders = new Headers(request.headers)
-      requestHeaders.set('x-nonce', nonce)
-     
-      requestHeaders.set(
-        'Content-Security-Policy',
-        contentSecurityPolicyHeaderValue
-      )
-     
-      const response = NextResponse.next({
-        request: {
-          headers: requestHeaders,
-        },
-      })
-      response.headers.set(
-        'Content-Security-Policy',
-        contentSecurityPolicyHeaderValue
-      )
-     
-      return response
-    }
-[/code]
+export function proxy(request: NextRequest) {
+  const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+  const isDev = process.env.NODE_ENV === 'development'
+  const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''};
+    style-src 'self' 'nonce-${nonce}';
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`
+  // Replace newline characters and spaces
+  const contentSecurityPolicyHeaderValue = cspHeader
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set('x-nonce', nonce)
+
+  requestHeaders.set(
+    'Content-Security-Policy',
+    contentSecurityPolicyHeaderValue
+  )
+
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  })
+  response.headers.set(
+    'Content-Security-Policy',
+    contentSecurityPolicyHeaderValue
+  )
+
+  return response
+}
+```
+
+```js filename="proxy.js" switcher
+import { NextResponse } from 'next/server'
+
+export function proxy(request) {
+  const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+  const isDev = process.env.NODE_ENV === 'development'
+  const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''};
+    style-src 'self' 'nonce-${nonce}';
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`
+  // Replace newline characters and spaces
+  const contentSecurityPolicyHeaderValue = cspHeader
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set('x-nonce', nonce)
+  requestHeaders.set(
+    'Content-Security-Policy',
+    contentSecurityPolicyHeaderValue
+  )
+
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  })
+  response.headers.set(
+    'Content-Security-Policy',
+    contentSecurityPolicyHeaderValue
+  )
+
+  return response
+}
+```
 
 By default, Proxy runs on all requests. You can filter Proxy to run on specific paths using a [`matcher`](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#matcher).
 
 We recommend ignoring matching prefetches (from `next/link`) and static assets that don't need the CSP header.
 
-proxy.ts
-
-JavaScriptTypeScript
-[code]
-    export const config = {
-      matcher: [
-        /*
-         * Match all request paths except for the ones starting with:
-         * - api (API routes)
-         * - _next/static (static files)
-         * - _next/image (image optimization files)
-         * - favicon.ico (favicon file)
-         */
-        {
-          source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
-          missing: [
-            { type: 'header', key: 'next-router-prefetch' },
-            { type: 'header', key: 'purpose', value: 'prefetch' },
-          ],
-        },
+```ts filename="proxy.ts" switcher
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    {
+      source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+      missing: [
+        { type: 'header', key: 'next-router-prefetch' },
+        { type: 'header', key: 'purpose', value: 'prefetch' },
       ],
-    }
-[/code]
+    },
+  ],
+}
+```
 
-### How nonces work in Next.js[](https://nextjs.org/docs/pages/guides/content-security-policy#how-nonces-work-in-nextjs)
+```js filename="proxy.js" switcher
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    {
+      source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+      missing: [
+        { type: 'header', key: 'next-router-prefetch' },
+        { type: 'header', key: 'purpose', value: 'prefetch' },
+      ],
+    },
+  ],
+}
+```
 
-To use a nonce, your page must be **dynamically rendered**. This is because Next.js applies nonces during **server-side rendering** , based on the CSP header present in the request. Static pages are generated at build time, when no request or response headers exist—so no nonce can be injected.
+### How nonces work in Next.js
+
+To use a nonce, your page must be **dynamically rendered**. This is because Next.js applies nonces during **server-side rendering**, based on the CSP header present in the request. Static pages are generated at build time, when no request or response headers exist—so no nonce can be injected.
 
 Here’s how nonce support works in a dynamically rendered page:
 
-  1. **Proxy generates a nonce** : Your proxy creates a unique nonce for the request, adds it to your `Content-Security-Policy` header, and also sets it in a custom `x-nonce` header.
-  2. **Next.js extracts the nonce** : During rendering, Next.js parses the `Content-Security-Policy` header and extracts the nonce using the `'nonce-{value}'` pattern.
-  3. **Nonce is applied automatically** : Next.js attaches the nonce to:
-     * Framework scripts (React, Next.js runtime)
-     * Page-specific JavaScript bundles
-     * Inline styles and scripts generated by Next.js
-     * Any `<Script>` components using the `nonce` prop
-
-
+1. **Proxy generates a nonce**: Your proxy creates a unique nonce for the request, adds it to your `Content-Security-Policy` header, and also sets it in a custom `x-nonce` header.
+2. **Next.js extracts the nonce**: During rendering, Next.js parses the `Content-Security-Policy` header and extracts the nonce using the `'nonce-{value}'` pattern.
+3. **Nonce is applied automatically**: Next.js attaches the nonce to:
+   * Framework scripts (React, Next.js runtime)
+   * Page-specific JavaScript bundles
+   * Inline styles and scripts generated by Next.js
+   * Any `<Script>` components using the `nonce` prop
 
 Because of this automatic behavior, you don’t need to manually add a nonce to each tag.
 
-### Forcing dynamic rendering[](https://nextjs.org/docs/pages/guides/content-security-policy#forcing-dynamic-rendering)
+### Forcing dynamic rendering
 
 If you're using nonces, you may need to explicitly opt pages into dynamic rendering:
 
-app/page.tsx
+```tsx filename="app/page.tsx" switcher
+import { connection } from 'next/server'
 
-JavaScriptTypeScript
-[code]
-    import { connection } from 'next/server'
-     
-    export default async function Page() {
-      // wait for an incoming request to render this page
-      await connection()
-      // Your page content
-    }
-[/code]
+export default async function Page() {
+  // wait for an incoming request to render this page
+  await connection()
+  // Your page content
+}
+```
 
-### Reading the nonce[](https://nextjs.org/docs/pages/guides/content-security-policy#reading-the-nonce)
+```jsx filename="app/page.jsx" switcher
+import { connection } from 'next/server'
 
-You can provide the nonce to your page using [`getServerSideProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props):
+export default async function Page() {
+  // wait for an incoming request to render this page
+  await connection()
+  // Your page content
+}
+```
 
-pages/index.tsx
+### Reading the nonce
 
-JavaScriptTypeScript
-[code]
-    import Script from 'next/script'
-     
-    import type { GetServerSideProps } from 'next'
-     
-    export default function Page({ nonce }) {
-      return (
-        <Script
-          src="https://www.googletagmanager.com/gtag/js"
-          strategy="afterInteractive"
-          nonce={nonce}
-        />
-      )
-    }
-     
-    export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-      const nonce = req.headers['x-nonce']
-      return { props: { nonce } }
-    }
-[/code]
+You can provide the nonce to your page using
+[`getServerSideProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props):
+
+```tsx filename="pages/index.tsx" switcher
+import Script from 'next/script'
+
+import type { GetServerSideProps } from 'next'
+
+export default function Page({ nonce }) {
+  return (
+    <Script
+      src="https://www.googletagmanager.com/gtag/js"
+      strategy="afterInteractive"
+      nonce={nonce}
+    />
+  )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const nonce = req.headers['x-nonce']
+  return { props: { nonce } }
+}
+```
+
+```jsx filename="pages/index.jsx" switcher
+import Script from 'next/script'
+export default function Page({ nonce }) {
+  return (
+    <Script
+      src="https://www.googletagmanager.com/gtag/js"
+      strategy="afterInteractive"
+      nonce={nonce}
+    />
+  )
+}
+
+export async function getServerSideProps({ req }) {
+  const nonce = req.headers['x-nonce']
+  return { props: { nonce } }
+}
+```
 
 You can also access the nonce in `_document.tsx` for Pages Router applications:
 
-pages/_document.tsx
+```tsx filename="pages/_document.tsx" switcher
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+  DocumentInitialProps,
+} from 'next/document'
 
-JavaScriptTypeScript
-[code]
-    import Document, {
-      Html,
-      Head,
-      Main,
-      NextScript,
-      DocumentContext,
-      DocumentInitialProps,
-    } from 'next/document'
-     
-    interface ExtendedDocumentProps extends DocumentInitialProps {
-      nonce?: string
-    }
-     
-    class MyDocument extends Document<ExtendedDocumentProps> {
-      static async getInitialProps(
-        ctx: DocumentContext
-      ): Promise<ExtendedDocumentProps> {
-        const initialProps = await Document.getInitialProps(ctx)
-        const nonce = ctx.req?.headers?.['x-nonce'] as string | undefined
-     
-        return {
-          ...initialProps,
-          nonce,
-        }
-      }
-     
-      render() {
-        const { nonce } = this.props
-     
-        return (
-          <Html lang="en">
-            <Head nonce={nonce} />
-            <body>
-              <Main />
-              <NextScript nonce={nonce} />
-            </body>
-          </Html>
-        )
-      }
-    }
-     
-    export default MyDocument
-[/code]
+interface ExtendedDocumentProps extends DocumentInitialProps {
+  nonce?: string
+}
 
-## Static vs Dynamic Rendering with CSP[](https://nextjs.org/docs/pages/guides/content-security-policy#static-vs-dynamic-rendering-with-csp)
+class MyDocument extends Document<ExtendedDocumentProps> {
+  static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<ExtendedDocumentProps> {
+    const initialProps = await Document.getInitialProps(ctx)
+    const nonce = ctx.req?.headers?.['x-nonce'] as string | undefined
+
+    return {
+      ...initialProps,
+      nonce,
+    }
+  }
+
+  render() {
+    const { nonce } = this.props
+
+    return (
+      <Html lang="en">
+        <Head nonce={nonce} />
+        <body>
+          <Main />
+          <NextScript nonce={nonce} />
+        </body>
+      </Html>
+    )
+  }
+}
+
+export default MyDocument
+```
+
+```jsx filename="pages/_document.jsx" switcher
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx)
+    const nonce = ctx.req?.headers?.['x-nonce']
+
+    return {
+      ...initialProps,
+      nonce,
+    }
+  }
+
+  render() {
+    const { nonce } = this.props
+
+    return (
+      <Html lang="en">
+        <Head nonce={nonce} />
+        <body>
+          <Main />
+          <NextScript nonce={nonce} />
+        </body>
+      </Html>
+    )
+  }
+}
+
+export default MyDocument
+```
+
+## Static vs Dynamic Rendering with CSP
 
 Using nonces has important implications for how your Next.js application renders:
 
-### Dynamic Rendering Requirement[](https://nextjs.org/docs/pages/guides/content-security-policy#dynamic-rendering-requirement)
+### Dynamic Rendering Requirement
 
 When you use nonces in your CSP, **all pages must be dynamically rendered**. This means:
 
-  * Pages will build successfully but may encounter runtime errors if not properly configured for dynamic rendering
-  * Each request generates a fresh page with a new nonce
-  * Static optimization and Incremental Static Regeneration (ISR) are disabled
-  * Pages cannot be cached by CDNs without additional configuration
-  * **Partial Prerendering (PPR) is incompatible** with nonce-based CSP since static shell scripts won't have access to the nonce
+* Pages will build successfully but may encounter runtime errors if not properly configured for dynamic rendering
+* Each request generates a fresh page with a new nonce
+* Static optimization and Incremental Static Regeneration (ISR) are disabled
+* Pages cannot be cached by CDNs without additional configuration
+* **Partial Prerendering (PPR) is incompatible** with nonce-based CSP since static shell scripts won't have access to the nonce
 
-
-
-### Performance Implications[](https://nextjs.org/docs/pages/guides/content-security-policy#performance-implications)
+### Performance Implications
 
 The shift from static to dynamic rendering affects performance:
 
-  * **Slower initial page loads** : Pages must be generated on each request
-  * **Increased server load** : Every request requires server-side rendering
-  * **No CDN caching** : Dynamic pages cannot be cached at the edge by default
-  * **Higher hosting costs** : More server resources needed for dynamic rendering
+* **Slower initial page loads**: Pages must be generated on each request
+* **Increased server load**: Every request requires server-side rendering
+* **No CDN caching**: Dynamic pages cannot be cached at the edge by default
+* **Higher hosting costs**: More server resources needed for dynamic rendering
 
-
-
-### When to use nonces[](https://nextjs.org/docs/pages/guides/content-security-policy#when-to-use-nonces)
+### When to use nonces
 
 Consider nonces when:
 
-  * You have strict security requirements that prohibit `'unsafe-inline'`
-  * Your application handles sensitive data
-  * You need to allow specific inline scripts while blocking others
-  * Compliance requirements mandate strict CSP
+* You have strict security requirements that prohibit `'unsafe-inline'`
+* Your application handles sensitive data
+* You need to allow specific inline scripts while blocking others
+* Compliance requirements mandate strict CSP
 
-
-
-## Without Nonces[](https://nextjs.org/docs/pages/guides/content-security-policy#without-nonces)
+## Without Nonces
 
 For applications that do not require nonces, you can set the CSP header directly in your [`next.config.js`](https://nextjs.org/docs/app/api-reference/config/next-config-js) file:
 
-next.config.js
-[code]
-    const isDev = process.env.NODE_ENV === 'development'
-     
-    const cspHeader = `
-        default-src 'self';
-        script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
-        style-src 'self' 'unsafe-inline';
-        img-src 'self' blob: data:;
-        font-src 'self';
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-        frame-ancestors 'none';
-        upgrade-insecure-requests;
-    `
-     
-    module.exports = {
-      async headers() {
-        return [
-          {
-            source: '/(.*)',
-            headers: [
-              {
-                key: 'Content-Security-Policy',
-                value: cspHeader.replace(/\n/g, ''),
-              },
-            ],
-          },
-        ]
-      },
-    }
-[/code]
+```js filename="next.config.js"
+const isDev = process.env.NODE_ENV === 'development'
 
-## Development vs Production Considerations[](https://nextjs.org/docs/pages/guides/content-security-policy#development-vs-production-considerations)
+const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`
+
+module.exports = {
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: cspHeader.replace(/\n/g, ''),
+          },
+        ],
+      },
+    ]
+  },
+}
+```
+
+## Development vs Production Considerations
 
 CSP implementation differs between development and production environments:
 
-### Development Environment[](https://nextjs.org/docs/pages/guides/content-security-policy#development-environment)
+### Development Environment
 
 In development, you will need to enable `'unsafe-eval'` because React uses `eval` to provide enhanced debugging information, such as reconstructing server-side error stacks in the browser to show you where errors originated on the server:
 
-proxy.ts
+```ts filename="proxy.ts" switcher
+export function proxy(request: NextRequest) {
+  const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+  const isDev = process.env.NODE_ENV === 'development'
 
-JavaScriptTypeScript
-[code]
-    export function proxy(request: NextRequest) {
-      const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
-      const isDev = process.env.NODE_ENV === 'development'
-     
-      const cspHeader = `
-        default-src 'self';
-        script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${isDev ? "'unsafe-eval'" : ''};
-        style-src 'self' ${isDev ? "'unsafe-inline'" : `'nonce-${nonce}'`};
-        img-src 'self' blob: data:;
-        font-src 'self';
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-        frame-ancestors 'none';
-        upgrade-insecure-requests;
-    `
-     
-      // Rest of proxy implementation
-    }
-[/code]
+  const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${isDev ? "'unsafe-eval'" : ''};
+    style-src 'self' ${isDev ? "'unsafe-inline'" : `'nonce-${nonce}'`};
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`
 
-### Production Deployment[](https://nextjs.org/docs/pages/guides/content-security-policy#production-deployment)
+  // Rest of proxy implementation
+}
+```
+
+```js filename="proxy.js" switcher
+export function proxy(request) {
+  const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+  const isDev = process.env.NODE_ENV === 'development'
+
+  const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${isDev ? "'unsafe-eval'" : ''};
+    style-src 'self' ${isDev ? "'unsafe-inline'" : `'nonce-${nonce}'`};
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`
+
+  // Rest of proxy implementation
+}
+```
+
+### Production Deployment
 
 Common issues in production:
 
-  * **Nonce not applied** : Ensure your proxy runs on all necessary routes
-  * **Static assets blocked** : Verify your CSP allows Next.js static assets
-  * **Third-party scripts** : Add necessary domains to your CSP policy
+* **Nonce not applied**: Ensure your proxy runs on all necessary routes
+* **Static assets blocked**: Verify your CSP allows Next.js static assets
+* **Third-party scripts**: Add necessary domains to your CSP policy
 
+## Troubleshooting
 
-
-## Troubleshooting[](https://nextjs.org/docs/pages/guides/content-security-policy#troubleshooting)
-
-### Third-party Scripts[](https://nextjs.org/docs/pages/guides/content-security-policy#third-party-scripts)
+### Third-party Scripts
 
 When using third-party scripts with CSP, ensure you add the necessary domains and pass the nonce:
 
-pages/_app.tsx
+```tsx filename="pages/_app.tsx" switcher
+import type { AppProps } from 'next/app'
+import Script from 'next/script'
 
-JavaScriptTypeScript
-[code]
-    import type { AppProps } from 'next/app'
-    import Script from 'next/script'
-     
-    export default function App({ Component, pageProps }: AppProps) {
-      const nonce = pageProps.nonce
-     
-      return (
-        <>
-          <Component {...pageProps} />
-          <Script
-            src="https://www.googletagmanager.com/gtag/js"
-            strategy="afterInteractive"
-            nonce={nonce}
-          />
-        </>
-      )
-    }
-[/code]
+export default function App({ Component, pageProps }: AppProps) {
+  const nonce = pageProps.nonce
+
+  return (
+    <>
+      <Component {...pageProps} />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js"
+        strategy="afterInteractive"
+        nonce={nonce}
+      />
+    </>
+  )
+}
+```
+
+```jsx filename="pages/_app.jsx" switcher
+import Script from 'next/script'
+
+export default function App({ Component, pageProps }) {
+  const nonce = pageProps.nonce
+
+  return (
+    <>
+      <Component {...pageProps} />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js"
+        strategy="afterInteractive"
+        nonce={nonce}
+      />
+    </>
+  )
+}
+```
 
 Update your CSP to allow third-party domains:
 
-proxy.ts
+```ts filename="proxy.ts" switcher
+const cspHeader = `
+  default-src 'self';
+  script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
+  connect-src 'self' https://www.google-analytics.com;
+  img-src 'self' data: https://www.google-analytics.com;
+`
+```
 
-JavaScriptTypeScript
-[code]
-    const cspHeader = `
-      default-src 'self';
-      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
-      connect-src 'self' https://www.google-analytics.com;
-      img-src 'self' data: https://www.google-analytics.com;
-    `
-[/code]
+```js filename="proxy.js" switcher
+const cspHeader = `
+  default-src 'self';
+  script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
+  connect-src 'self' https://www.google-analytics.com;
+  img-src 'self' data: https://www.google-analytics.com;
+`
+```
 
-### Common CSP Violations[](https://nextjs.org/docs/pages/guides/content-security-policy#common-csp-violations)
+### Common CSP Violations
 
-  1. **Inline styles** : Use CSS-in-JS libraries that support nonces or move styles to external files
-  2. **Dynamic imports** : Ensure dynamic imports are allowed in your script-src policy
-  3. **WebAssembly** : Add `'wasm-unsafe-eval'` if using WebAssembly
-  4. **Service workers** : Add appropriate policies for service worker scripts
+1. **Inline styles**: Use CSS-in-JS libraries that support nonces or move styles to external files
+2. **Dynamic imports**: Ensure dynamic imports are allowed in your script-src policy
+3. **WebAssembly**: Add `'wasm-unsafe-eval'` if using WebAssembly
+4. **Service workers**: Add appropriate policies for service worker scripts
 
+## Version History
 
+| Version    | Changes                                                       |
+| ---------- | ------------------------------------------------------------- |
+| `v14.0.0`  | Experimental SRI support added for hash-based CSP             |
+| `v13.4.20` | Recommended for proper nonce handling and CSP header parsing. |
+---
 
-## Version History[](https://nextjs.org/docs/pages/guides/content-security-policy#version-history)
-
-Version| Changes  
----|---  
-`v14.0.0`| Experimental SRI support added for hash-based CSP  
-`v13.4.20`| Recommended for proper nonce handling and CSP header parsing.  
-  
-Was this helpful?
-
-supported.
-
-Send

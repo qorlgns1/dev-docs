@@ -7,8 +7,6 @@ description: '> 이 기능은  전용이며 현재 의 나 의 를 대신하도�
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/exportPathMap
 
-[Configuration](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)exportPathMap
-
 Copy page
 
 # exportPathMap
@@ -24,8 +22,6 @@ Copy page
   * `pages/index.js`
   * `pages/about.js`
   * `pages/post.js`
-
-
 
 `next.config.js`를 열고 다음 `exportPathMap` 구성을 추가합니다:
 
@@ -59,14 +55,10 @@ next.config.js
   * `distDir` \- `.next/` 디렉터리의 절대 경로 ([`distDir`](https://nextjs.org/docs/pages/api-reference/config/next-config-js/distDir) 구성으로 설정 가능)
   * `buildId` \- 생성된 빌드 ID
 
-
-
 반환된 객체는 페이지 맵이며 `key`는 `pathname`, `value`는 다음 필드를 받는 객체입니다.
 
   * `page`: `String` \- 렌더링할 `pages` 디렉터리 내부 페이지
   * `query`: `Object` \- 프리렌더링 시 `getInitialProps`에 전달되는 `query` 객체. 기본값은 `{}`
-
-
 
 > 내보낸 `pathname`은 `/readme.md`처럼 파일 이름이 될 수도 있지만, 확장자가 `.html`이 아니라면 콘텐츠를 서빙할 때 `Content-Type` 헤더를 `text/html`로 설정해야 할 수 있습니다.
 

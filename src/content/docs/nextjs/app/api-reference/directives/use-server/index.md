@@ -9,8 +9,6 @@ description: '지시문은 함수나 파일이 서버 측에서 실행되어야 
 
 [API 레퍼런스](https://nextjs.org/docs/app/api-reference)[지시문](https://nextjs.org/docs/app/api-reference/directives)use server
 
-페이지 복사
-
 # use server
 
 마지막 업데이트 2026년 2월 20일
@@ -27,7 +25,7 @@ JavaScriptTypeScript
 [code]
     'use server'
     import { db } from '@/lib/db' // Your database client
-     
+
     export async function createUser(data: { name: string; email: string }) {
       const user = await db.user.create({ data })
       return user
@@ -46,7 +44,7 @@ JavaScriptTypeScript
 [code]
     'use server'
     import { db } from '@/lib/db' // Your database client
-     
+
     export async function fetchUsers() {
       const users = await db.user.findMany()
       return users
@@ -61,7 +59,7 @@ JavaScriptTypeScript
 [code]
     'use client'
     import { fetchUsers } from '../actions'
-     
+
     export default function MyButton() {
       return <button onClick={() => fetchUsers()}>Fetch Users</button>
     }
@@ -77,16 +75,16 @@ JavaScriptTypeScript
 [code]
     import { EditPost } from './edit-post'
     import { revalidatePath } from 'next/cache'
-     
+
     export default async function PostPage({ params }: { params: { id: string } }) {
       const post = await getPost(params.id)
-     
+
       async function updatePost(formData: FormData) {
         'use server'
         await savePost(params.id, formData)
         revalidatePath(`/posts/${params.id}`)
       }
-     
+
       return <EditPost updatePostAction={updatePost} post={post} />
     }
 [/code]
@@ -104,10 +102,10 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { db } from '@/lib/db' // Your database client
     import { authenticate } from '@/lib/auth' // Your authentication library
-     
+
     export async function createUser(
       data: { name: string; email: string },
       token: string
@@ -124,9 +122,3 @@ JavaScriptTypeScript
 ## 참고자료[](https://nextjs.org/docs/app/api-reference/directives/use-server#reference)
 
 `use server`에 대한 더 많은 정보는 [React 문서](https://react.dev/reference/rsc/use-server)를 참고하세요.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

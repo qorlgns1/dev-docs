@@ -22,14 +22,12 @@ Suspense 경계 없이 `useSearchParams()`를 통해 검색 매개변수를 읽�
   * 라우트를 정적으로 생성된 상태로 유지하려면 `useSearchParams()`를 호출하는 가장 작은 서브트리를 `Suspense`로 감싸세요. 예를 들어 해당 훅 사용을 자식 클라이언트 컴포넌트로 옮기고 그 컴포넌트를 `Suspense`로 감싸 렌더링할 수 있습니다. 이렇게 하면 정적 셸을 유지하고 전체 CSR 포기를 피할 수 있습니다.
   * 라우트를 동적으로 렌더링하려면 서버 컴포넌트(예: 페이지 또는 래핑 레이아웃)에서 [`connection`](https://nextjs.org/docs/app/api-reference/functions/connection) 함수를 사용하세요. 이는 들어오는 요청을 기다리고 그 아래의 모든 내용을 사전 렌더링에서 제외합니다.
 
-
-
 app/page.tsx
 
 JavaScriptTypeScript
 [code]
     import { connection } from 'next/server'
-     
+
     export default async function Page() {
       await connection()
       return <div>...</div>
@@ -38,14 +36,12 @@ JavaScriptTypeScript
 
   * `connection` API가 제공되기 전에는 서버 컴포넌트 `page.tsx` 또는 `layout.tsx`에서 `export const dynamic = 'force-dynamic'`을 설정해 라우트를 온디맨드 렌더링으로 전환했습니다. `'use client'`가 선언된 클라이언트 컴포넌트 `page.tsx`에서 `dynamic`을 설정해도 효과가 없다는 점에 유의하세요.
 
-
-
 app/layout.tsx
 
 JavaScriptTypeScript
 [code]
     export const dynamic = 'force-dynamic'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -57,15 +53,13 @@ JavaScriptTypeScript
 
   * 또는 서버 컴포넌트 페이지에서 `searchParams` 값을 클라이언트 컴포넌트로 내려보낼 수 있습니다. 클라이언트 컴포넌트에서는 React의 `use()`로 이를 풀어낼 수 있으며, 이때 주변에 `Suspense` 경계를 둬야 합니다. [사용 시점 안내](https://nextjs.org/docs/app/getting-started/layouts-and-pages#what-to-use-and-when)를 확인하세요.
 
-
-
 app/page.tsx
 
 JavaScriptTypeScript
 [code]
     import { Suspense } from 'react'
     import ClientSearch from './client-search'
-     
+
     export default function Page({
       searchParams,
     }: {
@@ -84,9 +78,9 @@ app/client-search.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { use } from 'react'
-     
+
     export default function ClientSearch({
       searchParams,
     }: {
@@ -99,23 +93,21 @@ JavaScriptTypeScript
 
   * 페이지를 다시 서버 컴포넌트로 만들고 `useSearchParams`를 사용하는 클라이언트 전용 코드를 자식 클라이언트 컴포넌트로 분리하는 방법도 고려하세요.
 
-
-
 app/search.tsx
 
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useSearchParams } from 'next/navigation'
     import { Suspense } from 'react'
-     
+
     function Search() {
       const searchParams = useSearchParams()
-     
+
       return <input placeholder="Search..." />
     }
-     
+
     export function Searchbar() {
       return (
         // You could have a loading skeleton as the `fallback` too
@@ -146,7 +138,7 @@ next.config.js
 ## 디버깅[](https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout#debugging)
 
 Suspense 경계 없이 `useSearchParams()`가 사용되는 위치를 찾는 데 어려움이 있다면 다음 명령을 실행해 더 자세한 스택 트레이스를 확인하세요.
-[code] 
+[code]
     next build --debug-prerender
 [/code]
 
@@ -158,11 +150,5 @@ Suspense 경계 없이 `useSearchParams()`가 사용되는 위치를 찾는 데 
   * [`connection`](https://nextjs.org/docs/app/api-reference/functions/connection)
   * [동적 렌더링 가이드](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)
   * [사전 렌더링 오류 디버깅](https://nextjs.org/docs/app/api-reference/cli/next#debugging-prerender-errors)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

@@ -7,10 +7,6 @@ description: 'Next.js는 빌드 프로세스에 연결할 사용자 정의 어�
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)experimental.adapterPath
-
-페이지 복사
-
 # experimental.adapterPath
 
 마지막 업데이트 2026년 2월 20일
@@ -29,14 +25,14 @@ next.config.js
         adapterPath: require.resolve('./my-adapter.js'),
       },
     }
-     
+
     module.exports = nextConfig
 [/code]
 
 ## 어댑터 만들기[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#creating-an-adapter)
 
 어댑터는 `NextAdapter` 인터페이스를 구현하는 객체를 내보내는 모듈입니다:
-[code] 
+[code]
     export interface NextAdapter {
       name: string
       modifyConfig?: (
@@ -75,7 +71,7 @@ my-adapter.js
     /** @type {import('next').NextAdapter} */
     const adapter = {
       name: 'my-custom-adapter',
-     
+
       async modifyConfig(config, { phase }) {
         // Modify the Next.js config based on the build phase
         if (phase === 'phase-production-build') {
@@ -86,7 +82,7 @@ my-adapter.js
         }
         return config
       },
-     
+
       async onBuildComplete({
         routes,
         outputs,
@@ -98,26 +94,26 @@ my-adapter.js
       }) {
         // Process the build output
         console.log('Build completed with', outputs.pages.length, 'pages')
-     
+
         // Access different output types
         for (const page of outputs.pages) {
           console.log('Page:', page.pathname, 'at', page.filePath)
         }
-     
+
         for (const apiRoute of outputs.pagesApi) {
           console.log('API Route:', apiRoute.pathname, 'at', apiRoute.filePath)
         }
-     
+
         for (const appPage of outputs.appPages) {
           console.log('App Page:', appPage.pathname, 'at', appPage.filePath)
         }
-     
+
         for (const prerender of outputs.prerenders) {
           console.log('Prerendered:', prerender.pathname)
         }
       },
     }
-     
+
     module.exports = adapter
 [/code]
 
@@ -131,8 +127,6 @@ my-adapter.js
 
   * `config`: 전체 Next.js 구성 객체
   * `context.phase`: 현재 빌드 단계( [phases](https://nextjs.org/docs/app/api-reference/config/next-config-js#phase) 참조)
-
-
 
 **반환값:** 수정된 구성 객체(비동기 가능)
 
@@ -155,8 +149,6 @@ my-adapter.js
   * `nextVersion`: 사용 중인 Next.js 버전
   * `buildId`: 현재 빌드의 고유 식별자
 
-
-
 ## 출력 유형[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#output-types)
 
 `outputs` 객체에는 서로 다른 출력 유형의 배열이 포함됩니다:
@@ -164,7 +156,7 @@ my-adapter.js
 ### 페이지 (`outputs.pages`)[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#pages-outputspages)
 
 `pages/` 디렉터리의 React 페이지:
-[code] 
+[code]
     {
       type: 'PAGES'
       id: string           // Route identifier
@@ -185,7 +177,7 @@ my-adapter.js
 ### API 라우트 (`outputs.pagesApi`)[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#api-routes-outputspagesapi)
 
 `pages/api/`의 API 라우트:
-[code] 
+[code]
     {
       type: 'PAGES_API'
       id: string
@@ -206,7 +198,7 @@ my-adapter.js
 ### 앱 페이지 (`outputs.appPages`)[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#app-pages-outputsapppages)
 
 `app/` 디렉터리의 `page.{js,ts,jsx,tsx}` React 페이지:
-[code] 
+[code]
     {
       type: 'APP_PAGE'
       id: string
@@ -227,7 +219,7 @@ my-adapter.js
 ### 앱 라우트 (`outputs.appRoutes`)[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#app-routes-outputsapproutes)
 
 `app/`의 `route.{js,ts,jsx,tsx}` API 및 메타데이터 라우트:
-[code] 
+[code]
     {
       type: 'APP_ROUTE'
       id: string
@@ -248,7 +240,7 @@ my-adapter.js
 ### 프리렌더 (`outputs.prerenders`)[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#prerenders-outputsprerenders)
 
 ISR 활성화 라우트와 정적 프리렌더:
-[code] 
+[code]
     {
       type: 'PRERENDER'
       id: string
@@ -280,7 +272,7 @@ ISR 활성화 라우트와 정적 프리렌더:
 ### 정적 파일 (`outputs.staticFiles`)[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#static-files-outputsstaticfiles)
 
 정적 자산 및 자동 정적 최적화 페이지:
-[code] 
+[code]
     {
       type: 'STATIC_FILE'
       id: string
@@ -292,7 +284,7 @@ ISR 활성화 라우트와 정적 프리렌더:
 ### 미들웨어 (`outputs.middleware`)[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#middleware-outputsmiddleware)
 
 미들웨어 함수(있는 경우):
-[code] 
+[code]
     {
       type: 'MIDDLEWARE'
       id: string
@@ -331,8 +323,6 @@ ISR 활성화 라우트와 정적 프리렌더:
   * `missing`: 충족되지 않아야 하는 선택적 조건
   * `priority`: 내부 라우트를 위한 선택적 플래그
 
-
-
 ### 리다이렉트[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#redirects)
 
 각 리다이렉트 라우트에는 다음이 포함됩니다:
@@ -346,8 +336,6 @@ ISR 활성화 라우트와 정적 프리렌더:
   * `missing`: 선택적 부정 조건
   * `priority`: 내부 라우트를 위한 선택적 플래그
 
-
-
 ### 재작성[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#rewrites)
 
 재작성은 세 가지 단계로 분류됩니다:
@@ -355,8 +343,6 @@ ISR 활성화 라우트와 정적 프리렌더:
   * `beforeFiles`: 파일 시스템(페이지와 public 파일 포함)보다 먼저 확인
   * `afterFiles`: 페이지/public 파일 이후이지만 동적 라우트 이전에 확인
   * `fallback`: 다른 모든 라우트 이후에 확인
-
-
 
 각 재작성은 `source`, `sourceRegex`, `destination`, `has`, `missing`을 포함합니다.
 
@@ -370,8 +356,6 @@ ISR 활성화 라우트와 정적 프리렌더:
   * `has`: 선택적 긍정 조건
   * `missing`: 선택적 부정 조건
 
-
-
 ## 사용 사례[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath#use-cases)
 
 어댑터의 일반적인 사용 사례는 다음과 같습니다:
@@ -382,11 +366,3 @@ ISR 활성화 라우트와 정적 프리렌더:
   * **맞춤 번들링** : 플랫폼별 형식으로 출력 패키징
   * **빌드 검증** : 출력이 특정 요구 사항을 충족하는지 확인
   * **라우트 생성** : 처리된 라우트 정보를 활용해 플랫폼별 라우팅 구성을 생성
-
-
-
-도움이 되었나요?
-
-지원됨.
-
-전송

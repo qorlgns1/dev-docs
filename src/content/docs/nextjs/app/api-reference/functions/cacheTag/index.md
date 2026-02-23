@@ -6,10 +6,6 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/functions/ca
 # 함수: cacheTag | Next.js
 원본 URL: https://nextjs.org/docs/app/api-reference/functions/cacheTag
 
-[API 참고 문서](https://nextjs.org/docs/app/api-reference)[함수](https://nextjs.org/docs/app/api-reference/functions)cacheTag
-
-페이지 복사
-
 # cacheTag
 
 마지막 업데이트: 2026년 2월 20일
@@ -25,11 +21,11 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
     }
-     
+
     export default nextConfig
 [/code]
 
@@ -40,7 +36,7 @@ app/data.ts
 JavaScriptTypeScript
 [code]
     import { cacheTag } from 'next/cache'
-     
+
     export async function getData() {
       'use cache'
       cacheTag('my-data')
@@ -56,9 +52,9 @@ app/action.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { revalidateTag } from 'next/cache'
-     
+
     export default async function submit() {
       await addPost()
       revalidateTag('my-data')
@@ -87,20 +83,20 @@ app/components/bookings.tsx
 JavaScriptTypeScript
 [code]
     import { cacheTag } from 'next/cache'
-     
+
     interface BookingsProps {
       type: string
     }
-     
+
     export async function Bookings({ type = 'haircut' }: BookingsProps) {
       'use cache'
       cacheTag('bookings-data')
-     
+
       async function getBookingsData() {
         const data = await fetch(`/api/bookings?type=${encodeURIComponent(type)}`)
         return data
       }
-     
+
       return //...
     }
 [/code]
@@ -114,11 +110,11 @@ app/components/bookings.tsx
 JavaScriptTypeScript
 [code]
     import { cacheTag } from 'next/cache'
-     
+
     interface BookingsProps {
       type: string
     }
-     
+
     export async function Bookings({ type = 'haircut' }: BookingsProps) {
       async function getBookingsData() {
         'use cache'
@@ -139,9 +135,9 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { revalidateTag } from 'next/cache'
-     
+
     export async function updateBookings() {
       await updateBookingData()
       revalidateTag('bookings-data')
@@ -152,10 +148,14 @@ JavaScriptTypeScript
 
 연관된 API 참고 자료를 확인하세요.
 
-### [cacheComponentsNext.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)### [use cacheNext.js 애플리케이션에서 "use cache" 지시문으로 데이터를 캐싱하는 방법을 배워보세요.](https://nextjs.org/docs/app/api-reference/directives/use-cache)### [revalidateTagrevalidateTag 함수의 API 참고 자료입니다.](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)### [cacheLife캐시된 함수나 컴포넌트의 만료 시간을 설정하는 cacheLife 함수 사용법입니다.](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
+- [cacheComponents](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+  - Next.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.
 
-도움이 되었나요?
+- [use cache](https://nextjs.org/docs/app/api-reference/directives/use-cache)
+  - Next.js 애플리케이션에서 "use cache" 지시문으로 데이터를 캐싱하는 방법을 배워보세요.
 
-지원됨.
+- [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
+  - revalidateTag 함수의 API 참고 자료입니다.
 
-전송
+- [cacheLife](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
+  - 캐시된 함수나 컴포넌트의 만료 시간을 설정하는 cacheLife 함수 사용법입니다.

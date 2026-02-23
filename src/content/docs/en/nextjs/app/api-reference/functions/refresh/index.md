@@ -1,74 +1,75 @@
 ---
-title: 'Functions: refresh'
+title: 'refresh'
 description: 'allows you to refresh the client router from within a Server Action.'
 ---
 
-# Functions: refresh | Next.js
-
 Source URL: https://nextjs.org/docs/app/api-reference/functions/refresh
-
-[API Reference](https://nextjs.org/docs/app/api-reference)[Functions](https://nextjs.org/docs/app/api-reference/functions)refresh
-
-Copy page
 
 # refresh
 
-Last updated February 20, 2026
-
 `refresh` allows you to refresh the client router from within a [Server Action](https://nextjs.org/docs/app/getting-started/updating-data).
 
-## Usage[](https://nextjs.org/docs/app/api-reference/functions/refresh#usage)
+## Usage
 
 `refresh` can **only** be called from within Server Actions. It cannot be used in Route Handlers, Client Components, or any other context.
 
-## Parameters[](https://nextjs.org/docs/app/api-reference/functions/refresh#parameters)
-[code] 
-    refresh(): void;
-[/code]
+## Parameters
 
-## Returns[](https://nextjs.org/docs/app/api-reference/functions/refresh#returns)
+```tsx
+refresh(): void;
+```
+
+## Returns
 
 `refresh` does not return a value.
 
-## Examples[](https://nextjs.org/docs/app/api-reference/functions/refresh#examples)
+## Examples
 
-app/actions.ts
+```ts filename="app/actions.ts" switcher
+'use server'
 
-JavaScriptTypeScript
-[code]
-    'use server'
-     
-    import { refresh } from 'next/cache'
-     
-    export async function createPost(formData: FormData) {
-      const title = formData.get('title')
-      const content = formData.get('content')
-     
-      // Create the post in your database
-      const post = await db.post.create({
-        data: { title, content },
-      })
-     
-      refresh()
-    }
-[/code]
+import { refresh } from 'next/cache'
 
-### Error when used outside Server Actions[](https://nextjs.org/docs/app/api-reference/functions/refresh#error-when-used-outside-server-actions)
+export async function createPost(formData: FormData) {
+  const title = formData.get('title')
+  const content = formData.get('content')
 
-app/api/posts/route.ts
+  // Create the post in your database
+  const post = await db.post.create({
+    data: { title, content },
+  })
 
-JavaScriptTypeScript
-[code]
-    import { refresh } from 'next/cache'
-     
-    export async function POST() {
-      // This will throw an error
-      refresh()
-    }
-[/code]
+  refresh()
+}
+```
 
-Was this helpful?
+```js filename="app/actions.js" switcher
+'use server'
 
-supported.
+import { refresh } from 'next/cache'
 
-Send
+export async function createPost(formData) {
+  const title = formData.get('title')
+  const content = formData.get('content')
+
+  // Create the post in your database
+  const post = await db.post.create({
+    data: { title, content },
+  })
+
+  refresh()
+}
+```
+
+### Error when used outside Server Actions
+
+```ts filename="app/api/posts/route.ts" switcher
+import { refresh } from 'next/cache'
+
+export async function POST() {
+  // This will throw an error
+  refresh()
+}
+```
+---
+

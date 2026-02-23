@@ -8,8 +8,6 @@ description: '객체나  함수를 사용하여 메타데이터를 정의할 수
 
 [API 레퍼런스](https://nextjs.org/docs/app/api-reference) [함수](https://nextjs.org/docs/app/api-reference/functions) generateMetadata
 
-페이지 복사
-
 # generateMetadata
 
 마지막 업데이트 2026년 2월 20일
@@ -25,12 +23,12 @@ layout.tsx | page.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: '...',
       description: '...',
     }
-     
+
     export default function Page() {}
 [/code]
 
@@ -49,25 +47,25 @@ app/products/[id]/page.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata, ResolvingMetadata } from 'next'
-     
+
     type Props = {
       params: Promise<{ id: string }>
       searchParams: Promise<{ [key: string]: string | string[] | undefined }>
     }
-     
+
     export async function generateMetadata(
       { params, searchParams }: Props,
       parent: ResolvingMetadata
     ): Promise<Metadata> {
       // read route params
       const { id } = await params
-     
+
       // fetch data
       const product = await fetch(`https://.../${id}`).then((res) => res.json())
-     
+
       // optionally access and extend (rather than replace) parent metadata
       const previousImages = (await parent).openGraph?.images || []
-     
+
       return {
         title: product.title,
         openGraph: {
@@ -75,14 +73,14 @@ JavaScriptTypeScript
         },
       }
     }
-     
+
     export default function Page({ params, searchParams }: Props) {}
 [/code]
 
 `params` 와 `searchParams` 의 타입 완성을 위해, 페이지와 레이아웃에 각각 [`PageProps<'/route'>`](https://nextjs.org/docs/app/api-reference/file-conventions/page#page-props-helper) 또는 [`LayoutProps<'/route'>`](https://nextjs.org/docs/app/api-reference/file-conventions/layout#layout-props-helper)를 사용할 수 있습니다.
 
 > **알아두면 좋은 사항**
-> 
+>
 >   * 메타데이터는 `layout.js` 및 `page.js` 파일에 추가할 수 있습니다.
 >   * Next.js는 메타데이터를 자동으로 해석하여 페이지에 필요한 `<head>` 태그를 생성합니다.
 >   * `metadata` 객체와 `generateMetadata` 함수 export 는 **Server Component 에서만 지원** 됩니다.
@@ -90,8 +88,7 @@ JavaScriptTypeScript
 >   * `generateMetadata` 내부의 `fetch` 요청은 `generateMetadata`, `generateStaticParams`, 레이아웃, 페이지, Server Component 전반에서 동일한 데이터를 위해 자동으로 [메모이즈](https://nextjs.org/docs/app/guides/caching#request-memoization)됩니다.
 >   * `fetch` 를 사용할 수 없다면 React [`cache`](https://nextjs.org/docs/app/guides/caching#react-cache-function)를 사용할 수 있습니다.
 >   * [파일 기반 메타데이터](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)가 더 높은 우선순위를 가지며 `metadata` 객체와 `generateMetadata` 함수를 무시합니다.
-> 
-
+>
 
 ## Reference[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#reference)
 
@@ -102,37 +99,33 @@ JavaScriptTypeScript
   * `props` \- 현재 경로의 매개변수를 포함하는 객체:
     * `params` \- 루트 세그먼트부터 `generateMetadata` 가 호출되는 세그먼트까지의 [동적 경로 매개변수](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes)를 담는 객체입니다. 예:
 
-Route| URL| `params`  
----|---|---  
-`app/shop/[slug]/page.js`| `/shop/1`| `{ slug: '1' }`  
-`app/shop/[tag]/[item]/page.js`| `/shop/1/2`| `{ tag: '1', item: '2' }`  
-`app/shop/[...slug]/page.js`| `/shop/1/2`| `{ slug: ['1', '2'] }`  
-  
+Route| URL| `params`
+---|---|---
+`app/shop/[slug]/page.js`| `/shop/1`| `{ slug: '1' }`
+`app/shop/[tag]/[item]/page.js`| `/shop/1/2`| `{ tag: '1', item: '2' }`
+`app/shop/[...slug]/page.js`| `/shop/1/2`| `{ slug: ['1', '2'] }`
+
     * `searchParams` \- 현재 URL의 [검색 매개변수](https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL#parameters)를 담는 객체입니다. 예:
 
-URL| `searchParams`  
----|---  
-`/shop?a=1`| `{ a: '1' }`  
-`/shop?a=1&b=2`| `{ a: '1', b: '2' }`  
-`/shop?a=1&a=2`| `{ a: ['1', '2'] }`  
-  
+URL| `searchParams`
+---|---
+`/shop?a=1`| `{ a: '1' }`
+`/shop?a=1&b=2`| `{ a: '1', b: '2' }`
+`/shop?a=1&a=2`| `{ a: ['1', '2'] }`
+
   * `parent` \- 상위 경로 세그먼트에서 해석된 메타데이터에 대한 프로미스입니다.
-
-
-
 
 ### Returns[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#returns)
 
 `generateMetadata` 는 하나 이상의 메타데이터 필드를 포함하는 [`Metadata` 객체](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields)를 반환해야 합니다.
 
 > **알아두면 좋은 사항**
-> 
+>
 >   * 메타데이터가 런타임 정보에 의존하지 않는다면 `generateMetadata` 대신 정적 [`metadata` 객체](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#the-metadata-object)로 정의해야 합니다.
 >   * `fetch` 요청은 `generateMetadata`, `generateStaticParams`, 레이아웃, 페이지, Server Component 전반에서 동일한 데이터를 위해 자동으로 [메모이즈](https://nextjs.org/docs/app/guides/caching#request-memoization)됩니다. `fetch` 를 사용할 수 없다면 React [`cache`](https://nextjs.org/docs/app/guides/caching#react-cache-function)를 사용할 수 있습니다.
 >   * `searchParams` 는 `page.js` 세그먼트에서만 사용할 수 있습니다.
 >   * Next.js의 [`redirect()`](https://nextjs.org/docs/app/api-reference/functions/redirect) 및 [`notFound()`](https://nextjs.org/docs/app/api-reference/functions/not-found) 메서드도 `generateMetadata` 안에서 사용할 수 있습니다.
-> 
-
+>
 
 ### Metadata Fields[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields)
 
@@ -163,7 +156,7 @@ layout.js | page.js
 app/layout.tsx
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: {
         default: 'Acme',
@@ -174,9 +167,9 @@ app/layout.tsx
 app/about/page.tsx
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {}
-     
+
     // Output: <title>Acme</title>
 [/code]
 
@@ -189,7 +182,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: {
         template: '%s | Acme',
@@ -203,23 +196,22 @@ app/about/page.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: 'About',
     }
-     
+
     // Output: <title>About | Acme</title>
 [/code]
 
 > **알아두면 좋은 사항**
-> 
+>
 >   * `title.template` 는 **하위** 경로 세그먼트에 적용되며 정의된 세그먼트에는 적용되지 않습니다. 따라서:
 >     * `title.template` 를 추가할 때 `title.default` 가 **필수** 입니다.
 >     * `layout.js` 에 정의된 `title.template` 는 동일한 경로 세그먼트의 `page.js` 에 정의된 `title` 에 적용되지 않습니다.
 >     * `page.js` 에 정의된 `title.template` 는 페이지가 항상 말단 세그먼트이므로 효과가 없습니다.
 >   * 경로에서 `title` 이나 `title.default` 를 정의하지 않으면 `title.template` 는 **효과가 없습니다**.
-> 
-
+>
 
 ##### `absolute`[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#absolute)
 
@@ -230,7 +222,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: {
         template: '%s | Acme',
@@ -243,18 +235,18 @@ app/about/page.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: {
         absolute: 'About',
       },
     }
-     
+
     // Output: <title>About</title>
 [/code]
 
 > **알아두면 좋은 사항**
-> 
+>
 >   * `layout.js`
 >     * `title` (문자열)과 `title.default` 는 자체 `title` 을 정의하지 않은 하위 세그먼트의 기본 제목을 정의합니다. 존재한다면 가장 가까운 상위 세그먼트의 `title.template` 를 보완합니다.
 >     * `title.absolute` 는 하위 세그먼트의 기본 제목을 정의합니다. 상위 세그먼트의 `title.template` 를 무시합니다.
@@ -264,8 +256,7 @@ JavaScriptTypeScript
 >     * `title` (문자열)은 경로의 제목을 정의하며, 존재한다면 가장 가까운 상위 세그먼트의 `title.template` 를 보완합니다.
 >     * `title.absolute` 는 경로의 제목을 정의하며 상위 세그먼트의 `title.template` 를 무시합니다.
 >     * 페이지는 항상 경로의 말단 세그먼트이므로 `page.js` 의 `title.template` 는 효과가 없습니다.
-> 
-
+>
 
 ### `description`[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#description)
 
@@ -325,8 +316,6 @@ layout.js | page.js
   * `metadataBase`를 사용하면 **현재 라우트 세그먼트 및 그 하위**에서 정의된 URL 기반 `metadata` 필드가 원래 필요했던 절대 URL 대신 **상대 경로**를 사용할 수 있습니다.
   * 필드가 제공한 상대 경로는 `metadataBase`와 합쳐져 완전한 URL이 됩니다.
 
-
-
 layout.js | page.js
 [code]
     export const metadata = {
@@ -353,15 +342,14 @@ layout.js | page.js
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `metadataBase`는 일반적으로 루트 `app/layout.js`에서 설정해 모든 라우트의 URL 기반 `metadata` 필드에 적용합니다.
 >   * 절대 URL이 필요한 모든 URL 기반 `metadata` 필드는 `metadataBase` 옵션으로 구성할 수 있습니다.
 >   * `metadataBase`는 `https://app.acme.com`과 같은 서브도메인이나 `https://acme.com/start/from/here`와 같은 기본 경로를 포함할 수 있습니다.
 >   * `metadata` 필드가 절대 URL을 제공하면 `metadataBase`는 무시됩니다.
 >   * `metadataBase` 없이 URL 기반 `metadata` 필드에서 상대 경로를 사용하면 빌드 오류가 발생합니다.
 >   * Next.js는 `metadataBase`(예: `https://acme.com/`)와 상대 필드(예: `/path`) 사이의 중복 슬래시를 단일 슬래시(예: `https://acme.com/path`)로 정규화합니다.
-> 
-
+>
 
 #### URL Composition[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#url-composition)
 
@@ -370,8 +358,6 @@ URL 구성은 기본 디렉터리 탐색 규칙보다 개발자의 의도를 우
   * `metadataBase`와 `metadata` 필드 사이의 끝 슬래시는 정규화됩니다.
   * 일반적으로 전체 URL 경로를 대체할 수 있는 `metadata` 필드의 “절대” 경로도 “상대” 경로(즉, `metadataBase` 끝에서 시작)로 처리됩니다.
 
-
-
 다음과 같은 `metadataBase`가 있다고 가정해봅시다:
 
 app/layout.tsx
@@ -379,7 +365,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       metadataBase: new URL('https://acme.com'),
     }
@@ -387,16 +373,16 @@ JavaScriptTypeScript
 
 위 `metadataBase`를 상속하고 자체 값을 설정하는 모든 `metadata` 필드는 다음과 같이 해석됩니다:
 
-`metadata` field| Resolved URL  
----|---  
-`/`| `https://acme.com`  
-`./`| `https://acme.com`  
-`payments`| `https://acme.com/payments`  
-`/payments`| `https://acme.com/payments`  
-`./payments`| `https://acme.com/payments`  
-`../payments`| `https://acme.com/payments`  
-`https://beta.acme.com/payments`| `https://beta.acme.com/payments`  
-  
+`metadata` field| Resolved URL
+---|---
+`/`| `https://acme.com`
+`./`| `https://acme.com`
+`payments`| `https://acme.com/payments`
+`/payments`| `https://acme.com/payments`
+`./payments`| `https://acme.com/payments`
+`../payments`| `https://acme.com/payments`
+`https://beta.acme.com/payments`| `https://beta.acme.com/payments`
+
 ### `openGraph`[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#opengraph)
 
 layout.js | page.js
@@ -483,17 +469,16 @@ layout.js | page.js
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * Open Graph 이미지를 위해 [파일 기반 Metadata API](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#image-files-jpg-png-gif)를 사용하면 더 편리할 수 있습니다. 설정 내보내기와 실제 파일을 동기화하는 대신 파일 기반 API가 올바른 메타데이터를 자동으로 생성합니다.
-> 
-
+>
 
 ### `robots`[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#robots)
 
 layout.tsx | page.tsx
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       robots: {
         index: true,
@@ -1017,7 +1002,7 @@ layout.js | page.js
 layout.tsx | page.tsx
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: 'Next.js',
     }
@@ -1030,7 +1015,7 @@ layout.tsx | page.tsx
 layout.tsx | page.tsx
 [code]
     import type { Metadata } from 'next'
-     
+
     export function generateMetadata(): Metadata {
       return {
         title: 'Next.js',
@@ -1043,7 +1028,7 @@ layout.tsx | page.tsx
 layout.tsx | page.tsx
 [code]
     import type { Metadata } from 'next'
-     
+
     export async function generateMetadata(): Promise<Metadata> {
       return {
         title: 'Next.js',
@@ -1056,12 +1041,12 @@ layout.tsx | page.tsx
 layout.tsx | page.tsx
 [code]
     import type { Metadata } from 'next'
-     
+
     type Props = {
       params: Promise<{ id: string }>
       searchParams: Promise<{ [key: string]: string | string[] | undefined }>
     }
-     
+
     export function generateMetadata({ params, searchParams }: Props): Metadata {
       return {
         title: 'Next.js',
@@ -1077,7 +1062,7 @@ export default function Page({ params, searchParams }: Props) {}
 layout.tsx | page.tsx
 [code]
     import type { Metadata, ResolvingMetadata } from 'next'
-     
+
     export async function generateMetadata(
       { params, searchParams }: Props,
       parent: ResolvingMetadata
@@ -1104,18 +1089,18 @@ layout.js | page.js
 
 다음 Metadata 타입은 현재 기본 지원이 없습니다. 하지만 레이아웃이나 페이지 자체에서 직접 렌더링할 수 있습니다.
 
-Metadata| 권장 사항  
----|---  
-`<meta http-equiv="...">`| [`redirect()`](https://nextjs.org/docs/app/api-reference/functions/redirect), [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#nextresponse), [Security Headers](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers)를 통해 적절한 HTTP 헤더를 사용하세요.  
-`<base>`| 레이아웃이나 페이지에서 직접 태그를 렌더링하세요.  
-`<noscript>`| 레이아웃이나 페이지에서 직접 태그를 렌더링하세요.  
-`<style>`| [Next.js 스타일링](https://nextjs.org/docs/app/getting-started/css)에 대해 자세히 알아보세요.  
-`<script>`| [스크립트 사용법](https://nextjs.org/docs/app/guides/scripts)에 대해 자세히 알아보세요.  
-`<link rel="stylesheet" />`| 레이아웃이나 페이지에서 스타일시트를 직접 `import` 하세요.  
-`<link rel="preload />`| [ReactDOM preload 메서드](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#link-relpreload)를 사용하세요.  
-`<link rel="preconnect" />`| [ReactDOM preconnect 메서드](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#link-relpreconnect)를 사용하세요.  
-`<link rel="dns-prefetch" />`| [ReactDOM prefetchDNS 메서드](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#link-reldns-prefetch)를 사용하세요.  
-  
+Metadata| 권장 사항
+---|---
+`<meta http-equiv="...">`| [`redirect()`](https://nextjs.org/docs/app/api-reference/functions/redirect), [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#nextresponse), [Security Headers](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers)를 통해 적절한 HTTP 헤더를 사용하세요.
+`<base>`| 레이아웃이나 페이지에서 직접 태그를 렌더링하세요.
+`<noscript>`| 레이아웃이나 페이지에서 직접 태그를 렌더링하세요.
+`<style>`| [Next.js 스타일링](https://nextjs.org/docs/app/getting-started/css)에 대해 자세히 알아보세요.
+`<script>`| [스크립트 사용법](https://nextjs.org/docs/app/guides/scripts)에 대해 자세히 알아보세요.
+`<link rel="stylesheet" />`| 레이아웃이나 페이지에서 스타일시트를 직접 `import` 하세요.
+`<link rel="preload />`| [ReactDOM preload 메서드](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#link-relpreload)를 사용하세요.
+`<link rel="preconnect" />`| [ReactDOM preconnect 메서드](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#link-relpreconnect)를 사용하세요.
+`<link rel="dns-prefetch" />`| [ReactDOM prefetchDNS 메서드](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#link-reldns-prefetch)를 사용하세요.
+
 ### 리소스 힌트[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#resource-hints)
 
 `<link>` 요소에는 브라우저가 외부 리소스가 필요할 가능성을 알려줄 수 있는 여러 `rel` 키워드가 있습니다. 브라우저는 키워드에 따라 사전 로드 최적화를 적용합니다.
@@ -1127,14 +1112,14 @@ app/preload-resources.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import ReactDOM from 'react-dom'
-     
+
     export function PreloadResources() {
       ReactDOM.preload('...', { as: '...' })
       ReactDOM.preconnect('...', { crossOrigin: '...' })
       ReactDOM.prefetchDNS('...')
-     
+
       return '...'
     }
 [/code]
@@ -1142,7 +1127,7 @@ JavaScriptTypeScript
 #### `<link rel="preload">`[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#link-relpreload)
 
 페이지 렌더링(브라우저) 라이프사이클 초기에 리소스를 미리 로드합니다. [MDN 문서](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/preload).
-[code] 
+[code]
     ReactDOM.preload(href: string, options: { as: string })
 [/code]
 
@@ -1154,7 +1139,7 @@ JavaScriptTypeScript
 ##### `<link rel="preconnect">`[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#link-relpreconnect)
 
 오리진에 대한 연결을 선제적으로 초기화합니다. [MDN 문서](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/preconnect).
-[code] 
+[code]
     ReactDOM.preconnect(href: string, options?: { crossOrigin?: string })
 [/code]
 
@@ -1166,7 +1151,7 @@ JavaScriptTypeScript
 #### `<link rel="dns-prefetch">`[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#link-reldns-prefetch)
 
 리소스 요청 전에 도메인 이름을 미리 확인하려 시도합니다. [MDN 문서](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/dns-prefetch).
-[code] 
+[code]
     ReactDOM.prefetchDNS(href: string)
 [/code]
 
@@ -1176,11 +1161,10 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 이러한 메서드는 현재 클라이언트 컴포넌트에서만 지원되며, 초기 페이지 로드 시에도 서버 사이드 렌더링됩니다.
 >   * `next/font`, `next/image`, `next/script`와 같은 Next.js 내장 기능은 관련 리소스 힌트를 자동으로 처리합니다.
-> 
-
+>
 
 ## 동작[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#behavior)
 
@@ -1191,8 +1175,7 @@ JavaScriptTypeScript
   * [meta charset 태그](https://developer.mozilla.org/docs/Web/HTML/Element/meta#attr-charset)는 웹사이트의 문자 인코딩을 설정합니다.
   * [meta viewport 태그](https://developer.mozilla.org/docs/Web/HTML/Viewport_meta_tag)는 디바이스별로 조정할 수 있도록 뷰포트 너비와 스케일을 설정합니다.
 
-
-[code] 
+[code]
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 [/code]
@@ -1216,11 +1199,11 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const config: NextConfig = {
       htmlLimitedBots: /.*/,
     }
-     
+
     export default config
 [/code]
 
@@ -1236,8 +1219,6 @@ Next.js의 처리 방식은 페이지의 나머지 부분에 따라 달라집니
 
   * **다른 부분도 요청 시점으로 위임하는 경우** : 프리렌더링이 정적 셸을 생성하고 Metadata가 다른 지연 콘텐츠와 함께 스트리밍됩니다.
   * **페이지나 레이아웃이 완전히 프리렌더링 가능한 경우** : 데이터를 캐시할 수 있으면 캐시하거나, 지연 렌더링이 의도적임을 명시적으로 표시해야 합니다.
-
-
 
 페이지의 나머지 부분이 완전히 프리렌더링 가능한 상태에서 런타임에 Metadata를 스트리밍하는 경우는 드뭅니다. 이 동작이 의도적임을 보장하기 위해 어떤 페이지나 레이아웃을 처리해야 하는지 알려주는 오류가 발생합니다.
 
@@ -1259,18 +1240,18 @@ app/page.tsx
     import { Suspense } from 'react'
     import { cookies } from 'next/headers'
     import { connection } from 'next/server'
-     
+
     export async function generateMetadata() {
       const token = (await cookies()).get('token')?.value
       // ... use token to fetch personalized metadata
       return { title: 'Personalized Title' }
     }
-     
+
     const Connection = async () => {
       await connection()
       return null
     }
-     
+
     async function DynamicMarker() {
       return (
         <Suspense>
@@ -1278,7 +1259,7 @@ app/page.tsx
         </Suspense>
       )
     }
-     
+
     export default function Page() {
       // DO NOT place await connection() here
       // doing so prevents the article tag content from
@@ -1301,8 +1282,6 @@ Metadata는 루트 세그먼트에서 최종 `page.js`에 가장 가까운 세�
   1. `app/layout.tsx` (루트 레이아웃)
   2. `app/blog/layout.tsx` (중첩 블로그 레이아웃)
   3. `app/blog/[slug]/page.tsx` (블로그 페이지)
-
-
 
 ### 병합[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#merging)
 
@@ -1331,7 +1310,7 @@ app/blog/page.js
         title: 'Blog',
       },
     }
-     
+
     // Output:
     // <title>Blog</title>
     // <meta property="og:title" content="Blog" />
@@ -1341,8 +1320,6 @@ app/blog/page.js
 
   * `app/layout.js`의 `title`은 `app/blog/page.js`의 `title`로 **교체**됩니다.
   * `app/blog/page.js`가 `openGraph` Metadata를 설정하므로 `app/layout.js`의 모든 `openGraph` 필드가 `app/blog/page.js`에서 **교체**됩니다. `openGraph.description`이 없는 것을 확인하세요.
-
-
 
 세그먼트 간에 일부 중첩 필드를 공유하면서 다른 필드만 덮어쓰고 싶다면, 별도의 변수로 분리할 수 있습니다.
 
@@ -1355,7 +1332,7 @@ export const openGraphImage = { images: ['http://...'] }
 app/page.js
 [code]
     import { openGraphImage } from './shared-metadata'
-     
+
     export const metadata = {
       openGraph: {
         ...openGraphImage,
@@ -1367,7 +1344,7 @@ app/page.js
 app/about/page.js
 [code]
     import { openGraphImage } from '../shared-metadata'
-     
+
     export const metadata = {
       openGraph: {
         ...openGraphImage,
@@ -1396,7 +1373,7 @@ app/about/page.js
     export const metadata = {
       title: 'About',
     }
-     
+
     // Output:
     // <title>About</title>
     // <meta property="og:title" content="Acme" />
@@ -1408,24 +1385,26 @@ app/about/page.js
   * `app/layout.js`의 `title`은 `app/about/page.js`의 `title`로 **대체**됩니다.
   * `app/about/page.js`가 `openGraph` 메타데이터를 설정하지 않으므로 `app/layout.js`의 모든 `openGraph` 필드는 `app/about/page.js`에서 **상속**됩니다.
 
-
-
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#version-history)
 
-Version| Changes  
----|---  
-`v15.2.0`| `generateMetadata`에 스트리밍 지원이 도입되었습니다.  
-`v13.2.0`| [`viewport` 설정](https://nextjs.org/docs/app/api-reference/functions/generate-viewport)을 사용하도록 `viewport`, `themeColor`, `colorScheme`이 사용 중단되었습니다.  
-`v13.2.0`| `metadata`와 `generateMetadata`가 도입되었습니다.  
-  
+Version| Changes
+---|---
+`v15.2.0`| `generateMetadata`에 스트리밍 지원이 도입되었습니다.
+`v13.2.0`| [`viewport` 설정](https://nextjs.org/docs/app/api-reference/functions/generate-viewport)을 사용하도록 `viewport`, `themeColor`, `colorScheme`이 사용 중단되었습니다.
+`v13.2.0`| `metadata`와 `generateMetadata`가 도입되었습니다.
+
 ## 다음 단계
 
 메타데이터 API 옵션 전체를 확인하세요.
 
-### [Metadata Files메타데이터 파일 규칙에 대한 API 문서입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)### [generateViewportgenerateViewport 함수에 대한 API 참조입니다.](https://nextjs.org/docs/app/api-reference/functions/generate-viewport)### [Cache Components정적 렌더링과 동적 렌더링의 장점을 결합하는 방법을 알아보세요.](https://nextjs.org/docs/app/getting-started/cache-components)### [cacheComponentsNext.js에서 `cacheComponents` 플래그를 활성화하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+- [개요](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)
+  - Metadata Files메타데이터 파일 규칙에 대한 API 문서입니다.
 
-도움이 되었나요?
+- [generateViewport](https://nextjs.org/docs/app/api-reference/functions/generate-viewport)
+  - generateViewport 함수에 대한 API 참조입니다.
 
-지원됨.
+- [컴포넌트 캐시](https://nextjs.org/docs/app/getting-started/cache-components)
+  - Cache Components정적 렌더링과 동적 렌더링의 장점을 결합하는 방법을 알아보세요.
 
-전송
+- [cacheComponents](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+  - Next.js에서 `cacheComponents` 플래그를 활성화하는 방법을 알아보세요.

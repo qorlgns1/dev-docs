@@ -24,12 +24,12 @@ description: '사용자 정의 문서에서  컴포넌트를 두 번 이상 사�
 pages/_document.js
 [code]
     import Document, { Html, Head, Main, NextScript } from 'next/document'
-     
+
     class MyDocument extends Document {
       static async getInitialProps(ctx) {
         //...
       }
-     
+
       render() {
         return (
           <Html>
@@ -42,18 +42,12 @@ pages/_document.js
         )
       }
     }
-     
+
     export default MyDocument
 [/code]
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-duplicate-head#useful-links)
 
   * [사용자 정의 Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

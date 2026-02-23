@@ -1,23 +1,85 @@
 ---
-title: 'API Reference: Functions'
+title: 'Functions'
 ---
-
-# API Reference: Functions | Next.js
 
 Source URL: https://nextjs.org/docs/app/api-reference/functions
 
-[App Router](https://nextjs.org/docs/app)[API Reference](https://nextjs.org/docs/app/api-reference)Functions
-
-Copy page
-
 # Functions
 
-Last updated February 20, 2026
+- [after](https://nextjs.org/docs/app/api-reference/functions/after)
+  - API Reference for the after function.
+- [cacheLife](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
+  - Learn how to use the cacheLife function to set the cache expiration time for a cached function or component.
+- [cacheTag](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
+  - Learn how to use the cacheTag function to manage cache invalidation in your Next.js application.
+- [connection](https://nextjs.org/docs/app/api-reference/functions/connection)
+  - API Reference for the connection function.
+- [cookies](https://nextjs.org/docs/app/api-reference/functions/cookies)
+  - API Reference for the cookies function.
+- [draftMode](https://nextjs.org/docs/app/api-reference/functions/draft-mode)
+  - API Reference for the draftMode function.
+- [fetch](https://nextjs.org/docs/app/api-reference/functions/fetch)
+  - API reference for the extended fetch function.
+- [forbidden](https://nextjs.org/docs/app/api-reference/functions/forbidden)
+  - API Reference for the forbidden function.
+- [generateImageMetadata](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata)
+  - Learn how to generate multiple images in a single Metadata API special file.
+- [generateMetadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)
+  - Learn how to add Metadata to your Next.js application for improved search engine optimization (SEO) and web shareability.
+- [generateSitemaps](https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps)
+  - Learn how to use the generateSiteMaps function to create multiple sitemaps for your application.
+- [generateStaticParams](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
+  - API reference for the generateStaticParams function.
+- [generateViewport](https://nextjs.org/docs/app/api-reference/functions/generate-viewport)
+  - API Reference for the generateViewport function.
+- [headers](https://nextjs.org/docs/app/api-reference/functions/headers)
+  - API reference for the headers function.
+- [ImageResponse](https://nextjs.org/docs/app/api-reference/functions/image-response)
+  - API Reference for the ImageResponse constructor.
+- [NextRequest](https://nextjs.org/docs/app/api-reference/functions/next-request)
+  - API Reference for NextRequest.
+- [NextResponse](https://nextjs.org/docs/app/api-reference/functions/next-response)
+  - API Reference for NextResponse.
+- [notFound](https://nextjs.org/docs/app/api-reference/functions/not-found)
+  - API Reference for the notFound function.
+- [permanentRedirect](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect)
+  - API Reference for the permanentRedirect function.
+- [redirect](https://nextjs.org/docs/app/api-reference/functions/redirect)
+  - API Reference for the redirect function.
+- [refresh](https://nextjs.org/docs/app/api-reference/functions/refresh)
+  - API Reference for the refresh function.
+- [revalidatePath](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)
+  - API Reference for the revalidatePath function.
+- [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)
+  - API Reference for the revalidateTag function.
+- [unauthorized](https://nextjs.org/docs/app/api-reference/functions/unauthorized)
+  - API Reference for the unauthorized function.
+- [unstable_cache](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)
+  - API Reference for the unstable_cache function.
+- [unstable_noStore](https://nextjs.org/docs/app/api-reference/functions/unstable_noStore)
+  - API Reference for the unstable_noStore function.
+- [unstable_rethrow](https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow)
+  - API Reference for the unstable_rethrow function.
+- [updateTag](https://nextjs.org/docs/app/api-reference/functions/updateTag)
+  - API Reference for the updateTag function.
+- [useLinkStatus](https://nextjs.org/docs/app/api-reference/functions/use-link-status)
+  - API Reference for the useLinkStatus hook.
+- [useParams](https://nextjs.org/docs/app/api-reference/functions/use-params)
+  - API Reference for the useParams hook.
+- [usePathname](https://nextjs.org/docs/app/api-reference/functions/use-pathname)
+  - API Reference for the usePathname hook.
+- [useReportWebVitals](https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals)
+  - API Reference for the useReportWebVitals function.
+- [useRouter](https://nextjs.org/docs/app/api-reference/functions/use-router)
+  - API reference for the useRouter hook.
+- [useSearchParams](https://nextjs.org/docs/app/api-reference/functions/use-search-params)
+  - API Reference for the useSearchParams hook.
+- [useSelectedLayoutSegment](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment)
+  - API Reference for the useSelectedLayoutSegment hook.
+- [useSelectedLayoutSegments](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments)
+  - API Reference for the useSelectedLayoutSegments hook.
+- [userAgent](https://nextjs.org/docs/app/api-reference/functions/userAgent)
+  - The userAgent helper extends the Web Request API with additional properties and methods to interact with the user agent object from the request.
 
-### [afterAPI Reference for the after function.](https://nextjs.org/docs/app/api-reference/functions/after)### [cacheLifeLearn how to use the cacheLife function to set the cache expiration time for a cached function or component.](https://nextjs.org/docs/app/api-reference/functions/cacheLife)### [cacheTagLearn how to use the cacheTag function to manage cache invalidation in your Next.js application.](https://nextjs.org/docs/app/api-reference/functions/cacheTag)### [connectionAPI Reference for the connection function.](https://nextjs.org/docs/app/api-reference/functions/connection)### [cookiesAPI Reference for the cookies function.](https://nextjs.org/docs/app/api-reference/functions/cookies)### [draftModeAPI Reference for the draftMode function.](https://nextjs.org/docs/app/api-reference/functions/draft-mode)### [fetchAPI reference for the extended fetch function.](https://nextjs.org/docs/app/api-reference/functions/fetch)### [forbiddenAPI Reference for the forbidden function.](https://nextjs.org/docs/app/api-reference/functions/forbidden)### [generateImageMetadataLearn how to generate multiple images in a single Metadata API special file.](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata)### [generateMetadataLearn how to add Metadata to your Next.js application for improved search engine optimization (SEO) and web shareability.](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)### [generateSitemapsLearn how to use the generateSiteMaps function to create multiple sitemaps for your application.](https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps)### [generateStaticParamsAPI reference for the generateStaticParams function.](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)### [generateViewportAPI Reference for the generateViewport function.](https://nextjs.org/docs/app/api-reference/functions/generate-viewport)### [headersAPI reference for the headers function.](https://nextjs.org/docs/app/api-reference/functions/headers)### [ImageResponseAPI Reference for the ImageResponse constructor.](https://nextjs.org/docs/app/api-reference/functions/image-response)### [NextRequestAPI Reference for NextRequest.](https://nextjs.org/docs/app/api-reference/functions/next-request)### [NextResponseAPI Reference for NextResponse.](https://nextjs.org/docs/app/api-reference/functions/next-response)### [notFoundAPI Reference for the notFound function.](https://nextjs.org/docs/app/api-reference/functions/not-found)### [permanentRedirectAPI Reference for the permanentRedirect function.](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect)### [redirectAPI Reference for the redirect function.](https://nextjs.org/docs/app/api-reference/functions/redirect)### [refreshAPI Reference for the refresh function.](https://nextjs.org/docs/app/api-reference/functions/refresh)### [revalidatePathAPI Reference for the revalidatePath function.](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)### [revalidateTagAPI Reference for the revalidateTag function.](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)### [unauthorizedAPI Reference for the unauthorized function.](https://nextjs.org/docs/app/api-reference/functions/unauthorized)### [unstable_cacheAPI Reference for the unstable_cache function.](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)### [unstable_noStoreAPI Reference for the unstable_noStore function.](https://nextjs.org/docs/app/api-reference/functions/unstable_noStore)### [unstable_rethrowAPI Reference for the unstable_rethrow function.](https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow)### [updateTagAPI Reference for the updateTag function.](https://nextjs.org/docs/app/api-reference/functions/updateTag)### [useLinkStatusAPI Reference for the useLinkStatus hook.](https://nextjs.org/docs/app/api-reference/functions/use-link-status)### [useParamsAPI Reference for the useParams hook.](https://nextjs.org/docs/app/api-reference/functions/use-params)### [usePathnameAPI Reference for the usePathname hook.](https://nextjs.org/docs/app/api-reference/functions/use-pathname)### [useReportWebVitalsAPI Reference for the useReportWebVitals function.](https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals)### [useRouterAPI reference for the useRouter hook.](https://nextjs.org/docs/app/api-reference/functions/use-router)### [useSearchParamsAPI Reference for the useSearchParams hook.](https://nextjs.org/docs/app/api-reference/functions/use-search-params)### [useSelectedLayoutSegmentAPI Reference for the useSelectedLayoutSegment hook.](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment)### [useSelectedLayoutSegmentsAPI Reference for the useSelectedLayoutSegments hook.](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments)### [userAgentThe userAgent helper extends the Web Request API with additional properties and methods to interact with the user agent object from the request.](https://nextjs.org/docs/app/api-reference/functions/userAgent)
+---
 
-Was this helpful?
-
-supported.
-
-Send

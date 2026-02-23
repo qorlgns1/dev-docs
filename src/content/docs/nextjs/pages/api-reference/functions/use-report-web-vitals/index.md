@@ -7,10 +7,6 @@ description: '훅을 사용하면 Core Web Vitals를 보고할 수 있으며 분
 
 소스 URL: https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals
 
-[API 참고 문서](https://nextjs.org/docs/pages/api-reference)[함수](https://nextjs.org/docs/pages/api-reference/functions)useReportWebVitals
-
-페이지 복사
-
 # useReportWebVitals
 
 마지막 업데이트: 2026년 2월 20일
@@ -22,14 +18,14 @@ description: '훅을 사용하면 Core Web Vitals를 보고할 수 있으며 분
 pages/_app.js
 [code]
     import { useReportWebVitals } from 'next/web-vitals'
-     
+
     const logWebVitals = (metric) => {
       console.log(metric)
     }
-     
+
     function MyApp({ Component, pageProps }) {
       useReportWebVitals(logWebVitals)
-     
+
       return <Component {...pageProps} />
     }
 [/code]
@@ -62,7 +58,7 @@ pages/_app.js
 pages/_app.js
 [code]
     import { useReportWebVitals } from 'next/web-vitals'
-     
+
     const handleWebVitals = (metric) => {
       switch (metric.name) {
         case 'FCP': {
@@ -74,10 +70,10 @@ pages/_app.js
         // ...
       }
     }
-     
+
     function MyApp({ Component, pageProps }) {
       useReportWebVitals(handleWebVitals)
-     
+
       return <Component {...pageProps} />
     }
 [/code]
@@ -95,7 +91,7 @@ pages/_app.js
 pages/_app.js
 [code]
     import { useReportWebVitals } from 'next/web-vitals'
-     
+
     function handleCustomMetrics(metrics) {
       switch (metric.name) {
         case 'Next.js-hydration':
@@ -111,10 +107,10 @@ pages/_app.js
           break
       }
     }
-     
+
     function MyApp({ Component, pageProps }) {
       useReportWebVitals(handleCustomMetrics)
-     
+
       return <Component {...pageProps} />
     }
 [/code]
@@ -125,11 +121,11 @@ pages/_app.js
 
 사이트의 실제 사용자 성능을 측정하고 추적할 수 있도록 어떤 엔드포인트로든 결과를 전송할 수 있습니다. 예:
 
-[code] 
+[code]
     function postWebVitals(metrics) {
       const body = JSON.stringify(metric)
       const url = 'https://example.com/analytics'
-     
+
       // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
       if (navigator.sendBeacon) {
         navigator.sendBeacon(url, body)
@@ -137,7 +133,7 @@ pages/_app.js
         fetch(url, { body, method: 'POST', keepalive: true })
       }
     }
-     
+
     useReportWebVitals(postWebVitals)
 [/code]
 
@@ -156,9 +152,3 @@ pages/_app.js
 > [/code]
 >
 > [Google Analytics로 결과 보내기](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics)에 대해 더 알아보세요.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

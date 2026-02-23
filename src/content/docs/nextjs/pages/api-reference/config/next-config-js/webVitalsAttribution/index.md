@@ -7,10 +7,6 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/config/nex
 
 원본 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/webVitalsAttribution
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)webVitalsAttribution
-
-페이지 복사
-
 # webVitalsAttribution
 
 최종 업데이트 2026년 2월 20일
@@ -31,9 +27,3 @@ next.config.js
 [/code]
 
 허용되는 어트리뷰션 값은 [`NextWebVitalsMetric`](https://github.com/vercel/next.js/blob/442378d21dd56d6e769863eb8c2cb521a463a2e0/packages/next/shared/lib/utils.ts#L43) 타입에 지정된 모든 `web-vitals` 메트릭입니다.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

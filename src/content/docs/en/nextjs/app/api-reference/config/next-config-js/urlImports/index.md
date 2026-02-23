@@ -1,104 +1,97 @@
 ---
-title: 'next.config.js: urlImports'
-description: "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on GitHub."
+title: 'urlImports'
+description: '> This feature is currently experimental and subject to change, it is not recommended for production.'
 ---
-
-# next.config.js: urlImports | Next.js
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)urlImports
-
-Copy page
-
 # urlImports
 
-This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
-
-Last updated February 20, 2026
+> This feature is currently experimental and subject to change, it is not recommended for production.
 
 URL imports are an experimental feature that allows you to import modules directly from external servers (instead of from the local disk).
 
-> **Warning** : Only use domains that you trust to download and execute on your machine. Please exercise discretion, and caution until the feature is flagged as stable.
+> **Warning**: Only use domains that you trust to download and execute on your machine. Please exercise discretion, and caution until the feature is flagged as stable.
 
 To opt-in, add the allowed URL prefixes inside `next.config.js`:
 
-next.config.js
-[code]
-    module.exports = {
-      experimental: {
-        urlImports: ['https://example.com/assets/', 'https://cdn.skypack.dev'],
-      },
-    }
-[/code]
+```js filename="next.config.js"
+module.exports = {
+  experimental: {
+    urlImports: ['https://example.com/assets/', 'https://cdn.skypack.dev'],
+  },
+}
+```
 
 Then, you can import modules directly from URLs:
-[code] 
-    import { a, b, c } from 'https://example.com/assets/some/module.js'
-[/code]
+
+```js
+import { a, b, c } from 'https://example.com/assets/some/module.js'
+```
 
 URL Imports can be used everywhere normal package imports can be used.
 
-## Security Model[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#security-model)
+## Security Model
 
 This feature is being designed with **security as the top priority**. To start, we added an experimental flag forcing you to explicitly allow the domains you accept URL imports from. We're working to take this further by limiting URL imports to execute in the browser sandbox using the [Edge Runtime](https://nextjs.org/docs/app/api-reference/edge).
 
-## Lockfile[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#lockfile)
+## Lockfile
 
-When using URL imports, Next.js will create a `next.lock` directory containing a lockfile and fetched assets. This directory **must be committed to Git** , not ignored by `.gitignore`.
+When using URL imports, Next.js will create a `next.lock` directory containing a lockfile and fetched assets.
+This directory **must be committed to Git**, not ignored by `.gitignore`.
 
-  * When running `next dev`, Next.js will download and add all newly discovered URL Imports to your lockfile.
-  * When running `next build`, Next.js will use only the lockfile to build the application for production.
+* When running `next dev`, Next.js will download and add all newly discovered URL Imports to your lockfile.
+* When running `next build`, Next.js will use only the lockfile to build the application for production.
 
+Typically, no network requests are needed and any outdated lockfile will cause the build to fail.
+One exception is resources that respond with `Cache-Control: no-cache`.
+These resources will have a `no-cache` entry in the lockfile and will always be fetched from the network on each build.
 
+## Examples
 
-Typically, no network requests are needed and any outdated lockfile will cause the build to fail. One exception is resources that respond with `Cache-Control: no-cache`. These resources will have a `no-cache` entry in the lockfile and will always be fetched from the network on each build.
+### Skypack
 
-## Examples[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#examples)
+```js
+import confetti from 'https://cdn.skypack.dev/canvas-confetti'
+import { useEffect } from 'react'
 
-### Skypack[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#skypack)
-[code] 
-    import confetti from 'https://cdn.skypack.dev/canvas-confetti'
-    import { useEffect } from 'react'
-     
-    export default () => {
-      useEffect(() => {
-        confetti()
-      })
-      return <p>Hello</p>
-    }
-[/code]
+export default () => {
+  useEffect(() => {
+    confetti()
+  })
+  return <p>Hello</p>
+}
+```
 
-### Static Image Imports[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#static-image-imports)
-[code] 
-    import Image from 'next/image'
-    import logo from 'https://example.com/assets/logo.png'
-     
-    export default () => (
-      <div>
-        <Image src={logo} placeholder="blur" />
-      </div>
-    )
-[/code]
+### Static Image Imports
 
-### URLs in CSS[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#urls-in-css)
-[code] 
-    .className {
-      background: url('https://example.com/assets/hero.jpg');
-    }
-[/code]
+```js
+import Image from 'next/image'
+import logo from 'https://example.com/assets/logo.png'
 
-### Asset Imports[](https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#asset-imports)
-[code] 
-    const logo = new URL('https://example.com/assets/file.txt', import.meta.url)
-     
-    console.log(logo.pathname)
-     
-    // prints "/_next/static/media/file.a9727b5d.txt"
-[/code]
+export default () => (
+  <div>
+    <Image src={logo} placeholder="blur" />
+  </div>
+)
+```
 
-Was this helpful?
+### URLs in CSS
 
-supported.
+```css
+.className {
+  background: url('https://example.com/assets/hero.jpg');
+}
+```
 
-Send
+### Asset Imports
+
+```js
+const logo = new URL('https://example.com/assets/file.txt', import.meta.url)
+
+console.log(logo.pathname)
+
+// prints "/_next/static/media/file.a9727b5d.txt"
+```
+---
+

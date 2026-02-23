@@ -8,8 +8,6 @@ description: '컴포넌트는 HTML  요소를 확장해 로딩 UI의 사전 가�
 
 [API 참조](https://nextjs.org/docs/app/api-reference)[컴포넌트](https://nextjs.org/docs/app/api-reference/components)Form 컴포넌트
 
-페이지 복사
-
 # Form 컴포넌트
 
 마지막 업데이트 2026년 2월 20일
@@ -25,7 +23,7 @@ URL 검색 매개변수를 업데이트하는 폼에 적합하며, 위 기능을
 JavaScriptTypeScript
 [code]
     import Form from 'next/form'
-     
+
     export default function Page() {
       return (
         <Form action="/search">
@@ -51,13 +49,13 @@ JavaScriptTypeScript
 
 `action`이 문자열일 때 `<Form>` 컴포넌트는 다음 프로퍼티를 지원합니다.
 
-Prop| 예시| 타입| 필수  
----|---|---|---  
-`action`| `action="/search"`| `string` (URL 또는 상대 경로)| 예  
-`replace`| `replace={false}`| `boolean`| -  
-`scroll`| `scroll={true}`| `boolean`| -  
-`prefetch`| `prefetch={true}`| `boolean`| -  
-  
+Prop| 예시| 타입| 필수
+---|---|---|---
+`action`| `action="/search"`| `string` (URL 또는 상대 경로)| 예
+`replace`| `replace={false}`| `boolean`| -
+`scroll`| `scroll={true}`| `boolean`| -
+`prefetch`| `prefetch={true}`| `boolean`| -
+
   * **`action`**: 폼이 제출될 때 이동할 URL 또는 경로입니다.
     * 빈 문자열 `""`을 전달하면 동일한 라우트에서 검색 매개변수만 갱신합니다.
   * **`replace`**: [브라우저 히스토리](https://developer.mozilla.org/en-US/docs/Web/API/History_API) 스택에 새 항목을 추가하지 않고 현재 히스토리 상태를 교체합니다. 기본값은 `false`입니다.
@@ -68,10 +66,10 @@ Prop| 예시| 타입| 필수
 
 `action`이 함수일 때 `<Form>` 컴포넌트는 다음 프로퍼티를 지원합니다.
 
-Prop| 예시| 타입| 필수  
----|---|---|---  
-`action`| `action={myAction}`| `function` (Server Action)| 예  
-  
+Prop| 예시| 타입| 필수
+---|---|---|---
+`action`| `action={myAction}`| `function` (Server Action)| 예
+
   * **`action`**: 폼 제출 시 호출되는 Server Action입니다. 자세한 내용은 [React 문서](https://react.dev/reference/react-dom/components/form#props)를 참고하세요.
 
 > **알아두면 좋아요**: `action`이 함수일 때는 `replace`와 `scroll` 프로퍼티가 무시됩니다.
@@ -99,7 +97,7 @@ Prop| 예시| 타입| 필수
 JavaScriptTypeScript
 [code]
     import Form from 'next/form'
-     
+
     export default function Page() {
       return (
         <Form action="/search">
@@ -121,14 +119,14 @@ JavaScriptTypeScript
 JavaScriptTypeScript
 [code]
     import { getSearchResults } from '@/lib/search'
-     
+
     export default async function SearchPage({
       searchParams,
     }: {
       searchParams: Promise<{ [key: string]: string | string[] | undefined }>
     }) {
       const results = await getSearchResults((await searchParams).query)
-     
+
       return <div>...</div>
     }
 [/code]
@@ -154,7 +152,7 @@ JavaScriptTypeScript
 [code]
     'use client'
     import { useFormStatus } from 'react-dom'
-     
+
     export default function SearchButton() {
       const status = useFormStatus()
       return (
@@ -171,7 +169,7 @@ JavaScriptTypeScript
 [code]
     import Form from 'next/form'
     import { SearchButton } from '@/ui/search-button'
-     
+
     export default function Page() {
       return (
         <Form action="/search">
@@ -192,7 +190,7 @@ JavaScriptTypeScript
 [code]
     import Form from 'next/form'
     import { createPost } from '@/posts/actions'
-     
+
     export default function Page() {
       return (
         <Form action={createPost}>
@@ -214,11 +212,11 @@ JavaScriptTypeScript
 [code]
     'use server'
     import { redirect } from 'next/navigation'
-     
+
     export async function createPost(formData: FormData) {
       // Create a new post
       // ...
-     
+
       // Redirect to the new post
       redirect(`/posts/${data.id}`)
     }
@@ -231,7 +229,7 @@ JavaScriptTypeScript
 JavaScriptTypeScript
 [code]
     import { getPost } from '@/posts/data'
-     
+
     export default async function PostPage({
       params,
     }: {
@@ -239,7 +237,7 @@ JavaScriptTypeScript
     }) {
       const { id } = await params
       const data = await getPost(id)
-     
+
       return (
         <div>
           <h1>{data.title}</h1>
@@ -250,9 +248,3 @@ JavaScriptTypeScript
 [/code]
 
 더 많은 예시는 [Server Actions](https://nextjs.org/docs/app/getting-started/updating-data) 문서를 참고하세요.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

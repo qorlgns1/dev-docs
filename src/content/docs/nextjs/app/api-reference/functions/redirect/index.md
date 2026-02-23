@@ -6,10 +6,6 @@ description: '함수는 사용자를 다른 URL로 리디렉션할 수 있게 �
 # 함수: redirect | Next.js
 Source URL: https://nextjs.org/docs/app/api-reference/functions/redirect
 
-[API 레퍼런스](https://nextjs.org/docs/app/api-reference)[함수](https://nextjs.org/docs/app/api-reference/functions)redirect
-
-페이지 복사
-
 # redirect
 
 마지막 업데이트 2026년 2월 20일
@@ -25,21 +21,21 @@ Source URL: https://nextjs.org/docs/app/api-reference/functions/redirect
 ### Parameters[](https://nextjs.org/docs/app/api-reference/functions/redirect#parameters)
 
 `redirect` 함수는 두 개의 인수를 받습니다:
-[code] 
+[code]
     redirect(path, type)
 [/code]
 
-Parameter| Type| Description  
----|---|---  
-`path`| `string`| 리디렉션할 URL입니다. 상대 경로나 절대 경로 모두 사용할 수 있습니다.  
-`type`| `'replace'`(기본값) 또는 `'push'`(서버 액션의 기본값)| 수행할 리디렉션 유형입니다.  
-  
+Parameter| Type| Description
+---|---|---
+`path`| `string`| 리디렉션할 URL입니다. 상대 경로나 절대 경로 모두 사용할 수 있습니다.
+`type`| `'replace'`(기본값) 또는 `'push'`(서버 액션의 기본값)| 수행할 리디렉션 유형입니다.
+
 기본적으로 `redirect`는 [서버 액션](https://nextjs.org/docs/app/getting-started/updating-data)에서는 `push`(브라우저 히스토리 스택에 새 항목 추가)를 사용하고, 그 외 모든 곳에서는 `replace`(브라우저 히스토리 스택의 현재 URL 교체)를 사용합니다. `type` 매개변수를 지정해 이 동작을 재정의할 수 있습니다.
 
 `RedirectType` 객체는 `type` 매개변수에 사용 가능한 옵션을 포함합니다.
-[code] 
+[code]
     import { redirect, RedirectType } from 'next/navigation'
-     
+
     redirect('/redirect-to', RedirectType.replace)
     // or
     redirect('/redirect-to', RedirectType.push)
@@ -60,8 +56,6 @@ Parameter| Type| Description
   * `redirect`는 절대 URL도 허용하며 외부 링크로 리디렉션하는 데 사용할 수 있습니다.
   * 렌더 과정 이전에 리디렉션하고 싶다면 [`next.config.js`](https://nextjs.org/docs/app/guides/redirecting#redirects-in-nextconfigjs) 또는 [프록시](https://nextjs.org/docs/app/guides/redirecting#nextresponseredirect-in-proxy)를 사용하세요.
 
-
-
 ## Example[](https://nextjs.org/docs/app/api-reference/functions/redirect#example)
 
 ### Server Component[](https://nextjs.org/docs/app/api-reference/functions/redirect#server-component)
@@ -73,13 +67,13 @@ app/team/[id]/page.tsx
 JavaScriptTypeScript
 [code]
     import { redirect } from 'next/navigation'
-     
+
     async function fetchTeam(id: string) {
       const res = await fetch('https://...')
       if (!res.ok) return undefined
       return res.json()
     }
-     
+
     export default async function Profile({
       params,
     }: {
@@ -87,11 +81,11 @@ JavaScriptTypeScript
     }) {
       const { id } = await params
       const team = await fetchTeam(id)
-     
+
       if (!team) {
         redirect('/login')
       }
-     
+
       // ...
     }
 [/code]
@@ -107,16 +101,16 @@ components/client-redirect.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { redirect, usePathname } from 'next/navigation'
-     
+
     export function ClientRedirect() {
       const pathname = usePathname()
-     
+
       if (pathname.startsWith('/admin') && !pathname.includes('/login')) {
         redirect('/admin/login')
       }
-     
+
       return <div>Login Page</div>
     }
 [/code]
@@ -130,9 +124,9 @@ app/client-redirect.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { navigate } from './actions'
-     
+
     export function ClientRedirect() {
       return (
         <form action={navigate}>
@@ -148,9 +142,9 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { redirect } from 'next/navigation'
-     
+
     export async function navigate(data: FormData) {
       redirect(`/posts/${data.get('id')}`)
     }
@@ -169,24 +163,17 @@ JavaScriptTypeScript
   * `302` - 임시 리디렉션이며 요청 메서드를 `POST`에서 `GET`으로 변경합니다.
   * `307` - 임시 리디렉션이며 요청 메서드를 `POST`로 유지합니다.
 
-
-
 `redirect()` 메서드는 기본적으로 `302` 대신 `307` 임시 리디렉션을 사용하므로, 요청이 항상 `POST`로 유지됩니다.
 
 HTTP 리디렉션에 대해 [더 알아보기](https://developer.mozilla.org/docs/Web/HTTP/Redirections).
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/redirect#version-history)
 
-Version| Changes  
----|---  
-`v13.0.0`| `redirect`가 도입되었습니다.  
-  
-## 
+Version| Changes
+---|---
+`v13.0.0`| `redirect`가 도입되었습니다.
 
-### [permanentRedirect 함수의 API 레퍼런스.](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect)
+##
 
-도움이 되었나요?
-
-지원됨.
-
-전송
+- [permanentRedirect](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect)
+  - 함수의 API 레퍼런스.

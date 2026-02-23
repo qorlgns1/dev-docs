@@ -9,8 +9,6 @@ description: '클라이언트 측 데이터 페칭은 페이지가 SEO 인덱싱
 
 [애플리케이션 빌드](https://nextjs.org/docs/pages/building-your-application)[데이터 페칭](https://nextjs.org/docs/pages/building-your-application/data-fetching)클라이언트 측 페칭
 
-페이지 복사
-
 # 클라이언트 측 페칭
 
 마지막 업데이트 2026년 2월 20일
@@ -24,13 +22,13 @@ description: '클라이언트 측 데이터 페칭은 페이지가 SEO 인덱싱
 ## useEffect를 사용한 클라이언트 측 데이터 페칭[](https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side#client-side-data-fetching-with-useeffect)
 
 다음 예시는 useEffect 훅을 사용해 클라이언트 측에서 데이터를 가져오는 방법을 보여줍니다.
-[code] 
+[code]
     import { useState, useEffect } from 'react'
-     
+
     function Profile() {
       const [data, setData] = useState(null)
       const [isLoading, setLoading] = useState(true)
-     
+
       useEffect(() => {
         fetch('/api/profile-data')
           .then((res) => res.json())
@@ -39,10 +37,10 @@ description: '클라이언트 측 데이터 페칭은 페이지가 SEO 인덱싱
             setLoading(false)
           })
       }, [])
-     
+
       if (isLoading) return <p>Loading...</p>
       if (!data) return <p>No profile data</p>
-     
+
       return (
         <div>
           <h1>{data.name}</h1>
@@ -59,17 +57,17 @@ Next.js 팀은 [**SWR**](https://swr.vercel.app/)이라는 데이터 페칭용 R
 앞선 예시와 동일한 패턴을 사용해 이번에는 SWR로 프로필 데이터를 가져올 수 있습니다. SWR은 데이터를 자동으로 캐시하고 데이터가 오래되면 재검증합니다.
 
 SWR 사용 방법에 대한 자세한 내용은 [SWR 문서](https://swr.vercel.app/docs/getting-started)를 참고하세요.
-[code] 
+[code]
     import useSWR from 'swr'
-     
+
     const fetcher = (...args) => fetch(...args).then((res) => res.json())
-     
+
     function Profile() {
       const { data, error } = useSWR('/api/profile-data', fetcher)
-     
+
       if (error) return <div>Failed to load</div>
       if (!data) return <div>Loading...</div>
-     
+
       return (
         <div>
           <h1>{data.name}</h1>
@@ -78,9 +76,5 @@ SWR 사용 방법에 대한 자세한 내용은 [SWR 문서](https://swr.vercel.
       )
     }
 [/code]
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

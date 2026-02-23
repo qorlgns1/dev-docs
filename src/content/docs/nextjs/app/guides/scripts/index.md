@@ -7,10 +7,6 @@ description: '여러 경로에서 서드파티 스크립트를 로드하려면 �
 
 Source URL: https://nextjs.org/docs/app/guides/scripts
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Scripts
-
-페이지 복사
-
 # 스크립트를 로드하고 최적화하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -24,7 +20,7 @@ app/dashboard/layout.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function DashboardLayout({
       children,
     }: {
@@ -50,7 +46,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -115,7 +111,7 @@ pages/home.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function Home() {
       return (
         <>
@@ -130,14 +126,14 @@ JavaScriptTypeScript
 ### 인라인 스크립트[](https://nextjs.org/docs/app/guides/scripts#inline-scripts)
 
 외부 파일에서 로드되지 않는 인라인 스크립트도 Script 컴포넌트에서 지원합니다. 중괄호 안에 JavaScript를 작성하면 됩니다:
-[code] 
+[code]
     <Script id="show-banner">
       {`document.getElementById('banner').classList.remove('hidden')`}
     </Script>
 [/code]
 
 또는 `dangerouslySetInnerHTML` 속성을 사용할 수 있습니다:
-[code] 
+[code]
     <Script
       id="show-banner"
       dangerouslySetInnerHTML={{
@@ -163,9 +159,9 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Script from 'next/script'
-     
+
     export default function Page() {
       return (
         <>
@@ -191,7 +187,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Script from 'next/script'
-     
+
     export default function Page() {
       return (
         <>
@@ -210,10 +206,7 @@ JavaScriptTypeScript
 
 next/script API에 대해 더 알아보세요.
 
-### [Script 컴포넌트Next.js 애플리케이션에서 기본 제공 `next/script` 컴포넌트를 사용해 서드파티 스크립트를 최적화합니다.](https://nextjs.org/docs/app/api-reference/components/script)
-
-도움이 되었나요?
-
-지원됨.
+- [스크립트 컴포넌트](https://nextjs.org/docs/app/api-reference/components/script)
+  - Script 컴포넌트Next.js 애플리케이션에서 기본 제공 `next/script` 컴포넌트를 사용해 서드파티 스크립트를 최적화합니다.
 
 보내기

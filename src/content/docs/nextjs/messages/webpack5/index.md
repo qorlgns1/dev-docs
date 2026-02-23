@@ -36,16 +36,12 @@ next.config.js
   * `new Worker(new URL("worker.js", import.meta.url))`을 사용하는 웹 워커 지원
   * `package.json`의 `exports`/`imports` 필드 지원
 
-
-
 과거 릴리스에서는 Next.js 애플리케이션에 webpack 5를 점진적으로 도입했습니다.
 
   * Next.js 10.2에서는 `next.config.js`에 커스텀 webpack 구성이 없는 애플리케이션을 자동으로 옵트인했습니다
   * Next.js 10.2에서는 `next.config.js`가 없는 애플리케이션을 자동으로 옵트인했습니다
   * Next.js 11에서는 모든 애플리케이션에서 기본적으로 webpack 5가 활성화되었습니다. 여전히 `next.config.js`에 `webpack5: false`를 설정해 webpack 4를 사용하며 하위 호환성을 유지할 수 있었습니다
   * Next.js 12에서는 webpack 4 지원이 제거되었습니다
-
-
 
 ## 커스텀 webpack 구성[](https://nextjs.org/docs/messages/webpack5#custom-webpack-configuration)
 
@@ -57,14 +53,6 @@ next.config.js
   * `@zeit/next-source-maps`를 사용할 때는 [내장 프로덕션 소스 맵 지원](https://nextjs.org/docs/pages/api-reference/config/next-config-js/productionBrowserSourceMaps)을 사용하세요
   * webpack 플러그인을 사용할 때는 해당 플러그인이 최신 버전으로 업그레이드되었는지 확인하세요. 대부분의 경우 최신 버전에 webpack 5 지원이 포함됩니다. 일부 업그레이드된 플러그인은 webpack 5만 지원할 수 있습니다
 
-
-
 ## 유용한 링크[](https://nextjs.org/docs/messages/webpack5#useful-links)
 
 문제가 발생하면 [이 도움말 토론](https://github.com/vercel/next.js/discussions/23498)에서 커뮤니티와 교류할 수 있습니다.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

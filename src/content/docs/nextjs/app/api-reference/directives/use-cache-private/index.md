@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/api-reference/directives/use-cache-priva
 
 [API 참고](https://nextjs.org/docs/app/api-reference)[지시문](https://nextjs.org/docs/app/api-reference/directives)use cache: private
 
-페이지 복사
-
 # use cache: private
 
 이 기능은 현재 실험적이며 변경될 수 있으므로 프로덕션에서 권장되지 않습니다. 시도해 본 뒤 [GitHub](https://github.com/vercel/next.js/issues)에서 의견을 공유해주세요.
@@ -23,8 +21,6 @@ Source URL: https://nextjs.org/docs/app/api-reference/directives/use-cache-priva
 
   * 이미 런타임 데이터를 사용하는 함수를 캐시하고 싶은데, [런타임 접근을 외부로 옮겨 인자를 통해 값을 전달](https://nextjs.org/docs/app/getting-started/cache-components#with-runtime-data)하도록 리팩터링하기가 현실적이지 않은 경우
   * 규정 준수 요구 사항 때문에 데이터를 일시적으로라도 서버에 저장할 수 없는 경우
-
-
 
 이 지시문은 런타임 데이터를 읽으므로 함수는 모든 서버 렌더마다 실행되며 [static shell](https://nextjs.org/docs/app/getting-started/cache-components#how-rendering-works-with-cache-components) 생성 시에는 제외됩니다.
 
@@ -43,11 +39,11 @@ next.config.ts
 JavaScriptTypeScript
 ```
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       cacheComponents: true,
     }
-     
+
     export default nextConfig
 ```
 
@@ -66,18 +62,18 @@ JavaScriptTypeScript
     import { Suspense } from 'react'
     import { cookies } from 'next/headers'
     import { cacheLife, cacheTag } from 'next/cache'
-     
+
     export async function generateStaticParams() {
       return [{ id: '1' }]
     }
-     
+
     export default async function ProductPage({
       params,
     }: {
       params: Promise<{ id: string }>
     }) {
       const { id } = await params
-     
+
       return (
         <div>
           <ProductDetails id={id} />
@@ -87,10 +83,10 @@ JavaScriptTypeScript
         </div>
       )
     }
-     
+
     async function Recommendations({ productId }: { productId: string }) {
       const recommendations = await getRecommendations(productId)
-     
+
       return (
         <div>
           {recommendations.map((rec) => (
@@ -99,15 +95,15 @@ JavaScriptTypeScript
         </div>
       )
     }
-     
+
     async function getRecommendations(productId: string) {
       'use cache: private'
       cacheTag(`recommendations-${productId}`)
       cacheLife({ stale: 60 })
-     
+
       // Access cookies within private cache functions
       const sessionId = (await cookies()).get('session-id')?.value || 'guest'
-     
+
       return getPersonalizedRecommendations(productId, sessionId)
     }
 ```
@@ -118,32 +114,32 @@ JavaScriptTypeScript
 
 `'use cache: private'` 함수 안에서는 다음과 같은 요청 전용 API를 사용할 수 있습니다:
 
-API|`use cache`에서 허용 여부|`'use cache: private'`에서 허용 여부  
----|---|---  
-`cookies()`| No| Yes  
-`headers()`| No| Yes  
-`searchParams`| No| Yes  
-`connection()`| No| No  
-  
+API|`use cache`에서 허용 여부|`'use cache: private'`에서 허용 여부
+---|---|---
+`cookies()`| No| Yes
+`headers()`| No| Yes
+`searchParams`| No| Yes
+`connection()`| No| No
+
 > **참고:** [`connection()`](https://nextjs.org/docs/app/api-reference/functions/connection) API는 연결별 정보를 제공하므로 `use cache`와 `'use cache: private'` 모두에서 금지됩니다. 해당 정보는 안전하게 캐시할 수 없습니다.
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/directives/use-cache-private#version-history)
 
-버전|변경 사항  
----|---  
-`v16.0.0`| `"use cache: private"`가 Cache Components 기능과 함께 활성화됩니다.  
-  
+버전|변경 사항
+---|---
+`v16.0.0`| `"use cache: private"`가 Cache Components 기능과 함께 활성화됩니다.
+
 ## 관련 항목
 
 관련 API 참조를 확인하세요.
 
-### [use cacheNext.js 애플리케이션에서 "use cache" 지시문으로 데이터를 캐시하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/directives/use-cache)
-### [cacheComponentsNext.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
-### [cacheLife캐시된 함수나 컴포넌트의 만료 시간을 설정하기 위해 cacheLife 함수를 사용하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
-### [cacheTagNext.js 애플리케이션에서 cacheTag 함수를 사용해 캐시 무효화를 관리하는 방법을 알아보세요.](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
-
-도움이 되었나요?
-
-지원됨.
+- [use cache](https://nextjs.org/docs/app/api-reference/directives/use-cache)
+  - Next.js 애플리케이션에서 "use cache" 지시문으로 데이터를 캐시하는 방법을 알아보세요.
+- [cacheComponents](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents)
+  - Next.js에서 cacheComponents 플래그를 활성화하는 방법을 알아보세요.
+- [cacheLife](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
+  - 캐시된 함수나 컴포넌트의 만료 시간을 설정하기 위해 cacheLife 함수를 사용하는 방법을 알아보세요.
+- [cacheTag](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
+  - Next.js 애플리케이션에서 cacheTag 함수를 사용해 캐시 무효화를 관리하는 방법을 알아보세요.
 
 보내기.

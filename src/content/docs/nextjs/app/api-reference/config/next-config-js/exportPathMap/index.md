@@ -7,8 +7,6 @@ description: '이 API는 레거시이므로 더 이상 권장되지 않습니다
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)exportPathMap
-
 Copy page
 
 # exportPathMap

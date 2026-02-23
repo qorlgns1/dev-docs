@@ -7,10 +7,6 @@ description: '기본적으로 Next.js는 , , ,  확장자를 가진 파일을 �
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/pageExtensions
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)pageExtensions
-
-페이지 복사
-
 # pageExtensions
 
 마지막 업데이트 2026년 2월 20일
@@ -20,17 +16,11 @@ Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/page
 next.config.js
 [code]
     const withMDX = require('@next/mdx')()
-     
+
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
     }
-     
+
     module.exports = withMDX(nextConfig)
 [/code]
-
-도움이 되었나요?
-
-지원됨.
-
-전송

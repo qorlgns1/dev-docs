@@ -1,36 +1,23 @@
 ---
-title: 'next.config.js: pageExtensions'
+title: 'pageExtensions'
 description: 'By default, Next.js accepts files with the following extensions: , , , . This can be modified to allow other extensions like markdown (, ).'
 ---
 
-# next.config.js: pageExtensions | Next.js
-
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/pageExtensions
-
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)pageExtensions
-
-Copy page
 
 # pageExtensions
 
-Last updated February 20, 2026
-
 By default, Next.js accepts files with the following extensions: `.tsx`, `.ts`, `.jsx`, `.js`. This can be modified to allow other extensions like markdown (`.md`, `.mdx`).
 
-next.config.js
-[code]
-    const withMDX = require('@next/mdx')()
-     
-    /** @type {import('next').NextConfig} */
-    const nextConfig = {
-      pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-    }
-     
-    module.exports = withMDX(nextConfig)
-[/code]
+```js filename="next.config.js"
+const withMDX = require('@next/mdx')()
 
-Was this helpful?
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+}
 
-supported.
+module.exports = withMDX(nextConfig)
+```
+---
 
-Send

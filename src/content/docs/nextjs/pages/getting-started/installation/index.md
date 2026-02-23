@@ -7,10 +7,6 @@ description: '시작하기 전에 개발 환경이 다음 요구 사항을 충�
 
 출처 URL: https://nextjs.org/docs/pages/getting-started/installation
 
-[Pages Router](https://nextjs.org/docs/pages)[Getting Started](https://nextjs.org/docs/pages/getting-started)설치
-
-페이지 복사
-
 # 새로운 Next.js 애플리케이션 만들기
 
 마지막 업데이트 2026년 2월 20일
@@ -22,8 +18,6 @@ description: '시작하기 전에 개발 환경이 다음 요구 사항을 충�
   * 최소 Node.js 버전: [20.9](https://nodejs.org/)
   * 운영 체제: macOS, Windows(WSL 포함), Linux
 
-
-
 ## 지원되는 브라우저[](https://nextjs.org/docs/pages/getting-started/installation#supported-browsers)
 
 Next.js는 추가 설정 없이 최신 브라우저를 지원합니다.
@@ -32,8 +26,6 @@ Next.js는 추가 설정 없이 최신 브라우저를 지원합니다.
   * Edge 111+
   * Firefox 111+
   * Safari 16.4+
-
-
 
 폴리필 구성 및 특정 브라우저 타깃팅 방법을 포함한 [브라우저 지원](https://nextjs.org/docs/architecture/supported-browsers)에 대해 더 알아보세요.
 
@@ -110,8 +102,6 @@ package.json
   * `next start`: 프로덕션 서버를 시작합니다.
   * `eslint`: ESLint를 실행합니다.
 
-
-
 Turbopack이 기본 번들러입니다. Webpack을 사용하려면 `next dev --webpack` 또는 `next build --webpack`을 실행하세요. 구성 세부 정보는 [Turbopack 문서](https://nextjs.org/docs/app/api-reference/turbopack)를 참고하세요.
 
 ### `pages` 디렉터리 만들기[](https://nextjs.org/docs/pages/getting-started/installation#create-the-pages-directory)
@@ -136,7 +126,7 @@ pages/_app.tsx
 JavaScriptTypeScript
 [code]
     import type { AppProps } from 'next/app'
-     
+
     export default function App({ Component, pageProps }: AppProps) {
       return <Component {...pageProps} />
     }
@@ -149,7 +139,7 @@ pages/_document.tsx
 JavaScriptTypeScript
 [code]
     import { Html, Head, Main, NextScript } from 'next/document'
-     
+
     export default function Document() {
       return (
         <Html>
@@ -174,7 +164,7 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     import Image from 'next/image'
-     
+
     export default function Page() {
       return <Image src="/profile.png" alt="Profile" width={100} height={100} />
     }
@@ -185,8 +175,6 @@ JavaScriptTypeScript
   1. `npm run dev`를 실행해 개발 서버를 시작합니다.
   2. `http://localhost:3000`에 접속해 애플리케이션을 확인합니다.
   3. `pages/index.tsx` 파일을 수정 후 저장하면 브라우저에서 업데이트된 결과를 볼 수 있습니다.
-
-
 
 ## TypeScript 설정[](https://nextjs.org/docs/pages/getting-started/installation#set-up-typescript)
 
@@ -202,8 +190,6 @@ Next.js는 ESLint 또는 Biome을 사용한 린팅을 지원합니다. 원하는
 
   * **ESLint**(포괄적인 규칙) 사용:
 
-
-
 package.json
 [code]
     {
@@ -215,8 +201,6 @@ package.json
 [/code]
 
   * 또는 **Biome**(빠른 린터 + 포매터) 사용:
-
-
 
 package.json
 [code]
@@ -247,10 +231,10 @@ Next.js는 `tsconfig.json`과 `jsconfig.json` 파일의 `"paths"` 및 `"baseUrl"
 
 이 옵션을 사용하면 프로젝트 디렉터리를 절대 경로로 별칭 처리해 모듈을 더 쉽게, 깔끔하게 임포트할 수 있습니다. 예:
 
-[code] 
+[code]
     // Before
     import { Button } from '../../../components/button'
-     
+
     // After
     import { Button } from '@/components/button'
 [/code]
@@ -284,9 +268,5 @@ tsconfig.json or jsconfig.json
 [/code]
 
 각 `"paths"` 값은 `baseUrl` 위치를 기준으로 합니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

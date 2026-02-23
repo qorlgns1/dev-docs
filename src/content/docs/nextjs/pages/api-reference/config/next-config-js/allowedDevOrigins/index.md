@@ -7,10 +7,6 @@ description: 'Next.js는 개발 중 교차 출처 요청을 자동으로 차단�
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/allowedDevOrigins
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)allowedDevOrigins
-
-페이지 복사
-
 # allowedDevOrigins
 
 마지막 업데이트 2026년 2월 20일
@@ -28,9 +24,3 @@ next.config.js
       allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev'],
     }
 ```
-
-도움이 되었나요?
-
-지원됨.
-
-전송

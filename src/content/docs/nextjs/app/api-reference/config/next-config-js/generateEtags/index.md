@@ -7,8 +7,6 @@ description: 'Next.js는 기본적으로 모든 페이지에 대해 etags를 생
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/generateEtags
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)generateEtags
-
 Copy page
 
 # generateEtags

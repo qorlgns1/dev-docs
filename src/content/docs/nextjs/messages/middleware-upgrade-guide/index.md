@@ -18,8 +18,6 @@ Middleware를 GA(General Availability)로 개선하는 과정에서, 여러분�
   * 현재 베타 Next.js Middleware 기능을 사용 중인 경우
   * 다음 안정 버전의 Next.js(`v12.2`)로 업그레이드하려는 경우
 
-
-
 최신 릴리스(`npm i next@latest`)로 지금 바로 Middleware 사용을 업그레이드할 수 있습니다.
 
 > **참고**: 본 가이드에 설명된 변경 사항은 Next.js `12.2`에 포함되어 있습니다. `12.2`(또는 Next.js의 `canary` 빌드)로 이동하기 전까지는 중첩 Middleware를 포함한 현재 사이트 구조를 유지할 수 있습니다.
@@ -39,8 +37,6 @@ Vercel에서 Next.js를 사용 중이라면, Middleware를 사용하는 기존 �
   5. [페이지 매치 데이터 제거](https://nextjs.org/docs/messages/middleware-upgrade-guide#no-more-page-match-data)
   6. [내부 Next.js 요청에서 Middleware 실행](https://nextjs.org/docs/messages/middleware-upgrade-guide#executing-middleware-on-internal-nextjs-requests)
 
-
-
 ## 중첩된 Middleware 없음[](https://nextjs.org/docs/messages/middleware-upgrade-guide#no-nested-middleware)
 
 ### 변경 사항 요약[](https://nextjs.org/docs/messages/middleware-upgrade-guide#summary-of-changes)
@@ -48,8 +44,6 @@ Vercel에서 Next.js를 사용 중이라면, Middleware를 사용하는 기존 �
   * `pages` 폴더 옆에 단일 Middleware 파일을 정의합니다.
   * 파일 이름 앞에 밑줄을 붙일 필요가 없습니다.
   * 내보낸 config 객체로 커스텀 matcher를 정의해 라우트를 지정할 수 있습니다.
-
-
 
 ### 설명[](https://nextjs.org/docs/messages/middleware-upgrade-guide#explanation)
 
@@ -63,8 +57,6 @@ Vercel에서 Next.js를 사용 중이라면, Middleware를 사용하는 기존 �
   * **결정적인 실행 순서**: 중첩 Middleware에서는 하나의 요청이 여러 Middleware에 매칭될 수 있어 실행 순서를 파악하기 어려웠습니다. 예를 들어 `/dashboard/users/*` 요청은 `/dashboard/users/_middleware.ts`와 `/dashboard/_middleware.js`에 모두 매칭되었습니다. 단일 루트 Middleware는 실행 순서를 명확하게 정의합니다.
   * **Next.js Layouts(RFC) 지원**: 단일 루트 Middleware는 Next.js의 새로운 [Layouts(RFC)](https://nextjs.org/blog/layouts-rfc)를 지원하는 데 도움이 됩니다.
 
-
-
 ### 업그레이드 방법[](https://nextjs.org/docs/messages/middleware-upgrade-guide#how-to-upgrade)
 
 애플리케이션에는 **단 하나의 Middleware 파일**만 선언해야 하며, 이 파일은 `pages` 디렉터리 옆에 위치하고 이름에 `_` 접두사를 붙이지 않아야 합니다. Middleware 파일 확장자는 `.ts` 또는 `.js` 중 하나를 사용할 수 있습니다.
@@ -75,11 +67,11 @@ middleware.ts
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
-     
+
     export function middleware(request: NextRequest) {
       return NextResponse.rewrite(new URL('/about-2', request.url))
     }
-     
+
     // Supports both a single string value or an array of matchers
     export const config = {
       matcher: ['/about/:path*', '/dashboard/:path*'],
@@ -108,12 +100,12 @@ config 옵션은 모든 요청마다 호출되지 않으므로 권장되지만, 
 middleware.ts
 [code]
     import type { NextRequest } from 'next/server'
-     
+
     export function middleware(request: NextRequest) {
       if (request.nextUrl.pathname.startsWith('/about')) {
         // This logic is only applied to /about
       }
-     
+
       if (request.nextUrl.pathname.startsWith('/dashboard')) {
         // This logic is only applied to /dashboard
       }
@@ -128,14 +120,12 @@ middleware.ts
   * Middleware가 본문으로 응답하면 런타임 오류가 발생합니다.
   * 응답을 처리하는 페이지/API로 `rewrite`/`redirect`를 사용하도록 마이그레이션하세요.
 
-
-
 ### 설명[](https://nextjs.org/docs/messages/middleware-upgrade-guide#explanation-1)
 
 클라이언트 및 서버 내비게이션의 차이를 존중하고, 개발자가 보안에 취약한 Middleware를 만들지 않도록 하기 위해 Middleware에서 응답 본문을 전송하는 기능을 제거했습니다. 이제 Middleware는 `rewrite`, `redirect` 또는 들어오는 요청 수정(예: [쿠키 설정](https://nextjs.org/docs/messages/middleware-upgrade-guide#cookies-api-revamped))에만 사용됩니다.
 
 다음 패턴은 더 이상 동작하지 않습니다.
-[code] 
+[code]
     new Response('a text value')
     new Response(streamOrBuffer)
     new Response(JSON.stringify(obj), { headers: 'application/json' })
@@ -153,13 +143,13 @@ pages/_middleware.ts
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
     import { isAuthValid } from './lib/auth'
-     
+
     export function middleware(request: NextRequest) {
       // Example function to validate auth
       if (isAuthValid(request)) {
         return NextResponse.next()
       }
-     
+
       return NextResponse.json({ message: 'Auth required' }, { status: 401 })
     }
 [/code]
@@ -171,16 +161,16 @@ middleware.ts
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
     import { isAuthValid } from './lib/auth'
-     
+
     export function middleware(request: NextRequest) {
       // Example function to validate auth
       if (isAuthValid(request)) {
         return NextResponse.next()
       }
-     
+
       const loginUrl = new URL('/login', request.url)
       loginUrl.searchParams.set('from', request.nextUrl.pathname)
-     
+
       return NextResponse.redirect(loginUrl)
     }
 [/code]
@@ -192,11 +182,11 @@ middleware.ts
 pages/api/proxy.ts
 [code]
     import { type NextRequest } from 'next/server'
-     
+
     export const config = {
       runtime: 'edge',
     }
-     
+
     export default async function handler(req: NextRequest) {
       const authorization = req.cookies.get('authorization')
       return fetch('https://backend-api.com/api/protected', {
@@ -213,12 +203,12 @@ pages/api/proxy.ts
 
 ### 변경 사항 요약[](https://nextjs.org/docs/messages/middleware-upgrade-guide#summary-of-changes-2)
 
-추가됨|제거됨  
----|---  
-`cookies.set`|`cookie`  
-`cookies.delete`|`clearCookie`  
-`cookies.getWithOptions`|`cookies`  
-  
+추가됨|제거됨
+---|---
+`cookies.set`|`cookie`
+`cookies.delete`|`clearCookie`
+`cookies.getWithOptions`|`cookies`
+
 ### 설명[](https://nextjs.org/docs/messages/middleware-upgrade-guide#explanation-2)
 
 베타 피드백을 바탕으로 `NextRequest`와 `NextResponse`의 Cookies API를 `get`/`set` 모델에 가깝게 변경했습니다. `Cookies` API는 Map을 확장하며 [entries](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map/entries), [values](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map/entries) 같은 메서드를 포함합니다.
@@ -231,8 +221,6 @@ pages/api/proxy.ts
   * `cookies.set`
   * `cookies.getWithOptions`
 
-
-
 이외에도 `Map`에서 확장된 다른 메서드를 제공합니다.
 
 #### 이전[](https://nextjs.org/docs/messages/middleware-upgrade-guide#before-1)
@@ -241,7 +229,7 @@ pages/_middleware.ts
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
-     
+
     export function middleware(request: NextRequest) {
       // create an instance of the class to access the public methods. This uses `next()`,
       // you could use `redirect()` or `rewrite()` as well
@@ -260,7 +248,7 @@ pages/_middleware.ts
       })
       // clear the `cookie`
       response.clearCookie('hello')
-     
+
       return response
     }
 [/code]
@@ -271,21 +259,21 @@ middleware.ts
 [code]
     export function middleware() {
       const response = new NextResponse()
-     
+
       // set a cookie
       response.cookies.set('vercel', 'fast')
-     
+
       // set another cookie with options
       response.cookies.set('nextjs', 'awesome', { path: '/test' })
-     
+
       // get all the details of a cookie
       const { value, ...options } = response.cookies.getWithOptions('vercel')
       console.log(value) // => 'fast'
       console.log(options) // => { name: 'vercel', Path: '/test' }
-     
+
       // deleting a cookie will mark it as expired
       response.cookies.delete('vercel')
-     
+
       return response
     }
 [/code]
@@ -296,8 +284,6 @@ middleware.ts
 
   * 요청 객체에서 user agent에 접근할 수 없습니다.
   * Middleware 크기를 `17kb` 줄이기 위해 새로운 `userAgent` 헬퍼를 추가했습니다.
-
-
 
 ### 설명[](https://nextjs.org/docs/messages/middleware-upgrade-guide#explanation-3)
 
@@ -310,14 +296,12 @@ Middleware 크기를 줄이기 위해 요청 객체에서 user agent를 분리�
   * `next/server`에서 `userAgent` 헬퍼를 import합니다.
   * 필요한 속성을 구조 분해 할당하여 사용합니다.
 
-
-
 #### 이전[](https://nextjs.org/docs/messages/middleware-upgrade-guide#before-2)
 
 pages/_middleware.ts
 [code]
     import { NextRequest, NextResponse } from 'next/server'
-     
+
     export function middleware(request: NextRequest) {
       const url = request.nextUrl
       const viewport = request.ua.device.type === 'mobile' ? 'mobile' : 'desktop'
@@ -331,7 +315,7 @@ pages/_middleware.ts
 middleware.ts
 [code]
     import { NextRequest, NextResponse, userAgent } from 'next/server'
-     
+
     export function middleware(request: NextRequest) {
       const url = request.nextUrl
       const { device } = userAgent(request)
@@ -346,8 +330,6 @@ middleware.ts
 ### 변경 사항 요약[](https://nextjs.org/docs/messages/middleware-upgrade-guide#summary-of-changes-4)
 
   * 특정 페이지 매치에서 Middleware가 호출되었는지 확인하려면 [`URLPattern`](https://developer.mozilla.org/docs/Web/API/URLPattern)을 사용하세요.
-
-
 
 ### 설명[](https://nextjs.org/docs/messages/middleware-upgrade-guide#explanation-4)
 
@@ -365,11 +347,11 @@ pages/_middleware.ts
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest, NextFetchEvent } from 'next/server'
-     
+
     export function middleware(request: NextRequest, event: NextFetchEvent) {
       const { params } = event.request.page
       const { locale, slug } = params
-     
+
       if (locale && slug) {
         const { search, protocol, host } = request.nextUrl
         const url = new URL(`${protocol}//${locale}.${host}/${slug}${search}`)
@@ -384,18 +366,18 @@ middleware.ts
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
-     
+
     const PATTERNS = [
       [
         new URLPattern({ pathname: '/:locale/:slug' }),
         ({ pathname }) => pathname.groups,
       ],
     ]
-     
+
     const params = (url) => {
       const input = url.split('?')[0]
       let result = {}
-     
+
       for (const [pattern, handler] of PATTERNS) {
         const patternResult = pattern.exec(input)
         if (patternResult !== null && 'pathname' in patternResult) {
@@ -405,10 +387,10 @@ middleware.ts
       }
       return result
     }
-     
+
     export function middleware(request: NextRequest) {
       const { locale, slug } = params(request.url)
-     
+
       if (locale && slug) {
         const { search, protocol, host } = request.nextUrl
         const url = new URL(`${protocol}//${locale}.${host}/${slug}${search}`)
@@ -423,8 +405,6 @@ middleware.ts
 
   * `_next`를 포함한 **모든** 요청에 대해 Middleware가 실행됩니다.
 
-
-
 ### 설명[](https://nextjs.org/docs/messages/middleware-upgrade-guide#explanation-5)
 
 Next.js `v12.2` 이전에는 `_next` 요청에 대해 Middleware가 실행되지 않았습니다.
@@ -432,10 +412,6 @@ Next.js `v12.2` 이전에는 `_next` 요청에 대해 Middleware가 실행되지
 Middleware를 권한 부여에 사용하는 경우, 권한 오류 페이지나 로그인 폼 또는 API Route로 `rewrite`/`redirect`하도록 마이그레이션해야 합니다.
 
 마이그레이션 예시는 [응답 본문 없음](https://nextjs.org/docs/messages/middleware-upgrade-guide#no-response-body)을 참고하세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기
 
@@ -455,7 +431,7 @@ Middleware를 권한 부여에 사용하는 경우, 권한 오류 페이지나 �
       })
       // clear the `cookie`
       response.clearCookie('hello')
-     
+
       return response
     }
 [/code]
@@ -466,21 +442,21 @@ middleware.ts
 [code]
     export function middleware() {
       const response = new NextResponse()
-     
+
       // set a cookie
       response.cookies.set('vercel', 'fast')
-     
+
       // set another cookie with options
       response.cookies.set('nextjs', 'awesome', { path: '/test' })
-     
+
       // get all the details of a cookie
       const { value, ...options } = response.cookies.getWithOptions('vercel')
       console.log(value) // => 'fast'
       console.log(options) // => { name: 'vercel', Path: '/test' }
-     
+
       // deleting a cookie will mark it as expired
       response.cookies.delete('vercel')
-     
+
       return response
     }
 [/code]
@@ -491,8 +467,6 @@ middleware.ts
 
   * 요청 객체에서 사용자 에이전트에 접근할 수 없습니다
   * `userAgent` 헬퍼를 추가하여 Middleware 크기를 `17kb` 줄였습니다
-
-
 
 ### 설명[](https://nextjs.org/docs/messages/middleware-upgrade-guide#explanation-3)
 
@@ -505,14 +479,12 @@ Middleware 크기를 줄이기 위해 요청 객체에서 사용자 에이전트
   * `next/server`에서 `userAgent` 헬퍼를 임포트합니다
   * 작업에 필요한 속성을 구조 분해 할당합니다
 
-
-
 #### 이전[](https://nextjs.org/docs/messages/middleware-upgrade-guide#before-2)
 
 pages/_middleware.ts
 [code]
     import { NextRequest, NextResponse } from 'next/server'
-     
+
     export function middleware(request: NextRequest) {
       const url = request.nextUrl
       const viewport = request.ua.device.type === 'mobile' ? 'mobile' : 'desktop'
@@ -526,7 +498,7 @@ pages/_middleware.ts
 middleware.ts
 [code]
     import { NextRequest, NextResponse, userAgent } from 'next/server'
-     
+
     export function middleware(request: NextRequest) {
       const url = request.nextUrl
       const { device } = userAgent(request)
@@ -541,8 +513,6 @@ middleware.ts
 ### 변경 사항 요약[](https://nextjs.org/docs/messages/middleware-upgrade-guide#summary-of-changes-4)
 
   * 특정 페이지 매치를 위한 Middleware 호출 여부를 확인하려면 [`URLPattern`](https://developer.mozilla.org/docs/Web/API/URLPattern)을 사용합니다
-
-
 
 ### 설명[](https://nextjs.org/docs/messages/middleware-upgrade-guide#explanation-4)
 
@@ -560,11 +530,11 @@ pages/_middleware.ts
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest, NextFetchEvent } from 'next/server'
-     
+
     export function middleware(request: NextRequest, event: NextFetchEvent) {
       const { params } = event.request.page
       const { locale, slug } = params
-     
+
       if (locale && slug) {
         const { search, protocol, host } = request.nextUrl
         const url = new URL(`${protocol}//${locale}.${host}/${slug}${search}`)
@@ -579,18 +549,18 @@ middleware.ts
 [code]
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
-     
+
     const PATTERNS = [
       [
         new URLPattern({ pathname: '/:locale/:slug' }),
         ({ pathname }) => pathname.groups,
       ],
     ]
-     
+
     const params = (url) => {
       const input = url.split('?')[0]
       let result = {}
-     
+
       for (const [pattern, handler] of PATTERNS) {
         const patternResult = pattern.exec(input)
         if (patternResult !== null && 'pathname' in patternResult) {
@@ -600,10 +570,10 @@ middleware.ts
       }
       return result
     }
-     
+
     export function middleware(request: NextRequest) {
       const { locale, slug } = params(request.url)
-     
+
       if (locale && slug) {
         const { search, protocol, host } = request.nextUrl
         const url = new URL(`${protocol}//${locale}.${host}/${slug}${search}`)
@@ -618,8 +588,6 @@ middleware.ts
 
   * Middleware는 `_next`를 포함한 모든 요청에 대해 실행됩니다
 
-
-
 ### 설명[](https://nextjs.org/docs/messages/middleware-upgrade-guide#explanation-5)
 
 Next.js `v12.2` 이전에는 `_next` 요청에 대해 Middleware가 실행되지 않았습니다.
@@ -627,9 +595,5 @@ Next.js `v12.2` 이전에는 `_next` 요청에 대해 Middleware가 실행되지
 Middleware를 인증 용도로 사용하는 경우, 권한 오류를 보여주는 페이지, 로그인 폼, 또는 API Route로 `rewrite`/`redirect`를 사용하도록 마이그레이션해야 합니다.
 
 `rewrite`/`redirect`로 마이그레이션하는 예시는 [No Response Body](https://nextjs.org/docs/messages/middleware-upgrade-guide#no-response-body)를 참조하세요.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

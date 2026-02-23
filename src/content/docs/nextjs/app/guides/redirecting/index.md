@@ -7,23 +7,19 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/redirecting'
 
 원본 URL: https://nextjs.org/docs/app/guides/redirecting
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Redirecting
-
-페이지 복사
-
 # Next.js에서 리디렉트를 처리하는 방법
 
 최종 업데이트 2026년 2월 20일
 
 Next.js에서 리디렉트를 처리하는 방법은 여러 가지가 있습니다. 이 페이지에서는 사용 가능한 각 옵션, 사용 사례, 그리고 대량의 리디렉트를 관리하는 방법을 다룹니다.
 
-API| 목적| 사용 위치| 상태 코드  
----|---|---|---  
-[`redirect`](https://nextjs.org/docs/app/guides/redirecting#redirect-function)| 변경 작업이나 이벤트 이후 사용자 리디렉트| Server Components, Server Functions, Route Handlers| 307(임시) 또는 303(Server Action)  
-[`permanentRedirect`](https://nextjs.org/docs/app/guides/redirecting#permanentredirect-function)| 변경 작업이나 이벤트 이후 사용자 리디렉트| Server Components, Server Functions, Route Handlers| 308(영구)  
-[`useRouter`](https://nextjs.org/docs/app/guides/redirecting#userouter-hook)| 클라이언트 측 내비게이션 수행| Client Components의 이벤트 핸들러| 해당 없음  
-[`next.config.js`의 `redirects`](https://nextjs.org/docs/app/guides/redirecting#redirects-in-nextconfigjs)| 경로 기반으로 들어오는 요청 리디렉트| `next.config.js` 파일| 307(임시) 또는 308(영구)  
-[`NextResponse.redirect`](https://nextjs.org/docs/app/guides/redirecting#nextresponseredirect-in-proxy)| 조건 기반으로 들어오는 요청 리디렉트| Proxy| 임의  
+API| 목적| 사용 위치| 상태 코드
+---|---|---|---
+[`redirect`](https://nextjs.org/docs/app/guides/redirecting#redirect-function)| 변경 작업이나 이벤트 이후 사용자 리디렉트| Server Components, Server Functions, Route Handlers| 307(임시) 또는 303(Server Action)
+[`permanentRedirect`](https://nextjs.org/docs/app/guides/redirecting#permanentredirect-function)| 변경 작업이나 이벤트 이후 사용자 리디렉트| Server Components, Server Functions, Route Handlers| 308(영구)
+[`useRouter`](https://nextjs.org/docs/app/guides/redirecting#userouter-hook)| 클라이언트 측 내비게이션 수행| Client Components의 이벤트 핸들러| 해당 없음
+[`next.config.js`의 `redirects`](https://nextjs.org/docs/app/guides/redirecting#redirects-in-nextconfigjs)| 경로 기반으로 들어오는 요청 리디렉트| `next.config.js` 파일| 307(임시) 또는 308(영구)
+[`NextResponse.redirect`](https://nextjs.org/docs/app/guides/redirecting#nextresponseredirect-in-proxy)| 조건 기반으로 들어오는 요청 리디렉트| Proxy| 임의
 
 ## `redirect` 함수[](https://nextjs.org/docs/app/guides/redirecting#redirect-function)
 
@@ -36,30 +32,30 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { redirect } from 'next/navigation'
     import { revalidatePath } from 'next/cache'
-     
+
     export async function createPost(id: string) {
       try {
         // Call database
       } catch (error) {
         // Handle errors
       }
-     
+
       revalidatePath('/posts') // Update cached posts
       redirect(`/post/${id}`) // Navigate to the new post page
     }
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `redirect`는 기본적으로 307(Temporary Redirect) 상태 코드를 반환합니다. Server Action에서 사용하면 303(See Other)을 반환하며, 이는 POST 요청 결과로 성공 페이지로 리디렉트할 때 일반적으로 사용됩니다.
 >   * `redirect`는 오류를 던지므로 `try/catch`를 사용할 때는 `try` 블록 **밖에서** 호출해야 합니다.
 >   * `redirect`는 렌더링 과정 중인 Client Components에서 호출할 수 있지만 이벤트 핸들러에서는 불가능합니다. 대신 [`useRouter` 훅](https://nextjs.org/docs/app/guides/redirecting#userouter-hook)을 사용할 수 있습니다.
 >   * `redirect`는 절대 URL도 허용하므로 외부 링크로 리디렉트할 때 사용할 수 있습니다.
 >   * 렌더링 전에 리디렉트하려면 [`next.config.js`](https://nextjs.org/docs/app/guides/redirecting#redirects-in-nextconfigjs) 또는 [Proxy](https://nextjs.org/docs/app/guides/redirecting#nextresponseredirect-in-proxy)를 사용하세요.
-> 
+>
 
 자세한 내용은 [`redirect` API 레퍼런스](https://nextjs.org/docs/app/api-reference/functions/redirect)를 참고하세요.
 
@@ -74,28 +70,28 @@ app/actions.ts
 JavaScriptTypeScript
 [code]
     'use server'
-     
+
     import { permanentRedirect } from 'next/navigation'
     import { revalidateTag } from 'next/cache'
-     
+
     export async function updateUsername(username: string, formData: FormData) {
       try {
         // Call database
       } catch (error) {
         // Handle errors
       }
-     
+
       revalidateTag('username') // Update all references to the username
       permanentRedirect(`/profile/${username}`) // Navigate to the new user profile
     }
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `permanentRedirect`는 기본적으로 308(영구 리디렉트) 상태 코드를 반환합니다.
 >   * `permanentRedirect`도 절대 URL을 허용하므로 외부 링크로 리디렉트할 때 사용할 수 있습니다.
 >   * 렌더링 전에 리디렉트하려면 [`next.config.js`](https://nextjs.org/docs/app/guides/redirecting#redirects-in-nextconfigjs) 또는 [Proxy](https://nextjs.org/docs/app/guides/redirecting#nextresponseredirect-in-proxy)를 사용하세요.
-> 
+>
 
 자세한 내용은 [`permanentRedirect` API 레퍼런스](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect)를 참고하세요.
 
@@ -108,12 +104,12 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useRouter } from 'next/navigation'
-     
+
     export default function Page() {
       const router = useRouter()
-     
+
       return (
         <button type="button" onClick={() => router.push('/dashboard')}>
           Dashboard
@@ -123,9 +119,9 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 사용자를 프로그래밍적으로 내비게이션할 필요가 없다면 [`<Link>`](https://nextjs.org/docs/app/api-reference/components/link) 컴포넌트를 사용해야 합니다.
-> 
+>
 
 자세한 내용은 [`useRouter` API 레퍼런스](https://nextjs.org/docs/app/api-reference/functions/use-router)를 참고하세요.
 
@@ -142,7 +138,7 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       async redirects() {
         return [
@@ -161,18 +157,18 @@ JavaScriptTypeScript
         ]
       },
     }
-     
+
     export default nextConfig
 [/code]
 
 자세한 내용은 [`redirects` API 레퍼런스](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects)를 참고하세요.
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `redirects`는 `permanent` 옵션을 통해 307(임시 리디렉트) 또는 308(영구 리디렉트) 상태 코드를 반환할 수 있습니다.
 >   * `redirects`에는 플랫폼별 제한이 있을 수 있습니다. 예를 들어 Vercel에서는 1,024개의 리디렉트 제한이 있습니다. 1000개 이상의 대량 리디렉트를 관리하려면 [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)를 사용한 맞춤 솔루션을 고려하세요. 자세한 내용은 [대규모 리디렉트 관리](https://nextjs.org/docs/app/guides/redirecting#managing-redirects-at-scale-advanced)를 확인하세요.
 >   * `redirects`는 Proxy보다 **먼저** 실행됩니다.
-> 
+>
 
 ## Proxy에서의 `NextResponse.redirect`[](https://nextjs.org/docs/app/guides/redirecting#nextresponseredirect-in-proxy)
 
@@ -186,28 +182,28 @@ JavaScriptTypeScript
 [code]
     import { NextResponse, NextRequest } from 'next/server'
     import { authenticate } from 'auth-provider'
-     
+
     export function proxy(request: NextRequest) {
       const isAuthenticated = authenticate(request)
-     
+
       // If the user is authenticated, continue as normal
       if (isAuthenticated) {
         return NextResponse.next()
       }
-     
+
       // Redirect to login page if not authenticated
       return NextResponse.redirect(new URL('/login', request.url))
     }
-     
+
     export const config = {
       matcher: '/dashboard/:path*',
     }
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * Proxy는 `next.config.js`의 `redirects` **이후**, 렌더링 **이전**에 실행됩니다.
-> 
+>
 
 자세한 내용은 [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy) 문서를 참고하세요.
 
@@ -220,8 +216,6 @@ JavaScriptTypeScript
   1. 리디렉트 맵 생성 및 저장.
   2. 데이터 조회 성능 최적화.
 
-
-
 > **Next.js 예제** : 아래 권장 사항을 구현한 [Bloom 필터를 사용하는 Proxy](https://redirects-bloom-filter.vercel.app/) 예제를 확인하세요.
 
 ### 1\. 리디렉트 맵 생성 및 저장[](https://nextjs.org/docs/app/guides/redirecting#1-creating-and-storing-a-redirect-map)
@@ -229,7 +223,7 @@ JavaScriptTypeScript
 리디렉트 맵은 데이터베이스(주로 키-값 저장소)나 JSON 파일에 저장할 수 있는 리디렉트 목록입니다.
 
 다음과 같은 데이터 구조를 고려해 보세요:
-[code] 
+[code]
     {
       "/old": {
         "destination": "/new",
@@ -250,22 +244,22 @@ JavaScriptTypeScript
 [code]
     import { NextResponse, NextRequest } from 'next/server'
     import { get } from '@vercel/edge-config'
-     
+
     type RedirectEntry = {
       destination: string
       permanent: boolean
     }
-     
+
     export async function proxy(request: NextRequest) {
       const pathname = request.nextUrl.pathname
       const redirectData = await get(pathname)
-     
+
       if (redirectData && typeof redirectData === 'string') {
         const redirectEntry: RedirectEntry = JSON.parse(redirectData)
         const statusCode = redirectEntry.permanent ? 308 : 307
         return NextResponse.redirect(redirectEntry.destination, statusCode)
       }
-     
+
       // No redirect found, continue without redirecting
       return NextResponse.next()
     }
@@ -289,19 +283,19 @@ JavaScriptTypeScript
     import { NextResponse, NextRequest } from 'next/server'
     import { ScalableBloomFilter } from 'bloom-filters'
     import GeneratedBloomFilter from './redirects/bloom-filter.json'
-     
+
     type RedirectEntry = {
       destination: string
       permanent: boolean
     }
-     
+
     // Initialize bloom filter from a generated JSON file
     const bloomFilter = ScalableBloomFilter.fromJSON(GeneratedBloomFilter as any)
-     
+
     export async function proxy(request: NextRequest) {
       // Get the path for the incoming request
       const pathname = request.nextUrl.pathname
-     
+
       // Check if the path is in the bloom filter
       if (bloomFilter.has(pathname)) {
         // Forward the pathname to the Route Handler
@@ -309,19 +303,19 @@ JavaScriptTypeScript
           `/api/redirects?pathname=${encodeURIComponent(request.nextUrl.pathname)}`,
           request.nextUrl.origin
         )
-     
+
         try {
           // Fetch redirect data from the Route Handler
           const redirectData = await fetch(api)
-     
+
           if (redirectData.ok) {
             const redirectEntry: RedirectEntry | undefined =
               await redirectData.json()
-     
+
             if (redirectEntry) {
               // Determine the status code
               const statusCode = redirectEntry.permanent ? 308 : 307
-     
+
               // Redirect to the destination
               return NextResponse.redirect(redirectEntry.destination, statusCode)
             }
@@ -330,7 +324,7 @@ JavaScriptTypeScript
           console.error(error)
         }
       }
-     
+
       // No redirect found, continue the request without redirecting
       return NextResponse.next()
     }
@@ -344,44 +338,47 @@ JavaScriptTypeScript
 [code]
     import { NextRequest, NextResponse } from 'next/server'
     import redirects from '@/app/redirects/redirects.json'
-     
+
     type RedirectEntry = {
       destination: string
       permanent: boolean
     }
-     
+
     export function GET(request: NextRequest) {
       const pathname = request.nextUrl.searchParams.get('pathname')
       if (!pathname) {
         return new Response('Bad Request', { status: 400 })
       }
-     
+
       // Get the redirect entry from the redirects.json file
       const redirect = (redirects as Record<string, RedirectEntry>)[pathname]
-     
+
       // Account for bloom filter false positives
       if (!redirect) {
         return new Response('No redirect', { status: 400 })
       }
-     
+
       // Return the redirect entry
       return NextResponse.json(redirect)
     }
 [/code]
 
 > **알아두면 좋은 점:**
-> 
+>
 >   * bloom filter를 생성하려면 [`bloom-filters`](https://www.npmjs.com/package/bloom-filters)와 같은 라이브러리를 사용할 수 있습니다.
 >   * 악의적인 요청을 막기 위해 Route Handler로 들어오는 요청을 반드시 검증하세요.
-> 
-
+>
 
 ##
 
-### [redirect 함수에 대한 API Reference.](https://nextjs.org/docs/app/api-reference/functions/redirect)### [permanentRedirect 함수에 대한 API Reference.](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect)### [proxy.js 파일에 대한 API reference.](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)### [redirects Next.js 앱에 리디렉션 추가.](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects)
+- [redirect](https://nextjs.org/docs/app/api-reference/functions/redirect)
+  - 함수에 대한 API Reference.
 
-도움이 되었나요?
+- [permanentRedirect](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect)
+  - 함수에 대한 API Reference.
 
-지원됨.
+- [proxy.js](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)
+  - 파일에 대한 API reference.
 
-전송
+- [redirects](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects)
+  - Next.js 앱에 리디렉션 추가.

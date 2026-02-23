@@ -1,141 +1,163 @@
 ---
-title: 'CLI: create-next-app'
+title: 'create-next-app'
 description: 'The  CLI allow you to create a new Next.js application using the default template or an example from a public GitHub repository. It is the easiest way...'
 ---
 
-# CLI: create-next-app | Next.js
-
 Source URL: https://nextjs.org/docs/app/api-reference/cli/create-next-app
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[CLI](https://nextjs.org/docs/app/api-reference/cli)create-next-app
-
-Copy page
-
 # create-next-app
-
-Last updated February 20, 2026
 
 The `create-next-app` CLI allow you to create a new Next.js application using the default template or an [example](https://github.com/vercel/next.js/tree/canary/examples) from a public GitHub repository. It is the easiest way to get started with Next.js.
 
 Basic usage:
 
-pnpmnpmyarnbun
+```bash package="pnpm"
+pnpm create next-app [project-name] [options]
+```
 
-Terminal
-[code]
-    pnpm create next-app [project-name] [options]
-[/code]
+```bash package="npm"
+npx create-next-app@latest [project-name] [options]
+```
 
-## Reference[](https://nextjs.org/docs/app/api-reference/cli/create-next-app#reference)
+```bash package="yarn"
+yarn create next-app [project-name] [options]
+```
+
+```bash package="bun"
+bun create next-app [project-name] [options]
+```
+
+## Reference
 
 The following options are available:
 
-Options| Description  
----|---  
-`-h` or `--help`| Show all available options  
-`-v` or `--version`| Output the version number  
-`--no-*`| Negate default options. E.g. `--no-ts`  
-`--ts` or `--typescript`| Initialize as a TypeScript project (default)  
-`--js` or `--javascript`| Initialize as a JavaScript project  
-`--tailwind`| Initialize with Tailwind CSS config (default)  
-`--react-compiler`| Initialize with React Compiler enabled  
-`--eslint`| Initialize with ESLint config  
-`--biome`| Initialize with Biome config  
-`--no-linter`| Skip linter configuration  
-`--app`| Initialize as an App Router project  
-`--api`| Initialize a project with only route handlers  
-`--src-dir`| Initialize inside a `src/` directory  
-`--turbopack`| Force enable Turbopack in generated package.json (enabled by default)  
-`--webpack`| Force enable Webpack in generated package.json  
-`--import-alias <alias-to-configure>`| Specify import alias to use (default "@/*")  
-`--empty`| Initialize an empty project  
-`--use-npm`| Explicitly tell the CLI to bootstrap the application using npm  
-`--use-pnpm`| Explicitly tell the CLI to bootstrap the application using pnpm  
-`--use-yarn`| Explicitly tell the CLI to bootstrap the application using Yarn  
-`--use-bun`| Explicitly tell the CLI to bootstrap the application using Bun  
-`-e` or `--example [name] [github-url]`| An example to bootstrap the app with  
-`--example-path <path-to-example>`| Specify the path to the example separately  
-`--reset-preferences`| Explicitly tell the CLI to reset any stored preferences  
-`--skip-install`| Explicitly tell the CLI to skip installing packages  
-`--disable-git`| Explicitly tell the CLI to disable git initialization  
-`--yes`| Use previous preferences or defaults for all options  
-  
-## Examples[](https://nextjs.org/docs/app/api-reference/cli/create-next-app#examples)
+| Options                                 | Description                                                           |
+| --------------------------------------- | --------------------------------------------------------------------- |
+| `-h` or `--help`                        | Show all available options                                            |
+| `-v` or `--version`                     | Output the version number                                             |
+| `--no-*`                                | Negate default options. E.g. `--no-ts`                                |
+| `--ts` or `--typescript`                | Initialize as a TypeScript project (default)                          |
+| `--js` or `--javascript`                | Initialize as a JavaScript project                                    |
+| `--tailwind`                            | Initialize with Tailwind CSS config (default)                         |
+| `--react-compiler`                      | Initialize with React Compiler enabled                                |
+| `--eslint`                              | Initialize with ESLint config                                         |
+| `--biome`                               | Initialize with Biome config                                          |
+| `--no-linter`                           | Skip linter configuration                                             |
+| `--app`                                 | Initialize as an App Router project                                   |
+| `--api`                                 | Initialize a project with only route handlers                         |
+| `--src-dir`                             | Initialize inside a `src/` directory                                  |
+| `--turbopack`                           | Force enable Turbopack in generated package.json (enabled by default) |
+| `--webpack`                             | Force enable Webpack in generated package.json                        |
+| `--import-alias <alias-to-configure>`   | Specify import alias to use (default "@/\*")                          |
+| `--empty`                               | Initialize an empty project                                           |
+| `--use-npm`                             | Explicitly tell the CLI to bootstrap the application using npm        |
+| `--use-pnpm`                            | Explicitly tell the CLI to bootstrap the application using pnpm       |
+| `--use-yarn`                            | Explicitly tell the CLI to bootstrap the application using Yarn       |
+| `--use-bun`                             | Explicitly tell the CLI to bootstrap the application using Bun        |
+| `-e` or `--example [name] [github-url]` | An example to bootstrap the app with                                  |
+| `--example-path <path-to-example>`      | Specify the path to the example separately                            |
+| `--reset-preferences`                   | Explicitly tell the CLI to reset any stored preferences               |
+| `--skip-install`                        | Explicitly tell the CLI to skip installing packages                   |
+| `--disable-git`                         | Explicitly tell the CLI to disable git initialization                 |
+| `--yes`                                 | Use previous preferences or defaults for all options                  |
 
-### With the default template[](https://nextjs.org/docs/app/api-reference/cli/create-next-app#with-the-default-template)
+## Examples
+
+### With the default template
 
 To create a new app using the default template, run the following command in your terminal:
 
-pnpmnpmyarnbun
+```bash package="pnpm"
+pnpm create next-app
+```
 
-Terminal
-[code]
-    pnpm create next-app
-[/code]
+```bash package="npm"
+npx create-next-app@latest
+```
+
+```bash package="yarn"
+yarn create next-app
+```
+
+```bash package="bun"
+bun create next-app
+```
 
 On installation, you'll see the following prompts:
 
-Terminal
-[code]
-    What is your project named? my-app
-    Would you like to use the recommended Next.js defaults?
-        Yes, use recommended defaults - TypeScript, ESLint, Tailwind CSS, App Router, Turbopack
-        No, reuse previous settings
-        No, customize settings - Choose your own preferences
-[/code]
+```txt filename="Terminal"
+What is your project named? my-app
+Would you like to use the recommended Next.js defaults?
+    Yes, use recommended defaults - TypeScript, ESLint, Tailwind CSS, App Router, Turbopack
+    No, reuse previous settings
+    No, customize settings - Choose your own preferences
+```
 
 If you choose to `customize settings`, you'll see the following prompts:
 
-Terminal
-[code]
-    Would you like to use TypeScript? No / Yes
-    Which linter would you like to use? ESLint / Biome / None
-    Would you like to use React Compiler? No / Yes
-    Would you like to use Tailwind CSS? No / Yes
-    Would you like your code inside a `src/` directory? No / Yes
-    Would you like to use App Router? (recommended) No / Yes
-    Would you like to customize the import alias (`@/*` by default)? No / Yes
-    What import alias would you like configured? @/*
-[/code]
+```txt filename="Terminal"
+Would you like to use TypeScript? No / Yes
+Which linter would you like to use? ESLint / Biome / None
+Would you like to use React Compiler? No / Yes
+Would you like to use Tailwind CSS? No / Yes
+Would you like your code inside a `src/` directory? No / Yes
+Would you like to use App Router? (recommended) No / Yes
+Would you like to customize the import alias (`@/*` by default)? No / Yes
+What import alias would you like configured? @/*
+```
 
 After the prompts, `create-next-app` will create a folder with your project name and install the required dependencies.
 
-### Linter Options[](https://nextjs.org/docs/app/api-reference/cli/create-next-app#linter-options)
+### Linter Options
 
-**ESLint** : The traditional and most popular JavaScript linter. Includes Next.js-specific rules from `@next/eslint-plugin-next`.
+**ESLint**: The traditional and most popular JavaScript linter. Includes Next.js-specific rules from `@next/eslint-plugin-next`.
 
-**Biome** : A fast, modern linter and formatter that combines the functionality of ESLint and Prettier. Includes built-in Next.js and React domain support for optimal performance.
+**Biome**: A fast, modern linter and formatter that combines the functionality of ESLint and Prettier. Includes built-in Next.js and React domain support for optimal performance.
 
-**None** : Skip linter configuration entirely. You can always add a linter later.
+**None**: Skip linter configuration entirely. You can always add a linter later.
 
 Once you've answered the prompts, a new project will be created with your chosen configuration.
 
-### With an official Next.js example[](https://nextjs.org/docs/app/api-reference/cli/create-next-app#with-an-official-nextjs-example)
+### With an official Next.js example
 
 To create a new app using an official Next.js example, use the `--example` flag. For example:
 
-pnpmnpmyarnbun
+```bash package="pnpm"
+pnpm create next-app --example [example-name] [your-project-name]
+```
 
-Terminal
-[code]
-    pnpm create next-app --example [example-name] [your-project-name]
-[/code]
+```bash package="npm"
+npx create-next-app@latest --example [example-name] [your-project-name]
+```
+
+```bash package="yarn"
+yarn create next-app --example [example-name] [your-project-name]
+```
+
+```bash package="bun"
+bun create next-app --example [example-name] [your-project-name]
+```
 
 You can view a list of all available examples along with setup instructions in the [Next.js repository](https://github.com/vercel/next.js/tree/canary/examples).
 
-### With any public GitHub example[](https://nextjs.org/docs/app/api-reference/cli/create-next-app#with-any-public-github-example)
+### With any public GitHub example
 
 To create a new app using any public GitHub example, use the `--example` option with the GitHub repo's URL. For example:
 
-pnpmnpmyarnbun
+```bash package="pnpm"
+pnpm create next-app --example "https://github.com/.../" [your-project-name]
+```
 
-Terminal
-[code]
-    pnpm create next-app --example "https://github.com/.../" [your-project-name]
-[/code]
+```bash package="npm"
+npx create-next-app@latest --example "https://github.com/.../" [your-project-name]
+```
 
-Was this helpful?
+```bash package="yarn"
+yarn create next-app --example "https://github.com/.../" [your-project-name]
+```
 
-supported.
+```bash package="bun"
+bun create next-app --example "https://github.com/.../" [your-project-name]
+```
+---
 
-Send

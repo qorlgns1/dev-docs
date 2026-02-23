@@ -7,10 +7,6 @@ description: 'Next.js가 사용하는 기본 페이지 확장자(, , , )를 확�
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions
 
-[Configuration](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)pageExtensions
-
-페이지 복사
-
 # pageExtensions
 
 마지막 업데이트 2026년 2월 20일
@@ -32,8 +28,6 @@ next.config.js
   * `pages/_app.js`
   * `pages/api/`
 
-
-
 예를 들어 `.ts` 페이지 확장자를 `.page.ts`로 재구성하면 `proxy.page.ts`, `instrumentation.page.ts`, `_app.page.ts`처럼 페이지 이름을 변경해야 합니다.
 
 ## `pages` 디렉터리에 페이지가 아닌 파일 포함하기[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions#including-non-page-files-in-the-pages-directory)
@@ -48,9 +42,3 @@ next.config.js
 [/code]
 
 그런 다음 페이지 파일 이름에 `.page`가 포함되도록 확장자를 바꾸세요(예: `MyPage.tsx`를 `MyPage.page.tsx`로 변경). 앞서 언급한 파일을 포함해 _모든_ Next.js 페이지의 이름을 변경했는지 확인하세요.
-
-도움이 되었나요?
-
-지원됨.
-
-전송

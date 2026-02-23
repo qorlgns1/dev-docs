@@ -7,8 +7,6 @@ description: '옵션을 사용하면 와  컴포넌트가 생성하는 모든  �
 
 Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/crossOrigin
 
-[Configuration](https://nextjs.org/docs/pages/api-reference/config)[next.config.js Options](https://nextjs.org/docs/pages/api-reference/config/next-config-js)crossOrigin
-
 Copy page
 
 # crossOrigin
@@ -28,8 +26,6 @@ next.config.js
 
   * `'anonymous'`: [`crossOrigin="anonymous"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin#anonymous) 속성을 추가합니다.
   * `'use-credentials'`: [`crossOrigin="use-credentials"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin#use-credentials) 속성을 추가합니다.
-
-
 
 Was this helpful?
 

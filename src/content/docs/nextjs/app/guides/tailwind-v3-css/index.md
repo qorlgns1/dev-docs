@@ -9,8 +9,6 @@ Source URL: https://nextjs.org/docs/app/guides/tailwind-v3-css
 
 [앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)Tailwind CSS v3
 
-페이지 복사
-
 # Next.js 애플리케이션에 Tailwind CSS v3를 설치하는 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -67,7 +65,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import './globals.css'
-     
+
     export default function RootLayout({
       children,
     }: {
@@ -97,9 +95,5 @@ JavaScriptTypeScript
 ## Turbopack과 함께 사용하기[](https://nextjs.org/docs/app/guides/tailwind-v3-css#usage-with-turbopack)
 
 Next.js 13.1부터 Tailwind CSS와 PostCSS는 [Turbopack](https://turbo.build/pack/docs/features/css#tailwind-css)에서 지원됩니다.
-
-도움이 되었나요?
-
-지원됨.
 
 보내기

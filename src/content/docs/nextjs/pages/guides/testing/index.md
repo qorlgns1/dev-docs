@@ -7,10 +7,6 @@ description: 'React와 Next.js에서는 목적과 사용 사례가 다른 여러
 
 출처 URL: https://nextjs.org/docs/pages/guides/testing
 
-[Pages Router](https://nextjs.org/docs/pages)[가이드](https://nextjs.org/docs/pages/guides)테스트
-
-페이지 복사
-
 # 테스트
 
 마지막 업데이트 2026년 2월 20일
@@ -25,16 +21,20 @@ React와 Next.js에서는 목적과 사용 사례가 다른 여러 종류의 테
   * **엔드 투 엔드(E2E) 테스트**는 브라우저처럼 실제 사용자 시나리오를 모사한 환경에서 사용자 플로우를 검증합니다. 이는 프로덕션과 유사한 환경에서 특정 작업(예: 가입 플로우)을 테스트한다는 뜻입니다.
   * **스냅샷 테스트(Snapshot Testing)**는 컴포넌트가 렌더링한 출력물을 캡처해 스냅샷 파일로 저장합니다. 테스트 실행 시 컴포넌트의 현재 렌더링 결과를 저장된 스냅샷과 비교하며, 스냅샷의 변경 사항은 예상치 못한 동작 변화를 나타내는 신호로 사용됩니다.
 
-
-
 ## 가이드[](https://nextjs.org/docs/pages/guides/testing#guides)
 
 아래 가이드를 통해 Next.js를 널리 사용되는 테스트 도구와 함께 설정하는 방법을 알아보세요.
 
-### [Cypress와 함께 Next.js를 설정해 엔드 투 엔드(E2E) 및 컴포넌트 테스트를 수행하는 방법을 알아보세요.](https://nextjs.org/docs/pages/guides/testing/cypress)### [Jest와 함께 Next.js를 설정해 단위 테스트를 수행하는 방법을 알아보세요.](https://nextjs.org/docs/pages/guides/testing/jest)### [Playwright와 함께 Next.js를 설정해 엔드 투 엔드(E2E) 및 통합 테스트를 수행하는 방법을 알아보세요.](https://nextjs.org/docs/pages/guides/testing/playwright)### [Vitest와 React Testing Library(두 가지 인기 있는 단위 테스트 라이브러리)로 Next.js를 설정하는 방법을 알아보세요.](https://nextjs.org/docs/pages/guides/testing/vitest)
+- [Cypress](https://nextjs.org/docs/pages/guides/testing/cypress)
+  - 와 함께 Next.js를 설정해 엔드 투 엔드(E2E) 및 컴포넌트 테스트를 수행하는 방법을 알아보세요.
 
-도움이 되었나요?
+- [Jest](https://nextjs.org/docs/pages/guides/testing/jest)
+  - 와 함께 Next.js를 설정해 단위 테스트를 수행하는 방법을 알아보세요.
 
-지원됨.
+- [Playwright](https://nextjs.org/docs/pages/guides/testing/playwright)
+  - 와 함께 Next.js를 설정해 엔드 투 엔드(E2E) 및 통합 테스트를 수행하는 방법을 알아보세요.
+
+- [Vitest](https://nextjs.org/docs/pages/guides/testing/vitest)
+  - 와 React Testing Library(두 가지 인기 있는 단위 테스트 라이브러리)로 Next.js를 설정하는 방법을 알아보세요.
 
 보내기

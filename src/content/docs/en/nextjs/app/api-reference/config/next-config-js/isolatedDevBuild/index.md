@@ -1,21 +1,13 @@
 ---
-title: 'next.config.js: isolatedDevBuild'
-description: "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on GitHub."
+title: 'isolatedDevBuild'
+description: '> This feature is currently experimental and subject to change, it is not recommended for production.'
 ---
-
-# next.config.js: isolatedDevBuild | Next.js
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/isolatedDevBuild
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)isolatedDevBuild
-
-Copy page
-
 # isolatedDevBuild
 
-This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
-
-Last updated February 20, 2026
+> This feature is currently experimental and subject to change, it is not recommended for production.
 
 The experimental `isolatedDevBuild` option separates development and production build outputs into different directories. When enabled, the development server (`next dev`) writes its output to `.next/dev` instead of `.next`, preventing conflicts when running `next dev` and `next build` concurrently.
 
@@ -23,33 +15,37 @@ This is especially helpful when automated tools (for example, AI agents) run `ne
 
 This feature is **enabled by default** to keep development and production outputs separate and prevent conflicts.
 
-## Configuration[](https://nextjs.org/docs/app/api-reference/config/next-config-js/isolatedDevBuild#configuration)
+## Configuration
 
 To opt out of this feature, set `isolatedDevBuild` to `false` in your configuration:
 
-next.config.ts
+```ts filename="next.config.ts" switcher
+import type { NextConfig } from 'next'
 
-JavaScriptTypeScript
-[code]
-    import type { NextConfig } from 'next'
-     
-    const nextConfig: NextConfig = {
-      experimental: {
-        isolatedDevBuild: false, // defaults to true
-      },
-    }
-     
-    export default nextConfig
-[/code]
+const nextConfig: NextConfig = {
+  experimental: {
+    isolatedDevBuild: false, // defaults to true
+  },
+}
 
-## Version History[](https://nextjs.org/docs/app/api-reference/config/next-config-js/isolatedDevBuild#version-history)
+export default nextConfig
+```
 
-Version| Changes  
----|---  
-`v16.0.0`| `experimental.isolatedDevBuild` is introduced.  
-  
-Was this helpful?
+```js filename="next.config.mjs" switcher
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    isolatedDevBuild: false, // defaults to true
+  },
+}
 
-supported.
+export default nextConfig
+```
 
-Send
+## Version History
+
+| Version   | Changes                                        |
+| --------- | ---------------------------------------------- |
+| `v16.0.0` | `experimental.isolatedDevBuild` is introduced. |
+---
+

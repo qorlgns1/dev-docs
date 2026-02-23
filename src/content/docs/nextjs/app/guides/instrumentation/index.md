@@ -6,10 +6,6 @@ description: 'Instrumentation은 애플리케이션에 모니터링과 로깅 �
 # 가이드: Instrumentation | Next.js
 출처 URL: https://nextjs.org/docs/app/guides/instrumentation
 
-[App Router](https://nextjs.org/docs/app)[Guides](https://nextjs.org/docs/app/guides)Instrumentation
-
-페이지 복사
-
 # Instrumentation 설정 방법
 
 마지막 업데이트 2026년 2월 20일
@@ -29,7 +25,7 @@ instrumentation.ts
 JavaScriptTypeScript
 [code]
     import { registerOTel } from '@vercel/otel'
-     
+
     export function register() {
       registerOTel('next-app')
     }
@@ -38,10 +34,10 @@ JavaScriptTypeScript
 전체 구현은 [Next.js with OpenTelemetry 예제](https://github.com/vercel/next.js/tree/canary/examples/with-opentelemetry)를 참고하십시오.
 
 > **알아두면 좋은 점** :
-> 
+>
 >   * `instrumentation` 파일은 프로젝트 루트에 두고 `app` 또는 `pages` 디렉터리 안에 두지 마세요. `src` 폴더를 사용 중이라면 `pages`, `app`과 함께 `src` 내부에 배치하세요.
 >   * [`pageExtensions` 구성 옵션](https://nextjs.org/docs/app/api-reference/config/next-config-js/pageExtensions)으로 접미사를 추가했다면, `instrumentation` 파일명도 동일한 규칙으로 업데이트해야 합니다.
-> 
+>
 
 ## 예시[](https://nextjs.org/docs/app/guides/instrumentation#examples)
 
@@ -61,7 +57,7 @@ JavaScriptTypeScript
 [/code]
 
 > **알아두면 좋은 점:**
-> 
+>
 > 파일 상단이 아니라 `register` 함수 내부에서 임포트하는 것을 권장합니다. 이렇게 하면 모든 부작용을 코드의 한 위치에 모아둘 수 있고, 파일 상단에서 전역으로 임포트함으로써 생길 수 있는 의도치 않은 결과를 피할 수 있습니다.
 
 ### 런타임별 코드를 임포트하기[](https://nextjs.org/docs/app/guides/instrumentation#importing-runtime-specific-code)
@@ -76,7 +72,7 @@ JavaScriptTypeScript
       if (process.env.NEXT_RUNTIME === 'nodejs') {
         await import('./instrumentation-node')
       }
-     
+
       if (process.env.NEXT_RUNTIME === 'edge') {
         await import('./instrumentation-edge')
       }
@@ -85,10 +81,6 @@ JavaScriptTypeScript
 
 ## Instrumentation 더 알아보기
 
-### [instrumentation.js파일에 대한 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation)
-
-도움이 되었나요?
-
-지원됨.
+- [instrumentation.js파일에 대한 API 레퍼런스입니다.](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation)
 
 보내기

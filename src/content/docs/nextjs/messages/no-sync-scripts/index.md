@@ -24,7 +24,7 @@ Source URL: https://nextjs.org/docs/messages/no-sync-scripts
 pages/index.js
 [code]
     import Script from 'next/script'
-     
+
     function Home() {
       return (
         <div class="container">
@@ -33,12 +33,12 @@ pages/index.js
         </div>
       )
     }
-     
+
     export default Home
 [/code]
 
 ### `async` 또는 `defer` 사용[](https://nextjs.org/docs/messages/no-sync-scripts#use-async-or-defer)
-[code] 
+[code]
     <script src="https://third-party-script.js" async />
     <script src="https://third-party-script.js" defer />
 [/code]
@@ -47,10 +47,4 @@ pages/index.js
 
   * [타사 JavaScript를 효율적으로 로드하기](https://web.dev/efficiently-load-third-party-javascript/)
 
-
-
 도움이 되셨나요?
-
-지원됨.
-
-전송

@@ -18,8 +18,6 @@ Source URL: https://nextjs.org/docs/messages/no-page-custom-font
   * 추가하려는 커스텀 폰트를 개별 페이지에만 추가했습니다. 이 경우 해당 페이지에만 폰트가 적용되고 애플리케이션 전체에는 적용되지 않습니다.
   * 추가하려는 커스텀 폰트를 `pages/_document.js` 내부의 별도 컴포넌트에 추가했습니다. 이 방식은 자동 폰트 최적화를 비활성화합니다.
 
-
-
 ## 가능한 해결 방법[](https://nextjs.org/docs/messages/no-page-custom-font#possible-ways-to-fix-it)
 
 `./pages/_document.js` 파일을 만들고 커스텀 Document에 폰트를 추가합니다:
@@ -27,7 +25,7 @@ Source URL: https://nextjs.org/docs/messages/no-page-custom-font
 pages/_document.js
 [code]
     import Document, { Html, Head, Main, NextScript } from 'next/document'
-     
+
     class MyDocument extends Document {
       render() {
         return (
@@ -46,7 +44,7 @@ pages/_document.js
         )
       }
     }
-     
+
     export default MyDocument
 [/code]
 
@@ -55,7 +53,7 @@ pages/_document.js
 pages/_document.js
 [code]
     import { Html, Head, Main, NextScript } from 'next/document'
-     
+
     export default function Document() {
       return (
         <Html>
@@ -82,11 +80,5 @@ pages/_document.js
 
   * [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
   * [Font Optimization](https://nextjs.org/docs/pages/api-reference/components/font)
-
-
-
-도움이 되었나요?
-
-지원됨.
 
 Send

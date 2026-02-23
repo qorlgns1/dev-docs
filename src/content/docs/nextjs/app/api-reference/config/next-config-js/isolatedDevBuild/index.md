@@ -7,8 +7,6 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/isolatedDevBuild
 
-[구성](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)isolatedDevBuild
-
 Copy page
 
 # isolatedDevBuild
@@ -32,22 +30,22 @@ next.config.ts
 JavaScriptTypeScript
 ```ts
 import type { NextConfig } from 'next'
- 
+
 const nextConfig: NextConfig = {
   experimental: {
     isolatedDevBuild: false, // defaults to true
   },
 }
- 
+
 export default nextConfig
 ```
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/config/next-config-js/isolatedDevBuild#version-history)
 
-Version| Changes  
----|---  
-`v16.0.0`| `experimental.isolatedDevBuild`가 도입되었습니다.  
-  
+Version| Changes
+---|---
+`v16.0.0`| `experimental.isolatedDevBuild`가 도입되었습니다.
+
 Was this helpful?
 
 supported.

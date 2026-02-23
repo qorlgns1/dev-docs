@@ -9,8 +9,6 @@ description: '최종 업데이트: 2026년 2월 20일'
 
 [애플리케이션 구축](https://nextjs.org/docs/pages/building-your-application)[렌더링](https://nextjs.org/docs/pages/building-your-application/rendering)클라이언트 사이드 렌더링 (CSR)
 
-페이지 복사
-
 # 클라이언트 사이드 렌더링 (CSR)
 
 최종 업데이트: 2026년 2월 20일
@@ -29,10 +27,10 @@ Next.js에서 클라이언트 사이드 렌더링을 구현하는 방법은 두 
 pages/index.js
 [code]
     import React, { useState, useEffect } from 'react'
-     
+
     export function Page() {
       const [data, setData] = useState(null)
-     
+
       useEffect(() => {
         const fetchData = async () => {
           const response = await fetch('https://api.example.com/data')
@@ -42,13 +40,13 @@ pages/index.js
           const result = await response.json()
           setData(result)
         }
-     
+
         fetchData().catch((e) => {
           // handle the error as needed
           console.error('An error occurred while fetching the data: ', e)
         })
       }, [])
-     
+
       return <p>{data ? `Your data: ${data}` : 'Loading...'}</p>
     }
 [/code]
@@ -60,16 +58,16 @@ pages/index.js
 pages/index.js
 [code]
     import useSWR from 'swr'
-     
+
     export function Page() {
       const { data, error, isLoading } = useSWR(
         'https://api.example.com/data',
         fetcher
       )
-     
+
       if (error) return <p>Failed to load.</p>
       if (isLoading) return <p>Loading...</p>
-     
+
       return <p>Your Data: {data}</p>
     }
 [/code]
@@ -78,16 +76,15 @@ pages/index.js
 >
 > CSR은 SEO에 영향을 줄 수 있습니다. 일부 검색 엔진 크롤러는 JavaScript를 실행하지 않기 때문에 애플리케이션의 초기 비어 있거나 로딩 상태만 확인할 수 있습니다. 또한 느린 인터넷 연결이나 기기를 사용하는 사용자에게는 모든 JavaScript가 로드되고 실행될 때까지 전체 페이지를 볼 수 없어 성능 문제가 발생할 수 있습니다. Next.js는 애플리케이션의 각 페이지 **필요에 따라** [서버 사이드 렌더링](https://nextjs.org/docs/pages/building-your-application/rendering/server-side-rendering), [정적 사이트 생성](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation), 클라이언트 사이드 렌더링을 조합해 사용하는 하이브리드 방식을 권장합니다. App Router에서는 페이지가 렌더링되는 동안 [Suspense를 활용한 Loading UI](https://nextjs.org/docs/app/api-reference/file-conventions/loading)를 사용해 로딩 인디케이터를 표시할 수도 있습니다.
 
-## 
+##
 
 Next.js의 다른 렌더링 방식을 살펴보세요.
 
-### [서버 사이드 렌더링 (SSR) 각 요청마다 페이지를 렌더링하려면 서버 사이드 렌더링을 사용하세요.](https://nextjs.org/docs/pages/building-your-application/rendering/server-side-rendering)
-### [정적 사이트 생성 (SSG) 빌드 시점에 페이지를 미리 렌더링하려면 정적 사이트 생성을 사용하세요.](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation)
-### [ISR 증분 정적 재생성을 사용해 런타임에 정적 페이지를 생성하거나 업데이트하는 방법을 알아보세요.](https://nextjs.org/docs/pages/guides/incremental-static-regeneration)
-
-도움이 되었나요?
-
-지원됨.
+- [서버사이드 렌더링 (SSR)](https://nextjs.org/docs/pages/building-your-application/rendering/server-side-rendering)
+  - 서버 사이드 렌더링 (SSR) 각 요청마다 페이지를 렌더링하려면 서버 사이드 렌더링을 사용하세요.
+- [정적 사이트 생성 (SSG)](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation)
+  - 빌드 시점에 페이지를 미리 렌더링하려면 정적 사이트 생성을 사용하세요.
+- [ISR](https://nextjs.org/docs/pages/guides/incremental-static-regeneration)
+  - 증분 정적 재생성을 사용해 런타임에 정적 페이지를 생성하거나 업데이트하는 방법을 알아보세요.
 
 보내기

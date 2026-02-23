@@ -7,10 +7,6 @@ description: '이 기능은 현재 실험 단계이며 언제든지 변경될 �
 
 출처 URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbopack
 
-[구성](https://nextjs.org/docs/pages/api-reference/config)[next.config.js 옵션](https://nextjs.org/docs/pages/api-reference/config/next-config-js)turbopack
-
-페이지 복사
-
 # turbopack
 
 이 기능은 현재 실험 단계이며 언제든지 변경될 수 있으므로 프로덕션 환경에서는 권장되지 않습니다. 직접 사용해 보고 [GitHub](https://github.com/vercel/next.js/issues)에서 피드백을 공유하세요.
@@ -20,7 +16,7 @@ description: '이 기능은 현재 실험 단계이며 언제든지 변경될 �
 `turbopack` 옵션을 사용하면 다양한 파일을 변환하고 모듈을 해석하는 방법을 바꾸도록 [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack)을 사용자 정의할 수 있습니다.
 
 > **알아두면 좋아요** : `turbopack` 옵션은 Next.js 13.0.0부터 15.2.x까지 `experimental.turbo`라는 이름이었습니다. `experimental.turbo` 옵션은 Next.js 16에서 제거됩니다.
-> 
+>
 > 더 오래된 버전의 Next.js를 사용 중이라면 `npx @next/codemod@latest next-experimental-turbo-to-turbopack .`을 실행해 구성을 자동으로 마이그레이션하세요.
 
 next.config.ts
@@ -28,20 +24,20 @@ next.config.ts
 JavaScriptTypeScript
 [code]
     import type { NextConfig } from 'next'
-     
+
     const nextConfig: NextConfig = {
       turbopack: {
         // ...
       },
     }
-     
+
     export default nextConfig
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * Next.js용 Turbopack은 기본 제공 기능을 위해 별도의 로더나 로더 설정이 필요 없습니다. CSS와 최신 JavaScript 컴파일을 기본적으로 지원하므로 `@babel/preset-env`를 사용할 때 `css-loader`, `postcss-loader`, `babel-loader`가 필요하지 않습니다.
-> 
+>
 
 ## 참고[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbopack#reference)
 
@@ -49,14 +45,14 @@ JavaScriptTypeScript
 
 `turbopack` 구성에는 다음과 같은 옵션을 사용할 수 있습니다.
 
-Option| Description  
----|---  
-`root`| 애플리케이션 루트 디렉터리를 설정합니다. 절대 경로여야 합니다.  
-`rules`| Turbopack으로 실행할 때 적용할 지원되는 webpack 로더 목록입니다.  
-`resolveAlias`| 별칭으로 지정된 import를 대신 로드할 모듈에 매핑합니다.  
-`resolveExtensions`| 파일을 import할 때 해석할 확장자 목록입니다.  
-`debugIds`| JavaScript 번들 및 소스 맵에서 [debug ID](https://github.com/tc39/ecma426/blob/main/proposals/debug-id.md)를 생성하도록 활성화합니다.  
-  
+Option| Description
+---|---
+`root`| 애플리케이션 루트 디렉터리를 설정합니다. 절대 경로여야 합니다.
+`rules`| Turbopack으로 실행할 때 적용할 지원되는 webpack 로더 목록입니다.
+`resolveAlias`| 별칭으로 지정된 import를 대신 로드할 모듈에 매핑합니다.
+`resolveExtensions`| 파일을 import할 때 해석할 확장자 목록입니다.
+`debugIds`| JavaScript 번들 및 소스 맵에서 [debug ID](https://github.com/tc39/ecma426/blob/main/proposals/debug-id.md)를 생성하도록 활성화합니다.
+
 ### 지원되는 로더[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbopack#supported-loaders)
 
 다음 로더는 Turbopack의 webpack 로더 구현에서 동작하도록 검증되었지만, 여기에 없는 다른 많은 webpack 로더도 대부분 동작합니다.
@@ -93,7 +89,7 @@ Turbopack은 webpack 로더를 실행하기 위해 [`loader-runner`](https://git
 **유틸리티:**
 
   * [`utils`](https://webpack.js.org/api/loaders/#thisutils) \- 지원되지 않음
-  * [`resolve`](https://webpack.js.org/api/loaders/#thisresolve) \- 지원되지 않음(`[`getResolve`](https://webpack.js.org/api/loaders/#thisgetresolve)`을 대신 사용) 
+  * [`resolve`](https://webpack.js.org/api/loaders/#thisresolve) \- 지원되지 않음(`[`getResolve`](https://webpack.js.org/api/loaders/#thisgetresolve)`을 대신 사용)
 
 이러한 기능에 크게 의존하는 로더가 있다면 이슈를 등록해 주세요.
 
@@ -156,7 +152,7 @@ next.config.js
 [/code]
 
 > **알아두면 좋아요** : `rules` 객체에서 사용하는 glob은 파일 이름을 기준으로 매칭됩니다. glob에 `/` 문자가 포함되면 프로젝트 상대 전체 경로를 기준으로 매칭합니다. Windows 파일 경로는 유닉스 스타일 `/` 구분자로 정규화됩니다.
-> 
+>
 > Turbopack은 수정된 [Rust `globset` 라이브러리](https://docs.rs/globset/latest/globset/)를 사용합니다.
 
 구성 옵션이 필요한 로더의 경우 문자열 대신 객체 형식을 사용할 수 있습니다.
@@ -320,15 +316,11 @@ next.config.js
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbopack#version-history)
 
-Version| Changes  
----|---  
-`16.0.0`| `turbopack.debugIds`가 추가되었습니다.  
-`16.0.0`| `turbopack.rules.*.condition`이 추가되었습니다.  
-`15.3.0`| `experimental.turbo`가 `turbopack`으로 변경되었습니다.  
-`13.0.0`| `experimental.turbo`가 도입되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`16.0.0`| `turbopack.debugIds`가 추가되었습니다.
+`16.0.0`| `turbopack.rules.*.condition`이 추가되었습니다.
+`15.3.0`| `experimental.turbo`가 `turbopack`으로 변경되었습니다.
+`13.0.0`| `experimental.turbo`가 도입되었습니다.
 
 보내기

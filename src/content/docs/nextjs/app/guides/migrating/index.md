@@ -6,18 +6,17 @@ title: '가이드: 마이그레이션'
 
 Source URL: https://nextjs.org/docs/app/guides/migrating
 
-[앱 라우터](https://nextjs.org/docs/app)[가이드](https://nextjs.org/docs/app/guides)마이그레이션
-
-페이지 복사
-
 # 마이그레이션
 
 마지막 업데이트: 2026년 2월 20일
 
-### [앱 라우터기존 Next.js 애플리케이션을 Pages Router에서 App Router로 업그레이드하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/migrating/app-router-migration)### [Create React App기존 React 애플리케이션을 Create React App에서 Next.js로 마이그레이션하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/migrating/from-create-react-app)### [Vite기존 React 애플리케이션을 Vite에서 Next.js로 마이그레이션하는 방법을 알아보세요.](https://nextjs.org/docs/app/guides/migrating/from-vite)
+- [App Router](https://nextjs.org/docs/app/guides/migrating/app-router-migration)
+  - 앱 라우터기존 Next.js 애플리케이션을 Pages Router에서 App Router로 업그레이드하는 방법을 알아보세요.
 
-도움이 되었나요?
+- [Create React App](https://nextjs.org/docs/app/guides/migrating/from-create-react-app)
+  - 기존 React 애플리케이션을 Create React App에서 Next.js로 마이그레이션하는 방법을 알아보세요.
 
-지원됨.
+- [Vite](https://nextjs.org/docs/app/guides/migrating/from-vite)
+  - 기존 React 애플리케이션을 Vite에서 Next.js로 마이그레이션하는 방법을 알아보세요.
 
 보내기

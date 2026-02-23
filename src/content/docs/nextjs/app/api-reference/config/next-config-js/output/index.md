@@ -7,8 +7,6 @@ description: '빌드 중 Next.js는 각 페이지와 그 의존성을 자동으�
 
 Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/output
 
-[Configuration](https://nextjs.org/docs/app/api-reference/config)[next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js)output
-
 Copy page
 
 # output
@@ -61,21 +59,18 @@ Terminal
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 프로젝트가 특정 포트나 호스트 이름을 수신해야 한다면 `server.js`를 실행하기 전에 `PORT` 또는 `HOSTNAME` 환경 변수를 정의하세요. 예를 들어 `PORT=8080 HOSTNAME=0.0.0.0 node server.js`를 실행하면 `http://0.0.0.0:8080`에서 서버가 시작됩니다.
-> 
-
+>
 
 ## Caveats[](https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats)
 
   * 모노레포 설정에서 트레이싱 시 기본적으로 프로젝트 디렉터리가 사용됩니다. `next build packages/web-app`을 실행하면 `packages/web-app`이 트레이싱 루트가 되며, 그 폴더 밖의 파일은 포함되지 않습니다. 해당 폴더 밖의 파일을 포함하려면 `next.config.js`에서 `outputFileTracingRoot`를 설정하세요.
 
-
-
 packages/web-app/next.config.js
 [code]
     const path = require('path')
-     
+
     module.exports = {
       // this includes files from the monorepo base two directories up
       outputFileTracingRoot: path.join(__dirname, '../../'),
@@ -83,8 +78,6 @@ packages/web-app/next.config.js
 [/code]
 
   * Next.js가 필요한 파일을 포함하지 못하거나 사용하지 않는 파일을 잘못 포함하는 경우가 있습니다. 그런 상황에서는 각각 `outputFileTracingExcludes`와 `outputFileTracingIncludes`를 `next.config.js`에서 활용하면 됩니다. 각 옵션은 **route glob**(예: `/api/hello`와 같이 [picomatch](https://www.npmjs.com/package/picomatch#basic-globbing)로 라우트 경로를 매칭) 키와, **프로젝트 루트 기준으로 해석되는 glob 패턴** 값을 가지는 객체를 받습니다.
-
-
 
 > **알아두면 좋아요** : 모노레포에서 `project root`는 Next.js 프로젝트 루트(예: packages/web-app 등 next.config.js가 있는 폴더)를 의미하며, 모노레포 루트와 같지 않을 수 있습니다.
 
@@ -107,8 +100,6 @@ next.config.js
 
   * **키**는 여전히 라우트 경로(`'/api/hello'`, `'/products/[id]'` 등)를 매칭합니다.
   * **값**은 프로젝트 루트를 기준으로 해석되므로 `src/` 아래 경로를 참조할 수 있습니다.
-
-
 
 next.config.js
 [code]
@@ -139,14 +130,12 @@ next.config.js
   * Edge Runtime 라우트에는 영향을 주지 않습니다.
   * 완전한 정적 페이지에는 영향을 주지 않습니다.
 
-
-
 모노레포이거나 앱 폴더 밖의 파일을 포함해야 할 때는 `outputFileTracingRoot`와 includes를 함께 사용하세요:
 
 next.config.js
 [code]
     const path = require('path')
-     
+
     module.exports = {
       // Trace from the monorepo root
       outputFileTracingRoot: path.join(__dirname, '../../'),
@@ -157,11 +146,10 @@ next.config.js
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * 크로스 플랫폼 호환성을 위해 패턴에 슬래시(`/`)를 사용하는 것이 좋습니다.
 >   * 과도하게 큰 트레이스를 피하려면 패턴을 가능한 좁게 유지하세요(리포지토리 루트에서 `**/*` 사용 자제).
-> 
-
+>
 
 네이티브/런타임 에셋에 대한 일반적인 include 패턴은 다음과 같습니다:
 

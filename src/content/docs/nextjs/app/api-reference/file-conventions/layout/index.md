@@ -7,10 +7,6 @@ description: '파일은 Next.js 애플리케이션에서 레이아웃을 정의�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/file-conventions/layout
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)layout.js
-
-페이지 복사
-
 # layout.js
 
 최종 업데이트 2026년 2월 20일
@@ -76,16 +72,14 @@ JavaScriptTypeScript
     }
 [/code]
 
-예시 경로| URL| `params`  
----|---|---  
-`app/dashboard/[team]/layout.js`| `/dashboard/1`| `Promise<{ team: '1' }>`  
-`app/shop/[tag]/[item]/layout.js`| `/shop/1/2`| `Promise<{ tag: '1', item: '2' }>`  
-`app/blog/[...slug]/layout.js`| `/blog/1/2`| `Promise<{ slug: ['1', '2'] }>`  
-  
+예시 경로| URL| `params`
+---|---|---
+`app/dashboard/[team]/layout.js`| `/dashboard/1`| `Promise<{ team: '1' }>`
+`app/shop/[tag]/[item]/layout.js`| `/shop/1/2`| `Promise<{ tag: '1', item: '2' }>`
+`app/blog/[...slug]/layout.js`| `/blog/1/2`| `Promise<{ slug: ['1', '2'] }>`
+
   * `params` prop은 프로미스이므로 값을 읽으려면 `async/await` 또는 React의 [`use`](https://react.dev/reference/react/use) 함수를 사용해야 합니다.
     * 버전 14 및 이전 버전에서는 `params` 가 동기 prop이었습니다. 하위 호환을 위해 Next.js 15에서도 동기적으로 접근할 수 있지만, 이 동작은 앞으로 제거될 예정입니다.
-
-
 
 ### Layout Props Helper[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#layout-props-helper)
 
@@ -105,11 +99,10 @@ app/dashboard/layout.tsx
 [/code]
 
 > **알아두면 좋아요** :
-> 
+>
 >   * `next dev`, `next build`, `next typegen` 중 하나를 실행할 때 타입이 생성됩니다.
 >   * 타입 생성 이후에는 `LayoutProps` 헬퍼가 전역에서 제공되므로 import 할 필요가 없습니다.
-> 
-
+>
 
 ### Root Layout[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout)
 
@@ -140,8 +133,6 @@ JavaScriptTypeScript
     * **여러 루트 레이아웃 사이** 를 탐색하면 클라이언트 측 전환이 아닌 **페이지 전체 새로고침** 이 발생합니다.
   * 루트 레이아웃은 [internationalization](https://nextjs.org/docs/app/guides/internationalization)을 구현할 때처럼 `app/[lang]/layout.js` 같이 **동적 세그먼트** 아래 위치시킬 수도 있습니다.
 
-
-
 ## 주의사항[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#caveats)
 
 ### Request Object[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#request-object)
@@ -157,7 +148,7 @@ app/shop/layout.tsx
 JavaScriptTypeScript
 [code]
     import { cookies } from 'next/headers'
-     
+
     export default async function Layout({ children }) {
       const cookieStore = await cookies()
       const theme = cookieStore.get('theme')
@@ -176,14 +167,14 @@ app/ui/search.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { useSearchParams } from 'next/navigation'
-     
+
     export default function Search() {
       const searchParams = useSearchParams()
-     
+
       const search = searchParams.get('search')
-     
+
       return '...'
     }
 [/code]
@@ -193,7 +184,7 @@ app/shop/layout.tsx
 JavaScriptTypeScript
 [code]
     import Search from '@/app/ui/search'
-     
+
     export default function Layout({ children }) {
       return (
         <>
@@ -215,14 +206,14 @@ app/ui/breadcrumbs.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { usePathname } from 'next/navigation'
-     
+
     // Simplified breadcrumbs logic
     export default function Breadcrumbs() {
       const pathname = usePathname()
       const segments = pathname.split('/')
-     
+
       return (
         <nav>
           {segments.map((segment, index) => (
@@ -241,7 +232,7 @@ app/docs/layout.tsx
 JavaScriptTypeScript
 [code]
     import { Breadcrumbs } from '@/app/ui/Breadcrumbs'
-     
+
     export default function Layout({ children }) {
       return (
         <>
@@ -274,10 +265,10 @@ JavaScriptTypeScript
 [code]
     import { getUser } from '@/app/lib/data'
     import { UserName } from '@/app/ui/user-name'
-     
+
     export default async function Layout({ children }) {
       const user = await getUser('1')
-     
+
       return (
         <>
           <nav>
@@ -296,10 +287,10 @@ JavaScriptTypeScript
 [code]
     import { getUser } from '@/app/lib/data'
     import { UserName } from '@/app/ui/user-name'
-     
+
     export default async function Page() {
       const user = await getUser('1')
-     
+
       return (
         <div>
           <h1>Welcome {user.name}</h1>
@@ -317,10 +308,10 @@ app/ui/nav-link.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import Link from 'next/link'
     import { useSelectedLayoutSegment } from 'next/navigation'
-     
+
     export default function NavLink({
       slug,
       children,
@@ -330,7 +321,7 @@ JavaScriptTypeScript
     }) {
       const segment = useSelectedLayoutSegment()
       const isActive = slug === segment
-     
+
       return (
         <Link
           href={`/blog/${slug}`}
@@ -349,7 +340,7 @@ JavaScriptTypeScript
 [code]
     import { NavLink } from './nav-link'
     import getPosts from './get-posts'
-     
+
     export default async function Layout({
       children,
     }: {
@@ -380,11 +371,11 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import type { Metadata } from 'next'
-     
+
     export const metadata: Metadata = {
       title: 'Next.js',
     }
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       return '...'
     }
@@ -403,19 +394,19 @@ app/ui/nav-links.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { usePathname } from 'next/navigation'
     import Link from 'next/link'
-     
+
     export function NavLinks() {
       const pathname = usePathname()
-     
+
       return (
         <nav>
           <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">
             Home
           </Link>
-     
+
           <Link
             className={`link ${pathname === '/about' ? 'active' : ''}`}
             href="/about"
@@ -432,7 +423,7 @@ app/layout.tsx
 JavaScriptTypeScript
 [code]
     import { NavLinks } from '@/app/ui/nav-links'
-     
+
     export default function Layout({ children }: { children: React.ReactNode }) {
       return (
         <html lang="en">
@@ -461,7 +452,7 @@ JavaScriptTypeScript
       params: Promise<{ team: string }>
     }) {
       const { team } = await params
-     
+
       return (
         <section>
           <header>
@@ -482,9 +473,9 @@ app/page.tsx
 JavaScriptTypeScript
 [code]
     'use client'
-     
+
     import { use } from 'react'
-     
+
     export default function Page({
       params,
     }: {
@@ -496,13 +487,9 @@ JavaScriptTypeScript
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#version-history)
 
-Version| Changes  
----|---  
-`v15.0.0-RC`| `params` 가 이제 Promise입니다. [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150)을 사용할 수 있습니다.  
-`v13.0.0`| `layout` 이 도입되었습니다.  
-  
-도움이 되었나요?
-
-지원됨.
+Version| Changes
+---|---
+`v15.0.0-RC`| `params` 가 이제 Promise입니다. [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#150)을 사용할 수 있습니다.
+`v13.0.0`| `layout` 이 도입되었습니다.
 
 보내기

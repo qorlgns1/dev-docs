@@ -7,10 +7,6 @@ description: '파일에서 기본 React 컴포넌트를 export하여 템플릿�
 
 출처 URL: https://nextjs.org/docs/app/api-reference/file-conventions/template
 
-[API Reference](https://nextjs.org/docs/app/api-reference)[파일 시스템 규칙](https://nextjs.org/docs/app/api-reference/file-conventions)template.js
-
-페이지 복사
-
 # template.js
 
 최종 업데이트 2026년 2월 20일
@@ -22,8 +18,6 @@ description: '파일에서 기본 React 컴포넌트를 export하여 템플릿�
   * 내비게이션 시 `useEffect`를 다시 동기화해야 할 때.
   * 내비게이션 시 하위 Client Components의 상태를 초기화해야 할 때. 예: 입력 필드.
   * 기본 프레임워크 동작을 변경하려는 경우. 예: 레이아웃 내부 Suspense 경계는 최초 로드에서만 폴백을 표시하지만 템플릿은 모든 내비게이션마다 표시한다.
-
-
 
 ## 규칙[](https://nextjs.org/docs/app/api-reference/file-conventions/template#convention)
 
@@ -70,14 +64,12 @@ Template은 `children` prop을 받는다.
   * **Effect re-run**: `useEffect` 등 효과는 컴포넌트가 다시 마운트되면서 재동기화된다.
   * **DOM reset**: 템플릿 내부의 DOM 요소는 완전히 다시 생성된다.
 
-
-
 ### 내비게이션 및 재마운트 시 템플릿 동작[](https://nextjs.org/docs/app/api-reference/file-conventions/template#templates-during-navigation-and-remounting)
 
 이 섹션은 템플릿이 내비게이션 동안 어떻게 동작하는지 보여준다. 각 라우트 변경에서 어떤 템플릿이 왜 다시 마운트되는지 단계별로 설명한다.
 
 다음 프로젝트 트리를 예로 들자:
-[code] 
+[code]
     app
     ├── about
     │   ├── page.tsx
@@ -89,7 +81,7 @@ Template은 `children` prop을 받는다.
     ├── layout.tsx
     ├── page.tsx
     └── template.tsx
-    
+
 [/code]
 
 `/`에서 시작하면 React 트리는 대략 다음과 같다.
@@ -167,12 +159,8 @@ Template은 `children` prop을 받는다.
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/template#version-history)
 
-버전| 변경 사항  
----|---  
-`v13.0.0`| `template` 도입.  
-  
-도움이 되었나요?
-
-지원됨.
+버전| 변경 사항
+---|---
+`v13.0.0`| `template` 도입.
 
 보내기
