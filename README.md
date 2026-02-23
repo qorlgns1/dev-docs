@@ -19,16 +19,16 @@
 dev-docs/
 ├── src/content/docs/
 │   ├── index.md                  # 홈페이지
-│   ├── codex/                    # 한국어 Codex 문서
-│   ├── nextjs/                   # 한국어 Next.js 문서
-│   └── en/
-│       ├── codex/                # 영어 Codex 문서
-│       └── nextjs/               # 영어 Next.js 문서
-├── scripts/
-│   └── pipeline_codex_ko.py      # Codex 문서 동기화 파이프라인
+│   ├── <section>/                # 한국어 문서 (루트 경로)
+│   └── en/<section>/             # 영어 문서
 └── skills/
-    ├── translate-docs-ko/        # 문서 번역 스킬
-    └── sync-codex-ko/            # Codex KO 동기화 스킬
+    └── add-doc/                  # 문서 추가 파이프라인 스킬
+        ├── SKILL.md
+        └── scripts/
+            ├── fetch.py          # URL → en 마크다운
+            ├── translate.py      # en → ko (Codex CLI)
+            ├── frontmatter.py    # title/description 주입
+            └── deploy.py         # git commit & push
 ```
 
 ## 개발 환경
@@ -46,54 +46,29 @@ codex login
 python3 -m pip install --user -r skills/translate-docs-ko/scripts/requirements.txt
 ```
 
-## Codex 문서 동기화 파이프라인
+## 문서 추가 파이프라인
 
-`en/codex` 문서가 업데이트되면 아래 파이프라인으로 한국어 동기화, frontmatter 주입, 커밋/푸시까지 자동화합니다.
+URL 하나로 크롤링 → 번역 → frontmatter → 배포까지 자동화합니다.
 
 ```bash
-# 신규 파일만 번역
-python3 scripts/pipeline_codex_ko.py
+SECTION=codex
+URL=https://developers.openai.com/codex/
 
-# 전체 재번역
-python3 scripts/pipeline_codex_ko.py --force
-
-# 5개 파일 테스트 (push 없음)
-python3 scripts/pipeline_codex_ko.py --limit 5 --no-push
-
-# 번역 스킵 — frontmatter 재처리 + commit만
-python3 scripts/pipeline_codex_ko.py --skip-translate
+python3 skills/add-doc/scripts/fetch.py --url $URL --section $SECTION
+python3 skills/add-doc/scripts/translate.py \
+  --source-root src/content/docs/en/$SECTION \
+  --dest-root   src/content/docs/$SECTION
+python3 skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/$SECTION
+python3 skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/en/$SECTION
+python3 skills/add-doc/scripts/deploy.py --section $SECTION
 ```
-
-### 파이프라인 단계
-
-1. **번역** — Codex CLI로 `en/codex` → `codex` (한국어)
-2. **frontmatter** — title/description 자동 추출 및 주입
-3. **commit & push** — `origin/main` 자동 반영
 
 ## Codex에서 호출
 
-Codex 대화에서 `$sync-codex-ko` 스킬로 바로 실행할 수 있습니다.
-
 ```text
-$sync-codex-ko 를 사용해서 새로운 Codex 문서를 한국어로 동기화해줘.
+$add-doc https://developers.openai.com/codex/
+$add-doc https://nextjs.org/docs --section nextjs
 ```
-
-강제 재번역:
-
-```text
-$sync-codex-ko --force 로 전체 Codex 문서를 재번역해줘.
-```
-
-## 영어 원문 수집 (신규 문서 추가 시)
-
-```bash
-python3 skills/translate-docs-ko/scripts/translate_docs.py \
-  --base-url https://developers.openai.com/codex/ \
-  --output-dir tmp/codex \
-  --no-translate
-```
-
-수집 후 `tmp/codex/en/` 파일을 `src/content/docs/en/codex/`로 이동하고 파이프라인을 실행합니다.
 
 ## 배포
 

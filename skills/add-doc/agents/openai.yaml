@@ -1,0 +1,7 @@
+interface:
+  display_name: "Add Doc"
+  short_description: "URL → translate → frontmatter → deploy"
+  default_prompt: "Use $add-doc to fetch, translate, and deploy documentation from a URL."
+
+policy:
+  allow_implicit_invocation: true
