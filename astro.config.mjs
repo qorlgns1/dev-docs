@@ -6,7 +6,7 @@ export default defineConfig({
 	site: 'https://docs.moodybeard.com',
 	integrations: [
 		starlight({
-			title: 'dev-doc',
+			title: 'dev-docs',
 			head: [
 				{
 					tag: 'script',
@@ -14,7 +14,7 @@ export default defineConfig({
 					content: JSON.stringify({
 						'@context': 'https://schema.org',
 						'@type': 'WebSite',
-						name: 'dev-doc',
+						name: 'dev-docs',
 						url: 'https://docs.moodybeard.com',
 					}),
 				},
