@@ -16,11 +16,11 @@ Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/trai
 `next.config.js`를 열고 `trailingSlash` 설정을 추가하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       trailingSlash: true,
     }
-[/code]
+```
 
 이 옵션을 설정하면 `/about` 같은 URL은 `/about/`으로 리디렉션됩니다.
 

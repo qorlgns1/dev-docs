@@ -18,7 +18,7 @@ Copy page
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function Dashboard() {
@@ -28,7 +28,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ## Props[](https://nextjs.org/docs/pages/api-reference/components/script#props)
 
@@ -74,7 +74,7 @@ Prop| Example| Type| Required
 **이 전략은 가능한 한 빨리 페치해야 하는 중요한 스크립트에만 사용하세요.**
 
 pages/_document.js
-[code]
+```
     import { Html, Head, Main, NextScript } from 'next/document'
     import Script from 'next/script'
 
@@ -93,7 +93,7 @@ pages/_document.js
         </Html>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `beforeInteractive` 스크립트는 컴포넌트 어디에 배치하든 항상 HTML 문서의 `head` 내부에 주입됩니다.
 
@@ -109,7 +109,7 @@ pages/_document.js
 `afterInteractive` 스크립트는 어떤 페이지나 레이아웃에든 배치할 수 있고, 해당 페이지(또는 페이지 그룹)가 브라우저에서 열릴 때만 로드 및 실행됩니다.
 
 app/page.js
-[code]
+```
     import Script from 'next/script'
 
     export default function Page() {
@@ -119,7 +119,7 @@ app/page.js
         </>
       )
     }
-[/code]
+```
 
 `afterInteractive`에 적합한 스크립트 예시는 다음과 같습니다:
 
@@ -133,7 +133,7 @@ app/page.js
 `lazyOnload` 스크립트는 어떤 페이지나 레이아웃에도 배치할 수 있으며, 해당 페이지(또는 페이지 그룹)가 브라우저에서 열릴 때만 로드 및 실행됩니다.
 
 app/page.js
-[code]
+```
     import Script from 'next/script'
 
     export default function Page() {
@@ -143,7 +143,7 @@ app/page.js
         </>
       )
     }
-[/code]
+```
 
 즉시 로드할 필요가 없고 `lazyOnload`로 페치해도 되는 스크립트 예시는 다음과 같습니다:
 
@@ -159,20 +159,20 @@ app/page.js
 `worker` 전략을 사용하려면 `next.config.js`에서 `nextScriptWorkers` 플래그를 활성화해야 합니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         nextScriptWorkers: true,
       },
     }
-[/code]
+```
 
 `worker` 스크립트는 **현재 `pages/` 디렉터리에서만 사용할 수 있습니다**:
 
 pages/home.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function Home() {
@@ -182,7 +182,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### `onLoad`[](https://nextjs.org/docs/pages/api-reference/components/script#onload)
 
@@ -195,7 +195,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Script from 'next/script'
@@ -212,7 +212,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### `onReady`[](https://nextjs.org/docs/pages/api-reference/components/script#onready)
 
@@ -221,7 +221,7 @@ JavaScriptTypeScript
 일부 서드파티 스크립트는 스크립트 로드가 끝난 후와 컴포넌트가 매번 마운트될 때(예: 라우트 이동 후) JavaScript 코드를 실행해야 합니다. `onReady` 속성을 사용하면 스크립트가 최초로 로드될 때와 이후 컴포넌트가 다시 마운트될 때마다 스크립트의 load 이벤트 직후 코드를 실행할 수 있습니다.
 
 다음은 컴포넌트가 마운트될 때마다 Google Maps JS 임베드를 다시 초기화하는 예시입니다:
-[code]
+```
     import { useRef } from 'react'
     import Script from 'next/script'
 
@@ -244,14 +244,14 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### `onError`[](https://nextjs.org/docs/pages/api-reference/components/script#onerror)
 
 > **경고:** `onError`는 아직 Server Components에서 작동하지 않으며 Client Components에서만 사용할 수 있습니다. 또한 `onError`는 `beforeInteractive` 로딩 전략과 함께 사용할 수 없습니다.
 
 스크립트 로드 실패를 감지하면 도움이 되는 경우가 있습니다. 이러한 오류는 `onError` 속성으로 처리할 수 있습니다:
-[code]
+```
     import Script from 'next/script'
 
     export default function Page() {
@@ -266,7 +266,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/pages/api-reference/components/script#version-history)
 

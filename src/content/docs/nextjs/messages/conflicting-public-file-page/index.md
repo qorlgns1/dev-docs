@@ -22,22 +22,22 @@ Source URL: https://nextjs.org/docs/messages/conflicting-public-file-page
 퍼블릭 파일과 페이지 파일 사이의 충돌 예시
 
 Folder structure
-[code]
+```
     public/
       hello
     pages/
       hello.js
-[/code]
+```
 
 충돌이 없는 퍼블릭 파일과 페이지 파일
 
 Folder structure
-[code]
+```
     public/
       hello.txt
     pages/
       hello.js
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/conflicting-public-file-page#useful-links)
 

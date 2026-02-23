@@ -53,25 +53,25 @@ Codex는 값을 다음 순서로 해결합니다(우선순위가 높은 순):
 #### 기본 모델
 
 CLI와 IDE에서 Codex가 기본으로 사용할 모델을 선택합니다.
-[code] 
+```
     model = "gpt-5.2"
-[/code]
+```
 
 #### 승인 프롬프트
 
 Codex가 생성된 명령을 실행하기 전에 멈추고 물어볼 시점을 제어합니다.
-[code] 
+```
     approval_policy = "on-request"
-[/code]
+```
 
 `untrusted`, `on-request`, `never` 간 동작 차이는 [Run without approval prompts](https://developers.openai.com/codex/security#run-without-approval-prompts)와 [Common sandbox and approval combinations](https://developers.openai.com/codex/security#common-sandbox-and-approval-combinations)을 참조하십시오.
 
 #### 샌드박스 수준
 
 명령을 실행할 때 Codex가 갖는 파일 시스템 및 네트워크 접근 범위를 조정합니다.
-[code] 
+```
     sandbox_mode = "workspace-write"
-[/code]
+```
 
 모드별 동작(`.git`/`.codex` 보호 경로 및 네트워크 기본값 포함)은 [Sandbox and approvals](https://developers.openai.com/codex/security#sandbox-and-approvals), [Protected paths in writable roots](https://developers.openai.com/codex/security#protected-paths-in-writable-roots), [Network access](https://developers.openai.com/codex/security#network-access)를 참고하십시오.
 
@@ -83,55 +83,55 @@ Codex는 로컬 작업에 대해 기본적으로 웹 검색을 활성화하고 �
   * `"live"`는 웹에서 최신 데이터를 가져옵니다(`--search`와 동일).
   * `"disabled"`는 웹 검색 도구를 끕니다.
 
-[code] 
+```
     web_search = "cached"  # default; serves results from the web search cache
     # web_search = "live"  # fetch the most recent data from the web (same as --search)
     # web_search = "disabled"
-[/code]
+```
 
 #### Reasoning effort
 
 지원되는 경우, 모델이 투입하는 추론 노력을 조정합니다.
-[code] 
+```
     model_reasoning_effort = "high"
-[/code]
+```
 
 #### Communication style
 
 지원되는 모델의 기본 소통 스타일을 설정합니다.
-[code] 
+```
     personality = "friendly" # or "pragmatic" or "none"
-[/code]
+```
 
 나중에 `/personality`로 활성 세션에서 덮어쓰거나, 앱 서버 API를 사용할 때 스레드/턴 단위로 개별 설정할 수 있습니다.
 
 #### Command environment
 
 Codex가 생성한 명령에 전달할 환경 변수를 제어합니다.
-[code] 
+```
     [shell_environment_policy]
     include_only = ["PATH", "HOME"]
-[/code]
+```
 
 #### Log directory
 
 `codex-tui.log` 같은 로컬 로그 파일을 Codex가 저장할 경로를 재정의합니다.
-[code] 
+```
     log_dir = "/absolute/path/to/codex-logs"
-[/code]
+```
 
 단발 실행에서는 CLI에서 바로 설정할 수도 있습니다:
-[code] 
+```
     codex -c log_dir=./.codex-log
-[/code]
+```
 
 ## Feature flags
 
 선택적·실험적 기능을 토글하려면 `config.toml`의 `[features]` 테이블을 사용하세요.
-[code] 
+```
     [features]
     shell_snapshot = true           # Speed up repeated commands
-[/code]
+```
 
 ### Supported features
 

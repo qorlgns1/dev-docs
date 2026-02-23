@@ -221,4 +221,3 @@ See the [API reference](https://nextjs.org/docs/app/api-reference/functions/gene
 | `v16.0.0`    | `export const experimental_ppr = true` removed. A [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#remove-experimental_ppr-route-segment-config-from-app-router-pages-and-layouts) is available.                  |
 | `v15.0.0-RC` | `export const runtime = "experimental-edge"` deprecated. A [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#transform-app-router-route-segment-config-runtime-value-from-experimental-edge-to-edge) is available. |
 ---
-

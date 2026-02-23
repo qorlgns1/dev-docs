@@ -52,7 +52,7 @@ Next.js는 서버에서 일찍 데이터 패칭을 시작할 수 있습니다. �
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { UserProvider } from './user-provider'
     import { getUser } from './user' // some server-side function
 
@@ -71,7 +71,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 단일 Promise를 [지연시켜 Client Component의 prop으로 전달](https://nextjs.org/docs/app/getting-started/fetching-data#streaming-data-with-the-use-api)할 수 있지만, 일반적으로 React 컨텍스트 프로바이더와 함께 사용하는 패턴을 권장합니다. 이렇게 하면 맞춤형 React 훅을 통해 클라이언트 컴포넌트에서 더 쉽게 접근할 수 있습니다.
 
@@ -80,7 +80,7 @@ Promise를 React 컨텍스트 프로바이더로 전달할 수 있습니다.
 app/user-provider.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use client';
 
     import { createContext, useContext, ReactNode } from 'react';
@@ -113,14 +113,14 @@ JavaScriptTypeScript
         </UserContext.Provider>
       );
     }
-[/code]
+```
 
 마지막으로 임의의 클라이언트 컴포넌트에서 `useUser()` 커스텀 훅을 호출해 Promise를 언랩할 수 있습니다.
 
 app/profile.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { use } from 'react'
@@ -132,7 +132,7 @@ JavaScriptTypeScript
 
       return '...'
     }
-[/code]
+```
 
 Promise를 소비하는 컴포넌트(예: 위의 `Profile`)는 서스펜드됩니다. 이를 통해 부분 하이드레이션이 가능하며, JavaScript 로딩이 완료되기 전에 스트리밍 및 프리렌더된 HTML을 볼 수 있습니다.
 
@@ -151,7 +151,7 @@ SWR 2.3.0(및 React 19+)에서는 기존 SWR 기반 클라이언트 데이터 �
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { SWRConfig } from 'swr'
     import { getUser } from './user' // some server-side function
 
@@ -174,14 +174,14 @@ JavaScriptTypeScript
         </SWRConfig>
       )
     }
-[/code]
+```
 
 이것이 서버 컴포넌트이므로 `getUser()`는 쿠키, 헤더를 안전하게 읽거나 데이터베이스와 통신할 수 있습니다. 별도의 API 라우트가 필요하지 않습니다. `<SWRConfig>` 아래의 클라이언트 컴포넌트는 동일한 키로 `useSWR()`를 호출해 사용자 데이터를 가져올 수 있습니다. `useSWR`를 사용하는 컴포넌트 코드는 기존 클라이언트 패칭 방식에서 **아무런 변경도 필요 없습니다.**
 
 app/profile.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import useSWR from 'swr'
@@ -193,7 +193,7 @@ JavaScriptTypeScript
 
       return '...'
     }
-[/code]
+```
 
 `fallback` 데이터는 프리렌더되어 초기 HTML 응답에 포함될 수 있으며, 이후 자식 컴포넌트에서 `useSWR`를 사용해 즉시 읽을 수 있습니다. SWR의 폴링, 재검증, 캐싱은 여전히 **클라이언트 사이드에서만** 실행되므로 SPA에서 의존하던 모든 상호작용성을 그대로 유지합니다.
 
@@ -215,13 +215,13 @@ React Query를 Next.js에서 클라이언트와 서버 모두와 함께 사용�
 ### 브라우저에서만 컴포넌트 렌더링[](https://nextjs.org/docs/app/guides/single-page-applications#rendering-components-only-in-the-browser)
 
 클라이언트 컴포넌트는 `next build` 중에 [프리렌더](https://github.com/reactwg/server-components/discussions/4)됩니다. 클라이언트 컴포넌트의 프리렌더링을 비활성화하고 브라우저 환경에서만 로드하려면 [`next/dynamic`](https://nextjs.org/docs/app/guides/lazy-loading#nextdynamic)을 사용할 수 있습니다.
-[code]
+```
     import dynamic from 'next/dynamic'
 
     const ClientOnlyComponent = dynamic(() => import('./component'), {
       ssr: false,
     })
-[/code]
+```
 
 이는 `window`나 `document` 같은 브라우저 API에 의존하는 써드파티 라이브러리에 유용합니다. 이러한 API 존재 여부를 확인하는 `useEffect`를 추가하고, 존재하지 않으면 `null`이나 프리렌더될 로딩 상태를 반환하도록 할 수도 있습니다.
 
@@ -232,7 +232,7 @@ React Query를 Next.js에서 클라이언트와 서버 모두와 함께 사용�
 Next.js에서는 페이지를 새로고침하지 않고 브라우저의 히스토리 스택을 업데이트하기 위해 네이티브 [`window.history.pushState`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState)와 [`window.history.replaceState`](https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState) 메서드를 사용할 수 있습니다.
 
 `pushState`와 `replaceState` 호출은 Next.js Router와 통합되어 [`usePathname`](https://nextjs.org/docs/app/api-reference/functions/use-pathname) 및 [`useSearchParams`](https://nextjs.org/docs/app/api-reference/functions/use-search-params)와 동기화됩니다.
-[code]
+```
     'use client'
 
     import { useSearchParams } from 'next/navigation'
@@ -253,7 +253,7 @@ Next.js에서는 페이지를 새로고침하지 않고 브라우저의 히스�
         </>
       )
     }
-[/code]
+```
 
 Next.js에서 [routing and navigation](https://nextjs.org/docs/app/getting-started/linking-and-navigating#how-navigation-works)이 어떻게 작동하는지 더 알아보세요.
 
@@ -266,18 +266,18 @@ Next.js에서 [routing and navigation](https://nextjs.org/docs/app/getting-start
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     export async function create() {}
-[/code]
+```
 
 서버 액션은 클라이언트에서 일반 자바스크립트 함수를 호출하듯 가져와 사용할 수 있습니다. API 엔드포인트를 수동으로 만들 필요가 없습니다:
 
 app/button.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { create } from './actions'
@@ -285,7 +285,7 @@ JavaScriptTypeScript
     export function Button() {
       return <button onClick={() => create()}>Create</button>
     }
-[/code]
+```
 
 [서버 액션으로 데이터 변경](https://nextjs.org/docs/app/getting-started/updating-data)에 대해 더 알아보세요.
 
@@ -299,7 +299,7 @@ Next.js는 완전한 [정적 사이트](https://nextjs.org/docs/app/guides/stati
 정적 내보내기를 활성화하려면 구성을 업데이트하세요:
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -307,7 +307,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 `next build`를 실행하면 Next.js가 애플리케이션의 HTML/CSS/JS 에셋이 포함된 `out` 폴더를 생성합니다.
 

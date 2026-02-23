@@ -64,4 +64,3 @@ export default function Document() {
 
 - [App Router Script Optimization](https://nextjs.org/docs/app/guides/scripts)
 - [Pages Router Script Optimization](https://nextjs.org/docs/pages/guides/scripts)
-

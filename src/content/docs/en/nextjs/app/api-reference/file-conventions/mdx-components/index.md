@@ -62,4 +62,3 @@ export function useMDXComponents() {
   - Learn how to configure MDX and use it in your Next.js apps.
 
 ---
-

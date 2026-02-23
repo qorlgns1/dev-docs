@@ -16,9 +16,9 @@ The Codex IDE extension gives you access to Codex directly in VS Code, Cursor, W
 Use Codex in your editor to chat, edit, and preview changes seamlessly. When Codex has context from open files and selected code, you can write shorter prompts and get faster, more relevant results.
 
 You can reference any file in your editor by tagging it in your prompt like this:
-[code] 
+```
     Use @example.tsx as a reference to add a new page named "Resources" to the app that contains a list of resources defined in @resources.ts
-[/code]
+```
 
 ## Switch between models
 

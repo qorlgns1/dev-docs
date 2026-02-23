@@ -35,4 +35,3 @@ Cache-Control: public, max-age=0
 
 For static metadata files, such as `robots.txt`, `favicon.ico`, etc, you should use [special metadata files](https://nextjs.org/docs/app/api-reference/file-conventions/metadata) inside the `app` folder.
 ---
-

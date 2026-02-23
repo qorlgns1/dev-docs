@@ -94,4 +94,3 @@ console.log(logo.pathname)
 // prints "/_next/static/media/file.a9727b5d.txt"
 ```
 ---
-

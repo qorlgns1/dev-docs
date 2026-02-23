@@ -22,7 +22,7 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/json-ld'
 app/products/[id]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page({ params }) {
       const { id } = await params
       const product = await getProduct(id)
@@ -48,12 +48,12 @@ JavaScriptTypeScript
         </section>
       )
     }
-[/code]
+```
 
 구조화 데이터를 Google용 [Rich Results Test](https://search.google.com/test/rich-results) 또는 범용 [Schema Markup Validator](https://validator.schema.org/)로 검증하고 테스트할 수 있습니다.
 
 [`schema-dts`](https://www.npmjs.com/package/schema-dts)와 같은 커뮤니티 패키지를 사용해 TypeScript로 JSON-LD 타입을 지정할 수도 있습니다:
-[code]
+```
     import { Product, WithContext } from 'schema-dts'
 
     const jsonLd: WithContext<Product> = {
@@ -63,6 +63,6 @@ JavaScriptTypeScript
       image: 'https://nextjs.org/imgs/sticker.png',
       description: 'Dynamic at the speed of static.',
     }
-[/code]
+```
 
 보내기

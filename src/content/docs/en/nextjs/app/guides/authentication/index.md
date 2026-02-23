@@ -1378,4 +1378,3 @@ To continue learning about authentication and security, check out the following 
 * [Understanding CSRF Attacks](https://vercel.com/guides/understanding-csrf-attacks)
 * [The Copenhagen Book](https://thecopenhagenbook.com/)
 ---
-

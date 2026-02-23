@@ -26,4 +26,3 @@ To use the `src` folder, move the `app` Router folder or `pages` Router folder t
 > * If you're using Tailwind CSS, you'll need to add the `/src` prefix to the `tailwind.config.js` file in the [content section](https://tailwindcss.com/docs/content-configuration).
 > * If you are using TypeScript paths for imports such as `@/*`, you should update the `paths` object in `tsconfig.json` to include `src/`.
 ---
-

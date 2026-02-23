@@ -46,4 +46,3 @@ You may consider using `'strict'` if you run into unexpected CSS behavior. For e
 
 For most applications, we recommend `true` as it leads to fewer requests and better performance.
 ---
-

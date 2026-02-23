@@ -427,4 +427,3 @@ export function LocaleSwitcher() {
   - Learn how to configure prefetching in Next.js
 
 ---
-

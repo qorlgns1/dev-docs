@@ -67,16 +67,16 @@ Next.js는 클라이언트 측 데이터 패칭을 지원하지만, 데이터 �
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add next@latest
-[/code]
+```
 
 ### 2단계: Next.js 구성 파일 생성[](https://nextjs.org/docs/app/guides/migrating/from-create-react-app#step-2-create-the-nextjs-configuration-file)
 
 프로젝트 루트(`package.json`과 같은 위치)에 `next.config.ts`를 생성합니다. 이 파일에는 [Next.js 구성 옵션](https://nextjs.org/docs/app/api-reference/config/next-config-js)이 들어갑니다.
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -85,7 +85,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 > **참고**: `output: 'export'`를 사용하면 정적 내보내기를 수행합니다. SSR이나 API 같은 서버 측 기능은 사용할 수 **없습니다**. Next.js 서버 기능을 활용하려면 이 줄을 제거하세요.
 
@@ -101,7 +101,7 @@ CRA 애플리케이션에서 루트 레이아웃 파일과 가장 비슷한 것�
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -109,14 +109,14 @@ JavaScriptTypeScript
     }) {
       return '...'
     }
-[/code]
+```
 
 이제 예전 `index.html`의 내용을 `<RootLayout>` 컴포넌트로 복사합니다. `body div#root`(및 `body noscript`)를 `<div id="root">{children}</div>`로 바꿉니다.
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -137,7 +137,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요**: Next.js는 기본적으로 CRA의 `public/manifest.json`, 추가 아이콘, [테스트 구성](https://nextjs.org/docs/app/guides/testing)을 무시합니다. 필요한 경우 Next.js의 [Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images)와 [테스트](https://nextjs.org/docs/app/guides/testing) 설정을 활용하세요.
 
@@ -148,7 +148,7 @@ Next.js는 `<meta charset="UTF-8" />`와 `<meta name="viewport" content="width=d
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -167,14 +167,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 `favicon.ico`, `icon.png`, `robots.txt` 같은 [메타데이터 파일](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#file-based-metadata)은 `app` 디렉터리 최상위에 배치하기만 하면 자동으로 애플리케이션 `<head>` 태그에 추가됩니다. [지원 파일](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#file-based-metadata)을 모두 `app` 디렉터리로 옮겼다면 해당 `<link>` 태그를 안전하게 삭제할 수 있습니다.
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -192,14 +192,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 마지막으로 Next.js는 [Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images)로 나머지 `<head>` 태그를 관리할 수 있습니다. 최종 메타데이터 정보를 내보낸 [`metadata` 객체](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-object)에 옮깁니다.
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Metadata } from 'next'
 
     export const metadata: Metadata = {
@@ -220,7 +220,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 위 변경으로 `index.html`에 모든 것을 선언하던 방식에서 Next.js 프레임워크에 내장된 규칙 기반 접근법([Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images))으로 전환했습니다. 이 방식은 페이지의 SEO와 공유 용이성을 더 쉽게 개선할 수 있게 해 줍니다.
 
@@ -233,14 +233,14 @@ CRA와 마찬가지로 Next.js는 [CSS 모듈](https://nextjs.org/docs/app/getti
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import '../index.css'
 
     export const metadata = {
       title: 'React App',
       description: 'Web site created with Next.js.',
     }
-[/code]
+```
 
 export default function RootLayout({
       children,
@@ -255,7 +255,6 @@ export default function RootLayout({
         </html>
       )
     }
-[/code]
 
 Tailwind CSS를 사용 중이라면 [설치 문서](https://nextjs.org/docs/app/getting-started/css#tailwind-css)를 참고하세요.
 
@@ -267,19 +266,19 @@ Create React App은 엔트리포인트로 `src/index.tsx`(또는 `index.js`)를 
 
   1. **`app` 안에 `[[...slug]]` 디렉터리를 만드세요.**
 
-[code]
+```
     app
      ┣ [[...slug]]
      ┃ ┗ page.tsx
      ┣ layout.tsx
-[/code]
+```
 
   2. **`page.tsx`에 아래 내용을 추가하세요.**
 
 app/[[...slug]]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export function generateStaticParams() {
       return [{ slug: [''] }]
     }
@@ -287,7 +286,7 @@ JavaScriptTypeScript
     export default function Page() {
       return '...' // We'll update this
     }
-[/code]
+```
 
 이 설정은 빈 슬러그(`/`)에 대한 단일 라우트를 생성하도록 Next.js에 지시하여, 실질적으로 **모든** 라우트를 같은 페이지에 매핑합니다. 이 페이지는 정적 HTML로 사전 렌더링되는 [서버 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components)입니다.
 
@@ -300,7 +299,7 @@ JavaScriptTypeScript
 app/[[...slug]]/client.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import dynamic from 'next/dynamic'
@@ -310,7 +309,7 @@ JavaScriptTypeScript
     export function ClientOnly() {
       return <App />
     }
-[/code]
+```
 
   * `'use client'` 지시어는 이 파일을 **클라이언트 컴포넌트**로 만듭니다.
   * `ssr: false`가 있는 `dynamic` 임포트는 `<App />` 컴포넌트의 서버 사이드 렌더링을 비활성화하여 완전히 클라이언트 전용(SPA)으로 만듭니다.
@@ -320,7 +319,7 @@ JavaScriptTypeScript
 app/[[...slug]]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { ClientOnly } from './client'
 
     export function generateStaticParams() {
@@ -330,18 +329,18 @@ JavaScriptTypeScript
     export default function Page() {
       return <ClientOnly />
     }
-[/code]
+```
 
 ### 8단계: 정적 이미지 임포트 업데이트[](https://nextjs.org/docs/app/guides/migrating/from-create-react-app#step-8-update-static-image-imports)
 
 CRA에서는 이미지 파일을 임포트하면 퍼블릭 URL 문자열이 반환됩니다:
-[code]
+```
     import image from './img.png'
 
     export default function App() {
       return <img src={image} />
     }
-[/code]
+```
 
 Next.js에서는 정적 이미지 임포트가 객체를 반환합니다. 이 객체를 Next.js [`<Image>` 컴포넌트](https://nextjs.org/docs/app/api-reference/components/image)에 바로 전달하거나, 기존 `<img>` 태그에 객체의 `src` 속성을 사용할 수 있습니다.
 
@@ -350,22 +349,22 @@ Next.js에서는 정적 이미지 임포트가 객체를 반환합니다. 이 �
 `<img>` 태그를 유지하면 앱의 변경을 최소화하고 위 문제를 방지할 수 있습니다. 이후 필요하면 [로더를 구성](https://nextjs.org/docs/app/api-reference/components/image#loader)하거나 자동 이미지 최적화를 제공하는 기본 Next.js 서버로 이동해 `<Image>` 컴포넌트로 마이그레이션할 수 있습니다.
 
 **`/public`에서 임포트한 이미지의 절대 경로를 상대 경로로 변환하세요:**
-[code]
+```
     // Before
     import logo from '/logo.png'
 
     // After
     import logo from '../public/logo.png'
-[/code]
+```
 
 **`<img>` 태그에는 전체 객체 대신 이미지의 `src` 속성을 전달하세요:**
-[code]
+```
     // Before
     <img src={logo} />
 
     // After
     <img src={logo.src} />
-[/code]
+```
 
 또는 파일 이름을 기준으로 이미지 자산의 퍼블릭 URL을 참조할 수도 있습니다. 예를 들어 `public/logo.png`는 앱에서 `/logo.png`로 제공되며, 이것이 `src` 값이 됩니다.
 
@@ -382,7 +381,7 @@ Next.js는 CRA와 유사하게 [환경 변수](https://nextjs.org/docs/app/guide
 `package.json` 스크립트를 Next.js 명령으로 업데이트하세요. 또한 `.next`와 `next-env.d.ts`를 `.gitignore`에 추가합니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -390,23 +389,23 @@ package.json
         "start": "npx serve@latest ./build"
       }
     }
-[/code]
+```
 
 .gitignore
-[code]
+```
     # ...
     .next
     next-env.d.ts
-[/code]
+```
 
 이제 다음을 실행할 수 있습니다:
 
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm dev
-[/code]
+```
 
 <http://localhost:3000>[](http://localhost:3000)을 열면 앱이 이제 Next.js(SPA 모드)에서 실행 중인 것을 확인할 수 있습니다.
 
@@ -427,7 +426,7 @@ Terminal
 CRA `package.json`에서 특정 하위 경로로 앱을 제공하도록 `homepage` 필드를 사용했다면, Next.js에서는 `next.config.ts`의 [`basePath` 구성](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)을 사용해 동일하게 구성할 수 있습니다:
 
 next.config.ts
-[code]
+```
     import { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -436,7 +435,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 ### 사용자 지정 `Service Worker` 처리[](https://nextjs.org/docs/app/guides/migrating/from-create-react-app#handling-a-custom-service-worker)
 
@@ -447,7 +446,7 @@ CRA의 서비스 워커(예: `create-react-app`의 `serviceWorker.js`)를 사용
 CRA 앱에서 `package.json`의 `proxy` 필드로 백엔드 서버에 요청을 전달했다면, Next.js에서는 `next.config.ts`에 [rewrites](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites)를 설정해 동일하게 구현할 수 있습니다:
 
 next.config.ts
-[code]
+```
     import { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -460,14 +459,14 @@ next.config.ts
         ]
       },
     }
-[/code]
+```
 
 ### 사용자 지정 Webpack[](https://nextjs.org/docs/app/guides/migrating/from-create-react-app#custom-webpack)
 
 CRA에서 사용자 지정 webpack 또는 Babel 구성을 사용했다면, Next.js의 `next.config.ts`에서 구성을 확장할 수 있습니다:
 
 next.config.ts
-[code]
+```
     import { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -478,30 +477,30 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 > **참고:** `dev` 스크립트에 `--webpack`을 추가해 Webpack을 사용하도록 설정해야 합니다.
 
 ### TypeScript 설정[](https://nextjs.org/docs/app/guides/migrating/from-create-react-app#typescript-setup)
 
 Next.js는 `tsconfig.json`이 있으면 자동으로 TypeScript를 설정합니다. `tsconfig.json`의 `include` 배열에 `next-env.d.ts`가 포함되어 있는지 확인하세요:
-[code]
+```
     {
       "include": ["next-env.d.ts", "app/**/*", "src/**/*"]
     }
-[/code]
+```
 
 ## 번들러 호환성[](https://nextjs.org/docs/app/guides/migrating/from-create-react-app#bundler-compatibility)
 
 Create React App은 번들링에 webpack을 사용합니다. Next.js는 현재 더 빠른 로컬 개발을 위해 [Turbopack](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack)을 기본값으로 사용합니다:
-[code]
+```
     next dev  # Uses Turbopack by default
-[/code]
+```
 
 CRA와 유사하게 Webpack을 사용하려면:
-[code]
+```
     next dev --webpack
-[/code]
+```
 
 필요한 경우 [사용자 지정 webpack 구성](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack)을 제공해 CRA에서 사용하던 고급 webpack 설정을 마이그레이션할 수 있습니다.
 

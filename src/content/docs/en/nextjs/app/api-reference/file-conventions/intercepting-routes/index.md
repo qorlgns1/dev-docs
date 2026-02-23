@@ -64,4 +64,3 @@ Learn how to create modals with Intercepted and Parallel Routes.
   - Simultaneously render one or more pages in the same view that can be navigated independently. A pattern for highly dynamic applications.
 
 ---
-

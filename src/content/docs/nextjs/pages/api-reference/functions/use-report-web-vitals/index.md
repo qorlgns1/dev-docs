@@ -16,7 +16,7 @@ description: '훅을 사용하면 Core Web Vitals를 보고할 수 있으며 분
 `useReportWebVitals`에 전달한 새 함수는 그 시점까지 수집된 측정값과 함께 호출됩니다. 중복 보고를 방지하려면 아래 코드 예시처럼 콜백 함수의 참조가 변하지 않도록 하세요.
 
 pages/_app.js
-[code]
+```
     import { useReportWebVitals } from 'next/web-vitals'
 
     const logWebVitals = (metric) => {
@@ -28,7 +28,7 @@ pages/_app.js
 
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 ## useReportWebVitals[](https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals#usereportwebvitals)
 
@@ -56,7 +56,7 @@ pages/_app.js
 `name` 속성을 사용하면 이러한 모든 메트릭 결과를 처리할 수 있습니다.
 
 pages/_app.js
-[code]
+```
     import { useReportWebVitals } from 'next/web-vitals'
 
     const handleWebVitals = (metric) => {
@@ -76,7 +76,7 @@ pages/_app.js
 
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 ## 맞춤 메트릭[](https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals#custom-metrics)
 
@@ -89,7 +89,7 @@ pages/_app.js
 이 메트릭 결과는 각각 별도로 처리할 수 있습니다:
 
 pages/_app.js
-[code]
+```
     import { useReportWebVitals } from 'next/web-vitals'
 
     function handleCustomMetrics(metrics) {
@@ -113,7 +113,7 @@ pages/_app.js
 
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 이 메트릭은 [User Timing API](https://caniuse.com/#feat=user-timing)를 지원하는 모든 브라우저에서 동작합니다.
 
@@ -121,7 +121,7 @@ pages/_app.js
 
 사이트의 실제 사용자 성능을 측정하고 추적할 수 있도록 어떤 엔드포인트로든 결과를 전송할 수 있습니다. 예:
 
-[code]
+```
     function postWebVitals(metrics) {
       const body = JSON.stringify(metric)
       const url = 'https://example.com/analytics'
@@ -135,11 +135,11 @@ pages/_app.js
     }
 
     useReportWebVitals(postWebVitals)
-[/code]
+```
 
 > **알아두면 좋아요** : [Google Analytics](https://analytics.google.com/analytics/web/)를 사용한다면 `id` 값을 통해 직접 메트릭 분포(백분위수 계산 등)를 구성할 수 있습니다.
 >
-> [code]
+> ```
 >     useReportWebVitals(metric => {
 >       // Use `window.gtag` if you initialized Google Analytics as this example:
 >       // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics
@@ -149,6 +149,6 @@ pages/_app.js
 >         non_interaction: true, // avoids affecting bounce rate.
 >       });
 >     }
-> [/code]
+> ```
 >
 > [Google Analytics로 결과 보내기](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics)에 대해 더 알아보세요.

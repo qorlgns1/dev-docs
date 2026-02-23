@@ -16,14 +16,14 @@ description: '이러한 페이지는 이후 네이티브 Node.js 를 사용해 �
 이러한 페이지는 이후 네이티브 Node.js `require`를 사용해 의존성을 해석합니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       serverExternalPackages: ['@acme/ui'],
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 Next.js에는 현재 호환성 작업이 진행 중이며 자동으로 제외되는 [인기 패키지의 짧은 목록](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.jsonc)이 포함되어 있습니다.
 

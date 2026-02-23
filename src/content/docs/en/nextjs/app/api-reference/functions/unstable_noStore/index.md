@@ -51,4 +51,3 @@ export default async function ServerComponent() {
 | `v15.0.0` | `unstable_noStore` deprecated for `connection`. |
 | `v14.0.0` | `unstable_noStore` introduced.                  |
 ---
-

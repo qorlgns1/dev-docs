@@ -303,4 +303,3 @@ export default function Page() {
 | `v12.2.2` | Allow `next/script` with `beforeInteractive` to be placed in `_document`. |
 | `v11.0.0` | `next/script` introduced.                                                 |
 ---
-

@@ -51,4 +51,3 @@ And if you add `getServerSideProps` to the page, it will then be JavaScript, lik
 * If you have a [custom `Document`](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) with `getInitialProps` be sure you check if `ctx.req` is defined before assuming the page is server-side rendered. `ctx.req` will be `undefined` for pages that are prerendered.
 * Avoid using the `asPath` value on [`next/router`](https://nextjs.org/docs/pages/api-reference/functions/use-router#router-object) in the rendering tree until the router's `isReady` field is `true`. Statically optimized pages only know `asPath` on the client and not the server, so using it as a prop may lead to mismatch errors. The [`active-class-name` example](https://github.com/vercel/next.js/tree/canary/examples/active-class-name) demonstrates one way to use `asPath` as a prop.
 ---
-

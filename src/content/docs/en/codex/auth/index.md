@@ -59,10 +59,10 @@ Codex caches login details locally in a plaintext file at `~/.codex/auth.json` o
 ## Credential storage
 
 Use `cli_auth_credentials_store` to control where the Codex CLI stores cached credentials:
-[code] 
+```
     # file | keyring | auto
     cli_auth_credentials_store = "keyring"
-[/code]
+```
 
   * `file` stores credentials in `auth.json` under `CODEX_HOME` (defaults to `~/.codex`).
   * `keyring` stores credentials in your operating system credential store.
@@ -75,13 +75,13 @@ If you use file-based storage, treat `~/.codex/auth.json` like a password: it co
 ## Enforce a login method or workspace
 
 In managed environments, admins may restrict how users are allowed to authenticate:
-[code] 
+```
     # Only allow ChatGPT login or only allow API key login.
     forced_login_method = "chatgpt" # or "api"
     
     # When using ChatGPT login, restrict users to a specific workspace.
     forced_chatgpt_workspace_id = "00000000-0000-0000-0000-000000000000"
-[/code]
+```
 
 If the active credentials don’t match the configured restrictions, Codex logs the user out and exits.
 
@@ -125,23 +125,23 @@ Treat `~/.codex/auth.json` like a password: it contains access tokens. Don’t c
 If your OS stores credentials in a credential store instead of `~/.codex/auth.json`, this method may not apply. See [Credential storage](https://developers.openai.com/codex/auth#credential-storage) for how to configure file-based storage.
 
 Copy to a remote machine over SSH:
-[code] 
+```
     ssh user@remote 'mkdir -p ~/.codex'
     scp ~/.codex/auth.json user@remote:~/.codex/auth.json
-[/code]
+```
 
 Or use a one-liner that avoids `scp`:
-[code] 
+```
     ssh user@remote 'mkdir -p ~/.codex && cat > ~/.codex/auth.json' < ~/.codex/auth.json
-[/code]
+```
 
 Copy into a Docker container:
-[code] 
+```
     # Replace MY_CONTAINER with the name or ID of your container.
     CONTAINER_HOME=$(docker exec MY_CONTAINER printenv HOME)
     docker exec MY_CONTAINER mkdir -p "$CONTAINER_HOME/.codex"
     docker cp ~/.codex/auth.json MY_CONTAINER:"$CONTAINER_HOME/.codex/auth.json"
-[/code]
+```
 
 ### Fallback: Forward the localhost callback over SSH
 
@@ -150,9 +150,9 @@ If you can forward ports between your local machine and the remote host, you can
   1. From your local machine, start port forwarding:
 
 
-[code] 
+```
     ssh -L 1455:localhost:1455 user@remote
-[/code]
+```
 
   2. In that SSH session, run `codex login` and follow the printed address on your local machine.
 

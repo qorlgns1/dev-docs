@@ -22,18 +22,18 @@ URL Imports는 로컬 디스크가 아닌 외부 서버에서 모듈을 직접 �
 이 기능을 사용하려면 `next.config.js`에 허용할 URL 접두사를 추가하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         urlImports: ['https://example.com/assets/', 'https://cdn.skypack.dev'],
       },
     }
-[/code]
+```
 
 그런 다음 URL에서 모듈을 직접 가져올 수 있습니다:
-[code]
+```
     import { a, b, c } from 'https://example.com/assets/some/module.js'
-[/code]
+```
 
 URL Imports는 일반 패키지 import가 허용되는 모든 곳에서 사용할 수 있습니다.
 
@@ -53,7 +53,7 @@ URL Imports를 사용하면 Next.js가 lockfile과 가져온 에셋을 포함하
 ## Examples[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#examples)
 
 ### Skypack[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#skypack)
-[code]
+```
     import confetti from 'https://cdn.skypack.dev/canvas-confetti'
     import { useEffect } from 'react'
 
@@ -63,10 +63,10 @@ URL Imports를 사용하면 Next.js가 lockfile과 가져온 에셋을 포함하
       })
       return <p>Hello</p>
     }
-[/code]
+```
 
 ### Static Image Imports[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#static-image-imports)
-[code]
+```
     import Image from 'next/image'
     import logo from 'https://example.com/assets/logo.png'
 
@@ -75,23 +75,23 @@ URL Imports를 사용하면 Next.js가 lockfile과 가져온 에셋을 포함하
         <Image src={logo} placeholder="blur" />
       </div>
     )
-[/code]
+```
 
 ### URLs in CSS[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#urls-in-css)
-[code]
+```
     .className {
       background: url('https://example.com/assets/hero.jpg');
     }
-[/code]
+```
 
 ### Asset Imports[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports#asset-imports)
-[code]
+```
     const logo = new URL('https://example.com/assets/file.txt', import.meta.url)
 
     console.log(logo.pathname)
 
     // prints "/_next/static/media/file.a9727b5d.txt"
-[/code]
+```
 
 Was this helpful?
 

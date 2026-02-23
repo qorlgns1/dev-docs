@@ -14,12 +14,12 @@ Source URL: https://developers.openai.com/codex/prompting
 프롬프트(사용자 메시지)를 보내 원하는 작업을 설명하면 Codex와 상호작용할 수 있습니다.
 
 예시 프롬프트:
-[code] 
+```
     Explain how the transform module works and how other modules use it.
-[/code]
-[code] 
+```
+```
     Add a new command-line option `--json` that outputs JSON.
-[/code]
+```
 
 프롬프트를 제출하면 Codex는 루프를 실행합니다. 모델을 호출한 뒤 모델 출력에 따라 파일 읽기, 파일 편집, 도구 호출 등 필요한 작업을 수행합니다. 작업이 완료되거나 사용자가 취소하면 이 과정이 끝납니다.
 

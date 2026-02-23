@@ -14,14 +14,14 @@ Codex supports workflows beyond chat. Use this guide to learn what each one unlo
 ## Running in interactive mode
 
 Codex launches into a full-screen terminal UI that can read your repository, make edits, and run commands as you iterate together. Use it whenever you want a conversational workflow where you can review Codex’s actions in real time.
-[code] 
+```
     codex
-[/code]
+```
 
 You can also specify an initial prompt on the command line.
-[code] 
+```
     codex "Explain this codebase to me"
-[/code]
+```
 
 Once the session is open, you can:
 
@@ -44,10 +44,10 @@ Codex stores your transcripts locally so you can pick up where you left off inst
 
 
 Non-interactive automation runs can resume too:
-[code] 
+```
     codex exec resume --last "Fix the race conditions you found"
     codex exec resume 7f9f9a2e-1b3c-4c7a-9b0e-.... "Implement the plan"
-[/code]
+```
 
 Each resumed run keeps the original transcript, plan history, and approvals, so Codex can use prior context while you supply new instructions. Override the working directory with `--cd` or add extra roots with `--add-dir` if you need to steer the environment before resuming.
 
@@ -56,20 +56,20 @@ Each resumed run keeps the original transcript, plan history, and approvals, so 
 For most coding tasks in Codex, `gpt-5.3-codex` is the go-to model. It’s available for ChatGPT-authenticated Codex sessions in the Codex app, CLI, IDE extension, and Codex Cloud. For extra fast tasks, ChatGPT Pro subscribers have access to the GPT-5.3-Codex-Spark model in research preview.
 
 Switch models mid-session with the /model command, or specify one when launching the CLI.
-[code] 
+```
     codex --model gpt-5.3-codex
-[/code]
+```
 
 [Learn more about the models available in Codex](https://developers.openai.com/codex/models).
 
 ## Feature flags
 
 Codex includes a small set of feature flags. Use the `features` subcommand to inspect what’s available and to persist changes in your configuration.
-[code] 
+```
     codex features list
     codex features enable unified_exec
     codex features disable shell_snapshot
-[/code]
+```
 
 `codex features enable <feature>` and `codex features disable <feature>` write to `~/.codex/config.toml`. If you launch Codex with `--profile`, Codex stores the change in that profile rather than the root configuration.
 
@@ -80,12 +80,12 @@ Use Codex multi-agent workflows to parallelize larger tasks. For setup, role con
 ## Image inputs
 
 Attach screenshots or design specs so Codex can read image details alongside your prompt. You can paste images into the interactive composer or provide files on the command line.
-[code] 
+```
     codex -i screenshot.png "Explain this error"
-[/code]
-[code] 
+```
+```
     codex --image img1.png,img2.jpg "Summarize these diagrams"
-[/code]
+```
 
 Codex accepts common formats such as PNG and JPEG. Use comma-separated filenames for two or more images, and combine them with text instructions to add context.
 
@@ -111,26 +111,26 @@ You’ll see `web_search` items in the transcript or `codex exec --json` output 
 ## Running with an input prompt
 
 When you just need a quick answer, run Codex with a single prompt and skip the interactive UI.
-[code] 
+```
     codex "explain this codebase"
-[/code]
+```
 
 Codex will read the working directory, craft a plan, and stream the response back to your terminal before exiting. Pair this with flags like `--path` to target a specific directory or `--model` to dial in the behavior up front.
 
 ## Shell completions
 
 Speed up everyday usage by installing the generated completion scripts for your shell:
-[code] 
+```
     codex completion bash
     codex completion zsh
     codex completion fish
-[/code]
+```
 
 Run the completion script in your shell configuration file to set up completions for new sessions. For example, if you use `zsh`, you can add the following to the end of your `~/.zshrc` file:
-[code] 
+```
     # ~/.zshrc
     eval "$(codex completion zsh)"
-[/code]
+```
 
 Start a new session, type `codex`, and press `Tab` to see the completions. If you see a `command not found: compdef` error, add `autoload -Uz compinit && compinit` to your `~/.zshrc` file before the `eval "$(codex completion zsh)"` line, then restart your shell.
 
@@ -149,9 +149,9 @@ Codex always surfaces a transcript of its actions, so you can review or roll bac
 ## Scripting Codex
 
 Automate workflows or wire Codex into your existing scripts with the `exec` subcommand. This runs Codex non-interactively, piping the final plan and results back to `stdout`.
-[code] 
+```
     codex exec "fix the CI failure"
-[/code]
+```
 
 Combine `exec` with shell scripting to build custom workflows, such as automatically updating changelogs, sorting issues, or enforcing editorial checks before a PR ships.
 
@@ -160,9 +160,9 @@ Combine `exec` with shell scripting to build custom workflows, such as automatic
 The `codex cloud` command lets you triage and launch [Codex cloud tasks](https://developers.openai.com/codex/cloud) without leaving the terminal. Run it with no arguments to open an interactive picker, browse active or finished tasks, and apply the changes to your local project.
 
 You can also start a task directly from the terminal:
-[code] 
+```
     codex cloud exec --env ENV_ID "Summarize open bugs"
-[/code]
+```
 
 Add `--attempts` (1–4) to request best-of-N runs when you want Codex cloud to generate more than one solution. For example, `codex cloud exec --env ENV_ID --attempts 3 "Summarize open bugs"`.
 

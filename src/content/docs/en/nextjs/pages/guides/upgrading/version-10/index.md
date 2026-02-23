@@ -29,4 +29,3 @@ bun add next@10
 
 > **Good to know:** If you are using TypeScript, ensure you also upgrade `@types/react` and `@types/react-dom` to their corresponding versions.
 ---
-

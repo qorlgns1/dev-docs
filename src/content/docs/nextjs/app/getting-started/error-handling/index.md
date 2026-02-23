@@ -28,7 +28,7 @@ description: '오류는 예상된 오류와 처리되지 않은 예외 두 가�
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     export async function createPost(prevState: any, formData: FormData) {
@@ -45,14 +45,14 @@ JavaScriptTypeScript
         return { message: 'Failed to create post' }
       }
     }
-[/code]
+```
 
 액션을 `useActionState` 훅에 전달하고 반환된 `state`를 사용해 오류 메시지를 표시할 수 있습니다.
 
 app/ui/form.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useActionState } from 'react'
@@ -76,7 +76,7 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 ### Server Components[](https://nextjs.org/docs/app/getting-started/error-handling#server-components)
 
@@ -85,7 +85,7 @@ Server Component 내부에서 데이터를 가져올 때 응답을 사용해 오
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       const res = await fetch(`https://...`)
       const data = await res.json()
@@ -96,7 +96,7 @@ JavaScriptTypeScript
 
       return '...'
     }
-[/code]
+```
 
 ### Not found[](https://nextjs.org/docs/app/getting-started/error-handling#not-found)
 
@@ -105,7 +105,7 @@ JavaScriptTypeScript
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { getPostBySlug } from '@/lib/posts'
 
     export default async function Page({ params }: { params: { slug: string } }) {
@@ -118,16 +118,16 @@ JavaScriptTypeScript
 
       return <div>{post.title}</div>
     }
-[/code]
+```
 
 app/blog/[slug]/not-found.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function NotFound() {
       return <div>404 - Page Not Found</div>
     }
-[/code]
+```
 
 ## 처리되지 않은 예외 처리[](https://nextjs.org/docs/app/getting-started/error-handling#handling-uncaught-exceptions)
 
@@ -142,7 +142,7 @@ Next.js는 오류 경계를 사용해 처리되지 않은 예외를 처리합니
 app/dashboard/error.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client' // Error boundaries must be Client Components
 
     import { useEffect } from 'react'
@@ -173,7 +173,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 오류는 가장 가까운 상위 오류 경계로 전파됩니다. 이를 통해 [라우트 계층](https://nextjs.org/docs/app/getting-started/project-structure#component-hierarchy)의 다양한 수준에 `error.tsx` 파일을 배치해 세밀하게 오류를 처리할 수 있습니다.
 
@@ -182,7 +182,7 @@ JavaScriptTypeScript
 일반적으로 이벤트 핸들러나 async 코드에서 발생하는 오류는 렌더링 이후 실행되기 때문에 오류 경계에서 처리되지 않습니다.
 
 이러한 경우, 오류를 직접 잡고 `useState` 또는 `useReducer`에 저장한 다음 UI를 업데이트해 사용자에게 알리세요.
-[code]
+```
     'use client'
 
     import { useState } from 'react'
@@ -209,10 +209,10 @@ JavaScriptTypeScript
         </button>
       )
     }
-[/code]
+```
 
 `useTransition`의 `startTransition` 안에서 처리되지 않은 오류는 가장 가까운 오류 경계로 전파된다는 점에 유의하세요.
-[code]
+```
     'use client'
 
     import { useTransition } from 'react'
@@ -231,7 +231,7 @@ JavaScriptTypeScript
         </button>
       )
     }
-[/code]
+```
 
 ### 전역 오류[](https://nextjs.org/docs/app/getting-started/error-handling#global-errors)
 
@@ -240,7 +240,7 @@ JavaScriptTypeScript
 app/global-error.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client' // Error boundaries must be Client Components
 
     export default function GlobalError({
@@ -260,7 +260,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 ## API Reference
 

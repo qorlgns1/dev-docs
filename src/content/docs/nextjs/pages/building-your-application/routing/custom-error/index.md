@@ -24,11 +24,11 @@ description: '404 페이지는 자주 접근될 수 있습니다. 방문마다 �
 사용자 정의 404 페이지를 만들려면 `pages/404.js` 파일을 생성하면 됩니다. 이 파일은 빌드 시점에 정적으로 생성됩니다.
 
 pages/404.js
-[code]
+```
     export default function Custom404() {
       return <h1>404 - Page Not Found</h1>
     }
-[/code]
+```
 
 > **알아두세요** : 빌드 타임에 데이터를 가져올 필요가 있다면 이 페이지 안에서 [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)를 사용할 수 있습니다.
 
@@ -41,18 +41,18 @@ pages/404.js
 500 페이지를 사용자 정의하려면 `pages/500.js` 파일을 생성하면 됩니다. 이 파일은 빌드 시점에 정적으로 생성됩니다.
 
 pages/500.js
-[code]
+```
     export default function Custom500() {
       return <h1>500 - Server-side error occurred</h1>
     }
-[/code]
+```
 
 > **알아두세요** : 빌드 타임에 데이터를 가져올 필요가 있다면 이 페이지 안에서 [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)를 사용할 수 있습니다.
 
 ### 더 고급 오류 페이지 사용자 정의[](https://nextjs.org/docs/pages/building-your-application/routing/custom-error#more-advanced-error-page-customizing)
 
 500 오류는 `Error` 컴포넌트가 클라이언트와 서버 양쪽에서 처리합니다. 이를 재정의하려면 `pages/_error.js` 파일을 정의하고 다음 코드를 추가하세요:
-[code]
+```
     function Error({ statusCode }) {
       return (
         <p>
@@ -69,14 +69,14 @@ pages/500.js
     }
 
     export default Error
-[/code]
+```
 
 > `pages/_error.js`는 프로덕션에서만 사용됩니다. 개발 환경에서는 오류가 발생한 위치를 파악할 수 있도록 호출 스택과 함께 오류가 표시됩니다.
 
 ### 기본 제공 오류 페이지 재사용[](https://nextjs.org/docs/pages/building-your-application/routing/custom-error#reusing-the-built-in-error-page)
 
 기본 제공 오류 페이지를 렌더링하려면 `Error` 컴포넌트를 가져와 사용할 수 있습니다:
-[code]
+```
     import Error from 'next/error'
 
     export async function getServerSideProps() {
@@ -96,7 +96,7 @@ pages/500.js
 
       return <div>Next stars: {stars}</div>
     }
-[/code]
+```
 
 `Error` 컴포넌트는 `statusCode`와 함께 텍스트 메시지를 전달하고 싶을 때 `title` 속성도 받을 수 있습니다.
 

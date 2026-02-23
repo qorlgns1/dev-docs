@@ -18,13 +18,13 @@ Copy page
 ## 정적 `robots.txt`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#static-robotstxt)
 
 app/robots.txt
-[code]
+```
     User-Agent: *
     Allow: /
     Disallow: /private/
 
     Sitemap: https://acme.com/sitemap.xml
-[/code]
+```
 
 ## Robots 파일 생성하기[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#generate-a-robots-file)
 
@@ -35,7 +35,7 @@ app/robots.txt
 app/robots.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { MetadataRoute } from 'next'
 
     export default function robots(): MetadataRoute.Robots {
@@ -48,16 +48,16 @@ JavaScriptTypeScript
         sitemap: 'https://acme.com/sitemap.xml',
       }
     }
-[/code]
+```
 
 출력:
-[code]
+```
     User-Agent: *
     Allow: /
     Disallow: /private/
 
     Sitemap: https://acme.com/sitemap.xml
-[/code]
+```
 
 ### 특정 사용자 에이전트 사용자 지정[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#customizing-specific-user-agents)
 
@@ -66,7 +66,7 @@ JavaScriptTypeScript
 app/robots.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { MetadataRoute } from 'next'
 
     export default function robots(): MetadataRoute.Robots {
@@ -85,10 +85,10 @@ JavaScriptTypeScript
         sitemap: 'https://acme.com/sitemap.xml',
       }
     }
-[/code]
+```
 
 출력:
-[code]
+```
     User-Agent: Googlebot
     Allow: /
     Disallow: /private/
@@ -100,10 +100,10 @@ JavaScriptTypeScript
     Disallow: /
 
     Sitemap: https://acme.com/sitemap.xml
-[/code]
+```
 
 ### Robots 객체[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#robots-object)
-[code]
+```
     type Robots = {
       rules:
         | {
@@ -121,7 +121,7 @@ JavaScriptTypeScript
       sitemap?: string | string[]
       host?: string
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#version-history)
 

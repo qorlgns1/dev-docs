@@ -39,4 +39,3 @@ export default withRouter(Page)
 We provide a codemod (a code to code transformation) to automatically change the `url` property usages to `withRouter`.
 
 You can find this codemod and instructions on how to run it here: [Use `withRouter`](https://nextjs.org/docs/pages/guides/upgrading/codemods#url-to-withrouter)
-

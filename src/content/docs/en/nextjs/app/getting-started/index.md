@@ -62,4 +62,3 @@ If you're new to React or need a refresher, we recommend starting with our [Reac
   - Learn how to upgrade your Next.js application to the latest version or canary.
 
 ---
-

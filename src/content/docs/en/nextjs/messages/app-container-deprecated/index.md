@@ -60,4 +60,3 @@ After making this change, your custom `<App>` should work as expected without th
 ## Useful Links
 
 - [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app)
-

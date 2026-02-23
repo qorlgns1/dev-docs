@@ -20,7 +20,7 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -35,14 +35,14 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 이제 컴포넌트나 함수에서 아래와 같이 사용자 정의 `blog` 구성을 사용할 수 있습니다:
 
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     export async function getCachedData() {
@@ -51,7 +51,7 @@ JavaScriptTypeScript
       const data = await fetch('/api/data')
       return data
     }
-[/code]
+```
 
 ## 참고[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife#reference)
 

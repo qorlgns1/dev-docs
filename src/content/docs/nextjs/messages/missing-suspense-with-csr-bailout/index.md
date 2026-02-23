@@ -25,21 +25,21 @@ Suspense 경계 없이 `useSearchParams()`를 통해 검색 매개변수를 읽�
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { connection } from 'next/server'
 
     export default async function Page() {
       await connection()
       return <div>...</div>
     }
-[/code]
+```
 
   * `connection` API가 제공되기 전에는 서버 컴포넌트 `page.tsx` 또는 `layout.tsx`에서 `export const dynamic = 'force-dynamic'`을 설정해 라우트를 온디맨드 렌더링으로 전환했습니다. `'use client'`가 선언된 클라이언트 컴포넌트 `page.tsx`에서 `dynamic`을 설정해도 효과가 없다는 점에 유의하세요.
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export const dynamic = 'force-dynamic'
 
     export default function RootLayout({
@@ -49,14 +49,14 @@ JavaScriptTypeScript
     }) {
       return children
     }
-[/code]
+```
 
   * 또는 서버 컴포넌트 페이지에서 `searchParams` 값을 클라이언트 컴포넌트로 내려보낼 수 있습니다. 클라이언트 컴포넌트에서는 React의 `use()`로 이를 풀어낼 수 있으며, 이때 주변에 `Suspense` 경계를 둬야 합니다. [사용 시점 안내](https://nextjs.org/docs/app/getting-started/layouts-and-pages#what-to-use-and-when)를 확인하세요.
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Suspense } from 'react'
     import ClientSearch from './client-search'
 
@@ -71,12 +71,12 @@ JavaScriptTypeScript
         </Suspense>
       )
     }
-[/code]
+```
 
 app/client-search.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { use } from 'react'
@@ -89,14 +89,14 @@ JavaScriptTypeScript
       const params = use(searchParams)
       return <div>Query: {params.q}</div>
     }
-[/code]
+```
 
   * 페이지를 다시 서버 컴포넌트로 만들고 `useSearchParams`를 사용하는 클라이언트 전용 코드를 자식 클라이언트 컴포넌트로 분리하는 방법도 고려하세요.
 
 app/search.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useSearchParams } from 'next/navigation'
@@ -116,7 +116,7 @@ JavaScriptTypeScript
         </Suspense>
       )
     }
-[/code]
+```
 
 ## 비활성화[](https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout#disabling)
 
@@ -125,22 +125,22 @@ JavaScriptTypeScript
 이 규칙을 비활성화하는 것은 권장하지 않습니다. 그러나 꼭 필요하다면 `next.config.js`에서 `missingSuspenseWithCSRBailout` 옵션을 `false`로 설정해 비활성화할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         missingSuspenseWithCSRBailout: false,
       },
     }
-[/code]
+```
 
 이 구성 옵션은 향후 메이저 버전에서 제거될 예정입니다.
 
 ## 디버깅[](https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout#debugging)
 
 Suspense 경계 없이 `useSearchParams()`가 사용되는 위치를 찾는 데 어려움이 있다면 다음 명령을 실행해 더 자세한 스택 트레이스를 확인하세요.
-[code]
+```
     next build --debug-prerender
-[/code]
+```
 
 그러면 소스 맵이 포함된 난독화되지 않은 스택 트레이스가 제공되어 어떤 컴포넌트와 라우트가 문제를 일으키는지 더 쉽게 파악할 수 있습니다.
 

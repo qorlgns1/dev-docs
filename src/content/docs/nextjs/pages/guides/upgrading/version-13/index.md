@@ -18,24 +18,24 @@ Source URL: https://nextjs.org/docs/pages/guides/upgrading/version-13
 선호하는 패키지 매니저에서 다음 명령을 실행해 Next.js 13 버전으로 업데이트하세요:
 
 터미널
-[code]
+```
     npm i next@13 react@latest react-dom@latest eslint-config-next@13
-[/code]
+```
 
 터미널
-[code]
+```
     yarn add next@13 react@latest react-dom@latest eslint-config-next@13
-[/code]
+```
 
 터미널
-[code]
+```
     pnpm i next@13 react@latest react-dom@latest eslint-config-next@13
-[/code]
+```
 
 터미널
-[code]
+```
     bun add next@13 react@latest react-dom@latest eslint-config-next@13
-[/code]
+```
 
 > **참고:** TypeScript를 사용 중이라면 `@types/react`와 `@types/react-dom`도 최신 버전으로 업그레이드하세요.
 
@@ -73,7 +73,7 @@ Next.js 13부터는 이러한 새 동작이 `next/image`의 기본값이 됩니�
 [`<Link>` 컴포넌트](https://nextjs.org/docs/pages/api-reference/components/link)는 더 이상 자식으로 `<a>` 태그를 수동으로 추가할 필요가 없습니다. 이 동작은 [버전 12.2](https://nextjs.org/blog/next-12-2)에서 실험적 옵션으로 도입되었고 이제 기본값입니다. Next.js 13에서는 `<Link>`가 항상 `<a>`를 렌더링하며 기본 태그에 프롭을 전달할 수 있습니다.
 
 예시:
-[code]
+```
     import Link from 'next/link'
 
     // Next.js 12: `<a>`를 중첩하지 않으면 제외됩니다
@@ -85,7 +85,7 @@ Next.js 13부터는 이러한 새 동작이 `next/image`의 기본값이 됩니�
     <Link href="/about">
       About
     </Link>
-[/code]
+```
 
 링크를 Next.js 13에 맞게 업그레이드하려면 [`new-link` 코드모드](https://nextjs.org/docs/pages/guides/upgrading/codemods#new-link)를 사용할 수 있습니다.
 

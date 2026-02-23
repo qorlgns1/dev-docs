@@ -16,24 +16,24 @@ Source URL: https://nextjs.org/docs/pages/guides/upgrading/version-9
 버전 9로 업그레이드하려면 다음 명령을 실행하세요:
 
 터미널
-[code]
+```
     npm i next@9
-[/code]
+```
 
 터미널
-[code]
+```
     yarn add next@9
-[/code]
+```
 
 터미널
-[code]
+```
     pnpm up next@9
-[/code]
+```
 
 터미널
-[code]
+```
     bun add next@9
-[/code]
+```
 
 > **참고:** TypeScript를 사용 중이라면 `@types/react`와 `@types/react-dom`도 해당 버전에 맞게 함께 업그레이드하세요.
 
@@ -44,7 +44,7 @@ Source URL: https://nextjs.org/docs/pages/guides/upgrading/version-9
 가능하다면 `pages/_app.js`에서 `getInitialProps`를 제거하는 것이 새로운 Next.js 기능을 활용하는 데 중요합니다!
 
 다음 `getInitialProps`는 아무 작업도 하지 않으므로 제거할 수 있습니다:
-[code]
+```
     class MyApp extends App {
       // Remove me, I do nothing!
       static async getInitialProps({ Component, ctx }) {
@@ -61,7 +61,7 @@ Source URL: https://nextjs.org/docs/pages/guides/upgrading/version-9
         // ... etc
       }
     }
-[/code]
+```
 
 ## 주요 변경 사항[](https://nextjs.org/docs/pages/guides/upgrading/version-9#breaking-changes)
 
@@ -80,18 +80,18 @@ TypeScript 정의는 `next` 패키지에 함께 게시되므로 충돌을 피하
 > 이 목록은 커뮤니티가 업그레이드를 돕기 위해 만들었습니다. 다른 차이점을 발견하면 다른 사용자들에게 도움이 되도록 이 목록에 풀 리퀘스트를 보내 주세요.
 
 이전:
-[code]
+```
     import { NextContext } from 'next'
     import { NextAppContext, DefaultAppIProps } from 'next/app'
     import { NextDocumentContext, DefaultDocumentIProps } from 'next/document'
-[/code]
+```
 
 이후
-[code]
+```
     import { NextPageContext } from 'next'
     import { AppContext, AppInitialProps } from 'next/app'
     import { DocumentContext, DocumentInitialProps } from 'next/document'
-[/code]
+```
 
 ### `config` 키는 이제 페이지에서 export하는 항목입니다[](https://nextjs.org/docs/pages/guides/upgrading/version-9#the-config-key-is-now-an-export-on-a-page)
 
@@ -102,7 +102,7 @@ Next.js와 무관한 용도의 `config` export는 다른 이름으로 변경해�
 ### `next/dynamic`은 로딩 중 기본으로 "loading..."을 렌더링하지 않습니다[](https://nextjs.org/docs/pages/guides/upgrading/version-9#nextdynamic-no-longer-renders-loading-by-default-while-loading)
 
 동적 컴포넌트는 로딩 중 기본적으로 아무것도 렌더링하지 않습니다. `loading` 속성을 설정해 이 동작을 계속 사용자 정의할 수 있습니다:
-[code]
+```
     import dynamic from 'next/dynamic'
 
     const DynamicComponentWithCustomLoading = dynamic(
@@ -111,7 +111,7 @@ Next.js와 무관한 용도의 `config` export는 다른 이름으로 변경해�
         loading: () => <p>Loading</p>,
       }
     )
-[/code]
+```
 
 ### `withAmp`는 export된 구성 객체로 대체되었습니다[](https://nextjs.org/docs/pages/guides/upgrading/version-9#withamp-has-been-removed-in-favor-of-an-exported-configuration-object)
 
@@ -120,14 +120,14 @@ Next.js에는 이제 페이지 수준 구성 개념이 있으므로 일관성을
 이 변경은 **Next.js 프로젝트 루트에서 다음 명령을 실행하면 자동으로 마이그레이션됩니다.**
 
 터미널
-[code]
+```
     curl -L https://github.com/vercel/next-codemod/archive/master.tar.gz | tar -xz --strip=2 next-codemod-master/transforms/withamp-to-config.js npx jscodeshift -t ./withamp-to-config.js pages/**/*.js
-[/code]
+```
 
 수동으로 마이그레이션하거나 codemod가 생성할 결과를 확인하려면 아래를 참고하세요:
 
 **변경 전**
-[code]
+```
     import { withAmp } from 'next/amp'
 
     function Home() {
@@ -137,10 +137,10 @@ Next.js에는 이제 페이지 수준 구성 개념이 있으므로 일관성을
     export default withAmp(Home)
     // or
     export default withAmp(Home, { hybrid: true })
-[/code]
+```
 
 **변경 후**
-[code]
+```
     export default function Home() {
       return <h1>My AMP Page</h1>
     }
@@ -150,7 +150,7 @@ Next.js에는 이제 페이지 수준 구성 개념이 있으므로 일관성을
       // or
       amp: 'hybrid',
     }
-[/code]
+```
 
 ### `next export`는 더 이상 페이지를 `index.html`로 내보내지 않습니다[](https://nextjs.org/docs/pages/guides/upgrading/version-9#next-export-no-longer-exports-pages-as-indexhtml)
 
@@ -159,11 +159,11 @@ Next.js에는 이제 페이지 수준 구성 개념이 있으므로 일관성을
 이전 동작으로 되돌리려면 다음 내용을 포함한 `next.config.js`를 생성하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       trailingSlash: true,
     }
-[/code]
+```
 
 ### `pages/api/`는 다르게 취급됩니다[](https://nextjs.org/docs/pages/guides/upgrading/version-9#pagesapi-is-treated-differently)
 
@@ -178,7 +178,7 @@ next.config.js
 이 동작에 의존하는 코드를 업데이트하는 것은 비교적 간단합니다! 애플리케이션 마이그레이션을 돕기 위해 변경 전/후 예제를 제공했습니다:
 
 **변경 전**
-[code]
+```
     import dynamic from 'next/dynamic'
 
     const HelloBundle = dynamic({
@@ -204,10 +204,10 @@ next.config.js
     }
 
     export default DynamicBundle
-[/code]
+```
 
 **변경 후**
-[code]
+```
     import dynamic from 'next/dynamic'
 
     const Hello1 = dynamic(() => import('../components/hello1'))
@@ -228,4 +228,4 @@ next.config.js
     }
 
     export default DynamicBundle
-[/code]
+```

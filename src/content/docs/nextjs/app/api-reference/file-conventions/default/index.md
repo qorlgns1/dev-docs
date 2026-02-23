@@ -22,13 +22,13 @@ description: '파일은 Next.js가 전체 페이지 로드 후 슬롯의 활성 
 새로 고침 시 Next.js는 `@analytics`에 대해 `default.js`를 렌더링합니다. `default.js`가 없으면 명명된 슬롯(`@team`, `@analytics` 등)에 대해 오류가 반환되며 계속하려면 `default.js`를 정의해야 합니다. 이러한 상황에서 404를 반환하는 기존 동작을 유지하려면 다음을 포함하는 `default.js`를 만들 수 있습니다.
 
 app/@team/default.js
-[code]
+```
     import { notFound } from 'next/navigation'
 
     export default function Default() {
       notFound()
     }
-[/code]
+```
 
 또한 `children`은 암시적 슬롯이므로 Next.js가 상위 페이지의 활성 상태를 복구할 수 없을 때 `children`에 대한 폴백을 렌더링할 `default.js` 파일도 만들어야 합니다. `children` 슬롯에 대한 `default.js`를 만들지 않으면 해당 경로에 대해 404 페이지가 반환됩니다.
 
@@ -41,7 +41,7 @@ app/@team/default.js
 app/[artist]/@sidebar/default.js
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Default({
       params,
     }: {
@@ -49,7 +49,7 @@ JavaScriptTypeScript
     }) {
       const { artist } = await params
     }
-[/code]
+```
 
 예시| URL| `params`
 ---|---|---

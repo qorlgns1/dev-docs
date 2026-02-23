@@ -24,7 +24,7 @@ description: '에서 여러 모듈을 한 번에 로드하는 기능이 React �
 **Before**
 
 example.js
-[code]
+```
     import dynamic from 'next/dynamic'
 
     const HelloBundle = dynamic({
@@ -50,12 +50,12 @@ example.js
     }
 
     export default DynamicBundle
-[/code]
+```
 
 **After**
 
 example.js
-[code]
+```
     import dynamic from 'next/dynamic'
 
     const Hello1 = dynamic(() => import('../components/hello1'))
@@ -76,4 +76,4 @@ example.js
     }
 
     export default DynamicBundle
-[/code]
+```

@@ -1992,9 +1992,9 @@ Windows 온보딩 확인 여부를 추적합니다(Windows 전용).
 `config.toml`용 최신 JSON 스키마는 [여기](https://developers.openai.com/codex/config-schema.json)에서 확인할 수 있습니다.
 
 VS Code나 Cursor에서 `config.toml`을 편집할 때 자동 완성과 진단을 받으려면 [Even Better TOML](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) 확장을 설치하고 `config.toml` 맨 위에 다음 줄을 추가하세요:
-[code] 
+```
     #:schema https://developers.openai.com/codex/config-schema.json
-[/code]
+```
 
 참고: `experimental_instructions_file`을 `model_instructions_file`로 변경하세요. Codex는 이전 키를 더 이상 사용하지 않으므로 기존 구성을 새 이름으로 업데이트해야 합니다.
 

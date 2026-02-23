@@ -32,7 +32,7 @@ description: '원본 URL: https://nextjs.org/docs/app/guides/data-security'
 기존 프로젝트에 Server Components를 도입할 때는 **제로 트러스트** 모델을 따르세요. Server Components에서 [`fetch`](https://nextjs.org/docs/app/api-reference/functions/fetch)를 사용해 기존 REST 또는 GraphQL API 엔드포인트를 클라이언트 컴포넌트와 동일하게 계속 호출할 수 있습니다.
 
 app/page.tsx
-[code]
+```
     import { cookies } from 'next/headers'
 
     export default async function Page() {
@@ -48,7 +48,7 @@ app/page.tsx
 
       // ....
     }
-[/code]
+```
 
 다음과 같은 경우에 특히 잘 맞습니다.
 
@@ -68,7 +68,7 @@ app/page.tsx
 이 접근 방식은 모든 데이터 액세스 로직을 중앙집중화해 일관된 데이터 접근을 강제하고 인가 버그 위험을 줄입니다. 또한 요청의 여러 부분에서 메모리 내 캐시를 공유하는 이점도 얻습니다.
 
 data/auth.ts
-[code]
+```
     import { cache } from 'react'
     import { cookies } from 'next/headers'
 
@@ -83,10 +83,10 @@ data/auth.ts
       // Use classes to avoid accidentally passing the whole object to the client.
       return new User(decodedToken.id)
     })
-[/code]
+```
 
 data/user-dto.tsx
-[code]
+```
     import 'server-only'
     import { getCurrentUser } from './auth'
 
@@ -118,10 +118,10 @@ data/user-dto.tsx
           : null,
       }
     }
-[/code]
+```
 
 app/page.tsx
-[code]
+```
     import { getProfile } from '../../data/user'
 
     export async function Page({ params: { slug } }) {
@@ -130,7 +130,7 @@ app/page.tsx
       const profile = await getProfile(slug);
       ...
     }
-[/code]
+```
 
 > **알아두면 좋아요:** 비밀 키는 환경 변수에 저장하되, `process.env`에 접근하는 주체를 데이터 액세스 레이어로만 제한하세요. 이렇게 하면 애플리케이션의 다른 부분에서 비밀이 노출되는 것을 막을 수 있습니다.
 
@@ -141,7 +141,7 @@ app/page.tsx
 하지만 이 접근 방식은 다음과 같이 클라이언트에 개인 데이터를 실수로 노출하기 쉬워집니다.
 
 app/page.tsx
-[code]
+```
     import Profile from './components/profile.tsx'
 
     export async function Page({ params: { slug } }) {
@@ -151,10 +151,10 @@ app/page.tsx
       // we are passing the data from the Server Component to the Client.
       return <Profile user={userData} />
     }
-[/code]
+```
 
 app/ui/profile.tsx
-[code]
+```
     'use client'
 
     // BAD: This is a bad props interface because it accepts way more data than the
@@ -169,12 +169,12 @@ app/ui/profile.tsx
         </div>
       )
     }
-[/code]
+```
 
 클라이언트 컴포넌트로 전달하기 전에 데이터를 정제해야 합니다.
 
 data/user.ts
-[code]
+```
     import { sql } from './db'
 
     export async function getUser(slug: string) {
@@ -186,10 +186,10 @@ data/user.ts
         name: user.name,
       }
     }
-[/code]
+```
 
 app/page.tsx
-[code]
+```
     import { getUser } from '../data/user'
     import Profile from './ui/profile'
 
@@ -201,7 +201,7 @@ app/page.tsx
       const publicProfile = await getUser(slug)
       return <Profile user={publicProfile} />
     }
-[/code]
+```
 
 ## 데이터 읽기[](https://nextjs.org/docs/app/guides/data-security#reading-data)
 
@@ -231,13 +231,13 @@ app/page.tsx
 Next.js 앱에서는 `next.config.js`의 [`experimental.taint`](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint) 옵션으로 활성화할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         taint: true,
       },
     }
-[/code]
+```
 
 이렇게 하면 taint된 객체나 값을 클라이언트로 전달하지 못합니다. 다만 이는 추가적인 방어 계층일 뿐이므로, React 렌더링 컨텍스트에 전달하기 전에 [DAL](https://nextjs.org/docs/app/guides/data-security#data-access-layer)에서 데이터를 필터링하고 정제해야 합니다.
 
@@ -254,16 +254,16 @@ next.config.js
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add server-only
-[/code]
+```
 
 lib/data.ts
-[code]
+```
     import 'server-only'
 
     //...
-[/code]
+```
 
 이렇게 하면 해당 모듈이 클라이언트 환경에서 import될 경우 빌드 오류를 발생시켜 독점 코드나 내부 비즈니스 로직이 서버에만 남게 됩니다.
 
@@ -283,10 +283,10 @@ Server Action을 생성해 export하면 기본적으로 공개 HTTP 엔드포인
 > **알아두면 좋아요** :
 >
 > ID는 컴파일 중 생성되며 최대 14일 동안 캐시됩니다. 새 빌드가 시작되거나 빌드 캐시가 무효화되면 다시 생성됩니다. 이 보안 개선은 인증 레이어가 누락된 경우의 위험을 줄여주지만, 여전히 Server Actions를 공개 HTTP 엔드포인트처럼 다뤄야 합니다.
-[code]
+```
     // app/actions.js
     'use server'
-[/code]
+```
 
 // If this action **is** used in our application, Next.js
     // will create a secure ID to allow the client to reference
@@ -297,14 +297,13 @@ Server Action을 생성해 export하면 기본적으로 공개 HTTP 엔드포인
     // will automatically remove this code during `next build`
     // and will not create a public endpoint.
     export async function deleteUserAction(formData) {}
-[/code]
 
 ### 클라이언트 입력 검증[](https://nextjs.org/docs/app/guides/data-security#validating-client-input)
 
 클라이언트 입력은 쉽게 변경될 수 있으므로 항상 검증해야 합니다. 예를 들어, 폼 데이터, URL 매개변수, 헤더, `searchParams` 등이 여기에 해당합니다:
 
 app/page.tsx
-[code]
+```
     // BAD: Trusting searchParams directly
     export default async function Page({ searchParams }) {
       const isAdmin = searchParams.get('isAdmin')
@@ -326,14 +325,14 @@ app/page.tsx
         return <AdminPanel />
       }
     }
-[/code]
+```
 
 ### 인증 및 권한 부여[](https://nextjs.org/docs/app/guides/data-security#authentication-and-authorization)
 
 사용자가 특정 작업을 수행할 권한이 있는지 항상 확인해야 합니다. 예를 들어:
 
 app/actions.ts
-[code]
+```
     'use server'
 
     import { auth } from './lib'
@@ -346,7 +345,7 @@ app/actions.ts
 
       // ...
     }
-[/code]
+```
 
 Next.js에서 [Authentication](https://nextjs.org/docs/app/guides/authentication)에 대해 더 알아보세요.
 
@@ -357,7 +356,7 @@ Next.js에서 [Authentication](https://nextjs.org/docs/app/guides/authentication
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       const publishVersion = await getLatestVersion();
 
@@ -375,7 +374,7 @@ JavaScriptTypeScript
         </form>
       );
     }
-[/code]
+```
 
 클로저는 렌더링 시점의 데이터를 _스냅샷_ 으로 캡처해 나중에 액션이 호출될 때 사용할 수 있어야 할 때 유용합니다.
 
@@ -390,9 +389,9 @@ Next.js 애플리케이션을 여러 서버에 **자가 호스팅**하는 경우
 이를 완화하려면 `process.env.NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` 환경 변수를 사용해 암호화 키를 덮어쓸 수 있습니다. 이 변수를 지정하면 빌드 간에도 암호화 키가 유지되며 모든 서버 인스턴스가 동일한 키를 사용합니다.
 
 키는 base64로 인코딩된 값이어야 하며, 디코딩했을 때 길이가 유효한 AES 키 크기(16, 24, 32바이트)와 일치해야 합니다. Next.js는 기본적으로 32바이트 키를 생성합니다. 예를 들어 다음과 같이 플랫폼의 암호화 도구를 사용해 호환 키를 생성할 수 있습니다:
-[code]
+```
     openssl rand -base64 32
-[/code]
+```
 
 이는 여러 배포 환경에서 일관된 암호화 동작이 중요한 고급 사용 사례입니다. 키 순환과 서명 같은 표준 보안 관행을 따르세요. 배포별 고려 사항은 [Self-Hosting 가이드](https://nextjs.org/docs/app/guides/self-hosting#server-functions-encryption-key)를 참조하세요.
 
@@ -407,7 +406,7 @@ Server Action은 `<form>` 요소에서 호출될 수 있으므로 [CSRF 공격](
 대규모 애플리케이션에서 리버스 프록시나 다층 백엔드 아키텍처(서버 API와 프로덕션 도메인이 다른 경우)를 사용하는 경우, 안전한 오리진 목록을 지정하기 위해 [`serverActions.allowedOrigins`](https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions) 설정 옵션을 사용하는 것이 좋습니다. 이 옵션은 문자열 배열을 받습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     module.exports = {
       experimental: {
@@ -416,7 +415,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 [Security and Server Actions](https://nextjs.org/blog/security-nextjs-server-components-actions)에 대해 더 자세히 알아보세요.
 
@@ -425,7 +424,7 @@ next.config.js
 뮤테이션(예: 사용자 로그아웃, 데이터베이스 업데이트, 캐시 무효화)은 Server 컴포넌트와 Client 컴포넌트 모두에서 부작용으로 발생해서는 안 됩니다. 예상치 못한 부작용을 방지하기 위해 Next.js는 렌더링 메서드 내에서 쿠키 설정이나 캐시 재검증을 명시적으로 막습니다.
 
 app/page.tsx
-[code]
+```
     // BAD: Triggering a mutation during rendering
     export default async function Page({ searchParams }) {
       if (searchParams.get('logout')) {
@@ -434,12 +433,12 @@ app/page.tsx
 
       return <UserProfile />
     }
-[/code]
+```
 
 대신 Server Action을 사용해 뮤테이션을 처리해야 합니다.
 
 app/page.tsx
-[code]
+```
     // GOOD: Using Server Actions to handle mutations
     import { logout } from './actions'
 
@@ -453,7 +452,7 @@ app/page.tsx
         </>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요:** Next.js는 `POST` 요청을 사용해 뮤테이션을 처리합니다. 이는 GET 요청에서 발생할 수 있는 우발적 부작용을 방지해 CSRF 위험을 줄여 줍니다.
 

@@ -51,4 +51,3 @@ The following libraries are optimized by default:
 * `effect`
 * `@effect/*`
 ---
-

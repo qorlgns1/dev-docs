@@ -27,14 +27,14 @@ Copy page
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add -D cypress
-[/code]
+```
 
 `package.json`의 scripts 필드에 Cypress `open` 명령을 추가합니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -44,16 +44,16 @@ package.json
         "cypress:open": "cypress open"
       }
     }
-[/code]
+```
 
 처음으로 Cypress를 실행하여 Cypress 테스트 스위트를 엽니다:
 
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm cypress:open
-[/code]
+```
 
 **E2E Testing**과/또는 **Component Testing**을 구성할 수 있습니다. 이 옵션 중 하나를 선택하면 프로젝트에 `cypress.config.js` 파일과 `cypress` 폴더가 자동으로 생성됩니다.
 
@@ -64,7 +64,7 @@ Terminal
 cypress.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { defineConfig } from 'cypress'
 
     export default defineConfig({
@@ -72,12 +72,12 @@ JavaScriptTypeScript
         setupNodeEvents(on, config) {},
       },
     })
-[/code]
+```
 
 그런 다음 Next.js 파일 두 개를 새로 만드세요:
 
 pages/index.js
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
@@ -88,10 +88,10 @@ pages/index.js
         </div>
       )
     }
-[/code]
+```
 
 pages/about.js
-[code]
+```
     import Link from 'next/link'
 
     export default function About() {
@@ -102,12 +102,12 @@ pages/about.js
         </div>
       )
     }
-[/code]
+```
 
 내비게이션이 올바르게 작동하는지 확인하는 테스트를 추가하세요:
 
 cypress/e2e/app.cy.js
-[code]
+```
     describe('Navigation', () => {
       it('should navigate to the about page', () => {
         // Start from the index page
@@ -123,7 +123,7 @@ cypress/e2e/app.cy.js
         cy.get('h1').contains('About')
       })
     })
-[/code]
+```
 
 ### E2E 테스트 실행[](https://nextjs.org/docs/pages/guides/testing/cypress#running-e2e-tests)
 
@@ -148,7 +148,7 @@ Cypress 앱에서 **Component Testing**을 선택한 다음 프런트엔드 프�
 cypress.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { defineConfig } from 'cypress'
 
     export default defineConfig({
@@ -159,12 +159,12 @@ JavaScriptTypeScript
         },
       },
     })
-[/code]
+```
 
 앞선 섹션에서 사용한 컴포넌트를 그대로 사용한다고 가정하고, 컴포넌트가 기대한 출력을 렌더링하는지 확인하는 테스트를 추가하세요:
 
 cypress/component/about.cy.js
-[code]
+```
     import AboutPage from '../../pages/about'
 
     describe('<AboutPage />', () => {
@@ -180,7 +180,7 @@ cypress/component/about.cy.js
         cy.get('a[href="/"]').should('be.visible')
       })
     })
-[/code]
+```
 
 > **알아두면 좋은 점** :
 >
@@ -197,7 +197,7 @@ cypress/component/about.cy.js
 대화형 테스트 외에도 `cypress run` 명령을 사용해 Cypress를 헤드리스 모드로 실행할 수 있으며, 이는 CI 환경에 더 적합합니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         //...
@@ -207,7 +207,7 @@ package.json
         "component:headless": "cypress run --component"
       }
     }
-[/code]
+```
 
 Cypress와 지속적 통합에 대해 더 알아보려면 다음 자료를 참고하세요:
 

@@ -18,7 +18,7 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/functions/co
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { connection } from 'next/server'
 
     export default async function Page() {
@@ -27,14 +27,14 @@ JavaScriptTypeScript
       const rand = Math.random()
       return <span>{rand}</span>
     }
-[/code]
+```
 
 ## Reference[](https://nextjs.org/docs/app/api-reference/functions/connection#reference)
 
 ### Type[](https://nextjs.org/docs/app/api-reference/functions/connection#type)
-[code]
+```
     function connection(): Promise<void>
-[/code]
+```
 
 ### Parameters[](https://nextjs.org/docs/app/api-reference/functions/connection#parameters)
 

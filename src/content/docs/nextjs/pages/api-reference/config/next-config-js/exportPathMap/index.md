@@ -26,7 +26,7 @@ Copy page
 `next.config.js`를 열고 다음 `exportPathMap` 구성을 추가합니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       exportPathMap: async function (
         defaultPathMap,
@@ -41,7 +41,7 @@ next.config.js
         }
       },
     }
-[/code]
+```
 
 > **알아두면 좋은 점**: `exportPathMap`의 `query` 필드는 [자동 정적 최적화 페이지](https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization)나 [`getStaticProps` 페이지](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)와 함께 사용할 수 없습니다. 이들은 빌드 타임에 HTML 파일로 렌더링되므로 `next export` 중 추가 쿼리 정보를 전달할 수 없습니다.
 
@@ -69,20 +69,20 @@ Next.js를 구성해 페이지를 `index.html` 파일로 내보내고 후행 슬
 다시 이 방식으로 전환하고 후행 슬래시를 추가하려면 `next.config.js`를 열고 `trailingSlash` 구성을 활성화하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       trailingSlash: true,
     }
-[/code]
+```
 
 ## 출력 디렉터리 사용자 지정하기[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/exportPathMap#customizing-the-output-directory)
 
 [`next export`](https://nextjs.org/docs/pages/guides/static-exports)는 기본 출력 디렉터리로 `out`을 사용합니다. `-o` 인수를 사용해 다음과 같이 사용자 지정할 수 있습니다:
 
 Terminal
-[code]
+```
     next export -o outdir
-[/code]
+```
 
 > **Warning** : `exportPathMap` 사용은 deprecated 상태이며 `pages` 내부의 `getStaticPaths`가 우선합니다. 두 기능을 함께 사용하는 것은 권장하지 않습니다.
 

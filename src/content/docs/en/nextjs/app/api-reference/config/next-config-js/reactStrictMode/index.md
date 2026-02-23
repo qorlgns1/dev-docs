@@ -23,4 +23,3 @@ module.exports = {
 
 If you or your team are not ready to use Strict Mode in your entire application, that's OK! You can incrementally migrate on a page-by-page basis using `<React.StrictMode>`.
 ---
-

@@ -32,7 +32,7 @@ Next.js는 App Router를 사용해 [web app manifest](https://nextjs.org/docs/ap
 app/manifest.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { MetadataRoute } from 'next'
 
     export default function manifest(): MetadataRoute.Manifest {
@@ -58,7 +58,7 @@ JavaScriptTypeScript
         ],
       }
     }
-[/code]
+```
 
 이 파일에는 이름, 아이콘, 사용자 기기에서 아이콘으로 표시되는 방식 등의 정보가 포함되어야 합니다. 이를 통해 사용자는 홈 화면에 PWA를 설치하고 네이티브 앱과 유사한 경험을 얻을 수 있습니다.
 
@@ -78,7 +78,7 @@ JavaScriptTypeScript
 웹 푸시 알림을 사용하면 사용자가 앱을 적극적으로 사용하고 있지 않을 때도 다시 참여시킬 수 있습니다. Next.js 애플리케이션에서 이를 구현하는 방법은 다음과 같습니다:
 
 먼저 `app/page.tsx`에서 메인 페이지 컴포넌트를 만듭니다. 더 잘 이해할 수 있도록 작은 부분으로 나눕니다. 처음에는 필요한 일부 import와 유틸리티를 추가합니다. 참조된 Server Action이 아직 없어도 괜찮습니다:
-[code]
+```
     'use client'
 
     import { useState, useEffect } from 'react'
@@ -96,10 +96,10 @@ JavaScriptTypeScript
       }
       return outputArray
     }
-[/code]
+```
 
 이제 구독, 구독 해제, 푸시 알림 전송을 관리하는 컴포넌트를 추가합니다.
-[code]
+```
     function PushNotificationManager() {
       const [isSupported, setIsSupported] = useState(false)
       const [subscription, setSubscription] = useState<PushSubscription | null>(
@@ -177,10 +177,10 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 마지막으로, iOS 기기에서 홈 화면에 설치하도록 안내하는 메시지를 보여 주고, 이미 설치된 경우에는 표시하지 않는 컴포넌트를 만듭니다.
-[code]
+```
     function InstallPrompt() {
       const [isIOS, setIsIOS] = useState(false)
       const [isStandalone, setIsStandalone] = useState(false)
@@ -228,7 +228,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 이제 이 파일에서 호출하는 Server Action을 만듭니다.
 
@@ -239,7 +239,7 @@ JavaScriptTypeScript
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import webpush from 'web-push'
@@ -286,7 +286,7 @@ JavaScriptTypeScript
         return { success: false, error: 'Failed to send notification' }
       }
     }
-[/code]
+```
 
 알림 전송은 5단계에서 만들 서비스 워커가 처리합니다.
 
@@ -301,30 +301,30 @@ Web Push API를 사용하려면 [VAPID](https://vapidkeys.com/) 키를 생성해
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add -g web-push
-[/code]
+```
 
 다음 명령으로 VAPID 키를 생성합니다:
 
 Terminal
-[code]
+```
     web-push generate-vapid-keys
-[/code]
+```
 
 출력을 복사해 `.env` 파일에 키를 붙여 넣습니다:
-[code]
+```
     NEXT_PUBLIC_VAPID_PUBLIC_KEY=your_public_key_here
     VAPID_PRIVATE_KEY=your_private_key_here
 
-[/code]
+```
 
 ### 5\. 서비스 워커 만들기[](https://nextjs.org/docs/app/guides/progressive-web-apps#5-creating-a-service-worker)
 
 서비스 워커용 `public/sw.js` 파일을 만듭니다:
 
 public/sw.js
-[code]
+```
     self.addEventListener('push', function (event) {
       if (event.data) {
         const data = event.data.json()
@@ -347,7 +347,7 @@ public/sw.js
       event.notification.close()
       event.waitUntil(clients.openWindow('<https://your-website.com>'))
     })
-[/code]
+```
 
 이 서비스 워커는 사용자 지정 이미지와 알림을 지원합니다. 푸시 이벤트 수신과 알림 클릭을 처리합니다.
 
@@ -385,7 +385,7 @@ public/sw.js
 보안은 어떤 웹 애플리케이션, 특히 PWA에서 매우 중요한 요소입니다. Next.js에서는 `next.config.js` 파일을 사용해 보안 헤더를 구성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async headers() {
         return [
@@ -426,7 +426,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 각 옵션을 살펴보면 다음과 같습니다:
 

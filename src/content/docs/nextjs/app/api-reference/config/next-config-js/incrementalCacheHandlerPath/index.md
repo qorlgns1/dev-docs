@@ -16,12 +16,12 @@ description: '캐시된 페이지와 데이터를 영구 스토리지에 보존�
 > **알아두면 좋아요**: `cacheHandler`(단수) 구성은 ISR 및 라우트 핸들러 응답을 저장하고 재검증하는 등 서버 캐시 작업에 대해 Next.js가 사용하는 항목입니다. `'use cache'` 지시문에는 **사용되지 않으며**, 해당 지시문에는 [`cacheHandlers`](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers)(복수)를 사용하세요.
 
 next.config.js
-[code]
+```
     module.exports = {
       cacheHandler: require.resolve('./cache-handler.js'),
       cacheMaxMemorySize: 0, // disable default in-memory caching
     }
-[/code]
+```
 
 [맞춤 캐시 핸들러](https://nextjs.org/docs/app/guides/self-hosting#configuring-caching) 예제를 보고 구현 방식에 대해 더 알아보세요.
 

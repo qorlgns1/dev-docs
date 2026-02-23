@@ -50,14 +50,14 @@ Codex 에이전트는 `universal`이라는 기본 컨테이너 이미지에서 �
 
 개발 환경이 더 복잡하다면 사용자 정의 설정 스크립트를 제공할 수 있습니다. 예:
 
-[code] 
+```
     # Install type checker
     pip install pyright
     
     # Install dependencies
     poetry install --with test
     pnpm install
-[/code]
+```
 
 설정 스크립트는 에이전트와 별도의 Bash 세션에서 실행되므로 `export` 같은 명령은 에이전트 단계로 이어지지 않습니다. 환경 변수를 유지하려면 `~/.bashrc`에 추가하거나 환경 설정에서 구성하세요.
 

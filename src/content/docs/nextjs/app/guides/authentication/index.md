@@ -40,7 +40,7 @@ Server Actions는 항상 서버에서 실행되므로 인증 로직을 처리하
 app/ui/signup-form.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { signup } from '@/app/actions/auth'
 
     export function SignupForm() {
@@ -62,14 +62,14 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 app/actions/auth.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function signup(formData: FormData) {}
-[/code]
+```
 
 #### 2\. 서버에서 폼 필드를 검증[](https://nextjs.org/docs/app/guides/authentication#2-validate-form-fields-on-the-server)
 
@@ -80,7 +80,7 @@ Server Action을 사용해 서버에서 폼 필드를 검증합니다. 인증 �
 app/lib/definitions.ts
 
 JavaScriptTypeScript
-[code]
+```
     import * as z from 'zod'
 
     export const SignupFormSchema = z.object({
@@ -110,14 +110,14 @@ JavaScriptTypeScript
           message?: string
         }
       | undefined
-[/code]
+```
 
 정의된 스키마와 일치하지 않는 폼 필드가 있다면 Server Action에서 `return`하여 인증 제공자의 API나 데이터베이스를 불필요하게 호출하지 않도록 합니다.
 
 app/actions/auth.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { SignupFormSchema, FormState } from '@/app/lib/definitions'
 
     export async function signup(state: FormState, formData: FormData) {
@@ -137,14 +137,14 @@ JavaScriptTypeScript
 
       // Call the provider or db to create a user...
     }
-[/code]
+```
 
 `<SignupForm />` 내부에서 React의 `useActionState` 훅을 사용하면 폼이 제출되는 동안 검증 오류를 표시할 수 있습니다:
 
 app/ui/signup-form.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { signup } from '@/app/actions/auth'
@@ -187,7 +187,7 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요:**
 >
@@ -204,7 +204,7 @@ JavaScriptTypeScript
 app/actions/auth.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export async function signup(state: FormState, formData: FormData) {
       // 1. Validate form fields
       // ...
@@ -236,7 +236,7 @@ JavaScriptTypeScript
       // 4. Create user session
       // 5. Redirect user
     }
-[/code]
+```
 
 사용자 계정을 성공적으로 생성하거나 자격 증명을 확인한 후에는 세션을 생성해 사용자의 인증 상태를 관리할 수 있습니다. 세션 관리 전략에 따라 세션은 쿠키, 데이터베이스 또는 둘 다에 저장할 수 있습니다. 자세한 내용은 [Session Management](https://nextjs.org/docs/app/guides/authentication#session-management) 섹션을 확인하세요.
 
@@ -274,23 +274,23 @@ JavaScriptTypeScript
 세션에 서명할 비밀 키를 생성하는 방법은 여러 가지가 있습니다. 예를 들어, 터미널에서 `openssl` 명령을 사용할 수 있습니다:
 
 terminal
-[code]
+```
     openssl rand -base64 32
-[/code]
+```
 
 이 명령은 비밀 키로 사용할 수 있는 32자 길이의 랜덤 문자열을 생성하며, 이를 [환경 변수 파일](https://nextjs.org/docs/app/guides/environment-variables)에 저장할 수 있습니다:
 
 .env
-[code]
+```
     SESSION_SECRET=your_secret_key
-[/code]
+```
 
 이후 세션 관리 로직에서 이 키를 참조할 수 있습니다:
 
 app/lib/session.js
-[code]
+```
     const secretKey = process.env.SESSION_SECRET
-[/code]
+```
 
 #### 2\. 세션 암호화 및 복호화[](https://nextjs.org/docs/app/guides/authentication#2-encrypting-and-decrypting-sessions)
 
@@ -299,7 +299,7 @@ app/lib/session.js
 app/lib/session.ts
 
 JavaScriptTypeScript
-[code]
+```
     import 'server-only'
     import { SignJWT, jwtVerify } from 'jose'
     import { SessionPayload } from '@/app/lib/definitions'
@@ -325,7 +325,7 @@ JavaScriptTypeScript
         console.log('Failed to verify session')
       }
     }
-[/code]
+```
 
 > **팁** :
 >
@@ -347,7 +347,7 @@ JavaScriptTypeScript
 app/lib/session.ts
 
 JavaScriptTypeScript
-[code]
+```
     import 'server-only'
     import { cookies } from 'next/headers'
 
@@ -364,14 +364,14 @@ JavaScriptTypeScript
         path: '/',
       })
     }
-[/code]
+```
 
 서버 액션으로 돌아가 `createSession()` 함수를 호출한 뒤 [`redirect()`](https://nextjs.org/docs/app/guides/redirecting) API를 사용해 사용자를 적절한 페이지로 리디렉션할 수 있습니다:
 
 app/actions/auth.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { createSession } from '@/app/lib/session'
 
     export async function signup(state: FormState, formData: FormData) {
@@ -386,7 +386,7 @@ JavaScriptTypeScript
       // 5. Redirect user
       redirect('/profile')
     }
-[/code]
+```
 
 > **팁** :
 >
@@ -401,7 +401,7 @@ JavaScriptTypeScript
 app/lib/session.ts
 
 JavaScriptTypeScript
-[code]
+```
     import 'server-only'
     import { cookies } from 'next/headers'
     import { decrypt } from '@/app/lib/session'
@@ -425,7 +425,7 @@ JavaScriptTypeScript
         path: '/',
       })
     }
-[/code]
+```
 
 > **팁:** 인증 라이브러리가 리프레시 토큰을 지원하는지 확인하세요. 리프레시 토큰은 사용자 세션을 연장하는 데 사용할 수 있습니다.
 
@@ -436,7 +436,7 @@ JavaScriptTypeScript
 app/lib/session.ts
 
 JavaScriptTypeScript
-[code]
+```
     import 'server-only'
     import { cookies } from 'next/headers'
 
@@ -444,14 +444,14 @@ JavaScriptTypeScript
       const cookieStore = await cookies()
       cookieStore.delete('session')
     }
-[/code]
+```
 
 그런 다음 애플리케이션에서 `deleteSession()` 함수를 재사용할 수 있으며, 예를 들어 로그아웃 시 다음과 같이 사용할 수 있습니다:
 
 app/actions/auth.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cookies } from 'next/headers'
     import { deleteSession } from '@/app/lib/session'
 
@@ -459,7 +459,7 @@ JavaScriptTypeScript
       await deleteSession()
       redirect('/login')
     }
-[/code]
+```
 
 ### 데이터베이스 세션[](https://nextjs.org/docs/app/guides/authentication#database-sessions)
 
@@ -474,7 +474,7 @@ JavaScriptTypeScript
 app/lib/session.ts
 
 JavaScriptTypeScript
-[code]
+```
     import cookies from 'next/headers'
     import { db } from '@/app/lib/db'
     import { encrypt } from '@/app/lib/session'
@@ -507,7 +507,7 @@ JavaScriptTypeScript
         path: '/',
       })
     }
-[/code]
+```
 
 > **팁** :
 >
@@ -546,14 +546,14 @@ JavaScriptTypeScript
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
     import { decrypt } from '@/app/lib/session'
     import { cookies } from 'next/headers'
 
     // 1. Specify protected and public routes
     const protectedRoutes = ['/dashboard']
-[/code]
+```
 
 const publicRoutes = ['/login', '/signup', '/']
 
@@ -588,7 +588,6 @@ const publicRoutes = ['/login', '/signup', '/']
     export const config = {
       matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
     }
-[/code]
 
 Proxy는 초기 점검에 유용하지만, 데이터를 보호하기 위한 유일한 방어선이 되어서는 안 됩니다. 보안 점검 대부분은 데이터 소스와 가능한 한 가까운 지점에서 수행되어야 하며, 자세한 내용은 [Data Access Layer](https://nextjs.org/docs/app/guides/authentication#creating-a-data-access-layer-dal)를 참조하세요.
 
@@ -610,7 +609,7 @@ DAL에는 사용자가 애플리케이션과 상호작용할 때 세션을 검�
 app/lib/dal.ts
 
 JavaScriptTypeScript
-[code]
+```
     import 'server-only'
 
     import { cookies } from 'next/headers'
@@ -626,14 +625,14 @@ JavaScriptTypeScript
 
       return { isAuth: true, userId: session.userId }
     })
-[/code]
+```
 
 그런 다음 데이터 요청, Server Actions, Route Handlers에서 `verifySession()` 함수를 호출할 수 있습니다:
 
 app/lib/dal.ts
 
 JavaScriptTypeScript
-[code]
+```
     export const getUser = cache(async () => {
       const session = await verifySession()
       if (!session) return null
@@ -657,7 +656,7 @@ JavaScriptTypeScript
         return null
       }
     })
-[/code]
+```
 
 > **Tip** :
 >
@@ -675,7 +674,7 @@ JavaScriptTypeScript
 app/lib/dto.ts
 
 JavaScriptTypeScript
-[code]
+```
     import 'server-only'
     import { getUser } from '@/app/lib/dal'
 
@@ -704,7 +703,7 @@ JavaScriptTypeScript
           : null,
       }
     }
-[/code]
+```
 
 DAL에서 데이터 요청과 권한 로직을 중앙화하고 DTO를 사용하면 모든 데이터 요청의 보안과 일관성을 보장할 수 있어, 애플리케이션이 확장될 때 유지보수·감사·디버깅이 쉬워집니다.
 
@@ -721,7 +720,7 @@ DAL에서 데이터 요청과 권한 로직을 중앙화하고 DTO를 사용하�
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { verifySession } from '@/app/lib/dal'
 
     export default async function Dashboard() {
@@ -736,7 +735,7 @@ JavaScriptTypeScript
         redirect('/login')
       }
     }
-[/code]
+```
 
 이 예시에서는 DAL의 `verifySession()` 함수를 사용해 'admin', 'user', 미승인 역할을 확인합니다. 이 패턴을 사용하면 각 사용자가 자신의 역할에 맞는 컴포넌트와만 상호작용하게 할 수 있습니다.
 
@@ -757,7 +756,7 @@ JavaScriptTypeScript
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { verifySession } from '@/app/lib/dal'
 
     export default async function DashboardPage() {
@@ -773,7 +772,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 #### 리프 컴포넌트에서의 인증 검사[](https://nextjs.org/docs/app/guides/authentication#auth-checks-in-leaf-components)
 
@@ -782,7 +781,7 @@ JavaScriptTypeScript
 app/ui/admin-actions.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { verifySession } from '@/app/lib/dal'
 
     export default async function AdminActions() {
@@ -800,7 +799,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 이 패턴을 사용하면 각 컴포넌트 렌더 시 인증 검사를 수행하면서 사용자 권한에 따라 UI 요소를 표시하거나 숨길 수 있습니다.
 
@@ -819,7 +818,7 @@ JavaScriptTypeScript
 app/lib/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
     import { verifySession } from '@/app/lib/dal'
 
@@ -834,7 +833,7 @@ JavaScriptTypeScript
 
 // Proceed with the action for authorized users
     }
-[/code]
+```
 
 ### 라우트 핸들러[](https://nextjs.org/docs/app/guides/authentication#route-handlers)
 
@@ -845,7 +844,7 @@ JavaScriptTypeScript
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { verifySession } from '@/app/lib/dal'
 
     export async function GET() {
@@ -866,7 +865,7 @@ JavaScriptTypeScript
 
       // Continue for authorized users
     }
-[/code]
+```
 
 위 예시는 두 단계 보안 검사를 수행하는 라우트 핸들러를 보여줍니다. 먼저 활성 세션이 있는지 확인하고, 이후 로그인한 사용자가 'admin'인지 검증합니다.
 
@@ -879,7 +878,7 @@ JavaScriptTypeScript
 app/layout.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { ContextProvider } from 'auth-lib'
 
     export default function RootLayout({ children }) {
@@ -891,8 +890,8 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
-[code]
+```
+```
     'use client';
 
     import { useSession } from "auth-lib";
@@ -905,7 +904,7 @@ JavaScriptTypeScript
         // ...
       );
     }
-[/code]
+```
 
 클라이언트 컴포넌트에서 세션 데이터가 필요하다면(예: 클라이언트 측 데이터 패칭), 민감한 세션 데이터가 클라이언트에 노출되지 않도록 React의 [`taintUniqueValue`](https://react.dev/reference/react/experimental_taintUniqueValue) API를 사용하세요.
 

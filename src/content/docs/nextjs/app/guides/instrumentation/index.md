@@ -23,13 +23,13 @@ Instrumentation을 설정하려면 프로젝트의 **루트 디렉터리**(또�
 instrumentation.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { registerOTel } from '@vercel/otel'
 
     export function register() {
       registerOTel('next-app')
     }
-[/code]
+```
 
 전체 구현은 [Next.js with OpenTelemetry 예제](https://github.com/vercel/next.js/tree/canary/examples/with-opentelemetry)를 참고하십시오.
 
@@ -50,11 +50,11 @@ JavaScriptTypeScript
 instrumentation.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function register() {
       await import('package-with-side-effect')
     }
-[/code]
+```
 
 > **알아두면 좋은 점:**
 >
@@ -67,7 +67,7 @@ Next.js는 모든 환경에서 `register`를 호출하므로, 특정 런타임(�
 instrumentation.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function register() {
       if (process.env.NEXT_RUNTIME === 'nodejs') {
         await import('./instrumentation-node')
@@ -77,7 +77,7 @@ JavaScriptTypeScript
         await import('./instrumentation-edge')
       }
     }
-[/code]
+```
 
 ## Instrumentation 더 알아보기
 

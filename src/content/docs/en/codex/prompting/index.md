@@ -14,12 +14,12 @@ Source URL: https://developers.openai.com/codex/prompting
 You interact with Codex by sending prompts (user messages) that describe what you want it to do.
 
 Example prompts:
-[code] 
+```
     Explain how the transform module works and how other modules use it.
-[/code]
-[code] 
+```
+```
     Add a new command-line option `--json` that outputs JSON.
-[/code]
+```
 
 When you submit a prompt, Codex works in a loop: it calls the model and then performs any actions (file reads, file edits, tool calls, and so on) indicated by the model output. This process ends when the task is complete or you cancel it.
 

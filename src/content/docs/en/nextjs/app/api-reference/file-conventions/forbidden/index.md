@@ -54,4 +54,3 @@ export default function Forbidden() {
   - API Reference for the forbidden function.
 
 ---
-

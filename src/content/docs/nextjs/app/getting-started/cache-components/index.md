@@ -45,7 +45,7 @@ Next.js는 사전 렌더링 중 완료할 수 없는 컴포넌트를 명시적�
 아래 `Page` 컴포넌트의 모든 작업이 렌더링 중에 완료되므로 렌더링 결과는 자동으로 정적 셸에 포함됩니다. 레이아웃과 페이지가 모두 사전 렌더링에 성공하면 전체 라우트가 정적 셸이 됩니다.
 
 page.tsx
-[code]
+```
     import fs from 'node:fs'
 
     export default async function Page() {
@@ -69,7 +69,7 @@ page.tsx
         </div>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요**: 빌드 출력 요약을 확인해 라우트가 완전히 사전 렌더링되었는지 검증할 수 있습니다. 또는 브라우저에서 페이지 소스를 열어 어떤 콘텐츠가 정적 셸에 추가되었는지 확인할 수 있습니다.
 
@@ -90,7 +90,7 @@ Suspense 경계는 필요한 컴포넌트에 최대한 가깝게 배치하세요
 예를 들어 아래 `DynamicContent` 컴포넌트는 자동으로 사전 렌더링되지 않는 여러 작업을 사용합니다.
 
 page.tsx
-[code]
+```
     import { Suspense } from 'react'
     import fs from 'node:fs/promises'
 
@@ -109,12 +109,12 @@ page.tsx
 
       return <div>Not in the static shell</div>
     }
-[/code]
+```
 
 페이지에서 `DynamicContent`를 사용하려면 `<Suspense>`로 감싸 대체 UI를 정의하세요:
 
 page.tsx
-[code]
+```
     export default async function Page(props) {
       return (
         <>
@@ -127,7 +127,7 @@ page.tsx
         </>
       )
     }
-[/code]
+```
 
 사전 렌더링은 `fetch` 요청에서 중단됩니다. 요청 자체는 시작되지 않으며 이후 코드는 실행되지 않습니다.
 
@@ -147,7 +147,7 @@ page.tsx
   * [`params`](https://nextjs.org/docs/app/api-reference/file-conventions/page#params-optional) \- 동적 라우트 매개변수(최소 하나의 샘플을 [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)로 제공하지 않는 한). 자세한 패턴은 [Cache Components와 동적 라우트](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#with-cache-components)를 참고하세요.
 
 page.tsx
-[code]
+```
     import { cookies, headers } from 'next/headers'
     import { Suspense } from 'react'
 
@@ -159,12 +159,12 @@ page.tsx
 
       return <div>Not in the static shell</div>
     }
-[/code]
+```
 
 `RuntimeData` 컴포넌트를 사용하려면 `<Suspense>` 경계로 감싸세요:
 
 page.tsx
-[code]
+```
     export default async function Page(props) {
       return (
         <>
@@ -177,7 +177,7 @@ page.tsx
         </>
       )
     }
-[/code]
+```
 
 위의 런타임 API에 접근하지 않고 요청 시점으로 미루고 싶다면 [`connection()`](https://nextjs.org/docs/app/api-reference/functions/connection)을 사용하세요.
 
@@ -190,7 +190,7 @@ page.tsx
 ### 비결정적 연산[](https://nextjs.org/docs/app/getting-started/cache-components#non-deterministic-operations)
 
 `Math.random()`, `Date.now()`, `crypto.randomUUID()` 같은 연산은 실행될 때마다 다른 값을 생성합니다. 요청마다 고유한 값을 생성하도록 요청 시점에 실행되게 하려면, Cache Components는 이러한 연산을 동적 또는 런타임 데이터 접근 이후에 호출해 의도를 명시하도록 요구합니다.
-[code]
+```
     import { connection } from 'next/server'
     import { Suspense } from 'react'
 
@@ -216,12 +216,12 @@ const date = new Date()
         </div>
       )
     }
-[/code]
+```
 
 `UniqueContent` 컴포넌트는 요청 시점까지 실행을 지연하므로 라우트에서 사용하려면 `<Suspense>` 로 감싸야 합니다:
 
 page.tsx
-[code]
+```
     export default async function Page() {
       return (
         // <p>Loading..</p> is part of the static shell
@@ -230,7 +230,7 @@ page.tsx
         </Suspense>
       )
     }
-[/code]
+```
 
 들어오는 모든 요청은 서로 다른 난수, 날짜 등을 보게 됩니다.
 
@@ -257,7 +257,7 @@ page.tsx
 재검증이 발생하면 정적 셸이 새 콘텐츠로 업데이트됩니다. 온디맨드 재검증에 대한 자세한 내용은 [Tagging and revalidating](https://nextjs.org/docs/app/getting-started/cache-components#tagging-and-revalidating)을 참고하세요.
 
 app/page.tsx
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     export default async function Page() {
@@ -274,12 +274,12 @@ app/page.tsx
         </ul>
       )
     }
-[/code]
+```
 
 `cacheLife` 함수는 캐시 동작을 제어하는 캐시 프로파일 이름(예: `'hours'`, `'days'`, `'weeks'`) 또는 사용자 정의 구성 객체를 받습니다:
 
 app/page.tsx
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     export default async function Page() {
@@ -300,7 +300,7 @@ app/page.tsx
         </ul>
       )
     }
-[/code]
+```
 
 사용 가능한 프로파일과 사용자 정의 구성 옵션은 [`cacheLife` API reference](https://nextjs.org/docs/app/api-reference/functions/cacheLife)에서 확인할 수 있습니다.
 
@@ -309,7 +309,7 @@ app/page.tsx
 런타임 데이터와 [`use cache`](https://nextjs.org/docs/app/api-reference/directives/use-cache)는 동일한 스코프에서 함께 사용할 수 없습니다. 대신 런타임 API에서 값을 추출하여 캐시된 함수의 인수로 전달하세요.
 
 app/profile/page.tsx
-[code]
+```
     import { cookies } from 'next/headers'
     import { Suspense } from 'react'
 
@@ -336,14 +336,14 @@ app/profile/page.tsx
       const data = await fetchUserData(sessionId)
       return <div>{data}</div>
     }
-[/code]
+```
 
 요청 시점에 일치하는 캐시 항목이 없다면 `CachedContent` 가 실행되고, 그 결과가 이후 요청을 위해 저장됩니다.
 
 ### 비결정적 연산과 함께[](https://nextjs.org/docs/app/getting-started/cache-components#with-non-deterministic-operations)
 
 `use cache` 스코프 안에서는 비결정적 연산이 프리렌더링 동안 실행됩니다. 이는 모든 사용자에게 동일한 렌더링 결과를 제공하고 싶을 때 유용합니다:
-[code]
+```
     export default async function Page() {
       'use cache'
 
@@ -367,7 +367,7 @@ app/profile/page.tsx
         </div>
       )
     }
-[/code]
+```
 
 캐시가 재검증될 때까지 모든 요청은 동일한 난수, 타임스탬프, UUID를 포함한 라우트를 받게 됩니다.
 
@@ -380,7 +380,7 @@ app/profile/page.tsx
 동일한 요청 내에서 캐시 데이터를 만료시키고 즉시 새로 고쳐야 한다면 `updateTag` 를 사용하세요:
 
 app/actions.ts
-[code]
+```
     import { cacheTag, updateTag } from 'next/cache'
 
     export async function getCart() {
@@ -395,14 +395,14 @@ app/actions.ts
       // update the user cart
       updateTag('cart')
     }
-[/code]
+```
 
 #### `revalidateTag` 사용 시[](https://nextjs.org/docs/app/getting-started/cache-components#with-revalidatetag)
 
 `revalidateTag` 는 적절히 태깅된 캐시 항목만 stale-while-revalidate 방식으로 무효화하고 싶을 때 사용합니다. 이는 최종적 일관성을 허용할 수 있는 정적 콘텐츠에 적합합니다.
 
 app/actions.ts
-[code]
+```
     import { cacheTag, revalidateTag } from 'next/cache'
 
     export async function getPosts() {
@@ -416,7 +416,7 @@ app/actions.ts
       // write data using the FormData
       revalidateTag('posts', 'max')
     }
-[/code]
+```
 
 더 자세한 설명과 사용 예시는 [`use cache` API reference](https://nextjs.org/docs/app/api-reference/directives/use-cache)에서 확인하세요.
 
@@ -431,7 +431,7 @@ app/actions.ts
 다음은 정적 콘텐츠, 캐시된 동적 콘텐츠, 스트리밍 동적 콘텐츠가 단일 페이지에서 함께 작동하는 전체 예시입니다:
 
 app/blog/page.tsx
-[code]
+```
     import { Suspense } from 'react'
     import { cookies } from 'next/headers'
     import { cacheLife } from 'next/cache'
@@ -496,7 +496,7 @@ app/blog/page.tsx
         </aside>
       )
     }
-[/code]
+```
 
 프리렌더링 중에는 헤더(정적)와 API에서 가져와 `use cache` 로 캐시된 블로그 글이 사용자 환경설정 대체 UI와 함께 정적 셸에 포함됩니다.
 
@@ -515,7 +515,7 @@ Next 구성 파일에 [`cacheComponents`](https://nextjs.org/docs/app/api-refere
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -523,7 +523,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 > **알아두면 좋은 점:** Cache Components가 활성화되면 `GET` 라우트 핸들러는 페이지와 동일한 프리렌더링 모델을 따릅니다. 자세한 내용은 [Route Handlers with Cache Components](https://nextjs.org/docs/app/getting-started/route-handlers#with-cache-components)를 참조하세요.
 
@@ -550,22 +550,22 @@ Cache Components를 활성화하면 여러 라우트 세그먼트 구성 옵션�
 **필요 없습니다.** 모든 페이지는 기본적으로 동적입니다.
 
 app/page.tsx
-[code]
+```
     // Before - No longer needed
     export const dynamic = 'force-dynamic'
 
     export default function Page() {
       return <div>...</div>
     }
-[/code]
+```
 
 app/page.tsx
-[code]
+```
     // After - Just remove it
     export default function Page() {
       return <div>...</div>
     }
-[/code]
+```
 
 ### `dynamic = "force-static"`[](https://nextjs.org/docs/app/getting-started/cache-components#dynamic--force-static)
 
@@ -576,7 +576,7 @@ app/page.tsx
 런타임 데이터 접근(`cookies()`, `headers()` 등)의 경우 오류 메시지가 [이를 `Suspense`로 감싸](https://nextjs.org/docs/app/getting-started/cache-components#runtime-data)도록 안내합니다. 처음에 `force-static`을 사용했다면 요청 시 작업을 방지하기 위해 런타임 데이터 접근을 제거해야 합니다.
 
 app/page.tsx
-[code]
+```
     // Before
     export const dynamic = 'force-static'
 
@@ -584,10 +584,10 @@ app/page.tsx
       const data = await fetch('https://api.example.com/data')
       return <div>...</div>
     }
-[/code]
+```
 
 app/page.tsx
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     // After - Use 'use cache' instead
@@ -597,22 +597,22 @@ app/page.tsx
       const data = await fetch('https://api.example.com/data')
       return <div>...</div>
     }
-[/code]
+```
 
 ### `revalidate`[](https://nextjs.org/docs/app/getting-started/cache-components#revalidate)
 
 **`cacheLife`로 대체하세요.** 라우트 세그먼트 구성 대신 `cacheLife` 함수를 사용해 캐시 기간을 정의하세요.
-[code]
+```
     // Before
     export const revalidate = 3600 // 1 hour
 
     export default async function Page() {
       return <div>...</div>
     }
-[/code]
+```
 
 app/page.tsx
-[code]
+```
     // After - Use cacheLife
     import { cacheLife } from 'next/cache'
 
@@ -621,27 +621,27 @@ app/page.tsx
       cacheLife('hours')
       return <div>...</div>
     }
-[/code]
+```
 
 ### `fetchCache`[](https://nextjs.org/docs/app/getting-started/cache-components#fetchcache)
 
 **필요 없습니다.** `use cache`가 활성화된 범위 내의 모든 데이터 페칭은 자동으로 캐시되므로 `fetchCache`는 더 이상 필요하지 않습니다.
 
 app/page.tsx
-[code]
+```
     // Before
     export const fetchCache = 'force-cache'
-[/code]
+```
 
 app/page.tsx
-[code]
+```
     // After - Use 'use cache' to control caching behavior
     export default async function Page() {
       'use cache'
       // All fetches here are cached
       return <div>...</div>
     }
-[/code]
+```
 
 ### `runtime = 'edge'`[](https://nextjs.org/docs/app/getting-started/cache-components#runtime--edge)
 

@@ -20,13 +20,13 @@ Last updated February 20, 2026
 `experimental.optimizePackageImports`에 패키지를 추가하면 실제로 사용하는 모듈만 로드하면서도 다수의 named export를 사용하는 import 문을 그대로 작성할 수 있는 편의를 제공합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         optimizePackageImports: ['package-name'],
       },
     }
-[/code]
+```
 
 다음 라이브러리는 기본적으로 최적화됩니다:
 

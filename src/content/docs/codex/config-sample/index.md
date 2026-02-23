@@ -22,7 +22,7 @@ Source URL: https://developers.openai.com/codex/config-sample
 
 
 아래 스니펫을 참조로 사용하세요. 필요한 키와 섹션만 `~/.codex/config.toml`(또는 프로젝트 범위의 `.codex/config.toml`)에 복사한 뒤, 환경에 맞게 값을 조정하면 됩니다.
-[code] 
+```
     # Codex example configuration (config.toml)
     #
     # This file lists all keys Codex reads from config.toml, their default values,
@@ -491,3 +491,4 @@ disable_paste_burst = false
     # ca-certificate = "certs/otel-ca.pem"
     # client-certificate = "/etc/codex/certs/client.pem"
     # client-private-key = "/etc/codex/certs/client-key.pem"
+```

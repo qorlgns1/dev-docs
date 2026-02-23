@@ -16,7 +16,7 @@ description: 'Next.js Image 컴포넌트는 자동 이미지 최적화를 위해
 Next.js Image 컴포넌트는 자동 이미지 최적화를 위해 HTML `<img>` 요소를 확장합니다.
 
 app/page.js
-[code]
+```
     import Image from 'next/image'
 
     export default function Page() {
@@ -29,7 +29,7 @@ app/page.js
         />
       )
     }
-[/code]
+```
 
 ## 참고 자료[](https://nextjs.org/docs/app/api-reference/components/image#reference)
 
@@ -64,23 +64,23 @@ app/page.js
 이미지의 소스입니다. 다음 중 하나일 수 있습니다:
 
 내부 경로 문자열.
-[code]
+```
     <Image src="/profile.png" />
-[/code]
+```
 
 절대 외부 URL(반드시 [remotePatterns](https://nextjs.org/docs/app/api-reference/components/image#remotepatterns)로 구성해야 함).
-[code]
+```
     <Image src="https://example.com/profile.png" />
-[/code]
+```
 
 정적 import.
-[code]
+```
     import profile from './profile.png'
 
     export default function Page() {
       return <Image src={profile} />
     }
-[/code]
+```
 
 > **알아두면 좋아요** : 보안상의 이유로 기본 [loader](https://nextjs.org/docs/app/api-reference/components/image#loader)를 사용하는 Image Optimization API는 `src` 이미지를 가져올 때 헤더를 전달하지 않습니다. `src` 이미지에 인증이 필요하다면 Image Optimization을 비활성화하기 위해 [unoptimized](https://nextjs.org/docs/app/api-reference/components/image#unoptimized) 속성을 사용하는 것을 고려하세요.
 
@@ -97,9 +97,9 @@ app/page.js
 #### `width` 및 `height`[](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)
 
 `width`와 `height` 속성은 픽셀 단위의 [고유(intrinsic)](https://developer.mozilla.org/en-US/docs/Glossary/Intrinsic_Size) 이미지 크기를 나타냅니다. 이 속성은 브라우저가 이미지를 위한 올바른 **종횡비**를 추론해 로딩 중 레이아웃 시프트를 방지하도록 예약 공간을 확보할 때 사용됩니다. 이미지를 표시하는 실제 크기는 CSS가 제어하며, 이 속성으로 결정되지 않습니다.
-[code]
+```
     <Image src="/profile.png" width={500} height={500} />
-[/code]
+```
 
 다음과 같은 경우가 아니라면 `width`와 `height` 속성을 모두 **반드시** 설정해야 합니다:
 
@@ -111,9 +111,9 @@ app/page.js
 #### `fill`[](https://nextjs.org/docs/app/api-reference/components/image#fill)
 
 이미지가 부모 요소 크기까지 확장되도록 하는 boolean 값입니다.
-[code]
+```
     <Image src="/profile.png" fill={true} />
-[/code]
+```
 
 **위치 지정** :
 
@@ -137,7 +137,7 @@ app/page.js
   * [`width`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)
   * [`quality`](https://nextjs.org/docs/app/api-reference/components/image#quality)
 
-[code]
+```
     'use client'
 
     import Image from 'next/image'
@@ -157,7 +157,7 @@ app/page.js
         />
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요** : 함수를 받는 `onLoad` 같은 속성을 사용하려면 제공한 함수를 직렬화하기 위해 [Client Components](https://react.dev/reference/rsc/use-client)가 필요합니다.
 
@@ -166,7 +166,7 @@ app/page.js
 #### `sizes`[](https://nextjs.org/docs/app/api-reference/components/image#sizes)
 
 다양한 브레이크포인트에서 이미지 크기를 정의합니다. 브라우저가 생성된 `srcset`에서 가장 적합한 크기를 선택할 때 사용됩니다.
-[code]
+```
     import Image from 'next/image'
 
     export default function Page() {
@@ -180,7 +180,7 @@ app/page.js
         </div>
       )
     }
-[/code]
+```
 
 `sizes`는 다음과 같을 때 사용해야 합니다:
 
@@ -199,10 +199,10 @@ app/page.js
 #### `quality`[](https://nextjs.org/docs/app/api-reference/components/image#quality)
 
 최적화된 이미지의 품질을 설정하는 `1`~`100` 사이의 정수입니다. 값이 높을수록 파일 크기와 시각적 선명도가 증가하고, 낮을수록 파일 크기가 줄지만 선명도가 떨어질 수 있습니다.
-[code]
+```
     // Default quality is 75
     <Image quality={75} />
-[/code]
+```
 
 `next.config.js`에서 [qualities](https://nextjs.org/docs/app/api-reference/components/image#qualities)를 구성했다면, 해당 값은 허용된 항목 중 하나와 일치해야 합니다.
 
@@ -211,7 +211,7 @@ app/page.js
 #### `style`[](https://nextjs.org/docs/app/api-reference/components/image#style)
 
 기본 이미지 요소에 CSS 스타일을 전달할 수 있습니다.
-[code]
+```
     const imageStyle = {
       borderRadius: '50%',
       border: '1px solid #fff',
@@ -222,17 +222,17 @@ app/page.js
     export default function ProfileImage() {
       return <Image src="..." style={imageStyle} />
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `style` 속성으로 사용자 정의 너비를 설정하는 경우, 이미지 종횡비를 유지하려면 반드시 `height: 'auto'`도 설정하세요.
 
 #### `preload`[](https://nextjs.org/docs/app/api-reference/components/image#preload)
 
 이미지를 프리로드해야 하는지 여부를 나타내는 boolean 값입니다.
-[code]
+```
     // Default preload is false
     <Image preload={false} />
-[/code]
+```
 
   * `true`: `<head>`에 `<link>`를 삽입해 이미지를 [프리로드](https://web.dev/preload-responsive-images/)합니다.
   * `false`: 이미지를 프리로드하지 않습니다.
@@ -258,10 +258,10 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 #### `loading`[](https://nextjs.org/docs/app/api-reference/components/image#loading)
 
 이미지가 로드를 시작할 시점을 제어합니다.
-[code]
+```
     // Defaults to lazy
     <Image loading="lazy" />
-[/code]
+```
 
   * `lazy`: 이미지가 뷰포트에서 계산된 거리까지 도달할 때까지 로드를 지연합니다.
   * `eager`: 페이지에서의 위치와 상관없이 이미지를 즉시 로드합니다.
@@ -273,10 +273,10 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 #### `placeholder`[](https://nextjs.org/docs/app/api-reference/components/image#placeholder)
 
 이미지가 로드되는 동안 사용할 플레이스홀더를 지정하여 체감 로딩 성능을 개선합니다.
-[code]
+```
     // defaults to empty
     <Image placeholder="empty" />
-[/code]
+```
 
   * `empty`: 이미지가 로드되는 동안 플레이스홀더가 없습니다.
   * `blur`: 흐릿한 버전의 이미지를 플레이스홀더로 사용합니다. [`blurDataURL`](https://nextjs.org/docs/app/api-reference/components/image#blurdataurl) 속성과 함께 사용해야 합니다.
@@ -293,9 +293,9 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 #### `blurDataURL`[](https://nextjs.org/docs/app/api-reference/components/image#blurdataurl)
 
 이미지가 정상적으로 로드되기 전에 플레이스홀더 이미지로 사용할 [Data URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)입니다. 자동으로 설정되거나 [`placeholder="blur"`](https://nextjs.org/docs/app/api-reference/components/image#placeholder) 속성과 함께 사용할 수 있습니다.
-[code]
+```
     <Image placeholder="blur" blurDataURL="..." />
-[/code]
+```
 
 이미지는 자동으로 확장되고 블러 처리되므로 10px 이하의 매우 작은 이미지를 권장합니다.
 
@@ -320,9 +320,9 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 #### `onLoad`[](https://nextjs.org/docs/app/api-reference/components/image#onload)
 
 이미지가 완전히 로드되어 [placeholder](https://nextjs.org/docs/app/api-reference/components/image#placeholder)가 제거되면 호출되는 콜백 함수입니다.
-[code]
+```
     <Image onLoad={(e) => console.log(e.target.naturalWidth)} />
-[/code]
+```
 
 콜백 함수는 `target`이 기본 `<img>` 요소를 가리키는 이벤트 하나를 인수로 받습니다.
 
@@ -331,23 +331,23 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 #### `onError`[](https://nextjs.org/docs/app/api-reference/components/image#onerror)
 
 이미지 로드에 실패하면 호출되는 콜백 함수입니다.
-[code]
+```
     <Image onError={(e) => console.error(e.target.id)} />
-[/code]
+```
 
 > **알아두면 좋아요**: `onError`처럼 함수를 받는 prop을 사용하려면 제공된 함수를 직렬화하기 위해 [Client Components](https://react.dev/reference/rsc/use-client)를 사용해야 합니다.
 
 #### `unoptimized`[](https://nextjs.org/docs/app/api-reference/components/image#unoptimized)
 
 이미지를 최적화할지 여부를 나타내는 불리언입니다. 1KB 미만의 작은 이미지, SVG 같은 벡터 이미지, GIF 같은 애니메이션 이미지처럼 최적화가 필요 없는 경우에 유용합니다.
-[code]
+```
     import Image from 'next/image'
 
     const UnoptimizedImage = (props) => {
       // Default is false
       return <Image {...props} unoptimized />
     }
-[/code]
+```
 
   * `true`: 품질, 크기, 포맷을 변경하지 않고 `src`에서 원본 이미지를 그대로 제공합니다.
   * `false`: 원본 이미지를 최적화합니다.
@@ -355,25 +355,25 @@ Next.js 16부터 동작을 명확히 하기 위해 `priority` 속성은 [`preloa
 Next.js 12.3.0부터 다음 구성으로 `next.config.js`를 업데이트하면 모든 이미지에 이 prop을 적용할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         unoptimized: true,
       },
     }
-[/code]
+```
 
 #### `overrideSrc`[](https://nextjs.org/docs/app/api-reference/components/image#overridesrc)
 
 `<Image>` 컴포넌트에 `src` prop을 제공하면 결과 `<img>`에 대해 `srcset`과 `src` 속성이 자동 생성됩니다.
 
 input.js
-[code]
+```
     <Image src="/profile.jpg" />
-[/code]
+```
 
 output.html
-[code]
+```
     <img
       srcset="
         /_next/image?url=%2Fprofile.jpg&w=640&q=75 1x,
@@ -381,19 +381,19 @@ output.html
       "
       src="/_next/image?url=%2Fprofile.jpg&w=828&q=75"
     />
-[/code]
+```
 
 경우에 따라 `src` 속성이 자동 생성되는 것이 바람직하지 않을 수 있으며 `overrideSrc` prop을 사용해 이를 덮어쓰길 원할 수 있습니다.
 
 예를 들어 기존 웹사이트를 `<img>`에서 `<Image>`로 마이그레이션할 때, 이미지 순위나 재크롤 방지 같은 SEO 목적으로 동일한 `src` 속성을 유지하고 싶을 수 있습니다.
 
 input.js
-[code]
+```
     <Image src="/profile.jpg" overrideSrc="/override.jpg" />
-[/code]
+```
 
 output.html
-[code]
+```
     <img
       srcset="
         /_next/image?url=%2Fprofile.jpg&w=640&q=75 1x,
@@ -401,15 +401,15 @@ output.html
       "
       src="/override.jpg"
     />
-[/code]
+```
 
 #### `decoding`[](https://nextjs.org/docs/app/api-reference/components/image#decoding)
 
 다른 콘텐츠 업데이트를 표시하기 전에 이미지가 디코딩될 때까지 기다릴지 여부를 브라우저에 알려주는 힌트입니다.
-[code]
+```
     // Default is async
     <Image decoding="async" />
-[/code]
+```
 
   * `async`: 이미지를 비동기적으로 디코딩하고 완료되기 전에 다른 콘텐츠를 렌더링할 수 있도록 합니다.
   * `sync`: 다른 콘텐츠와 동시에 표시되도록 이미지를 동기적으로 디코딩합니다.
@@ -432,11 +432,11 @@ output.html
 이미지가 완전히 로드되어 [placeholder](https://nextjs.org/docs/app/api-reference/components/image#placeholder)가 제거되면 호출되는 콜백 함수입니다.
 
 콜백 함수는 기본 `<img>` 요소에 대한 참조 하나를 인수로 받습니다.
-[code]
+```
     'use client'
 
     <Image onLoadingComplete={(img) => console.log(img.naturalWidth)} />
-[/code]
+```
 
 > **알아두면 좋아요**: `onLoadingComplete`처럼 함수를 받는 prop을 사용하려면 제공된 함수를 직렬화하기 위해 [Client Components](https://react.dev/reference/rsc/use-client)를 사용해야 합니다.
 
@@ -449,7 +449,7 @@ output.html
 특정 로컬 경로의 이미지만 최적화하고 나머지는 차단하려면 `next.config.js` 파일에서 `localPatterns`를 사용하세요.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         localPatterns: [
@@ -460,7 +460,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 위 예시는 `next/image`의 `src` 속성이 `/assets/images/`로 시작해야 하며 쿼리 문자열이 없어야 함을 보장합니다. 다른 경로를 최적화하려면 `400` Bad Request 오류가 발생합니다.
 
@@ -471,18 +471,18 @@ next.config.js
 특정 외부 경로의 이미지만 허용하고 나머지를 차단하려면 `next.config.js` 파일에서 `remotePatterns`를 사용하세요. 이렇게 하면 계정의 외부 이미지만 제공됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         remotePatterns: [new URL('https://example.com/account123/**')],
       },
     }
-[/code]
+```
 
 아래와 같이 객체를 사용해 `remotePatterns`를 구성할 수도 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         remotePatterns: [
@@ -496,7 +496,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 위 예시는 `next/image`의 `src` 속성이 `https://example.com/account123/`로 시작해야 하며 쿼리 문자열이 없어야 함을 보장합니다. 다른 프로토콜, 호스트명, 포트 또는 일치하지 않는 경로는 `400` Bad Request를 반환합니다.
 
@@ -508,7 +508,7 @@ next.config.js
   * `**`는 끝부분의 경로 세그먼트 여러 개나 시작 부분의 서브도메인 여러 개를 매칭합니다. 패턴 중간에서는 작동하지 않습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         remotePatterns: [
@@ -521,7 +521,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 이 설정은 `image.example.com` 같은 서브도메인을 허용합니다. 쿼리 문자열과 커스텀 포트는 여전히 차단됩니다.
 
@@ -532,7 +532,7 @@ next.config.js
 `search` 속성을 사용해 쿼리 문자열도 제한할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         remotePatterns: [
@@ -544,7 +544,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 위 예시는 `next/image`의 `src` 속성이 `https://assets.example.com`으로 시작해야 하며 정확히 `?v=1727111025337` 쿼리 문자열을 가져야 함을 보장합니다. 다른 프로토콜이나 쿼리 문자열은 `400` Bad Request를 반환합니다.
 
@@ -553,25 +553,25 @@ next.config.js
 `loaderFiles`를 사용하면 Next.js 대신 커스텀 이미지 최적화 서비스를 사용할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         loader: 'custom',
         loaderFile: './my/image/loader.js',
       },
     }
-[/code]
+```
 
 경로는 프로젝트 루트 기준의 상대 경로여야 합니다. 해당 파일은 URL 문자열을 반환하는 기본 함수를 export해야 합니다.
 
 my/image/loader.js
-[code]
+```
     'use client'
 
     export default function myImageLoader({ src, width, quality }) {
       return `https://example.com/${src}?w=${width}&q=${quality || 75}`
     }
-[/code]
+```
 
 **예시:**
 
@@ -584,13 +584,13 @@ my/image/loader.js
 Image Optimization API의 기본 경로를 변경하거나 접두사를 붙이려면 `path` 속성을 사용할 수 있습니다. `path`의 기본값은 `/_next/image`입니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         path: '/my-prefix/_next/image',
       },
     }
-[/code]
+```
 
 #### `deviceSizes`[](https://nextjs.org/docs/app/api-reference/components/image#devicesizes)
 
@@ -599,13 +599,13 @@ next.config.js
 구성이 없으면 아래 기본값이 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
       },
     }
-[/code]
+```
 
 #### `imageSizes`[](https://nextjs.org/docs/app/api-reference/components/image#imagesizes)
 
@@ -614,13 +614,13 @@ next.config.js
 구성이 없으면 아래 기본값이 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         imageSizes: [32, 48, 64, 96, 128, 256, 384],
       },
     }
-[/code]
+```
 
 `imageSizes`는 이미지가 화면 전체 너비보다 작다는 것을 나타내는 [`sizes`](https://nextjs.org/docs/app/api-reference/components/image#sizes) prop을 제공하는 이미지에만 사용됩니다. 따라서 `imageSizes`에 포함된 크기는 모두 `deviceSizes`에서 가장 작은 크기보다 작아야 합니다.
 
@@ -631,26 +631,26 @@ next.config.js
 구성이 없으면 아래 기본값이 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         qualities: [75],
       },
     }
-[/code]
+```
 
 > **알아두면 좋아요**: Next.js 16부터는 권한 없는 접근이 의도보다 많은 품질을 최적화하지 못하도록 이 필드가 필수입니다.
 
 다음과 같이 허용 목록에 더 많은 이미지 품질을 추가할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         qualities: [25, 50, 75, 100],
       },
     }
-[/code]
+```
 
 위 예시에서는 25, 50, 75, 100 네 가지 품질만 허용됩니다.
 
@@ -663,14 +663,14 @@ REST API에 이 배열에 없는 품질로 직접 접근하면 서버는 400 Bad
 `formats`는 사용할 이미지 포맷 목록을 지정합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         // Default
         formats: ['image/webp'],
       },
     }
-[/code]
+```
 
 Next.js는 요청의 `Accept` 헤더를 통해 브라우저가 지원하는 이미지 포맷을 자동 감지하여 최적의 출력 포맷을 결정합니다.
 
@@ -679,24 +679,24 @@ Next.js는 요청의 `Accept` 헤더를 통해 브라우저가 지원하는 이�
 브라우저가 [AVIF를 지원하지 않는 경우](https://caniuse.com/avif) src 이미지의 원본 포맷으로 폴백하도록 AVIF를 활성화할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         formats: ['image/avif'],
       },
     }
-[/code]
+```
 
 AVIF와 WebP를 함께 활성화할 수도 있습니다. AVIF를 지원하는 브라우저에서는 AVIF가 우선이며, WebP가 폴백으로 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         formats: ['image/avif', 'image/webp'],
       },
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >
@@ -713,24 +713,24 @@ next.config.js
 구성이 없으면 아래 기본값이 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         minimumCacheTTL: 14400, // 4 hours
       },
     }
-[/code]
+```
 
 재검증 횟수를 줄이고 비용을 낮추기 위해 TTL을 늘릴 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         minimumCacheTTL: 2678400, // 31 days
       },
     }
-[/code]
+```
 
 최적화된 이미지의 만료(또는 Max Age)는 `minimumCacheTTL`과 업스트림 이미지의 `Cache-Control` 헤더 중 더 큰 값으로 결정됩니다.
 
@@ -747,61 +747,61 @@ next.config.js
 `next.config.js`에서 정적 이미지 임포트를 비활성화할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         disableStaticImages: true,
       },
     }
-[/code]
+```
 
 #### `maximumRedirects`[](https://nextjs.org/docs/app/api-reference/components/image#maximumredirects)
 
 기본 이미지 최적화 로더는 원격 이미지를 가져올 때 최대 3회까지 HTTP 리디렉션을 따릅니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         maximumRedirects: 3,
       },
     }
-[/code]
+```
 
 원격 이미지를 가져올 때 따를 리디렉션 횟수를 직접 구성할 수 있습니다. 값을 `0`으로 설정하면 리디렉션을 따라가지 않습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         maximumRedirects: 0,
       },
     }
-[/code]
+```
 
 #### `maximumResponseBody`[](https://nextjs.org/docs/app/api-reference/components/image#maximumresponsebody)
 
 기본 이미지 최적화 로더는 최대 50MB 크기의 원본 이미지를 가져옵니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         maximumResponseBody: 50_000_000,
       },
     }
-[/code]
+```
 
 모든 원본 이미지가 작다는 것을 알고 있다면, 메모리가 제한된 서버를 보호하기 위해 이 값을 5MB 같은 더 작은 값으로 낮출 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         maximumResponseBody: 5_000_000,
       },
     }
-[/code]
+```
 
 #### `dangerouslyAllowLocalIP`[](https://nextjs.org/docs/app/api-reference/components/image#dangerouslyallowlocalip)
 
@@ -810,37 +810,37 @@ next.config.js
 기본값은 false입니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         dangerouslyAllowLocalIP: false,
       },
     }
-[/code]
+```
 
 로컬 네트워크의 다른 위치에 호스팅된 원격 이미지를 최적화해야 한다면 값을 true로 설정할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         dangerouslyAllowLocalIP: true,
       },
     }
-[/code]
+```
 
 #### `dangerouslyAllowSVG`[](https://nextjs.org/docs/app/api-reference/components/image#dangerouslyallowsvg)
 
 `dangerouslyAllowSVG`는 SVG 이미지를 제공할 수 있게 합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         dangerouslyAllowSVG: true,
       },
     }
-[/code]
+```
 
 기본적으로 Next.js는 몇 가지 이유로 SVG를 최적화하지 않습니다.
 
@@ -848,14 +848,14 @@ next.config.js
   * SVG는 HTML/CSS와 동일한 기능을 많이 포함하므로 적절한 [Content Security Policy (CSP) 헤더](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#content-security-policy)가 없으면 취약점으로 이어질 수 있습니다.
 
 [`src`](https://nextjs.org/docs/app/api-reference/components/image#src) prop이 SVG임이 확실하다면 [`unoptimized`](https://nextjs.org/docs/app/api-reference/components/image#unoptimized) prop을 사용하는 것을 권장합니다. `src`가 `".svg"`로 끝나면 이 동작이 자동으로 적용됩니다.
-[code]
+```
     <Image src="/my-image.svg" unoptimized />
-[/code]
+```
 
 또한 브라우저가 이미지를 다운로드하도록 강제하는 `contentDispositionType`, 이미지에 포함된 스크립트 실행을 방지하는 `contentSecurityPolicy` 설정을 함께 적용하는 것을 강력히 권장합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         dangerouslyAllowSVG: true,
@@ -863,33 +863,33 @@ next.config.js
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
       },
     }
-[/code]
+```
 
 #### `contentDispositionType`[](https://nextjs.org/docs/app/api-reference/components/image#contentdispositiontype)
 
 `contentDispositionType`은 [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition#as_a_response_header_for_the_main_body) 헤더를 설정합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         contentDispositionType: 'inline',
       },
     }
-[/code]
+```
 
 #### `contentSecurityPolicy`[](https://nextjs.org/docs/app/api-reference/components/image#contentsecuritypolicy)
 
 `contentSecurityPolicy`는 이미지에 대한 [`Content-Security-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) 헤더를 구성할 수 있게 합니다. 이는 이미지에 포함된 스크립트가 실행되는 것을 막기 위해 [`dangerouslyAllowSVG`](https://nextjs.org/docs/app/api-reference/components/image#dangerouslyallowsvg)를 사용할 때 특히 중요합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
       },
     }
-[/code]
+```
 
 기본적으로 [loader](https://nextjs.org/docs/app/api-reference/components/image#loader)는 API가 임의의 원격 이미지를 제공할 수 있기 때문에 추가 보호 차원에서 [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition#as_a_response_header_for_the_main_body) 헤더를 `attachment`로 설정합니다.
 
@@ -910,20 +910,20 @@ next.config.js
 아래는 `next.config.js` 파일에서 `domains` 속성을 사용하는 예시입니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         domains: ['assets.acme.com'],
       },
     }
-[/code]
+```
 
 ## 함수[](https://nextjs.org/docs/app/api-reference/components/image#functions)
 
 ### `getImageProps`[](https://nextjs.org/docs/app/api-reference/components/image#getimageprops)
 
 `getImageProps` 함수는 기본 `<img>` 요소로 전달될 props를 가져와 다른 컴포넌트나 스타일, 캔버스 등으로 전달할 때 사용할 수 있습니다.
-[code]
+```
     import { getImageProps } from 'next/image'
 
     const { props } = getImageProps({
@@ -941,7 +941,7 @@ next.config.js
         </figure>
       )
     }
-[/code]
+```
 
 이는 React `useState()` 호출을 피하므로 성능 향상에 도움이 될 수 있지만, [`placeholder`](https://nextjs.org/docs/app/api-reference/components/image#placeholder) prop과 함께 사용할 수는 없습니다. placeholder가 제거되지 않기 때문입니다.
 
@@ -963,36 +963,36 @@ next.config.js
 Image 컴포넌트를 스타일링하는 방식은 일반 `<img>` 요소와 유사하지만, 몇 가지 지침을 기억해야 합니다.
 
 `styled-jsx` 대신 `className` 또는 `style`을 사용하세요. 대부분의 경우 `className` prop 사용을 권장합니다. 가져온 [CSS Module](https://nextjs.org/docs/app/getting-started/css), [전역 스타일시트](https://nextjs.org/docs/app/getting-started/css#global-css) 등 무엇이든 가능합니다.
-[code]
+```
     import styles from './styles.module.css'
 
     export default function MyImage() {
       return <Image className={styles.image} src="/my-image.png" alt="My Image" />
     }
-[/code]
+```
 
 `style` prop을 사용해 인라인 스타일을 지정할 수도 있습니다.
-[code]
+```
     export default function MyImage() {
       return (
         <Image style={{ borderRadius: '8px' }} src="/my-image.png" alt="My Image" />
       )
     }
-[/code]
+```
 
 `fill`을 사용할 때는 부모 요소에 `position: relative` 또는 `display: block`이 설정되어야 합니다. 해당 레이아웃 모드에서 이미지 요소가 올바르게 렌더링되도록 하기 위한 필수 조건입니다.
-[code]
+```
     <div style={{ position: 'relative' }}>
       <Image fill src="/my-image.png" alt="My Image" />
     </div>
-[/code]
+```
 
 [styled-jsx](https://nextjs.org/docs/app/guides/css-in-js)는 현재 컴포넌트 범위에만 적용되므로(`global`로 표시하지 않는 한) 사용할 수 없습니다.
 
 ### 정적 내보내기와 반응형 이미지[](https://nextjs.org/docs/app/api-reference/components/image#responsive-images-with-a-static-export)
 
 정적 이미지를 import하면 Next.js가 파일을 기반으로 너비와 높이를 자동으로 설정합니다. 스타일을 지정해 이미지를 반응형으로 만들 수 있습니다.
-[code]
+```
     import Image from 'next/image'
     import mountains from '../public/mountains.jpg'
 
@@ -1015,14 +1015,14 @@ Image 컴포넌트를 스타일링하는 방식은 일반 `<img>` 요소와 유�
         </div>
       )
     }
-[/code]
+```
 
 ### 원격 URL과 반응형 이미지[](https://nextjs.org/docs/app/api-reference/components/image#responsive-images-with-a-remote-url)
 
 소스 이미지가 동적이거나 원격 URL이라면 Next.js가 종횡비를 계산할 수 있도록 width와 height props를 제공해야 합니다.
 
 components/page.js
-[code]
+```
     import Image from 'next/image'
 
     export default function Page({ photoUrl }) {
@@ -1040,7 +1040,7 @@ components/page.js
         />
       )
     }
-[/code]
+```
 
 직접 확인해 보세요:
 
@@ -1049,7 +1049,7 @@ components/page.js
 ### `fill`로 반응형 이미지[](https://nextjs.org/docs/app/api-reference/components/image#responsive-image-with-fill)
 
 이미지의 종횡비를 모를 때는 [`fill` prop](https://nextjs.org/docs/app/api-reference/components/image#fill)에 `objectFit` prop을 `cover`로 설정해 사용할 수 있습니다. 이렇게 하면 이미지가 부모 컨테이너의 전체 너비를 채웁니다.
-[code]
+```
     import Image from 'next/image'
     import mountains from '../public/mountains.jpg'
 
@@ -1077,12 +1077,12 @@ components/page.js
         </div>
       )
     }
-[/code]
+```
 
 ### 배경 이미지[](https://nextjs.org/docs/app/api-reference/components/image#background-image)
 
 `fill` prop을 사용해 이미지가 화면 전체를 덮도록 만들 수 있습니다.
-[code]
+```
     import Image from 'next/image'
     import mountains from '../public/mountains.jpg'
 
@@ -1101,7 +1101,7 @@ components/page.js
         />
       )
     }
-[/code]
+```
 
 여러 스타일로 Image 컴포넌트를 사용하는 예시는 [Image Component Demo](https://image-component.nextjs.gallery)에서 확인하세요.
 
@@ -1110,7 +1110,7 @@ components/page.js
 원격 이미지를 사용하려면 `src` 속성에 URL 문자열을 지정해야 합니다.
 
 app/page.js
-[code]
+```
     import Image from 'next/image'
 
     export default function Page() {
@@ -1123,7 +1123,7 @@ app/page.js
         />
       )
     }
-[/code]
+```
 
 Next.js는 빌드 과정에서 원격 파일에 접근할 수 없으므로 [`width`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height), [`height`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height), 선택적인 [`blurDataURL`](https://nextjs.org/docs/app/api-reference/components/image#blurdataurl) props를 수동으로 제공해야 합니다.
 
@@ -1132,7 +1132,7 @@ Next.js는 빌드 과정에서 원격 파일에 접근할 수 없으므로 [`wid
 이미지를 안전하게 최적화하려면 `next.config.js`에서 지원할 URL 패턴 목록을 정의하세요. 악의적인 사용을 막기 위해 가능한 한 구체적으로 지정하세요. 예를 들어, 아래 구성은 특정 AWS S3 버킷의 이미지만 허용합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         remotePatterns: [
@@ -1143,19 +1143,18 @@ next.config.js
             pathname: '/my-bucket/**',
             search: '',
           },
-[/code]
+```
 
 ],
       },
     }
-[/code]
 
 ### Theme detection[](https://nextjs.org/docs/app/api-reference/components/image#theme-detection)
 
 라이트 모드와 다크 모드에 서로 다른 이미지를 표시하려면 두 개의 `<Image>` 컴포넌트를 감싸고 CSS 미디어 쿼리를 기준으로 올바른 이미지를 노출하는 새 컴포넌트를 만들 수 있습니다.
 
 components/theme-image.module.css
-[code]
+```
     .imgDark {
       display: none;
     }
@@ -1168,12 +1167,12 @@ components/theme-image.module.css
         display: unset;
       }
     }
-[/code]
+```
 
 components/theme-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import styles from './theme-image.module.css'
     import Image, { ImageProps } from 'next/image'
 
@@ -1192,7 +1191,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 > **알아두면 좋은 점**: `loading="lazy"` 기본 동작 덕분에 올바른 이미지 한 장만 로드됩니다. 두 이미지를 모두 로드하게 되므로 `preload` 또는 `loading="eager"`는 사용할 수 없습니다. 대신 [`fetchPriority="high"`](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/fetchPriority)를 사용할 수 있습니다.
 
@@ -1205,7 +1204,7 @@ JavaScriptTypeScript
 모바일과 데스크톱에 서로 다른 이미지를 표시하고 싶다면, 일명 [Art Direction](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#art_direction)이라고 부르는 접근 방식으로, `getImageProps()`에 서로 다른 `src`, `width`, `height`, `quality` props를 전달하면 됩니다.
 
 app/page.js
-[code]
+```
     import { getImageProps } from 'next/image'
 
     export default function Home() {
@@ -1237,14 +1236,14 @@ app/page.js
         </picture>
       )
     }
-[/code]
+```
 
 ### Background CSS[](https://nextjs.org/docs/app/api-reference/components/image#background-css)
 
 배경 이미지를 최적화하려면 `srcSet` 문자열을 [`image-set()`](https://developer.mozilla.org/en-US/docs/Web/CSS/image/image-set) CSS 함수로 변환할 수도 있습니다.
 
 app/page.js
-[code]
+```
     import { getImageProps } from 'next/image'
 
     function getBackgroundImage(srcSet = '') {
@@ -1271,7 +1270,7 @@ app/page.js
         </main>
       )
     }
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/components/image#version-history)
 

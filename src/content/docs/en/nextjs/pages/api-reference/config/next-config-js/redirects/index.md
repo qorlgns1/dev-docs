@@ -320,4 +320,3 @@ In some rare cases, you might need to assign a custom status code for older HTTP
 | `v10.2.0` | `has` added.       |
 | `v9.5.0`  | `redirects` added. |
 ---
-

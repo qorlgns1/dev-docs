@@ -280,4 +280,3 @@ A directive that marks a function as a [Server Function](#server-function) that 
 
 After a new version of your application is deployed, clients that are still active may reference JavaScript, CSS, or data from an older build. This mismatch between client and server versions is called version skew, and it can cause missing assets, Server Action errors, and navigation failures. Next.js uses [`deploymentId`](https://nextjs.org/docs/app/api-reference/config/next-config-js/deploymentId) to detect and handle version skew. Learn more in [Self-Hosting - Version Skew](https://nextjs.org/docs/app/guides/self-hosting#version-skew).
 ---
-

@@ -20,7 +20,7 @@ Copy page
 규모가 작은 애플리케이션에서는 `sitemap.xml` 파일을 생성해 `app` 디렉터리 루트에 두면 됩니다.
 
 app/sitemap.xml
-[code]
+```
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
         <loc>https://acme.com</loc>
@@ -41,7 +41,7 @@ app/sitemap.xml
         <priority>0.5</priority>
       </url>
     </urlset>
-[/code]
+```
 
 ### Generating a sitemap using code (.js, .ts)[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#generating-a-sitemap-using-code-js-ts)
 
@@ -52,7 +52,7 @@ app/sitemap.xml
 app/sitemap.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { MetadataRoute } from 'next'
 
     export default function sitemap(): MetadataRoute.Sitemap {
@@ -77,12 +77,12 @@ JavaScriptTypeScript
         },
       ]
     }
-[/code]
+```
 
 Output:
 
 acme.com/sitemap.xml
-[code]
+```
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
         <loc>https://acme.com</loc>
@@ -103,7 +103,7 @@ acme.com/sitemap.xml
         <priority>0.5</priority>
       </url>
     </urlset>
-[/code]
+```
 
 ### Image Sitemaps[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#image-sitemaps)
 
@@ -112,7 +112,7 @@ acme.com/sitemap.xml
 app/sitemap.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { MetadataRoute } from 'next'
 
     export default function sitemap(): MetadataRoute.Sitemap {
@@ -126,12 +126,12 @@ JavaScriptTypeScript
         },
       ]
     }
-[/code]
+```
 
 Output:
 
 acme.com/sitemap.xml
-[code]
+```
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -147,7 +147,7 @@ acme.com/sitemap.xml
         <priority>0.5</priority>
       </url>
     </urlset>
-[/code]
+```
 
 ### Video Sitemaps[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#video-sitemaps)
 
@@ -156,7 +156,7 @@ acme.com/sitemap.xml
 app/sitemap.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { MetadataRoute } from 'next'
 
     export default function sitemap(): MetadataRoute.Sitemap {
@@ -176,12 +176,12 @@ JavaScriptTypeScript
         },
       ]
     }
-[/code]
+```
 
 Output:
 
 acme.com/sitemap.xml
-[code]
+```
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -199,14 +199,14 @@ acme.com/sitemap.xml
         <priority>0.5</priority>
       </url>
     </urlset>
-[/code]
+```
 
 ### Generate a localized Sitemap[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#generate-a-localized-sitemap)
 
 app/sitemap.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { MetadataRoute } from 'next'
 
     export default function sitemap(): MetadataRoute.Sitemap {
@@ -243,12 +243,12 @@ JavaScriptTypeScript
         },
       ]
     }
-[/code]
+```
 
 Output:
 
 acme.com/sitemap.xml
-[code]
+```
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
       <url>
         <loc>https://acme.com</loc>
@@ -287,7 +287,7 @@ acme.com/sitemap.xml
         <lastmod>2023-04-06T15:02:24.021Z</lastmod>
       </url>
     </urlset>
-[/code]
+```
 
 ### Generating multiple sitemaps[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#generating-multiple-sitemaps)
 
@@ -303,7 +303,7 @@ acme.com/sitemap.xml
 app/product/sitemap.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { MetadataRoute } from 'next'
     import { BASE_URL } from '@/app/lib/constants'
 
@@ -327,7 +327,7 @@ JavaScriptTypeScript
         lastModified: product.date,
       }))
     }
-[/code]
+```
 
 생성된 사이트맵은 `/.../sitemap/[id]`에서 사용할 수 있습니다. 예: `/product/sitemap/1.xml`.
 
@@ -336,7 +336,7 @@ JavaScriptTypeScript
 ## Returns[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#returns)
 
 `sitemap.(xml|ts|js)`에서 내보내는 기본 함수는 다음 속성을 가진 객체 배열을 반환해야 합니다:
-[code]
+```
     type Sitemap = Array<{
       url: string
       lastModified?: string | Date
@@ -353,7 +353,7 @@ JavaScriptTypeScript
         languages?: Languages<string>
       }
     }>
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#version-history)
 

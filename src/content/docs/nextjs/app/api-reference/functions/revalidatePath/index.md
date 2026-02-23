@@ -28,9 +28,9 @@ Last updated February 20, 2026
 >
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/revalidatePath#parameters)
-[code]
+```
     revalidatePath(path: string, type?: 'page' | 'layout'): void;
-[/code]
+```
 
   * `path`: 재검증하려는 데이터에 대응하는 라우트 패턴(예: `/product/[slug]`) 또는 특정 URL(`/product/123`). `/page`나 `/layout`을 덧붙이지 말고 대신 `type` 매개변수를 사용하세요. 1024자를 초과할 수 없으며 대소문자를 구분합니다.
   * `type`: (선택 사항) 재검증할 경로 유형을 바꾸는 `'page'` 또는 `'layout'` 문자열입니다. `path`에 `/product/[slug]`처럼 동적 세그먼트가 포함되면 필수이고, `/product/1`처럼 특정 URL이면 생략합니다.
@@ -50,7 +50,7 @@ Last updated February 20, 2026
   * **Route Handlers** : Route Handler에서 접근한 Data Cache 항목을 무효화합니다. 예를 들어 `revalidatePath("/api/data")`는 아래 GET 핸들러를 무효화합니다.
 
 app/api/data/route.ts
-[code]
+```
     export async function GET() {
       const data = await fetch('https://api.vercel.app/blog', {
         cache: 'force-cache',
@@ -58,7 +58,7 @@ app/api/data/route.ts
 
       return Response.json(await data.json())
     }
-[/code]
+```
 
 ## Relationship with `revalidateTag` and `updateTag`[](https://nextjs.org/docs/app/api-reference/functions/revalidatePath#relationship-with-revalidatetag-and-updatetag)
 
@@ -69,7 +69,7 @@ app/api/data/route.ts
   * **`updateTag`** : 특정 태그가 달린 데이터를 만료시켜, 해당 태그를 사용하는 모든 페이지에 적용됩니다.
 
 `revalidatePath`를 호출하면 지정된 경로만 다음 방문 시 새 데이터를 가져옵니다. 동일한 데이터 태그를 사용하는 다른 페이지는 해당 태그가 재검증될 때까지 캐시된 데이터를 계속 제공합니다.
-[code]
+```
     // Page A: /blog
     const posts = await fetch('https://api.vercel.app/blog', {
       next: { tags: ['posts'] },
@@ -79,7 +79,7 @@ app/api/data/route.ts
     const recentPosts = await fetch('https://api.vercel.app/blog?limit=5', {
       next: { tags: ['posts'] },
     })
-[/code]
+```
 
 `revalidatePath('/blog')` 호출 이후:
 
@@ -91,7 +91,7 @@ app/api/data/route.ts
 ### Building revalidation utilities[](https://nextjs.org/docs/app/api-reference/functions/revalidatePath#building-revalidation-utilities)
 
 `revalidatePath`와 `updateTag`는 애플리케이션 전반의 데이터 일관성을 보장하기 위해 유틸리티 함수에서 함께 사용되는 보완적인 프리미티브입니다.
-[code]
+```
     'use server'
 
     import { revalidatePath, updateTag } from 'next/cache'
@@ -102,46 +102,46 @@ app/api/data/route.ts
       revalidatePath('/blog') // Refresh the blog page
       updateTag('posts') // Refresh all pages using 'posts' tag
     }
-[/code]
+```
 
 이 패턴은 특정 페이지와 동일한 데이터를 사용하는 다른 페이지 모두가 일관된 상태를 유지하도록 합니다.
 
 ## Examples[](https://nextjs.org/docs/app/api-reference/functions/revalidatePath#examples)
 
 ### Revalidating a specific URL[](https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidating-a-specific-url)
-[code]
+```
     import { revalidatePath } from 'next/cache'
     revalidatePath('/blog/post-1')
-[/code]
+```
 
 이 코드는 특정 URL 하나를 다음 페이지 방문 시 재검증하도록 무효화합니다.
 
 ### Revalidating a Page path[](https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidating-a-page-path)
-[code]
+```
     import { revalidatePath } from 'next/cache'
     revalidatePath('/blog/[slug]', 'page')
     // or with route groups
     revalidatePath('/(main)/blog/[slug]', 'page')
-[/code]
+```
 
 이는 제공된 `page` 파일과 일치하는 모든 URL을 다음 페이지 방문 시 재검증하도록 무효화합니다. 특정 페이지 아래의 페이지는 무효화되지 않습니다. 예를 들어 `/blog/[slug]`는 `/blog/[slug]/[author]`를 무효화하지 않습니다.
 
 ### Revalidating a Layout path[](https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidating-a-layout-path)
-[code]
+```
     import { revalidatePath } from 'next/cache'
     revalidatePath('/blog/[slug]', 'layout')
     // or with route groups
     revalidatePath('/(main)/post/[slug]', 'layout')
-[/code]
+```
 
 이는 제공된 `layout` 파일과 일치하는 모든 URL을 다음 페이지 방문 시 재검증하도록 무효화합니다. 동일한 레이아웃을 공유하는 하위 페이지들도 다음 방문 시 무효화되고 재검증됩니다. 예를 들어 위 사례에서는 `/blog/[slug]/[another]`도 다음 방문 시 무효화됩니다.
 
 ### Revalidating all data[](https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidating-all-data)
-[code]
+```
     import { revalidatePath } from 'next/cache'
 
     revalidatePath('/', 'layout')
-[/code]
+```
 
 이는 클라이언트 측 라우터 캐시를 비우고, 다음 페이지 방문 시 재검증을 위해 데이터 캐시를 무효화합니다.
 
@@ -150,7 +150,7 @@ app/api/data/route.ts
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { revalidatePath } from 'next/cache'
@@ -159,14 +159,14 @@ JavaScriptTypeScript
       await submitForm()
       revalidatePath('/')
     }
-[/code]
+```
 
 ### Route Handler[](https://nextjs.org/docs/app/api-reference/functions/revalidatePath#route-handler)
 
 app/api/revalidate/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { revalidatePath } from 'next/cache'
     import type { NextRequest } from 'next/server'
 
@@ -184,7 +184,7 @@ JavaScriptTypeScript
         message: 'Missing path to revalidate',
       })
     }
-[/code]
+```
 
 Was this helpful?
 

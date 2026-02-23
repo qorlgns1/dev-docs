@@ -434,4 +434,3 @@ While these guidelines are not exhaustive, they should help you get started. If 
 
 Thank you for contributing to the docs and being part of the Next.js community!
 ---
-

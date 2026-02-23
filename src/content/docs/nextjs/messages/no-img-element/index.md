@@ -32,7 +32,7 @@ description: '> 느린 LCP와 더 높은 대역폭 사용 때문에  요소 사�
 > **참고**: 셀프 호스팅 시 [`sharp`](https://www.npmjs.com/package/sharp)을 설치하고, 최적화된 이미지를 캐시할 충분한 스토리지가 있는지 확인하세요.
 
 pages/index.js
-[code]
+```
     import Image from 'next/image'
 
     function Home() {
@@ -47,23 +47,23 @@ pages/index.js
     }
 
     export default Home
-[/code]
+```
 
   2. 블러 업 플레이스홀더 같은 `next/image` 기능은 사용하되 Image Optimization만 비활성화하려면 [unoptimized](https://nextjs.org/docs/pages/api-reference/components/image#unoptimized)를 사용하세요.
 
 pages/index.js
-[code]
+```
     import Image from 'next/image'
 
     const UnoptimizedImage = (props) => {
       return <Image {...props} unoptimized />
     }
-[/code]
+```
 
   3. `<picture>` 요소와 그 안의 `<img>` 요소를 사용할 수도 있습니다.
 
 pages/index.js
-[code]
+```
     function Home() {
       return (
         <picture>
@@ -78,19 +78,19 @@ pages/index.js
         </picture>
       )
     }
-[/code]
+```
 
   4. 이미지를 최적화하기 위해 [custom image loader](https://nextjs.org/docs/pages/api-reference/components/image#loader)를 사용할 수 있습니다. [loaderFile](https://nextjs.org/docs/pages/api-reference/components/image#loaderfile)을 커스텀 로더 경로로 설정하세요.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         loader: 'custom',
         loaderFile: './my/image/loader.js',
       },
     }
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-img-element#useful-links)
 

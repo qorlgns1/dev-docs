@@ -22,7 +22,7 @@ URL 검색 매개변수를 업데이트하는 폼에 유용하며, 위 동작을
 /ui/search.js
 
 JavaScriptTypeScript
-[code]
+```
     import Form from 'next/form'
 
     export default function Page() {
@@ -35,7 +35,7 @@ JavaScriptTypeScript
         </Form>
       )
     }
-[/code]
+```
 
 ## Reference[](https://nextjs.org/docs/pages/api-reference/components/form#reference)
 

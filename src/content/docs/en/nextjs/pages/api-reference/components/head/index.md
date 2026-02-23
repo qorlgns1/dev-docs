@@ -70,4 +70,3 @@ We recommend using [`next/script`](https://nextjs.org/docs/pages/guides/scripts)
 
 You **cannot** use `<Head>` to set attributes on `<html>` or `<body>` tags. This will result in an `next-head-count is missing` error. `next/head` can only handle tags inside the HTML `<head>` tag.
 ---
-

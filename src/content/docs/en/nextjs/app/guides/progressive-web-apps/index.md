@@ -672,4 +672,3 @@ Learn more about defining [Content Security Policies](https://nextjs.org/docs/ap
   - API Reference for manifest.json file.
 
 ---
-

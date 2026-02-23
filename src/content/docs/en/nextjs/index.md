@@ -70,4 +70,3 @@ If you have questions about anything related to Next.js, you're always welcome t
 Create your first application and learn the core Next.js features.
 
 - [Getting StartedLearn how to create full-stack web applications with the Next.js App Router.](https://nextjs.org/docs/app/getting-started)
-

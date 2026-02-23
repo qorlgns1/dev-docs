@@ -16,14 +16,14 @@ Copy page
 `devIndicators`는 개발 중에 현재 보고 있는 경로에 대한 컨텍스트를 제공하는 화면 표시기를 구성할 수 있게 해줍니다.
 
 Types
-[code]
+```
       devIndicators: false | {
         position?: 'bottom-right'
         | 'bottom-left'
         | 'top-right'
         | 'top-left', // defaults to 'bottom-left',
       },
-[/code]
+```
 
 `devIndicators`를 `false`로 설정하면 표시기가 숨겨지지만, Next.js는 계속해서 발생한 빌드 또는 런타임 오류를 표시합니다.
 
@@ -36,14 +36,14 @@ Types
 `next build --debug`로 애플리케이션을 빌드한 뒤 터미널 출력에서 경로가 [정적](https://nextjs.org/docs/app/guides/caching#static-rendering)인지 [동적](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)인지 확인할 수 있습니다. 정적(프리렌더링) 경로는 `○` 기호로 표시되고, 동적 경로는 `ƒ` 기호로 표시됩니다. 예:
 
 Build Output
-[code]
+```
     Route (app)
     ┌ ○ /_not-found
     └ ƒ /products/[id]
 
     ○  (Static)   prerendered as static content
     ƒ  (Dynamic)  server-rendered on demand
-[/code]
+```
 
 경로가 정적 렌더링을 포기하는 이유는 두 가지입니다:
 

@@ -48,7 +48,7 @@ Next.js는 [`<Link>` 컴포넌트](https://nextjs.org/docs/app/api-reference/com
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Layout({ children }: { children: React.ReactNode }) {
@@ -66,7 +66,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 사전 가져오는 범위는 라우트가 정적인지 동적인지에 따라 달라집니다.
 
@@ -88,12 +88,12 @@ JavaScriptTypeScript
 app/dashboard/loading.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Loading() {
       // Add fallback UI that will be shown while the route is loading.
       return <LoadingSkeleton />
     }
-[/code]
+```
 
 백그라운드에서 Next.js는 `page.tsx` 내용을 자동으로 `<Suspense>` 경계로 감쌉니다. 사전 가져온 폴백 UI는 라우트가 로딩되는 동안 표시되고, 준비되면 실제 콘텐츠로 교체됩니다.
 
@@ -131,11 +131,11 @@ Next.js는 `<Link>` 컴포넌트를 이용한 클라이언트 측 전환으로 �
 app/blog/[slug]/loading.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Loading() {
       return <LoadingSkeleton />
     }
-[/code]
+```
 
 > **알아두면 좋아요**: 개발 모드에서는 Next.js Devtools를 사용해 라우트가 정적인지 동적인지 확인할 수 있습니다. 자세한 내용은 [`devIndicators`](https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators)를 참조하세요.
 
@@ -148,7 +148,7 @@ JavaScriptTypeScript
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
 
@@ -165,7 +165,7 @@ JavaScriptTypeScript
       const { slug } = await params
       // ...
     }
-[/code]
+```
 
 ### 느린 네트워크[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#slow-networks)
 
@@ -176,7 +176,7 @@ JavaScriptTypeScript
 app/ui/loading-indicator.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useLinkStatus } from 'next/link'
@@ -187,7 +187,7 @@ JavaScriptTypeScript
         <span aria-hidden className={`link-hint ${pending ? 'is-pending' : ''}`} />
       )
     }
-[/code]
+```
 
 초기 애니메이션 지연(예: 100ms)을 추가하고 처음에는 보이지 않게(`opacity: 0`) 설정하여 힌트를 "디바운스"할 수 있습니다. 그러면 지정한 지연보다 탐색이 오래 걸리는 경우에만 로딩 인디케이터가 표시됩니다. CSS 예시는 [`useLinkStatus` 레퍼런스](https://nextjs.org/docs/app/api-reference/functions/use-link-status#gracefully-handling-fast-navigation)에서 확인하세요.
 
@@ -196,11 +196,11 @@ JavaScriptTypeScript
 ### 사전 가져오기 비활성화[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#disabling-prefetching)
 
 `<Link>` 컴포넌트의 `prefetch` prop을 `false`로 설정하면 사전 가져오기를 옵트아웃할 수 있습니다. 이는 (무한 스크롤 테이블처럼) 링크가 많은 목록을 렌더링할 때 리소스 사용을 최소화하는 데 유용합니다.
-[code]
+```
     <Link prefetch={false} href="/blog">
       Blog
     </Link>
-[/code]
+```
 
 그러나 사전 가져오기 비활성화에는 다음과 같은 트레이드오프가 있습니다.
 
@@ -212,7 +212,7 @@ JavaScriptTypeScript
 app/ui/hover-prefetch-link.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Link from 'next/link'
@@ -237,7 +237,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### 하이드레이션이 완료되지 않음[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#hydration-not-completed)
 
@@ -259,7 +259,7 @@ Next.js에서는 페이지를 다시 로드하지 않고도 브라우저의 히�
 #### `window.history.pushState`[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#windowhistorypushstate)
 
 브라우저 히스토리 스택에 새 항목을 추가할 때 사용하세요. 사용자는 이전 상태로 되돌아갈 수 있습니다. 예를 들어 제품 목록을 정렬하려면 다음과 같이 합니다:
-[code]
+```
     'use client'
 
     import { useSearchParams } from 'next/navigation'
@@ -280,12 +280,12 @@ Next.js에서는 페이지를 다시 로드하지 않고도 브라우저의 히�
         </>
       )
     }
-[/code]
+```
 
 #### `window.history.replaceState`[](https://nextjs.org/docs/app/getting-started/linking-and-navigating#windowhistoryreplacestate)
 
 브라우저 히스토리 스택의 현재 항목을 교체할 때 사용하세요. 사용자는 이전 상태로 돌아갈 수 없습니다. 예를 들어 애플리케이션 로케일을 전환하려면 다음과 같이 합니다:
-[code]
+```
     'use client'
 
     import { usePathname } from 'next/navigation'
@@ -306,7 +306,7 @@ Next.js에서는 페이지를 다시 로드하지 않고도 브라우저의 히�
         </>
       )
     }
-[/code]
+```
 
 ##
 

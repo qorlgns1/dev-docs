@@ -14,14 +14,14 @@ Codex는 채팅을 넘어서는 워크플로우를 지원합니다. 각 워크�
 ## 인터랙티브 모드로 실행하기
 
 Codex는 전체 화면 터미널 UI를 통해 저장소를 읽고, 수정하고, 명령을 실행하면서 함께 반복 작업할 수 있습니다. 실시간으로 Codex의 작업을 검토할 수 있는 대화형 워크플로우가 필요할 때 사용하세요.
-[code] 
+```
     codex
-[/code]
+```
 
 명령줄에서 초기 프롬프트를 지정할 수도 있습니다.
-[code] 
+```
     codex "Explain this codebase to me"
-[/code]
+```
 
 세션을 열면 다음을 수행할 수 있습니다:
 
@@ -44,10 +44,10 @@ Codex는 대화 기록을 로컬에 저장하므로, 컨텍스트를 반복 설�
 
 
 비대화형 자동화 실행도 다시 시작할 수 있습니다:
-[code] 
+```
     codex exec resume --last "Fix the race conditions you found"
     codex exec resume 7f9f9a2e-1b3c-4c7a-9b0e-.... "Implement the plan"
-[/code]
+```
 
 다시 시작된 각 실행은 원본 대화, 계획 히스토리, 승인 상태를 유지하므로, 새 지시를 제공하면서도 Codex가 이전 컨텍스트를 활용할 수 있습니다. 다시 시작하기 전에 환경을 조정하려면 `--cd`로 작업 디렉터리를 바꾸거나 `--add-dir`로 루트를 추가하세요.
 
@@ -56,20 +56,20 @@ Codex는 대화 기록을 로컬에 저장하므로, 컨텍스트를 반복 설�
 Codex에서 대부분의 코딩 작업에는 `gpt-5.3-codex` 모델이 기본 선택입니다. 이 모델은 ChatGPT 인증 Codex 세션에서 Codex 앱, CLI, IDE 확장, Codex Cloud 모두에서 사용할 수 있습니다. 더 빠른 작업을 위해 ChatGPT Pro 구독자는 연구 미리보기로 GPT-5.3-Codex-Spark 모델에 접근할 수 있습니다.
 
 세션 도중 `/model` 명령으로 모델을 전환하거나, CLI를 시작할 때 모델을 지정하세요.
-[code] 
+```
     codex --model gpt-5.3-codex
-[/code]
+```
 
 [Codex에서 사용 가능한 모델 더 알아보기](https://developers.openai.com/codex/models).
 
 ## 기능 플래그
 
 Codex에는 소수의 기능 플래그가 포함되어 있습니다. `features` 서브커맨드를 사용해 사용 가능한 플래그를 확인하고 설정을 구성에 저장하세요.
-[code] 
+```
     codex features list
     codex features enable unified_exec
     codex features disable shell_snapshot
-[/code]
+```
 
 `codex features enable <feature>`와 `codex features disable <feature>`는 `~/.codex/config.toml`에 기록됩니다. `--profile`로 Codex를 실행하면 루트 구성 대신 해당 프로필에 변경 사항을 저장합니다.
 
@@ -80,13 +80,13 @@ Codex 멀티 에이전트 워크플로우를 사용해 더 큰 작업을 병렬�
 ## 이미지 입력
 
 스크린샷이나 디자인 사양을 첨부해, 프롬프트와 함께 이미지 세부 정보를 Codex가 읽을 수 있도록 하세요. 인터랙티브 컴포저에 이미지를 붙여 넣거나, 명령줄에서 파일을 제공할 수 있습니다.
-[code] 
+```
     codex -i screenshot.png "Explain this error"
-[/code]
-[code]
+```
+```
 
 codex --image img1.png,img2.jpg "Summarize these diagrams"
-[/code]
+```
 
 Codex는 PNG와 JPEG 같은 일반적인 형식을 지원합니다. 두 개 이상의 이미지는 파일 이름을 쉼표로 구분하고, 텍스트 지시와 함께 전달해 맥락을 보강하세요.
 
@@ -110,26 +110,26 @@ Codex가 무언가를 조회할 때마다 대화나 `codex exec --json` 출력�
 ## 입력 프롬프트로 실행
 
 빠른 답변만 필요할 때는 단일 프롬프트로 Codex를 실행하고 대화형 UI를 건너뛰세요.
-[code] 
+```
     codex "explain this codebase"
-[/code]
+```
 
 Codex는 워킹 디렉터리를 읽고 플랜을 만든 뒤, 출력을 터미널로 스트리밍한 후 종료합니다. `--path` 같은 플래그로 특정 디렉터리를 지정하거나 `--model`로 선호 동작을 미리 조절해 함께 사용할 수 있습니다.
 
 ## 셸 자동 완성
 
 사용 중인 셸에 맞는 자동 완성 스크립트를 설치해 일상적인 사용 속도를 높이세요.
-[code] 
+```
     codex completion bash
     codex completion zsh
     codex completion fish
-[/code]
+```
 
 새 세션에서도 자동 완성이 동작하도록 셸 설정 파일에서 해당 스크립트를 실행하세요. 예를 들어 `zsh`를 사용한다면 `~/.zshrc` 끝에 다음을 추가할 수 있습니다.
-[code] 
+```
     # ~/.zshrc
     eval "$(codex completion zsh)"
-[/code]
+```
 
 새 세션을 시작한 뒤 `codex`를 입력하고 `Tab`을 누르면 자동 완성이 보입니다. `command not found: compdef` 오류가 나타나면, `eval "$(codex completion zsh)"` 줄 앞에 `autoload -Uz compinit && compinit`을 `~/.zshrc`에 추가하고 셸을 다시 시작하세요.
 
@@ -149,9 +149,9 @@ Codex는 실행한 모든 조치를 항상 대화록으로 보여주므로, 일�
 ## Scripting Codex
 
 `exec` 하위 명령을 사용하면 Codex를 비대화식으로 실행해 워크플로를 자동화하거나 기존 스크립트에 Codex를 연결하고, 최종 계획과 결과를 `stdout`으로 전달할 수 있습니다.
-[code] 
+```
     codex exec "fix the CI failure"
-[/code]
+```
 
 `exec`를 셸 스크립팅과 결합하면 변경 로그 자동 업데이트, 이슈 정렬, PR 출처 전 편집 검사 강제 등 맞춤 워크플로를 구축할 수 있습니다.
 
@@ -160,9 +160,9 @@ Codex는 실행한 모든 조치를 항상 대화록으로 보여주므로, 일�
 `codex cloud` 명령을 사용하면 터미널을 벗어나지 않고 [Codex cloud tasks](https://developers.openai.com/codex/cloud)를 선별하고 실행할 수 있습니다. 인자를 생략해 실행하면 인터랙티브 피커가 열리며, 진행 중·완료된 작업을 둘러보고 변경 사항을 로컬 프로젝트에 적용할 수 있습니다.
 
 터미널에서 바로 작업을 시작할 수도 있습니다:
-[code] 
+```
     codex cloud exec --env ENV_ID "Summarize open bugs"
-[/code]
+```
 
 Codex cloud가 다중 해법을 생성하도록 하려면 `--attempts`(1–4)를 추가하세요. 예: `codex cloud exec --env ENV_ID --attempts 3 "Summarize open bugs"`.
 

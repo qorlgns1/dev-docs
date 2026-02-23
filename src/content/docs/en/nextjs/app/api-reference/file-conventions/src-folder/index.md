@@ -29,4 +29,3 @@ To use the `src` folder, move the `app` Router folder or `pages` Router folder t
   - Learn the folder and file conventions in Next.js, and how to organize your project.
 
 ---
-

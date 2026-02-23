@@ -22,7 +22,7 @@ description: '함수는 동적 라우트 세그먼트와 함께 사용해 요청
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // Return a list of `params` to populate the [slug] dynamic segment
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
@@ -42,7 +42,7 @@ JavaScriptTypeScript
       const { slug } = await params
       // ...
     }
-[/code]
+```
 
 > **알아두면 좋은 점** :
 >
@@ -80,7 +80,7 @@ Example Route| `generateStaticParams` 반환 타입
 app/product/[id]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export function generateStaticParams() {
       return [{ id: '1' }, { id: '2' }, { id: '3' }]
     }
@@ -98,14 +98,14 @@ JavaScriptTypeScript
       const { id } = await params
       // ...
     }
-[/code]
+```
 
 ## Multiple Dynamic Segments[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#multiple-dynamic-segments)
 
 app/products/[category]/[product]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export function generateStaticParams() {
       return [
         { category: 'a', product: '1' },
@@ -127,14 +127,14 @@ JavaScriptTypeScript
       const { category, product } = await params
       // ...
     }
-[/code]
+```
 
 ## Catch-all Dynamic Segment[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#catch-all-dynamic-segment)
 
 app/product/[...slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export function generateStaticParams() {
       return [{ slug: ['a', '1'] }, { slug: ['b', '2'] }, { slug: ['c', '3'] }]
     }
@@ -152,7 +152,7 @@ JavaScriptTypeScript
       const { slug } = await params
       // ...
     }
-[/code]
+```
 
 ## Examples[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#examples)
 
@@ -165,7 +165,7 @@ JavaScriptTypeScript
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
 
@@ -173,7 +173,7 @@ JavaScriptTypeScript
         slug: post.slug,
       }))
     }
-[/code]
+```
 
 #### 빌드 시 부분 경로[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#subset-of-paths-at-build-time)
 
@@ -182,7 +182,7 @@ JavaScriptTypeScript
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
 
@@ -191,14 +191,14 @@ JavaScriptTypeScript
         slug: post.slug,
       }))
     }
-[/code]
+```
 
 그런 다음 [`dynamicParams`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams) 세그먼트 구성 옵션을 사용해 `generateStaticParams`로 생성되지 않은 동적 세그먼트를 방문했을 때의 동작을 제어할 수 있습니다.
 
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // All posts besides the top 10 will be a 404
     export const dynamicParams = false
 
@@ -210,18 +210,18 @@ JavaScriptTypeScript
         slug: post.slug,
       }))
     }
-[/code]
+```
 
 #### 런타임의 모든 경로[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#all-paths-at-runtime)
 
 모든 경로를 최초 방문 시 정적으로 렌더링하려면 빈 배열을 반환(빌드 시 렌더링되는 경로 없음)하거나 [`export const dynamic = 'force-static'`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic)을 활용하세요.
 
 app/blog/[slug]/page.js
-[code]
+```
     export async function generateStaticParams() {
       return []
     }
-[/code]
+```
 
 > **알아두면 좋은 점:**
 >
@@ -229,9 +229,9 @@ app/blog/[slug]/page.js
 >
 
 app/changelog/[slug]/page.js
-[code]
+```
     export const dynamic = 'force-static'
-[/code]
+```
 
 #### Cache Components와 함께[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#with-cache-components)
 
@@ -248,7 +248,7 @@ app/changelog/[slug]/page.js
 app/api/posts/[id]/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function generateStaticParams() {
       return [{ id: '1' }, { id: '2' }, { id: '3' }]
     }
@@ -261,14 +261,14 @@ JavaScriptTypeScript
       // This will be statically generated for IDs 1, 2, and 3
       return Response.json({ id, title: `Post ${id}` })
     }
-[/code]
+```
 
 ### Route Handlers with Cache Components[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#route-handlers-with-cache-components)
 
 [Cache Components](https://nextjs.org/docs/app/getting-started/cache-components)를 사용할 때는 최적의 캐싱을 위해 `use cache`와 함께 사용하세요.
 
 app/api/posts/[id]/route.ts
-[code]
+```
     export async function generateStaticParams() {
       return [{ id: '1' }, { id: '2' }, { id: '3' }]
     }
@@ -287,7 +287,7 @@ app/api/posts/[id]/route.ts
       const post = await getPost(params.then((p) => p.id))
       return Response.json(post)
     }
-[/code]
+```
 
 자세한 내용은 [Route Handlers 문서](https://nextjs.org/docs/app/api-reference/file-conventions/route#static-generation-with-generatestaticparams)를 참고하세요.
 
@@ -311,7 +311,7 @@ app/api/posts/[id]/route.ts
 app/products/[category]/[product]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // Generate segments for both [category] and [product]
     export async function generateStaticParams() {
       const products = await fetch('https://.../products').then((res) => res.json())
@@ -329,7 +329,7 @@ JavaScriptTypeScript
     }) {
       // ...
     }
-[/code]
+```
 
 #### 상위에서 하위로 파라미터 생성[](https://nextjs.org/docs/app/api-reference/functions/generate-static-params#generate-params-from-the-top-down)
 
@@ -338,7 +338,7 @@ JavaScriptTypeScript
 app/products/[category]/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // Generate segments for [category]
     export async function generateStaticParams() {
       const products = await fetch('https://.../products').then((res) => res.json())
@@ -355,7 +355,7 @@ JavaScriptTypeScript
     }) {
       // ...
     }
-[/code]
+```
 
 자식 라우트 세그먼트의 `generateStaticParams` 함수는 부모 `generateStaticParams`가 생성한 각 세그먼트마다 한 번씩 실행됩니다.
 
@@ -364,7 +364,7 @@ JavaScriptTypeScript
 app/products/[category]/[product]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // Generate segments for [product] using the `params` passed from
     // the parent segment's `generateStaticParams` function
     export async function generateStaticParams({
@@ -388,7 +388,7 @@ JavaScriptTypeScript
     }) {
       // ...
     }
-[/code]
+```
 
 `params` 인수는 동기적으로 접근할 수 있으며 부모 세그먼트의 파라미터만 포함합니다.
 
@@ -397,7 +397,7 @@ JavaScriptTypeScript
 app/products/[category]/[product]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export async function generateStaticParams({
       params: { category },
     }: {
@@ -411,7 +411,7 @@ JavaScriptTypeScript
         product: product.id,
       }))
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `fetch` 요청은 모든 `generate` 접두사가 붙은 함수, 레이아웃, 페이지, 서버 컴포넌트 전반에서 동일한 데이터를 대상으로 자동으로 [메모이즈](https://nextjs.org/docs/app/guides/caching#request-memoization)됩니다. `fetch`를 사용할 수 없다면 React [`cache`를 사용할 수 있습니다](https://nextjs.org/docs/app/guides/caching#react-cache-function).
 

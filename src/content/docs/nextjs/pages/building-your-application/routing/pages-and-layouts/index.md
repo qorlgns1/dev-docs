@@ -19,11 +19,11 @@ Pages Router는 페이지 개념을 기반으로 한 파일 시스템 기반 라
 Next.js에서 **페이지**는 `pages` 디렉터리에 있는 `.js`, `.jsx`, `.ts`, `.tsx` 파일에서 내보내는 [React 컴포넌트](https://react.dev/learn/your-first-component)입니다. 각 페이지는 파일 이름을 기반으로 한 라우트와 연결됩니다.
 
 **예시**: 아래와 같이 React 컴포넌트를 내보내는 `pages/about.js`를 만들면 `/about`에서 접근할 수 있습니다.
-[code]
+```
     export default function About() {
       return <div>About</div>
     }
-[/code]
+```
 
 ## 인덱스 경로[](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#index-routes)
 
@@ -50,7 +50,7 @@ Next.js는 동적 경로를 갖는 페이지를 지원합니다. 예를 들어 `
 React 모델은 하나의 [페이지](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts)를 여러 컴포넌트로 분해할 수 있게 해줍니다. 이 컴포넌트 중 다수는 페이지 간에 자주 재사용됩니다. 예를 들어 모든 페이지에 동일한 내비게이션 바와 푸터가 있을 수 있습니다.
 
 components/layout.js
-[code]
+```
     import Navbar from './navbar'
     import Footer from './footer'
 
@@ -63,7 +63,7 @@ components/layout.js
         </>
       )
     }
-[/code]
+```
 
 ## 예제[](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#examples)
 
@@ -72,7 +72,7 @@ components/layout.js
 애플리케이션 전체에 레이아웃이 하나뿐이라면 [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app)을 만들고 애플리케이션을 해당 레이아웃으로 감쌀 수 있습니다. `<Layout />` 컴포넌트가 페이지 전환 시 재사용되므로 입력 값과 같은 컴포넌트 상태가 유지됩니다.
 
 pages/_app.js
-[code]
+```
     import Layout from '../components/layout'
 
     export default function MyApp({ Component, pageProps }) {
@@ -82,14 +82,14 @@ pages/_app.js
         </Layout>
       )
     }
-[/code]
+```
 
 ### 페이지별 레이아웃[](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#per-page-layouts)
 
 레이아웃이 여러 개 필요하면 페이지에 `getLayout` 속성을 추가해 레이아웃용 React 컴포넌트를 반환할 수 있습니다. 이를 통해 _페이지별로_ 레이아웃을 정의할 수 있습니다. 함수를 반환하므로 필요하면 복잡한 중첩 레이아웃도 구성할 수 있습니다.
 
 pages/index.js
-[code]
+```
 
     import Layout from '../components/layout'
     import NestedLayout from '../components/nested-layout'
@@ -107,17 +107,17 @@ pages/index.js
         </Layout>
       )
     }
-[/code]
+```
 
 pages/_app.js
-[code]
+```
     export default function MyApp({ Component, pageProps }) {
       // Use the layout defined at the page level, if available
       const getLayout = Component.getLayout ?? ((page) => page)
 
       return getLayout(<Component {...pageProps} />)
     }
-[/code]
+```
 
 페이지 간 내비게이션 시 단일 페이지 애플리케이션(SPA) 경험을 위해 입력 값, 스크롤 위치 등 페이지 상태를 _지속_ 시키고 싶습니다.
 
@@ -132,7 +132,7 @@ TypeScript를 사용할 때는 `getLayout` 함수를 포함하는 페이지용 �
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { ReactElement } from 'react'
     import Layout from '../components/layout'
     import NestedLayout from '../components/nested-layout'
@@ -151,12 +151,12 @@ JavaScriptTypeScript
     }
 
     export default Page
-[/code]
+```
 
 pages/_app.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { ReactElement, ReactNode } from 'react'
     import type { NextPage } from 'next'
     import type { AppProps } from 'next/app'
@@ -175,14 +175,14 @@ JavaScriptTypeScript
 
       return getLayout(<Component {...pageProps} />)
     }
-[/code]
+```
 
 ### 데이터 패칭[](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#data-fetching)
 
 레이아웃 내부에서는 `useEffect`나 [SWR](https://swr.vercel.app/) 같은 라이브러리를 사용해 클라이언트 측에서 데이터를 패칭할 수 있습니다. 이 파일은 [페이지](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts)가 아니므로 지금은 `getStaticProps`나 `getServerSideProps`를 사용할 수 없습니다.
 
 components/layout.js
-[code]
+```
     import useSWR from 'swr'
     import Navbar from './navbar'
     import Footer from './footer'
@@ -201,4 +201,4 @@ components/layout.js
         </>
       )
     }
-[/code]
+```

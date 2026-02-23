@@ -26,7 +26,7 @@ Next.js는 기본적으로 `next start`와 함께 자체 서버를 포함합니�
 server.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { createServer } from 'http'
     import next from 'next'
 
@@ -46,14 +46,14 @@ JavaScriptTypeScript
         }`
       )
     })
-[/code]
+```
 
 > `server.js`는 Next.js Compiler 또는 번들링 과정을 거치지 않습니다. 이 파일이 필요로 하는 문법과 소스 코드가 현재 사용 중인 Node.js 버전과 호환되는지 확인하세요. [예제 보기](https://github.com/vercel/next.js/tree/canary/examples/custom-server).
 
 커스텀 서버를 실행하려면 `package.json`의 `scripts`를 다음과 같이 업데이트해야 합니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "node server.js",
@@ -61,14 +61,14 @@ package.json
         "start": "NODE_ENV=production node server.js"
       }
     }
-[/code]
+```
 
 또는 `nodemon`을 설정할 수 있습니다([예제](https://github.com/vercel/next.js/tree/canary/examples/custom-server)). 커스텀 서버는 다음 임포트를 사용하여 서버를 Next.js 애플리케이션과 연결합니다:
-[code]
+```
     import next from 'next'
 
     const app = next({})
-[/code]
+```
 
 위 `next` 임포트는 다음 옵션을 포함한 객체를 인수로 받는 함수입니다:
 
@@ -93,11 +93,11 @@ package.json
 이 동작을 비활성화하고 `pages`의 파일 기반 라우팅을 방지하려면 `next.config.js`를 열고 `useFileSystemPublicRoutes` 설정을 비활성화하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       useFileSystemPublicRoutes: false,
     }
-[/code]
+```
 
 > `useFileSystemPublicRoutes`는 SSR에서 파일 이름 경로를 비활성화하지만, 클라이언트 측 라우팅은 여전히 해당 경로에 접근할 수 있습니다. 이 옵션을 사용하는 경우 원하지 않는 경로로의 내비게이션을 프로그래밍 방식으로 차단해야 합니다.
 

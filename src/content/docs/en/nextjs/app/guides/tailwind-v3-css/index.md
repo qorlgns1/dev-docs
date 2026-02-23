@@ -112,4 +112,3 @@ export default function Page() {
 
 As of Next.js 13.1, Tailwind CSS and PostCSS are supported with [Turbopack](https://turbo.build/pack/docs/features/css#tailwind-css).
 ---
-

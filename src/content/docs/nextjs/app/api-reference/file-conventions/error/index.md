@@ -17,7 +17,7 @@ Copy page
 app/dashboard/error.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client' // Error boundaries must be Client Components
 
     import { useEffect } from 'react'
@@ -48,7 +48,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 `error.js`는 경로 세그먼트와 중첩된 하위 요소를 [React Error Boundary](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)로 감쌉니다. 경계 내부에서 오류가 발생하면 `error` 컴포넌트가 대체 UI로 표시됩니다.
 
@@ -86,7 +86,7 @@ JavaScriptTypeScript
 app/dashboard/error.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client' // Error boundaries must be Client Components
 
     export default function Error({
@@ -103,7 +103,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ## Examples[](https://nextjs.org/docs/app/api-reference/file-conventions/error#examples)
 
@@ -116,7 +116,7 @@ JavaScriptTypeScript
 app/global-error.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client' // Error boundaries must be Client Components
 
     export default function GlobalError({
@@ -136,7 +136,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 ### 사용자 정의 오류 경계로 우아한 오류 복구[](https://nextjs.org/docs/app/api-reference/file-conventions/error#graceful-error-recovery-with-a-custom-error-boundary)
 
@@ -147,7 +147,7 @@ JavaScriptTypeScript
 app/dashboard/error.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import React, { Component, ErrorInfo, ReactNode } from 'react'
@@ -209,7 +209,7 @@ JavaScriptTypeScript
     }
 
     export default GracefullyDegradingErrorBoundary
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/file-conventions/error#version-history)
 

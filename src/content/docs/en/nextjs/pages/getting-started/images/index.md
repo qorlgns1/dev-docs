@@ -191,4 +191,3 @@ See the API Reference for the full feature set of Next.js Image
   - Optimize Images in your Next.js Application using the built-in `next/image` Component.
 
 ---
-

@@ -48,13 +48,13 @@ VSCode에는 편집 내용을 로컬에서 확인할 수 있는 기본 마크다
 그런 다음 `settings.json` 파일에 다음 줄을 추가합니다.
 
 settings.json
-[code]
+```
     {
       "files.associations": {
         "*.mdx": "markdown"
       }
     }
-[/code]
+```
 
 이후 명령 팔레트를 다시 열고 `Markdown: Preview File` 또는 `Markdown: Open Preview to the Side`를 검색합니다. 그러면 서식이 적용된 변경 사항을 볼 수 있는 미리 보기 창이 열립니다.
 
@@ -80,22 +80,22 @@ VSCode 사용자에게 다음 확장을 권장합니다.
 파일 구조는 사이트에서 볼 수 있는 내비게이션을 반영하며, 기본적으로 내비게이션 항목은 알파벳 순으로 정렬됩니다. 다만 폴더나 파일 이름 앞에 두 자리 숫자(`00-`)를 붙이면 정렬 순서를 바꿀 수 있습니다.
 
 예를 들어 [functions API Reference](https://nextjs.org/docs/app/api-reference/functions)에서는 개발자가 특정 함수를 찾기 쉽도록 페이지가 알파벳 순으로 정렬됩니다:
-[code]
+```
     04-functions
     ├── after.mdx
     ├── cacheLife.mdx
     ├── cacheTag.mdx
     └── ...
-[/code]
+```
 
 하지만 [app router 섹션](https://nextjs.org/docs/app)에서는 파일 이름에 두 자리 숫자를 붙여 개발자가 학습해야 하는 순서대로 정렬합니다:
-[code]
+```
     01-getting-started
     ├── 01-installation.mdx
     ├── 02-project-structure.mdx
     ├── 03-layouts-and-pages.mdx
     └── ...
-[/code]
+```
 
 VSCode에서 `⌘ + P`(Mac) 또는 `Ctrl + P`(Windows)를 눌러 검색 창을 연 뒤 찾고 싶은 페이지의 슬러그를 입력하면 원하는 페이지를 빠르게 찾을 수 있습니다. 예: `installation`
 
@@ -117,12 +117,12 @@ VSCode에서 `⌘ + P`(Mac) 또는 `Ctrl + P`(Windows)를 눌러 검색 창을 �
 `description`| 페이지 설명으로, SEO를 위한 `<meta name="description">` 태그에 사용됩니다.
 
 required-fields.mdx
-[code]
+```
     ---
     title: Page Title
     description: Page Description
     ---
-[/code]
+```
 
 페이지 제목은 2~3단어(예: Optimizing Images), 설명은 1~2문장(예: Learn how to optimize images in Next.js)으로 제한하는 것이 좋습니다.
 
@@ -138,7 +138,7 @@ required-fields.mdx
 `version`| 개발 단계입니다. 예: `experimental`,`legacy`,`unstable`,`RC`
 
 optional-fields.mdx
-[code]
+```
     ---
     nav_title: Nav Item Title
     source: app/building-your-application/optimizing/images
@@ -148,7 +148,7 @@ optional-fields.mdx
         - app/api-reference/components/image
     version: experimental
     ---
-[/code]
+```
 
 ## `App` 및 `Pages` 문서[](https://nextjs.org/docs/community/contribution-guide#app-and-pages-docs)
 
@@ -159,7 +159,7 @@ optional-fields.mdx
 콘텐츠를 중복 작성하다 보면 동기화가 어긋날 위험이 있으므로 `source` 필드를 사용해 한 페이지의 콘텐츠를 다른 페이지로 끌어옵니다. 예를 들어 `<Link>` 컴포넌트는 **App**과 **Pages**에서 _대부분_ 동일하게 동작합니다. 콘텐츠를 복제하는 대신 `app/.../link.mdx`의 내용을 `pages/.../link.mdx`로 가져올 수 있습니다:
 
 app/.../link.mdx
-[code]
+```
     ---
     title: <Link>
     description: API reference for the <Link> component.
@@ -167,10 +167,10 @@ app/.../link.mdx
 
     This API reference will help you understand how to use the props
     and configuration options available for the Link Component.
-[/code]
+```
 
 pages/.../link.mdx
-[code]
+```
     ---
     title: <Link>
     description: API reference for the <Link> component.
@@ -179,7 +179,7 @@ pages/.../link.mdx
 
     {/* DO NOT EDIT THIS PAGE. */}
     {/* The content of this page is pulled from the source above. */}
-[/code]
+```
 
 이렇게 하면 한 곳에서 콘텐츠를 수정해도 두 섹션에 모두 반영됩니다.
 
@@ -190,7 +190,7 @@ pages/.../link.mdx
 콘텐츠가 올바른 라우터에만 표시되도록 `<AppOnly>` 또는 `<PagesOnly>` 컴포넌트로 블록을 감쌀 수 있습니다:
 
 app/.../link.mdx
-[code]
+```
     This content is shared between App and Pages.
 
     <PagesOnly>
@@ -200,7 +200,7 @@ app/.../link.mdx
     </PagesOnly>
 
     This content is shared between App and Pages.
-[/code]
+```
 
 이 컴포넌트는 예시나 코드 블록에 자주 사용하게 될 것입니다.
 
@@ -211,13 +211,13 @@ app/.../link.mdx
 예를 들어 `<Link>` 컴포넌트 사용법을 보여줄 때는 `import` 문과 `<Link>` 컴포넌트를 함께 포함해야 합니다.
 
 app/page.tsx
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
       return <Link href="/about">About</Link>
     }
-[/code]
+```
 
 커밋하기 전에 항상 예제를 로컬에서 실행해 최신 상태이며 동작하는지 확인하세요.
 
@@ -226,18 +226,18 @@ app/page.tsx
 코드 블록 헤더에는 언어와 `filename`이 포함되어야 합니다. 예:
 
 code-example.mdx
-[code]
+````
     ```tsx filename="app/page.tsx"
     export default function Page() {
       return <h1>Hello, Next.js!</h1>
     }
     ```
-[/code]
+````
 
 CLI 명령어의 경우 `package` prop을 사용해 각 패키지 관리자의 명령을 보여 주세요:
 
 code-example.mdx
-[code]
+````
     ```bash package="pnpm"
     pnpm create next-app
     ```
@@ -253,7 +253,7 @@ code-example.mdx
     ```bash package="bun"
     bun create next-app
     ```
-[/code]
+````
 
 문서의 대부분 예시는 `tsx`와 `jsx`, 일부는 `bash`로 작성됩니다. 하지만 지원되는 언어라면 무엇이든 사용할 수 있습니다. 전체 목록은 [여기](https://github.com/shikijs/shiki/blob/main/docs/languages.md#all-languages)에서 확인하세요.
 
@@ -280,7 +280,7 @@ TypeScript와 JavaScript 간 토글이 가능한 언어 전환 스위처를 추�
 현재는 TS 예제와 JS 예제를 순차적으로 작성하고 `switcher` 프롭으로 연결합니다:
 
 code-example.mdx
-[code]
+````
     ```tsx filename="app/page.tsx" switcher
 
     ```
@@ -288,7 +288,7 @@ code-example.mdx
     ```jsx filename="app/page.js" switcher
 
     ```
-[/code]
+````
 
 > **참고**: 향후 TypeScript 스니펫을 자동으로 JavaScript로 컴파일할 예정입니다. 그때까지는 [transform.tools](https://transform.tools/typescript-to-javascript)를 사용할 수 있습니다.
 
@@ -299,45 +299,45 @@ code-example.mdx
 **단일 줄:** `highlight={1}`
 
 app/page.tsx
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
       return <Link href="/about">About</Link>
     }
-[/code]
+```
 
 **여러 줄:** `highlight={1,3}`
 
 app/page.tsx
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
       return <Link href="/about">About</Link>
     }
-[/code]
+```
 
 **구간:** `highlight={1-5}`
 
 app/page.tsx
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
       return <Link href="/about">About</Link>
     }
-[/code]
+```
 
 ## Icons[](https://nextjs.org/docs/community/contribution-guide#icons)
 
 문서에서 사용할 수 있는 아이콘은 다음과 같습니다:
 
 mdx-icon.mdx
-[code]
+```
     <Check size={18} />
     <Cross size={18} />
-[/code]
+```
 
 **출력:**
 
@@ -348,14 +348,14 @@ mdx-icon.mdx
 중요하지만 치명적이지 않은 정보를 전달할 때 노트를 사용하세요. 노트는 본문을 방해하지 않고 정보를 추가하기 좋은 방법입니다.
 
 notes.mdx
-[code]
+```
     > **Good to know**: This is a single line note.
 
     > **Good to know**:
     >
     > - We also use this format for multi-line notes.
     > - There are sometimes multiple items worth knowing or keeping in mind.
-[/code]
+```
 
 **출력:**
 
@@ -377,7 +377,7 @@ Related Links는 사용자에게 논리적인 다음 단계를 안내하는 링�
 페이지 메타데이터의 `related` 필드를 사용해 관련 링크를 생성하세요.
 
 example.mdx
-[code]
+```
     ---
     related:
       description: Learn how to quickly get started with your first application.
@@ -386,7 +386,7 @@ example.mdx
         - app/building-your-application/data-fetching
         - app/api-reference/file-conventions/page
     ---
-[/code]
+```
 
 ### Nested Fields[](https://nextjs.org/docs/community/contribution-guide#nested-fields)
 

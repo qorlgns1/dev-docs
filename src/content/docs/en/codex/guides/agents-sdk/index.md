@@ -14,14 +14,14 @@ Source URL: https://developers.openai.com/codex/guides/agents-sdk
 You can run Codex as an MCP server and connect it from other MCP clients (for example, an agent built with the [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/guides/mcp/)).
 
 To start Codex as an MCP server, you can use the following command:
-[code] 
+```
     codex mcp-server
-[/code]
+```
 
 You can launch a Codex MCP server with the [Model Context Protocol Inspector](https://modelcontextprotocol.io/legacy/tools/inspector):
-[code] 
+```
     npx @modelcontextprotocol/inspector codex mcp-server
-[/code]
+```
 
 Send a `tools/list` request to see two tools:
 
@@ -50,7 +50,7 @@ Property| Type| Description
 Use the `threadId` from `structuredContent.threadId` in the `tools/call` response. Approval prompts (exec/patch) also include `threadId` in their `params` payload.
 
 Example response payload:
-[code] 
+```
     {
       "structuredContent": {
         "threadId": "019bbb20-bff6-7130-83aa-bf45ab33250e",
@@ -63,7 +63,7 @@ Example response payload:
         }
       ]
     }
-[/code]
+```
 
 Note modern MCP clients generally report only `"structuredContent"` as the result of a tool call, if present, though the Codex MCP server also returns `"content"` for the benefit of older MCP clients.
 
@@ -89,20 +89,20 @@ Before starting, make sure you have:
 
 
 Create a working directory for the guide and add your API key to a `.env` file:
-[code] 
+```
     mkdir codex-workflows
     cd codex-workflows
     printf "OPENAI_API_KEY=sk-..." > .env
-[/code]
+```
 
 ## Install dependencies
 
 The Agents SDK handles orchestration across Codex, hand-offs, and traces. Install the latest SDK packages:
-[code] 
+```
     python -m venv .venv
     source .venv/bin/activate
     pip install --upgrade openai openai-agents python-dotenv
-[/code]
+```
 
 Activating a virtual environment keeps the SDK dependencies isolated from the rest of your system.
 
@@ -111,7 +111,7 @@ Activating a virtual environment keeps the SDK dependencies isolated from the re
 Start by turning Codex CLI into an MCP server that the Agents SDK can call. The server exposes two tools (`codex()` to start a conversation and `codex-reply()` to continue one) and keeps Codex alive across multiple agent turns.
 
 Create a file called `codex_mcp.py` and add the following:
-[code] 
+```
     import asyncio
     
     from agents import Agent, Runner
@@ -134,12 +134,12 @@ Create a file called `codex_mcp.py` and add the following:
     
     if __name__ == "__main__":
         asyncio.run(main())
-[/code]
+```
 
 Run the script once to verify that Codex launches successfully:
-[code] 
+```
     python codex_mcp.py
-[/code]
+```
 
 The script exits after printing `Codex MCP server started.`. In the next sections you will reuse the same MCP server inside richer workflows.
 
@@ -153,7 +153,7 @@ Let’s start with a scoped example that uses Codex MCP to ship a small browser 
 
 
 Update `codex_mcp.py` with the following code. It keeps the MCP server setup from above and adds both agents.
-[code] 
+```
     import asyncio
     import os
     
@@ -200,12 +200,12 @@ Update `codex_mcp.py` with the following code. It keeps the MCP server setup fro
     
     if __name__ == "__main__":
         asyncio.run(main())
-[/code]
+```
 
 Execute the script:
-[code] 
+```
     python codex_mcp.py
-[/code]
+```
 
 Codex will read the designer’s brief, create an `index.html` file, and write the full game to disk. Open the generated file in a browser to play the result. Every run produces a different design with unique play-style twists and polish.
 
@@ -219,7 +219,7 @@ Now turn the single-agent setup into an orchestrated, traceable workflow. The sy
 
 
 Create a new file called `multi_agent_workflow.py`:
-[code] 
+```
     import asyncio
     import os
     
@@ -397,13 +397,13 @@ Create a new file called `multi_agent_workflow.py`:
     
     if __name__ == "__main__":
         asyncio.run(main())
-[/code]
+```
 
 Run the script and watch the generated files:
-[code] 
+```
     python multi_agent_workflow.py
     ls -R
-[/code]
+```
 
 The project manager agent writes `REQUIREMENTS.md`, `TEST.md`, and `AGENT_TASKS.md`, then coordinates hand-offs across the designer, frontend, server, and tester agents. Each agent writes scoped artifacts in its own folder before handing control back to the project manager.
 

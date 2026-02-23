@@ -73,4 +73,3 @@ When `action` is a string, the `<Form>` component supports the following props:
   * If you need to use these props, use the HTML `<form>` element instead.
 * **`<input type="file">`**: Using this input type when the `action` is a string will match browser behavior by submitting the filename instead of the file object.
 ---
-

@@ -44,7 +44,7 @@ Source URL: https://nextjs.org/docs/app/getting-started/proxy
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
 
@@ -59,7 +59,7 @@ JavaScriptTypeScript
     export const config = {
       matcher: '/about/:path*',
     }
-[/code]
+```
 
 `matcher` 구성은 특정 경로에서만 프록시가 실행되도록 필터링할 수 있게 해 줍니다. 경로 매칭에 대한 자세한 내용은 [Matcher](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#matcher) 문서를 참조하세요.
 

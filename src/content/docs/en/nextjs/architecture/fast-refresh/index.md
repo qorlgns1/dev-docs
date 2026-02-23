@@ -112,4 +112,3 @@ without Fast Refresh. It will make it easier for you to introduce new dependenci
 and it's enforced by [React Strict Mode](https://nextjs.org/docs/pages/api-reference/config/next-config-js/reactStrictMode),
 which we highly recommend enabling.
 ---
-

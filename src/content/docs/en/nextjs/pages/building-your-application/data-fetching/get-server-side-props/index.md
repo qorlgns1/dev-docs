@@ -111,4 +111,3 @@ export async function getServerSideProps({ req, res }) {
 
 However, before reaching for `cache-control`, we recommend seeing if [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props) with [ISR](https://nextjs.org/docs/pages/guides/incremental-static-regeneration) is a better fit for your use case.
 ---
-

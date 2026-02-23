@@ -16,7 +16,7 @@ description: '페이지에서 (서버 사이드 렌더링)라는 함수를 내�
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
     type Repo = {
@@ -41,7 +41,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 `getServerSideProps`에서 사용할 모듈을 최상위 스코프에 임포트할 수 있습니다. 이렇게 임포트한 항목은 **클라이언트 번들에 포함되지 않습니다**. 따라서 데이터베이스에서 데이터를 가져오는 등 **서버 사이드 코드를 `getServerSideProps` 안에 직접 작성**할 수 있습니다.
 
@@ -70,18 +70,18 @@ Name| Description
 ### `props`[](https://nextjs.org/docs/pages/api-reference/functions/get-server-side-props#props)
 
 `props` 객체는 키-값 쌍이며, 각 값은 페이지 컴포넌트가 받습니다. 전달된 props는 [`JSON.stringify`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)로 직렬화할 수 있도록 [직렬화 가능한 객체](https://developer.mozilla.org/docs/Glossary/Serialization)여야 합니다.
-[code]
+```
     export async function getServerSideProps(context) {
       return {
         props: { message: `Next.js is awesome` }, // will be passed to the page component as props
       }
     }
-[/code]
+```
 
 ### `notFound`[](https://nextjs.org/docs/pages/api-reference/functions/get-server-side-props#notfound)
 
 `notFound` 불리언을 사용하면 페이지가 `404` 상태와 [404 페이지](https://nextjs.org/docs/pages/building-your-application/routing/custom-error#404-page)를 반환할 수 있습니다. `notFound: true`이면 이전에 페이지가 성공적으로 생성되었더라도 `404`를 반환합니다. 이는 사용자가 생성한 콘텐츠가 작성자에 의해 제거되는 등의 사용 사례를 지원하기 위한 것입니다.
-[code]
+```
     export async function getServerSideProps(context) {
       const res = await fetch(`https://.../data`)
       const data = await res.json()
@@ -96,12 +96,12 @@ Name| Description
         props: { data }, // will be passed to the page component as props
       }
     }
-[/code]
+```
 
 ### `redirect`[](https://nextjs.org/docs/pages/api-reference/functions/get-server-side-props#redirect)
 
 `redirect` 객체를 사용하면 내부 및 외부 리소스로 리다이렉트할 수 있습니다. `{ destination: string, permanent: boolean }` 형태와 일치해야 합니다. 드물게는 오래된 `HTTP` 클라이언트에서 올바르게 리다이렉트하려면 사용자 지정 상태 코드를 지정해야 할 수 있습니다. 이 경우 `permanent` 대신 `statusCode` 속성을 사용할 수 있지만 두 속성을 동시에 사용할 수는 없습니다.
-[code]
+```
     export async function getServerSideProps(context) {
       const res = await fetch(`https://.../data`)
       const data = await res.json()
@@ -119,7 +119,7 @@ Name| Description
         props: {}, // will be passed to the page component as props
       }
     }
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/pages/api-reference/functions/get-server-side-props#version-history)
 

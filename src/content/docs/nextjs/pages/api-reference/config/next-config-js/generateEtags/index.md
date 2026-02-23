@@ -16,8 +16,8 @@ Next.js는 기본적으로 모든 페이지에 대해 [etag](https://en.wikipedi
 `next.config.js`를 열어 `generateEtags` 옵션을 비활성화하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       generateEtags: false,
     }
-[/code]
+```

@@ -16,11 +16,11 @@ description: '대신 사용할 사용자 지정 빌드 디렉터리 이름을 �
 `next.config.js`를 열어 `distDir` 설정을 추가하세요.
 
 next.config.js
-[code]
+```
     module.exports = {
       distDir: 'build',
     }
-[/code]
+```
 
 이제 `next build`를 실행하면 Next.js가 기본 `.next` 폴더 대신 `build`를 사용합니다.
 

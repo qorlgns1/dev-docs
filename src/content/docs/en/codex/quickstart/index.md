@@ -97,12 +97,14 @@ The Codex CLI is supported on macOS, Windows, and Linux.
   1. Install the Codex CLI
 
 Install with npm:
-[code] npm install -g @openai/codex
-[/code]
+```
+npm install -g @openai/codex
+```
 
 Install with Homebrew:
-[code] brew install codex
-[/code]
+```
+brew install codex
+```
 
   2. Run `codex` and sign in
 
@@ -144,8 +146,9 @@ Tell me about this projectExplain the top failure modes of my application's arch
 When a task completes, review the proposed changes in the diff view. You can iterate on the results or create a pull request directly in your GitHub repository.
 
 Codex also provides a preview of the changes. You can accept the PR as is, or check out the branch locally to test the changes:
-[code] git fetch
+```
+git fetch
          git checkout <branch-name>
-[/code]
+```
 
 [ Learn more about Codex cloud ](https://developers.openai.com/codex/cloud)

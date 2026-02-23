@@ -44,7 +44,7 @@ CSP는 공격을 방지하기 위해 인라인 스크립트와 외부 스크립�
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
 
     export function proxy(request: NextRequest) {
@@ -87,7 +87,7 @@ JavaScriptTypeScript
 
       return response
     }
-[/code]
+```
 
 기본적으로 Proxy는 모든 요청에서 실행됩니다. [`matcher`](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#matcher)를 사용하여 특정 경로에서만 Proxy가 실행되도록 필터링할 수 있습니다.
 
@@ -96,7 +96,7 @@ JavaScriptTypeScript
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     export const config = {
       matcher: [
         /*
@@ -115,7 +115,7 @@ JavaScriptTypeScript
         },
       ],
     }
-[/code]
+```
 
 ### Next.js에서 논스가 동작하는 방식[](https://nextjs.org/docs/pages/guides/content-security-policy#how-nonces-work-in-nextjs)
 
@@ -140,7 +140,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { connection } from 'next/server'
 
     export default async function Page() {
@@ -148,7 +148,7 @@ JavaScriptTypeScript
       await connection()
       // Your page content
     }
-[/code]
+```
 
 ### 논스 읽어오기[](https://nextjs.org/docs/pages/guides/content-security-policy#reading-the-nonce)
 
@@ -157,7 +157,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     import type { GetServerSideProps } from 'next'
@@ -176,14 +176,14 @@ JavaScriptTypeScript
       const nonce = req.headers['x-nonce']
       return { props: { nonce } }
     }
-[/code]
+```
 
 Pages Router 애플리케이션에서는 `_document.tsx`에서도 논스를 조회할 수 있습니다:
 
 pages/_document.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Document, {
       Html,
       Head,
@@ -226,7 +226,7 @@ JavaScriptTypeScript
     }
 
     export default MyDocument
-[/code]
+```
 
 ## CSP와 함께하는 정적 렌더링 vs 동적 렌더링[](https://nextjs.org/docs/pages/guides/content-security-policy#static-vs-dynamic-rendering-with-csp)
 
@@ -265,7 +265,7 @@ CSP에 논스를 사용하면 **모든 페이지가 동적으로 렌더링**되�
 논스가 필요 없는 애플리케이션은 [`next.config.js`](https://nextjs.org/docs/app/api-reference/config/next-config-js) 파일에서 CSP 헤더를 직접 설정할 수 있습니다:
 
 next.config.js
-[code]
+```
     const isDev = process.env.NODE_ENV === 'development'
 
     const cspHeader = `
@@ -296,7 +296,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## 개발 vs 프로덕션 고려 사항[](https://nextjs.org/docs/pages/guides/content-security-policy#development-vs-production-considerations)
 
@@ -309,13 +309,13 @@ CSP 구현은 개발 환경과 프로덕션 환경에서 다릅니다.
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     export function proxy(request: NextRequest) {
       const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
       const isDev = process.env.NODE_ENV === 'development'
 
       const cspHeader = `
-[/code]
+```
 
 default-src 'self';
         script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${isDev ? "'unsafe-eval'" : ''};
@@ -331,7 +331,6 @@ default-src 'self';
 
       // Rest of proxy implementation
     }
-[/code]
 
 ### 프로덕션 배포[](https://nextjs.org/docs/pages/guides/content-security-policy#production-deployment)
 
@@ -350,7 +349,7 @@ CSP와 함께 서드파티 스크립트를 사용할 때는 필요한 도메인�
 pages/_app.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { AppProps } from 'next/app'
     import Script from 'next/script'
 
@@ -368,21 +367,21 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 CSP를 업데이트하여 서드파티 도메인을 허용하세요:
 
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     const cspHeader = `
       default-src 'self';
       script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
       connect-src 'self' https://www.google-analytics.com;
       img-src 'self' data: https://www.google-analytics.com;
     `
-[/code]
+```
 
 ### 흔한 CSP 위반[](https://nextjs.org/docs/pages/guides/content-security-policy#common-csp-violations)
 

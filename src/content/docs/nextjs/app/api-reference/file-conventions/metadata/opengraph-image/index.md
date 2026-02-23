@@ -44,52 +44,52 @@ Next.js는 파일을 평가하고 앱의 `<head>` 요소에 적절한 태그를 
 원하는 라우트 세그먼트에 `opengraph-image.(jpg|jpeg|png|gif)` 이미지 파일을 추가합니다.
 
 <head> 출력
-[code]
+```
     <meta property="og:image" content="<generated>" />
     <meta property="og:image:type" content="<generated>" />
     <meta property="og:image:width" content="<generated>" />
     <meta property="og:image:height" content="<generated>" />
-[/code]
+```
 
 ### `twitter-image`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#twitter-image)
 
 원하는 라우트 세그먼트에 `twitter-image.(jpg|jpeg|png|gif)` 이미지 파일을 추가합니다.
 
 <head> 출력
-[code]
+```
     <meta name="twitter:image" content="<generated>" />
     <meta name="twitter:image:type" content="<generated>" />
     <meta name="twitter:image:width" content="<generated>" />
     <meta name="twitter:image:height" content="<generated>" />
-[/code]
+```
 
 ### `opengraph-image.alt.txt`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#opengraph-imagealttxt)
 
 `opengraph-image.(jpg|jpeg|png|gif)` 이미지와 같은 라우트 세그먼트에 해당 alt 텍스트인 `opengraph-image.alt.txt` 파일을 추가합니다.
 
 opengraph-image.alt.txt
-[code]
+```
     About Acme
-[/code]
+```
 
 <head> 출력
-[code]
+```
     <meta property="og:image:alt" content="About Acme" />
-[/code]
+```
 
 ### `twitter-image.alt.txt`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#twitter-imagealttxt)
 
 `twitter-image.(jpg|jpeg|png|gif)` 이미지와 같은 라우트 세그먼트에 해당 alt 텍스트인 `twitter-image.alt.txt` 파일을 추가합니다.
 
 twitter-image.alt.txt
-[code]
+```
     About Acme
-[/code]
+```
 
 <head> 출력
-[code]
+```
     <meta property="twitter:image:alt" content="About Acme" />
-[/code]
+```
 
 ## 코드로 이미지 생성(.js, .ts, .tsx)[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx)
 
@@ -114,7 +114,7 @@ twitter-image.alt.txt
 app/about/opengraph-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { ImageResponse } from 'next/og'
     import { readFile } from 'node:fs/promises'
     import { join } from 'node:path'
@@ -168,16 +168,16 @@ JavaScriptTypeScript
         }
       )
     }
-[/code]
+```
 
 <head> 출력
-[code]
+```
     <meta property="og:image" content="<generated>" />
     <meta property="og:image:alt" content="About Acme" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-[/code]
+```
 
 ### Props[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#props)
 
@@ -192,7 +192,7 @@ JavaScriptTypeScript
 app/shop/[slug]/opengraph-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Image({
       params,
     }: {
@@ -201,7 +201,7 @@ JavaScriptTypeScript
       const { slug } = await params
       // ...
     }
-[/code]
+```
 
 라우트| URL| `params`
 ---|---|---
@@ -230,49 +230,49 @@ JavaScriptTypeScript
 opengraph-image.tsx | twitter-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export const alt = 'My images alt text'
 
     export default function Image() {}
-[/code]
+```
 
 <head> 출력
-[code]
+```
     <meta property="og:image:alt" content="My images alt text" />
-[/code]
+```
 
 #### `size`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#size)
 
 opengraph-image.tsx | twitter-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export const size = { width: 1200, height: 630 }
 
     export default function Image() {}
-[/code]
+```
 
 <head> 출력
-[code]
+```
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-[/code]
+```
 
 #### `contentType`[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#contenttype)
 
 opengraph-image.tsx | twitter-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export const contentType = 'image/png'
 
     export default function Image() {}
-[/code]
+```
 
 <head> 출력
-[code]
+```
     <meta property="og:image:type" content="image/png" />
-[/code]
+```
 
 #### 라우트 세그먼트 구성[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#route-segment-config)
 
@@ -289,7 +289,7 @@ JavaScriptTypeScript
 app/posts/[slug]/opengraph-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { ImageResponse } from 'next/og'
 
     export const alt = 'About Acme'
@@ -330,7 +330,7 @@ JavaScriptTypeScript
         }
       )
     }
-[/code]
+```
 
 #### 로컬 에셋과 함께 Node.js 런타임 사용[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#using-nodejs-runtime-with-local-assets)
 
@@ -339,7 +339,7 @@ JavaScriptTypeScript
 app/opengraph-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { ImageResponse } from 'next/og'
     import { join } from 'node:path'
     import { readFile } from 'node:fs/promises'
@@ -362,14 +362,14 @@ JavaScriptTypeScript
         )
       )
     }
-[/code]
+```
 
 `<img>` 요소의 `src` 속성에 `ArrayBuffer`를 전달하는 것은 HTML 명세에 포함되지 않습니다. `next/og`에서 사용하는 렌더링 엔진은 이를 지원하지만, TypeScript 정의는 명세를 따르므로 이 [기능](https://github.com/vercel/satori/issues/606#issuecomment-2144000453)을 사용하려면 `@ts-expect-error` 지시문이나 유사한 처리가 필요합니다.
 
 app/opengraph-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { ImageResponse } from 'next/og'
     import { join } from 'node:path'
     import { readFile } from 'node:fs/promises'
@@ -393,7 +393,7 @@ JavaScriptTypeScript
         )
       )
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#version-history)
 

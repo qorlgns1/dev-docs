@@ -24,9 +24,9 @@ Next.js [with-vitest](https://github.com/vercel/next.js/tree/canary/examples/wit
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create next-app --example with-vitest with-vitest-app
-[/code]
+```
 
 ## Manual Setup[](https://nextjs.org/docs/pages/guides/testing/vitest#manual-setup)
 
@@ -35,19 +35,19 @@ Terminal
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     # Using TypeScript
     pnpm add -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom vite-tsconfig-paths
     # Using JavaScript
     pnpm add -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom
-[/code]
+```
 
 프로젝트 루트에 `vitest.config.mts|js` 파일을 만들고 다음 옵션을 추가합니다:
 
 vitest.config.mts
 
 JavaScriptTypeScript
-[code]
+```
     import { defineConfig } from 'vitest/config'
     import react from '@vitejs/plugin-react'
     import tsconfigPaths from 'vite-tsconfig-paths'
@@ -58,14 +58,14 @@ JavaScriptTypeScript
         environment: 'jsdom',
       },
     })
-[/code]
+```
 
 Vitest 구성에 대한 자세한 내용은 [Vitest Configuration](https://vitest.dev/config/#configuration) 문서를 참고하세요.
 
 그다음 `package.json`에 `test` 스크립트를 추가합니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -74,7 +74,7 @@ package.json
         "test": "vitest"
       }
     }
-[/code]
+```
 
 `npm run test`를 실행하면 Vitest는 기본적으로 프로젝트 변경 사항을 **감시**합니다.
 
@@ -85,7 +85,7 @@ package.json
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -96,12 +96,12 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 __tests__/index.test.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { expect, test } from 'vitest'
     import { render, screen } from '@testing-library/react'
     import Page from '../pages/index'
@@ -110,7 +110,7 @@ JavaScriptTypeScript
       render(<Page />)
       expect(screen.getByRole('heading', { level: 1, name: 'Home' })).toBeDefined()
     })
-[/code]
+```
 
 ## Running your tests[](https://nextjs.org/docs/pages/guides/testing/vitest#running-your-tests)
 
@@ -119,9 +119,9 @@ JavaScriptTypeScript
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm test
-[/code]
+```
 
 ## Additional Resources[](https://nextjs.org/docs/pages/guides/testing/vitest#additional-resources)
 

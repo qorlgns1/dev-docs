@@ -26,13 +26,13 @@ Next.js는 `App` 컴포넌트를 사용해 페이지를 초기화합니다. 이�
 pages/_app.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { AppProps } from 'next/app'
 
     export default function MyApp({ Component, pageProps }: AppProps) {
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 `Component` prop은 활성 `page`이므로 라우트를 이동할 때마다 `Component`가 새 `page`로 바뀝니다. 따라서 `Component`에 전달한 모든 props는 해당 `page`에서 받을 수 있습니다.
 
@@ -53,7 +53,7 @@ JavaScriptTypeScript
 pages/_app.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import App, { AppContext, AppInitialProps, AppProps } from 'next/app'
 
     type AppOwnProps = { example: string }
@@ -78,4 +78,4 @@ JavaScriptTypeScript
 
       return { ...ctx, example: 'data' }
     }
-[/code]
+```

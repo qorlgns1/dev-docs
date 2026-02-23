@@ -45,4 +45,3 @@ Will end up being:
 return <h1>The value of customKey is: {'my-value'}</h1>
 ```
 ---
-

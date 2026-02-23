@@ -30,7 +30,7 @@ slot은 공유 부모 레이아웃에 props로 전달됩니다. 위 예시에서
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Layout({
       children,
       team,
@@ -48,7 +48,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 하지만 slot은 **라우트 세그먼트가 아니며** URL 구조에 영향을 주지 않습니다. 예를 들어, `/@analytics/views`의 URL은 `@analytics`가 slot이므로 `/views`가 됩니다. slot은 일반 [Page](https://nextjs.org/docs/app/api-reference/file-conventions/page) 컴포넌트와 결합되어 라우트 세그먼트에 연결된 최종 페이지를 형성합니다. 이 때문에 동일한 라우트 세그먼트 수준에서 [static](https://nextjs.org/docs/app/guides/caching#static-rendering) slot과 [dynamic](https://nextjs.org/docs/app/guides/caching#dynamic-rendering) slot을 따로 가질 수 없습니다. 한 slot이 dynamic이면 해당 수준의 모든 slot이 dynamic이어야 합니다.
 
@@ -90,7 +90,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useSelectedLayoutSegment } from 'next/navigation'
@@ -99,7 +99,7 @@ JavaScriptTypeScript
       const loginSegment = useSelectedLayoutSegment('auth')
       // ...
     }
-[/code]
+```
 
 사용자가 `app/@auth/login`(또는 URL 바의 `/login`)으로 이동하면 `loginSegment`는 문자열 `"login"`과 같습니다.
 
@@ -110,7 +110,7 @@ JavaScriptTypeScript
 app/dashboard/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { checkUserRole } from '@/lib/auth'
 
     export default function Layout({
@@ -123,7 +123,7 @@ JavaScriptTypeScript
       const role = checkUserRole()
       return role === 'admin' ? admin : user
     }
-[/code]
+```
 
 ### Tab Groups[](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes#tab-groups)
 
@@ -136,7 +136,7 @@ slot 안에 `layout`을 추가하여 사용자가 해당 slot을 독립적으로
 app/@analytics/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Layout({ children }: { children: React.ReactNode }) {
@@ -150,7 +150,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### Modals[](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes#modals)
 
@@ -168,31 +168,31 @@ Parallel Routes는 [Intercepting Routes](https://nextjs.org/docs/app/api-referen
 app/login/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Login } from '@/app/ui/login'
 
     export default function Page() {
       return <Login />
     }
-[/code]
+```
 
 그런 다음 `@auth` slot 내부에 `default.js`(https://nextjs.org/docs/app/api-reference/file-conventions/default) 파일을 추가하여 `null`을 반환합니다. 이는 모달이 활성 상태가 아닐 때 렌더링되지 않도록 보장합니다.
 
 app/@auth/default.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Default() {
       return null
     }
-[/code]
+```
 
 `@auth` slot 내부에서 `/login` 라우트를 가로채기 위해 `<Modal>` 컴포넌트와 그 자식들을 `@auth/(.)login/page.tsx` 파일로 가져오고 폴더 이름을 `/@auth/(.)login/page.tsx`로 업데이트합니다.
 
 app/@auth/(.)login/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Modal } from '@/app/ui/modal'
     import { Login } from '@/app/ui/login'
 
@@ -203,7 +203,7 @@ JavaScriptTypeScript
         </Modal>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요:**
 >
@@ -220,7 +220,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Layout({
@@ -240,7 +240,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 사용자가 `<Link>`를 클릭하면 `/login` 페이지로 이동하는 대신 모달이 열립니다. 하지만 새로고침 또는 초기 로드 시 `/login`으로 이동하면 메인 로그인 페이지가 표시됩니다.
 
@@ -251,7 +251,7 @@ JavaScriptTypeScript
 app/ui/modal.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useRouter } from 'next/navigation'
@@ -272,14 +272,14 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 `Link` 컴포넌트를 사용해 더 이상 `@auth` slot이 렌더링되지 않아야 하는 페이지로 이동할 때, 병렬 라우트가 `null`을 반환하는 컴포넌트와 일치하는지 확인해야 합니다. 예를 들어 루트 페이지로 돌아갈 때는 `@auth/page.tsx` 컴포넌트를 생성합니다:
 
 app/ui/modal.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export function Modal({ children }: { children: React.ReactNode }) {
@@ -290,28 +290,28 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 app/@auth/page.tsx
 
 JavaScriptTypeScript
 
-[code]
+```
     export default function Page() {
       return null
     }
-[/code]
+```
 
 다른 페이지(예: `/foo`, `/foo/bar` 등)로 이동하는 경우에는 캐치올 슬롯을 사용할 수 있습니다:
 
 app/@auth/[...catchAll]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function CatchAll() {
       return null
     }
-[/code]
+```
 
 > **알아두면 좋아요:**
 >

@@ -52,7 +52,7 @@ Next.js는 빌드 타임과 런타임 환경 변수를 모두 지원합니다.
 app/page.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { connection } from 'next/server'
 
     export default async function Component() {
@@ -63,7 +63,7 @@ JavaScriptTypeScript
       const value = process.env.MY_VALUE
       // ...
     }
-[/code]
+```
 
 이를 통해 서로 다른 값을 가진 여러 환경에서 승격할 수 있는 단일 Docker 이미지를 사용할 수 있습니다.
 
@@ -99,17 +99,17 @@ Next.js는 응답, 생성된 정적 페이지, 빌드 출력, 이미지·폰트�
 자가 호스팅 시 ISR/Data Cache 위치를 구성하려면 `next.config.js` 파일에서 커스텀 핸들러를 설정하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       cacheHandler: require.resolve('./cache-handler.js'),
       cacheMaxMemorySize: 0, // disable default in-memory caching
     }
-[/code]
+```
 
 그런 다음 프로젝트 루트에 `cache-handler.js`를 생성합니다. 예:
 
 cache-handler.js
-[code]
+```
     const cache = new Map()
 
     module.exports = class CacheHandler {
@@ -147,7 +147,7 @@ cache-handler.js
       // before the next request you can leverage this method
       resetRequestCache() {}
     }
-[/code]
+```
 
 커스텀 캐시 핸들러를 사용하면 Next.js 애플리케이션을 호스팅하는 모든 파드 간 일관성을 보장할 수 있습니다. 예를 들어 캐시된 값을 [Redis](https://github.com/vercel/next.js/tree/canary/examples/cache-handler-redis)나 AWS S3 같은 어디에든 저장할 수 있습니다.
 
@@ -163,14 +163,14 @@ Next.js는 `next build` 중 애플리케이션의 제공 버전을 식별하기 
 환경의 각 단계마다 다시 빌드한다면 컨테이너 간에 사용할 일관된 빌드 ID를 생성해야 합니다. `next.config.js`에서 `generateBuildId`를 사용하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       generateBuildId: async () => {
         // This could be anything, using the latest git hash
         return process.env.GIT_HASH
       },
     }
-[/code]
+```
 
 ## Multi-Server Deployments[](https://nextjs.org/docs/app/guides/self-hosting#multi-server-deployments)
 
@@ -183,9 +183,9 @@ Next.js는 [Server Function](https://nextjs.org/docs/app/getting-started/updatin
 여러 서버 인스턴스를 실행할 때는 모든 인스턴스가 동일한 암호화 키를 사용해야 합니다. 그렇지 않으면 한 인스턴스가 암호화한 Server Function을 다른 인스턴스가 복호화하지 못해 "Failed to find Server Action" 오류가 발생합니다.
 
 일관된 암호화 키를 설정하려면 `NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` 환경 변수를 사용하세요. 키는 유효한 AES 키 길이(16, 24, 32바이트)에 맞는 base64 인코딩 값이어야 합니다. Next.js는 기본적으로 32바이트 키를 생성합니다.
-[code]
+```
     NEXT_SERVER_ACTIONS_ENCRYPTION_KEY=your-generated-key next build
-[/code]
+```
 
 이 키는 빌드 산출물에 내장되며 런타임에 자동으로 사용됩니다. 자세한 내용은 [Data Security 가이드](https://nextjs.org/docs/app/guides/data-security#overwriting-encryption-keys-advanced)를 참고하세요.
 
@@ -214,11 +214,11 @@ Next.js는 [`deploymentId`](https://nextjs.org/docs/app/api-reference/config/nex
 불일치가 감지되면 Next.js는 클라이언트 측 내비게이션 대신 하드 내비게이션(전체 페이지 리로드)을 트리거합니다. 이렇게 하면 클라이언트가 일관된 배포 버전의 에셋을 가져오도록 보장합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       deploymentId: process.env.DEPLOYMENT_VERSION,
     }
-[/code]
+```
 
 > **알아두면 좋아요:** 애플리케이션이 다시 로드되면 페이지 간 상태가 유지되도록 설계되지 않은 경우 애플리케이션 상태가 손실될 수 있습니다. URL 상태나 로컬 스토리지는 유지되지만 `useState`와 같은 컴포넌트 상태는 사라집니다.
 
@@ -229,7 +229,7 @@ Next.js App Router는 셀프 호스팅 시 [스트리밍 응답](https://nextjs.
 예를 들어 nginx에서 `X-Accel-Buffering`을 `no`로 설정하면 버퍼링을 비활성화할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async headers() {
         return [
@@ -245,7 +245,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## Cache Components[](https://nextjs.org/docs/app/guides/self-hosting#cache-components)
 

@@ -18,7 +18,7 @@ Copy page
 **버전 15에서는 `unstable_noStore` 대신 [`connection`](https://nextjs.org/docs/app/api-reference/functions/connection)을 사용하는 것을 권장합니다.**
 
 `unstable_noStore`를 사용하면 정적 렌더링을 선언적으로 비활성화하고 특정 컴포넌트를 캐싱하지 말아야 함을 나타낼 수 있습니다.
-[code]
+```
     import { unstable_noStore as noStore } from 'next/cache';
 
     export default async function ServerComponent() {
@@ -26,7 +26,7 @@ Copy page
       const result = await db.query(...);
       ...
     }
-[/code]
+```
 
 > **알아두면 좋은 점** :
 >
@@ -39,7 +39,7 @@ Copy page
 ## Usage[](https://nextjs.org/docs/app/api-reference/functions/unstable_noStore#usage)
 
 `fetch`에 `cache: 'no-store'`, `next: { revalidate: 0 }` 같은 추가 옵션을 전달하고 싶지 않거나 `fetch`를 사용할 수 없는 경우, 모든 이러한 사용 사례를 대신해 `noStore()`를 사용할 수 있습니다.
-[code]
+```
     import { unstable_noStore as noStore } from 'next/cache';
 
     export default async function ServerComponent() {
@@ -47,7 +47,7 @@ Copy page
       const result = await db.query(...);
       ...
     }
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/unstable_noStore#version-history)
 

@@ -20,7 +20,7 @@ Copy page
 pages/repo/[name].tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type {
       InferGetStaticPropsType,
       GetStaticProps,
@@ -58,7 +58,7 @@ JavaScriptTypeScript
     }: InferGetStaticPropsType<typeof getStaticProps>) {
       return repo.stargazers_count
     }
-[/code]
+```
 
 [`getStaticPaths` API 레퍼런스](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths)는 `getStaticPaths`와 함께 사용할 수 있는 모든 매개변수와 props를 다룹니다.
 
@@ -101,7 +101,7 @@ JavaScriptTypeScript
 `paths`에 빈 배열을 반환하여 모든 페이지 생성을 온디맨드로 연기할 수 있습니다. 이는 Next.js 애플리케이션을 여러 환경에 배포할 때 특히 유용합니다. 예를 들어 프리뷰 환경에서는 모든 페이지를 온디맨드로 생성해 빌드를 빠르게 하고(프로덕션 빌드에서는 제외) 수백/수천 개의 정적 페이지가 있는 사이트에도 도움이 됩니다.
 
 pages/posts/[id].js
-[code]
+```
     export async function getStaticPaths() {
       // When this is true (in preview environments) don't
       // prerender any static pages
@@ -127,7 +127,7 @@ pages/posts/[id].js
       // { fallback: false } means other routes should 404
       return { paths, fallback: false }
     }
-[/code]
+```
 
 Was this helpful?
 

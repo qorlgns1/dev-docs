@@ -78,4 +78,3 @@ module.exports = {
 | ------- | ------------------------------------ |
 | 15.2.0  | `htmlLimitedBots` option introduced. |
 ---
-

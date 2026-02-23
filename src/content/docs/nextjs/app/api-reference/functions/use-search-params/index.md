@@ -20,7 +20,7 @@ Copy page
 app/dashboard/search-bar.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useSearchParams } from 'next/navigation'
@@ -34,12 +34,12 @@ JavaScriptTypeScript
       // `search` -> 'my-project'
       return <>Search: {search}</>
     }
-[/code]
+```
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/use-search-params#parameters)
-[code]
+```
     const searchParams = useSearchParams()
-[/code]
+```
 
 `useSearchParams`는 어떤 매개변수도 받지 않습니다.
 
@@ -87,7 +87,7 @@ URL| `searchParams.has("a")`
 app/dashboard/search-bar.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useSearchParams } from 'next/navigation'
@@ -102,12 +102,12 @@ JavaScriptTypeScript
 
       return <>Search: {search}</>
     }
-[/code]
+```
 
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Suspense } from 'react'
     import SearchBar from './search-bar'
 
@@ -131,7 +131,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 > **알아 두면 좋은 점** :
 >
@@ -151,7 +151,7 @@ JavaScriptTypeScript
 app/dashboard/search-bar.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useSearchParams } from 'next/navigation'
@@ -167,12 +167,12 @@ JavaScriptTypeScript
 
       return <>Search: {search}</>
     }
-[/code]
+```
 
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { connection } from 'next/server'
     import SearchBar from './search-bar'
 
@@ -187,7 +187,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 > **알아 두면 좋은 점** :
 >
@@ -215,7 +215,7 @@ Pages와 달리 [Layouts](https://nextjs.org/docs/app/api-reference/file-convent
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     export default function ExampleClientComponent() {
@@ -262,7 +262,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/use-search-params#version-history)
 

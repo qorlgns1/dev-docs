@@ -18,7 +18,7 @@ description: '이 기능은 현재 실험적이며 변경될 수 있으므로 �
 app/forbidden.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Forbidden() {
@@ -30,7 +30,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ## 참고[](https://nextjs.org/docs/app/api-reference/file-conventions/forbidden#reference)
 

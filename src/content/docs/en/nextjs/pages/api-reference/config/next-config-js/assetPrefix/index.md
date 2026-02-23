@@ -56,4 +56,3 @@ While `assetPrefix` covers requests to `_next/static`, it does not influence the
 * `/_next/data/` requests for `getServerSideProps` pages. These requests will always be made against the main domain since they're not static.
 * `/_next/data/` requests for `getStaticProps` pages. These requests will always be made against the main domain to support [Incremental Static Generation](https://nextjs.org/docs/pages/guides/incremental-static-regeneration), even if you're not using it (for consistency).
 ---
-

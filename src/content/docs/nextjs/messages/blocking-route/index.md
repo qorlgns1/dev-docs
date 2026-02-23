@@ -30,7 +30,7 @@ description: '기능을 활성화하면 Next.js는 모든 사용자 요청마다
 이전:
 
 app/page.js
-[code]
+```
     async function getRecentArticles() {
       return db.query(...)
     }
@@ -39,12 +39,12 @@ app/page.js
       const articles = await getRecentArticles(token);
       return <ArticleList articles={articles}>
     }
-[/code]
+```
 
 이후:
 
 app/page.js
-[code]
+```
     import { cacheTag, cacheLife } from 'next/cache'
 
     async function getRecentArticles() {
@@ -62,14 +62,14 @@ app/page.js
       const articles = await getRecentArticles(token);
       return <ArticleList articles={articles}>
     }
-[/code]
+```
 
 이 데이터가 모든 사용자 요청마다 접근되어야 한다면 React의 `Suspense`를 사용해 폴백 UI를 제공해야 합니다. `Suspense` 경계를 어디에 배치할지는 렌더링하려는 폴백 UI의 종류에 따라 결정하면 됩니다. 데이터를 접근하는 컴포넌트 바로 상위나 루트 레이아웃에 둘 수도 있습니다.
 
 이전:
 
 app/page.js
-[code]
+```
     async function getLatestTransactions() {
       return db.query(...)
     }
@@ -78,12 +78,12 @@ app/page.js
       const transactions = await getLatestTransactions(token);
       return <TransactionList transactions={transactions}>
     }
-[/code]
+```
 
 이후:
 
 app/page.js
-[code]
+```
     import { Suspense } from 'react'
 
     async function TransactionList() {
@@ -102,7 +102,7 @@ app/page.js
         </Suspense>
       )
     }
-[/code]
+```
 
 ### Headers[](https://nextjs.org/docs/messages/blocking-route#headers)
 
@@ -111,7 +111,7 @@ app/page.js
 이전:
 
 app/inbox.js
-[code]
+```
     export async function Inbox({ token }) {
       const email = await getEmail(token)
       return (
@@ -122,10 +122,10 @@ app/inbox.js
         </ul>
       )
     }
-[/code]
+```
 
 app/page.js
-[code]
+```
     import { cookies } from 'next/headers'
 
     import { Inbox } from './inbox'
@@ -138,12 +138,12 @@ app/page.js
         </Suspense>
       )
     }
-[/code]
+```
 
 이후:
 
 app/inbox.js
-[code]
+```
     import { cookies } from 'next/headers'
 
     export async function Inbox() {
@@ -157,10 +157,10 @@ app/inbox.js
         </ul>
       )
     }
-[/code]
+```
 
 app/page.js
-[code]
+```
     import { Inbox } from './inbox'
 
     export default async function Page() {
@@ -170,7 +170,7 @@ app/page.js
         </Suspense>
       )
     }
-[/code]
+```
 
 또는 요청 헤더에 접근하는 컴포넌트 상단에 `Suspense` 경계를 추가할 수도 있습니다.
 
@@ -181,15 +181,15 @@ app/page.js
 이전:
 
 app/map.js
-[code]
+```
     export async function Map({ lat, lng }) {
       const mapData = await fetch(`https://...?lat=${lat}&lng=${lng}`)
       return drawMap(mapData)
     }
-[/code]
+```
 
 app/page.js
-[code]
+```
     import { cookies } from 'next/headers'
 
     import { Map } from './map'
@@ -202,21 +202,21 @@ app/page.js
         </Suspense>
       )
     }
-[/code]
+```
 
 이후:
 
 app/map.js
-[code]
+```
     export async function Map({ coords }) {
       const { lat, lng } = await coords
       const mapData = await fetch(`https://...?lat=${lat}&lng=${lng}`)
       return drawMap(mapData)
     }
-[/code]
+```
 
 app/page.js
-[code]
+```
     import { cookies } from 'next/headers'
 
     import { Map } from './map'
@@ -229,7 +229,7 @@ app/page.js
         </Suspense>
       )
     }
-[/code]
+```
 
 또는 `params`나 `searchParams`에 접근하는 컴포넌트 상단에 `Suspense` 경계를 추가해 Next.js가 이 요청 데이터를 기다리는 동안 어떤 UI를 사용할지 알 수 있게 할 수 있습니다.
 
@@ -238,7 +238,7 @@ app/page.js
 레이아웃과 페이지 `params`의 경우 [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)를 사용해 빌드 타임 검증용 샘플 값을 제공하면 `Suspense` 없이도 `params`를 직접 await할 수 있습니다.
 
 app/blog/[slug]/page.js
-[code]
+```
     export async function generateStaticParams() {
       return [{ slug: 'hello-world' }]
     }
@@ -247,7 +247,7 @@ app/blog/[slug]/page.js
       const { slug } = await params //  Valid with generateStaticParams
       return <div>Blog post: {slug}</div>
     }
-[/code]
+```
 
 검증은 경로에 따라 달라집니다. 런타임 파라미터는 `Suspense` 없이 런타임 API에 접근하거나, `Suspense`나 `use cache` 없이 동적 콘텐츠를 트리거해 오류가 발생할 수 있는 조건부 분기를 실행할 수 있습니다. [Dynamic Routes with Cache Components](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#with-cache-components)를 참고하세요.
 
@@ -260,7 +260,7 @@ app/blog/[slug]/page.js
 이전:
 
 app/page.js
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     async function getDashboard() {
@@ -276,12 +276,12 @@ app/page.js
       const data = await getDashboard(token);
       return <Dashboard data={data}>
     }
-[/code]
+```
 
 이후:
 
 app/page.js
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     async function getDashboard() {
@@ -296,7 +296,7 @@ app/page.js
       const data = await getDashboard(token);
       return <Dashboard data={data}>
     }
-[/code]
+```
 
 또는 이 짧은 수명의 캐시에 접근하는 컴포넌트 상단에 `Suspense` 경계를 추가해 Next.js가 사용자 요청 동안 데이터를 가져올 때 사용할 UI를 알 수 있도록 할 수 있습니다.
 

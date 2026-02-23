@@ -20,4 +20,3 @@ Source URL: https://nextjs.org/docs/pages/getting-started
   - Learn how to deploy your Next.js application.
 
 ---
-

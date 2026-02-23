@@ -45,4 +45,3 @@ If you want to specifically display a font using an `auto`, `block`, or `fallbac
 - [Controlling Font Performance with font-display](https://developer.chrome.com/blog/font-display/)
 - [Google Fonts API Docs](https://developers.google.com/fonts/docs/css2#use_font-display)
 - [CSS `font-display` property](https://www.w3.org/TR/css-fonts-4/#font-display-desc)
-

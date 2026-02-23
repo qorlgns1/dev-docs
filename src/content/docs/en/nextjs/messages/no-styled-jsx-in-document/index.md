@@ -49,4 +49,3 @@ These styles (`styles.css`) will apply to all pages and components in your appli
 - [Layouts](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#layout-pattern)
 - [Built in CSS Support](https://nextjs.org/docs/app/getting-started/css)
 - [Custom `App`](https://nextjs.org/docs/pages/building-your-application/routing/custom-app)
-

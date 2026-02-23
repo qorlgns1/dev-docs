@@ -20,9 +20,9 @@ Playwright는 단일 API로 Chromium, Firefox, WebKit을 자동화할 수 있는
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm create next-app --example with-playwright with-playwright-app
-[/code]
+```
 
 ## 수동 설정[](https://nextjs.org/docs/pages/guides/testing/playwright#manual-setup)
 
@@ -31,9 +31,9 @@ Playwright를 설치하려면 다음 명령을 실행하세요.
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm create playwright
-[/code]
+```
 
 이 명령은 `playwright.config.ts` 파일 추가를 포함하여 프로젝트에서 Playwright를 설정하고 구성하기 위한 여러 프롬프트를 안내합니다. 단계별 안내는 [Playwright 설치 가이드](https://playwright.dev/docs/intro#installation)를 참고하세요.
 
@@ -42,7 +42,7 @@ pnpmnpmyarnbun
 다음과 같이 새 Next.js 페이지 두 개를 생성하세요.
 
 pages/index.ts
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
@@ -53,10 +53,10 @@ pages/index.ts
         </div>
       )
     }
-[/code]
+```
 
 pages/about.ts
-[code]
+```
     import Link from 'next/link'
 
     export default function About() {
@@ -67,12 +67,12 @@ pages/about.ts
         </div>
       )
     }
-[/code]
+```
 
 그런 다음 내비게이션이 제대로 작동하는지 확인하는 테스트를 추가합니다.
 
 tests/example.spec.ts
-[code]
+```
     import { test, expect } from '@playwright/test'
 
     test('should navigate to the about page', async ({ page }) => {
@@ -85,7 +85,7 @@ tests/example.spec.ts
       // The new page should contain an h1 with "About"
       await expect(page.locator('h1')).toContainText('About')
     })
-[/code]
+```
 
 > **알아두면 좋아요**: `playwright.config.ts` [구성 파일](https://playwright.dev/docs/test-configuration)에 [`"baseURL": "http://localhost:3000"`](https://playwright.dev/docs/api/class-testoptions#test-options-base-url)을 추가하면 `page.goto("http://localhost:3000/")` 대신 `page.goto("/")`를 사용할 수 있습니다.
 

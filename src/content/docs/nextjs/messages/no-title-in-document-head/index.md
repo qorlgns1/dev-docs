@@ -22,7 +22,7 @@ Source URL: https://nextjs.org/docs/messages/no-title-in-document-head
 페이지나 컴포넌트 내에서 `next/head`를 임포트하여 페이지 제목을 정의하십시오:
 
 pages/index.js
-[code]
+```
     import Head from 'next/head'
 
     export function Home() {
@@ -34,7 +34,7 @@ pages/index.js
         </div>
       )
     }
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-title-in-document-head#useful-links)
 

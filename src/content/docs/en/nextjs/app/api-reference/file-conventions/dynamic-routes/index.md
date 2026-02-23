@@ -379,4 +379,3 @@ For more information on what to do next, we recommend the following sections
   - API reference for the generateStaticParams function.
 
 ---
-

@@ -29,7 +29,7 @@ Turbopack은 Rust로 작성되어 **Next.js**에 내장된 **증분 번들러**�
 Turbopack은 이제 Next.js의 **기본 번들러**입니다. 별도의 설정 없이 사용할 수 있습니다.
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -37,14 +37,14 @@ package.json
         "start": "next start"
       }
     }
-[/code]
+```
 
 ### Using Webpack instead[](https://nextjs.org/docs/app/api-reference/turbopack#using-webpack-instead)
 
 Turbopack 대신 Webpack을 사용해야 한다면 `--webpack` 플래그로 옵트인할 수 있습니다.
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev --webpack",
@@ -52,7 +52,7 @@ package.json
         "start": "next start"
       }
     }
-[/code]
+```
 
 ## Supported features[](https://nextjs.org/docs/app/api-reference/turbopack#supported-features)
 
@@ -130,7 +130,7 @@ Turbopack은 루트 디렉터리를 사용해 모듈을 해석합니다. 프로�
 Turbopack은 다른 방식으로 정렬되지 않은 [CSS Modules](https://nextjs.org/docs/app/getting-started/css#css-modules)을 정렬할 때 JS import 순서를 따릅니다. 예시는 다음과 같습니다.
 
 components/BlogPost.jsx
-[code]
+```
     import utilStyles from './utils.module.css'
     import buttonStyles from './button.module.css'
     export default function BlogPost() {
@@ -140,7 +140,7 @@ components/BlogPost.jsx
         </div>
       )
     }
-[/code]
+```
 
 이 예제에서 Turbopack은 import 순서를 따라 `utils.module.css`가 생성된 CSS 청크에서 `button.module.css`보다 먼저 나타나도록 보장합니다.
 
@@ -155,21 +155,21 @@ Turbopack은 기본적으로 `node_modules` Sass 파일 import를 지원합니�
 변경 전:
 
 styles/globals.scss
-[code]
+```
     @import '~bootstrap/dist/css/bootstrap.min.css';
-[/code]
+```
 
 변경 후:
 
 styles/globals.scss
-[code]
+```
     @import 'bootstrap/dist/css/bootstrap.min.css';
-[/code]
+```
 
 import를 수정할 수 없다면 `~` 구문을 실제 경로에 매핑하도록 `turbopack.resolveAlias` 구성을 추가할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       turbopack: {
         resolveAlias: {
@@ -177,7 +177,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 ### Build Caching[](https://nextjs.org/docs/app/api-reference/turbopack#build-caching)
 
@@ -224,7 +224,7 @@ Turbopack은 `next.config.js`(또는 `next.config.ts`)의 `turbopack` 키를 통
   * **`resolveExtensions`** 모듈 해석을 위한 파일 확장자를 변경하거나 확장합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       turbopack: {
         // Example: adding an alias and custom file extension
@@ -234,16 +234,16 @@ next.config.js
         resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.json'],
       },
     }
-[/code]
+```
 
 더 심화된 구성 예시는 [Turbopack 구성 문서](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack)를 참고하세요.
 
 ## Generating trace files for performance debugging[](https://nextjs.org/docs/app/api-reference/turbopack#generating-trace-files-for-performance-debugging)
 
 성능이나 메모리 문제를 겪고 있으며 Next.js 팀의 진단을 돕고 싶다면, 개발 명령에 `NEXT_TURBOPACK_TRACING=1`을 추가해 트레이스 파일을 생성할 수 있습니다:
-[code]
+```
     NEXT_TURBOPACK_TRACING=1 next dev
-[/code]
+```
 
 이 명령은 `.next/dev/trace-turbopack` 파일을 생성합니다. 조사에 도움이 되도록 [Next.js 저장소](https://github.com/vercel/next.js)에 GitHub 이슈를 만들 때 해당 파일을 포함하세요.
 

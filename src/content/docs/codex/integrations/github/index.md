@@ -32,12 +32,12 @@ Codex는 팀 동료처럼 풀 리퀘스트에 리뷰를 남깁니다.
 Codex는 저장소에서 `AGENTS.md` 파일을 찾고 그 안의 **Review guidelines**를 따릅니다.
 
 저장소 지침을 설정하려면 최상위 `AGENTS.md`에 다음과 같은 섹션을 추가하거나 업데이트하세요:
-[code] 
+```
     ## Review guidelines
     
     - Don't log PII.
     - Verify that authentication middleware wraps every route.
-[/code]
+```
 
 Codex는 각 변경 파일에 가장 가까운 `AGENTS.md`의 지침을 적용합니다. 특정 패키지에 대해 더 면밀한 검토가 필요하면 트리 깊은 곳에 더욱 구체적인 지침을 둘 수 있습니다.
 
@@ -50,6 +50,6 @@ GitHub에서 Codex는 P0 및 P1 이슈만 표시합니다. 문서 오타도 Code
 ## Codex에 다른 작업 지시하기
 
 댓글에서 `review` 이외의 내용으로 `@codex`를 멘션하면 Codex는 풀 리퀘스트를 컨텍스트로 사용해 [cloud task](https://developers.openai.com/codex/cloud)를 시작합니다.
-[code] 
+```
     @codex fix the CI failures
-[/code]
+```

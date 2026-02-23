@@ -22,7 +22,7 @@ description: '> 인라인 콘텐츠가 있는  컴포넌트에는  속성을 강
 `next/script` 컴포넌트에 `id` 속성을 추가하세요.
 
 pages/_app.js
-[code]
+```
     import Script from 'next/script'
 
     export default function App({ Component, pageProps }) {
@@ -33,7 +33,7 @@ pages/_app.js
         </>
       )
     }
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/inline-script-id#useful-links)
 

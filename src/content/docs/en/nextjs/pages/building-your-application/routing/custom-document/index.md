@@ -150,4 +150,3 @@ export default MyDocument
 > * `getInitialProps` in `_document` is not called during client-side transitions.
 > * The `ctx` object for `_document` is equivalent to the one received in [`getInitialProps`](https://nextjs.org/docs/pages/api-reference/functions/get-initial-props#context-object), with the addition of `renderPage`.
 ---
-

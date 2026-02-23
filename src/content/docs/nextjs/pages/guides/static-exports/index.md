@@ -24,7 +24,7 @@ Next.js는 이러한 정적 내보내기를 지원하므로 HTML/CSS/JS 정적 �
 정적 내보내기를 활성화하려면 `next.config.js` 내부의 출력 모드를 변경합니다:
 
 next.config.js
-[code]
+```
     /**
      * @type {import('next').NextConfig}
      */
@@ -42,7 +42,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 `next build`를 실행하면 Next.js가 애플리케이션용 HTML/CSS/JS 에셋이 포함된 `out` 폴더를 생성합니다.
 
@@ -66,7 +66,7 @@ next.config.js
 `next/image`를 통한 [이미지 최적화](https://nextjs.org/docs/app/api-reference/components/image)는 `next.config.js`에서 커스텀 이미지 로더를 정의하면 정적 내보내기와 함께 사용할 수 있습니다. 예를 들어 Cloudinary 같은 서비스를 사용해 이미지를 최적화할 수 있습니다:
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       output: 'export',
@@ -77,14 +77,14 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 이 커스텀 로더는 원격 소스에서 이미지를 가져오는 방법을 정의합니다. 예를 들어 다음 로더는 Cloudinary용 URL을 구성합니다:
 
 my-loader.ts
 
 JavaScriptTypeScript
-[code]
+```
     export default function cloudinaryLoader({
       src,
       width,
@@ -99,20 +99,20 @@ JavaScriptTypeScript
         ','
       )}${src}`
     }
-[/code]
+```
 
 그런 다음 애플리케이션에서 `next/image`를 사용하면서 Cloudinary에 있는 이미지의 상대 경로를 정의할 수 있습니다:
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Image from 'next/image'
 
     export default function Page() {
       return <Image alt="turtles" src="/turtles.jpg" width={300} height={300} />
     }
-[/code]
+```
 
 ## 지원되지 않는 기능[](https://nextjs.org/docs/pages/guides/static-exports#unsupported-features)
 
@@ -150,7 +150,7 @@ Node.js 서버가 필요하거나 빌드 과정에서 계산할 수 없는 동�
 Nginx와 같은 정적 호스트를 사용하는 경우, 들어오는 요청을 올바른 파일로 리라이트하도록 구성할 수 있습니다.
 
 nginx.conf
-[code]
+```
     server {
       listen 80;
       server_name acme.com;
@@ -172,7 +172,7 @@ nginx.conf
           internal;
       }
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/pages/guides/static-exports#version-history)
 

@@ -29,28 +29,28 @@ In WebSocket mode, app-server uses bounded queues. When request ingress is full,
 ## Message schema
 
 Requests include `method`, `params`, and `id`:
-[code] 
+```
     { "method": "thread/start", "id": 10, "params": { "model": "gpt-5.1-codex" } }
-[/code]
+```
 
 Responses echo the `id` with either `result` or `error`:
-[code] 
+```
     { "id": 10, "result": { "thread": { "id": "thr_123" } } }
-[/code]
-[code] 
+```
+```
     { "id": 10, "error": { "code": 123, "message": "Something went wrong" } }
-[/code]
+```
 
 Notifications omit `id` and use only `method` and `params`:
-[code] 
+```
     { "method": "turn/started", "params": { "turn": { "id": "turn_456" } } }
-[/code]
+```
 
 You can generate a TypeScript schema or a JSON Schema bundle from the CLI. Each output is specific to the Codex version you ran, so the generated artifacts match that version exactly:
-[code] 
+```
     codex app-server generate-ts --out ./schemas
     codex app-server generate-json-schema --out ./schemas
-[/code]
+```
 
 ## Getting started
 
@@ -61,7 +61,7 @@ You can generate a TypeScript schema or a JSON Schema bundle from the CLI. Each 
 
 
 Example (Node.js / TypeScript):
-[code] 
+```
     import { spawn } from "node:child_process";
     import readline from "node:readline";
     
@@ -106,7 +106,7 @@ Example (Node.js / TypeScript):
     });
     send({ method: "initialized", params: {} });
     send({ method: "thread/start", id: 1, params: { model: "gpt-5.1-codex" } });
-[/code]
+```
 
 ## Core primitives
 
@@ -140,7 +140,7 @@ The server returns the user agent string it will present to upstream services. S
 **Important** : Use `clientInfo.name` to identify your client for the OpenAI Compliance Logs Platform. If you are developing a new Codex integration intended for enterprise use, please contact OpenAI to get it added to a known clients list. For more context, see the [Codex logs reference](https://chatgpt.com/admin/api-reference#tag/Logs:-Codex).
 
 Example (from the Codex VS Code extension):
-[code] 
+```
     {
       "method": "initialize",
       "id": 0,
@@ -152,10 +152,10 @@ Example (from the Codex VS Code extension):
         }
       }
     }
-[/code]
+```
 
 Example with notification opt-out:
-[code] 
+```
     {
       "method": "initialize",
       "id": 1,
@@ -174,7 +174,7 @@ Example with notification opt-out:
         }
       }
     }
-[/code]
+```
 
 ## Experimental API opt-in
 
@@ -184,7 +184,7 @@ Some app-server methods and fields are intentionally gated behind `experimentalA
   * Set `capabilities.experimentalApi` to `true` to enable experimental methods and fields.
 
 
-[code] 
+```
     {
       "method": "initialize",
       "id": 1,
@@ -199,7 +199,7 @@ Some app-server methods and fields are intentionally gated behind `experimentalA
         }
       }
     }
-[/code]
+```
 
 If a client sends an experimental method or field without opting in, app-server rejects it with:
 
@@ -245,7 +245,7 @@ If a client sends an experimental method or field without opting in, app-server 
 ### List models (`model/list`)
 
 Call `model/list` to discover available models and their capabilities before rendering model or personality selectors.
-[code] 
+```
     { "method": "model/list", "id": 6, "params": { "limit": 20, "includeHidden": false } }
     { "id": 6, "result": {
       "data": [{
@@ -265,7 +265,7 @@ Call `model/list` to discover available models and their capabilities before ren
       }],
       "nextCursor": null
     } }
-[/code]
+```
 
 Each model entry can include:
 
@@ -286,7 +286,7 @@ When `inputModalities` is missing (older model catalogs), treat it as `["text", 
 ### List experimental features (`experimentalFeature/list`)
 
 Use this endpoint to discover feature flags with metadata and lifecycle stage:
-[code] 
+```
     { "method": "experimentalFeature/list", "id": 7, "params": { "limit": 20 } }
     { "id": 7, "result": {
       "data": [{
@@ -300,7 +300,7 @@ Use this endpoint to discover feature flags with metadata and lifecycle stage:
       }],
       "nextCursor": null
     } }
-[/code]
+```
 
 `stage` can be `beta`, `underDevelopment`, `stable`, `deprecated`, or `removed`. For non-beta flags, `displayName`, `description`, and `announcement` may be `null`.
 
@@ -319,7 +319,7 @@ Use this endpoint to discover feature flags with metadata and lifecycle stage:
 ### Start or resume a thread
 
 Start a fresh thread when you need a new Codex conversation.
-[code] 
+```
     { "method": "thread/start", "id": 10, "params": {
       "model": "gpt-5.1-codex",
       "cwd": "/Users/me/project",
@@ -336,16 +336,16 @@ Start a fresh thread when you need a new Codex conversation.
       }
     } }
     { "method": "thread/started", "params": { "thread": { "id": "thr_123" } } }
-[/code]
+```
 
 To continue a stored session, call `thread/resume` with the `thread.id` you recorded earlier. The response shape matches `thread/start`. You can also pass the same configuration overrides supported by `thread/start`, such as `personality`:
-[code] 
+```
     { "method": "thread/resume", "id": 11, "params": {
       "threadId": "thr_123",
       "personality": "friendly"
     } }
     { "id": 11, "result": { "thread": { "id": "thr_123" } } }
-[/code]
+```
 
 Resuming a thread doesn’t update `thread.updatedAt` (or the rollout file’s modified time) by itself. The timestamp updates when you start a turn.
 
@@ -356,11 +356,11 @@ If you mark an enabled MCP server as `required` in config and that server fails 
 If you resume with a different model than the one recorded in the rollout, Codex emits a warning and applies a one-time model-switch instruction on the next turn.
 
 To branch from a stored session, call `thread/fork` with the `thread.id`. This creates a new thread id and emits a `thread/started` notification for it:
-[code] 
+```
     { "method": "thread/fork", "id": 12, "params": { "threadId": "thr_123" } }
     { "id": 12, "result": { "thread": { "id": "thr_456" } } }
     { "method": "thread/started", "params": { "thread": { "id": "thr_456" } } }
-[/code]
+```
 
 ### Read a stored thread (without resuming)
 
@@ -369,10 +369,10 @@ Use `thread/read` when you want stored thread data but don’t want to resume th
   * `includeTurns` \- when `true`, the response includes the thread’s turns; when `false` or omitted, you get the thread summary only.
 
 
-[code] 
+```
     { "method": "thread/read", "id": 19, "params": { "threadId": "thr_123", "includeTurns": true } }
     { "id": 19, "result": { "thread": { "id": "thr_123", "turns": [] } } }
-[/code]
+```
 
 Unlike `thread/resume`, `thread/read` doesn’t load the thread into memory or emit `thread/started`.
 
@@ -406,7 +406,7 @@ Unlike `thread/resume`, `thread/read` doesn’t load the thread into memory or e
 
 
 Example:
-[code] 
+```
     { "method": "thread/list", "id": 20, "params": {
       "cursor": null,
       "limit": 25,
@@ -419,45 +419,45 @@ Example:
       ],
       "nextCursor": "opaque-token-or-null"
     } }
-[/code]
+```
 
 When `nextCursor` is `null`, you have reached the final page.
 
 ### List loaded threads
 
 `thread/loaded/list` returns thread IDs currently loaded in memory.
-[code] 
+```
     { "method": "thread/loaded/list", "id": 21 }
     { "id": 21, "result": { "data": ["thr_123", "thr_456"] } }
-[/code]
+```
 
 ### Archive a thread
 
 Use `thread/archive` to move the persisted thread log (stored as a JSONL file on disk) into the archived sessions directory.
-[code] 
+```
     { "method": "thread/archive", "id": 22, "params": { "threadId": "thr_b" } }
     { "id": 22, "result": {} }
-[/code]
+```
 
 Archived threads won’t appear in future calls to `thread/list` unless you pass `archived: true`.
 
 ### Unarchive a thread
 
 Use `thread/unarchive` to move an archived thread rollout back into the active sessions directory.
-[code] 
+```
     { "method": "thread/unarchive", "id": 24, "params": { "threadId": "thr_b" } }
     { "id": 24, "result": { "thread": { "id": "thr_b" } } }
-[/code]
+```
 
 ### Trigger thread compaction
 
 Use `thread/compact/start` to trigger manual history compaction for a thread. The request returns immediately with `{}`.
 
 App-server emits progress as standard `turn/*` and `item/*` notifications on the same `threadId`, including a `contextCompaction` item lifecycle (`item/started` then `item/completed`).
-[code] 
+```
     { "method": "thread/compact/start", "id": 25, "params": { "threadId": "thr_b" } }
     { "id": 25, "result": {} }
-[/code]
+```
 
 ## Turns
 
@@ -483,19 +483,19 @@ For `turn/start.collaborationMode`, `settings.developer_instructions: null` mean
 
 
 Restricted read access shape:
-[code] 
+```
     {
       "type": "restricted",
       "includePlatformDefaults": true,
       "readableRoots": ["/Users/me/shared-read-only"]
     }
-[/code]
+```
 
 Examples:
-[code] 
+```
     { "type": "readOnly", "access": { "type": "fullAccess" } }
-[/code]
-[code] 
+```
+```
     {
       "type": "workspaceWrite",
       "writableRoots": ["/Users/me/project"],
@@ -506,10 +506,10 @@ Examples:
       },
       "networkAccess": false
     }
-[/code]
+```
 
 ### Start a turn
-[code] 
+```
     { "method": "turn/start", "id": 30, "params": {
       "threadId": "thr_123",
       "input": [ { "type": "text", "text": "Run tests" } ],
@@ -532,7 +532,7 @@ Examples:
       }
     } }
     { "id": 30, "result": { "turn": { "id": "turn_456", "status": "inProgress", "items": [], "error": null } } }
-[/code]
+```
 
 ### Steer an active turn
 
@@ -544,19 +544,19 @@ Use `turn/steer` to append more user input to the active in-flight turn.
   * `turn/steer` doesn’t accept turn-level overrides (`model`, `cwd`, `sandboxPolicy`, or `outputSchema`).
 
 
-[code] 
+```
     { "method": "turn/steer", "id": 32, "params": {
       "threadId": "thr_123",
       "input": [ { "type": "text", "text": "Actually focus on failing tests first." } ],
       "expectedTurnId": "turn_456"
     } }
     { "id": 32, "result": { "turnId": "turn_456" } }
-[/code]
+```
 
 ### Start a turn (invoke a skill)
 
 Invoke a skill explicitly by including `$<skill-name>` in the text input and adding a `skill` input item alongside it.
-[code] 
+```
     { "method": "turn/start", "id": 33, "params": {
       "threadId": "thr_123",
       "input": [
@@ -565,13 +565,13 @@ Invoke a skill explicitly by including `$<skill-name>` in the text input and add
       ]
     } }
     { "id": 33, "result": { "turn": { "id": "turn_457", "status": "inProgress", "items": [], "error": null } } }
-[/code]
+```
 
 ### Interrupt a turn
-[code] 
+```
     { "method": "turn/interrupt", "id": 31, "params": { "threadId": "thr_123", "turnId": "turn_456" } }
     { "id": 31, "result": {} }
-[/code]
+```
 
 On success, the turn finishes with `status: "interrupted"`.
 
@@ -589,7 +589,7 @@ On success, the turn finishes with `status: "interrupted"`.
 Use `delivery: "inline"` (default) to run the review on the existing thread, or `delivery: "detached"` to fork a new review thread.
 
 Example request/response:
-[code] 
+```
     { "method": "review/start", "id": 40, "params": {
       "threadId": "thr_123",
       "delivery": "inline",
@@ -606,12 +606,12 @@ Example request/response:
       },
       "reviewThreadId": "thr_123"
     } }
-[/code]
+```
 
 For a detached review, use `"delivery": "detached"`. The response is the same shape, but `reviewThreadId` will be the id of the new review thread (different from the original `threadId`). The server also emits a `thread/started` notification for that new thread before streaming the review turn.
 
 Codex streams the usual `turn/started` notification followed by an `item/started` with an `enteredReviewMode` item:
-[code] 
+```
     {
       "method": "item/started",
       "params": {
@@ -622,10 +622,10 @@ Codex streams the usual `turn/started` notification followed by an `item/started
         }
       }
     }
-[/code]
+```
 
 When the reviewer finishes, the server emits `item/started` and `item/completed` containing an `exitedReviewMode` item with the final review text:
-[code] 
+```
     {
       "method": "item/completed",
       "params": {
@@ -636,14 +636,14 @@ When the reviewer finishes, the server emits `item/started` and `item/completed`
         }
       }
     }
-[/code]
+```
 
 Use this notification to render the reviewer output in your client.
 
 ## Command execution
 
 `command/exec` runs a single command (`argv` array) under the server sandbox without creating a thread.
-[code] 
+```
     { "method": "command/exec", "id": 50, "params": {
       "command": ["ls", "-la"],
       "cwd": "/Users/me/project",
@@ -651,7 +651,7 @@ Use this notification to render the reviewer output in your client.
       "timeoutMs": 10000
     } }
     { "id": 50, "result": { "exitCode": 0, "stdout": "...", "stderr": "" } }
-[/code]
+```
 
 Use `sandboxPolicy.type = "externalSandbox"` if you already sandbox the server process and want Codex to skip its own sandbox enforcement. For external sandbox mode, set `networkAccess` to `restricted` (default) or `enabled`. For `readOnly` and `workspaceWrite`, use the same optional `access` / `readOnlyAccess` structure shown above.
 
@@ -804,7 +804,7 @@ App (connector) tool calls can also require approval. When an app tool call has 
 ## Skills
 
 Invoke a skill by including `$<skill-name>` in the user text input. Add a `skill` input item (recommended) so the server injects full skill instructions instead of relying on the model to resolve the name.
-[code] 
+```
     {
       "method": "turn/start",
       "id": 101,
@@ -823,17 +823,17 @@ Invoke a skill by including `$<skill-name>` in the user text input. Add a `skill
         ]
       }
     }
-[/code]
+```
 
 If you omit the `skill` item, the model will still parse the `$<skill-name>` marker and try to locate the skill, which can add latency.
 
 Example:
-[code] 
+```
     $skill-creator Add a new skill for triaging flaky CI and include step-by-step usage.
-[/code]
+```
 
 Use `skills/list` to fetch available skills (optionally scoped by `cwds`, with `forceReload`). You can also include `perCwdExtraUserRoots` to scan extra absolute paths as `user` scope for specific `cwd` values. App-server ignores entries whose `cwd` isn’t present in `cwds`. `skills/list` may reuse a cached result per `cwd`; set `forceReload: true` to refresh from disk. When present, the server reads `interface` and `dependencies` from `SKILL.json`.
-[code] 
+```
     { "method": "skills/list", "id": 25, "params": {
       "cwds": ["/Users/me/project", "/Users/me/other-project"],
       "forceReload": true,
@@ -876,10 +876,10 @@ Use `skills/list` to fetch available skills (optionally scoped by `cwds`, with `
         "errors": []
       }]
     } }
-[/code]
+```
 
 To enable or disable a skill by path:
-[code] 
+```
     {
       "method": "skills/config/write",
       "id": 26,
@@ -888,12 +888,12 @@ To enable or disable a skill by path:
         "enabled": false
       }
     }
-[/code]
+```
 
 ## Apps (connectors)
 
 Use `app/list` to fetch available apps. In the CLI/TUI, `/apps` is the user-facing picker; in custom clients, call `app/list` directly. Each entry includes both `isAccessible` (available to the user) and `isEnabled` (enabled in `config.toml`) so clients can distinguish install/access from local enabled state.
-[code] 
+```
     { "method": "app/list", "id": 50, "params": {
       "cursor": null,
       "limit": 50,
@@ -914,14 +914,14 @@ Use `app/list` to fetch available apps. In the CLI/TUI, `/apps` is the user-faci
       ],
       "nextCursor": null
     } }
-[/code]
+```
 
 If you provide `threadId`, app feature gating (`features.apps`) uses that thread’s config snapshot. When omitted, app-server uses the latest global config.
 
 `app/list` returns after both accessible apps and directory apps load. Set `forceRefetch: true` to bypass app caches and fetch fresh data. Cache entries are only replaced when refreshes succeed.
 
 The server also emits `app/list/updated` notifications whenever either source (accessible apps or directory apps) finishes loading. Each notification includes the latest merged app list.
-[code] 
+```
     {
       "method": "app/list/updated",
       "params": {
@@ -938,10 +938,10 @@ The server also emits `app/list/updated` notifications whenever either source (a
         ]
       }
     }
-[/code]
+```
 
 Invoke an app by inserting `$<app-slug>` in the text input and adding a `mention` input item with the `app://<id>` path (recommended).
-[code] 
+```
     {
       "method": "turn/start",
       "id": 51,
@@ -960,7 +960,7 @@ Invoke an app by inserting `$<app-slug>` in the text input and adding a `mention
         ]
       }
     }
-[/code]
+```
 
 ## Auth endpoints
 
@@ -994,24 +994,24 @@ Codex supports three authentication modes. `account/updated.authMode` shows the 
 ### 1) Check auth state
 
 Request:
-[code] 
+```
     { "method": "account/read", "id": 1, "params": { "refreshToken": false } }
-[/code]
+```
 
 Response examples:
-[code] 
+```
     { "id": 1, "result": { "account": null, "requiresOpenaiAuth": false } }
-[/code]
-[code] 
+```
+```
     { "id": 1, "result": { "account": null, "requiresOpenaiAuth": true } }
-[/code]
-[code] 
+```
+```
     {
       "id": 1,
       "result": { "account": { "type": "apiKey" }, "requiresOpenaiAuth": true }
     }
-[/code]
-[code] 
+```
+```
     {
       "id": 1,
       "result": {
@@ -1023,7 +1023,7 @@ Response examples:
         "requiresOpenaiAuth": true
       }
     }
-[/code]
+```
 
 Field notes:
 
@@ -1035,25 +1035,29 @@ Field notes:
 ### 2) Log in with an API key
 
   1. Send:
-[code] {
+```
+{
            "method": "account/login/start",
            "id": 2,
            "params": { "type": "apiKey", "apiKey": "sk-..." }
          }
-[/code]
+```
 
   2. Expect:
-[code] { "id": 2, "result": { "type": "apiKey" } }
-[/code]
+```
+{ "id": 2, "result": { "type": "apiKey" } }
+```
 
   3. Notifications:
-[code] {
+```
+{
            "method": "account/login/completed",
            "params": { "loginId": null, "success": true, "error": null }
          }
-[/code]
-[code] { "method": "account/updated", "params": { "authMode": "apikey" } }
-[/code]
+```
+```
+{ "method": "account/updated", "params": { "authMode": "apikey" } }
+```
 
 
 
@@ -1061,9 +1065,11 @@ Field notes:
 ### 3) Log in with ChatGPT (browser flow)
 
   1. Start:
-[code] { "method": "account/login/start", "id": 3, "params": { "type": "chatgpt" } }
-[/code]
-[code] {
+```
+{ "method": "account/login/start", "id": 3, "params": { "type": "chatgpt" } }
+```
+```
+{
            "id": 3,
            "result": {
              "type": "chatgpt",
@@ -1071,18 +1077,20 @@ Field notes:
              "authUrl": "https://chatgpt.com/...&redirect_uri=http%3A%2F%2Flocalhost%3A<port>%2Fauth%2Fcallback"
            }
          }
-[/code]
+```
 
   2. Open `authUrl` in a browser; the app-server hosts the local callback.
 
   3. Wait for notifications:
-[code] {
+```
+{
            "method": "account/login/completed",
            "params": { "loginId": "<uuid>", "success": true, "error": null }
          }
-[/code]
-[code] { "method": "account/updated", "params": { "authMode": "chatgpt" } }
-[/code]
+```
+```
+{ "method": "account/updated", "params": { "authMode": "chatgpt" } }
+```
 
 
 
@@ -1092,7 +1100,8 @@ Field notes:
 Use this mode when a host application owns the user’s ChatGPT auth lifecycle and supplies tokens directly.
 
   1. Send:
-[code] {
+```
+{
            "method": "account/login/start",
            "id": 7,
            "params": {
@@ -1101,54 +1110,57 @@ Use this mode when a host application owns the user’s ChatGPT auth lifecycle a
              "accessToken": "<jwt>"
            }
          }
-[/code]
+```
 
   2. Expect:
-[code] { "id": 7, "result": { "type": "chatgptAuthTokens" } }
-[/code]
+```
+{ "id": 7, "result": { "type": "chatgptAuthTokens" } }
+```
 
   3. Notifications:
-[code] {
+```
+{
            "method": "account/login/completed",
            "params": { "loginId": null, "success": true, "error": null }
          }
-[/code]
-[code] {
+```
+```
+{
            "method": "account/updated",
            "params": { "authMode": "chatgptAuthTokens" }
          }
-[/code]
+```
 
 
 
 
 When the server receives a `401 Unauthorized`, it may request refreshed tokens from the host app:
-[code] 
+```
     {
       "method": "account/chatgptAuthTokens/refresh",
       "id": 8,
       "params": { "reason": "unauthorized", "previousAccountId": "org-123" }
     }
     { "id": 8, "result": { "idToken": "<jwt>", "accessToken": "<jwt>" } }
-[/code]
+```
 
 The server retries the original request after a successful refresh response. Requests time out after about 10 seconds.
 
 ### 4) Cancel a ChatGPT login
-[code] 
+```
     { "method": "account/login/cancel", "id": 4, "params": { "loginId": "<uuid>" } }
     { "method": "account/login/completed", "params": { "loginId": "<uuid>", "success": false, "error": "..." } }
-[/code]
+```
 
 ### 5) Logout
-[code] 
+```
     { "method": "account/logout", "id": 5 }
     { "id": 5, "result": {} }
     { "method": "account/updated", "params": { "authMode": null } }
-[/code]
+```
 
 ### 6) Rate limits (ChatGPT)
-[code] 
+```
     { "method": "account/rateLimits/read", "id": 6 }
     { "id": 6, "result": {
       "rateLimits": {
@@ -1178,7 +1190,7 @@ The server retries the original request after a successful refresh response. Req
         "primary": { "usedPercent": 31, "windowDurationMins": 15, "resetsAt": 1730948100 }
       }
     } }
-[/code]
+```
 
 Field notes:
 

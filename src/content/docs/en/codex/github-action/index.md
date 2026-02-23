@@ -33,7 +33,7 @@ For a CI example, see [Non-interactive mode](https://developers.openai.com/codex
 ## Example workflow
 
 The sample workflow below reviews new pull requests, captures Codex’s response, and posts it back on the PR.
-[code] 
+```
     name: Codex pull request review
     on:
       pull_request:
@@ -86,7 +86,7 @@ The sample workflow below reviews new pull requests, captures Codex’s response
                 });
             env:
               CODEX_FINAL_MESSAGE: ${{ needs.codex.outputs.final_message }}
-[/code]
+```
 
 Replace `.github/codex/prompts/review.md` with your own prompt file or use the `prompt` input for inline text. The example also writes the final Codex message to `codex-output.md` for later inspection or artifact upload.
 

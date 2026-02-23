@@ -22,4 +22,3 @@ Source URL: https://nextjs.org/docs/pages/api-reference
   - Turbopack is an incremental bundler optimized for JavaScript and TypeScript, written in Rust, and built into Next.js.
 
 ---
-

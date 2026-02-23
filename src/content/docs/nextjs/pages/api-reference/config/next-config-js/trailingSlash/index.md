@@ -18,11 +18,11 @@ Copy page
 `next.config.js`를 열고 `trailingSlash` 설정을 추가하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       trailingSlash: true,
     }
-[/code]
+```
 
 이 옵션을 설정하면 `/about`과 같은 URL이 `/about/`으로 리다이렉트됩니다.
 

@@ -22,7 +22,7 @@ description: '사용자 정의 문서에서  컴포넌트를 두 번 이상 사�
 `pages/_document.js`의 사용자 정의 문서에서 `<Head />` 컴포넌트를 하나만 사용하세요.
 
 pages/_document.js
-[code]
+```
     import Document, { Html, Head, Main, NextScript } from 'next/document'
 
     class MyDocument extends Document {
@@ -44,7 +44,7 @@ pages/_document.js
     }
 
     export default MyDocument
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-duplicate-head#useful-links)
 

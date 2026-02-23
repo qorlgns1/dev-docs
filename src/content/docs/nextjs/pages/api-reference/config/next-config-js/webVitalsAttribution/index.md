@@ -18,12 +18,12 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/config/nex
 어트리뷰션은 Next.js에서 기본적으로 비활성화되어 있으며, 아래와 같이 `next.config.js`에서 **메트릭별로** 설정해 활성화할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         webVitalsAttribution: ['CLS', 'LCP'],
       },
     }
-[/code]
+```
 
 허용되는 어트리뷰션 값은 [`NextWebVitalsMetric`](https://github.com/vercel/next.js/blob/442378d21dd56d6e769863eb8c2cb521a463a2e0/packages/next/shared/lib/utils.ts#L43) 타입에 지정된 모든 `web-vitals` 메트릭입니다.

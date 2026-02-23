@@ -542,4 +542,3 @@ export async function generateStaticParams({
 | --------- | ---------------------------------- |
 | `v13.0.0` | `generateStaticParams` introduced. |
 ---
-

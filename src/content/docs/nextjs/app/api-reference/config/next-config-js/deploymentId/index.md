@@ -14,16 +14,16 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 `deploymentId` 옵션을 사용하면 배포에 대한 식별자를 설정할 수 있습니다. 이 식별자는 롤링 배포 동안 [버전 차이](https://nextjs.org/docs/app/guides/self-hosting#version-skew) 보호와 캐시 무효화에 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       deploymentId: 'my-deployment-id',
     }
-[/code]
+```
 
 `NEXT_DEPLOYMENT_ID` 환경 변수를 사용해 배포 ID를 설정할 수도 있습니다:
-[code]
+```
     NEXT_DEPLOYMENT_ID=my-deployment-id next build
-[/code]
+```
 
 > **알아두면 좋아요:** 둘 다 설정된 경우 `next.config.js`의 `deploymentId` 값이 `NEXT_DEPLOYMENT_ID` 환경 변수보다 우선합니다.
 
@@ -57,11 +57,11 @@ next.config.js
 로드 밸런서 뒤에서 여러 인스턴스로 Next.js 애플리케이션을 실행하는 경우 동일한 배포에 속하는 모든 인스턴스가 동일한 `deploymentId`를 사용해야 합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       deploymentId: process.env.DEPLOYMENT_VERSION || process.env.GIT_SHA,
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/config/next-config-js/deploymentId#version-history)
 

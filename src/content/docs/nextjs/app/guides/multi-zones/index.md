@@ -38,12 +38,12 @@ Examples
 존은 다른 존의 페이지와 정적 파일과의 충돌을 피하기 위해 [assetPrefix](https://nextjs.org/docs/app/api-reference/config/next-config-js/assetPrefix)를 추가로 설정한 일반적인 Next.js 애플리케이션입니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       assetPrefix: '/blog-static',
     }
-[/code]
+```
 
 JavaScript 및 CSS 같은 Next.js 에셋은 `assetPrefix`가 앞에 붙어 다른 존의 에셋과 충돌하지 않도록 합니다. 각 존에서 이러한 에셋은 `/assetPrefix/_next/...` 경로 아래에서 제공됩니다.
 
@@ -52,7 +52,7 @@ JavaScript 및 CSS 같은 Next.js 에셋은 `assetPrefix`가 앞에 붙어 다�
 Next.js 15 이전 버전에서는 정적 에셋을 처리하기 위한 추가 rewrite가 필요할 수 있습니다. Next.js 15에서는 더 이상 필요하지 않습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       assetPrefix: '/blog-static',
@@ -67,7 +67,7 @@ next.config.js
         }
       },
     }
-[/code]
+```
 
 ## 올바른 존으로 요청을 라우팅하는 방법[](https://nextjs.org/docs/app/guides/multi-zones#how-to-route-requests-to-the-right-zone)
 
@@ -76,7 +76,7 @@ next.config.js
 Next.js 애플리케이션으로 올바른 존에 라우팅하려면 [`rewrites`](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites)를 사용할 수 있습니다. 다른 존이 서비스하는 각 경로마다 해당 경로를 그 존의 도메인으로 보내는 rewrite 규칙을 추가하고, 정적 에셋 요청도 rewrite해야 합니다. 예를 들어:
 
 next.config.js
-[code]
+```
     async rewrites() {
         return [
             {
@@ -93,7 +93,7 @@ next.config.js
             }
         ];
     }
-[/code]
+```
 
 `destination`은 존이 서비스하는 URL이어야 하며, 스킴과 도메인을 포함해야 합니다. 이는 존의 프로덕션 도메인을 가리키는 것이 일반적이지만, 로컬 개발 중 `localhost`로 요청을 라우팅하는 데에도 사용할 수 있습니다.
 
@@ -104,14 +104,14 @@ next.config.js
 요청을 [`rewrites`](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites)로 라우팅하는 것이 지연 시간을 최소화하기 때문에 권장되지만, 라우팅 시 동적 결정을 내려야 하는 경우에는 프록시도 사용할 수 있습니다. 예를 들어 마이그레이션 중 특정 경로를 어디로 라우팅할지 기능 플래그로 결정해야 한다면 프록시를 활용할 수 있습니다.
 
 proxy.js
-[code]
+```
     export async function proxy(request) {
       const { pathname, search } = request.nextUrl
       if (pathname === '/your-path' && myFeatureFlag.isEnabled()) {
         return NextResponse.rewrite(`${rewriteDomain}${pathname}${search}`)
       }
     }
-[/code]
+```
 
 ## 존 간 링크 연결[](https://nextjs.org/docs/app/guides/multi-zones#linking-between-zones)
 
@@ -128,7 +128,7 @@ proxy.js
 멀티 존과 함께 [Server Actions](https://nextjs.org/docs/app/getting-started/updating-data)을 사용할 때는 사용자에게 노출되는 도메인이 여러 애플리케이션을 서비스할 수 있으므로, 사용자 도메인 오리진을 명시적으로 허용해야 합니다. `next.config.js` 파일에 다음 내용을 추가하세요:
 
 next.config.js
-[code]
+```
     const nextConfig = {
       experimental: {
         serverActions: {
@@ -136,7 +136,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 자세한 내용은 [`serverActions.allowedOrigins`](https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions#allowedorigins)를 참고하세요.
 

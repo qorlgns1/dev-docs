@@ -48,12 +48,12 @@ If you want Codex to review every pull request automatically, turn on **Automati
 Codex searches your repository for `AGENTS.md` files and follows any **Review guidelines** you include.
 
 To set guidelines for a repository, add or update a top-level `AGENTS.md` with a section like this:
-[code] 
+```
     ## Review guidelines
     
     - Don't log PII.
     - Verify that authentication middleware wraps every route.
-[/code]
+```
 
 Codex applies guidance from the closest `AGENTS.md` to each changed file. You can place more specific instructions deeper in the tree when particular packages need extra scrutiny.
 
@@ -66,6 +66,6 @@ In GitHub, Codex flags only P0 and P1 issues. If you want Codex to flag typos in
 ## Give Codex other tasks
 
 If you mention `@codex` in a comment with anything other than `review`, Codex starts a [cloud task](https://developers.openai.com/codex/cloud) using your pull request as context.
-[code] 
+```
     @codex fix the CI failures
-[/code]
+```

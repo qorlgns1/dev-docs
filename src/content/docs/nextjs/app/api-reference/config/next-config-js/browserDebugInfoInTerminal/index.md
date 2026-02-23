@@ -24,7 +24,7 @@ description: '이 기능은 현재 실험적이며 변경될 수 있으므로 �
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -34,7 +34,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ### 직렬화 한계[](https://nextjs.org/docs/app/api-reference/config/next-config-js/browserDebugInfoInTerminal#serialization-limits)
 
@@ -46,7 +46,7 @@ JavaScriptTypeScript
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -59,14 +59,14 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ### 소스 위치[](https://nextjs.org/docs/app/api-reference/config/next-config-js/browserDebugInfoInTerminal#source-location)
 
 이 기능을 활성화하면 소스 위치가 기본적으로 포함됩니다.
 
 app/page.tsx
-[code]
+```
     'use client'
 
     export default function Home() {
@@ -81,14 +81,14 @@ app/page.tsx
         </button>
       )
     }
-[/code]
+```
 
 버튼을 클릭하면 이 메시지가 터미널에 출력됩니다.
 
 터미널
-[code]
+```
     [browser] Hello World (app/page.tsx:8:17)
-[/code]
+```
 
 이를 숨기려면 `showSourceLocation: false`로 설정하세요.
 
@@ -97,7 +97,7 @@ app/page.tsx
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -109,7 +109,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 Version| Changes
 ---|---

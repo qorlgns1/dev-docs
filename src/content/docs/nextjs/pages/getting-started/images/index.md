@@ -23,13 +23,13 @@ Next.js [`<Image>`](https://nextjs.org/docs/app/api-reference/components/image) 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Image from 'next/image'
 
     export default function Page() {
       return <Image src="" alt="" />
     }
-[/code]
+```
 
 `src` 속성에는 [로컬](https://nextjs.org/docs/pages/getting-started/images#local-images) 또는 [원격](https://nextjs.org/docs/pages/getting-started/images#remote-images) 이미지를 지정할 수 있습니다.
 
@@ -42,7 +42,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Image from 'next/image'
 
     export default function Page() {
@@ -55,14 +55,14 @@ JavaScriptTypeScript
         />
       )
     }
-[/code]
+```
 
 이미지를 정적으로 임포트하면 Next.js가 고유의 [`width`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)와 [`height`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height)를 자동으로 파악합니다. 이 값은 이미지 비율을 계산하고 이미지 로딩 중 [누적 레이아웃 시프트](https://web.dev/articles/cls)를 방지하는 데 사용됩니다.
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Image from 'next/image'
     import ProfileImage from './profile.png'
 
@@ -78,7 +78,7 @@ JavaScriptTypeScript
         />
       )
     }
-[/code]
+```
 
 ## 원격 이미지[](https://nextjs.org/docs/pages/getting-started/images#remote-images)
 
@@ -87,7 +87,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Image from 'next/image'
 
     export default function Page() {
@@ -100,7 +100,7 @@ JavaScriptTypeScript
         />
       )
     }
-[/code]
+```
 
 Next.js는 빌드 과정에서 원격 파일에 접근할 수 없으므로 [`width`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height), [`height`](https://nextjs.org/docs/app/api-reference/components/image#width-and-height), 선택형 [`blurDataURL`](https://nextjs.org/docs/app/api-reference/components/image#blurdataurl) 프롭을 직접 지정해야 합니다. `width`와 `height`는 올바른 종횡비를 추론하고 이미지 로딩 시 발생할 수 있는 레이아웃 시프트를 방지하는 데 사용됩니다. 또는 [`fill` 속성](https://nextjs.org/docs/app/api-reference/components/image#fill)을 사용해 이미지를 부모 요소 크기에 맞게 채울 수도 있습니다.
 
@@ -109,7 +109,7 @@ Next.js는 빌드 과정에서 원격 파일에 접근할 수 없으므로 [`wid
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const config: NextConfig = {
@@ -127,7 +127,7 @@ JavaScriptTypeScript
     }
 
     export default config
-[/code]
+```
 
 ## API 레퍼런스
 

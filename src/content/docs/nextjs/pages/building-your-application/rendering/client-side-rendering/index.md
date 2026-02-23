@@ -25,7 +25,7 @@ Next.js에서 클라이언트 사이드 렌더링을 구현하는 방법은 두 
 다음은 Next.js 페이지 내부에서 `useEffect()`를 사용하는 예시입니다.
 
 pages/index.js
-[code]
+```
     import React, { useState, useEffect } from 'react'
 
     export function Page() {
@@ -49,14 +49,14 @@ pages/index.js
 
       return <p>{data ? `Your data: ${data}` : 'Loading...'}</p>
     }
-[/code]
+```
 
 위 예시에서 컴포넌트는 먼저 `Loading...`을 렌더링합니다. 이후 데이터를 가져오면 다시 렌더링되어 데이터를 표시합니다.
 
 `useEffect`에서 데이터를 가져오는 패턴은 오래된 React 애플리케이션에서 볼 수 있지만, 더 나은 성능, 캐싱, 낙관적 업데이트 등을 위해 데이터 패칭 라이브러리 사용을 권장합니다. 다음은 클라이언트에서 데이터를 가져오기 위해 [SWR](https://swr.vercel.app/)을 사용하는 최소 예시입니다.
 
 pages/index.js
-[code]
+```
     import useSWR from 'swr'
 
     export function Page() {
@@ -70,7 +70,7 @@ pages/index.js
 
       return <p>Your Data: {data}</p>
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >

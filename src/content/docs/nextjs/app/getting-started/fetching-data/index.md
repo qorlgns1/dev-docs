@@ -32,7 +32,7 @@ description: '이 페이지에서는 서버 및 클라이언트 컴포넌트에�
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       const data = await fetch('https://api.vercel.app/blog')
       const posts = await data.json()
@@ -44,7 +44,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 > **알아두면 좋은 점:**
 >
@@ -59,7 +59,7 @@ JavaScriptTypeScript
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { db, posts } from '@/lib/db'
 
     export default async function Page() {
@@ -72,7 +72,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 ### 클라이언트 컴포넌트[](https://nextjs.org/docs/app/getting-started/fetching-data#client-components)
 
@@ -88,7 +88,7 @@ React의 [`use` API](https://react.dev/reference/react/use)를 사용하면 서�
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Posts from '@/app/ui/posts'
     import { Suspense } from 'react'
 
@@ -102,14 +102,14 @@ JavaScriptTypeScript
         </Suspense>
       )
     }
-[/code]
+```
 
 그다음 클라이언트 컴포넌트에서 `use` API로 프라미스를 읽습니다.
 
 app/ui/posts.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
     import { use } from 'react'
 
@@ -128,7 +128,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 위 예제에서 `<Posts>` 컴포넌트는 [`<Suspense>` 경계](https://react.dev/reference/react/Suspense) 안에 래핑되어 있으므로 프라미스가 resolve되는 동안 폴백 UI가 표시됩니다. [스트리밍](https://nextjs.org/docs/app/getting-started/fetching-data#streaming)에 대해 더 알아보세요.
 
@@ -139,7 +139,7 @@ JavaScriptTypeScript
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
     import useSWR from 'swr'
 
@@ -162,7 +162,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 ## 요청 중복 제거 및 데이터 캐싱[](https://nextjs.org/docs/app/getting-started/fetching-data#deduplicate-requests-and-cache-data)
 
@@ -179,7 +179,7 @@ JavaScriptTypeScript
 app/lib/data.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cache } from 'react'
     import { db, posts, eq } from '@/lib/db'
 
@@ -188,7 +188,7 @@ JavaScriptTypeScript
         where: eq(posts.id, parseInt(id)),
       })
     })
-[/code]
+```
 
 ## 스트리밍[](https://nextjs.org/docs/app/getting-started/fetching-data#streaming)
 
@@ -210,12 +210,12 @@ JavaScriptTypeScript
 app/blog/loading.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Loading() {
       // Define the Loading UI here
       return <div>Loading...</div>
     }
-[/code]
+```
 
 내비게이션 시 사용자는 레이아웃과 [로딩 상태](https://nextjs.org/docs/app/getting-started/fetching-data#creating-meaningful-loading-states)를 즉시 확인할 수 있고, 페이지 렌더링이 완료되면 새 콘텐츠로 자동 교체됩니다.
 
@@ -230,7 +230,7 @@ JavaScriptTypeScript
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Suspense } from 'react'
     import BlogList from '@/components/BlogList'
     import BlogListSkeleton from '@/components/BlogListSkeleton'
@@ -252,7 +252,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ### 의미 있는 로딩 상태 만들기[](https://nextjs.org/docs/app/getting-started/fetching-data#creating-meaningful-loading-states)
 
@@ -271,7 +271,7 @@ JavaScriptTypeScript
 app/artist/[username]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page({
       params,
     }: {
@@ -306,7 +306,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 이 예제에서 `<Suspense>`는 아티스트 데이터가 로드된 뒤 플레이리스트를 스트리밍하도록 허용합니다. 그러나 페이지는 어떤 내용을 표시하기 전에 여전히 아티스트 데이터를 기다립니다. 이를 방지하려면 전체 페이지 컴포넌트를 `<Suspense>` 경계로 감싸(예: [`loading.js` 파일](https://nextjs.org/docs/app/getting-started/fetching-data#with-loadingjs)을 사용) 즉시 로딩 상태를 표시할 수 있습니다.
 
@@ -323,7 +323,7 @@ JavaScriptTypeScript
 app/artist/[username]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { getArtist, getAlbums } from '@/app/lib/data'
 
     export default async function Page({ params }) {
@@ -333,14 +333,14 @@ JavaScriptTypeScript
       const albums = await getAlbums(username)
       return <div>{artist.name}</div>
     }
-[/code]
+```
 
 `fetch`를 호출하여 여러 요청을 시작한 다음 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)로 기다리세요. `fetch`가 호출되는 즉시 요청이 시작됩니다.
 
 app/artist/[username]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Albums from './albums'
 
     async function getArtist(username: string) {
@@ -373,7 +373,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요:** `Promise.all`을 사용할 때 하나의 요청이라도 실패하면 전체 작업이 실패합니다. 이를 처리하려면 [`Promise.allSettled`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled) 메서드를 사용할 수 있습니다.
 
@@ -386,7 +386,7 @@ JavaScriptTypeScript
 app/item/[id]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { getItem, checkIsAvailable } from '@/lib/data'
 
     export default async function Page({
@@ -413,14 +413,14 @@ JavaScriptTypeScript
       const result = await getItem(id)
       // ...
     }
-[/code]
+```
 
 또한 React의 [`cache` 함수](https://react.dev/reference/react/cache)와 [`server-only` 패키지](https://www.npmjs.com/package/server-only)를 사용하여 재사용 가능한 유틸리티 함수를 만들 수 있습니다. 이 접근 방식은 데이터 가져오기 함수를 캐시하고 서버에서만 실행되도록 보장합니다.
 
 utils/get-item.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cache } from 'react'
     import 'server-only'
     import { getItem } from '@/lib/data'
@@ -432,7 +432,7 @@ JavaScriptTypeScript
     export const getItem = cache(async (id: string) => {
       // ...
     })
-[/code]
+```
 
 ## API 레퍼런스
 

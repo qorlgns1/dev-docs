@@ -22,7 +22,7 @@ Profiles are experimental and may change or be removed in future releases.
 Profiles are not currently supported in the Codex IDE extension.
 
 Define profiles under `[profiles.<name>]` in `config.toml`, then run `codex --profile <name>`:
-[code] 
+```
     model = "gpt-5-codex"
     approval_policy = "on-request"
     
@@ -34,7 +34,7 @@ Define profiles under `[profiles.<name>]` in `config.toml`, then run `codex --pr
     [profiles.lightweight]
     model = "gpt-4.1"
     approval_policy = "untrusted"
-[/code]
+```
 
 To make a profile the default, add `profile = "deep-review"` at the top level of `config.toml`. Codex loads that profile unless you override it on the command line.
 
@@ -48,7 +48,7 @@ In addition to editing `~/.codex/config.toml`, you can override configuration fo
 
 
 Examples:
-[code] 
+```
     # Dedicated flag
     codex --model gpt-5.2
     
@@ -56,7 +56,7 @@ Examples:
     codex --config model='"gpt-5.2"'
     codex --config sandbox_workspace_write.network_access=true
     codex --config 'shell_environment_policy.include_only=["PATH","HOME"]'
-[/code]
+```
 
 Notes:
 
@@ -84,10 +84,10 @@ For authentication details (including credential storage modes), see [Authentica
 For shared defaults, rules, and skills checked into repos or system paths, see [Team Config](https://developers.openai.com/codex/enterprise/admin-setup#team-config).
 
 If you just need to point the built-in OpenAI provider at an LLM proxy, router, or data-residency enabled project, set environment variable `OPENAI_BASE_URL` instead of defining a new provider. This overrides the default OpenAI endpoint without a `config.toml` change.
-[code] 
+```
     export OPENAI_BASE_URL="https://api.openai.com/v1"
     codex
-[/code]
+```
 
 ## Project config files (`.codex/config.toml`)
 
@@ -106,10 +106,10 @@ For multi-agent role configuration (`[agents]` in `config.toml`), see [Multi-age
 Codex discovers project configuration (for example, `.codex/` layers and `AGENTS.md`) by walking up from the working directory until it reaches a project root.
 
 By default, Codex treats a directory containing `.git` as the project root. To customize this behavior, set `project_root_markers` in `config.toml`:
-[code] 
+```
     # Treat a directory as the project root when it contains any of these markers.
     project_root_markers = [".git", ".hg", ".sl"]
-[/code]
+```
 
 Set `project_root_markers = []` to skip searching parent directories and treat the current working directory as the project root.
 
@@ -118,7 +118,7 @@ Set `project_root_markers = []` to skip searching parent directories and treat t
 A model provider defines how Codex connects to a model (base URL, wire API, and optional HTTP headers).
 
 Define additional providers and point `model_provider` at them:
-[code] 
+```
     model = "gpt-5.1"
     model_provider = "proxy"
     
@@ -135,25 +135,25 @@ Define additional providers and point `model_provider` at them:
     name = "Mistral"
     base_url = "https://api.mistral.ai/v1"
     env_key = "MISTRAL_API_KEY"
-[/code]
+```
 
 Add request headers when needed:
-[code] 
+```
     [model_providers.example]
     http_headers = { "X-Example-Header" = "example-value" }
     env_http_headers = { "X-Example-Features" = "EXAMPLE_FEATURES" }
-[/code]
+```
 
 ## OSS mode (local providers)
 
 Codex can run against a local “open source” provider (for example, Ollama or LM Studio) when you pass `--oss`. If you pass `--oss` without specifying a provider, Codex uses `oss_provider` as the default.
-[code] 
+```
     # Default local provider used with `--oss`
     oss_provider = "ollama" # or "lmstudio"
-[/code]
+```
 
 ## Azure provider and per-provider tuning
-[code] 
+```
     [model_providers.azure]
     name = "Azure"
     base_url = "https://YOUR_PROJECT_NAME.openai.azure.com/openai"
@@ -165,25 +165,25 @@ Codex can run against a local “open source” provider (for example, Ollama or
     request_max_retries = 4
     stream_max_retries = 10
     stream_idle_timeout_ms = 300000
-[/code]
+```
 
 ## ChatGPT customers using data residency
 
 Projects created with [data residency](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt) enabled can create a model provider to update the base_url with the [correct prefix](https://platform.openai.com/docs/guides/your-data#which-models-and-features-are-eligible-for-data-residency).
-[code] 
+```
     model_provider = "openaidr"
     [model_providers.openaidr]
     name = "OpenAI Data Residency"
     base_url = "https://us.api.openai.com/v1" # Replace 'us' with domain prefix
-[/code]
+```
 
 ## Model reasoning, verbosity, and limits
-[code] 
+```
     model_reasoning_summary = "none"          # Disable summaries
     model_verbosity = "low"                   # Shorten responses
     model_supports_reasoning_summaries = true # Force reasoning
     model_context_window = 128000             # Context window size
-[/code]
+```
 
 `model_verbosity` applies only to providers using the Responses API. Chat Completions providers will ignore the setting.
 
@@ -192,7 +192,7 @@ Projects created with [data residency](https://help.openai.com/en/articles/99034
 Pick approval strictness (affects when Codex pauses) and sandbox level (affects file/network access).
 
 For operational details that are easy to miss while editing `config.toml`, see [Common sandbox and approval combinations](https://developers.openai.com/codex/security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](https://developers.openai.com/codex/security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/security#network-access).
-[code] 
+```
     approval_policy = "untrusted"   # Other options: on-request, never
     sandbox_mode = "workspace-write"
     
@@ -201,28 +201,28 @@ For operational details that are easy to miss while editing `config.toml`, see [
     exclude_slash_tmp = false       # Allow /tmp
     writable_roots = ["/Users/YOU/.pyenv/shims"]
     network_access = false          # Opt in to outbound network
-[/code]
+```
 
 Need the complete key list (including profile-scoped overrides and requirements constraints)? See [Configuration Reference](https://developers.openai.com/codex/config-reference) and [Managed configuration](https://developers.openai.com/codex/security#managed-configuration).
 
 In workspace-write mode, some environments keep `.git/` and `.codex/` read-only even when the rest of the workspace is writable. This is why commands like `git commit` may still require approval to run outside the sandbox. If you want Codex to skip specific commands (for example, block `git commit` outside the sandbox), use [rules](https://developers.openai.com/codex/rules).
 
 Disable sandboxing entirely (use only if your environment already isolates processes):
-[code] 
+```
     sandbox_mode = "danger-full-access"
-[/code]
+```
 
 ## Shell environment policy
 
 `shell_environment_policy` controls which environment variables Codex passes to any subprocess it launches (for example, when running a tool-command the model proposes). Start from a clean start (`inherit = "none"`) or a trimmed set (`inherit = "core"`), then layer on excludes, includes, and overrides to avoid leaking secrets while still providing the paths, keys, or flags your tasks need.
-[code] 
+```
     [shell_environment_policy]
     inherit = "none"
     set = { PATH = "/usr/bin", MY_FLAG = "1" }
     ignore_default_excludes = false
     exclude = ["AWS_*", "AZURE_*"]
     include_only = ["PATH", "HOME"]
-[/code]
+```
 
 Patterns are case-insensitive globs (`*`, `?`, `[A-Z]`); `ignore_default_excludes = false` keeps the automatic KEY/SECRET/TOKEN filter before your includes/excludes run.
 
@@ -233,29 +233,29 @@ See the dedicated [MCP documentation](https://developers.openai.com/codex/mcp) f
 ## Observability and telemetry
 
 Enable OpenTelemetry (OTel) log export to track Codex runs (API requests, SSE/events, prompts, tool approvals/results). Disabled by default; opt in via `[otel]`:
-[code] 
+```
     [otel]
     environment = "staging"   # defaults to "dev"
     exporter = "none"         # set to otlp-http or otlp-grpc to send events
     log_user_prompt = false   # redact user prompts unless explicitly enabled
-[/code]
+```
 
 Choose an exporter:
-[code] 
+```
     [otel]
     exporter = { otlp-http = {
       endpoint = "https://otel.example.com/v1/logs",
       protocol = "binary",
       headers = { "x-otlp-api-key" = "${OTLP_TOKEN}" }
     }}
-[/code]
-[code] 
+```
+```
     [otel]
     exporter = { otlp-grpc = {
       endpoint = "https://otel.example.com:4317",
       headers = { "x-otlp-meta" = "abc123" }
     }}
-[/code]
+```
 
 If `exporter = "none"` Codex records events but sends nothing. Exporters batch asynchronously and flush on shutdown. Event metadata includes service name, CLI version, env tag, conversation id, model, sandbox/approval settings, and per-event fields (see [Config Reference](https://developers.openai.com/codex/config-reference)).
 
@@ -299,10 +299,10 @@ For more security and privacy guidance around telemetry, see [Security](https://
 By default, Codex periodically sends a small amount of anonymous usage and health data back to OpenAI. This helps detect when Codex isn’t working correctly and shows what features and configuration options are being used, so the Codex team can focus on what matters most. These metrics don’t contain any personally identifiable information (PII). Metrics collection is independent of OTel log/trace export.
 
 If you want to disable metrics collection entirely across Codex surfaces on a machine, set the analytics flag in your config:
-[code] 
+```
     [analytics]
     enabled = false
-[/code]
+```
 
 Each metric includes its own fields plus the default context fields below.
 
@@ -348,36 +348,36 @@ Metric| Type| Fields| Description
 ### Feedback controls
 
 By default, Codex lets users send feedback from `/feedback`. To disable feedback collection across Codex surfaces on a machine, update your config:
-[code] 
+```
     [feedback]
     enabled = false
-[/code]
+```
 
 When disabled, `/feedback` shows a disabled message and Codex rejects feedback submissions.
 
 ### Hide or surface reasoning events
 
 If you want to reduce noisy “reasoning” output (for example in CI logs), you can suppress it:
-[code] 
+```
     hide_agent_reasoning = true
-[/code]
+```
 
 If you want to surface raw reasoning content when a model emits it:
-[code] 
+```
     show_raw_agent_reasoning = true
-[/code]
+```
 
 Enable raw reasoning only if it’s acceptable for your workflow. Some models/providers (like `gpt-oss`) don’t emit raw reasoning; in that case, this setting has no visible effect.
 
 ## Notifications
 
 Use `notify` to trigger an external program whenever Codex emits supported events (currently only `agent-turn-complete`). This is handy for desktop toasts, chat webhooks, CI updates, or any side-channel alerting that the built-in TUI notifications don’t cover.
-[code] 
+```
     notify = ["python3", "/path/to/notify.py"]
-[/code]
+```
 
 Example `notify.py` (truncated) that reacts to `agent-turn-complete`:
-[code] 
+```
     #!/usr/bin/env python3
     import json, subprocess, sys
     
@@ -398,7 +398,7 @@ Example `notify.py` (truncated) that reacts to `agent-turn-complete`:
     
     if __name__ == "__main__":
         sys.exit(main())
-[/code]
+```
 
 The script receives a single JSON argument. Common fields include:
 
@@ -428,23 +428,23 @@ See [Configuration Reference](https://developers.openai.com/codex/config-referen
 ## History persistence
 
 By default, Codex saves local session transcripts under `CODEX_HOME` (for example, `~/.codex/history.jsonl`). To disable local history persistence:
-[code] 
+```
     [history]
     persistence = "none"
-[/code]
+```
 
 To cap the history file size, set `history.max_bytes`. When the file exceeds the cap, Codex drops the oldest entries and compacts the file while keeping the newest records.
-[code] 
+```
     [history]
     max_bytes = 104857600 # 100 MiB
-[/code]
+```
 
 ## Clickable citations
 
 If you use a terminal/editor integration that supports it, Codex can render file citations as clickable links. Configure `file_opener` to pick the URI scheme Codex uses:
-[code] 
+```
     file_opener = "vscode" # or cursor, windsurf, vscode-insiders, none
-[/code]
+```
 
 Example: a citation like `/home/user/project/main.py:42` can be rewritten into a clickable `vscode://file/...:42` link.
 

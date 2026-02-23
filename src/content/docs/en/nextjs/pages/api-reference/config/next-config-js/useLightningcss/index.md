@@ -45,4 +45,3 @@ module.exports = nextConfig
 | `15.1.0` | Support for `useSwcCss` was removed from Turbopack.                                                                                                                                          |
 | `14.2.0` | Turbopack's default CSS processor was changed from `@swc/css` to Lightning CSS. `useLightningcss` became ignored on Turbopack, and a legacy `experimental.turbo.useSwcCss` option was added. |
 ---
-

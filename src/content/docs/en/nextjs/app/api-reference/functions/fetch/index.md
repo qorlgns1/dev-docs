@@ -107,4 +107,3 @@ Browsers typically include `cache-control: no-cache` when the cache is disabled 
 | --------- | ------------------- |
 | `v13.0.0` | `fetch` introduced. |
 ---
-

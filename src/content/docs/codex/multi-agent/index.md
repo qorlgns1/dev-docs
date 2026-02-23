@@ -24,10 +24,10 @@ CLI에서 `/experimental`을 사용해 이 기능을 활성화할 수 있습니�
 멀티 에이전트 활동은 현재 CLI에서 노출됩니다. 다른 인터페이스(Codex 앱과 IDE 확장)에서도 곧 지원될 예정입니다.
 
 구성 파일(`~/.codex/config.toml`)에 [`multi_agent` 기능 플래그](https://developers.openai.com/codex/config-basic#feature-flags)를 직접 추가할 수도 있습니다:
-[code] 
+```
     [features]
     multi_agent = true
-[/code]
+```
 
 ## 일반적인 워크플로
 
@@ -38,7 +38,7 @@ Codex는 에이전트 간 오케스트레이션을 처리하며, 새 하위 에�
 Codex가 새로운 에이전트를 생성할지 자동으로 결정하거나, 사용자가 명시적으로 요청할 수도 있습니다.
 
 다음 프롬프트를 프로젝트에 시도해 보세요:
-[code] 
+```
     I would like to review the following points on the current PR (this branch vs main). Spawn one agent per point, wait for all of them, and summarize the result for each point.
     1. Security issue
     2. Code quality
@@ -46,7 +46,7 @@ Codex가 새로운 에이전트를 생성할지 자동으로 결정하거나, �
     4. Race
     5. Test flakiness
     6. Maintainability of the code
-[/code]
+```
 
 ## 하위 에이전트 관리
 
@@ -110,7 +110,7 @@ Field| Type| Required| Purpose
 아래 예시는 기본 제공 `default`와 `explorer` 역할 정의를 덮어쓰고 새 `reviewer` 역할을 정의합니다.
 
 예시 `~/.codex/config.toml`:
-[code] 
+```
     [agents.default]
     description = "General-purpose helper."
     
@@ -121,18 +121,18 @@ Field| Type| Required| Purpose
     [agents.explorer]
     description = "Fast codebase explorer for read-heavy tasks."
     config_file = "agents/custom-explorer.toml"
-[/code]
+```
 
 `reviewer` 역할에 대한 예시 구성 파일 (`~/.codex/agents/reviewer.toml`):
-[code] 
+```
     model = "gpt-5.3-codex"
     model_reasoning_effort = "high"
     developer_instructions = "Focus on high priority issues, write tests to validate hypothesis before flagging an issue. When finding security issues give concrete steps on how to reproduce the vulnerability."
-[/code]
+```
 
 `explorer` 역할에 대한 예시 구성 파일 (`~/.codex/agents/custom-explorer.toml`):
-[code] 
+```
     model = "gpt-5.3-codex-spark"
     model_reasoning_effort = "medium"
     sandbox_mode = "read-only"
-[/code]
+```

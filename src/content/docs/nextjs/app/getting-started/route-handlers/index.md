@@ -28,9 +28,9 @@ Route Handlers는 `app` 디렉터리 안의 [`route.js|ts` 파일](https://nextj
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET(request: Request) {}
-[/code]
+```
 
 Route Handlers는 `page.js` 및 `layout.js`와 마찬가지로 `app` 디렉터리 내 어디든 중첩할 수 있습니다. 다만 동일한 라우트 세그먼트 수준에서 `page.js`와 `route.js` 파일이 **동시에 존재할 수는 없습니다**.
 
@@ -49,7 +49,7 @@ Route Handlers는 기본적으로 캐시되지 않습니다. 하지만 `GET` 메
 app/items/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export const dynamic = 'force-static'
 
     export async function GET() {
@@ -63,7 +63,7 @@ JavaScriptTypeScript
 
       return Response.json({ data })
     }
-[/code]
+```
 
 > **알아두면 좋아요**: 동일한 파일에서 캐시되는 `GET` 메서드와 함께 두더라도, 다른 지원 HTTP 메서드는 **캐시되지 않습니다**.
 
@@ -74,29 +74,29 @@ JavaScriptTypeScript
 **정적 예시** \- 동적 또는 런타임 데이터를 액세스하지 않으므로 빌드 시점에 사전 렌더링됩니다:
 
 app/api/project-info/route.ts
-[code]
+```
     export async function GET() {
       return Response.json({
         projectName: 'Next.js',
       })
     }
-[/code]
+```
 
 **동적 예시** \- 비결정적 연산에 접근합니다. 빌드 중 `Math.random()`이 호출되면 사전 렌더링이 중단되고 요청 시점 렌더링으로 위임됩니다:
 
 app/api/random-number/route.ts
-[code]
+```
     export async function GET() {
       return Response.json({
         randomNumber: Math.random(),
       })
     }
-[/code]
+```
 
 **런타임 데이터 예시** \- 요청별 데이터를 액세스합니다. `headers()`와 같은 런타임 API가 호출되면 사전 렌더링이 종료됩니다:
 
 app/api/user-agent/route.ts
-[code]
+```
     import { headers } from 'next/headers'
 
     export async function GET() {
@@ -105,14 +105,14 @@ app/api/user-agent/route.ts
 
       return Response.json({ userAgent })
     }
-[/code]
+```
 
 > **알아두면 좋아요**: `GET` 핸들러가 네트워크 요청, 데이터베이스 쿼리, 비동기 파일 시스템 작업, 요청 객체 속성(`req.url`, `request.headers`, `request.cookies`, `request.body` 등), [`cookies()`](https://nextjs.org/docs/app/api-reference/functions/cookies), [`headers()`](https://nextjs.org/docs/app/api-reference/functions/headers), [`connection()`](https://nextjs.org/docs/app/api-reference/functions/connection) 같은 런타임 API 또는 비결정적 연산을 사용하면 사전 렌더링이 중단됩니다.
 
 **캐시된 예시** \- 동적 데이터(데이터베이스 쿼리)에 접근하지만 `use cache`로 캐시하여 사전 렌더링된 응답에 포함됩니다:
 
 app/api/products/route.ts
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     export async function GET() {
@@ -126,7 +126,7 @@ app/api/products/route.ts
 
       return await db.query('SELECT * FROM products')
     }
-[/code]
+```
 
 > **알아두면 좋아요**: `use cache`는 Route Handler 본문 안에서 직접 사용할 수 없으므로 헬퍼 함수로 분리하세요. 캐시된 응답은 새 요청이 도착하면 `cacheLife`에 따라 재검증됩니다.
 
@@ -152,7 +152,7 @@ Page| Route| Result
 app/page.ts
 
 JavaScriptTypeScript
-[code]
+```
     export default function Page() {
       return <h1>Hello, Next.js!</h1>
     }
@@ -160,7 +160,7 @@ JavaScriptTypeScript
     // Conflict
     // `app/route.ts`
     export async function POST(request: Request) {}
-[/code]
+```
 
 Route Handlers가 [프런트엔드 애플리케이션을 보완](https://nextjs.org/docs/app/guides/backend-for-frontend)하는 방법을 더 알아보거나 Route Handlers [API Reference](https://nextjs.org/docs/app/api-reference/file-conventions/route)를 살펴보세요.
 
@@ -171,14 +171,14 @@ TypeScript에서는 전역으로 제공되는 [`RouteContext`](https://nextjs.or
 app/users/[id]/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextRequest } from 'next/server'
 
     export async function GET(_req: NextRequest, ctx: RouteContext<'/users/[id]'>) {
       const { id } = await ctx.params
       return Response.json({ id })
     }
-[/code]
+```
 
 > **알아두면 좋아요**
 >

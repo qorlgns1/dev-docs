@@ -22,7 +22,7 @@ HTML **`<video>`** 태그는 직접 제공하는 비디오 파일을, **`<iframe
 HTML [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) 태그를 사용하면 자체 호스팅 또는 직접 제공되는 비디오 콘텐츠를 임베드하여 재생과 모양을 완전히 제어할 수 있습니다.
 
 app/ui/video.jsx
-[code]
+```
     export function Video() {
       return (
         <video width="320" height="240" controls preload="none">
@@ -37,7 +37,7 @@ app/ui/video.jsx
         </video>
       )
     }
-[/code]
+```
 
 ### 일반적인 `<video>` 태그 속성[](https://nextjs.org/docs/app/guides/videos#common-video-tag-attributes)
 
@@ -68,13 +68,13 @@ Attribute| Description| Example Value
 HTML `<iframe>` 태그를 사용하면 YouTube나 Vimeo 같은 외부 플랫폼의 비디오를 임베드할 수 있습니다.
 
 app/page.jsx
-[code]
+```
     export default function Page() {
       return (
         <iframe src="https://www.youtube.com/embed/19g66ezsKAg" allowFullScreen />
       )
     }
-[/code]
+```
 
 ### 일반적인 `<iframe>` 태그 속성[](https://nextjs.org/docs/app/guides/videos#common-iframe-tag-attributes)
 
@@ -108,20 +108,20 @@ Next.js 애플리케이션에 비디오를 임베드하는 방법은 두 가지�
 첫 단계는 비디오를 임베드할 적절한 iframe을 생성하는 [서버 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components)를 만드는 것입니다. 이 컴포넌트는 비디오의 소스 URL을 가져와 iframe을 렌더링합니다.
 
 app/ui/video-component.jsx
-[code]
+```
     export default async function VideoComponent() {
       const src = await getVideoSrc()
 
       return <iframe src={src} allowFullScreen />
     }
-[/code]
+```
 
 **2\. React Suspense를 사용해 비디오 컴포넌트 스트리밍하기**
 
 비디오를 임베드하는 서버 컴포넌트를 만든 뒤에는 [React Suspense](https://react.dev/reference/react/Suspense)를 사용해 컴포넌트를 [스트리밍](https://nextjs.org/docs/app/api-reference/file-conventions/loading)합니다.
 
 app/page.jsx
-[code]
+```
     import { Suspense } from 'react'
     import VideoComponent from '../ui/VideoComponent.jsx'
 
@@ -135,7 +135,7 @@ app/page.jsx
         </section>
       )
     }
-[/code]
+```
 
 > **알아 두면 좋은 정보** : 외부 플랫폼의 비디오를 임베드할 때 다음 모범 사례를 고려하세요:
 >
@@ -148,7 +148,7 @@ app/page.jsx
 더 몰입감 있고 유익한 로딩 경험을 제공하려면 대체 UI로 로딩 스켈레톤을 사용하는 것을 고려하세요. 간단한 로딩 메시지 대신 비디오 플레이어와 유사한 스켈레톤을 표시할 수 있습니다.
 
 app/page.jsx
-[code]
+```
     import { Suspense } from 'react'
     import VideoComponent from '../ui/VideoComponent.jsx'
     import VideoSkeleton from '../ui/VideoSkeleton.jsx'
@@ -163,7 +163,7 @@ app/page.jsx
         </section>
       )
     }
-[/code]
+```
 
 ## 자체 호스팅 비디오[](https://nextjs.org/docs/app/guides/videos#self-hosted-videos)
 
@@ -189,7 +189,7 @@ Vercel 대시보드에서 "Storage" 탭으로 이동해 [Vercel Blob](https://ve
 비디오가 업로드되어 저장되면 Next.js 애플리케이션에서 이를 표시할 수 있습니다. 다음은 `<video>` 태그와 React Suspense를 사용해 이를 구현하는 예시입니다.
 
 app/page.jsx
-[code]
+```
     import { Suspense } from 'react'
     import { list } from '@vercel/blob'
 
@@ -215,7 +215,7 @@ app/page.jsx
         </video>
       )
     }
-[/code]
+```
 
 이 방식에서는 페이지가 `@vercel/blob` URL을 사용해 `VideoComponent`로 비디오를 표시합니다. React Suspense가 비디오 URL을 가져와 비디오가 표시될 준비가 될 때까지 대체 UI를 보여 줍니다.
 

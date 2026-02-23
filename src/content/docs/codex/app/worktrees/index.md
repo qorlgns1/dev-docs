@@ -108,9 +108,9 @@ Codex는 `$CODEX_HOME/worktrees` 아래에 워크트리를 생성합니다. 시�
 ### 브랜치 제한 사항
 
 Codex가 워크트리에서 작업을 마친 뒤 **Create branch here**로 `feature/a` 브랜치를 만들었다고 가정해 보겠습니다. 이제 이를 로컬 체크아웃에서 확인하고 싶습니다. 이 브랜치를 체크아웃하려고 하면 다음 오류가 발생합니다.
-[code] 
+```
     fatal: 'feature/a' is already used by worktree at '<WORKTREE_PATH>'
-[/code]
+```
 
 이 문제를 해결하려면 워크트리에서 `feature/a` 대신 다른 브랜치를 체크아웃해야 합니다.
 

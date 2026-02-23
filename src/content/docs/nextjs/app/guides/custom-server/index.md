@@ -26,7 +26,7 @@ Next.js는 기본적으로 `next start`와 함께 자체 서버를 포함합니�
 server.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { createServer } from 'http'
     import next from 'next'
 
@@ -46,14 +46,14 @@ JavaScriptTypeScript
         }`
       )
     })
-[/code]
+```
 
 > `server.js`는 Next.js Compiler나 번들링 과정을 거치지 않습니다. 이 파일이 요구하는 구문과 소스 코드가 현재 사용 중인 Node.js 버전과 호환되는지 확인하세요. [예시 보기](https://github.com/vercel/next.js/tree/canary/examples/custom-server).
 
 커스텀 서버를 실행하려면 `package.json`의 `scripts`를 다음과 같이 업데이트해야 합니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "node server.js",
@@ -61,14 +61,14 @@ package.json
         "start": "NODE_ENV=production node server.js"
       }
     }
-[/code]
+```
 
 또는 `nodemon`을 설정할 수도 있습니다([예시](https://github.com/vercel/next.js/tree/canary/examples/custom-server)). 커스텀 서버는 다음 import를 사용하여 서버와 Next.js 애플리케이션을 연결합니다:
-[code]
+```
     import next from 'next'
 
     const app = next({})
-[/code]
+```
 
 위의 `next` import는 다음 옵션이 포함된 객체를 인수로 받는 함수입니다:
 

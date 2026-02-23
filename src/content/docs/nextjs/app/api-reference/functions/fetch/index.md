@@ -22,7 +22,7 @@ Server Component 내부에서 `async`/`await`와 함께 직접 `fetch`를 호출
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       let data = await fetch('https://api.vercel.app/blog')
       let posts = await data.json()
@@ -34,7 +34,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 ## `fetch(url, options)`[](https://nextjs.org/docs/app/api-reference/functions/fetch#fetchurl-options)
 
@@ -43,9 +43,9 @@ Next.js는 [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_
 ### `options.cache`[](https://nextjs.org/docs/app/api-reference/functions/fetch#optionscache)
 
 요청이 Next.js [Data Cache](https://nextjs.org/docs/app/guides/caching#data-cache)와 어떻게 상호작용할지 구성합니다.
-[code]
+```
     fetch(`https://...`, { cache: 'force-cache' | 'no-store' })
-[/code]
+```
 
   * **`auto no cache`** (기본값): 개발 환경에서는 Next.js가 매 요청마다 원격 서버에서 리소스를 가져오지만, 경로가 정적으로 사전 렌더링되므로 `next build` 중에는 한 번만 가져옵니다. 경로에서 [Dynamic API](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)를 감지하면 Next.js는 매 요청마다 리소스를 가져옵니다.
   * **`no-store`**: 경로에서 Dynamic API가 감지되지 않았더라도 매 요청마다 Next.js가 원격 서버에서 리소스를 가져옵니다.
@@ -54,9 +54,9 @@ Next.js는 [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_
     * 일치 항목이 없거나 만료되었으면 Next.js가 원격 서버에서 리소스를 가져와 다운로드한 리소스로 캐시를 업데이트합니다.
 
 ### `options.next.revalidate`[](https://nextjs.org/docs/app/api-reference/functions/fetch#optionsnextrevalidate)
-[code]
+```
     fetch(`https://...`, { next: { revalidate: false | 0 | number } })
-[/code]
+```
 
 리소스의 캐시 수명을 초 단위로 설정합니다. [Data Cache](https://nextjs.org/docs/app/guides/caching#data-cache).
 
@@ -72,9 +72,9 @@ Next.js는 [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_
 >
 
 ### `options.next.tags`[](https://nextjs.org/docs/app/api-reference/functions/fetch#optionsnexttags)
-[code]
+```
     fetch(`https://...`, { next: { tags: ['collection'] } })
-[/code]
+```
 
 리소스의 캐시 태그를 설정합니다. 이후 [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)를 사용해 필요 시 데이터를 재검증할 수 있습니다. 사용자 정의 태그의 최대 길이는 256자이며 태그 항목은 최대 128개입니다.
 

@@ -22,9 +22,9 @@ Source URL: https://nextjs.org/docs/messages/no-assign-module-variable
 다른 변수 이름을 사용하세요:
 
 example.js
-[code]
+```
     let myModule = {...}
-[/code]
+```
 
 이 정보가 도움이 되었나요?
 

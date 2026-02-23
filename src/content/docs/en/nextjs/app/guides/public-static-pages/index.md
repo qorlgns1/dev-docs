@@ -255,4 +255,3 @@ In future guides, we'll learn how to:
 * Create variants of the same page with route params.
 * Create private pages with personalized user data.
 ---
-

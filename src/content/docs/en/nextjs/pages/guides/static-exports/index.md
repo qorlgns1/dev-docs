@@ -184,4 +184,3 @@ server {
 | `v13.4.0` | App Router (Stable) adds enhanced static export support, including using React Server Components and Route Handlers. |
 | `v13.3.0` | `next export` is deprecated and replaced with `"output": "export"`                                                   |
 ---
-

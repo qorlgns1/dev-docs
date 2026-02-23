@@ -29,7 +29,7 @@ Incremental Static Regeneration(ISR)은 다음을 가능하게 합니다:
 app/blog/[id]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     interface Post {
       id: string
       title: string
@@ -65,7 +65,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 이 예제가 작동하는 방식은 다음과 같습니다:
 
@@ -97,7 +97,7 @@ JavaScriptTypeScript
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     interface Post {
       id: string
       title: string
@@ -120,7 +120,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 revalidate 시간을 길게 설정하는 것이 좋습니다. 예를 들어 1초 대신 1시간을 권장합니다. 더 정밀한 제어가 필요하다면 온디맨드 재검증을 사용하세요. 실시간 데이터가 필요하면 [동적 렌더링](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)으로 전환하는 것을 고려하세요.
 
@@ -135,7 +135,7 @@ revalidate 시간을 길게 설정하는 것이 좋습니다. 예를 들어 1초
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { revalidatePath } from 'next/cache'
@@ -144,7 +144,7 @@ JavaScriptTypeScript
       // Invalidate the cache for the /posts route
       revalidatePath('/posts')
     }
-[/code]
+```
 
 [데모 보기](https://on-demand-isr.vercel.app) 및 [소스 코드 살펴보기](https://github.com/vercel/on-demand-isr).
 
@@ -155,7 +155,7 @@ JavaScriptTypeScript
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       const data = await fetch('https://api.vercel.app/blog', {
         next: { tags: ['posts'] },
@@ -163,14 +163,14 @@ JavaScriptTypeScript
       const posts = await data.json()
       // ...
     }
-[/code]
+```
 
 ORM을 사용하거나 데이터베이스에 연결하는 경우 `unstable_cache`를 사용할 수 있습니다:
 
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { unstable_cache } from 'next/cache'
     import { db, posts } from '@/lib/db'
 
@@ -186,14 +186,14 @@ JavaScriptTypeScript
       const posts = getCachedPosts()
       // ...
     }
-[/code]
+```
 
 그런 다음 [Server Actions](https://nextjs.org/docs/app/getting-started/updating-data) 또는 [Route Handler](https://nextjs.org/docs/app/api-reference/file-conventions/route)에서 `revalidateTag`를 사용할 수 있습니다:
 
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { revalidateTag } from 'next/cache'
@@ -202,7 +202,7 @@ JavaScriptTypeScript
       // Invalidate all data tagged with 'posts'
       revalidateTag('posts')
     }
-[/code]
+```
 
 ### 처리되지 않은 예외 다루기[](https://nextjs.org/docs/app/guides/incremental-static-regeneration#handling-uncaught-exceptions)
 
@@ -219,7 +219,7 @@ Next.js 캐시 위치를 구성하여 캐시된 페이지와 데이터를 영구
 `fetch` API를 사용하는 경우 추가 로깅을 추가해 어떤 요청이 캐시되었는지 또는 캐시되지 않았는지 파악할 수 있습니다. [`logging` 옵션](https://nextjs.org/docs/app/api-reference/config/next-config-js/logging)에 대해 자세히 알아보세요.
 
 next.config.js
-[code]
+```
     module.exports = {
       logging: {
         fetches: {
@@ -227,7 +227,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 ### 프로덕션 동작 검증[](https://nextjs.org/docs/app/guides/incremental-static-regeneration#verifying-correct-production-behavior)
 
@@ -236,9 +236,9 @@ next.config.js
 이를 통해 프로덕션 환경과 동일한 방식으로 ISR 동작을 검증할 수 있습니다. 추가 디버깅이 필요하면 `.env` 파일에 다음 환경 변수를 추가하세요:
 
 .env
-[code]
+```
     NEXT_PRIVATE_DEBUG_CACHE=1
-[/code]
+```
 
 이렇게 하면 Next.js 서버 콘솔이 ISR 캐시 적중과 미스를 로깅합니다. 출력 내용을 확인해 `next build` 동안 어떤 페이지가 생성되었는지, 그리고 경로가 온디맨드로 접근될 때 페이지가 어떻게 업데이트되는지 확인할 수 있습니다.
 

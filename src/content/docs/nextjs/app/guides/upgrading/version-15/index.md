@@ -20,18 +20,18 @@ Next.js 버전 15로 업데이트하려면 `upgrade` 코데모드를 사용할 �
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm dlx @next/codemod@canary upgrade latest
-[/code]
+```
 
 수동으로 진행하려면 최신 Next 및 React 버전을 설치했는지 확인하세요:
 
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add next@latest react@latest react-dom@latest eslint-config-next@latest
-[/code]
+```
 
 > **알아두면 좋아요:**
 >
@@ -62,7 +62,7 @@ Terminal
 ### `cookies`[](https://nextjs.org/docs/app/guides/upgrading/version-15#cookies)
 
 #### 권장 비동기 사용법[](https://nextjs.org/docs/app/guides/upgrading/version-15#recommended-async-usage)
-[code]
+```
     import { cookies } from 'next/headers'
 
     // Before
@@ -72,14 +72,14 @@ Terminal
     // After
     const cookieStore = await cookies()
     const token = cookieStore.get('token')
-[/code]
+```
 
 #### 임시 동기 사용법[](https://nextjs.org/docs/app/guides/upgrading/version-15#temporary-synchronous-usage)
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { cookies, type UnsafeUnwrappedCookies } from 'next/headers'
 
     // Before
@@ -90,12 +90,12 @@ JavaScriptTypeScript
     const cookieStore = cookies() as unknown as UnsafeUnwrappedCookies
     // will log a warning in dev
     const token = cookieStore.get('token')
-[/code]
+```
 
 ### `headers`[](https://nextjs.org/docs/app/guides/upgrading/version-15#headers)
 
 #### 권장 비동기 사용법[](https://nextjs.org/docs/app/guides/upgrading/version-15#recommended-async-usage-1)
-[code]
+```
     import { headers } from 'next/headers'
 
     // Before
@@ -105,14 +105,14 @@ JavaScriptTypeScript
     // After
     const headersList = await headers()
     const userAgent = headersList.get('user-agent')
-[/code]
+```
 
 #### 임시 동기 사용법[](https://nextjs.org/docs/app/guides/upgrading/version-15#temporary-synchronous-usage-1)
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { headers, type UnsafeUnwrappedHeaders } from 'next/headers'
 
     // Before
@@ -123,12 +123,12 @@ JavaScriptTypeScript
     const headersList = headers() as unknown as UnsafeUnwrappedHeaders
     // will log a warning in dev
     const userAgent = headersList.get('user-agent')
-[/code]
+```
 
 ### `draftMode`[](https://nextjs.org/docs/app/guides/upgrading/version-15#draftmode)
 
 #### 권장 비동기 사용법[](https://nextjs.org/docs/app/guides/upgrading/version-15#recommended-async-usage-2)
-[code]
+```
     import { draftMode } from 'next/headers'
 
     // Before
@@ -136,14 +136,14 @@ JavaScriptTypeScript
 
     // After
     const { isEnabled } = await draftMode()
-[/code]
+```
 
 #### 임시 동기 사용법[](https://nextjs.org/docs/app/guides/upgrading/version-15#temporary-synchronous-usage-2)
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { draftMode, type UnsafeUnwrappedDraftMode } from 'next/headers'
 
     // Before
@@ -152,7 +152,7 @@ JavaScriptTypeScript
     // After
     // will log a warning in dev
     const { isEnabled } = draftMode() as unknown as UnsafeUnwrappedDraftMode
-[/code]
+```
 
 ### `params` & `searchParams`[](https://nextjs.org/docs/app/guides/upgrading/version-15#params--searchparams)
 
@@ -161,7 +161,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // Before
     type Params = { slug: string }
 
@@ -195,14 +195,14 @@ JavaScriptTypeScript
     }) {
       const { slug } = await params
     }
-[/code]
+```
 
 #### 동기 레이아웃[](https://nextjs.org/docs/app/guides/upgrading/version-15#synchronous-layout)
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // Before
     type Params = { slug: string }
 
@@ -228,14 +228,14 @@ JavaScriptTypeScript
       const params = use(props.params)
       const slug = params.slug
     }
-[/code]
+```
 
 #### 비동기 페이지[](https://nextjs.org/docs/app/guides/upgrading/version-15#asynchronous-page)
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // Before
     type Params = { slug: string }
     type SearchParams = { [key: string]: string | string[] | undefined }
@@ -285,10 +285,10 @@ JavaScriptTypeScript
       const slug = params.slug
       const query = searchParams.query
     }
-[/code]
+```
 
 #### 동기 페이지[](https://nextjs.org/docs/app/guides/upgrading/version-15#synchronous-page)
-[code]
+```
     'use client'
 
     // Before
@@ -321,8 +321,8 @@ JavaScriptTypeScript
       const slug = params.slug
       const query = searchParams.query
     }
-[/code]
-[code]
+```
+```
     // Before
     export default function Page({ params, searchParams }) {
       const { slug } = params
@@ -339,14 +339,14 @@ JavaScriptTypeScript
       const query = searchParams.query
     }
 
-[/code]
+```
 
 #### 라우트 핸들러[](https://nextjs.org/docs/app/guides/upgrading/version-15#route-handlers)
 
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     // Before
     type Params = { slug: string }
 
@@ -362,7 +362,7 @@ JavaScriptTypeScript
       const params = await segmentData.params
       const slug = params.slug
     }
-[/code]
+```
 
 ## `runtime` 구성(호환성 파괴 변경)[](https://nextjs.org/docs/app/guides/upgrading/version-15#runtime-configuration-breaking-change)
 
@@ -375,19 +375,19 @@ JavaScriptTypeScript
 특정 `fetch` 요청을 캐시에 넣으려면 `cache: 'force-cache'` 옵션을 전달하면 됩니다.
 
 app/layout.js
-[code]
+```
     export default async function RootLayout() {
       const a = await fetch('https://...') // Not Cached
       const b = await fetch('https://...', { cache: 'force-cache' }) // Cached
 
       // ...
     }
-[/code]
+```
 
 레이아웃이나 페이지의 모든 `fetch` 요청을 캐시하도록 설정하려면 `export const fetchCache = 'default-cache'` [segment config option](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config)을 사용할 수 있습니다. 개별 `fetch` 요청에서 `cache` 옵션을 지정하면 해당 값이 우선합니다.
 
 app/layout.js
-[code]
+```
     // Since this is the root layout, all fetch requests in the app
     // that don't set their own cache option will be cached.
     export const fetchCache = 'default-cache'
@@ -398,18 +398,18 @@ app/layout.js
 
       // ...
     }
-[/code]
+```
 
 ## Route Handlers[](https://nextjs.org/docs/app/guides/upgrading/version-15#route-handlers-1)
 
 [Route Handlers](https://nextjs.org/docs/app/api-reference/file-conventions/route)의 `GET` 함수는 더 이상 기본적으로 캐시되지 않습니다. `GET` 메서드를 캐시하도록 설정하려면 Route Handler 파일에서 `export const dynamic = 'force-static'`과 같은 [route config option](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config)을 사용할 수 있습니다.
 
 app/api/route.js
-[code]
+```
     export const dynamic = 'force-static'
 
     export async function GET() {}
-[/code]
+```
 
 ## Client-side Router Cache[](https://nextjs.org/docs/app/guides/upgrading/version-15#client-side-router-cache)
 
@@ -418,7 +418,7 @@ app/api/route.js
 페이지 세그먼트를 캐시에 넣으려면 [`staleTimes`](https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes) 구성 옵션을 사용할 수 있습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       experimental: {
@@ -430,7 +430,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 [Layouts](https://nextjs.org/docs/app/api-reference/file-conventions/layout)와 [loading states](https://nextjs.org/docs/app/api-reference/file-conventions/loading)는 여전히 캐시되며 탐색 시 재사용됩니다.
 
@@ -439,20 +439,20 @@ next.config.js
 `@next/font` 패키지는 기본 제공 [`next/font`](https://nextjs.org/docs/app/api-reference/components/font)로 대체되어 제거되었습니다. import 이름을 안전하게 자동 변경해 주는 [codemod](https://nextjs.org/docs/app/guides/upgrading/codemods#built-in-next-font)이 제공됩니다.
 
 app/layout.js
-[code]
+```
     // Before
     import { Inter } from '@next/font/google'
 
     // After
     import { Inter } from 'next/font/google'
-[/code]
+```
 
 ## bundlePagesRouterDependencies[](https://nextjs.org/docs/app/guides/upgrading/version-15#bundlepagesrouterdependencies)
 
 `experimental.bundlePagesExternals`는 안정화되면서 이름이 `bundlePagesRouterDependencies`로 변경되었습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       // Before
@@ -465,14 +465,14 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 ## serverExternalPackages[](https://nextjs.org/docs/app/guides/upgrading/version-15#serverexternalpackages)
 
 `experimental.serverComponentsExternalPackages`는 안정화되면서 이름이 `serverExternalPackages`로 변경되었습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       // Before
@@ -485,7 +485,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 ## Speed Insights[](https://nextjs.org/docs/app/guides/upgrading/version-15#speed-insights)
 
@@ -500,7 +500,7 @@ Speed Insights를 계속 사용하려면 [Vercel Speed Insights Quickstart](http
 Vercel을 사용하는 경우 [`@vercel/functions`](https://vercel.com/docs/functions/vercel-functions-package)의 `geolocation` 및 `ipAddress` 함수를 대신 사용할 수도 있습니다.
 
 middleware.ts
-[code]
+```
     import { geolocation } from '@vercel/functions'
     import type { NextRequest } from 'next/server'
 
@@ -509,10 +509,10 @@ middleware.ts
 
       // ...
     }
-[/code]
+```
 
 middleware.ts
-[code]
+```
     import { ipAddress } from '@vercel/functions'
     import type { NextRequest } from 'next/server'
 
@@ -521,7 +521,7 @@ middleware.ts
 
       // ...
     }
-[/code]
+```
 
 Was this helpful?
 

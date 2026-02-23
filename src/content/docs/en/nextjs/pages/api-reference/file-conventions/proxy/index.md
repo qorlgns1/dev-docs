@@ -721,4 +721,3 @@ The codemod will rename the file and the function name from `middleware` to `pro
 | `v12.0.9` | Enforce absolute URLs in Edge Runtime ([PR](https://github.com/vercel/next.js/pull/33410))    |
 | `v12.0.0` | Middleware (Beta) added                                                                       |
 ---
-

@@ -20,7 +20,7 @@ Node.js에 연결할 수 있는 디버거라면 Next.js 애플리케이션 디�
 프로젝트 루트에 `.vscode/launch.json` 파일을 만들고 다음 내용을 추가하세요:
 
 launch.json
-[code]
+```
     {
       "version": "0.2.0",
       "configurations": [
@@ -66,7 +66,7 @@ launch.json
         }
       ]
     }
-[/code]
+```
 
 > **참고**: VS Code에서 Firefox 디버깅을 사용하려면 [Firefox Debugger 확장](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)을 설치해야 합니다.
 
@@ -122,9 +122,9 @@ React 전용 디버깅을 위해 [React Developer Tools](https://react.dev/learn
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm dev --inspect
-[/code]
+```
 
 `--inspect` 값은 기본 Node.js 프로세스에 전달됩니다. 고급 사용 사례는 [`--inspect` 문서](https://nodejs.org/api/cli.html#--inspecthostport)를 참고하세요.
 
@@ -133,11 +133,11 @@ Terminal
 `--inspect` 플래그로 Next.js dev 서버를 실행하면 다음과 비슷하게 표시됩니다.
 
 Terminal
-[code]
+```
     Debugger listening on ws://127.0.0.1:9229/0cf90313-350d-4466-a748-cd60f4e47c95
     For help, see: https://nodejs.org/en/docs/inspector
     ready - started server on 0.0.0.0:3000, url: http://localhost:3000
-[/code]
+```
 
 Chrome:
 

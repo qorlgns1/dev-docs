@@ -29,11 +29,11 @@ For step-by-step instructions, see the [official VS Code WSL tutorial](https://c
 
 
 #### Open VS Code from a WSL terminal
-[code] 
+```
     # From your WSL shell
     cd ~/code/your-project
     code .
-[/code]
+```
 
 This opens a WSL remote window, installs the VS Code Server if needed, and ensures integrated terminals run in Linux.
 
@@ -44,8 +44,9 @@ This opens a WSL remote window, installs the VS Code Server if needed, and ensur
   * Integrated terminals should display Linux paths (such as `/home/...`) instead of `C:\`.
 
   * You can verify with:
-[code] echo $WSL_DISTRO_NAME
-[/code]
+```
+echo $WSL_DISTRO_NAME
+```
 
 This prints your distribution name.
 
@@ -57,16 +58,16 @@ If you don’t see “WSL: …” in the status bar, press `Ctrl+Shift+P`, pick 
 ### Use Codex CLI with WSL
 
 Run these commands from an elevated PowerShell or Windows Terminal:
-[code] 
+```
     # Install default Linux distribution (like Ubuntu)
     wsl --install
     
     # Start a shell inside Windows Subsystem for Linux
     wsl
-[/code]
+```
 
 Then run these commands from your WSL shell:
-[code] 
+```
     # https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
     # Install Node.js in WSL (via nvm)
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
@@ -77,15 +78,16 @@ Then run these commands from your WSL shell:
     # Install and run Codex in WSL
     npm i -g @openai/codex
     codex
-[/code]
+```
 
 ### Working on code inside WSL
 
   * Working in Windows-mounted paths like `/mnt/c/…` can be slower than working in Windows-native paths. Keep your repositories under your Linux home directory (like `~/code/my-app`) for faster I/O and fewer symlink and permission issues: 
-[code]mkdir -p ~/code && cd ~/code
+```
+mkdir -p ~/code && cd ~/code
         git clone https://github.com/your/repo.git
         cd repo
-[/code]
+```
 
   * If you need Windows access to files, they’re under `\wsl$\Ubuntu\home&lt;user>` in Explorer.
 
@@ -106,9 +108,9 @@ Its primary limitation is that it can’t prevent file writes, deletions, or cre
 ### Grant sandbox read access
 
 When a command fails because the Windows sandbox can’t read a directory, use:
-[code] 
+```
     /sandbox-add-read-dir C:\absolute\directory\path
-[/code]
+```
 
 The path must be an existing absolute directory. After the command succeeds, later commands that run in the sandbox can read that directory during the current session.
 
@@ -130,9 +132,10 @@ Then fully restart VS Code after installation.
 
   * Make sure you’re not working under `/mnt/c`. Move the repository to WSL (for example, `~/code/…`).
   * Increase memory and CPU for WSL if needed; update WSL to the latest version: 
-[code]wsl --update
+```
+wsl --update
         wsl --shutdown
-[/code]
+```
 
 
 
@@ -140,8 +143,8 @@ Then fully restart VS Code after installation.
 #### VS Code in WSL can’t find `codex`
 
 Verify the binary exists and is on PATH inside WSL:
-[code] 
+```
     which codex || echo "codex not found"
-[/code]
+```
 
 If the binary isn’t found, install it by [following the instructions](https://developers.openai.com/codex/windows#use-codex-cli-with-wsl) above.

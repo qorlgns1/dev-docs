@@ -26,17 +26,17 @@ Tailwind CSS와 피어 의존성을 설치한 뒤 `init` 명령을 실행하여 
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add -D tailwindcss@^3 postcss autoprefixer
     npx tailwindcss init -p
-[/code]
+```
 
 ## Configuring Tailwind v3[](https://nextjs.org/docs/pages/guides/tailwind-v3-css#configuring-tailwind-v3)
 
 `tailwind.config.js` 파일에서 템플릿 경로를 설정하세요:
 
 tailwind.config.js
-[code]
+```
     /** @type {import('tailwindcss').Config} */
     module.exports = {
       content: [
@@ -49,27 +49,27 @@ tailwind.config.js
       },
       plugins: [],
     }
-[/code]
+```
 
 전역 CSS 파일에 Tailwind 지시문을 추가하세요:
 
 styles/globals.css
-[code]
+```
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
-[/code]
+```
 
 `pages/_app.js` 파일에서 CSS 파일을 가져오세요:
 
 pages/_app.js
-[code]
+```
     import '@/styles/globals.css'
 
     export default function MyApp({ Component, pageProps }) {
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 ## Using classes[](https://nextjs.org/docs/pages/guides/tailwind-v3-css#using-classes)
 
@@ -78,11 +78,11 @@ Tailwind CSS 설치와 전역 스타일 추가를 마치면 애플리케이션�
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Page() {
       return <h1 className="text-3xl font-bold underline">Hello, Next.js!</h1>
     }
-[/code]
+```
 
 ## Usage with Turbopack[](https://nextjs.org/docs/pages/guides/tailwind-v3-css#usage-with-turbopack)
 

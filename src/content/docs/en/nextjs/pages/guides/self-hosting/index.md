@@ -226,4 +226,3 @@ if (process.env.NEXT_MANUAL_SIG_HANDLE) {
 }
 ```
 ---
-

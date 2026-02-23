@@ -39,14 +39,14 @@ To configure MCP servers, choose one option:
 ### Configure with the CLI
 
 #### Add an MCP server
-[code] 
+```
     codex mcp add <server-name> --env VAR1=VALUE1 --env VAR2=VALUE2 -- <stdio server-command>
-[/code]
+```
 
 For example, to add Context7 (a free MCP server for developer documentation), you can run the following command:
-[code] 
+```
     codex mcp add context7 -- npx -y @upstash/context7-mcp
-[/code]
+```
 
 #### Other CLI commands
 
@@ -95,21 +95,21 @@ Configure each MCP server with a `[mcp_servers.<server-name>]` table in the conf
 If your OAuth provider requires a static callback URI, set the top-level `mcp_oauth_callback_port` in `config.toml`. If unset, Codex binds to an ephemeral port.
 
 #### config.toml examples
-[code] 
+```
     [mcp_servers.context7]
     command = "npx"
     args = ["-y", "@upstash/context7-mcp"]
     
     [mcp_servers.context7.env]
     MY_ENV_VAR = "MY_ENV_VALUE"
-[/code]
-[code] 
+```
+```
     [mcp_servers.figma]
     url = "https://mcp.figma.com/mcp"
     bearer_token_env_var = "FIGMA_OAUTH_TOKEN"
     http_headers = { "X-Figma-Region" = "us-east-1" }
-[/code]
-[code] 
+```
+```
     [mcp_servers.chrome_devtools]
     url = "http://localhost:3000/mcp"
     enabled_tools = ["open", "screenshot"]
@@ -117,7 +117,7 @@ If your OAuth provider requires a static callback URI, set the top-level `mcp_oa
     startup_timeout_sec = 20
     tool_timeout_sec = 45
     enabled = true
-[/code]
+```
 
 ## Examples of useful MCP servers
 

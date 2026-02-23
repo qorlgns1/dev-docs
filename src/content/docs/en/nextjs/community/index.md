@@ -39,4 +39,3 @@ We believe in creating an inclusive, welcoming community. As such, we ask all me
   - Use the `next-rspack` plugin to bundle your Next.js with Rspack.
 
 ---
-

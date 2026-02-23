@@ -16,7 +16,7 @@ Copy page
 > **참고:** 이 API는 Next.js 16에서 [`use cache`](https://nextjs.org/docs/app/api-reference/directives/use-cache)로 대체되었습니다. [Cache Components](https://nextjs.org/docs/app/getting-started/cache-components)를 사용하도록 전환하고 `unstable_cache`를 `use cache` 지시어로 교체하는 것을 권장합니다.
 
 `unstable_cache`는 데이터베이스 쿼리 같은 비용이 큰 작업 결과를 캐싱하고 여러 요청에서 재사용할 수 있게 해 줍니다.
-[code]
+```
     import { getUser } from './data';
     import { unstable_cache } from 'next/cache';
 
@@ -29,7 +29,7 @@ Copy page
       const user = await getCachedUser(userID);
       ...
     }
-[/code]
+```
 
 > **알아두면 좋은 점** :
 >
@@ -38,9 +38,9 @@ Copy page
 >
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/unstable_cache#parameters)
-[code]
+```
     const data = unstable_cache(fetchData, keyParts, options)()
-[/code]
+```
 
   * `fetchData`: 캐싱하려는 데이터를 가져오는 비동기 함수입니다. `Promise`를 반환해야 합니다.
   * `keyParts`: 캐시에 추가 식별 정보를 부여하는 키 배열입니다. 기본적으로 `unstable_cache`는 이미 인자와 함수의 문자열화 버전을 캐시 키로 사용합니다. 대부분의 경우 선택 사항이며, 매개변수로 전달하지 않은 외부 변수를 사용할 때만 필요합니다. 단, 매개변수로 전달하지 않은 클로저를 함수 안에서 사용한다면 반드시 추가해야 합니다.
@@ -57,7 +57,7 @@ Copy page
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { unstable_cache } from 'next/cache'
 
     export default async function Page({
@@ -79,7 +79,7 @@ JavaScriptTypeScript
 
       //...
     }
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/unstable_cache#version-history)
 

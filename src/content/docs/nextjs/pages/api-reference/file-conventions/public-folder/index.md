@@ -15,7 +15,7 @@ Next.js는 루트 디렉터리의 `public` 폴더 아래에서 이미지와 같�
 예를 들어 `public/avatars/me.png` 파일은 `/avatars/me.png` 경로로 방문하여 볼 수 있습니다. 해당 이미지를 표시하는 코드는 다음과 같습니다:
 
 avatar.js
-[code]
+```
     import Image from 'next/image'
 
     export function Avatar({ id, alt }) {
@@ -25,14 +25,14 @@ avatar.js
     export function AvatarOfMe() {
       return <Avatar id="me" alt="A portrait of me" />
     }
-[/code]
+```
 
 ## 캐싱[](https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder#caching)
 
 `public` 폴더의 자산은 변경될 수 있으므로 Next.js는 안전하게 캐시할 수 없습니다. 기본으로 적용되는 캐싱 헤더는 다음과 같습니다:
-[code]
+```
     Cache-Control: public, max-age=0
-[/code]
+```
 
 ## Robots, Favicons, 그리고 기타[](https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder#robots-favicons-and-others)
 

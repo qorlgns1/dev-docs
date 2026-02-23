@@ -730,4 +730,3 @@ The codemod will rename the file and the function name from `middleware` to `pro
   - API Reference for NextResponse.
 
 ---
-

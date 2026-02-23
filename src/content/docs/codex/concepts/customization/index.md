@@ -76,7 +76,7 @@ Codex는 여러 위치에서 지침을 불러올 수 있습니다. 개발자 개
 스킬 디렉터리는 워크플로우의 일부로 Codex가 호출하는 CLI 스크립트를 담은 `scripts/` 폴더를 포함할 수 있습니다(예: 시드 데이터를 준비하거나 검증을 실행). 워크플로우에 외부 시스템(이슈 트래커, 디자인 도구, 문서 서버 등)이 필요하면 해당 스킬을 [MCP](https://developers.openai.com/codex/mcp)와 함께 사용하세요.
 
 예시 `SKILL.md`:
-[code] 
+```
     ---
     name: commit
     description: Stage and commit changes in semantic groups. Use when the user wants to commit, organize commits, or clean up a branch before pushing.
@@ -86,7 +86,7 @@ Codex는 여러 위치에서 지침을 불러올 수 있습니다. 개발자 개
     2. Group into separate commits: feat → test → docs → refactor → chore.
     3. Write concise commit messages that match the change scope.
     4. Keep each commit focused and reviewable.
-[/code]
+```
 
 다음과 같은 경우 스킬을 사용하세요:
 

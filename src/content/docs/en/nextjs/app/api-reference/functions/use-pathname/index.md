@@ -158,4 +158,3 @@ export default function PathnameBadge() {
 | --------- | ------------------------- |
 | `v13.0.0` | `usePathname` introduced. |
 ---
-

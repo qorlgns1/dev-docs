@@ -22,7 +22,7 @@ Source URL: https://nextjs.org/docs/messages/no-sync-scripts
 ### Script 컴포넌트(권장)[](https://nextjs.org/docs/messages/no-sync-scripts#script-component-recommended)
 
 pages/index.js
-[code]
+```
     import Script from 'next/script'
 
     function Home() {
@@ -35,13 +35,13 @@ pages/index.js
     }
 
     export default Home
-[/code]
+```
 
 ### `async` 또는 `defer` 사용[](https://nextjs.org/docs/messages/no-sync-scripts#use-async-or-defer)
-[code]
+```
     <script src="https://third-party-script.js" async />
     <script src="https://third-party-script.js" defer />
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-sync-scripts#useful-links)
 

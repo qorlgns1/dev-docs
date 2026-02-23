@@ -28,7 +28,7 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 `webpack` 사용을 확장하려면 `next.config.js` 안에서 구성을 확장하는 함수를 다음과 같이 정의할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       webpack: (
         config,
@@ -38,7 +38,7 @@ next.config.js
         return config
       },
     }
-[/code]
+```
 
 > `webpack` 함수는 서버용(nodejs / edge runtime)으로 두 번, 클라이언트용으로 한 번 총 세 번 실행됩니다. 이를 통해 `isServer` 속성을 사용해 클라이언트와 서버 구성을 구분할 수 있습니다.
 
@@ -52,7 +52,7 @@ next.config.js
     * `babel`: `Object` \- 기본 `babel-loader` 구성.
 
 `defaultLoaders.babel` 사용 예시:
-[code]
+```
     // Example config for adding a loader that depends on babel-loader
     // This source was taken from the @next/mdx plugin source:
     // https://github.com/vercel/next.js/tree/canary/packages/next-mdx
@@ -72,7 +72,7 @@ next.config.js
         return config
       },
     }
-[/code]
+```
 
 #### `nextRuntime`[](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack#nextruntime)
 

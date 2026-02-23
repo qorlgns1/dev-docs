@@ -40,17 +40,17 @@ Codex는 셸 명령이나 파일 변경이 아닌 앱(커넥터) 도구 호출�
 Codex cloud에서는 [agent internet access](https://developers.openai.com/codex/cloud/internet-access)를 참고해 전체 인터넷 액세스나 도메인 허용 목록을 활성화하십시오.
 
 Codex 앱, CLI, IDE Extension에서는 기본 `workspace-write` 샌드박스 모드가 설정에서 활성화하지 않는 한 네트워크 액세스를 꺼 둡니다:
-[code] 
+```
     [sandbox_workspace_write]
     network_access = true
-[/code]
+```
 
 전체 네트워크 액세스를 부여하지 않고도 [web search tool](https://platform.openai.com/docs/guides/tools-web-search)을 제어할 수 있습니다. Codex는 결과에 접근할 때 기본적으로 웹 검색 캐시를 사용합니다. 이 캐시는 OpenAI가 관리하는 웹 결과 인덱스로, 캐시 모드에서는 실시간 페이지를 가져오는 대신 사전 색인된 결과를 반환합니다. 이는 임의의 실시간 콘텐츠에서 오는 프롬프트 인젝션 노출을 줄이지만, 웹 결과는 여전히 신뢰하지 않는 것이 좋습니다. `--yolo` 또는 다른 [full access sandbox setting](https://developers.openai.com/codex/security#common-sandbox-and-approval-combinations)을 사용할 경우 웹 검색 기본값이 실시간 결과가 됩니다. 실시간 탐색을 허용하려면 `--search`를 사용하거나 `web_search = "live"`로 설정하고, 도구를 끄려면 `"disabled"`로 설정하십시오:
-[code] 
+```
     web_search = "cached"  # default
     # web_search = "disabled"
     # web_search = "live"  # same as --search
-[/code]
+```
 
 Codex에서 네트워크 액세스나 웹 검색을 활성화할 때는 주의하십시오. 프롬프트 인젝션이 에이전트로 하여금 신뢰할 수 없는 지시를 가져오고 따르도록 만들 수 있습니다.
 
@@ -106,7 +106,7 @@ Auto (기본값)| _플래그 불필요_ 또는 `--full-auto`| Codex가 워크스
 #### `config.toml`에서의 구성
 
 더 폭넓은 구성 워크플로는 [구성 기본](https://developers.openai.com/codex/config-basic), [고급 구성](https://developers.openai.com/codex/config-advanced#approval-policies-and-sandbox-modes), [구성 레퍼런스](https://developers.openai.com/codex/config-reference)를 참조하세요.
-[code] 
+```
     # Always ask for approval mode
     approval_policy = "untrusted"
     sandbox_mode    = "read-only"
@@ -114,10 +114,10 @@ Auto (기본값)| _플래그 불필요_ 또는 `--full-auto`| Codex가 워크스
     # Optional: Allow network in workspace-write mode
     [sandbox_workspace_write]
     network_access = true
-[/code]
+```
 
 프리셋을 프로파일로 저장한 뒤 `codex --profile <name>`으로 불러올 수도 있습니다:
-[code] 
+```
     [profiles.full_auto]
     approval_policy = "on-request"
     sandbox_mode    = "workspace-write"
@@ -125,19 +125,18 @@ Auto (기본값)| _플래그 불필요_ 또는 `--full-auto`| Codex가 워크스
     [profiles.readonly_quiet]
     approval_policy = "never"
     sandbox_mode    = "read-only"
-[/code]
+```
 
 ### 로컬에서 샌드박스를 테스트
 
 Codex 샌드박스에서 명령이 실행될 때 어떤 일이 발생하는지 확인하려면 다음 Codex CLI 명령을 사용하세요:
-[code] 
+```
     # macOS
     codex sandbox macos [--full-auto] [--log-denials] [COMMAND]...
     # Linux
-[/code]
+```
 
 codex sandbox linux [--full-auto] [COMMAND]...
-[/code]
 
 `sandbox` 명령은 `codex debug` 이름으로도 제공되며, 플랫폼 헬퍼에도 별칭이 있습니다(예: `codex sandbox seatbelt`, `codex sandbox landlock`).
 
@@ -152,11 +151,11 @@ Codex는 사용하는 OS에 따라 샌드박스를 다르게 적용합니다:
 
 
 Codex IDE 확장을 Windows에서 사용할 경우 WSL을 직접 지원합니다. WSL이 있을 때마다 에이전트가 그 안에 머무르도록 VS Code 설정에 다음을 지정하세요:
-[code] 
+```
     {
       "chatgpt.runCodexInWindowsSubsystemForLinux": true
     }
-[/code]
+```
 
 이렇게 하면 호스트 OS가 Windows일 때도 IDE 확장이 명령, 승인, 파일 시스템 접근에 대해 Linux 샌드박스 의미 체계를 상속합니다. 자세한 내용은 [Windows setup guide](https://developers.openai.com/codex/windows)를 참조하십시오.
 
@@ -191,33 +190,33 @@ Codex는 OpenTelemetry(OTel)를 통한 옵트인 모니터링을 지원하여 �
 ### Enable OTel (opt-in)
 
 Codex 구성(일반적으로 `~/.codex/config.toml`)에 `[otel]` 블록을 추가하고, 내보내기 대상 및 프롬프트 텍스트 기록 여부를 선택하세요.
-[code] 
+```
     [otel]
     environment = "staging"   # dev | staging | prod
     exporter = "none"          # none | otlp-http | otlp-grpc
     log_user_prompt = false     # redact prompt text unless policy allows
-[/code]
+```
 
   * `exporter = "none"`이면 계측은 활성 상태로 두되 데이터를 어디에도 보내지 않습니다.
 
 * 자체 수집기로 이벤트를 전송하려면 다음 옵션 중 하나를 선택하세요:
 
 
-[code] 
+```
     [otel]
     exporter = { otlp-http = {
       endpoint = "https://otel.example.com/v1/logs",
       protocol = "binary",
       headers = { "x-otlp-api-key" = "${OTLP_TOKEN}" }
     }}
-[/code]
-[code] 
+```
+```
     [otel]
     exporter = { otlp-grpc = {
       endpoint = "https://otel.example.com:4317",
       headers = { "x-otlp-meta" = "abc123" }
     }}
-[/code]
+```
 
 Codex는 이벤트를 배치 처리하고 종료 시 플러시합니다. Codex는 OTel 모듈이 생성한 텔레메트리만 내보냅니다.
 
@@ -293,15 +292,15 @@ Business 또는 Enterprise 플랜에서 ChatGPT로 로그인하면 Codex가 Code
 #### 예시 requirements.toml
 
 다음 예시는 `--ask-for-approval never`와 `--sandbox danger-full-access`(`--yolo` 포함)를 차단합니다:
-[code] 
+```
     allowed_approval_policies = ["untrusted", "on-request"]
     allowed_sandbox_modes = ["read-only", "workspace-write"]
-[/code]
+```
 
 웹 검색 모드도 제한할 수 있습니다:
-[code] 
+```
     allowed_web_search_modes = ["cached"] # "disabled" remains implicitly allowed
-[/code]
+```
 
 `allowed_web_search_modes = []`는 사실상 `"disabled"`만 허용합니다. 예를 들어 `allowed_web_search_modes = ["cached"]`는 `danger-full-access` 세션에서도 실시간 웹 검색을 막습니다.
 
@@ -310,22 +309,22 @@ Business 또는 Enterprise 플랜에서 ChatGPT로 로그인하면 Codex가 Code
 관리자는 `[rules]` 테이블을 사용해 `requirements.toml`에서 제한적인 명령 규칙을 강제할 수 있습니다. 이러한 규칙은 기존 `.rules` 파일과 병합되며, 가장 제한적인 결정이 최종적으로 적용됩니다.
 
 `.rules`와 달리 요구 사항 규칙에는 반드시 `decision`을 지정해야 하며, 값은 `"prompt"` 또는 `"forbidden"`이어야 합니다(`"allow"` 불가).
-[code] 
+```
     [rules]
     prefix_rules = [
       { pattern = [{ token = "rm" }], decision = "forbidden", justification = "Use git clean -fd instead." },
       { pattern = [{ token = "git" }, { any_of = ["push", "commit"] }], decision = "prompt", justification = "Require review before mutating history." },
     ]
-[/code]
+```
 
 Codex가 활성화할 수 있는 MCP 서버를 제한하려면 승인 목록 `mcp_servers`를 추가합니다. stdio 서버는 `command`로, 스트리밍 가능한 HTTP 서버는 `url`로 매칭합니다:
-[code] 
+```
     [mcp_servers.docs]
     identity = { command = "codex-mcp" }
     
     [mcp_servers.remote]
     identity = { url = "https://example.com/mcp" }
-[/code]
+```
 
 `mcp_servers`가 존재하지만 비어 있으면 Codex는 모든 MCP 서버를 비활성화합니다.
 
@@ -379,7 +378,7 @@ Codex는 표준 macOS MDM 페이로드를 준수하므로 `Jamf Pro`, `Fleet`, `
 페이로드에 비밀 정보나 변동성이 큰 동적 값을 포함하지 마세요. 관리 TOML은 변경 관리 대상인 다른 MDM 설정과 동일하게 취급해야 합니다.
 
 ### Example managed_config.toml
-[code] 
+```
     # Set conservative defaults
     approval_policy = "on-request"
     sandbox_mode    = "workspace-write"
@@ -392,7 +391,7 @@ Codex는 표준 macOS MDM 페이로드를 준수하므로 `Jamf Pro`, `Fleet`, `
     exporter = "otlp-http"            # point at your collector
     log_user_prompt = false            # keep prompts redacted
     # exporter details live under exporter tables; see Monitoring and telemetry above
-[/code]
+```
 
 ### 권장 가드레일
 

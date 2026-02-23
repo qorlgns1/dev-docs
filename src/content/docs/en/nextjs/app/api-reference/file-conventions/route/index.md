@@ -673,4 +673,3 @@ See the [API reference](https://nextjs.org/docs/app/api-reference/file-conventio
 | `v15.0.0-RC` | The default caching for `GET` handlers was changed from static to dynamic                            |
 | `v13.2.0`    | Route Handlers are introduced.                                                                       |
 ---
-

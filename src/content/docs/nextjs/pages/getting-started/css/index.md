@@ -29,45 +29,45 @@ Tailwind CSS 설치:
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add -D tailwindcss @tailwindcss/postcss
-[/code]
+```
 
 `postcss.config.mjs` 파일에 PostCSS 플러그인을 추가하세요.
 
 postcss.config.mjs
-[code]
+```
     export default {
       plugins: {
         '@tailwindcss/postcss': {},
       },
     }
-[/code]
+```
 
 글로벌 CSS 파일에서 Tailwind를 가져옵니다.
 
 styles/globals.css
-[code]
+```
     @import 'tailwindcss';
-[/code]
+```
 
 `pages/_app.js` 파일에서 해당 CSS 파일을 가져옵니다.
 
 pages/_app.js
-[code]
+```
     import '@/styles/globals.css'
 
     export default function MyApp({ Component, pageProps }) {
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 이제 애플리케이션에서 Tailwind 유틸리티 클래스를 사용할 수 있습니다.
 
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Home() {
       return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -75,7 +75,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요:** 매우 오래된 브라우저를 더 폭넓게 지원하려면 [Tailwind CSS v3 설정 지침](https://nextjs.org/docs/app/guides/tailwind-v3-css)을 확인하세요.
 
@@ -86,22 +86,22 @@ CSS Modules는 고유한 클래스 이름을 생성해 CSS를 로컬 범위로 �
 CSS Modules를 사용하려면 `.module.css` 확장자를 가진 새 파일을 만들고 `pages` 디렉터리 내부의 임의의 컴포넌트에서 가져오세요.
 
 ./styles/blog.module.css
-[code]
+```
     .blog {
       padding: 24px;
     }
-[/code]
+```
 
 pages/blog/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import styles from './blog.module.css'
 
     export default function Page() {
       return <main className={styles.blog}></main>
     }
-[/code]
+```
 
 ## Global CSS[](https://nextjs.org/docs/pages/getting-started/css#global-css)
 
@@ -110,13 +110,13 @@ JavaScriptTypeScript
 애플리케이션의 **모든 경로**에 스타일을 적용하려면 `pages/_app.js` 파일에서 스타일시트를 가져오세요.
 
 pages/_app.js
-[code]
+```
     import '@/styles/global.css'
 
     export default function MyApp({ Component, pageProps }) {
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 스타일시트의 글로벌 특성과 충돌을 방지하기 위해 [`pages/_app.js`](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) 내부에서 가져오는 것이 좋습니다.
 
@@ -131,18 +131,18 @@ Next.js **9.5.4** 이후에는 애플리케이션 어디에서나 `node_modules`
 `bootstrap`이나 `nprogress`처럼 글로벌 스타일시트는 `pages/_app.js` 내부에서 가져와야 합니다. 예시는 다음과 같습니다.
 
 pages/_app.js
-[code]
+```
     import 'bootstrap/dist/css/bootstrap.css'
 
     export default function MyApp({ Component, pageProps }) {
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 서드파티 컴포넌트에 필요한 CSS를 가져오려면 해당 컴포넌트에서 가져올 수 있습니다. 예시는 다음과 같습니다.
 
 components/example-dialog.js
-[code]
+```
     import { useState } from 'react'
     import { Dialog } from '@reach/dialog'
     import VisuallyHidden from '@reach/visually-hidden'
@@ -166,7 +166,7 @@ components/example-dialog.js
         </div>
       )
     }
-[/code]
+```
 
 ## Ordering and Merging[](https://nextjs.org/docs/pages/getting-started/css#ordering-and-merging)
 
@@ -177,25 +177,25 @@ Next.js는 프로덕션 빌드 중에 스타일시트를 자동으로 청크(병
 page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { BaseButton } from './base-button'
     import styles from './page.module.css'
 
     export default function Page() {
       return <BaseButton className={styles.primary} />
     }
-[/code]
+```
 
 base-button.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import styles from './base-button.module.css'
 
     export function BaseButton() {
       return <button className={styles.primary} />
     }
-[/code]
+```
 
 ### 권장 사항[](https://nextjs.org/docs/pages/getting-started/css#recommendations)
 

@@ -26,7 +26,7 @@ description: '각 코딩 에이전트에 대해 MCP 클라이언트에 다음 �
 **예시:**
 
 .mcp.json
-[code]
+```
     {
       "mcpServers": {
         "next-devtools": {
@@ -35,7 +35,7 @@ description: '각 코딩 에이전트에 대해 MCP 클라이언트에 다음 �
         }
       }
     }
-[/code]
+```
 
 자세한 내용은 [`next-devtools-mcp`](https://github.com/vercel/next-devtools-mcp) 문서를 참조해 MCP 클라이언트를 구성하세요.
 
@@ -48,16 +48,16 @@ description: '각 코딩 에이전트에 대해 MCP 클라이언트에 다음 �
 **Next.js 16으로 업그레이드하려면:**
 
 코딩 에이전트에 연결한 뒤 다음을 입력하세요:
-[code]
+```
     Next Devtools, help me upgrade my Next.js app to version 16
-[/code]
+```
 
 **Cache Components로 마이그레이션하려면(v16 업그레이드 이후):**
 
 코딩 에이전트에 연결한 뒤 다음을 입력하세요:
-[code]
+```
     Next Devtools, migrate my Next.js app to cache components
-[/code]
+```
 
 문서의 [이곳](https://nextjs.org/docs/app/guides/mcp)에서 더 자세히 알아보세요.
 
@@ -68,9 +68,9 @@ Next.js 버전 16으로 업데이트하려면 `upgrade` [코드모드](https://n
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm dlx @next/codemod@canary upgrade latest
-[/code]
+```
 
 해당 [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#160)는 다음을 수행합니다:
 
@@ -85,9 +85,9 @@ pnpmnpmyarnbun
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add next@latest react@latest react-dom@latest
-[/code]
+```
 
 TypeScript를 사용한다면 `@types/react` 와 `@types/react-dom` 도 최신 버전으로 업그레이드해야 합니다.
 
@@ -106,7 +106,7 @@ Browsers| Chrome 111+, Edge 111+, Firefox 111+, Safari 16.4+
 이전에는 Turbopack을 사용하려면 `--turbopack` 또는 `--turbo` 플래그를 켜야 했습니다.
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev --turbopack",
@@ -114,12 +114,12 @@ package.json
         "start": "next start"
       }
     }
-[/code]
+```
 
 이제 더 이상 필요하지 않습니다. `package.json` 스크립트를 다음과 같이 업데이트할 수 있습니다.
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -127,7 +127,7 @@ package.json
         "start": "next start"
       }
     }
-[/code]
+```
 
 프로젝트에 [커스텀 `webpack`](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack) 구성이 있고 `next build` (이제 기본적으로 Turbopack 사용)를 실행하면 잘못된 구성을 방지하기 위해 빌드가 **실패** 합니다.
 
@@ -144,7 +144,7 @@ package.json
 Webpack을 계속 사용해야 한다면 `--webpack` 플래그로 옵트아웃할 수 있습니다. 예를 들어 개발에서는 Turbopack을 사용하고 프로덕션 빌드에서는 Webpack을 사용하려면 다음과 같이 설정합니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -152,7 +152,7 @@ package.json
         "start": "next start"
       }
     }
-[/code]
+```
 
 개발과 프로덕션 모두에서 Turbopack 사용을 권장합니다. Turbopack으로 전환할 수 없다면 [이 스레드](https://github.com/vercel/next.js/discussions/77721)에 의견을 남겨주세요.
 
@@ -161,7 +161,7 @@ package.json
 `experimental.turbopack` 구성은 이제 실험 단계가 아닙니다.
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     // Next.js 15 - experimental.turbopack
@@ -174,12 +174,12 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 이제 최상위 `turbopack` 옵션으로 사용할 수 있습니다:
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     // Next.js 16 - turbopack at the top level of nextConfig
@@ -190,7 +190,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 `Turbopack` 구성 [옵션](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack)을 반드시 검토하세요. **Next.js 16** 에서는 예를 들어 다음과 같은 다양한 개선 및 신규 옵션을 제공합니다:
 
@@ -206,7 +206,7 @@ next.config.ts
 그러나 불가능한 경우도 있습니다. Webpack에서는 이러한 오류를 **무시** 하기 위해 보통 `resolve.fallback` 옵션을 사용했습니다. Turbopack에서도 `turbopack.resolveAlias` 로 유사한 옵션을 제공합니다. 이 경우 브라우저에서 `fs` 가 요청되면 빈 모듈을 로드하도록 Turbopack에 지시하세요.
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -220,7 +220,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 가능하다면 클라이언트 코드가 Node.js 네이티브 모듈을 사용하는 모듈을 절대 가져오지 않도록 리팩터링하는 것이 좋습니다.
 
@@ -231,21 +231,21 @@ Turbopack은 `node_modules` 에서 Sass 파일을 가져오는 기능을 완전�
 Webpack에서:
 
 styles/globals.scss
-[code]
+```
     @import '~bootstrap/dist/css/bootstrap.min.css';
-[/code]
+```
 
 Turbopack에서:
 
 styles/globals.scss
-[code]
+```
     @import 'bootstrap/dist/css/bootstrap.min.css';
-[/code]
+```
 
 임포트를 변경할 수 없다면 `turbopack.resolveAlias` 를 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -257,7 +257,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 ### Turbopack 파일 시스템 캐싱(베타)[](https://nextjs.org/docs/app/guides/upgrading/version-16#turbopack-file-system-caching-beta)
 
@@ -268,7 +268,7 @@ Turbopack은 이제 개발 환경에서 파일 시스템 캐싱을 지원하여 
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -278,7 +278,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ## 비동기 요청 API(호환성 깨짐)[](https://nextjs.org/docs/app/guides/upgrading/version-16#async-request-apis-breaking-change)
 
@@ -592,7 +592,7 @@ export function proxy(request: Request) {}
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -600,7 +600,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 버전 16 [코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#160)는 이러한 플래그도 업데이트할 수 있습니다.
 
@@ -611,20 +611,20 @@ JavaScriptTypeScript
 열거형 공격을 방지하기 위해 이제 쿼리 문자열이 포함된 로컬 이미지 소스에는 `images.localPatterns.search` 구성이 필요합니다.
 
 app/page.tsx
-[code]
+```
     import Image from 'next/image'
 
     export default function Page() {
       return <Image src="/assets/photo?v=1" alt="Photo" width="100" height="100" />
     }
-[/code]
+```
 
 로컬 이미지에서 쿼리 문자열을 사용해야 한다면, 구성에 다음 패턴을 추가하세요.
 
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -639,7 +639,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ### `minimumCacheTTL` 기본값(호환성 깨짐)[](https://nextjs.org/docs/app/guides/upgrading/version-16#minimumcachettl-default-breaking-change)
 
@@ -654,7 +654,7 @@ JavaScriptTypeScript
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -664,7 +664,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ### `imageSizes` 기본값(호환성 깨짐)[](https://nextjs.org/docs/app/guides/upgrading/version-16#imagesizes-default-breaking-change)
 
@@ -677,7 +677,7 @@ JavaScriptTypeScript
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -687,7 +687,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 개발자 사용 부족 때문이 아니라, `devicePixelRatio: 2`가 실제로는 레티나 디스플레이의 흐릿함을 방지하기 위해 32px 이미지를 가져오기 때문에 16픽셀 너비 이미지가 덜 일반적이 되었다고 판단합니다.
 
@@ -700,7 +700,7 @@ JavaScriptTypeScript
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -710,7 +710,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 `image.qualities` 배열에 포함되지 않은 `quality` prop을 지정하면, 해당 품질은 `images.qualities`에서 가장 가까운 값으로 강제 변환됩니다. 예를 들어 위 구성에서 `quality` prop이 80이면 75로 변환됩니다.
 
@@ -721,7 +721,7 @@ JavaScriptTypeScript
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -731,7 +731,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ### 최대 리디렉션(호환성 깨짐)[](https://nextjs.org/docs/app/guides/upgrading/version-16#maximum-redirects-breaking-change)
 
@@ -740,7 +740,7 @@ JavaScriptTypeScript
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -752,37 +752,37 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ### `next/legacy/image` 컴포넌트(사용 중단)[](https://nextjs.org/docs/app/guides/upgrading/version-16#nextlegacyimage-component-deprecated)
 
 `next/legacy/image` 컴포넌트는 사용 중단되었습니다. 대신 `next/image`를 사용하세요.
-[code]
+```
     // Before
     import Image from 'next/legacy/image'
 
     // After
     import Image from 'next/image'
-[/code]
+```
 
 ### `images.domains` 구성(사용 중단)[](https://nextjs.org/docs/app/guides/upgrading/version-16#imagesdomains-configuration-deprecated)
 
 `images.domains` 구성은 사용 중단되었습니다.
 
 next.config.js
-[code]
+```
     // image.domains는 사용 중단되었습니다
     module.exports = {
       images: {
         domains: ['example.com'],
       },
     }
-[/code]
+```
 
 보안 향상을 위해 대신 `images.remotePatterns`를 사용하세요.
 
 next.config.js
-[code]
+```
     // image.remotePatterns를 사용하세요
     module.exports = {
       images: {
@@ -794,7 +794,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 ## 동시 `dev` 및 `build`[](https://nextjs.org/docs/app/guides/upgrading/version-16#concurrent-dev-and-build)
 
@@ -807,9 +807,9 @@ next.config.js
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm next internal trace .next/dev/trace-turbopack
-[/code]
+```
 
 ## 병렬 라우트 `default.js` 요구 사항[](https://nextjs.org/docs/app/guides/upgrading/version-16#parallel-routes-defaultjs-requirement)
 
@@ -818,22 +818,22 @@ Terminal
 이전 동작을 유지하려면 [`default.js`](https://nextjs.org/docs/app/api-reference/file-conventions/default) 파일을 만들고 `notFound()`를 호출하거나 `null`을 반환하도록 하세요.
 
 app/@modal/default.tsx
-[code]
+```
     import { notFound } from 'next/navigation'
 
     export default function Default() {
       notFound()
     }
-[/code]
+```
 
 또는 `null`을 반환할 수 있습니다.
 
 app/@modal/default.tsx
-[code]
+```
     export default function Default() {
       return null
     }
-[/code]
+```
 
 ## ESLint Flat Config[](https://nextjs.org/docs/app/guides/upgrading/version-16#eslint-flat-config)
 
@@ -858,7 +858,7 @@ app/@modal/default.tsx
 **이전 기본 동작인 오버라이드를 원한다면**, `<html>` 요소에 `data-scroll-behavior="smooth"` 속성을 추가하세요.
 
 app/layout.tsx
-[code]
+```
     export default function RootLayout({ children }) {
       return (
         <html lang="en" data-scroll-behavior="smooth">
@@ -866,7 +866,7 @@ app/layout.tsx
         </html>
       )
     }
-[/code]
+```
 
 ## 성능 향상[](https://nextjs.org/docs/app/guides/upgrading/version-16#performance-improvements)
 
@@ -892,7 +892,7 @@ app/layout.tsx
 이는 `next dev`에서 부작용을 트리거하는 플러그인에 특히 중요합니다. 그런 경우 `NODE_ENV`가 `development`로 설정되어 있는지만 확인해도 충분할 수 있습니다.
 
 next.config.js
-[code]
+```
     import { startServer } from 'docs-lib/dev-server'
 
     const isDev = process.env.NODE_ENV === 'development'
@@ -906,7 +906,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 또는 구성이 로드되는 [`phase`](https://nextjs.org/docs/app/api-reference/config/next-config-js#phase)를 활용하세요.
 
@@ -917,7 +917,7 @@ next.config.js
 Build Adapter를 사용하면 빌드 프로세스에 연결되는 맞춤형 어댑터를 만들 수 있어, 배포 플랫폼과 맞춤형 빌드 통합이 Next.js 구성을 수정하거나 빌드 출력을 처리할 수 있습니다.
 
 next.config.js
-[code]
+```
     const nextConfig = {
       experimental: {
         adapterPath: require.resolve('./my-adapter.js'),
@@ -925,7 +925,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 [RFC 토론](https://github.com/vercel/next.js/discussions/77740)에서 의견을 공유해 주세요.
 
@@ -944,18 +944,18 @@ AMP 채택률이 크게 감소했고, 이 기능을 유지하면 프레임워크
   * Next 구성 파일의 `amp` 설정
   * `next/amp` 훅 import 및 사용(`useAmp`)
 
-[code]
+```
     // Removed
     import { useAmp } from 'next/amp'
 
     // Removed
     export const config = { amp: true }
-[/code]
+```
 
   * 페이지의 `export const config = { amp: true }` 선언
 
 next.config.js
-[code]
+```
     const nextConfig = {
       // Removed
       amp: {
@@ -964,7 +964,7 @@ next.config.js
     }
 
     export default nextConfig
-[/code]
+```
 
 AMP가 여전히 필요한지 평가해 보세요. 이제 대부분의 성능 이점은 Next.js의 기본 최적화와 최신 웹 표준으로 얻을 수 있습니다.
 
@@ -977,14 +977,14 @@ AMP가 여전히 필요한지 평가해 보세요. 이제 대부분의 성능 �
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm dlx @next/codemod@canary next-lint-to-eslint-cli .
-[/code]
+```
 
 Next.js 구성 파일의 `eslint` 옵션도 제거되었습니다.
 
 next.config.mjs
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       // No longer supported
@@ -992,7 +992,7 @@ next.config.mjs
     }
 
     export default nextConfig
-[/code]
+```
 
 ### Runtime Configuration[](https://nextjs.org/docs/app/guides/upgrading/version-16#runtime-configuration)
 
@@ -1001,7 +1001,7 @@ next.config.mjs
 **이전(Next.js 15):**
 
 next.config.js
-[code]
+```
     module.exports = {
       serverRuntimeConfig: {
         dbUrl: process.env.DATABASE_URL,
@@ -1010,24 +1010,24 @@ next.config.js
         apiUrl: '/api',
       },
     }
-[/code]
+```
 
 pages/index.tsx
-[code]
+```
     import getConfig from 'next/config'
 
     export default function Page() {
       const { publicRuntimeConfig } = getConfig()
       return <p>API URL: {publicRuntimeConfig.apiUrl}</p>
     }
-[/code]
+```
 
 **이후(Next.js 16):**
 
 서버 전용 값은 Server Component에서 환경 변수를 직접 읽으세요.
 
 app/page.tsx
-[code]
+```
     async function fetchData() {
       const dbUrl = process.env.DATABASE_URL
       // Use for server-side operations only
@@ -1038,31 +1038,31 @@ app/page.tsx
       const data = await fetchData()
       return <div>{/* render data */}</div>
     }
-[/code]
+```
 
 > **알아두면 좋아요**: [taint API](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint)를 사용해 실수로 민감한 서버 값을 Client Component에 전달하지 않도록 하세요.
 
 클라이언트에서 접근 가능한 값은 `NEXT_PUBLIC_` 접두사를 사용하세요.
 
 .env.local
-[code]
+```
     NEXT_PUBLIC_API_URL="/api"
-[/code]
+```
 
 app/components/client-component.tsx
-[code]
+```
     'use client'
 
     export default function ClientComponent() {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL
       return <p>API URL: {apiUrl}</p>
     }
-[/code]
+```
 
 환경 변수가 런타임에 읽히도록(빌드 타임 번들 제외) 하려면 `process.env`에 접근하기 전에 [`connection()`](https://nextjs.org/docs/app/api-reference/functions/connection) 함수를 호출하세요.
 
 app/page.tsx
-[code]
+```
     import { connection } from 'next/server'
 
     export default async function Page() {
@@ -1070,7 +1070,7 @@ app/page.tsx
       const config = process.env.RUNTIME_CONFIG
       return <p>{config}</p>
     }
-[/code]
+```
 
 [환경 변수](https://nextjs.org/docs/app/guides/environment-variables)에 대해 더 알아보세요.
 
@@ -1091,24 +1091,24 @@ app/page.tsx
 Next 구성 파일에서 `dynamicIO` 플래그를 제거하세요.
 
 next.config.js
-[code]
+```
     // Next.js 15 - experimental.dynamicIO is now removed
     module.exports = {
       experimental: {
         dynamicIO: true,
       },
     }
-[/code]
+```
 
 [`cacheComponents`](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents) 플래그를 true로 추가하세요.
 
 next.config.js
-[code]
+```
     // Next.js 16 - use cacheComponents instead
     module.exports = {
       cacheComponents: true,
     }
-[/code]
+```
 
 ### `unstable_rootParams`[](https://nextjs.org/docs/app/guides/upgrading/version-16#unstable_rootparams)
 

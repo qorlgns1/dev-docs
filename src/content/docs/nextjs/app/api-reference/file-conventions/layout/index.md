@@ -16,7 +16,7 @@ description: '파일은 Next.js 애플리케이션에서 레이아웃을 정의�
 app/dashboard/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function DashboardLayout({
       children,
     }: {
@@ -24,14 +24,14 @@ JavaScriptTypeScript
     }) {
       return <section>{children}</section>
     }
-[/code]
+```
 
 **루트 레이아웃** 은 루트 `app` 디렉터리에서 가장 상위에 있는 레이아웃입니다. `<html>` 및 `<body>` 태그와 전역으로 공유되는 UI를 정의하는 데 사용합니다.
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -43,7 +43,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 ## 참고[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#reference)
 
@@ -60,7 +60,7 @@ JavaScriptTypeScript
 app/dashboard/[team]/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Layout({
       children,
       params,
@@ -70,7 +70,7 @@ JavaScriptTypeScript
     }) {
       const { team } = await params
     }
-[/code]
+```
 
 예시 경로| URL| `params`
 ---|---|---
@@ -86,7 +86,7 @@ JavaScriptTypeScript
 디렉터리 구조에서 유추되는 강한 타입의 `params` 와 이름 있는 슬롯을 얻기 위해 레이아웃을 `LayoutProps` 로 타입 지정할 수 있습니다. `LayoutProps` 는 전역에서 사용할 수 있는 헬퍼입니다.
 
 app/dashboard/layout.tsx
-[code]
+```
     export default function Layout(props: LayoutProps<'/dashboard'>) {
       return (
         <section>
@@ -96,7 +96,7 @@ app/dashboard/layout.tsx
         </section>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >
@@ -111,7 +111,7 @@ app/dashboard/layout.tsx
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -123,7 +123,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
   * 루트 레이아웃은 `<html>` 및 `<body>` 태그를 반드시 정의해야 합니다.
     * `<title>` 또는 `<meta>` 와 같은 `<head>` 태그를 루트 레이아웃에 수동으로 추가해서는 안 됩니다. 대신 [Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images)를 사용하면 스트리밍이나 `<head>` 요소 중복 제거 같은 고급 요구 사항을 자동으로 처리할 수 있습니다.
@@ -146,7 +146,7 @@ JavaScriptTypeScript
 app/shop/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { cookies } from 'next/headers'
 
     export default async function Layout({ children }) {
@@ -154,7 +154,7 @@ JavaScriptTypeScript
       const theme = cookieStore.get('theme')
       return '...'
     }
-[/code]
+```
 
 ### Query params[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#query-params)
 
@@ -165,7 +165,7 @@ JavaScriptTypeScript
 app/ui/search.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useSearchParams } from 'next/navigation'
@@ -177,12 +177,12 @@ JavaScriptTypeScript
 
       return '...'
     }
-[/code]
+```
 
 app/shop/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Search from '@/app/ui/search'
 
     export default function Layout({ children }) {
@@ -193,7 +193,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### Pathname[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#pathname)
 
@@ -204,7 +204,7 @@ JavaScriptTypeScript
 app/ui/breadcrumbs.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { usePathname } from 'next/navigation'
@@ -225,12 +225,12 @@ JavaScriptTypeScript
         </nav>
       )
     }
-[/code]
+```
 
 app/docs/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Breadcrumbs } from '@/app/ui/Breadcrumbs'
 
     export default function Layout({ children }) {
@@ -241,7 +241,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### Fetching Data[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#fetching-data)
 
@@ -252,17 +252,17 @@ JavaScriptTypeScript
 app/lib/data.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function getUser(id: string) {
       const res = await fetch(`https://.../users/${id}`)
       return res.json()
     }
-[/code]
+```
 
 app/dashboard/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { getUser } from '@/app/lib/data'
     import { UserName } from '@/app/ui/user-name'
 
@@ -279,12 +279,12 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { getUser } from '@/app/lib/data'
     import { UserName } from '@/app/ui/user-name'
 
@@ -297,7 +297,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ### Accessing child segments[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#accessing-child-segments)
 
@@ -306,7 +306,7 @@ JavaScriptTypeScript
 app/ui/nav-link.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Link from 'next/link'
@@ -332,12 +332,12 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 app/blog/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { NavLink } from './nav-link'
     import getPosts from './get-posts'
 
@@ -358,7 +358,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ## 예시[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#examples)
 
@@ -369,7 +369,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Metadata } from 'next'
 
     export const metadata: Metadata = {
@@ -379,7 +379,7 @@ JavaScriptTypeScript
     export default function Layout({ children }: { children: React.ReactNode }) {
       return '...'
     }
-[/code]
+```
 
 > **알아두면 좋아요** : 루트 레이아웃에 `<title>` 및 `<meta>` 같은 `<head>` 태그를 직접 추가하면 **안 됩니다**. 대신 스트리밍 및 `<head>` 요소 중복 제거 같은 고급 요구 사항을 자동으로 처리하는 [Metadata API](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)를 사용하세요.
 
@@ -392,7 +392,7 @@ JavaScriptTypeScript
 app/ui/nav-links.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { usePathname } from 'next/navigation'
@@ -416,12 +416,12 @@ JavaScriptTypeScript
         </nav>
       )
     }
-[/code]
+```
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { NavLinks } from '@/app/ui/nav-links'
 
     export default function Layout({ children }: { children: React.ReactNode }) {
@@ -434,7 +434,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 ### `params` 기반 콘텐츠 표시[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#displaying-content-based-on-params)
 
@@ -443,7 +443,7 @@ JavaScriptTypeScript
 app/dashboard/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function DashboardLayout({
       children,
       params,
@@ -462,7 +462,7 @@ JavaScriptTypeScript
         </section>
       )
     }
-[/code]
+```
 
 ### 클라이언트 컴포넌트에서 `params` 읽기[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#reading-params-in-client-components)
 
@@ -471,7 +471,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { use } from 'react'
@@ -483,7 +483,7 @@ JavaScriptTypeScript
     }) {
       const { slug } = use(params)
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/layout#version-history)
 

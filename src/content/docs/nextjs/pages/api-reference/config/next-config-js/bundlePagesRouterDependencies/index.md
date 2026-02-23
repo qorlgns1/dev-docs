@@ -14,14 +14,14 @@ description: 'Pages Router 애플리케이션에서 서버 측 종속성을 자�
 Pages Router 애플리케이션에서 서버 측 종속성을 자동으로 번들링합니다. App Router에서의 자동 종속성 번들링과 동일하게 동작합니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       bundlePagesRouterDependencies: true,
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 [`serverExternalPackages`](https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages) 옵션을 사용해 특정 패키지를 번들 대상에서 명시적으로 제외할 수 있습니다.
 

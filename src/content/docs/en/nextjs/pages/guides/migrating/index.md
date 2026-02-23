@@ -14,4 +14,3 @@ Source URL: https://nextjs.org/docs/pages/guides/migrating
   - Learn how to migrate your existing React application from Vite to Next.js.
 
 ---
-

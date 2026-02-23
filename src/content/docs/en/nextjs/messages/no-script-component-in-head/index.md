@@ -55,4 +55,3 @@ export default function Index() {
 
 - [next/head](https://nextjs.org/docs/pages/api-reference/components/head)
 - [next/script](https://nextjs.org/docs/pages/guides/scripts)
-

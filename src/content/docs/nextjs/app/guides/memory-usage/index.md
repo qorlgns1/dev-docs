@@ -40,9 +40,9 @@ Next.js에서 메모리를 최적화하고 일반적인 메모리 문제를 해�
 메모리 문제를 찾기 위해 Node.js에서 힙 프로파일을 기록하고 Chrome DevTools에서 로드해 잠재적인 메모리 누수 원인을 확인할 수 있습니다.
 
 터미널에서 Next.js 빌드를 시작할 때 Node.js에 `--heap-prof` 플래그를 전달하세요:
-[code]
+```
     node --heap-prof node_modules/next/dist/bin/next build
-[/code]
+```
 
 빌드가 끝나면 Node.js가 `.heapprofile` 파일을 생성합니다.
 
@@ -79,7 +79,7 @@ Webpack 빌드 워커는 별도의 Node.js 워커 내부에서 Webpack 컴파일
 애플리케이션에 [커스텀 Webpack 구성](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack)을 추가해 이 동작을 비활성화할 수 있습니다:
 
 next.config.mjs
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       webpack: (
@@ -97,14 +97,14 @@ next.config.mjs
     }
 
     export default nextConfig
-[/code]
+```
 
 ## 정적 분석 비활성화하기[](https://nextjs.org/docs/app/guides/memory-usage#disable-static-analysis)
 
 대규모 프로젝트에서는 타입 검사에 많은 메모리가 필요할 수 있습니다. 그러나 대부분의 프로젝트는 이러한 작업을 처리하는 전용 CI 러너를 보유합니다. 빌드가 "Running TypeScript" 단계에서 메모리 부족 문제를 일으킨다면 빌드 중 이 작업을 비활성화할 수 있습니다:
 
 next.config.mjs
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       typescript: {
@@ -117,7 +117,7 @@ next.config.mjs
     }
 
     export default nextConfig
-[/code]
+```
 
   * [TypeScript 오류 무시하기](https://nextjs.org/docs/app/api-reference/config/typescript#disabling-typescript-errors-in-production)
 
@@ -148,7 +148,7 @@ Next.js 서버는 요청 시점이 아니라 시작 시 각 페이지의 JavaScr
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const config: NextConfig = {
@@ -158,7 +158,7 @@ JavaScriptTypeScript
     }
 
     export default config
-[/code]
+```
 
 Next.js는 이러한 JavaScript 모듈을 언로드하지 않으므로, 이 최적화를 비활성화하더라도 모든 페이지에 결국 요청이 들어오면 Next.js 서버의 메모리 사용량은 결국 동일해집니다.
 

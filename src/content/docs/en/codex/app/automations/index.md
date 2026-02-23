@@ -60,7 +60,7 @@ Automations use `approval_policy = "never"` when your organization policy allows
 ## Examples
 
 ### Automatically create new skills
-[code] 
+```
     Scan all of the `~/.codex/sessions` files from the past day and if there have been any issues using particular skills, update the skills to be more helpful. Personal skills only, no repo skills.
     
     If there’s anything we’ve been doing often and struggle with that we should save as a skill to speed up future work, let’s do it.
@@ -68,10 +68,10 @@ Automations use `approval_policy = "never"` when your organization policy allows
     Definitely don't feel like you need to update any- only if there's a good reason!
     
     Let me know if you make any.
-[/code]
+```
 
 ### Stay up-to-date with your project
-[code] 
+```
     Look at the latest remote origin/master or origin/main . Then produce an exec briefing for the last 24 hours of commits that touch <DIRECTORY>
     
     Formatting + structure:
@@ -96,12 +96,12 @@ Automations use `approval_policy = "never"` when your organization policy allows
     - Only include the last 24h of commits.
     - Use `gh` to fetch PR titles and descriptions if it helps.
       Also feel free to pull PR reviews and comments
-[/code]
+```
 
 ### Combining automations with skills to fix your own bugs
 
 Create a new skill that tries to fix a bug introduced by your own commits by creating a new `$recent-code-bugfix` and [store it in your personal skills](https://developers.openai.com/codex/skills#where-to-save-skills).
-[code] 
+```
     ---
     name: recent-code-bugfix
     description: Find and fix a bug introduced by the current author within the last week in the current working directory. Use when a user wants a proactive bugfix from their recent changes, when the prompt is empty, or when asked to triage/fix issues caused by their recent commits. Root cause must map directly to the author’s own changes.
@@ -149,9 +149,9 @@ Create a new skill that tries to fix a bug introduced by your own commits by cre
     ### 5) Report
     
     Summarize the root cause, the fix, and the verification performed. Make it explicit how the root cause ties to the author’s recent changes.
-[/code]
+```
 
 Afterward, create a new automation:
-[code] 
+```
     Check my commits from the last 24h and submit a $recent-code-bugfix.
-[/code]
+```

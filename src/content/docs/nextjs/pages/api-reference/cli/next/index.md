@@ -20,9 +20,9 @@ Next.js CLI를 사용하면 애플리케이션을 개발하고, 빌드하고, �
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm next [command] [options]
-[/code]
+```
 
 > **참고**: `npm run`을 사용할 때는 CLI 플래그 앞에 `--`를 붙여 npm이 플래그를 `next`로 전달하도록 하세요. `pnpm`, `yarn`, `bun`에는 필요하지 않습니다.
 
@@ -75,14 +75,14 @@ Option| Description
 `next build`는 애플리케이션의 최적화된 프로덕션 빌드를 생성합니다. 출력에는 각 경로에 대한 정보가 표시됩니다. 예:
 
 Terminal
-[code]
+```
     Route (app)
     ┌ ○ /_not-found
     └ ƒ /products/[id]
 
     ○  (Static)   prerendered as static content
     ƒ  (Dynamic)  server-rendered on demand
-[/code]
+```
 
 `next build` 명령에서 사용할 수 있는 옵션은 다음과 같습니다:
 
@@ -123,7 +123,7 @@ Option| Description
 출력 예시는 다음과 같습니다:
 
 Terminal
-[code]
+```
     Operating System:
       Platform: darwin
       Arch: arm64
@@ -143,7 +143,7 @@ Terminal
       typescript: 5.5.4
     Next.js Config:
       output: N/A
-[/code]
+```
 
 `next info` 명령에서 사용할 수 있는 옵션은 다음과 같습니다:
 
@@ -173,13 +173,13 @@ Option| Description
 이전에는 `next dev` 또는 `next build` 중에만 라우트 타입이 생성되어 `tsc --noEmit`을 직접 실행해도 라우트 타입을 검증할 수 없었습니다. 이제 타입을 독립적으로 생성하고 외부에서 검증할 수 있습니다:
 
 Terminal
-[code]
+```
     # Generate route types first, then validate with TypeScript
     next typegen && tsc --noEmit
 
     # Or in CI workflows for type checking without building
     next typegen && npm run type-check
-[/code]
+```
 
 `next typegen` 명령에서 사용할 수 있는 옵션은 다음과 같습니다:
 
@@ -191,11 +191,11 @@ Option| Description
 출력 파일은 `<distDir>/types`(일반적으로: `.next/dev/types` 또는 `.next/types`, [`isolatedDevBuild`](https://nextjs.org/docs/app/api-reference/config/next-config-js/isolatedDevBuild) 참조)에 기록됩니다:
 
 Terminal
-[code]
+```
     next typegen
     # or for a specific app
     next typegen ./apps/web
-[/code]
+```
 
 또한 `next typegen`은 `next-env.d.ts` 파일을 생성합니다. `next-env.d.ts`를 `.gitignore`에 추가하는 것을 권장합니다.
 
@@ -225,9 +225,9 @@ Option| Description
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm next experimental-analyze
-[/code]
+```
 
 기본적으로 이 명령은 분석이 완료된 후 로컬 서버를 시작하여 브라우저에서 번들 구성을 탐색할 수 있게 합니다. 분석기는 다음을 수행할 수 있습니다:
 
@@ -240,13 +240,13 @@ Terminal
 서버를 시작하지 않고 분석 결과를 디스크에 기록하려면 `--output` 플래그를 사용하세요. 출력은 `.next/diagnostics/analyze`에 작성되며, 다른 위치로 복사하거나 다른 사람과 공유할 수 있는 정적 파일을 포함합니다:
 
 Terminal
-[code]
+```
     # Write output to .next/diagnostics/analyze
     npx next experimental-analyze --output
 
     # Copy the output for comparison with a future analysis
     cp -r .next/diagnostics/analyze ./analyze-before-refactor
-[/code]
+```
 
 `next experimental-analyze` 명령에는 다음 옵션을 사용할 수 있습니다:
 
@@ -266,9 +266,9 @@ Option| Description
 `next build` 중에 프리렌더링 오류가 발생하면 `--debug-prerender` 플래그를 전달하여 더 자세한 출력을 받을 수 있습니다:
 
 Terminal
-[code]
+```
     next build --debug-prerender
-[/code]
+```
 
 이는 디버깅을 쉽게 하기 위해 여러 실험적 옵션을 활성화합니다:
 
@@ -291,7 +291,7 @@ Terminal
 대규모 애플리케이션에서 빠르게 디버깅할 수 있도록 `--debug-build-paths` 옵션을 사용해 App Router와 Pages Router에서 특정 라우트만 빌드할 수 있습니다. `--debug-build-paths` 옵션은 쉼표로 구분된 파일 경로를 허용하며 glob 패턴을 지원합니다:
 
 Terminal
-[code]
+```
     # Build a specific route
     next build --debug-build-paths="app/page.tsx"
 
@@ -301,23 +301,23 @@ Terminal
     # Use glob patterns
     next build --debug-build-paths="app/**/page.tsx"
     next build --debug-build-paths="pages/*.tsx"
-[/code]
+```
 
 ### 기본 포트 변경[](https://nextjs.org/docs/pages/api-reference/cli/next#changing-the-default-port)
 
 기본적으로 Next.js는 개발 중과 `next start` 실행 시 `http://localhost:3000`을 사용합니다. 기본 포트는 다음과 같이 `-p` 옵션으로 변경할 수 있습니다:
 
 Terminal
-[code]
+```
     next dev -p 4000
-[/code]
+```
 
 또는 `PORT` 환경 변수를 사용할 수 있습니다:
 
 Terminal
-[code]
+```
     PORT=4000 next dev
-[/code]
+```
 
 > **Good to know** : HTTP 서버는 다른 코드가 초기화되기 전에 부팅되므로 `.env`에서 `PORT`를 설정할 수 없습니다.
 
@@ -326,18 +326,18 @@ Terminal
 웹후크나 인증 같은 특정 사용 사례에서는 `localhost`에서 보안 환경을 제공하기 위해 [HTTPS](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS)를 사용할 수 있습니다. Next.js는 `--experimental-https` 플래그를 사용하는 `next dev`로 자체 서명 인증서를 생성할 수 있습니다:
 
 Terminal
-[code]
+```
     next dev --experimental-https
-[/code]
+```
 
 생성된 인증서를 사용하면 Next.js 개발 서버가 `https://localhost:3000`에서 실행됩니다. 포트를 `-p`, `--port`, 또는 `PORT`로 지정하지 않는 한 기본 포트 `3000`이 사용됩니다.
 
 `--experimental-https-key`와 `--experimental-https-cert`로 사용자 지정 인증서와 키를 제공할 수도 있습니다. 필요하면 `--experimental-https-ca`로 사용자 지정 CA 인증서를 추가할 수도 있습니다.
 
 Terminal
-[code]
+```
     next dev --experimental-https --experimental-https-key ./certificates/localhost-key.pem --experimental-https-cert ./certificates/localhost.pem
-[/code]
+```
 
 `next dev --experimental-https`는 개발용으로만 의도되며 [`mkcert`](https://github.com/FiloSottile/mkcert)를 사용해 로컬에서 신뢰할 수 있는 인증서를 생성합니다. 프로덕션에서는 신뢰할 수 있는 기관에서 발급한 인증서를 사용하세요.
 
@@ -348,20 +348,20 @@ Next.js를 다운스트림 프록시(예: AWS ELB/ALB 같은 로드 밸런서) �
 프로덕션 Next.js 서버의 타임아웃 값을 구성하려면 `next start`에 `--keepAliveTimeout`(밀리초)을 다음과 같이 전달하세요:
 
 Terminal
-[code]
+```
     next start --keepAliveTimeout 70000
-[/code]
+```
 
 ### Node.js 인수 전달[](https://nextjs.org/docs/pages/api-reference/cli/next#passing-nodejs-arguments)
 
 `next` 명령에 [node 인수](https://nodejs.org/api/cli.html#cli_node_options_options)를 전달할 수 있습니다. 예를 들어:
 
 Terminal
-[code]
+```
     NODE_OPTIONS='--throw-deprecation' next
     NODE_OPTIONS='-r esm' next
     NODE_OPTIONS='--inspect' next
-[/code]
+```
 
 Version| Changes
 ---|---

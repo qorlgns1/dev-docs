@@ -408,4 +408,3 @@ export default function handler(req, res) {
 > * To generate a bloom filter, you can use a library like [`bloom-filters`](https://www.npmjs.com/package/bloom-filters).
 > * You should validate requests made to your Route Handler to prevent malicious requests.
 ---
-

@@ -76,4 +76,3 @@ This trade-off matters most with:
 > * When navigating to statically rendered pages, styles will use `<link>` tags instead of inline CSS to avoid duplication
 > * This feature is not available in development mode and only works in production builds
 ---
-

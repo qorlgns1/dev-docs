@@ -26,14 +26,14 @@ Dynamic Segment는 [`useRouter`](https://nextjs.org/docs/pages/api-reference/fun
 ## Example[](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#example)
 
 예를 들어 블로그에는 `pages/blog/[slug].js` 라우트를 둘 수 있으며, 여기서 `[slug]`는 블로그 게시물용 Dynamic Segment입니다.
-[code]
+```
     import { useRouter } from 'next/router'
 
     export default function Page() {
       const router = useRouter()
       return <p>Post: {router.query.slug}</p>
     }
-[/code]
+```
 
 Route| Example URL| `params`
 ---|---|---

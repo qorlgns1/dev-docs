@@ -18,4 +18,3 @@ Source URL: https://nextjs.org/docs/app/api-reference/components
   - Optimize third-party scripts in your Next.js application using the built-in `next/script` Component.
 
 ---
-

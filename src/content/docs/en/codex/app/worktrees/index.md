@@ -108,9 +108,9 @@ Codex will create a worktree in `$CODEX_HOME/worktrees`. The starting commit wil
 ### Branch limitations
 
 Suppose Codex finishes some work on a worktree and you choose to create a `feature/a` branch on it using **Create branch here**. Now, you want to try it on your local checkout. If you tried to check out the branch, you would get the following error:
-[code] 
+```
     fatal: 'feature/a' is already used by worktree at '<WORKTREE_PATH>'
-[/code]
+```
 
 To resolve this, you would need to check out another branch instead of `feature/a` on the worktree.
 

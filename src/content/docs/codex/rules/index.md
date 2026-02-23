@@ -18,7 +18,8 @@ sidebar:
   1. `./codex/rules/` 아래에 `.rules` 파일을 만드세요(예: `~/.codex/rules/default.rules`).
 
   2. 규칙을 추가하세요. 다음 예시는 `gh pr view`를 샌드박스 밖에서 실행하기 전에 프롬프트를 띄웁니다.
-[code] # Prompt before running commands with the prefix `gh pr view` outside the sandbox.
+```
+# Prompt before running commands with the prefix `gh pr view` outside the sandbox.
          prefix_rule(
              # The prefix to match.
              pattern = ["gh", "pr", "view"],
@@ -41,7 +42,7 @@ sidebar:
                  "gh pr --repo openai/codex view 7888",
              ],
          )
-[/code]
+```
 
   3. Codex를 다시 시작하세요.
 
@@ -70,9 +71,9 @@ Codex가 명령 실행을 검토할 때는 명령의 인자 리스트를 `patter
 ## 셸 래퍼와 복합 명령
 
 일부 도구는 다음과 같이 여러 셸 명령을 단일 호출로 감쌀 수 있습니다:
-[code] 
+```
     ["bash", "-lc", "git add . && rm -rf /"]
-[/code]
+```
 
 이러한 명령은 하나의 문자열 안에 여러 동작을 숨길 수 있으므로, Codex는 `bash -lc`, `bash -c` 및 그에 해당하는 `zsh`/`sh` 변형을 특별히 처리합니다.
 
@@ -116,9 +117,9 @@ Codex는 각 명령을 규칙과 대조해 평가하며, 가장 제한적인 결
 Codex는 해석하거나 분리하려 하지 않습니다.
 
 이런 경우 전체 호출은 다음과 같이 처리됩니다:
-[code] 
+```
     ["bash", "-lc", "<full script>"]
-[/code]
+```
 
 그리고 규칙은 해당 **단일** 호출에 적용됩니다.
 
@@ -127,11 +128,11 @@ Codex는 해석하거나 분리하려 하지 않습니다.
 ## 규칙 파일 테스트
 
 명령에 규칙이 어떻게 적용되는지 확인하려면 `codex execpolicy check`를 사용하세요:
-[code] 
+```
     codex execpolicy check --pretty \
       --rules ~/.codex/rules/default.rules \
       -- gh pr view 7888 --json title,body,comments
-[/code]
+```
 
 이 명령은 가장 엄격한 결정과 일치한 규칙(해당 규칙의 `justification` 값 포함)을 보여 주는 JSON을 출력합니다. 여러 개의 규칙 파일을 결합하려면 `--rules` 플래그를 여러 번 사용하고, 출력 서식을 맞추려면 `--pretty`를 추가하세요.
 

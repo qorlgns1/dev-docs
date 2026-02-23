@@ -22,7 +22,7 @@ description: '지시문은 함수나 파일이 서버 측에서 실행되어야 
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
     import { db } from '@/lib/db' // Your database client
 
@@ -30,7 +30,7 @@ JavaScriptTypeScript
       const user = await db.user.create({ data })
       return user
     }
-[/code]
+```
 
 ### 클라이언트 컴포넌트에서 Server Function 사용하기[](https://nextjs.org/docs/app/api-reference/directives/use-server#using-server-functions-in-a-client-component)
 
@@ -41,7 +41,7 @@ JavaScriptTypeScript
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
     import { db } from '@/lib/db' // Your database client
 
@@ -49,21 +49,21 @@ JavaScriptTypeScript
       const users = await db.user.findMany()
       return users
     }
-[/code]
+```
 
 그런 다음 `fetchUsers` Server Function을 클라이언트 컴포넌트로 import하여 클라이언트 측에서 실행할 수 있습니다.
 
 app/components/my-button.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
     import { fetchUsers } from '../actions'
 
     export default function MyButton() {
       return <button onClick={() => fetchUsers()}>Fetch Users</button>
     }
-[/code]
+```
 
 ## 인라인으로 `use server` 사용하기[](https://nextjs.org/docs/app/api-reference/directives/use-server#using-use-server-inline)
 
@@ -72,7 +72,7 @@ JavaScriptTypeScript
 app/posts/[id]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { EditPost } from './edit-post'
     import { revalidatePath } from 'next/cache'
 
@@ -87,7 +87,7 @@ JavaScriptTypeScript
 
       return <EditPost updatePostAction={updatePost} post={post} />
     }
-[/code]
+```
 
 ## 보안 고려 사항[](https://nextjs.org/docs/app/api-reference/directives/use-server#security-considerations)
 
@@ -100,7 +100,7 @@ JavaScriptTypeScript
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { db } from '@/lib/db' // Your database client
@@ -117,7 +117,7 @@ JavaScriptTypeScript
       const newUser = await db.user.create({ data })
       return newUser
     }
-[/code]
+```
 
 ## 참고자료[](https://nextjs.org/docs/app/api-reference/directives/use-server#reference)
 

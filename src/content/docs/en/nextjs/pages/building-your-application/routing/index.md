@@ -25,4 +25,3 @@ The Pages Router has a file-system based router built on concepts of pages. When
   - Override and extend the built-in Error page to handle custom errors.
 
 ---
-

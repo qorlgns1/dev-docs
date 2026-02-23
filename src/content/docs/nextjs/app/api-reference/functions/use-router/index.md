@@ -18,7 +18,7 @@ description: '훅을 사용하면 클라이언트 컴포넌트 내부에서 라�
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useRouter } from 'next/navigation'
@@ -32,7 +32,7 @@ JavaScriptTypeScript
         </button>
       )
     }
-[/code]
+```
 
 ## `useRouter()`[](https://nextjs.org/docs/app/api-reference/functions/use-router#userouter)
 
@@ -67,7 +67,7 @@ JavaScriptTypeScript
 `usePathname`과 `useSearchParams` 같은 다른 클라이언트 컴포넌트 훅을 조합하여 페이지 변경을 감지할 수 있습니다.
 
 app/components/navigation-events.js
-[code]
+```
     'use client'
 
     import { useEffect } from 'react'
@@ -86,12 +86,12 @@ app/components/navigation-events.js
 
       return '...'
     }
-[/code]
+```
 
 이를 레이아웃에서 가져와 사용할 수 있습니다.
 
 app/layout.js
-[code]
+```
     import { Suspense } from 'react'
     import { NavigationEvents } from './components/navigation-events'
 
@@ -108,7 +108,7 @@ app/layout.js
         </html>
       )
     }
-[/code]
+```
 
 > **알아두면 좋은 점** : [`useSearchParams()`](https://nextjs.org/docs/app/api-reference/functions/use-search-params)는 [정적 렌더링](https://nextjs.org/docs/app/guides/caching#static-rendering) 중 가장 가까운 `Suspense` 경계까지 클라이언트 사이드 렌더링을 유발하므로 `<NavigationEvents>`는 [`Suspense` 경계](https://nextjs.org/docs/app/api-reference/file-conventions/loading#examples)로 감싸져 있습니다. [자세히 보기](https://nextjs.org/docs/app/api-reference/functions/use-search-params#behavior).
 
@@ -119,7 +119,7 @@ app/layout.js
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useRouter } from 'next/navigation'
@@ -136,7 +136,7 @@ JavaScriptTypeScript
         </button>
       )
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/use-router#version-history)
 

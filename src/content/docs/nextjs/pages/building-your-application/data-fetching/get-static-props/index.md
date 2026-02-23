@@ -16,7 +16,7 @@ description: '페이지에서 (정적 사이트 생성)라는 함수를 export�
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { InferGetStaticPropsType, GetStaticProps } from 'next'
 
     type Repo = {
@@ -37,7 +37,7 @@ JavaScriptTypeScript
     }: InferGetStaticPropsType<typeof getStaticProps>) {
       return repo.stargazers_count
     }
-[/code]
+```
 
 > 렌더링 방식과 관계없이 모든 `props`는 페이지 컴포넌트로 전달되어 초기 HTML에서 클라이언트 측으로 노출됩니다. 이는 페이지가 올바르게 [hydrated](https://react.dev/reference/react-dom/hydrate)되도록 하기 위한 것입니다. 클라이언트에서 공개되면 안 되는 민감한 정보를 `props`로 전달하지 않도록 주의하세요.
 
@@ -73,7 +73,7 @@ JavaScriptTypeScript
 pages/blog.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // posts will be populated at build time by getStaticProps()
     export default function Blog({ posts }) {
       return (
@@ -102,7 +102,7 @@ JavaScriptTypeScript
         },
       }
     }
-[/code]
+```
 
 [`getStaticProps` API 레퍼런스](https://nextjs.org/docs/pages/api-reference/functions/get-static-props)는 `getStaticProps`에서 사용할 수 있는 모든 매개변수와 props를 다룹니다.
 
@@ -115,7 +115,7 @@ JavaScriptTypeScript
 다음 예제를 살펴보세요. API 라우트가 CMS에서 데이터를 가져오는 데 사용되고, 그 API 라우트를 `getStaticProps`에서 다시 호출합니다. 이로 인해 호출이 하나 더 늘어나 성능이 저하됩니다. 대신 `lib/` 디렉터리를 사용해 CMS에서 데이터를 가져오는 로직을 공유하면, 이를 `getStaticProps`에서도 재사용할 수 있습니다.
 
 lib/load-posts.js
-[code]
+```
     // The following function is shared
     // with getStaticProps and API routes
     // from a `lib/` directory
@@ -126,10 +126,10 @@ lib/load-posts.js
 
       return data
     }
-[/code]
+```
 
 pages/blog.js
-[code]
+```
     // pages/blog.js
     import { loadPosts } from '../lib/load-posts'
 
@@ -142,7 +142,7 @@ pages/blog.js
       // Props returned will be passed to the page component
       return { props: { posts } }
     }
-[/code]
+```
 
 또는 데이터를 가져오는 데 API 라우트를 사용하지 않는다면, [`fetch()`](https://developer.mozilla.org/docs/Web/API/Fetch_API) API를 `getStaticProps` 안에서 직접 사용해 데이터를 가져올 수 있습니다.
 

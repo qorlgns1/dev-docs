@@ -20,7 +20,7 @@ Copy page
 `notFound()` 함수를 호출하면 `NEXT_HTTP_ERROR_FALLBACK;404` 오류가 발생하고, 해당 오류가 발생한 라우트 세그먼트의 렌더링이 종료됩니다. [**not-found** 파일](https://nextjs.org/docs/app/api-reference/file-conventions/not-found)을 지정하면 세그먼트 내에서 Not Found UI를 렌더링하여 이러한 오류를 우아하게 처리할 수 있습니다.
 
 app/user/[id]/page.js
-[code]
+```
     import { notFound } from 'next/navigation'
 
     async function fetchUser(id) {
@@ -39,7 +39,7 @@ app/user/[id]/page.js
 
       // ...
     }
-[/code]
+```
 
 > **알아두면 좋은 점** : TypeScript [`never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never) 타입 덕분에 `notFound()`는 `return notFound()`를 사용할 필요가 없습니다.
 

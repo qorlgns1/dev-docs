@@ -39,14 +39,14 @@ MCP 서버를 구성하려면 다음 옵션 중 하나를 선택하세요.
 ### CLI로 구성하기
 
 #### MCP 서버 추가
-[code] 
+```
     codex mcp add <server-name> --env VAR1=VALUE1 --env VAR2=VALUE2 -- <stdio server-command>
-[/code]
+```
 
 예를 들어 개발자 문서를 위한 무료 MCP 서버 Context7을 추가하려면 다음 명령을 실행하면 됩니다:
-[code] 
+```
     codex mcp add context7 -- npx -y @upstash/context7-mcp
-[/code]
+```
 
 #### 기타 CLI 명령
 
@@ -95,23 +95,22 @@ MCP 서버 옵션을 더욱 세밀하게 제어하려면 `~/.codex/config.toml`(
 OAuth 공급자가 고정 콜백 URI를 요구하면 `config.toml`의 최상위 `mcp_oauth_callback_port`를 설정하세요. 설정하지 않으면 Codex는 임시 포트에 바인딩합니다.
 
 #### config.toml 예시
-[code] 
+```
     [mcp_servers.context7]
     command = "npx"
     args = ["-y", "@upstash/context7-mcp"]
     
     [mcp_servers.context7.env]
     MY_ENV_VAR = "MY_ENV_VALUE"
-[/code]
-[code] 
+```
+```
     [mcp_servers.figma]
     url = "https://mcp.figma.com/mcp"
     bearer_token_env_var = "FIGMA_OAUTH_TOKEN"
-[/code]
+```
 
 http_headers = { "X-Figma-Region" = "us-east-1" }
-[/code]
-[code] 
+```
     [mcp_servers.chrome_devtools]
     url = "http://localhost:3000/mcp"
     enabled_tools = ["open", "screenshot"]
@@ -119,7 +118,7 @@ http_headers = { "X-Figma-Region" = "us-east-1" }
     startup_timeout_sec = 20
     tool_timeout_sec = 45
     enabled = true
-[/code]
+```
 
 ## 유용한 MCP 서버 예시
 

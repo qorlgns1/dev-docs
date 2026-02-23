@@ -42,16 +42,16 @@ Next.js는 페이지에 차단형 데이터 요구 사항이 없으면 해당 �
 `next build`는 정적으로 최적화된 페이지에 대해 `.html` 파일을 생성합니다. 예를 들어 `pages/about.js` 페이지의 결과는 다음과 같습니다.
 
 Terminal
-[code]
+```
     .next/server/pages/about.html
-[/code]
+```
 
 그리고 페이지에 `getServerSideProps`를 추가하면 다음과 같이 JavaScript가 생성됩니다.
 
 Terminal
-[code]
+```
     .next/server/pages/about.js
-[/code]
+```
 
 ## 주의사항[](https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization#caveats)
 

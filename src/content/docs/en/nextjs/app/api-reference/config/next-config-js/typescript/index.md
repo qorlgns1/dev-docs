@@ -59,4 +59,3 @@ module.exports = {
 
 See the [TypeScript configuration](https://nextjs.org/docs/app/api-reference/config/typescript#custom-tsconfig-path) page for more details.
 ---
-

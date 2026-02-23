@@ -20,7 +20,7 @@ Page 컴포넌트에서 `getServerSideProps`를 export해 사용할 수 있습�
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
     type Repo = {
@@ -45,7 +45,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 ## 언제 `getServerSideProps`를 사용해야 하나요?[](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props#when-should-i-use-getserversideprops)
 
@@ -78,7 +78,7 @@ JavaScriptTypeScript
 ### 서버 사이드 렌더링(SSR)에서의 캐싱[](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr)
 
 `getServerSideProps` 내부에서 캐싱 헤더(`Cache-Control`)를 사용해 동적 응답을 캐싱할 수 있습니다. 예를 들어 [`stale-while-revalidate`](https://web.dev/stale-while-revalidate/)를 사용할 수 있습니다.
-[code]
+```
     // This value is considered fresh for ten seconds (s-maxage=10).
     // If a request is repeated within the next 10 seconds, the previously
     // cached value will still be fresh. If the request is repeated before 59 seconds,
@@ -96,6 +96,6 @@ JavaScriptTypeScript
         props: {},
       }
     }
-[/code]
+```
 
 다만 `cache-control`을 사용하기 전에, [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)와 [ISR](https://nextjs.org/docs/pages/guides/incremental-static-regeneration)이 상황에 더욱 적합한지 먼저 검토하는 것을 권장합니다.

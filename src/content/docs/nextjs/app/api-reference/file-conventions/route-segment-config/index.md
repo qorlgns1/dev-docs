@@ -40,10 +40,10 @@ description: '>   *  플래그가 켜져 있으면 이 페이지에 설명된 �
 layout.tsx | page.tsx | route.ts
 
 JavaScript / TypeScript
-[code]
+```
     export const dynamic = 'auto'
     // 'auto' | 'force-dynamic' | 'error' | 'force-static'
-[/code]
+```
 
 > **알아두면 좋아요** : `app` 디렉터리의 새 모델은 `pages` 디렉터리의 `getServerSideProps`, `getStaticProps`가 제공하던 이진 전부-또는-없음 방식 대신 `fetch` 요청 단위의 세분화된 캐싱 제어를 선호합니다. `dynamic` 옵션은 이전 모델로 다시 전환할 수 있는 편의 기능이자 더 단순한 마이그레이션 경로를 제공합니다.
 
@@ -72,9 +72,9 @@ JavaScript / TypeScript
 layout.tsx | page.tsx
 
 JavaScript / TypeScript
-[code]
+```
     export const dynamicParams = true // true | false
-[/code]
+```
 
   * **`true`** (기본): `generateStaticParams`에 포함되지 않은 동적 세그먼트를 요청 시점에 생성합니다.
   * **`false`** : `generateStaticParams`에 포함되지 않은 동적 세그먼트는 404를 반환합니다.
@@ -93,10 +93,10 @@ JavaScript / TypeScript
 layout.tsx | page.tsx | route.ts
 
 JavaScript / TypeScript
-[code]
+```
     export const revalidate = false
     // false | 0 | number
-[/code]
+```
 
   * **`false`** (기본): `cache` 옵션을 `'force-cache'`로 설정하거나 [Dynamic API](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)가 사용되기 전에 탐지된 `fetch` 요청을 캐시하는 기본 추론입니다. 의미상 `revalidate: Infinity`와 같으며, 자원은 사실상 무기한 캐시됩니다. 그래도 개별 `fetch` 요청에서 `cache: 'no-store'` 또는 `revalidate: 0`을 사용해 캐시를 피하고 라우트를 동적으로 렌더링할 수 있습니다. 혹은 라우트 기본값보다 낮은 양수로 `revalidate`를 설정해 재검증 빈도를 높일 수도 있습니다.
   * **`0`** : Dynamic API나 캐시되지 않은 데이터 페치가 없더라도 레이아웃이나 페이지를 항상 [동적으로 렌더링](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)하게 만듭니다. 이 옵션은 `cache` 옵션을 지정하지 않은 `fetch` 요청의 기본값을 `'no-store'`로 변경하지만, `'force-cache'`를 선택했거나 양수 `revalidate`를 지정한 `fetch` 요청은 그대로 유지합니다.
@@ -125,11 +125,11 @@ JavaScript / TypeScript
 layout.tsx | page.tsx | route.ts
 
 JavaScript / TypeScript
-[code]
+```
     export const fetchCache = 'auto'
     // 'auto' | 'default-cache' | 'only-cache'
     // 'force-cache' | 'force-no-store' | 'default-no-store' | 'only-no-store'
-[/code]
+```
 
   * **`'auto'`** (기본): Dynamic API 이전의 `fetch` 요청을 각각이 제공한 `cache` 옵션대로 캐시하고, Dynamic API 이후의 `fetch` 요청은 캐시하지 않는 기본 옵션입니다.
   * **`'default-cache'`** : `fetch`에 어떤 `cache` 옵션이든 전달할 수 있지만, 옵션이 없으면 `cache`를 `'force-cache'`로 설정합니다. 따라서 Dynamic API 이후의 `fetch` 요청도 정적으로 간주됩니다.
@@ -159,10 +159,10 @@ JavaScript / TypeScript
 layout.tsx | page.tsx | route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export const runtime = 'nodejs'
     // 'nodejs' | 'edge'
-[/code]
+```
 
   * **`'nodejs'`** (기본값)
   * **`'edge'`**
@@ -172,10 +172,10 @@ JavaScriptTypeScript
 layout.tsx | page.tsx | route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export const preferredRegion = 'auto'
     // 'auto' | 'global' | 'home' | ['iad1', 'sfo1']
-[/code]
+```
 
 `preferredRegion` 지원 여부와 사용 가능한 리전은 배포 플랫폼에 따라 달라집니다.
 
@@ -194,9 +194,9 @@ JavaScriptTypeScript
 layout.tsx | page.tsx | route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export const maxDuration = 5
-[/code]
+```
 
 > **알아두면 좋은 점** :
 >

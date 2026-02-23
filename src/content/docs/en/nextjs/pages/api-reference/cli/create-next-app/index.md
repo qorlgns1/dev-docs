@@ -160,4 +160,3 @@ yarn create next-app --example "https://github.com/.../" [your-project-name]
 bun create next-app --example "https://github.com/.../" [your-project-name]
 ```
 ---
-

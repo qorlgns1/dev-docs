@@ -18,25 +18,25 @@ description: '최신 버전의 Next.js로 업데이트하려면  명령을 사�
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm next upgrade
-[/code]
+```
 
 Next.js 15 이하 버전은 `upgrade` 명령을 지원하지 않으므로 별도의 패키지를 사용해야 합니다.
 
 터미널
-[code]
+```
     npx @next/codemod@canary upgrade latest
-[/code]
+```
 
 수동 업그레이드를 선호한다면 최신 Next.js와 React 버전을 설치하세요.
 
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm i next@latest react@latest react-dom@latest eslint-config-next@latest
-[/code]
+```
 
 ## 카나리 버전[](https://nextjs.org/docs/app/getting-started/upgrading#canary-version)
 
@@ -45,9 +45,9 @@ pnpmnpmyarnbun
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add next@canary
-[/code]
+```
 
 ### 카나리에서 제공되는 기능[](https://nextjs.org/docs/app/getting-started/upgrading#features-available-in-canary)
 

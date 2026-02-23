@@ -32,9 +32,9 @@ Next.js 13버전으로 업데이트하려면 선호하는 패키지 매니저로
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add next@latest react@latest react-dom@latest
-[/code]
+```
 
 ### ESLint 버전[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#eslint-version)
 
@@ -43,9 +43,9 @@ ESLint를 사용 중이라면 ESLint 버전을 업그레이드해야 합니다:
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add -D eslint-config-next@latest
-[/code]
+```
 
 > **알아두면 좋아요** : ESLint 변경 사항을 적용하려면 VS Code의 ESLint 서버를 재시작해야 할 수 있습니다. 명령 팔레트(`cmd+shift+p` on Mac; `ctrl+shift+p` on Windows)를 열어 `ESLint: Restart ESLint Server`를 검색하세요.
 
@@ -78,7 +78,7 @@ Next.js 12에서는 임시 임포트 `next/future/image`를 통해 Image 컴포�
 [`<Link>` 컴포넌트](https://nextjs.org/docs/app/api-reference/components/link)는 더 이상 자식으로 `<a>` 태그를 수동으로 추가할 필요가 없습니다. 이 동작은 [12.2버전](https://nextjs.org/blog/next-12-2)에서 실험 옵션으로 추가되었으며 이제 기본 동작입니다. Next.js 13에서 `<Link>`는 항상 `<a>`를 렌더링하며, 기본 태그로 props를 전달할 수 있습니다.
 
 예시:
-[code]
+```
     import Link from 'next/link'
 
     // Next.js 12: `<a>`가 중첩되지 않으면 제외됩니다.
@@ -90,7 +90,7 @@ Next.js 12에서는 임시 임포트 `next/future/image`를 통해 Image 컴포�
     <Link href="/about">
       About
     </Link>
-[/code]
+```
 
 링크를 Next.js 13 방식으로 업그레이드하려면 [`new-link` 코드모드](https://nextjs.org/docs/app/guides/upgrading/codemods#new-link)를 사용할 수 있습니다.
 
@@ -138,9 +138,9 @@ App Router로 이동하는 것은 Server Components, Suspense 등 Next.js가 기
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add next@latest
-[/code]
+```
 
 그런 다음 프로젝트 루트(또는 `src/` 디렉터리)에 새로운 `app` 디렉터리를 만드세요.
 
@@ -151,7 +151,7 @@ pnpmnpmyarnbun
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       // Layouts must accept a children prop.
       // This will be populated with nested layouts or pages
@@ -165,7 +165,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
   * `app` 디렉터리는 반드시 루트 레이아웃을 포함해야 합니다.
   * Next.js가 `<html>`, `<body>` 태그를 자동으로 생성하지 않으므로 루트 레이아웃에서 정의해야 합니다.
@@ -177,14 +177,14 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Metadata } from 'next'
 
     export const metadata: Metadata = {
       title: 'Home',
       description: 'Welcome to Next.js',
     }
-[/code]
+```
 
 #### `_document.js` 및 `_app.js` 마이그레이션[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#migrating-_documentjs-and-_appjs)
 
@@ -201,7 +201,7 @@ Next.js는 `pages` 디렉터리에서 페이지별 레이아웃을 구현하기 
 **이전**
 
 components/DashboardLayout.js
-[code]
+```
     export default function DashboardLayout({ children }) {
       return (
         <div>
@@ -210,10 +210,10 @@ components/DashboardLayout.js
         </div>
       )
     }
-[/code]
+```
 
 pages/dashboard/index.js
-[code]
+```
     import DashboardLayout from '../components/DashboardLayout'
 
     export default function Page() {
@@ -223,22 +223,24 @@ pages/dashboard/index.js
     Page.getLayout = function getLayout(page) {
       return <DashboardLayout>{page}</DashboardLayout>
     }
-[/code]
+```
 
 **이후**
 
   * `pages/dashboard/index.js`에서 `Page.getLayout` 속성을 제거하고, `pages`를 `app` 디렉터리로 [마이그레이션하는 단계](https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-4-migrating-pages)를 따르세요.
 
 app/dashboard/page.js
-[code]export default function Page() {
+```
+export default function Page() {
           return <p>My Page</p>
         }
-[/code]
+```
 
   * `DashboardLayout`의 내용을 새 [Client Component](https://nextjs.org/docs/app/getting-started/server-and-client-components)로 옮겨 `pages` 디렉터리와 동일한 동작을 유지하세요.
 
 app/dashboard/DashboardLayout.js
-[code]'use client' // this directive should be at top of the file, before any imports.
+```
+'use client' // this directive should be at top of the file, before any imports.
 
         // This is a Client Component
         export default function DashboardLayout({ children }) {
@@ -249,18 +251,19 @@ app/dashboard/DashboardLayout.js
             </div>
           )
         }
-[/code]
+```
 
   * `DashboardLayout`을 `app` 디렉터리 내부의 새 `layout.js` 파일로 가져오세요.
 
 app/dashboard/layout.js
-[code]import DashboardLayout from './DashboardLayout'
+```
+import DashboardLayout from './DashboardLayout'
 
         // This is a Server Component
         export default function Layout({ children }) {
           return <DashboardLayout>{children}</DashboardLayout>
         }
-[/code]
+```
 
   * 클라이언트로 전송되는 컴포넌트 JavaScript 양을 줄이기 위해, `DashboardLayout.js`(Client Component)의 비대화형 부분을 점진적으로 `layout.js`(Server Component)로 옮길 수 있습니다.
 
@@ -273,7 +276,7 @@ app/dashboard/layout.js
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Head from 'next/head'
 
     export default function Page() {
@@ -285,14 +288,14 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 **이후:**
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Metadata } from 'next'
 
     export const metadata: Metadata = {
@@ -302,7 +305,7 @@ JavaScriptTypeScript
     export default function Page() {
       return '...'
     }
-[/code]
+```
 
 [모든 메타데이터 옵션 보기](https://nextjs.org/docs/app/api-reference/functions/generate-metadata).
 
@@ -333,7 +336,7 @@ JavaScriptTypeScript
 app/home-page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     // This is a Client Component (same as components in the `pages` directory)
@@ -348,7 +351,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 **2단계: 새 페이지 만들기**
 
@@ -361,7 +364,8 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]// Import your Client Component
+```
+// Import your Client Component
         import HomePage from './home-page'
 
         async function getPosts() {
@@ -376,7 +380,7 @@ JavaScriptTypeScript
           // Forward fetched data to your Client Component
           return <HomePage recentPosts={recentPosts} />
         }
-[/code]
+```
 
   * 이전 페이지에서 `useRouter`를 사용했다면, 새로운 라우팅 훅으로 업데이트해야 합니다. [더 알아보기](https://nextjs.org/docs/app/api-reference/functions/use-router).
 
@@ -398,7 +402,7 @@ JavaScriptTypeScript
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useRouter, usePathname, useSearchParams } from 'next/navigation'
@@ -410,7 +414,7 @@ JavaScriptTypeScript
 
       // ...
     }
-[/code]
+```
 
 또한 새로운 `useRouter` 훅에는 다음과 같은 변경 사항이 있습니다.
 
@@ -434,7 +438,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       // This request should be cached until manually invalidated.
       // Similar to `getStaticProps`.
@@ -453,14 +457,14 @@ JavaScriptTypeScript
 
       return <div>...</div>
     }
-[/code]
+```
 
 #### 서버 사이드 렌더링(`getServerSideProps`)[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#server-side-rendering-getserversideprops)
 
 `pages` 디렉터리에서는 `getServerSideProps`를 사용해 서버에서 데이터를 가져온 뒤 해당 파일의 기본 내보낸 React 컴포넌트로 props를 전달합니다. 페이지의 초기 HTML은 서버에서 프리렌더링되고, 이후 브라우저에서 페이지를 “하이드레이션”하여 인터랙티브하게 만듭니다.
 
 pages/dashboard.js
-[code]
+```
     // `pages` directory
 
     export async function getServerSideProps() {
@@ -479,7 +483,7 @@ pages/dashboard.js
         </ul>
       )
     }
-[/code]
+```
 
 App Router에서는 [서버 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components)를 활용해 React 컴포넌트 내부에 데이터 패칭을 공존시킬 수 있습니다. 이렇게 하면 서버에서 렌더링된 HTML은 유지하면서 클라이언트로 전송되는 JavaScript 양을 줄일 수 있습니다.
 
@@ -488,7 +492,7 @@ App Router에서는 [서버 컴포넌트](https://nextjs.org/docs/app/getting-st
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // `app` directory
 
     // This function can be named anything
@@ -510,7 +514,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 #### 요청 객체에 접근하기[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#accessing-request-object)
 
@@ -519,7 +523,7 @@ JavaScriptTypeScript
 예를 들어 `getServerSideProps`에서 `req` 객체를 받아 요청의 쿠키와 헤더를 조회할 수 있습니다.
 
 pages/index.js
-[code]
+```
     // `pages` directory
 
     export async function getServerSideProps({ req, query }) {
@@ -532,7 +536,7 @@ pages/index.js
     export default function Page(props) {
       return ...
     }
-[/code]
+```
 
 `app` 디렉터리는 요청 데이터를 읽어오기 위한 새로운 읽기 전용 함수를 제공합니다:
 
@@ -542,7 +546,7 @@ pages/index.js
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // `app` directory
     import { cookies, headers } from 'next/headers'
 
@@ -559,14 +563,14 @@ JavaScriptTypeScript
       const data = await getData()
       return '...'
     }
-[/code]
+```
 
 #### 정적 사이트 생성(`getStaticProps`)[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#static-site-generation-getstaticprops)
 
 `pages` 디렉터리에서는 `getStaticProps` 함수가 빌드 타임에 페이지를 프리렌더링하는 데 사용됩니다. 이 함수는 외부 API나 데이터베이스에서 데이터를 가져와 빌드 중에 전체 페이지로 전달할 수 있습니다.
 
 pages/index.js
-[code]
+```
     // `pages` directory
 
     export async function getStaticProps() {
@@ -579,12 +583,12 @@ pages/index.js
     export default function Index({ projects }) {
       return projects.map((project) => <div>{project.name}</div>)
     }
-[/code]
+```
 
 `app` 디렉터리에서는 [`fetch()`](https://nextjs.org/docs/app/api-reference/functions/fetch)를 사용한 데이터 패칭이 기본적으로 `cache: 'force-cache'`로 동작하며, 수동으로 무효화할 때까지 요청 데이터를 캐시합니다. 이는 `pages` 디렉터리의 `getStaticProps`와 유사합니다.
 
 app/page.js
-[code]
+```
     // `app` directory
 
     // This function can be named anything
@@ -600,14 +604,14 @@ app/page.js
 
       return projects.map((project) => <div>{project.name}</div>)
     }
-[/code]
+```
 
 #### 동적 경로(`getStaticPaths`)[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#dynamic-paths-getstaticpaths)
 
 `pages` 디렉터리에서는 `getStaticPaths` 함수로 빌드 타임에 프리렌더링해야 할 동적 경로를 정의합니다.
 
 pages/posts/[id].js
-[code]
+```
     // `pages` directory
     import PostLayout from '@/components/post-layout'
 
@@ -627,14 +631,14 @@ pages/posts/[id].js
     export default function Post({ post }) {
       return <PostLayout post={post} />
     }
-[/code]
+```
 
 `app` 디렉터리에서는 `getStaticPaths`가 [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)로 대체됩니다.
 
 [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)는 `getStaticPaths`와 비슷하지만, 라우트 파라미터를 반환하는 API가 더 단순화되었으며 [레이아웃](https://nextjs.org/docs/app/api-reference/file-conventions/layout) 내부에서도 사용할 수 있습니다. `generateStaticParams`의 반환 형태는 중첩된 `param` 객체 배열이나 해석된 경로 문자열 대신 세그먼트 배열입니다.
 
 app/posts/[id]/page.js
-[code]
+```
     // `app` directory
     import PostLayout from '@/components/post-layout'
 
@@ -654,7 +658,7 @@ app/posts/[id]/page.js
 
       return <PostLayout post={post} />
     }
-[/code]
+```
 
 `app` 디렉터리의 새로운 모델에서는 `generateStaticParams`라는 이름이 `getStaticPaths`보다 더 적합합니다. `getStaticProps`와 `getServerSideProps`가 더 이상 필요하지 않기 때문에 `get` 접두사는 더 설명적인 `generate`로 대체되며, 여러 동적 세그먼트를 포함하는 중첩 라우팅에 더 알맞은 `Params` 접미사가 `Paths` 대신 사용됩니다.
 
@@ -665,7 +669,7 @@ app/posts/[id]/page.js
 `pages` 디렉터리에서는 `getStaticPaths`가 반환하는 `fallback` 속성이 빌드 타임에 프리렌더링되지 않은 페이지의 동작을 정의합니다. 페이지가 생성되는 동안 대체 페이지를 보여주려면 `true`, 404 페이지를 보여주려면 `false`, 요청 시 페이지를 생성하려면 `blocking`으로 설정할 수 있습니다.
 
 pages/posts/[id].js
-[code]
+```
     // `pages` directory
 
     export async function getStaticPaths() {
@@ -682,7 +686,7 @@ pages/posts/[id].js
     export default function Post({ post }) {
       return ...
     }
-[/code]
+```
 
 `app` 디렉터리에서는 [`config.dynamicParams` 속성](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams)이 [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params) 외부의 파라미터를 처리하는 방식을 제어합니다:
 
@@ -692,7 +696,7 @@ pages/posts/[id].js
 이는 `pages` 디렉터리의 `getStaticPaths`에서 사용하던 `fallback: true | false | 'blocking'` 옵션을 대체합니다. 스트리밍 환경에서는 `'blocking'`과 `true`의 차이가 미미하므로 `dynamicParams`에는 `fallback: 'blocking'` 옵션이 포함되지 않습니다.
 
 app/posts/[id]/page.js
-[code]
+```
     // `app` directory
 
     export const dynamicParams = true;
@@ -710,7 +714,7 @@ app/posts/[id]/page.js
 
       return ...
     }
-[/code]
+```
 
 [`dynamicParams`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams)를 `true`(기본값)로 설정하면 아직 생성되지 않은 라우트 세그먼트가 요청될 때 서버에서 렌더링하고 캐시합니다.
 
@@ -719,7 +723,7 @@ app/posts/[id]/page.js
 `pages` 디렉터리에서는 `getStaticProps` 함수로 일정 시간이 지나면 페이지를 자동으로 다시 생성하도록 `revalidate` 필드를 추가할 수 있습니다.
 
 pages/index.js
-[code]
+```
     // `pages` directory
 
     export async function getStaticProps() {
@@ -739,12 +743,12 @@ pages/index.js
         </Layout>
       )
     }
-[/code]
+```
 
 `app` 디렉터리에서는 [`fetch()`](https://nextjs.org/docs/app/api-reference/functions/fetch)로 데이터를 가져올 때 `revalidate`를 사용할 수 있으며, 지정한 초 동안 요청이 캐시됩니다.
 
 app/page.js
-[code]
+```
     // `app` directory
 
     async function getPosts() {
@@ -759,7 +763,7 @@ app/page.js
 
       return posts.map((post) => <div>{post.name}</div>)
     }
-[/code]
+```
 
 #### API 라우트[](https://nextjs.org/docs/app/guides/migrating/app-router-migration#api-routes)
 
@@ -770,9 +774,9 @@ Route Handler를 사용하면 Web [Request](https://developer.mozilla.org/docs/W
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET(request: Request) {}
-[/code]
+```
 
 > **알아 두면 좋아요** : 이전에 클라이언트에서 외부 API를 호출하기 위해 API 라우트를 사용했다면, 이제는 [Server Components](https://nextjs.org/docs/app/getting-started/server-and-client-components)를 사용해 안전하게 데이터를 가져올 수 있습니다. [데이터 패칭](https://nextjs.org/docs/app/getting-started/fetching-data)에 대해 더 알아보세요.
 
@@ -796,7 +800,7 @@ JavaScriptTypeScript
 Tailwind CSS를 사용 중이라면 `tailwind.config.js` 파일에 `app` 디렉터리를 추가해야 합니다.
 
 tailwind.config.js
-[code]
+```
     module.exports = {
       content: [
         './app/**/*.{js,ts,jsx,tsx,mdx}', // <-- Add this line
@@ -804,12 +808,12 @@ tailwind.config.js
         './components/**/*.{js,ts,jsx,tsx,mdx}',
       ],
     }
-[/code]
+```
 
 또한 전역 스타일을 `app/layout.js` 파일에 import해야 합니다.
 
 app/layout.js
-[code]
+```
     import '../styles/globals.css'
 
     export default function RootLayout({ children }) {
@@ -819,7 +823,7 @@ app/layout.js
         </html>
       )
     }
-[/code]
+```
 
 [Tailwind CSS로 스타일링](https://nextjs.org/docs/app/getting-started/css#tailwind-css)에 대해 더 알아보세요.
 

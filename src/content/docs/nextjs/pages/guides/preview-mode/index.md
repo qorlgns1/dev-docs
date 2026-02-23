@@ -62,26 +62,26 @@ Next.js에는 이 문제를 해결하는 **Preview Mode** 기능이 있습니다
 먼저 **preview API route**를 만듭니다. 이름은 자유롭게 정할 수 있습니다. 예: `pages/api/preview.js` (TypeScript 사용 시 `.ts`).
 
 이 API route에서 응답 객체의 `setPreviewData`를 호출해야 합니다. `setPreviewData`에 전달하는 인수는 객체여야 하며, 이후 `getStaticProps`에서 사용할 수 있습니다(뒤에서 설명). 지금은 `{}`를 사용하겠습니다.
-[code]
+```
     export default function handler(req, res) {
       // ...
       res.setPreviewData({})
       // ...
     }
-[/code]
+```
 
 `res.setPreviewData`는 브라우저에 일부 **쿠키**를 설정하고 preview mode를 활성화합니다. 이 쿠키가 포함된 Next.js 요청은 **preview mode**로 간주되며, 정적으로 생성된 페이지의 동작이 달라집니다(자세한 내용은 뒤에서 설명).
 
 아래와 같은 API route를 만들고 브라우저에서 직접 접근해 수동으로 테스트할 수 있습니다:
 
 pages/api/preview.js
-[code]
+```
     // 브라우저에서 수동으로 테스트하기 위한 간단한 예제.
     export default function handler(req, res) {
       res.setPreviewData({})
       res.end('Preview mode enabled')
     }
-[/code]
+```
 
 브라우저 개발자 도구를 열고 `/api/preview`를 방문하면 이 요청에 `__prerender_bypass`와 `__next_preview_data` 쿠키가 설정되는 것을 확인할 수 있습니다.
 
@@ -96,9 +96,9 @@ pages/api/preview.js
 **둘째**, 헤드리스 CMS가 custom preview URL 설정을 지원한다면 preview URL로 아래 값을 지정합니다. preview API route가 `pages/api/preview.js`에 있다고 가정합니다.
 
 Terminal
-[code]
+```
     https://<your-site>/api/preview?secret=<token>&slug=<path>
-[/code]
+```
 
   * `<your-site>`에는 배포 도메인을 입력합니다.
   * `<token>`에는 앞에서 생성한 secret token을 넣습니다.
@@ -112,7 +112,7 @@ Terminal
   *   * `res.setPreviewData`를 호출합니다.
   * 그런 다음 브라우저를 `slug`에 지정된 경로로 리디렉션합니다. (아래 예제는 [307 redirect](https://developer.mozilla.org/docs/Web/HTTP/Status/307)를 사용합니다.)
 
-[code]
+```
     export default async (req, res) => {
       // Check the secret and next parameters
       // This secret should only be known to this API route and the CMS
@@ -136,7 +136,7 @@ Terminal
       // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
       res.redirect(post.slug)
     }
-[/code]
+```
 
 성공하면 브라우저는 preview mode 쿠키가 설정된 상태로 미리 보고 싶은 경로로 리디렉션됩니다.
 
@@ -151,7 +151,7 @@ preview mode 쿠키(`res.setPreviewData`를 통해 설정)를 가진 상태로 `
   * `context.preview` 값은 `true`입니다.
   * `context.previewData`는 `setPreviewData`에 전달했던 인수와 동일합니다.
 
-[code]
+```
     export async function getStaticProps(context) {
       // If you request this page with the preview mode cookies set:
       //
@@ -159,7 +159,7 @@ preview mode 쿠키(`res.setPreviewData`를 통해 설정)를 가진 상태로 `
       // - context.previewData will be the same as
       //   the argument used for `setPreviewData`.
     }
-[/code]
+```
 
 preview API route에서 `res.setPreviewData({})`를 사용했으므로 `context.previewData`는 `{}`입니다. 필요하다면 preview API route에서 `getStaticProps`로 세션 정보를 전달하는 데 활용할 수 있습니다.
 
@@ -170,7 +170,7 @@ preview API route에서 `res.setPreviewData({})`를 사용했으므로 `context.
 `context.preview`나 `context.previewData`에 따라 다른 데이터를 가져오도록 `getStaticProps`를 업데이트할 수 있습니다.
 
 예를 들어 헤드리스 CMS에 초안 게시물 전용 API endpoint가 있다면, 아래와 같이 `context.preview`를 활용해 API endpoint URL을 수정할 수 있습니다:
-[code]
+```
     export async function getStaticProps(context) {
       // If context.preview is true, append "/preview" to the API endpoint
       // to request draft data instead of published data. This will vary
@@ -178,16 +178,16 @@ preview API route에서 `res.setPreviewData({})`를 사용했으므로 `context.
       const res = await fetch(`https://.../${context.preview ? 'preview' : ''}`)
       // ...
     }
-[/code]
+```
 
 이게 전부입니다! 헤드리스 CMS에서 또는 수동으로 프리뷰 API 경로(`secret` 및 `slug` 포함)에 접근하면 이제 프리뷰 콘텐츠를 볼 수 있습니다. 게시하지 않고 초안을 업데이트해도 초안을 미리 볼 수 있습니다.
 
 이 URL을 헤드리스 CMS의 프리뷰 URL로 설정하거나 수동으로 접근하면 프리뷰를 확인할 수 있습니다.
 
 터미널
-[code]
+```
     https://<your-site>/api/preview?secret=<token>&slug=<path>
-[/code]
+```
 
 ## 자세한 내용[](https://nextjs.org/docs/pages/guides/preview-mode#more-details)
 
@@ -200,12 +200,12 @@ preview API route에서 `res.setPreviewData({})`를 사용했으므로 `context.
   * `maxAge`: 프리뷰 세션이 유지될 시간(초)을 지정합니다.
   * `path`: 쿠키를 적용할 경로를 지정합니다. 기본값은 `/`로 모든 경로에서 프리뷰 모드를 활성화합니다.
 
-[code]
+```
     setPreviewData(data, {
       maxAge: 60 * 60, // The preview mode cookies expire in 1 hour
       path: '/about', // The preview mode cookies apply to paths with /about
     })
-[/code]
+```
 
 ### 프리뷰 모드 쿠키 지우기[](https://nextjs.org/docs/pages/guides/preview-mode#clear-the-preview-mode-cookies)
 
@@ -214,24 +214,24 @@ preview API route에서 `res.setPreviewData({})`를 사용했으므로 `context.
 프리뷰 모드 쿠키를 수동으로 지우려면 `clearPreviewData()`를 호출하는 API 경로를 만듭니다:
 
 pages/api/clear-preview-mode-cookies.js
-[code]
+```
     export default function handler(req, res) {
       res.clearPreviewData({})
     }
-[/code]
+```
 
 그런 다음 `/api/clear-preview-mode-cookies`에 요청을 보내 API 경로를 호출하세요. [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link)를 사용해 이 경로를 호출하는 경우 링크 프리페칭 중 `clearPreviewData`가 호출되지 않도록 `prefetch={false}`를 전달해야 합니다.
 
 `setPreviewData` 호출에서 경로를 지정했다면 동일한 경로를 `clearPreviewData`에도 전달해야 합니다:
 
 pages/api/clear-preview-mode-cookies.js
-[code]
+```
     export default function handler(req, res) {
       const { path } = req.query
 
       res.clearPreviewData({ path })
     }
-[/code]
+```
 
 ### `previewData` 크기 제한[](https://nextjs.org/docs/pages/guides/preview-mode#previewdata-size-limits)
 
@@ -247,13 +247,13 @@ pages/api/clear-preview-mode-cookies.js
 
 API 경로는 요청 객체에서 `preview`와 `previewData`에 접근할 수 있습니다. 예:
 
-[code]
+```
     export default function myApiRoute(req, res) {
       const isPreview = req.preview
       const previewData = req.previewData
       // ...
     }
-[/code]
+```
 
 ### `next build`마다 고유[](https://nextjs.org/docs/pages/guides/preview-mode#unique-per-next-build)
 

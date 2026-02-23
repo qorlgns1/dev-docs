@@ -616,4 +616,3 @@ do next:
 * [Optimize third-party scripts with the `<Script>` component](https://nextjs.org/docs/app/guides/scripts)
 * [Update your ESLint configuration to support Next.js rules](https://nextjs.org/docs/app/api-reference/config/eslint)
 ---
-

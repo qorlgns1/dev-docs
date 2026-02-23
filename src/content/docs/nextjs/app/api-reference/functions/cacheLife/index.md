@@ -277,7 +277,7 @@ app/products/[id]/page.tsx
 
 next.config.ts
 
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -297,12 +297,12 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 그런 다음 애플리케이션 전반에서 이러한 프로필을 사용하세요:
 
 app/editorial/page.tsx
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     export default async function EditorialPage() {
@@ -310,14 +310,14 @@ app/editorial/page.tsx
       cacheLife('editorial')
       // ...
     }
-[/code]
+```
 
 ### 고유한 사례를 위한 인라인 프로필[](https://nextjs.org/docs/app/api-reference/functions/cacheLife#inline-profiles-for-unique-cases)
 
 특정 함수에 일회성 캐싱 동작이 필요할 때 인라인 프로필을 사용하세요:
 
 app/api/limited-offer/route.ts
-[code]
+```
     import { cacheLife } from 'next/cache'
     import { getDb } from '@lib/db'
 
@@ -343,14 +343,14 @@ app/api/limited-offer/route.ts
 
       return Response.json(offer)
     }
-[/code]
+```
 
 ### 개별 함수 캐싱[](https://nextjs.org/docs/app/api-reference/functions/cacheLife#caching-individual-functions)
 
 세밀하게 제어하려면 유틸리티 함수에 캐싱을 적용하세요:
 
 lib/api.ts
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     export async function getSettings() {
@@ -359,10 +359,10 @@ lib/api.ts
 
       return await fetchSettings()
     }
-[/code]
+```
 
 lib/stats.ts
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     export async function getRealtimeStats() {
@@ -371,7 +371,7 @@ lib/stats.ts
 
       return await fetchStats()
     }
-[/code]
+```
 
 ### 중첩 캐싱 동작[](https://nextjs.org/docs/app/api-reference/functions/cacheLife#nested-caching-behavior)
 
@@ -382,7 +382,7 @@ lib/stats.ts
 외부 캐시는 내부 캐시 수명과 관계없이 자체 수명을 사용합니다. 외부 캐시가 적중하면 모든 중첩 데이터를 포함한 완전한 출력이 반환됩니다. 명시적 `cacheLife`는 내부 수명보다 길거나 짧더라도 항상 우선합니다.
 
 app/dashboard/page.tsx
-[code]
+```
     import { cacheLife } from 'next/cache'
     import { Widget } from './widget'
 
@@ -397,14 +397,14 @@ app/dashboard/page.tsx
         </div>
       )
     }
-[/code]
+```
 
 #### 명시적 외부 cacheLife가 없는 경우[](https://nextjs.org/docs/app/api-reference/functions/cacheLife#without-explicit-outer-cachelife)
 
 외부 캐시에서 `cacheLife`를 호출하지 않으면 `default` 프로필(재검증 15분)을 사용합니다. 수명이 더 짧은 내부 캐시는 외부 캐시의 `default` 수명을 줄일 수 있지만, 더 긴 내부 캐시는 이를 기본값 이상으로 연장할 수 없습니다.
 
 app/dashboard/page.tsx
-[code]
+```
     import { Widget } from './widget'
 
     export default async function Dashboard() {
@@ -420,7 +420,7 @@ app/dashboard/page.tsx
         </div>
       )
     }
-[/code]
+```
 
 **명시적으로 `cacheLife`를 지정하는 것이 좋습니다.** 수명 값을 명시해 두면 캐시된 함수나 컴포넌트를 확인할 때 중첩 캐시를 추적하지 않고도 즉시 동작을 파악할 수 있습니다. 수명을 명시하지 않으면 동작이 내부 캐시 수명에 따라 달라져 파악하기가 어려워집니다.
 
@@ -429,7 +429,7 @@ app/dashboard/page.tsx
 애플리케이션 로직에 따라 다른 코드 경로에서 `cacheLife`를 조건부로 호출하여 서로 다른 캐시 기간을 설정할 수 있습니다:
 
 lib/posts.ts
-[code]
+```
     import { cacheLife, cacheTag } from 'next/cache'
 
     async function getPostContent(slug: string) {
@@ -453,7 +453,7 @@ lib/posts.ts
       // Return only the necessary data to keep cache size minimal
       return post.data
     }
-[/code]
+```
 
 이 패턴은 항목이 아직 없지만 나중에 제공될 가능성이 있는 경우처럼 서로 다른 결과에 서로 다른 캐시 기간이 필요한 상황에서 유용합니다.
 
@@ -462,7 +462,7 @@ lib/posts.ts
 예를 들어 가져온 데이터에서 값을 읽어 런타임에 캐시 수명을 계산하려면 [인라인 캐시 프로필](https://nextjs.org/docs/app/api-reference/functions/cacheLife#inline-cache-profiles) 객체를 사용하세요:
 
 lib/posts.ts
-[code]
+```
     import { cacheLife, cacheTag } from 'next/cache'
 
     async function getPostContent(slug: string) {
@@ -485,7 +485,7 @@ lib/posts.ts
 
       return post.data
     }
-[/code]
+```
 
 ## 관련 항목
 

@@ -573,4 +573,3 @@ Learn more about adding a [Content Security Policy](https://nextjs.org/docs/app/
 | `v10.2.0` | `has` added.     |
 | `v9.5.0`  | Headers added.   |
 ---
-

@@ -16,4 +16,3 @@ Source URL: https://nextjs.org/docs/pages/building-your-application
   - Learn how to configure your Next.js application.
 
 ---
-

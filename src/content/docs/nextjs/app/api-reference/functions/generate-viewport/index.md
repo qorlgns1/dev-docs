@@ -29,7 +29,7 @@ Copy page
 layout.tsx | page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Viewport } from 'next'
 
     export const viewport: Viewport = {
@@ -37,7 +37,7 @@ JavaScriptTypeScript
     }
 
     export default function Page() {}
-[/code]
+```
 
 ## `generateViewport` function[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#generateviewport-function)
 
@@ -46,13 +46,13 @@ JavaScriptTypeScript
 layout.tsx | page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export function generateViewport({ params }) {
       return {
         themeColor: '...',
       }
     }
-[/code]
+```
 
 TypeScript에서는 `generateViewport`가 정의된 위치에 따라 `params` 인수를 [`PageProps<'/route'>`](https://nextjs.org/docs/app/api-reference/file-conventions/page#page-props-helper) 또는 [`LayoutProps<'/route'>`](https://nextjs.org/docs/app/api-reference/file-conventions/layout#layout-props-helper)로 타이핑할 수 있습니다.
 
@@ -72,25 +72,25 @@ TypeScript에서는 `generateViewport`가 정의된 위치에 따라 `params` �
 layout.tsx | page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Viewport } from 'next'
 
     export const viewport: Viewport = {
       themeColor: 'black',
     }
-[/code]
+```
 
 <head> output
-[code]
+```
     <meta name="theme-color" content="black" />
-[/code]
+```
 
 **미디어 속성 사용**
 
 layout.tsx | page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Viewport } from 'next'
 
     export const viewport: Viewport = {
@@ -99,13 +99,13 @@ JavaScriptTypeScript
         { media: '(prefers-color-scheme: dark)', color: 'black' },
       ],
     }
-[/code]
+```
 
 <head> output
-[code]
+```
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="cyan" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" />
-[/code]
+```
 
 ### `width`, `initialScale`, `maximumScale` 및 `userScalable`[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#width-initialscale-maximumscale-and-userscalable)
 
@@ -114,7 +114,7 @@ JavaScriptTypeScript
 layout.tsx | page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Viewport } from 'next'
 
     export const viewport: Viewport = {
@@ -125,15 +125,15 @@ JavaScriptTypeScript
       // Also supported but less commonly used
       // interactiveWidget: 'resizes-visual',
     }
-[/code]
+```
 
 <head> output
-[code]
+```
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
-[/code]
+```
 
 ### `colorScheme`[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#colorscheme)
 
@@ -142,18 +142,18 @@ JavaScriptTypeScript
 layout.tsx | page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Viewport } from 'next'
 
     export const viewport: Viewport = {
       colorScheme: 'dark',
     }
-[/code]
+```
 
 <head> output
-[code]
+```
     <meta name="color-scheme" content="dark" />
-[/code]
+```
 
 ## With Cache Components[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#with-cache-components)
 
@@ -164,18 +164,18 @@ JavaScriptTypeScript
 뷰포트가 외부 데이터에는 의존하지만 런타임 데이터에는 의존하지 않는다면 `use cache`를 사용하세요:
 
 app/layout.tsx
-[code]
+```
     export async function generateViewport() {
       'use cache'
       const { width, initialScale } = await db.query('viewport-size')
       return { width, initialScale }
     }
-[/code]
+```
 
 뷰포트가 실제로 런타임 데이터를 필요로 한다면 문서 `<body>`를 Suspense 경계로 감싸 전체 라우트가 동적으로 처리되어야 함을 알리세요:
 
 app/layout.tsx
-[code]
+```
     import { Suspense } from 'react'
     import { cookies } from 'next/headers'
 
@@ -195,7 +195,7 @@ app/layout.tsx
         </Suspense>
       )
     }
-[/code]
+```
 
 캐싱은 정적 셸 생성을 가능하게 하므로 선호됩니다. 문서 `body`를 Suspense로 감싸면 요청이 도착했을 때 즉시 보낼 정적 셸이나 콘텐츠가 없고, 모든 요청마다 준비될 때까지 전체 라우트가 블로킹됩니다.
 
@@ -206,18 +206,18 @@ app/layout.tsx
 `Viewport` 타입을 사용하면 뷰포트 객체에 타입 안전성을 추가할 수 있습니다. IDE에서 [내장 TypeScript 플러그인](https://nextjs.org/docs/app/api-reference/config/typescript)을 사용하는 경우 타입을 수동으로 추가할 필요는 없지만 원한다면 명시적으로 추가할 수 있습니다.
 
 ### `viewport` object[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#viewport-object)
-[code]
+```
     import type { Viewport } from 'next'
 
     export const viewport: Viewport = {
       themeColor: 'black',
     }
-[/code]
+```
 
 ### `generateViewport` function[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#generateviewport-function-1)
 
 #### Regular function[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#regular-function)
-[code]
+```
     import type { Viewport } from 'next'
 
     export function generateViewport(): Viewport {
@@ -225,10 +225,10 @@ app/layout.tsx
         themeColor: 'black',
       }
     }
-[/code]
+```
 
 #### With segment props[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#with-segment-props)
-[code]
+```
     import type { Viewport } from 'next'
 
     type Props = {
@@ -243,17 +243,17 @@ app/layout.tsx
     }
 
     export default function Page({ params, searchParams }: Props) {}
-[/code]
+```
 
 #### JavaScript Projects[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#javascript-projects)
 
 JavaScript 프로젝트에서는 JSDoc을 사용해 타입 안전성을 추가할 수 있습니다.
-[code]
+```
     /** @type {import("next").Viewport} */
     export const viewport = {
       themeColor: 'black',
     }
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/generate-viewport#version-history)
 

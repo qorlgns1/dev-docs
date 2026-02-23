@@ -544,4 +544,3 @@ const cspHeader = `
 | `v14.0.0`  | Experimental SRI support added for hash-based CSP             |
 | `v13.4.20` | Recommended for proper nonce handling and CSP header parsing. |
 ---
-

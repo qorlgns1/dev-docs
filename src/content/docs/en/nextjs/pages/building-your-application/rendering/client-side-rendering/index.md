@@ -78,4 +78,3 @@ Learn about the alternative rendering methods in Next.js.
   - Learn how to create or update static pages at runtime with Incremental Static Regeneration.
 
 ---
-

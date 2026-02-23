@@ -550,4 +550,3 @@ const cspHeader = `
   - API reference for the headers function.
 
 ---
-

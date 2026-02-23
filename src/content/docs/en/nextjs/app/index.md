@@ -26,4 +26,3 @@ Learn the fundamentals of building an App Router project, from installation to l
 - [Linking and NavigatingLearn how the built-in navigation optimizations work, including prefetching, prerendering, and client-side navigation, and how to optimize navigation for dynamic routes and slow networks.](https://nextjs.org/docs/app/getting-started/linking-and-navigating)
 
 - [Server and Client ComponentsLearn how you can use React Server and Client Components to render parts of your application on the server or the client.](https://nextjs.org/docs/app/getting-started/server-and-client-components)
-

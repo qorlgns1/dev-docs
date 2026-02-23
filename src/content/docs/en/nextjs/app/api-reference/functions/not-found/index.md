@@ -42,4 +42,3 @@ export default async function Profile({ params }) {
 | --------- | ---------------------- |
 | `v13.0.0` | `notFound` introduced. |
 ---
-

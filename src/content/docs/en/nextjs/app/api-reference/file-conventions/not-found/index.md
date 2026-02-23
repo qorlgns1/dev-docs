@@ -236,4 +236,3 @@ export default function GlobalNotFound() {
 | `v13.3.0` | Root `app/not-found` handles global unmatched URLs. |
 | `v13.0.0` | `not-found` introduced.                             |
 ---
-

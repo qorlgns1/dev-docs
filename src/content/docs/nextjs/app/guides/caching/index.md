@@ -69,7 +69,7 @@ Next.js는 [`fetch` API](https://nextjs.org/docs/app/guides/caching#fetch)를 �
 app/example.tsx
 
 JavaScriptTypeScript
-[code]
+```
     async function getItem() {
       // The `fetch` function is automatically memoized and the result
       // is cached
@@ -82,7 +82,7 @@ JavaScriptTypeScript
 
     // The second call could be anywhere in your route
     const item = await getItem() // cache HIT
-[/code]
+```
 
 **Request Memoization 동작 방식**
 
@@ -116,10 +116,10 @@ JavaScriptTypeScript
 개별 요청을 제어하려면 [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)의 [`signal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController/signal) 속성을 사용할 수 있습니다.
 
 app/example.js
-[code]
+```
     const { signal } = new AbortController()
     fetch(url, { signal })
-[/code]
+```
 
 ## Data Cache[](https://nextjs.org/docs/app/guides/caching#data-cache)
 
@@ -157,10 +157,10 @@ Data Cache는 재검증하거나 옵트아웃하지 않는 한 들어오는 요�
 #### 시간 기반 재검증[](https://nextjs.org/docs/app/guides/caching#time-based-revalidation)
 
 정해진 간격으로 데이터를 재검증하려면 `fetch`의 `next.revalidate` 옵션을 사용해 리소스의 캐시 수명(초)을 설정하세요.
-[code]
+```
     // Revalidate at most every hour
     fetch('https://...', { next: { revalidate: 3600 } })
-[/code]
+```
 
 Alternatively, you can use [Route Segment Config options](https://nextjs.org/docs/app/guides/caching#segment-config-options) to configure all `fetch` requests in a segment or for cases where you're not able to use `fetch`.
 
@@ -189,9 +189,9 @@ Alternatively, you can use [Route Segment Config options](https://nextjs.org/doc
 ### 선택 해제[](https://nextjs.org/docs/app/guides/caching#opting-out-1)
 
 `fetch` 응답을 캐시하지 않으려면 다음과 같이 할 수 있습니다.
-[code]
+```
     let data = await fetch('https://api.vercel.app/blog', { cache: 'no-store' })
-[/code]
+```
 
 ## Full Route Cache[](https://nextjs.org/docs/app/guides/caching#full-route-cache)
 
@@ -390,20 +390,20 @@ Prefetching을 비활성화하려면 `prefetch` prop을 `false`로 설정할 수
 ### `fetch options.cache`[](https://nextjs.org/docs/app/guides/caching#fetch-optionscache)
 
 `cache` 옵션을 `force-cache`로 설정하여 개별 `fetch` 호출을 캐싱하도록 선택할 수 있습니다:
-[code]
+```
     // 캐싱을 사용
     fetch(`https://...`, { cache: 'force-cache' })
-[/code]
+```
 
 [`fetch` API Reference](https://nextjs.org/docs/app/api-reference/functions/fetch)에서 더 많은 옵션을 확인하세요.
 
 ### `fetch options.next.revalidate`[](https://nextjs.org/docs/app/guides/caching#fetch-optionsnextrevalidate)
 
 `fetch`의 `next.revalidate` 옵션을 사용하면 개별 `fetch` 요청의 재검증 주기(초 단위)를 설정할 수 있습니다. 이는 Data Cache를 재검증하고, 이어서 Full Route Cache도 재검증합니다. 새로운 데이터가 가져와지고 컴포넌트가 서버에서 다시 렌더링됩니다.
-[code]
+```
     // 최대 1시간마다 재검증
     fetch(`https://...`, { next: { revalidate: 3600 } })
-[/code]
+```
 
 [`fetch` API reference](https://nextjs.org/docs/app/api-reference/functions/fetch)에서 더 많은 옵션을 확인하세요.
 
@@ -415,16 +415,16 @@ Next.js에는 정밀한 데이터 캐싱과 재검증을 위한 캐시 태깅 �
   2. 그런 다음 `revalidateTag`를 호출하여 해당 태그와 연결된 캐시 항목을 제거할 수 있습니다.
 
 예를 들어, 데이터를 가져올 때 태그를 설정할 수 있습니다:
-[code]
+```
     // 태그와 함께 데이터 캐시
     fetch(`https://...`, { next: { tags: ['a', 'b', 'c'] } })
-[/code]
+```
 
 그런 다음 캐시 항목을 제거하려면 `revalidateTag`를 태그와 함께 호출합니다:
-[code]
+```
     // 특정 태그의 항목을 재검증
     revalidateTag('a')
-[/code]
+```
 
 `revalidateTag`는 목적에 따라 다음 두 곳에서 사용할 수 있습니다:
 
@@ -434,9 +434,9 @@ Next.js에는 정밀한 데이터 캐싱과 재검증을 위한 캐시 태깅 �
 ### `revalidatePath`[](https://nextjs.org/docs/app/guides/caching#revalidatepath)
 
 `revalidatePath`는 단일 작업으로 특정 경로 아래의 데이터와 라우트 세그먼트를 수동으로 재검증하고 다시 렌더링할 수 있습니다. `revalidatePath`를 호출하면 Data Cache가 재검증되고, 이어서 Full Route Cache가 무효화됩니다.
-[code]
+```
     revalidatePath('/')
-[/code]
+```
 
 `revalidatePath`는 목적에 따라 두 곳에서 사용할 수 있습니다:
 

@@ -85,4 +85,3 @@ Learn how to create sitemaps for your Next.js application.
   - API Reference for the sitemap.xml file.
 
 ---
-

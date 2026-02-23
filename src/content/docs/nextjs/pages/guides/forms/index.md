@@ -20,7 +20,7 @@ description: '최종 업데이트: 2026년 2월 20일'
 pages/api/submit.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     export default async function handler(
@@ -31,14 +31,14 @@ JavaScriptTypeScript
       const id = await createItem(data)
       res.status(200).json({ id })
     }
-[/code]
+```
 
 그다음 클라이언트에서 이벤트 핸들러로 API Route를 호출합니다:
 
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { FormEvent } from 'react'
 
     export default function Page() {
@@ -63,7 +63,7 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 > **참고하세요:**
 >
@@ -80,7 +80,7 @@ JavaScriptTypeScript
 pages/api/submit.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
     import { z } from 'zod'
 
@@ -95,7 +95,7 @@ JavaScriptTypeScript
       const parsed = schema.parse(req.body)
       // ...
     }
-[/code]
+```
 
 ### Error handling[](https://nextjs.org/docs/pages/guides/forms#error-handling)
 
@@ -104,7 +104,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import React, { useState, FormEvent } from 'react'
 
     export default function Page() {
@@ -151,7 +151,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ## Displaying loading state[](https://nextjs.org/docs/pages/guides/forms#displaying-loading-state)
 
@@ -160,7 +160,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import React, { useState, FormEvent } from 'react'
 
     export default function Page() {
@@ -197,7 +197,7 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 ### Redirecting[](https://nextjs.org/docs/pages/guides/forms#redirecting)
 
@@ -206,7 +206,7 @@ JavaScriptTypeScript
 pages/api/submit.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     export default async function handler(
@@ -216,7 +216,7 @@ JavaScriptTypeScript
       const id = await addPost()
       res.redirect(307, `/post/${id}`)
     }
-[/code]
+```
 
 이 문서가 도움이 되었나요?
 

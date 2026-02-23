@@ -37,4 +37,3 @@ export default Index
 ## Useful Links
 
 - [next/head](https://nextjs.org/docs/pages/api-reference/components/head)
-

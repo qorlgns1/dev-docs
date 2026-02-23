@@ -53,25 +53,25 @@ Here are a few options people change most often:
 #### Default model
 
 Choose the model Codex uses by default in the CLI and IDE.
-[code] 
+```
     model = "gpt-5.2"
-[/code]
+```
 
 #### Approval prompts
 
 Control when Codex pauses to ask before running generated commands.
-[code] 
+```
     approval_policy = "on-request"
-[/code]
+```
 
 For behavior differences between `untrusted`, `on-request`, and `never`, see [Run without approval prompts](https://developers.openai.com/codex/security#run-without-approval-prompts) and [Common sandbox and approval combinations](https://developers.openai.com/codex/security#common-sandbox-and-approval-combinations).
 
 #### Sandbox level
 
 Adjust how much filesystem and network access Codex has while executing commands.
-[code] 
+```
     sandbox_mode = "workspace-write"
-[/code]
+```
 
 For mode-by-mode behavior (including protected `.git`/`.codex` paths and network defaults), see [Sandbox and approvals](https://developers.openai.com/codex/security#sandbox-and-approvals), [Protected paths in writable roots](https://developers.openai.com/codex/security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/security#network-access).
 
@@ -84,55 +84,55 @@ Codex enables web search by default for local tasks and serves results from a we
   * `"disabled"` turns off the web search tool.
 
 
-[code] 
+```
     web_search = "cached"  # default; serves results from the web search cache
     # web_search = "live"  # fetch the most recent data from the web (same as --search)
     # web_search = "disabled"
-[/code]
+```
 
 #### Reasoning effort
 
 Tune how much reasoning effort the model applies when supported.
-[code] 
+```
     model_reasoning_effort = "high"
-[/code]
+```
 
 #### Communication style
 
 Set a default communication style for supported models.
-[code] 
+```
     personality = "friendly" # or "pragmatic" or "none"
-[/code]
+```
 
 You can override this later in an active session with `/personality` or per thread/turn when using the app-server APIs.
 
 #### Command environment
 
 Control which environment variables Codex forwards to spawned commands.
-[code] 
+```
     [shell_environment_policy]
     include_only = ["PATH", "HOME"]
-[/code]
+```
 
 #### Log directory
 
 Override where Codex writes local log files such as `codex-tui.log`.
-[code] 
+```
     log_dir = "/absolute/path/to/codex-logs"
-[/code]
+```
 
 For one-off runs, you can also set it from the CLI:
-[code] 
+```
     codex -c log_dir=./.codex-log
-[/code]
+```
 
 ## Feature flags
 
 Use the `[features]` table in `config.toml` to toggle optional and experimental capabilities.
-[code] 
+```
     [features]
     shell_snapshot = true           # Speed up repeated commands
-[/code]
+```
 
 ### Supported features
 

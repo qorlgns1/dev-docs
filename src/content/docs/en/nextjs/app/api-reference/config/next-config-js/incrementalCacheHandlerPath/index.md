@@ -80,4 +80,3 @@ Learn how to [configure ISR](https://nextjs.org/docs/app/guides/self-hosting#cac
 | `v13.4.0` | `incrementalCacheHandlerPath` support for standalone output. |
 | `v12.2.0` | Experimental `incrementalCacheHandlerPath` added.            |
 ---
-

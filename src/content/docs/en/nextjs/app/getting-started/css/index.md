@@ -287,4 +287,3 @@ Learn more about the alternatives ways you can use CSS in your application.
   - Use CSS-in-JS libraries with Next.js
 
 ---
-

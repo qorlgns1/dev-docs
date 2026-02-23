@@ -16,14 +16,14 @@ description: '특정 의존성이 Node.js 전용 기능을 사용한다면, 해�
 특정 의존성이 Node.js 전용 기능을 사용한다면, 해당 의존성을 Server Components 번들링에서 선택적으로 제외하고 네이티브 Node.js `require`를 사용할 수 있습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       serverExternalPackages: ['@acme/ui'],
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 Next.js에는 현재 호환성 작업 중이며 자동으로 제외되는 [인기 패키지의 짧은 목록](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.jsonc)이 포함되어 있습니다.
 

@@ -275,4 +275,3 @@ To create multiple [root layouts](https://nextjs.org/docs/app/api-reference/file
 
 In the example above, both `(marketing)` and `(shop)` have their own root layout.
 ---
-

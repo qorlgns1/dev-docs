@@ -170,7 +170,7 @@ API| 설명
 드물게 코드가 (또는 import된 코드가) 런타임에 도달할 수 없고 treeshaking으로 제거할 수 없는 동적 코드 평가 구문을 포함할 수 있습니다. Proxy 구성을 사용해 특정 파일을 허용하도록 검사를 완화할 수 있습니다.
 
 proxy.ts
-[code]
+```
     export const config = {
       unstable_allowDynamic: [
         // allows a single file
@@ -179,7 +179,7 @@ proxy.ts
         '**/node_modules/function-bind/**',
       ],
     }
-[/code]
+```
 
 `unstable_allowDynamic`은 특정 파일에 대해 동적 코드 평가를 무시하는 [glob](https://github.com/micromatch/micromatch#matching-features)이거나 glob 배열입니다. glob은 애플리케이션 루트 폴더를 기준으로 합니다.
 

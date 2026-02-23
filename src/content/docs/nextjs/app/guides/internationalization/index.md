@@ -27,7 +27,7 @@ Next.js는 여러 언어를 지원하도록 콘텐츠의 라우팅과 렌더링�
 예를 들어 다음 라이브러리를 사용하면 들어오는 `Request`를 살펴보고 `Headers`, 지원하려는 로케일, 기본 로케일에 따라 어떤 로케일을 선택할지 결정할 수 있습니다.
 
 proxy.js
-[code]
+```
     import { match } from '@formatjs/intl-localematcher'
     import Negotiator from 'negotiator'
 
@@ -37,12 +37,12 @@ proxy.js
     let defaultLocale = 'en-US'
 
     match(languages, locales, defaultLocale) // -> 'en-US'
-[/code]
+```
 
 라우팅은 서브 경로(`/fr/products`)나 도메인(`my-site.fr/products`) 중 하나로 국제화할 수 있습니다. 이 정보를 바탕으로 [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy) 내에서 로케일에 따라 사용자를 리디렉션할 수 있습니다.
 
 proxy.js
-[code]
+```
     import { NextResponse } from "next/server";
 
     let locales = ['en-US', 'nl-NL', 'nl']
@@ -75,21 +75,21 @@ proxy.js
         // '/'
       ],
     }
-[/code]
+```
 
 마지막으로 `app/` 내부의 모든 특별 파일이 `app/[lang]` 하위에 중첩되어 있는지 확인하세요. 이렇게 하면 Next.js 라우터가 라우트에서 다양한 로케일을 동적으로 처리하고 `lang` 매개변수를 모든 레이아웃과 페이지에 전달할 수 있습니다. 예:
 
 app/[lang]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // You now have access to the current locale
     // e.g. /en-US/products -> `lang` is "en-US"
     export default async function Page({ params }: PageProps<'/[lang]'>) {
       const { lang } = await params
       return ...
     }
-[/code]
+```
 
 > **알아두면 좋아요:** `PageProps`와 `LayoutProps`는 라우트 매개변수에 대한 강력한 타입을 제공하는 전역 TypeScript 헬퍼입니다. 자세한 내용은 [PageProps](https://nextjs.org/docs/app/api-reference/file-conventions/page#page-props-helper)와 [LayoutProps](https://nextjs.org/docs/app/api-reference/file-conventions/layout#layout-props-helper)를 참조하세요.
 
@@ -102,29 +102,29 @@ JavaScriptTypeScript
 애플리케이션에서 영어와 네덜란드어 콘텐츠를 모두 지원한다고 가정해 보겠습니다. 우리는 키를 로컬라이즈된 문자열과 매핑해 주는 두 개의 서로 다른 “사전” 객체를 유지할 수 있습니다. 예:
 
 dictionaries/en.json
-[code]
+```
     {
       "products": {
         "cart": "Add to Cart"
       }
     }
-[/code]
+```
 
 dictionaries/nl.json
-[code]
+```
     {
       "products": {
         "cart": "Toevoegen aan Winkelwagen"
       }
     }
-[/code]
+```
 
 그런 다음 요청된 로케일에 대한 번역을 불러오기 위해 `getDictionary` 함수를 만들 수 있습니다.
 
 app/[lang]/dictionaries.ts
 
 JavaScriptTypeScript
-[code]
+```
     import 'server-only'
 
     const dictionaries = {
@@ -138,7 +138,7 @@ JavaScriptTypeScript
       locale in dictionaries
 
     export const getDictionary = async (locale: Locale) => dictionaries[locale]()
-[/code]
+```
 
 현재 선택된 언어를 기준으로 레이아웃이나 페이지 내부에서 사전을 가져올 수 있습니다.
 
@@ -147,7 +147,7 @@ JavaScriptTypeScript
 app/[lang]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { notFound } from 'next/navigation'
     import { getDictionary, hasLocale } from './dictionaries'
 
@@ -159,7 +159,7 @@ JavaScriptTypeScript
       const dict = await getDictionary(lang)
       return <button>{dict.products.cart}</button> // Add to Cart
     }
-[/code]
+```
 
 `app/` 디렉터리의 모든 레이아웃과 페이지는 기본적으로 [서버 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components)이므로, 번역 파일의 크기가 클라이언트 측 JavaScript 번들 크기에 영향을 줄까 걱정할 필요가 없습니다. 이 코드는 **서버에서만 실행되며**, 브라우저로 전송되는 것은 결과 HTML뿐입니다.
 
@@ -170,7 +170,7 @@ JavaScriptTypeScript
 app/[lang]/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export async function generateStaticParams() {
       return [{ lang: 'en-US' }, { lang: 'de' }]
     }
@@ -185,7 +185,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 ## 리소스[](https://nextjs.org/docs/app/guides/internationalization#resources)
 

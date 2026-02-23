@@ -30,7 +30,7 @@ Proxy는 라우트가 렌더링되기 전에 실행됩니다. 인증, 로깅, �
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse, NextRequest } from 'next/server'
 
     // This function can be marked `async` if using `await` inside
@@ -41,7 +41,7 @@ JavaScriptTypeScript
     export const config = {
       matcher: '/about/:path*',
     }
-[/code]
+```
 
 ## Exports[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#exports)
 
@@ -50,12 +50,12 @@ JavaScriptTypeScript
 파일은 기본 export이거나 `proxy`로 명명된 단일 함수를 export해야 합니다. 동일한 파일에서 여러 proxy를 export하는 것은 지원되지 않습니다.
 
 proxy.js
-[code]
+```
     // Example of default export
     export default function proxy(request) {
       // Proxy logic
     }
-[/code]
+```
 
 ### Config object (optional)[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#config-object-optional)
 
@@ -69,23 +69,23 @@ proxy.js
   * 여러 경로: 배열로 나열합니다. 예: `matcher: ['/about', '/contact']`는 `/about`과 `/contact` 모두에 Proxy를 적용합니다.
 
 proxy.js
-[code]
+```
     export const config = {
       matcher: ['/about/:path*', '/dashboard/:path*'],
     }
-[/code]
+```
 
 또한 `matcher` 옵션은 정규식을 사용한 복잡한 경로 지정도 지원합니다. 예를 들어 정규식 matcher를 사용해 특정 경로를 제외할 수 있습니다.
 
 proxy.js
-[code]
+```
     export const config = {
       matcher: [
         // Exclude API routes, static files, image optimizations, and .png files
         '/((?!api|_next/static|_next/image|.*\\.png$).*)',
       ],
     }
-[/code]
+```
 
 이를 통해 포함하거나 제외할 경로를 정밀하게 제어할 수 있습니다.
 
@@ -97,7 +97,7 @@ proxy.js
   * `missing` (선택): 특정 헤더나 쿠키가 없는 상황 등 요청 요소가 존재하지 않는 조건에 집중합니다.
 
 proxy.js
-[code]
+```
     export const config = {
       matcher: [
         {
@@ -111,7 +111,7 @@ proxy.js
         },
       ],
     }
-[/code]
+```
 
 `source` 경로 패턴은 다음과 같습니다.
 
@@ -138,13 +138,13 @@ Proxy를 정의할 때 기본 export 함수는 단일 매개변수 `request`를 
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextRequest } from 'next/server'
 
     export function proxy(request: NextRequest) {
       // Proxy logic goes here
     }
-[/code]
+```
 
 > **알아두면 좋아요**:
 >
@@ -190,14 +190,14 @@ Next.js `v13.1`에서는 고급 사용 사례를 처리하기 위해 `skipMiddle
 `skipTrailingSlashRedirect`는 트레일링 슬래시를 추가하거나 제거하는 Next.js 리디렉트를 비활성화합니다. 이를 통해 일부 경로에는 트레일링 슬래시를 유지하고 다른 경로에는 유지하지 않는 맞춤 처리를 proxy 내부에서 구현할 수 있어 점진적 마이그레이션이 쉬워집니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       skipTrailingSlashRedirect: true,
     }
-[/code]
+```
 
 proxy.js
-[code]
+```
     const legacyPrefixes = ['/docs', '/blog']
 
     export default async function proxy(req) {
@@ -217,19 +217,19 @@ proxy.js
         )
       }
     }
-[/code]
+```
 
 `skipMiddlewareUrlNormalize`는 Next.js의 URL 정규화를 비활성화해 직접 방문과 클라이언트 전환을 동일하게 처리할 수 있도록 합니다. 일부 고급 사례에서는 원본 URL을 사용해 완전한 제어를 제공하기도 합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       skipMiddlewareUrlNormalize: true,
     }
-[/code]
+```
 
 proxy.js
-[code]
+```
     export default async function proxy(req) {
       const { pathname } = req.nextUrl
 
@@ -239,7 +239,7 @@ proxy.js
       // with the flag this now /_next/data/build-id/hello.json
       // without the flag this would be normalized to /hello
     }
-[/code]
+```
 
 ## Examples[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#examples)
 
@@ -248,7 +248,7 @@ proxy.js
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
 
@@ -261,7 +261,7 @@ JavaScriptTypeScript
         return NextResponse.rewrite(new URL('/dashboard/user', request.url))
       }
     }
-[/code]
+```
 
 ### Using Cookies[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#using-cookies)
 
@@ -273,7 +273,7 @@ JavaScriptTypeScript
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
 
@@ -303,7 +303,7 @@ JavaScriptTypeScript
 
       return response
     }
-[/code]
+```
 
 ### 헤더 설정[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#setting-headers)
 
@@ -312,7 +312,7 @@ JavaScriptTypeScript
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
 
@@ -333,7 +333,7 @@ JavaScriptTypeScript
       response.headers.set('x-hello-from-proxy2', 'hello')
       return response
     }
-[/code]
+```
 
 이 스니펫은 다음을 사용합니다.
 
@@ -351,7 +351,7 @@ Proxy에서 CORS 헤더를 설정하여 [simple](https://developer.mozilla.org/e
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
 
     const allowedOrigins = ['https://acme.com', 'https://my-app.org']
@@ -394,7 +394,7 @@ JavaScriptTypeScript
     export const config = {
       matcher: '/api/:path*',
     }
-[/code]
+```
 
 ### 응답 생성[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#producing-a-response)
 
@@ -403,7 +403,7 @@ Proxy에서 `Response` 또는 `NextResponse` 인스턴스를 반환하여 직접
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextRequest } from 'next/server'
     import { isAuthenticated } from '@lib/auth'
 
@@ -422,14 +422,14 @@ JavaScriptTypeScript
         )
       }
     }
-[/code]
+```
 
 ### 부정 매칭[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#negative-matching)
 
 `matcher` 설정은 전체 정규식을 지원하므로 부정형 전방 탐색이나 문자 매칭 같은 패턴을 사용할 수 있습니다. 특정 경로를 제외한 모든 경로를 매칭하는 부정 전방 탐색 예시는 다음과 같습니다.
 
 proxy.js
-[code]
+```
     export const config = {
       matcher: [
         /*
@@ -442,12 +442,12 @@ proxy.js
         '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
       ],
     }
-[/code]
+```
 
 또한 `missing` 또는 `has` 배열(또는 둘의 조합)을 사용하여 특정 요청에 대해 Proxy를 건너뛸 수도 있습니다.
 
 proxy.js
-[code]
+```
     export const config = {
       matcher: [
         /*
@@ -483,21 +483,21 @@ proxy.js
         },
       ],
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >
 > 부정 매처 패턴에서 `_next/data`를 제외했더라도 Proxy는 여전히 `_next/data` 경로에 대해 실행됩니다. 이는 페이지는 보호하면서 해당 데이터 경로를 보호하지 않아 발생할 수 있는 보안 문제를 방지하기 위한 의도된 동작입니다.
 
 proxy.js
-[code]
+```
     export const config = {
       matcher:
         '/((?!api|_next/data|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
     }
 
     // Proxy will still run for /_next/data/* routes despite being excluded
-[/code]
+```
 
 ### `waitUntil` 및 `NextFetchEvent`[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#waituntil-and-nextfetchevent)
 
@@ -506,7 +506,7 @@ proxy.js
 `waitUntil()` 메서드는 프로미스를 인수로 받아 해당 프로미스가 처리될 때까지 Proxy의 생애를 연장합니다. 이는 백그라운드 작업을 수행할 때 유용합니다.
 
 proxy.ts
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextFetchEvent, NextRequest } from 'next/server'
 
@@ -520,14 +520,14 @@ proxy.ts
 
       return NextResponse.next()
     }
-[/code]
+```
 
 ### 단위 테스트(실험적)[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#unit-testing-experimental)
 
 Next.js 15.1부터 `next/experimental/testing/server` 패키지는 proxy 파일의 단위 테스트를 돕는 유틸리티를 제공합니다. Proxy 단위 테스트는 특정 경로에서만 실행되도록 보장하고, 프로덕션에 도달하기 전에 사용자 정의 라우팅 로직이 예상대로 동작하는지 확인하는 데 도움이 됩니다.
 
 `unstable_doesProxyMatch` 함수는 주어진 URL, 헤더, 쿠키에 대해 proxy가 실행될지 여부를 단언하는 데 사용할 수 있습니다.
-[code]
+```
     import { unstable_doesProxyMatch } from 'next/experimental/testing/server'
 
     expect(
@@ -537,10 +537,10 @@ Next.js 15.1부터 `next/experimental/testing/server` 패키지는 proxy 파일�
         url: '/test',
       })
     ).toEqual(false)
-[/code]
+```
 
 전체 proxy 함수도 테스트할 수 있습니다.
-[code]
+```
     import { isRewrite, getRewrittenUrl } from 'next/experimental/testing/server'
 
     const request = new NextRequest('https://nextjs.org/docs')
@@ -548,7 +548,7 @@ Next.js 15.1부터 `next/experimental/testing/server` 패키지는 proxy 파일�
     expect(isRewrite(response)).toEqual(true)
     expect(getRewrittenUrl(response)).toEqual('https://other-domain.com/docs')
     // getRedirectUrl could also be used if the response were a redirect
-[/code]
+```
 
 ## 플랫폼 지원[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#platform-support)
 
@@ -580,17 +580,17 @@ Proxy라는 이름은 Middleware가 수행할 수 있는 일을 명확히 보여
 “middleware”라는 용어는 종종 Express.js 미들웨어와 혼동되어 오용을 유발할 수 있다. 방향성을 명확히 하기 위해 파일 규칙을 “proxy”로 이름 변경하고 있다. 이는 Middleware에서 멀어지고, 과도하게 혼재된 기능을 분리하며, Proxy의 목적을 명확히 드러낸다는 의미다.
 
 Next.js는 `middleware.ts`에서 `proxy.ts`로 마이그레이션할 수 있는 codemod를 제공한다. 다음 명령으로 마이그레이션을 실행할 수 있다:
-[code]
+```
     npx @next/codemod@canary middleware-to-proxy .
-[/code]
+```
 
 이 codemod는 파일과 함수 이름을 `middleware`에서 `proxy`로 변경한다.
-[code]
+```
     // middleware.ts -> proxy.ts
 
     - export function middleware() {
     + export function proxy() {
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy#version-history)
 

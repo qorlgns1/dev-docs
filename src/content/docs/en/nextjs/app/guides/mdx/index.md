@@ -603,4 +603,3 @@ module.exports = withMDX({
 * [rehype](https://github.com/rehypejs/rehype)
 * [Markdoc](https://markdoc.dev/docs/nextjs)
 ---
-

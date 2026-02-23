@@ -271,4 +271,3 @@ It provides detailed information about the time taken for each module to compile
 
 Share the trace file generated in the [Turbopack Tracing](#turbopack-tracing) section and share it on [GitHub Discussions](https://github.com/vercel/next.js/discussions) or [Discord](https://nextjs.org/discord).
 ---
-

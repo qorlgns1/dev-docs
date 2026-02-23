@@ -94,4 +94,3 @@ Source URL: https://nextjs.org/docs/app/guides
   - Recommendations and best practices for optimizing videos in your Next.js application.
 
 ---
-

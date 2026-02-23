@@ -14,11 +14,11 @@ Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/cros
 `crossOrigin` 옵션을 사용하면 [`next/script`](https://nextjs.org/docs/app/guides/scripts) 컴포넌트가 생성하는 모든 `<script>` 태그에 [`crossOrigin` 속성](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)을 추가하고, 교차 출처 요청을 처리하는 방식을 정의할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       crossOrigin: 'anonymous',
     }
-[/code]
+```
 
 ## 옵션[](https://nextjs.org/docs/app/api-reference/config/next-config-js/crossOrigin#options)
 

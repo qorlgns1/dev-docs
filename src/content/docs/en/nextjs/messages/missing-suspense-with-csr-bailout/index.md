@@ -194,4 +194,3 @@ This provides unminified stack traces with source maps, making it easier to pinp
 - [`connection`](https://nextjs.org/docs/app/api-reference/functions/connection)
 - [Dynamic Rendering guide](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)
 - [Debugging prerender errors](https://nextjs.org/docs/app/api-reference/cli/next#debugging-prerender-errors)
-

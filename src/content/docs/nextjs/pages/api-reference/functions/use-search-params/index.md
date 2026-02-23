@@ -18,7 +18,7 @@ description: '는 현재 URL의 쿼리 문자열을 읽을 수 있게 해 주는
 pages/dashboard.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { useSearchParams } from 'next/navigation'
 
     export default function Dashboard() {
@@ -35,12 +35,12 @@ JavaScriptTypeScript
       // `search` -> 'my-project'
       return <>Search: {search}</>
     }
-[/code]
+```
 
 ## 매개변수[](https://nextjs.org/docs/pages/api-reference/functions/use-search-params#parameters)
-[code]
+```
     const searchParams = useSearchParams()
-[/code]
+```
 
 `useSearchParams`는 어떠한 매개변수도 받지 않습니다.
 
@@ -81,7 +81,7 @@ URL| `searchParams.has("a")`
 pages/dashboard.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { useSearchParams } from 'next/navigation'
 
     export default function Dashboard() {
@@ -97,7 +97,7 @@ JavaScriptTypeScript
 
       return <>Search: {search}</>
     }
-[/code]
+```
 
 ### `getServerSideProps`와 함께 사용[](https://nextjs.org/docs/pages/api-reference/functions/use-search-params#using-with-getserversideprops)
 
@@ -106,7 +106,7 @@ JavaScriptTypeScript
 pages/dashboard.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { useSearchParams } from 'next/navigation'
 
     export default function Dashboard() {
@@ -128,7 +128,7 @@ JavaScriptTypeScript
     export async function getServerSideProps() {
       return { props: {} }
     }
-[/code]
+```
 
 ## 예시[](https://nextjs.org/docs/pages/api-reference/functions/use-search-params#examples)
 
@@ -139,7 +139,7 @@ JavaScriptTypeScript
 pages/dashboard.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { useRouter } from 'next/router'
     import { useSearchParams } from 'next/navigation'
     import { useCallback } from 'react'
@@ -181,7 +181,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### App Router와 컴포넌트 공유[](https://nextjs.org/docs/pages/api-reference/functions/use-search-params#sharing-components-with-app-router)
 
@@ -190,7 +190,7 @@ JavaScriptTypeScript
 components/search-bar.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { useSearchParams } from 'next/navigation'
 
     // This component works in both pages/ and app/
@@ -206,7 +206,7 @@ JavaScriptTypeScript
 
       return <input defaultValue={search} placeholder="Search..." />
     }
-[/code]
+```
 
 > **알아두면 좋아요** : App Router에서 이 컴포넌트를 사용할 때는 [정적 렌더링](https://nextjs.org/docs/app/api-reference/functions/use-search-params#static-rendering)을 지원하려면 `<Suspense>` 경계로 감싸세요.
 

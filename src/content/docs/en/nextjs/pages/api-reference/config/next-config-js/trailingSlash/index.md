@@ -34,4 +34,3 @@ When used with [`output: "export"`](https://nextjs.org/docs/app/guides/static-ex
 | -------- | ---------------------- |
 | `v9.5.0` | `trailingSlash` added. |
 ---
-

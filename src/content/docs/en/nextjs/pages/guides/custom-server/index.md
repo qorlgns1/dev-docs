@@ -114,4 +114,3 @@ module.exports = {
 
 > You may also wish to configure the client-side router to disallow client-side redirects to filename routes; for that refer to [`router.beforePopState`](https://nextjs.org/docs/pages/api-reference/functions/use-router#routerbeforepopstate).
 ---
-

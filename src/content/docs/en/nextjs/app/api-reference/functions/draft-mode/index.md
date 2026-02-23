@@ -142,4 +142,3 @@ Learn how to use Draft Mode with this step-by-step guide.
   - Next.js has draft mode to toggle between static and dynamic pages. You can learn how it works with App Router here.
 
 ---
-

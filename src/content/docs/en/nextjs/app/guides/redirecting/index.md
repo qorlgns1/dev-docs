@@ -526,4 +526,3 @@ export function GET(request) {
   - Add redirects to your Next.js app.
 
 ---
-

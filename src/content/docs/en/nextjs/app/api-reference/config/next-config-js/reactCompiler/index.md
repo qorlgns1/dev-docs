@@ -101,4 +101,3 @@ export default function Page() {
 
 > **Note:** You can also use the `"use no memo"` directive from React for the opposite effect, to opt-out a component or hook.
 ---
-

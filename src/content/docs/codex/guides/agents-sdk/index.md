@@ -14,14 +14,14 @@ sidebar:
 Codex를 MCP 서버로 실행하고 다른 MCP 클라이언트(예: [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/guides/mcp/)로 구축한 에이전트)에서 연결할 수 있습니다.
 
 Codex를 MCP 서버로 시작하려면 다음 명령을 사용할 수 있습니다:
-[code] 
+```
     codex mcp-server
-[/code]
+```
 
 [Model Context Protocol Inspector](https://modelcontextprotocol.io/legacy/tools/inspector)로 Codex MCP 서버를 실행할 수도 있습니다:
-[code] 
+```
     npx @modelcontextprotocol/inspector codex mcp-server
-[/code]
+```
 
 두 가지 도구를 확인하려면 `tools/list` 요청을 보내세요:
 
@@ -50,7 +50,7 @@ Codex를 MCP 서버로 시작하려면 다음 명령을 사용할 수 있습니�
 `tools/call` 응답의 `structuredContent.threadId`에서 `threadId`를 사용하세요. 승인 프롬프트(exec/patch)에도 `params` 페이로드에 `threadId`가 포함됩니다.
 
 예시 응답 페이로드:
-[code] 
+```
     {
       "structuredContent": {
         "threadId": "019bbb20-bff6-7130-83aa-bf45ab33250e",
@@ -63,7 +63,7 @@ Codex를 MCP 서버로 시작하려면 다음 명령을 사용할 수 있습니�
         }
       ]
     }
-[/code]
+```
 
 최신 MCP 클라이언트는 일반적으로 도구 호출 결과로 `"structuredContent"`만 보고하지만, Codex MCP 서버는 구형 MCP 클라이언트를 위해 `"content"`도 함께 반환합니다.
 
@@ -87,20 +87,20 @@ Codex CLI는 임시 작업을 실행하는 것 이상의 기능을 제공합니�
   * 로컬에 저장된 OpenAI API 키. [OpenAI 대시보드](https://platform.openai.com/account/api-keys)에서 키를 생성하거나 관리할 수 있습니다.
 
 가이드를 위한 작업 디렉터리를 만들고 `.env` 파일에 API 키를 추가합니다:
-[code] 
+```
     mkdir codex-workflows
     cd codex-workflows
     printf "OPENAI_API_KEY=sk-..." > .env
-[/code]
+```
 
 ## 의존성 설치
 
 Agents SDK는 Codex, 핸드오프, 트레이스를 오케스트레이션합니다. 최신 SDK 패키지를 설치합니다:
-[code] 
+```
     python -m venv .venv
     source .venv/bin/activate
     pip install --upgrade openai openai-agents python-dotenv
-[/code]
+```
 
 가상 환경을 활성화하면 SDK 의존성을 시스템의 다른 부분과 분리할 수 있습니다.
 
@@ -109,7 +109,7 @@ Agents SDK는 Codex, 핸드오프, 트레이스를 오케스트레이션합니�
 먼저 Codex CLI를 Agents SDK가 호출할 수 있는 MCP 서버로 전환합니다. 이 서버는 두 가지 도구(`codex()`로 대화를 시작하고 `codex-reply()`로 계속)를 노출하고 여러 에이전트 턴 동안 Codex를 유지합니다.
 
 `codex_mcp.py`라는 파일을 만들고 다음 내용을 추가합니다:
-[code] 
+```
     import asyncio
     
     from agents import Agent, Runner
@@ -132,12 +132,12 @@ Agents SDK는 Codex, 핸드오프, 트레이스를 오케스트레이션합니�
     
     if __name__ == "__main__":
         asyncio.run(main())
-[/code]
+```
 
 Codex가 정상적으로 실행되는지 확인하려면 스크립트를 한 번 실행합니다:
-[code] 
+```
     python codex_mcp.py
-[/code]
+```
 
 `Codex MCP server started.`를 출력한 뒤 스크립트가 종료됩니다. 다음 섹션에서는 동일한 MCP 서버를 더 풍부한 워크플로에서 재사용합니다.
 
@@ -149,7 +149,7 @@ Codex MCP를 사용해 작은 브라우저 게임을 배포하는 제한된 예�
   2. **Game Developer** : Codex MCP를 호출해 게임을 구현합니다.
 
 `codex_mcp.py`를 다음 코드로 업데이트합니다. 앞서 작성한 MCP 서버 설정을 유지하면서 두 에이전트를 추가합니다.
-[code] 
+```
     import asyncio
     import os
     
@@ -197,12 +197,12 @@ Codex MCP를 사용해 작은 브라우저 게임을 배포하는 제한된 예�
     
     if __name__ == "__main__":
         asyncio.run(main())
-[/code]
+```
 
 스크립트를 실행하세요:
-[code] 
+```
     python codex_mcp.py
-[/code]
+```
 
 Codex는 디자이너의 브리프를 읽고 `index.html` 파일을 생성해 전체 게임을 디스크에 기록합니다. 생성된 파일을 브라우저에서 열어 결과물을 플레이하세요. 실행할 때마다 플레이 스타일과 마감이 독특하게 바뀐 새로운 디자인이 나옵니다.
 
@@ -216,7 +216,7 @@ Codex는 디자이너의 브리프를 읽고 `index.html` 파일을 생성해 �
 
 
 `multi_agent_workflow.py`라는 새 파일을 만드세요:
-[code] 
+````
     import asyncio
     import os
     
@@ -397,13 +397,13 @@ Codex는 디자이너의 브리프를 읽고 `index.html` 파일을 생성해 �
 
 if __name__ == "__main__":
     asyncio.run(main())
-[/code]
+````
 
 Run the script and watch the generated files:
-[code] 
+```
     python multi_agent_workflow.py
     ls -R
-[/code]
+```
 
 프로젝트 매니저 에이전트는 `REQUIREMENTS.md`, `TEST.md`, `AGENT_TASKS.md`를 작성한 뒤 디자이너, 프런트엔드, 서버, 테스터 에이전트 간 인계를 조율한다. 각 에이전트는 자신의 폴더에서 범위가 지정된 산출물을 작성한 후 프로젝트 매니저에게 제어를 반환한다.
 

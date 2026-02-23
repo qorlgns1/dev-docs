@@ -27,7 +27,7 @@ Copy page
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -37,7 +37,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 > **경고:** 민감한 데이터를 클라이언트에 노출하지 않기 위한 유일한 메커니즘으로 taint API에만 의존하지 마세요. [보안 권장 사항](https://nextjs.org/blog/security-nextjs-server-components-actions)을 참고하세요.
 
@@ -62,7 +62,7 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
 ### Tainting an object reference[](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint#tainting-an-object-reference)
 
 이 예에서는 `getUserDetails` 함수가 특정 사용자에 대한 데이터를 반환합니다. 서버-클라이언트 경계를 넘지 못하도록 사용자 객체 참조를 오염시킵니다. 예를 들어 `UserCard`가 클라이언트 컴포넌트라고 가정합니다.
-[code]
+```
     import { experimental_taintObjectReference } from 'react'
 
     function getUserDetails(id: string): UserDetails {
@@ -75,10 +75,10 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
 
       return user
     }
-[/code]
+```
 
 오염된 `userDetails` 객체에서도 개별 필드에는 계속 접근할 수 있습니다.
-[code]
+```
     export async function ContactPage({
       params,
     }: {
@@ -94,10 +94,10 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
         />
       )
     }
-[/code]
+```
 
 이제 전체 객체를 클라이언트 컴포넌트에 전달하면 오류가 발생합니다.
-[code]
+```
     export async function ContactPage({
       params,
     }: {
@@ -108,14 +108,14 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
       // Throws an error
       return <UserCard user={userDetails} />
     }
-[/code]
+```
 
 ### Tainting a unique value[](https://nextjs.org/docs/app/api-reference/config/next-config-js/taint#tainting-a-unique-value)
 
 이 경우 `config.getConfigDetails` 호출을 await 하여 서버 구성을 가져올 수 있습니다. 그러나 시스템 구성에는 클라이언트에 노출하고 싶지 않은 `SERVICE_API_KEY`가 포함되어 있습니다.
 
 `config.SERVICE_API_KEY` 값을 오염시킬 수 있습니다.
-[code]
+```
     import { experimental_taintUniqueValue } from 'react'
 
     function getSystemConfig(): SystemConfig {
@@ -129,19 +129,19 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
 
       return config
     }
-[/code]
+```
 
 `systemConfig` 객체의 다른 속성에는 여전히 접근할 수 있습니다.
-[code]
+```
     export async function Dashboard() {
       const systemConfig = await getSystemConfig()
 
       return <ClientDashboard version={systemConfig.SERVICE_API_VERSION} />
     }
-[/code]
+```
 
 하지만 `SERVICE_API_KEY`를 `ClientDashboard`에 전달하면 오류가 발생합니다.
-[code]
+```
     export async function Dashboard() {
       const systemConfig = await getSystemConfig()
       // Someone makes a mistake in a PR
@@ -149,12 +149,12 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
 
       return <ClientDashboard version={version} />
     }
-[/code]
+```
 
 `systemConfig.SERVICE_API_KEY`가 새 변수에 재할당되더라도, 클라이언트 컴포넌트에 전달하면 여전히 오류가 발생한다는 점에 유의하세요.
 
 반면, 오염된 고유 값에서 파생된 값은 클라이언트에 노출됩니다.
-[code]
+```
     export async function Dashboard() {
       const systemConfig = await getSystemConfig()
       // Someone makes a mistake in a PR
@@ -162,7 +162,7 @@ taint API는 서버-클라이언트 경계를 통과할 수 없는 데이터를 
 
       return <ClientDashboard version={version} />
     }
-[/code]
+```
 
 더 나은 접근 방식은 `getSystemConfig`가 반환하는 데이터에서 `SERVICE_API_KEY`를 제거하는 것입니다.
 

@@ -184,4 +184,3 @@ This ensures that the bypass cookie can’t be guessed.
 
 > **Good to know**: To test Draft Mode locally over HTTP, your browser will need to allow third-party cookies and local storage access.
 ---
-

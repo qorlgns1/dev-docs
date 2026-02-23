@@ -22,4 +22,3 @@ Now when sending the `Cache-Control` header the expire time will be calculated d
 
 For example, if you have a revalidate of 15 minutes on a path and the expire time is one hour the generated `Cache-Control` header will be `s-maxage=900, stale-while-revalidate=2700` so that it can stay stale for 15 minutes less than the configured expire time.
 ---
-

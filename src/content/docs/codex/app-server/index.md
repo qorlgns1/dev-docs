@@ -27,28 +27,28 @@ WebSocket 모드에서는 app-server가 제한된 큐를 사용합니다. 요청
 ## Message schema
 
 요청에는 `method`, `params`, `id`가 포함됩니다:
-[code] 
+```
     { "method": "thread/start", "id": 10, "params": { "model": "gpt-5.1-codex" } }
-[/code]
+```
 
 응답은 `id`를 그대로 되돌려 보내며 `result` 또는 `error`를 포함합니다:
-[code] 
+```
     { "id": 10, "result": { "thread": { "id": "thr_123" } } }
-[/code]
-[code] 
+```
+```
     { "id": 10, "error": { "code": 123, "message": "Something went wrong" } }
-[/code]
+```
 
 알림은 `id`를 생략하고 `method`와 `params`만 사용합니다:
-[code] 
+```
     { "method": "turn/started", "params": { "turn": { "id": "turn_456" } } }
-[/code]
+```
 
 CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습니다. 각 출력물은 실행한 Codex 버전에 맞춰져 있으므로 생성된 산출물은 해당 버전에 정확히 일치합니다:
-[code] 
+```
     codex app-server generate-ts --out ./schemas
     codex app-server generate-json-schema --out ./schemas
-[/code]
+```
 
 ## Getting started
 
@@ -57,7 +57,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
   3. 스레드와 턴을 시작하고, 활성화된 전송 스트림에서 계속 알림을 읽습니다.
 
 예시(Node.js / TypeScript):
-[code] 
+```
     import { spawn } from "node:child_process";
     import readline from "node:readline";
     
@@ -102,7 +102,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
     });
     send({ method: "initialized", params: {} });
     send({ method: "thread/start", id: 1, params: { model: "gpt-5.1-codex" } });
-[/code]
+```
 
 ## Core primitives
 
@@ -136,7 +136,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
 **중요** : OpenAI Compliance Logs Platform에서 클라이언트를 식별하려면 `clientInfo.name`을 사용하세요. 엔터프라이즈용 새 Codex 통합을 개발 중이라면 OpenAI에 연락해 알려진 클라이언트 목록에 추가되도록 하세요. 자세한 내용은 [Codex 로그 레퍼런스](https://chatgpt.com/admin/api-reference#tag/Logs:-Codex)를 참조하세요.
 
 예시(Codex VS Code 확장):
-[code] 
+```
     {
       "method": "initialize",
       "id": 0,
@@ -148,10 +148,10 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
         }
       }
     }
-[/code]
+```
 
 알림 옵트아웃 예시:
-[code] 
+```
     {
       "method": "initialize",
       "id": 1,
@@ -170,7 +170,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
         }
       }
     }
-[/code]
+```
 
 ## 실험적 API 옵트인
 
@@ -180,7 +180,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
   * `capabilities.experimentalApi`를 `true`로 설정하면 실험적 메서드와 필드를 사용할 수 있습니다.
 
 
-[code] 
+```
     {
       "method": "initialize",
       "id": 1,
@@ -196,7 +196,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
         }
       }
     }
-[/code]
+```
 
 클라이언트가 opt-in 없이 실험적 메서드나 필드를 보내면, app-server는 다음 메시지로 요청을 거부합니다:
 
@@ -243,7 +243,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
 ### 모델 나열 (`model/list`)
 
 `model/list`를 호출해 모델이나 퍼스널리티 선택기를 렌더링하기 전에 사용 가능한 모델과 해당 역량을 확인합니다.
-[code] 
+```
     { "method": "model/list", "id": 6, "params": { "limit": 20, "includeHidden": false } }
     { "id": 6, "result": {
       "data": [{
@@ -263,7 +263,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
       }],
       "nextCursor": null
     } }
-[/code]
+```
 
 각 모델 항목에는 다음이 포함될 수 있습니다:
 
@@ -284,7 +284,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
 ### 실험적 기능 나열 (`experimentalFeature/list`)
 
 이 엔드포인트를 사용해 메타데이터와 라이프사이클 단계가 포함된 기능 플래그를 확인합니다:
-[code] 
+```
     { "method": "experimentalFeature/list", "id": 7, "params": { "limit": 20 } }
     { "id": 7, "result": {
       "data": [{
@@ -298,7 +298,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
       }],
       "nextCursor": null
     } }
-[/code]
+```
 
 `stage`는 `beta`, `underDevelopment`, `stable`, `deprecated`, `removed`일 수 있습니다. 베타가 아닌 플래그의 경우 `displayName`, `description`, `announcement`가 `null`일 수 있습니다.
 
@@ -317,7 +317,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
 ### 스레드 시작 또는 재개
 
 새 Codex 대화가 필요할 때 새 스레드를 시작하세요.
-[code] 
+```
     { "method": "thread/start", "id": 10, "params": {
       "model": "gpt-5.1-codex",
       "cwd": "/Users/me/project",
@@ -334,16 +334,16 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
       }
     } }
     { "method": "thread/started", "params": { "thread": { "id": "thr_123" } } }
-[/code]
+```
 
 저장된 세션을 계속하려면 미리 기록해 둔 `thread.id`로 `thread/resume`를 호출하세요. 응답 형식은 `thread/start`와 동일합니다. 또한 `thread/start`에서 지원하는 것과 동일한 구성 override(`personality` 등)를 전달할 수 있습니다:
-[code] 
+```
     { "method": "thread/resume", "id": 11, "params": {
       "threadId": "thr_123",
       "personality": "friendly"
     } }
     { "id": 11, "result": { "thread": { "id": "thr_123" } } }
-[/code]
+```
 
 스레드를 재개해도 `thread.updatedAt`(또는 rollout 파일의 수정 시각)은 자동으로 갱신되지 않습니다. 타임스탬프는 턴을 시작할 때 업데이트됩니다.
 
@@ -354,11 +354,11 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
 롤아웃에 기록된 것과 다른 모델로 재개하면 Codex가 경고를 내고 다음 턴에 일회성 모델 전환 지시를 적용합니다.
 
 저장된 세션에서 분기하려면 `thread.id`로 `thread/fork`를 호출하세요. 이렇게 하면 새 스레드 ID가 생성되고 `thread/started` 알림이 발생합니다:
-[code] 
+```
     { "method": "thread/fork", "id": 12, "params": { "threadId": "thr_123" } }
     { "id": 12, "result": { "thread": { "id": "thr_456" } } }
     { "method": "thread/started", "params": { "thread": { "id": "thr_456" } } }
-[/code]
+```
 
 ### 저장된 스레드 읽기(재개 없이)
 
@@ -367,10 +367,10 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
   * `includeTurns` \- `true`일 때 응답에 스레드의 턴이 포함되고, `false`이거나 생략하면 스레드 요약만 받습니다.
 
 
-[code] 
+```
     { "method": "thread/read", "id": 19, "params": { "threadId": "thr_123", "includeTurns": true } }
     { "id": 19, "result": { "thread": { "id": "thr_123", "turns": [] } } }
-[/code]
+```
 
 `thread/resume`와 달리 `thread/read`는 스레드를 메모리에 로드하거나 `thread/started`를 발생시키지 않습니다.
 
@@ -404,7 +404,7 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
 
 
 예:
-[code] 
+```
     { "method": "thread/list", "id": 20, "params": {
       "cursor": null,
       "limit": 25,
@@ -417,46 +417,46 @@ CLI에서 TypeScript 스키마 또는 JSON Schema 번들을 생성할 수 있습
       ],
       "nextCursor": "opaque-token-or-null"
     } }
-[/code]
+```
 
 `nextCursor`가 `null`이면 마지막 페이지에 도달한 것입니다.
 
 ### 로드된 스레드 나열
 
 `thread/loaded/list`는 현재 메모리에 로드된 스레드 ID를 반환합니다.
-[code]
+```
 
 { "method": "thread/loaded/list", "id": 21 }
     { "id": 21, "result": { "data": ["thr_123", "thr_456"] } }
-[/code]
+```
 
 ### 스레드 보관
 
 JSONL 파일로 디스크에 저장된 지속 스레드 로그를 보관 세션 디렉터리로 이동하려면 `thread/archive`를 사용하세요.
-[code] 
+```
     { "method": "thread/archive", "id": 22, "params": { "threadId": "thr_b" } }
     { "id": 22, "result": {} }
-[/code]
+```
 
 보관된 스레드는 `archived: true`를 전달하지 않는 한 이후 `thread/list` 호출 결과에 나타나지 않습니다.
 
 ### 스레드 보관 해제
 
 보관된 스레드 롤아웃을 활성 세션 디렉터리로 다시 이동하려면 `thread/unarchive`를 사용하세요.
-[code] 
+```
     { "method": "thread/unarchive", "id": 24, "params": { "threadId": "thr_b" } }
     { "id": 24, "result": { "thread": { "id": "thr_b" } } }
-[/code]
+```
 
 ### 스레드 압축 트리거
 
 스레드의 수동 기록 압축을 트리거하려면 `thread/compact/start`를 사용하세요. 요청은 `{}`와 함께 즉시 반환됩니다.
 
 앱 서버는 동일한 `threadId`에서 표준 `turn/*` 및 `item/*` 알림으로 진행 상황을 내보내며, `contextCompaction` 항목 라이프사이클(`item/started` 후 `item/completed`)을 포함합니다.
-[code] 
+```
     { "method": "thread/compact/start", "id": 25, "params": { "threadId": "thr_b" } }
     { "id": 25, "result": {} }
-[/code]
+```
 
 ## 턴
 
@@ -482,19 +482,19 @@ JSONL 파일로 디스크에 저장된 지속 스레드 로그를 보관 세션 
 
 
 제한된 읽기 권한 구조:
-[code] 
+```
     {
       "type": "restricted",
       "includePlatformDefaults": true,
       "readableRoots": ["/Users/me/shared-read-only"]
     }
-[/code]
+```
 
 예시:
-[code] 
+```
     { "type": "readOnly", "access": { "type": "fullAccess" } }
-[/code]
-[code] 
+```
+```
     {
       "type": "workspaceWrite",
       "writableRoots": ["/Users/me/project"],
@@ -505,10 +505,10 @@ JSONL 파일로 디스크에 저장된 지속 스레드 로그를 보관 세션 
       },
       "networkAccess": false
     }
-[/code]
+```
 
 ### 턴 시작
-[code] 
+```
     { "method": "turn/start", "id": 30, "params": {
       "threadId": "thr_123",
       "input": [ { "type": "text", "text": "Run tests" } ],
@@ -531,7 +531,7 @@ JSONL 파일로 디스크에 저장된 지속 스레드 로그를 보관 세션 
       }
     } }
     { "id": 30, "result": { "turn": { "id": "turn_456", "status": "inProgress", "items": [], "error": null } } }
-[/code]
+```
 
 ### 활성 턴 조정
 
@@ -543,19 +543,19 @@ JSONL 파일로 디스크에 저장된 지속 스레드 로그를 보관 세션 
 * `turn/steer`는 새로운 `turn/started` 알림을 내보내지 않습니다.
   * `turn/steer`는 턴 수준 오버라이드(`model`, `cwd`, `sandboxPolicy`, `outputSchema`)를 허용하지 않습니다.
 
-[code] 
+```
     { "method": "turn/steer", "id": 32, "params": {
       "threadId": "thr_123",
       "input": [ { "type": "text", "text": "Actually focus on failing tests first." } ],
       "expectedTurnId": "turn_456"
     } }
     { "id": 32, "result": { "turnId": "turn_456" } }
-[/code]
+```
 
 ### 턴 시작하기(스킬 호출)
 
 텍스트 입력에 `$<skill-name>`을 포함하고 그와 함께 `skill` 입력 항목을 추가하여 스킬을 명시적으로 호출합니다.
-[code] 
+```
     { "method": "turn/start", "id": 33, "params": {
       "threadId": "thr_123",
       "input": [
@@ -564,13 +564,13 @@ JSONL 파일로 디스크에 저장된 지속 스레드 로그를 보관 세션 
       ]
     } }
     { "id": 33, "result": { "turn": { "id": "turn_457", "status": "inProgress", "items": [], "error": null } } }
-[/code]
+```
 
 ### 턴 중단하기
-[code] 
+```
     { "method": "turn/interrupt", "id": 31, "params": { "threadId": "thr_123", "turnId": "turn_456" } }
     { "id": 31, "result": {} }
-[/code]
+```
 
 성공하면 해당 턴은 `status: "interrupted"` 상태로 종료됩니다.
 
@@ -586,7 +586,7 @@ JSONL 파일로 디스크에 저장된 지속 스레드 로그를 보관 세션 
 `delivery: "inline"`(기본값)을 사용하면 기존 스레드에서 리뷰를 실행하고, `delivery: "detached"`를 사용하면 새로운 리뷰 스레드를 분기합니다.
 
 요청/응답 예시:
-[code] 
+```
     { "method": "review/start", "id": 40, "params": {
       "threadId": "thr_123",
       "delivery": "inline",
@@ -603,12 +603,12 @@ JSONL 파일로 디스크에 저장된 지속 스레드 로그를 보관 세션 
       },
       "reviewThreadId": "thr_123"
     } }
-[/code]
+```
 
 분리된 리뷰의 경우 `"delivery": "detached"`를 사용합니다. 응답 형식은 동일하지만 `reviewThreadId`가 원래 `threadId`와 다른 새 리뷰 스레드 ID가 됩니다. 서버는 리뷰 턴을 스트리밍하기 전에 해당 새 스레드에 대해 `thread/started` 알림도 보냅니다.
 
 Codex는 일반적인 `turn/started` 알림을 전송한 후 `enteredReviewMode` 항목이 포함된 `item/started`를 이어서 스트리밍합니다:
-[code] 
+```
     {
       "method": "item/started",
       "params": {
@@ -619,10 +619,10 @@ Codex는 일반적인 `turn/started` 알림을 전송한 후 `enteredReviewMode`
         }
       }
     }
-[/code]
+```
 
 리뷰가 끝나면 서버는 최종 리뷰 텍스트가 담긴 `exitedReviewMode` 항목과 함께 `item/started`, `item/completed`를 전송합니다:
-[code] 
+```
     {
       "method": "item/completed",
       "params": {
@@ -633,14 +633,14 @@ Codex는 일반적인 `turn/started` 알림을 전송한 후 `enteredReviewMode`
         }
       }
     }
-[/code]
+```
 
 이 알림을 사용하여 클라이언트에서 리뷰어 출력 내용을 렌더링합니다.
 
 ## 명령 실행
 
 `command/exec`는 새 스레드를 만들지 않고 서버 샌드박스에서 단일 명령(`argv` 배열)을 실행합니다.
-[code] 
+```
     { "method": "command/exec", "id": 50, "params": {
       "command": ["ls", "-la"],
       "cwd": "/Users/me/project",
@@ -648,7 +648,7 @@ Codex는 일반적인 `turn/started` 알림을 전송한 후 `enteredReviewMode`
       "timeoutMs": 10000
     } }
     { "id": 50, "result": { "exitCode": 0, "stdout": "...", "stderr": "" } }
-[/code]
+```
 
 Use `sandboxPolicy.type = "externalSandbox"`를 사용하면 서버 프로세스를 이미 샌드박싱했을 때 Codex가 자체 샌드박스 적용을 건너뛰도록 할 수 있습니다. 외부 샌드박스 모드에서는 `networkAccess`를 기본값인 `restricted` 또는 `enabled`로 설정하세요. `readOnly`와 `workspaceWrite`에는 위에서 보여 준 선택적 `access` / `readOnlyAccess` 구조를 동일하게 사용합니다.
 
@@ -796,7 +796,7 @@ turn이 실패하면 서버는 `{ error: { message, codexErrorInfo?, additionalD
 ## 스킬
 
 사용자 텍스트 입력에 `$<skill-name>`을 포함하면 스킬을 호출할 수 있습니다. 모델이 이름을 직접 해석하도록 두는 대신 서버가 전체 스킬 지침을 주입하도록 `skill` 입력 항목을 추가하는 것이 좋습니다.
-[code] 
+```
     {
       "method": "turn/start",
       "id": 101,
@@ -815,17 +815,17 @@ turn이 실패하면 서버는 `{ error: { message, codexErrorInfo?, additionalD
         ]
       }
     }
-[/code]
+```
 
 `skill` 항목을 생략해도 모델은 `$<skill-name>` 표식을 파싱해 스킬을 찾지만, 이로 인해 지연 시간이 늘어날 수 있습니다.
 
 예:
-[code] 
+```
     $skill-creator Add a new skill for triaging flaky CI and include step-by-step usage.
-[/code]
+```
 
 `skills/list`를 사용하여 사용 가능한 스킬을 가져오세요(`cwds`로 범위를 지정하고 `forceReload`를 함께 사용할 수 있음). 특정 `cwd` 값에 대해 추가 절대 경로를 `user` 범위로 스캔하려면 `perCwdExtraUserRoots`를 포함할 수도 있습니다. App-server는 `cwds`에 없는 `cwd` 항목은 무시합니다. `skills/list`는 `cwd`별로 캐시된 결과를 재사용할 수 있으므로 디스크에서 새로 고치려면 `forceReload: true`를 설정하세요. 존재하는 경우 서버는 `SKILL.json`에서 `interface`와 `dependencies`를 읽습니다.
-[code] 
+```
     { "method": "skills/list", "id": 25, "params": {
       "cwds": ["/Users/me/project", "/Users/me/other-project"],
       "forceReload": true,
@@ -868,10 +868,10 @@ turn이 실패하면 서버는 `{ error: { message, codexErrorInfo?, additionalD
         "errors": []
       }]
     } }
-[/code]
+```
 
 경로를 기준으로 스킬을 활성화하거나 비활성화하려면 다음을 사용하세요:
-[code] 
+```
     {
       "method": "skills/config/write",
       "id": 26,
@@ -880,12 +880,12 @@ turn이 실패하면 서버는 `{ error: { message, codexErrorInfo?, additionalD
         "enabled": false
       }
     }
-[/code]
+```
 
 ## 앱(커넥터)
 
 `app/list`를 사용해 사용 가능한 앱을 가져옵니다. CLI/TUI에서는 `/apps`가 사용자용 선택기이며, 커스텀 클라이언트에서는 `app/list`를 직접 호출하세요. 각 항목에는 `isAccessible`(사용자가 이용 가능한지)과 `isEnabled`(`config.toml`에서 활성화되었는지)가 함께 포함되어 클라이언트가 설치·접근 여부와 로컬 활성 상태를 구분할 수 있습니다.
-[code] 
+```
     { "method": "app/list", "id": 50, "params": {
       "cursor": null,
       "limit": 50,
@@ -907,14 +907,14 @@ turn이 실패하면 서버는 `{ error: { message, codexErrorInfo?, additionalD
       ],
       "nextCursor": null
     } }
-[/code]
+```
 
 `threadId`를 제공하면 앱 기능 게이팅(`features.apps`)이 해당 스레드의 구성 스냅샷을 사용합니다. 생략하면 app-server는 최신 전역 구성을 사용합니다.
 
 `app/list`는 접근 가능한 앱과 디렉터리 앱이 모두 로드된 후 응답합니다. `forceRefetch: true`를 설정하면 앱 캐시를 우회하고 새 데이터를 가져옵니다. 새로 고침이 성공해야만 캐시 항목이 교체됩니다.
 
 서버는 접근 가능한 앱 또는 디렉터리 앱 중 어느 한 쪽이 로드를 마칠 때마다 `app/list/updated` 알림을 발생시킵니다. 각 알림에는 최신 병합 앱 목록이 포함됩니다.
-[code] 
+```
     {
       "method": "app/list/updated",
       "params": {
@@ -931,10 +931,10 @@ turn이 실패하면 서버는 `{ error: { message, codexErrorInfo?, additionalD
         ]
       }
     }
-[/code]
+```
 
 텍스트 입력란에 `$<app-slug>`을 삽입하고 `app://<id>` 경로를 가진 `mention` 입력 항목을 추가하면 앱을 호출할 수 있습니다(권장).
-[code] 
+```
     {
       "method": "turn/start",
       "id": 51,
@@ -953,7 +953,7 @@ turn이 실패하면 서버는 `{ error: { message, codexErrorInfo?, additionalD
         ]
       }
     }
-[/code]
+```
 
 ## 인증 엔드포인트
 
@@ -983,28 +983,28 @@ Codex는 세 가지 인증 모드를 지원합니다. 활성 모드는 `account/
 ### 1) 인증 상태 확인
 
 요청:
-[code] 
+```
     { "method": "account/read", "id": 1, "params": { "refreshToken": false } }
-[/code]
+```
 
 응답 예시:
-[code] 
+```
     { "id": 1, "result": { "account": null, "requiresOpenaiAuth": false } }
-[/code]
-[code] 
+```
+```
     { "id": 1, "result": { "account": null, "requiresOpenaiAuth": true } }
-[/code]
-[code] 
+```
+```
     {
       "id": 1,
       "result": { "account": { "type": "apiKey" }, "requiresOpenaiAuth": true }
     }
-[/code]
-[code] 
+```
+```
     {
       "id": 1,
       "result": {
-[/code]
+```
 
 "account": {
           "type": "chatgpt",
@@ -1014,7 +1014,6 @@ Codex는 세 가지 인증 모드를 지원합니다. 활성 모드는 `account/
         "requiresOpenaiAuth": true
       }
     }
-[/code]
 
 필드 노트:
 
@@ -1024,32 +1023,38 @@ Codex는 세 가지 인증 모드를 지원합니다. 활성 모드는 `account/
 ### 2) API 키로 로그인
 
   1. 전송:
-[code] {
+```
+{
            "method": "account/login/start",
            "id": 2,
            "params": { "type": "apiKey", "apiKey": "sk-..." }
          }
-[/code]
+```
 
   2. 응답 예상:
-[code] { "id": 2, "result": { "type": "apiKey" } }
-[/code]
+```
+{ "id": 2, "result": { "type": "apiKey" } }
+```
 
   3. 알림:
-[code] {
+```
+{
            "method": "account/login/completed",
            "params": { "loginId": null, "success": true, "error": null }
          }
-[/code]
-[code] { "method": "account/updated", "params": { "authMode": "apikey" } }
-[/code]
+```
+```
+{ "method": "account/updated", "params": { "authMode": "apikey" } }
+```
 
 ### 3) ChatGPT(브라우저 플로우)로 로그인
 
   1. 시작:
-[code] { "method": "account/login/start", "id": 3, "params": { "type": "chatgpt" } }
-[/code]
-[code] {
+```
+{ "method": "account/login/start", "id": 3, "params": { "type": "chatgpt" } }
+```
+```
+{
            "id": 3,
            "result": {
              "type": "chatgpt",
@@ -1057,25 +1062,28 @@ Codex는 세 가지 인증 모드를 지원합니다. 활성 모드는 `account/
              "authUrl": "https://chatgpt.com/...&redirect_uri=http%3A%2F%2Flocalhost%3A<port>%2Fauth%2Fcallback"
            }
          }
-[/code]
+```
 
   2. 브라우저에서 `authUrl`을 열면 app-server가 로컬 콜백을 호스팅합니다.
 
   3. 다음 알림을 기다립니다:
-[code] {
+```
+{
            "method": "account/login/completed",
            "params": { "loginId": "<uuid>", "success": true, "error": null }
          }
-[/code]
-[code] { "method": "account/updated", "params": { "authMode": "chatgpt" } }
-[/code]
+```
+```
+{ "method": "account/updated", "params": { "authMode": "chatgpt" } }
+```
 
 ### 3b) 외부에서 관리되는 ChatGPT 토큰(`chatgptAuthTokens`)으로 로그인
 
 호스트 애플리케이션이 사용자의 ChatGPT 인증 수명 주기를 소유하고 토큰을 직접 제공할 때 이 모드를 사용합니다.
 
   1. 전송:
-[code] {
+```
+{
            "method": "account/login/start",
            "id": 7,
            "params": {
@@ -1084,51 +1092,54 @@ Codex는 세 가지 인증 모드를 지원합니다. 활성 모드는 `account/
              "accessToken": "<jwt>"
            }
          }
-[/code]
+```
 
   2. 응답 예상:
-[code] { "id": 7, "result": { "type": "chatgptAuthTokens" } }
-[/code]
+```
+{ "id": 7, "result": { "type": "chatgptAuthTokens" } }
+```
 
   3. 알림:
-[code] {
+```
+{
            "method": "account/login/completed",
            "params": { "loginId": null, "success": true, "error": null }
          }
-[/code]
-[code] {
+```
+```
+{
            "method": "account/updated",
            "params": { "authMode": "chatgptAuthTokens" }
          }
-[/code]
+```
 
 서버가 `401 Unauthorized`를 받으면 호스트 앱에 토큰 새로 고침을 요청할 수 있습니다:
-[code] 
+```
     {
       "method": "account/chatgptAuthTokens/refresh",
       "id": 8,
       "params": { "reason": "unauthorized", "previousAccountId": "org-123" }
     }
     { "id": 8, "result": { "idToken": "<jwt>", "accessToken": "<jwt>" } }
-[/code]
+```
 
 서버는 새로 고침 응답이 성공하면 원래 요청을 재시도하며, 요청은 약 10초 후에 타임아웃됩니다.
 
 ### 4) ChatGPT 로그인 취소
-[code] 
+```
     { "method": "account/login/cancel", "id": 4, "params": { "loginId": "<uuid>" } }
     { "method": "account/login/completed", "params": { "loginId": "<uuid>", "success": false, "error": "..." } }
-[/code]
+```
 
 ### 5) 로그아웃
-[code] 
+```
     { "method": "account/logout", "id": 5 }
     { "id": 5, "result": {} }
     { "method": "account/updated", "params": { "authMode": null } }
-[/code]
+```
 
 ### 6) 속도 제한(ChatGPT)
-[code] 
+```
     { "method": "account/rateLimits/read", "id": 6 }
     { "id": 6, "result": {
       "rateLimits": {
@@ -1159,7 +1170,7 @@ Codex는 세 가지 인증 모드를 지원합니다. 활성 모드는 `account/
         "primary": { "usedPercent": 31, "windowDurationMins": 15, "resetsAt": 1730948100 }
       }
     } }
-[/code]
+```
 
 필드 노트:
 

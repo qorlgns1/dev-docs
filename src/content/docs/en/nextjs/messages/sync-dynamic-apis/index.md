@@ -96,4 +96,3 @@ If there's no action to be taken, the comment prefix `@next-codemod-ignore` will
 >
 > You can delay unwrapping the Promise (either with `await` or `React.use`) until you actually need to consume the value.
 > This will allow Next.js to statically render more of your page.
-

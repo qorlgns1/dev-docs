@@ -52,7 +52,7 @@ Next.js App Router는 **향상된 타입 안전성**을 제공합니다. 여기�
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     async function getData() {
       const res = await fetch('https://api.example.com/...')
       // The return value is *not* serialized
@@ -65,7 +65,7 @@ JavaScriptTypeScript
 
       return '...'
     }
-[/code]
+```
 
 완전한 종단 간 타입 안전성을 얻으려면 데이터베이스나 콘텐츠 공급자 역시 TypeScript를 지원해야 합니다. 이는 [ORM](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping) 또는 타입 안전 쿼리 빌더를 사용해 구현할 수 있습니다.
 
@@ -96,7 +96,7 @@ Next.js는 프로젝트 루트에 `next-env.d.ts` 파일을 생성합니다. 이
 Next.js 구성에서 `next.config.ts`를 사용하면 TypeScript와 타입 import를 활용할 수 있습니다.
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -104,14 +104,14 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 현재 `next.config.ts`의 모듈 해석은 CommonJS로 제한됩니다. 그러나 Node.js v22.10.0 이상에서 [Node.js 기본 TypeScript 리졸버](https://nextjs.org/docs/app/api-reference/config/typescript#using-nodejs-native-typescript-resolver-for-nextconfigts)를 사용할 때는 ECMAScript Modules(ESM) 문법을 사용할 수 있습니다.
 
 `next.config.js` 파일을 사용할 때는 아래와 같이 JSDoc을 통해 IDE에서 일부 타입 검사를 추가할 수 있습니다:
 
 next.config.js
-[code]
+```
     // @ts-check
 
     /** @type {import('next').NextConfig} */
@@ -120,7 +120,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 ### `next.config.ts`에서 Node.js 기본 TypeScript 리졸버 사용[](https://nextjs.org/docs/app/api-reference/config/typescript#using-nodejs-native-typescript-resolver-for-nextconfigts)
 
@@ -131,16 +131,16 @@ Next.js는 **v22.10.0**에 추가된 [`process.features.typescript`](https://nod
 Node.js **v22.18.0+**에서는 `process.features.typescript`가 기본 활성화됩니다. **v22.10.0** 이상 **22.17.x** 이하 버전에서는 `NODE_OPTIONS=--experimental-transform-types`로 옵트인하세요:
 
 Terminal
-[code]
+```
     NODE_OPTIONS=--experimental-transform-types next <command>
-[/code]
+```
 
 #### CommonJS 프로젝트(기본)용[](https://nextjs.org/docs/app/api-reference/config/typescript#for-commonjs-projects-default)
 
 `next.config.ts`가 CommonJS 프로젝트에서 네이티브 ESM 문법을 지원하더라도, Node.js는 기본적으로 `next.config.ts`를 CommonJS 파일로 간주하므로 모듈 문법을 감지하면 파일을 ESM으로 다시 파싱합니다. 따라서 CommonJS 프로젝트에서는 파일이 ESM 모듈임을 명시하기 위해 `next.config.mts` 파일 사용을 권장합니다:
 
 next.config.mts
-[code]
+```
     import type { NextConfig } from 'next'
 
     // Top-level await and dynamic import are supported
@@ -152,7 +152,7 @@ next.config.mts
     }
 
     export default nextConfig
-[/code]
+```
 
 #### ESM 프로젝트용[](https://nextjs.org/docs/app/api-reference/config/typescript#for-esm-projects)
 
@@ -171,7 +171,7 @@ Pages Router와 App Router 모두에서 `next/link`의 `href` prop에 대해 작
 이 기능을 사용하려면 `typedRoutes`를 활성화하고 프로젝트가 TypeScript를 사용해야 합니다.
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -179,14 +179,14 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 Next.js는 `.next/types`에 애플리케이션의 모든 기존 라우트 정보를 포함하는 링크 정의를 생성하며, 이를 통해 TypeScript가 에디터에서 잘못된 링크에 대한 피드백을 제공할 수 있습니다.
 
 > **알아두면 좋아요** : `create-next-app` 없이 프로젝트를 설정했다면, 생성된 Next.js 타입이 `tsconfig.json`의 `include` 배열에 포함되도록 `.next/types/**/*.ts`를 추가하세요:
 
 tsconfig.json
-[code]
+```
     {
       "include": [
         "next-env.d.ts",
@@ -196,12 +196,12 @@ tsconfig.json
       ],
       "exclude": ["node_modules"]
     }
-[/code]
+```
 
 현재 지원은 동적 세그먼트를 포함한 모든 문자열 리터럴에 적용됩니다. 리터럴이 아닌 문자열은 `as Route`로 수동 캐스팅해야 합니다. 아래 예시는 `next/link`와 `next/navigation` 사용을 모두 보여줍니다:
 
 app/example-client.tsx
-[code]
+```
     'use client'
 
     import type { Route } from 'next'
@@ -237,12 +237,12 @@ app/example-client.tsx
         </>
       )
     }
-[/code]
+```
 
 프록시가 정의한 리디렉션 라우트에도 동일하게 적용됩니다.
 
 proxy.ts
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
 
     export function proxy(request: NextRequest) {
@@ -252,19 +252,19 @@ proxy.ts
 
       return NextResponse.next()
     }
-[/code]
+```
 
 app/some/page.tsx
-[code]
+```
     import type { Route } from 'next'
 
     export default function Page() {
       return <Link href={'/proxy-redirect' as Route}>Link Text</Link>
     }
-[/code]
+```
 
 `next/link`을 감싸는 커스텀 컴포넌트에서 `href`를 허용하려면 제네릭을 사용하세요:
-[code]
+```
     import type { Route } from 'next'
     import Link from 'next/link'
 
@@ -275,12 +275,12 @@ app/some/page.tsx
         </Link>
       )
     }
-[/code]
+```
 
 단순한 데이터 구조에 타입을 지정하고 이를 순회하며 링크를 렌더링할 수도 있습니다:
 
 components/nav-items.ts
-[code]
+```
     import type { Route } from 'next'
 
     type NavItem<T extends string = string> = {
@@ -293,12 +293,12 @@ components/nav-items.ts
       { href: '/about', label: 'About' },
       { href: '/blog', label: 'Blog' },
     ]
-[/code]
+```
 
 그런 다음 항목을 순회(map)하여 `Link`를 렌더링합니다:
 
 components/nav.tsx
-[code]
+```
     import Link from 'next/link'
     import { navItems } from './nav-items'
 
@@ -313,7 +313,7 @@ components/nav.tsx
         </nav>
       )
     }
-[/code]
+```
 
 > **어떻게 동작하나요?**
 >
@@ -326,7 +326,7 @@ components/nav.tsx
 이 기능을 사용하려면 `experimental.typedEnv`를 활성화하고 프로젝트가 TypeScript를 사용해야 합니다.
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -336,7 +336,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 > **알아 두면 좋아요**: 타입은 개발 런타임에 로드된 환경 변수를 기반으로 생성되므로, 기본적으로 `.env.production*` 파일의 변수는 제외됩니다. 프로덕션 전용 변수를 포함하려면 `NODE_ENV=production`으로 `next dev`를 실행하세요.
 
@@ -355,7 +355,7 @@ next.config.ts
 특정 빌드나 도구를 위해 다른 TypeScript 구성을 사용하고 싶다면, `next.config.ts`에서 `typescript.tsconfigPath`를 설정하여 Next.js가 다른 `tsconfig` 파일을 참조하도록 만들 수 있습니다.
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -365,12 +365,12 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 예를 들어, 프로덕션 빌드에서 다른 구성을 사용하도록 전환할 수 있습니다:
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const isProd = process.env.NODE_ENV === 'production'
@@ -382,7 +382,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 빌드를 위한 별도의 `tsconfig`를 사용할 수 있는 이유
 
@@ -391,14 +391,14 @@ next.config.ts
 예를 들어 프로젝트는 `useUnknownInCatchVariables`를 사용하지만 어떤 모노레포 종속성은 여전히 `any`를 가정하는 경우:
 
 tsconfig.build.json
-[code]
+```
     {
       "extends": "./tsconfig.json",
       "compilerOptions": {
         "useUnknownInCatchVariables": false
       }
     }
-[/code]
+```
 
 이렇게 하면 `tsconfig.json`을 통해 에디터는 엄격한 상태를 유지하면서도 프로덕션 빌드는 완화된 설정을 사용할 수 있습니다.
 
@@ -420,7 +420,7 @@ tsconfig.build.json
 `next.config.ts`를 열고 [`typescript`](https://nextjs.org/docs/app/api-reference/config/next-config-js/typescript) 구성에서 `ignoreBuildErrors` 옵션을 활성화하세요:
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -434,7 +434,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 > **알아 두면 좋아요** : 빌드 전에 직접 TypeScript 오류를 확인하려면 `tsc --noEmit`을 실행할 수 있습니다. 이는 배포 전에 TypeScript 오류를 확인하고 싶은 CI/CD 파이프라인에 유용합니다.
 
@@ -443,7 +443,7 @@ next.config.ts
 커스텀 타입을 선언해야 할 때 `next-env.d.ts`를 수정하고 싶어질 수 있지만, 이 파일은 자동 생성되므로 수정 사항이 덮어쓰여집니다. 대신 `new-types.d.ts` 같은 새 파일을 만들고 `tsconfig.json`에 참조를 추가하세요:
 
 tsconfig.json
-[code]
+```
     {
       "compilerOptions": {
         "skipLibCheck": true
@@ -458,7 +458,7 @@ tsconfig.json
       ],
       "exclude": ["node_modules"]
     }
-[/code]
+```
 
 ## 버전 변경 사항[](https://nextjs.org/docs/app/api-reference/config/typescript#version-changes)
 

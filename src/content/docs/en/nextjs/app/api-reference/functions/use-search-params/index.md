@@ -385,4 +385,3 @@ export default function ExampleClientComponent() {
 | --------- | ----------------------------- |
 | `v13.0.0` | `useSearchParams` introduced. |
 ---
-

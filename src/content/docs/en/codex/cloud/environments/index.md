@@ -53,14 +53,14 @@ For projects using common package managers (`npm`, `yarn`, `pnpm`, `pip`, `pipen
 ## Manual setup
 
 If your development setup is more complex, you can also provide a custom setup script. For example:
-[code] 
+```
     # Install type checker
     pip install pyright
     
     # Install dependencies
     poetry install --with test
     pnpm install
-[/code]
+```
 
 Setup scripts run in a separate Bash session from the agent, so commands like `export` do not persist into the agent phase. To persist environment variables, add them to `~/.bashrc` or configure them in environment settings.
 

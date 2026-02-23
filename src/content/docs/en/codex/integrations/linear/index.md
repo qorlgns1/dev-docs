@@ -93,9 +93,9 @@ The setup steps for the MCP server are the same regardless of whether you use th
 ### Use the CLI (recommended)
 
 If you have the CLI installed, run:
-[code] 
+```
     codex mcp add linear --url https://mcp.linear.app/mcp
-[/code]
+```
 
 This prompts you to sign in with your Linear account and connect it to Codex.
 
@@ -105,9 +105,9 @@ This prompts you to sign in with your Linear account and connect it to Codex.
   2. Add the following:
 
 
-[code] 
+```
     [mcp_servers.linear]
     url = "https://mcp.linear.app/mcp"
-[/code]
+```
 
   3. Run `codex mcp login linear` to log in.

@@ -52,4 +52,3 @@ Source URL: https://nextjs.org/docs/app/api-reference/file-conventions
   - API documentation for the metadata file conventions.
 
 ---
-

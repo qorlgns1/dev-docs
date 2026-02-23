@@ -30,4 +30,3 @@ export default MyDocument
 ## Useful Links
 
 - [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
-

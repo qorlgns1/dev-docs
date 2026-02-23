@@ -164,18 +164,18 @@ Chat Completions API 지원은 사용 중단 예정이며 앞으로의 Codex 릴
 ### 기본 로컬 모델 구성
 
 Codex CLI와 IDE 확장은 동일한 `config.toml` [구성 파일](https://developers.openai.com/codex/config-basic)을 사용합니다. 모델을 지정하려면 구성 파일에 `model` 항목을 추가하세요. 모델을 지정하지 않으면 Codex 앱, CLI, IDE 확장은 권장 모델을 기본값으로 사용합니다.
-[code] 
+```
     model = "gpt-5.2"
-[/code]
+```
 
 ### 일시적으로 다른 로컬 모델 선택
 
 Codex CLI에서는 활성 스레드 동안 `/model` 명령을 사용해 모델을 변경할 수 있습니다. IDE 확장에서는 입력 상자 아래 모델 선택기를 사용해 모델을 고를 수 있습니다.
 
 특정 모델로 새 Codex CLI 스레드를 시작하거나 `codex exec`에 사용할 모델을 지정하려면 `--model`/`-m` 플래그를 사용하세요:
-[code] 
+```
     codex -m gpt-5.3-codex
-[/code]
+```
 
 ### 클라우드 작업용 모델 선택
 

@@ -18,7 +18,7 @@ Last updated February 20, 2026
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { InferGetStaticPropsType, GetStaticProps } from 'next'
 
     type Repo = {
@@ -39,7 +39,7 @@ JavaScriptTypeScript
     }: InferGetStaticPropsType<typeof getStaticProps>) {
       return repo.stargazers_count
     }
-[/code]
+```
 
 `getStaticProps`에서 사용할 모듈을 최상위 스코프에서 import할 수 있습니다. 이렇게 import한 모듈은 **클라이언트 번들에 포함되지 않습니다**. 즉 **서버 전용 코드를 `getStaticProps` 안에 직접 작성**할 수 있으며, 여기에 데이터베이스 조회도 포함됩니다.
 
@@ -65,18 +65,18 @@ Name| Description
 ### `props`[](https://nextjs.org/docs/pages/api-reference/functions/get-static-props#props)
 
 `props` 객체는 키-값 쌍이며 각 값은 페이지 컴포넌트에서 받습니다. 전달하는 props는 [`JSON.stringify`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)를 통해 직렬화될 수 있도록 [직렬화 가능한 객체](https://developer.mozilla.org/docs/Glossary/Serialization)여야 합니다.
-[code]
+```
     export async function getStaticProps(context) {
       return {
         props: { message: `Next.js is awesome` }, // will be passed to the page component as props
       }
     }
-[/code]
+```
 
 ### `revalidate`[](https://nextjs.org/docs/pages/api-reference/functions/get-static-props#revalidate)
 
 `revalidate` 속성은 페이지를 다시 생성할 수 있는 초 단위의 기간입니다(기본값은 `false`, 즉 재검증 없음).
-[code]
+```
     // This function gets called at build time on server-side.
     // It may be called again, on a serverless function, if
     // revalidation is enabled and a new request comes in
@@ -94,7 +94,7 @@ Name| Description
         revalidate: 10, // In seconds
       }
     }
-[/code]
+```
 
 [Incremental Static Regeneration](https://nextjs.org/docs/pages/guides/incremental-static-regeneration)에 대해 더 알아보세요.
 
@@ -107,7 +107,7 @@ ISR을 활용하는 페이지의 캐시 상태는 `x-nextjs-cache` 응답 헤더
 ### `notFound`[](https://nextjs.org/docs/pages/api-reference/functions/get-static-props#notfound)
 
 `notFound` boolean은 페이지가 `404` 상태와 [404 페이지](https://nextjs.org/docs/pages/building-your-application/routing/custom-error#404-page)를 반환하도록 합니다. `notFound: true`이면 이전에 성공적으로 생성된 페이지가 있더라도 `404`를 반환합니다. 이는 사용자 생성 콘텐츠가 작성자에 의해 삭제되는 상황을 지원하기 위한 것입니다. `notFound`는 [여기](https://nextjs.org/docs/pages/api-reference/functions/get-static-props#revalidate)에서 설명한 것과 동일한 `revalidate` 동작을 따릅니다.
-[code]
+```
     export async function getStaticProps(context) {
       const res = await fetch(`https://.../data`)
       const data = await res.json()
@@ -122,7 +122,7 @@ ISR을 활용하는 페이지의 캐시 상태는 `x-nextjs-cache` 응답 헤더
         props: { data }, // will be passed to the page component as props
       }
     }
-[/code]
+```
 
 > **알아두면 좋아요**: [`fallback: false`](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-false) 모드에서는 `notFound`가 필요 없습니다. `getStaticPaths`가 반환한 경로만 사전 렌더링되기 때문입니다.
 
@@ -131,7 +131,7 @@ ISR을 활용하는 페이지의 캐시 상태는 `x-nextjs-cache` 응답 헤더
 `redirect` 객체를 사용하면 내부 또는 외부 리소스로 리디렉트할 수 있습니다. `{ destination: string, permanent: boolean }` 형태여야 합니다.
 
 드물게 오래된 `HTTP` 클라이언트가 올바르게 리디렉트되도록 커스텀 상태 코드를 지정해야 할 수 있습니다. 이런 경우 `permanent` 대신 `statusCode` 속성을 사용할 수 있지만 **둘을 동시에 사용할 수는 없습니다**. `next.config.js`의 redirect와 마찬가지로 `basePath: false`를 설정할 수도 있습니다.
-[code]
+```
     export async function getStaticProps(context) {
       const res = await fetch(`https://...`)
       const data = await res.json()
@@ -150,7 +150,7 @@ ISR을 활용하는 페이지의 캐시 상태는 `x-nextjs-cache` 응답 헤더
         props: { data }, // will be passed to the page component as props
       }
     }
-[/code]
+```
 
 리디렉트가 빌드 시점에 이미 알려져 있다면 [`next.config.js`](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects)에 추가해야 합니다.
 
@@ -163,7 +163,7 @@ ISR을 활용하는 페이지의 캐시 상태는 `x-nextjs-cache` 응답 헤더
 Next.js가 코드를 별도의 디렉터리로 컴파일하기 때문에 Pages Router와 경로가 달라지는 `__dirname`을 사용할 수 없습니다.
 
 대신 Next.js가 실행되는 디렉터리를 반환하는 `process.cwd()`를 사용할 수 있습니다.
-[code]
+```
     import { promises as fs } from 'fs'
     import path from 'path'
 
@@ -210,7 +210,7 @@ Next.js가 코드를 별도의 디렉터리로 컴파일하기 때문에 Pages R
     }
 
     export default Blog
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/pages/api-reference/functions/get-static-props#version-history)
 

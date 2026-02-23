@@ -22,26 +22,26 @@ NextRequest는 추가 편의 메서드를 제공하기 위해 [Web Request API](
 ### `set(name, value)`[](https://nextjs.org/docs/app/api-reference/functions/next-request#setname-value)
 
 이름을 전달하면 해당 값을 가진 쿠키를 요청에 설정합니다.
-[code]
+```
     // Given incoming request /home
     // Set a cookie to hide the banner
     // request will have a `Set-Cookie:show-banner=false;path=/home` header
     request.cookies.set('show-banner', 'false')
-[/code]
+```
 
 ### `get(name)`[](https://nextjs.org/docs/app/api-reference/functions/next-request#getname)
 
 쿠키 이름을 전달하면 해당 쿠키 값을 반환합니다. 쿠키가 없으면 `undefined`를 반환합니다. 여러 쿠키가 있으면 첫 번째 쿠키를 반환합니다.
-[code]
+```
     // Given incoming request /home
     // { name: 'show-banner', value: 'false', Path: '/home' }
     request.cookies.get('show-banner')
-[/code]
+```
 
 ### `getAll()`[](https://nextjs.org/docs/app/api-reference/functions/next-request#getall)
 
 쿠키 이름을 전달하면 해당 쿠키의 모든 값을 반환합니다. 이름이 없으면 요청의 모든 쿠키를 반환합니다.
-[code]
+```
     // Given incoming request /home
     // [
     //   { name: 'experiments', value: 'new-pricing-page', Path: '/home' },
@@ -50,40 +50,40 @@ NextRequest는 추가 편의 메서드를 제공하기 위해 [Web Request API](
     request.cookies.getAll('experiments')
     // Alternatively, get all cookies for the request
     request.cookies.getAll()
-[/code]
+```
 
 ### `delete(name)`[](https://nextjs.org/docs/app/api-reference/functions/next-request#deletename)
 
 쿠키 이름을 전달하면 요청에서 해당 쿠키를 삭제합니다.
-[code]
+```
     // Returns true for deleted, false is nothing is deleted
     request.cookies.delete('experiments')
-[/code]
+```
 
 ### `has(name)`[](https://nextjs.org/docs/app/api-reference/functions/next-request#hasname)
 
 쿠키 이름을 전달하면 요청에 쿠키가 존재하면 `true`를 반환합니다.
-[code]
+```
     // Returns true if cookie exists, false if it does not
     request.cookies.has('experiments')
-[/code]
+```
 
 ### `clear()`[](https://nextjs.org/docs/app/api-reference/functions/next-request#clear)
 
 요청에서 모든 쿠키를 제거합니다.
-[code]
+```
     request.cookies.clear()
-[/code]
+```
 
 ## `nextUrl`[](https://nextjs.org/docs/app/api-reference/functions/next-request#nexturl)
 
 Next.js 전용 속성을 포함해 네이티브 [`URL`](https://developer.mozilla.org/docs/Web/API/URL) API를 확장하는 추가 편의 메서드를 제공합니다.
-[code]
+```
     // Given a request to /home, pathname is /home
     request.nextUrl.pathname
     // Given a request to /home?name=lee, searchParams is { 'name': 'lee' }
     request.nextUrl.searchParams
-[/code]
+```
 
 사용 가능한 옵션은 다음과 같습니다:
 

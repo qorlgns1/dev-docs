@@ -20,7 +20,7 @@ Next.js는 성능 메트릭을 측정하고 보고하는 기능을 기본 제공
 사용하려면 애플리케이션 루트 디렉터리에 `instrumentation-client.js` 또는 `instrumentation-client.ts` 파일을 생성한다:
 
 instrumentation-client.js
-[code]
+```
     // Initialize analytics before the app starts
     console.log('Analytics initialized')
 
@@ -29,12 +29,12 @@ instrumentation-client.js
       // Send to your error tracking service
       reportError(event.error)
     })
-[/code]
+```
 
 ## 직접 구축하기[](https://nextjs.org/docs/pages/guides/analytics#build-your-own)
 
 pages/_app.js
-[code]
+```
     import { useReportWebVitals } from 'next/web-vitals'
 
     function MyApp({ Component, pageProps }) {
@@ -44,7 +44,7 @@ pages/_app.js
 
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 자세한 내용은 [API Reference](https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals)를 참고한다.
 
@@ -62,7 +62,7 @@ pages/_app.js
 `name` 속성을 사용하면 이러한 메트릭의 모든 결과를 처리할 수 있다.
 
 pages/_app.js
-[code]
+```
     import { useReportWebVitals } from 'next/web-vitals'
 
     function MyApp({ Component, pageProps }) {
@@ -80,7 +80,7 @@ pages/_app.js
 
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 ## 사용자 지정 메트릭[](https://nextjs.org/docs/pages/guides/analytics#custom-metrics)
 
@@ -91,7 +91,7 @@ pages/_app.js
   * `Next.js-render`: 라우트 변경 후 페이지가 렌더링을 완료하기까지 걸린 시간(ms)
 
 이러한 메트릭 결과를 각각 처리할 수 있다.
-[code]
+```
     export function reportWebVitals(metric) {
       switch (metric.name) {
         case 'Next.js-hydration':
@@ -107,14 +107,14 @@ pages/_app.js
           break
       }
     }
-[/code]
+```
 
 이 메트릭은 [User Timing API](https://caniuse.com/#feat=user-timing)를 지원하는 모든 브라우저에서 동작한다.
 
 ## 외부 시스템으로 결과 전송[](https://nextjs.org/docs/pages/guides/analytics#sending-results-to-external-systems)
 
 사이트의 실제 사용자 성능을 측정하고 추적하기 위해 어떤 엔드포인트로든 결과를 전송할 수 있다. 예를 들어:
-[code]
+```
     useReportWebVitals((metric) => {
       const body = JSON.stringify(metric)
       const url = 'https://example.com/analytics'
@@ -126,12 +126,12 @@ pages/_app.js
         fetch(url, { body, method: 'POST', keepalive: true })
       }
     })
-[/code]
+```
 
 > **알아두면 좋은 점**: [Google Analytics](https://analytics.google.com/analytics/web/)를 사용하는 경우 `id` 값을 활용해 직접 메트릭 분포를 구성(백분위 계산 등)할 수 있다.
 
 >
-[code]
+```
 >     useReportWebVitals((metric) => {
 >       // Use `window.gtag` if you initialized Google Analytics as this example:
 >       // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics
@@ -143,7 +143,7 @@ pages/_app.js
 >         non_interaction: true, // avoids affecting bounce rate.
 >       })
 >     })
-[/code]
+```
 >
 > [Google Analytics로 결과를 전송하는 방법](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics)에 대해 더 읽어보기.
 

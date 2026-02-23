@@ -223,4 +223,3 @@ expect(getRedirectUrl(response)).toEqual('https://nextjs.org/test2')
   - Learn how to use the webVitalsAttribution option to pinpoint the source of Web Vitals issues.
 
 ---
-

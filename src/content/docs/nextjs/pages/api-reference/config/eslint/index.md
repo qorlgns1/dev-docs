@@ -33,13 +33,15 @@ ESLint CLI(플랫 구성)를 사용해 빠르게 린팅을 설정하세요.
 pnpmnpmyarnbun
 
 Terminal
-[code]pnpm add -D eslint eslint-config-next
-[/code]
+```
+pnpm add -D eslint eslint-config-next
+```
 
   2. Next.js 구성이 포함된 `eslint.config.mjs`를 생성합니다.
 
 eslint.config.mjs
-[code]import { defineConfig, globalIgnores } from 'eslint/config'
+```
+import { defineConfig, globalIgnores } from 'eslint/config'
          import nextVitals from 'eslint-config-next/core-web-vitals'
 
          const eslintConfig = defineConfig([
@@ -55,15 +57,16 @@ eslint.config.mjs
          ])
 
          export default eslintConfig
-[/code]
+```
 
   3. ESLint를 실행합니다.
 
 pnpmnpmyarnbun
 
 Terminal
-[code]pnpm exec eslint .
-[/code]
+```
+pnpm exec eslint .
+```
 
 ## Reference[](https://nextjs.org/docs/pages/api-reference/config/eslint#reference)
 
@@ -116,7 +119,7 @@ Next.js 16부터 `next lint`가 제거됩니다.
 Next.js가 루트 디렉터리에 설치되지 않은 프로젝트(예: 모노레포)에서 `@next/eslint-plugin-next`를 사용하는 경우 `eslint.config.mjs`의 `settings` 속성을 통해 Next.js 애플리케이션 위치를 지정할 수 있습니다.
 
 eslint.config.mjs
-[code]
+```
     import { defineConfig } from 'eslint/config'
     import eslintNextPlugin from '@next/eslint-plugin-next'
 
@@ -135,7 +138,7 @@ eslint.config.mjs
     ])
 
     export default eslintConfig
-[/code]
+```
 
 `rootDir`는 경로(상대 또는 절대), glob(예: `"packages/*/"`), 혹은 경로 및/또는 glob 배열이 될 수 있습니다.
 
@@ -144,7 +147,7 @@ eslint.config.mjs
 지원되는 플러그인(`react`, `react-hooks`, `next`)에서 제공하는 규칙을 수정하거나 비활성화하려면 `eslint.config.mjs`의 `rules` 속성에서 바로 변경할 수 있습니다.
 
 eslint.config.mjs
-[code]
+```
     import { defineConfig, globalIgnores } from 'eslint/config'
     import nextVitals from 'eslint-config-next/core-web-vitals'
 
@@ -167,14 +170,14 @@ eslint.config.mjs
     ])
 
     export default eslintConfig
-[/code]
+```
 
 ### Core Web Vitals와 함께 사용[](https://nextjs.org/docs/pages/api-reference/config/eslint#with-core-web-vitals)
 
 ESLint 구성에서 `eslint-config-next/core-web-vitals` 구성을 활성화하세요.
 
 eslint.config.mjs
-[code]
+```
     import { defineConfig, globalIgnores } from 'eslint/config'
     import nextVitals from 'eslint-config-next/core-web-vitals'
 
@@ -191,7 +194,7 @@ eslint.config.mjs
     ])
 
     export default eslintConfig
-[/code]
+```
 
 `eslint-config-next/core-web-vitals`는 `@next/eslint-plugin-next`의 일부 린트 규칙을 경고에서 오류로 상향해 [Core Web Vitals](https://web.dev/vitals/) 지표 향상에 도움이 됩니다.
 
@@ -202,7 +205,7 @@ eslint.config.mjs
 Next.js ESLint 규칙에 추가로, `create-next-app --typescript`는 `eslint-config-next/typescript`를 통해 TypeScript 전용 린트 규칙도 구성에 추가합니다.
 
 eslint.config.mjs
-[code]
+```
     import { defineConfig, globalIgnores } from 'eslint/config'
     import nextVitals from 'eslint-config-next/core-web-vitals'
     import nextTs from 'eslint-config-next/typescript'
@@ -221,7 +224,7 @@ eslint.config.mjs
     ])
 
     export default eslintConfig
-[/code]
+```
 
 이러한 규칙은 [`plugin:@typescript-eslint/recommended`](https://typescript-eslint.io/linting/configs#recommended)를 기반으로 합니다. 자세한 내용은 [typescript-eslint > Configs](https://typescript-eslint.io/linting/configs)를 참고하세요.
 
@@ -234,14 +237,14 @@ ESLint는 코드 포매팅 규칙도 포함하고 있어 기존 [Prettier](https
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add -D eslint-config-prettier
-[/code]
+```
 
 그다음 기존 ESLint 구성에 `prettier`를 추가합니다.
 
 eslint.config.mjs
-[code]
+```
     import { defineConfig, globalIgnores } from 'eslint/config'
     import nextVitals from 'eslint-config-next/core-web-vitals'
     import prettier from 'eslint-config-prettier/flat'
@@ -260,7 +263,7 @@ eslint.config.mjs
     ])
 
     export default eslintConfig
-[/code]
+```
 
 ### 스테이징된 파일에서 린트 실행[](https://nextjs.org/docs/pages/api-reference/config/eslint#running-lint-on-staged-files)
 

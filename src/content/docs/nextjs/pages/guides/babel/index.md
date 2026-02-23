@@ -24,31 +24,31 @@ Next.js는 React 애플리케이션과 서버 측 코드를 컴파일하는 데 
 다음은 예시 `.babelrc` 파일입니다:
 
 .babelrc
-[code]
+```
     {
       "presets": ["next/babel"],
       "plugins": []
     }
-[/code]
+```
 
 `next/babel`이 포함하는 프리셋을 배우려면 [이 파일을 확인](https://github.com/vercel/next.js/blob/canary/packages/next/src/build/babel/preset.ts)해 보세요.
 
 프리셋/플러그인을 **추가 구성 없이** 넣으려면 다음과 같이 하면 됩니다:
 
 .babelrc
-[code]
+```
     {
       "presets": ["next/babel"],
       "plugins": ["@babel/plugin-proposal-do-expressions"]
     }
-[/code]
+```
 
 ## 프리셋과 플러그인 사용자 지정[](https://nextjs.org/docs/pages/guides/babel#customizing-presets-and-plugins)
 
 프리셋/플러그인을 **사용자 지정 구성과 함께** 추가하려면 `next/babel` 프리셋에 다음과 같이 설정하세요:
 
 .babelrc
-[code]
+```
     {
       "presets": [
         [
@@ -63,7 +63,7 @@ Next.js는 React 애플리케이션과 서버 측 코드를 컴파일하는 데 
       ],
       "plugins": []
     }
-[/code]
+```
 
 각 구성에서 사용 가능한 옵션을 더 알아보려면 babel [문서](https://babeljs.io/docs/) 사이트를 방문하세요.
 

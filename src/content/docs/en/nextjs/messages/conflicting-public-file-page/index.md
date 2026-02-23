@@ -36,4 +36,3 @@ pages/
 ## Useful Links
 
 - [Static file serving docs](https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder)
-

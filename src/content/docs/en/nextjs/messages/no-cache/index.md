@@ -19,4 +19,3 @@ This results in slower builds and can hurt Next.js' filesystem cache of client-s
 > However, you'll want to make sure it doesn't continue to happen and fix it if it does!
 
 Follow the instructions in [CI Build Caching](https://nextjs.org/docs/pages/guides/ci-build-caching) to ensure your Next.js cache is persisted between builds.
-

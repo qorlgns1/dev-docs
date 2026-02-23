@@ -68,4 +68,3 @@ In some cases, you may also need to configure this rule directly by providing a 
 ## Useful Links
 
 - [next/link API Reference](https://nextjs.org/docs/pages/api-reference/components/link)
-

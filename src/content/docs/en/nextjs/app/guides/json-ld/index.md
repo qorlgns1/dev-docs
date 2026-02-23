@@ -87,4 +87,3 @@ const jsonLd: WithContext<Product> = {
 }
 ```
 ---
-

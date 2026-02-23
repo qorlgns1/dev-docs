@@ -18,13 +18,13 @@ Next.js는 기본 컴파일러로 webpack 5를 채택했습니다. webpack 4에�
 현재 애플리케이션에서는 Next.js 12에서 제거된 `webpack5: false` 플래그를 사용해 webpack 5를 비활성화하고 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       // Webpack 5 is enabled by default
       // You can still use webpack 4 while upgrading to the latest version of Next.js by adding the "webpack5: false" flag
       webpack5: false,
     }
-[/code]
+```
 
 애플리케이션에서 webpack 5를 사용하면 특히 다음과 같은 이점이 있습니다.
 

@@ -35,4 +35,3 @@ export function Home() {
 
 - [next/head](https://nextjs.org/docs/pages/api-reference/components/head)
 - [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
-

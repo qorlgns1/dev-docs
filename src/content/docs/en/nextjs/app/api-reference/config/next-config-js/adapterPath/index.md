@@ -368,4 +368,3 @@ Common use cases for adapters include:
 * **Build Validation**: Ensure outputs meet specific requirements
 * **Route Generation**: Use processed route information to generate platform-specific routing configs
 ---
-

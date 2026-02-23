@@ -26,19 +26,19 @@ Use `codex exec` when you want Codex to:
 ## Basic usage
 
 Pass a task prompt as a single argument:
-[code] 
+```
     codex exec "summarize the repository structure and list the top 5 risky areas"
-[/code]
+```
 
 While `codex exec` runs, Codex streams progress to `stderr` and prints only the final agent message to `stdout`. This makes it straightforward to redirect or pipe the final result:
-[code] 
+```
     codex exec "generate release notes for the last 10 commits" | tee release-notes.md
-[/code]
+```
 
 Use `--ephemeral` when you don’t want to persist session rollout files to disk:
-[code] 
+```
     codex exec --ephemeral "triage this repository and suggest next steps"
-[/code]
+```
 
 ## Permissions and safety
 
@@ -56,22 +56,22 @@ If you configure an enabled MCP server with `required = true` and it fails to in
 ## Make output machine-readable
 
 To consume Codex output in scripts, use JSON Lines output:
-[code] 
+```
     codex exec --json "summarize the repo structure" | jq
-[/code]
+```
 
 When you enable `--json`, `stdout` becomes a JSON Lines (JSONL) stream so you can capture every event Codex emits while it’s running. Event types include `thread.started`, `turn.started`, `turn.completed`, `turn.failed`, `item.*`, and `error`.
 
 Item types include agent messages, reasoning, command executions, file changes, MCP tool calls, web searches, and plan updates.
 
 Sample JSON stream (each line is a JSON object):
-[code] 
+```
     {"type":"thread.started","thread_id":"0199a213-81c0-7800-8aa1-bbab2a035a53"}
     {"type":"turn.started"}
     {"type":"item.started","item":{"id":"item_1","type":"command_execution","command":"bash -lc ls","status":"in_progress"}}
     {"type":"item.completed","item":{"id":"item_3","type":"agent_message","text":"Repo contains docs, sdk, and examples directories."}}
     {"type":"turn.completed","usage":{"input_tokens":24763,"cached_input_tokens":24448,"output_tokens":122}}
-[/code]
+```
 
 If you only need the final message, write it to a file with `-o <path>`/`--output-last-message <path>`. This writes the final message to the file and still prints it to `stdout` (see [`codex exec`](https://developers.openai.com/codex/cli/reference#codex-exec) for details).
 
@@ -80,7 +80,7 @@ If you only need the final message, write it to a file with `-o <path>`/`--outpu
 If you need structured data for downstream steps, use `--output-schema` to request a final response that conforms to a JSON Schema. This is useful for automated workflows that need stable fields (for example, job summaries, risk reports, or release metadata).
 
 `schema.json`
-[code] 
+```
     {
       "type": "object",
       "properties": {
@@ -93,22 +93,22 @@ If you need structured data for downstream steps, use `--output-schema` to reque
       "required": ["project_name", "programming_languages"],
       "additionalProperties": false
     }
-[/code]
+```
 
 Run Codex with the schema and write the final JSON response to disk:
-[code] 
+```
     codex exec "Extract project metadata" \
       --output-schema ./schema.json \
       -o ./project-metadata.json
-[/code]
+```
 
 Example final output (stdout):
-[code] 
+```
     {
       "project_name": "Codex CLI",
       "programming_languages": ["Rust", "TypeScript", "Shell"]
     }
-[/code]
+```
 
 ## Authenticate in CI
 
@@ -120,19 +120,19 @@ Example final output (stdout):
 
 
 To use a different API key for a single run, set `CODEX_API_KEY` inline:
-[code] 
+```
     CODEX_API_KEY=<api-key> codex exec --json "triage open bug reports"
-[/code]
+```
 
 `CODEX_API_KEY` is only supported in `codex exec`.
 
 ## Resume a non-interactive session
 
 If you need to continue a previous run (for example, a two-stage pipeline), use the `resume` subcommand:
-[code] 
+```
     codex exec "review the change for race conditions"
     codex exec resume --last "fix the race conditions you found"
-[/code]
+```
 
 You can also target a specific session ID with `codex exec resume <SESSION_ID>`.
 
@@ -157,7 +157,7 @@ You can use `codex exec` to automatically propose fixes when a CI workflow fails
 #### Minimal workflow using the Codex CLI
 
 The example below shows the core steps. Adjust the install and test commands to match your stack.
-[code] 
+```
     name: Codex auto-fix on CI failure
     
     on:
@@ -212,7 +212,7 @@ The example below shows the core steps. Adjust the install and test commands to 
               branch: codex/auto-fix-${{ github.event.workflow_run.run_id }}
               base: ${{ env.FAILED_HEAD_BRANCH }}
               title: "Auto-fix failing CI via Codex"
-[/code]
+```
 
 #### Alternative: Use the Codex GitHub Action
 

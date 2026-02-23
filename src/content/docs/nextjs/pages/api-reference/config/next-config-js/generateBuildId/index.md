@@ -16,11 +16,11 @@ Next.js는 애플리케이션에서 제공 중인 버전을 식별하기 위해 
 환경의 각 단계를 다시 빌드한다면 컨테이너 간에 사용할 일관된 빌드 ID를 생성해야 합니다. `next.config.js`에서 `generateBuildId` 명령을 사용하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       generateBuildId: async () => {
         // This could be anything, using the latest git hash
         return process.env.GIT_HASH
       },
     }
-[/code]
+```

@@ -26,7 +26,7 @@ Copy page
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -36,7 +36,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 지원 단위: `b`, `kb`, `mb`, `gb`
 
@@ -47,7 +47,7 @@ JavaScriptTypeScript
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -57,7 +57,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ## Behavior[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/proxyClientMaxBodySize#behavior)
 
@@ -76,7 +76,7 @@ JavaScriptTypeScript
 ## Example[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/proxyClientMaxBodySize#example)
 
 proxy.ts
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
 
     export async function proxy(request: NextRequest) {
@@ -89,10 +89,10 @@ proxy.ts
 
       return NextResponse.next()
     }
-[/code]
+```
 
 app/api/upload/route.ts
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
 
     export async function POST(request: NextRequest) {
@@ -103,7 +103,7 @@ app/api/upload/route.ts
 
       return NextResponse.json({ received: body.length })
     }
-[/code]
+```
 
 ## Good to know[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/proxyClientMaxBodySize#good-to-know)
 

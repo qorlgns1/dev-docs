@@ -138,4 +138,3 @@ module.exports = nextConfig
 | --------- | ---------------------------------------------------- |
 | `v15.4.0` | experimental `browserDebugInfoInTerminal` introduced |
 ---
-

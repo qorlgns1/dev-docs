@@ -38,7 +38,7 @@ Server Function은 [`use server`](https://react.dev/reference/rsc/use-server) �
 app/lib/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function createPost(formData: FormData) {
       'use server'
       const title = formData.get('title')
@@ -55,7 +55,7 @@ JavaScriptTypeScript
       // Update data
       // Revalidate cache
     }
-[/code]
+```
 
 ### Server Components[](https://nextjs.org/docs/app/getting-started/updating-data#server-components)
 
@@ -64,7 +64,7 @@ Server Function은 함수 본문 상단에 `"use server"` 지시어를 추가해
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Page() {
       // Server Action
       async function createPost(formData: FormData) {
@@ -74,7 +74,7 @@ JavaScriptTypeScript
 
       return <></>
     }
-[/code]
+```
 
 > **참고:** Server Component는 기본적으로 단계별 향상을 지원하므로, JavaScript가 아직 로드되지 않았거나 비활성화되어 있어도 Server Action을 호출하는 폼은 제출됩니다.
 
@@ -85,16 +85,16 @@ Client Component 안에서는 Server Function을 정의할 수 없습니다. 그
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     export async function createPost() {}
-[/code]
+```
 
 app/ui/button.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { createPost } from '@/app/actions'
@@ -102,21 +102,21 @@ JavaScriptTypeScript
     export function Button() {
       return <button formAction={createPost}>Create</button>
     }
-[/code]
+```
 
 > **참고:** Client Component에서 Server Action을 호출하는 폼은 JavaScript가 아직 로드되지 않았을 때 제출을 대기열에 넣고, 수화(hydration) 우선순위를 갖습니다. 수화 이후에는 폼을 제출해도 브라우저가 새로 고침되지 않습니다.
 
 ### 액션을 prop으로 전달하기[](https://nextjs.org/docs/app/getting-started/updating-data#passing-actions-as-props)
 
 액션을 Client Component에 prop으로 전달할 수도 있습니다.
-[code]
+```
     <ClientComponent updateItemAction={updateItem} />
-[/code]
+```
 
 app/client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     export default function ClientComponent({
@@ -126,7 +126,7 @@ JavaScriptTypeScript
     }) {
       return <form action={updateItemAction}>{/* ... */}</form>
     }
-[/code]
+```
 
 ## Server Function 호출하기[](https://nextjs.org/docs/app/getting-started/updating-data#invoking-server-functions)
 
@@ -146,7 +146,7 @@ React는 HTML [`<form>`](https://react.dev/reference/react-dom/components/form) 
 app/ui/form.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { createPost } from '@/app/actions'
 
     export function Form() {
@@ -158,12 +158,12 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     export async function createPost(formData: FormData) {
@@ -173,7 +173,7 @@ JavaScriptTypeScript
       // Update data
       // Revalidate cache
     }
-[/code]
+```
 
 ### 이벤트 핸들러[](https://nextjs.org/docs/app/getting-started/updating-data#event-handlers)
 
@@ -182,7 +182,7 @@ JavaScriptTypeScript
 app/like-button.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { incrementLike } from './actions'
@@ -205,7 +205,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ## 예시[](https://nextjs.org/docs/app/getting-started/updating-data#examples)
 
@@ -216,7 +216,7 @@ Server Function을 실행하는 동안 React의 [`useActionState`](https://react
 app/ui/button.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useActionState, startTransition } from 'react'
@@ -232,7 +232,7 @@ JavaScriptTypeScript
         </button>
       )
     }
-[/code]
+```
 
 ### 새로 고침하기[](https://nextjs.org/docs/app/getting-started/updating-data#refreshing)
 
@@ -241,7 +241,7 @@ JavaScriptTypeScript
 app/lib/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { refresh } from 'next/cache'
@@ -252,7 +252,7 @@ JavaScriptTypeScript
 
       refresh()
     }
-[/code]
+```
 
 이 함수는 클라이언트 라우터를 새로 고쳐 UI가 최신 상태를 반영하도록 합니다. `refresh()` 함수는 태그된 데이터를 다시 검증하지 않습니다. 태그된 데이터를 다시 검증하려면 [`updateTag`](https://nextjs.org/docs/app/api-reference/functions/updateTag) 또는 [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)를 사용하세요.
 
@@ -263,7 +263,7 @@ JavaScriptTypeScript
 app/lib/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { revalidatePath } from 'next/cache'
 
     export async function createPost(formData: FormData) {
@@ -273,7 +273,7 @@ JavaScriptTypeScript
 
       revalidatePath('/posts')
     }
-[/code]
+```
 
 ### 리디렉션하기[](https://nextjs.org/docs/app/getting-started/updating-data#redirecting)
 
@@ -282,7 +282,7 @@ JavaScriptTypeScript
 app/lib/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { revalidatePath } from 'next/cache'
@@ -295,7 +295,7 @@ JavaScriptTypeScript
       revalidatePath('/posts')
       redirect('/posts')
     }
-[/code]
+```
 
 `redirect`를 호출하면 프레임워크가 처리하는 제어 흐름 예외가 [발생](https://nextjs.org/docs/app/api-reference/functions/redirect#behavior)하므로, 그 이후의 코드는 실행되지 않습니다. 최신 데이터가 필요하면 먼저 [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath) 또는 [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)를 호출하세요.
 
@@ -310,7 +310,7 @@ Server Action에서 쿠키를 [설정하거나 삭제](https://nextjs.org/docs/a
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { cookies } from 'next/headers'
@@ -327,7 +327,7 @@ JavaScriptTypeScript
       // Delete cookie
       cookieStore.delete('name')
     }
-[/code]
+```
 
 ### useEffect[](https://nextjs.org/docs/app/getting-started/updating-data#useeffect)
 
@@ -336,7 +336,7 @@ JavaScriptTypeScript
 app/view-count.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { incrementViews } from './actions'
@@ -356,7 +356,7 @@ JavaScriptTypeScript
       // You can use `isPending` to give users feedback
       return <p>Total Views: {views}</p>
     }
-[/code]
+```
 
 사용자에게 피드백을 제공하려면 `isPending`을 사용할 수 있습니다.
 

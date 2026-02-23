@@ -24,7 +24,7 @@ description: '를 사용하면 하나의 이미지에 대한 다양한 버전을
 icon.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export function generateImageMetadata({
       params,
     }: {
@@ -32,7 +32,7 @@ JavaScriptTypeScript
     }) {
       // ...
     }
-[/code]
+```
 
 Route| URL| `params`
 ---|---|---
@@ -54,7 +54,7 @@ Route| URL| `params`
 icon.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { ImageResponse } from 'next/og'
 
     export function generateImageMetadata() {
@@ -93,7 +93,7 @@ JavaScriptTypeScript
         )
       )
     }
-[/code]
+```
 
 ## 이미지 생성 함수 props[](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#image-generation-function-props)
 
@@ -106,12 +106,12 @@ JavaScriptTypeScript
 icon.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Icon({ id }: { id: Promise<string | number> }) {
       const iconId = await id
       // Use iconId to generate the image
     }
-[/code]
+```
 
 #### `params` (옵션)[](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#params-optional-1)
 
@@ -120,7 +120,7 @@ JavaScriptTypeScript
 icon.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Icon({
       params,
     }: {
@@ -129,7 +129,7 @@ JavaScriptTypeScript
       const { slug } = await params
       // Use slug to generate the image
     }
-[/code]
+```
 
 ### 예시[](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#examples)
 
@@ -140,7 +140,7 @@ JavaScriptTypeScript
 app/products/[id]/opengraph-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { ImageResponse } from 'next/og'
     import { getCaptionForImage, getOGImages } from '@/app/utils/images'
 
@@ -184,7 +184,7 @@ JavaScriptTypeScript
         )
       )
     }
-[/code]
+```
 
 ## 버전 히스토리[](https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#version-history)
 

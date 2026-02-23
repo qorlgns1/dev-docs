@@ -15,4 +15,3 @@ This plugin is currently experimental. Please use this [discussion thread](https
 
 Learn more on the [Rspack docs](https://rspack.rs/guide/tech/next) and try out [this example](https://github.com/vercel/next.js/tree/canary/examples/with-rspack).
 ---
-

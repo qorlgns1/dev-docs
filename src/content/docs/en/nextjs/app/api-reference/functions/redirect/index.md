@@ -225,4 +225,3 @@ The `redirect()` method uses a `307` by default, instead of a `302` temporary re
   - API Reference for the permanentRedirect function.
 
 ---
-

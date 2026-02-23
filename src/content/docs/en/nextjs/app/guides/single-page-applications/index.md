@@ -426,4 +426,3 @@ You can incrementally migrate to Next.js by following our guides:
 
 If you are already using a SPA with the Pages Router, you can learn how to [incrementally adopt the App Router](https://nextjs.org/docs/app/guides/migrating/app-router-migration).
 ---
-

@@ -92,4 +92,3 @@ MyApp.getInitialProps = async (context) => {
 }
 ```
 ---
-

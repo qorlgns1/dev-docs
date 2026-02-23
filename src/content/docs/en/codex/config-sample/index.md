@@ -22,7 +22,7 @@ For explanations and guidance, see:
 
 
 Use the snippet below as a reference. Copy only the keys and sections you need into `~/.codex/config.toml` (or into a project-scoped `.codex/config.toml`), then adjust values for your setup.
-[code] 
+```
     # Codex example configuration (config.toml)
     #
     # This file lists all keys Codex reads from config.toml, their default values,
@@ -488,4 +488,4 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
     # ca-certificate = "certs/otel-ca.pem"
     # client-certificate = "/etc/codex/certs/client.pem"
     # client-private-key = "/etc/codex/certs/client-key.pem"
-[/code]
+```

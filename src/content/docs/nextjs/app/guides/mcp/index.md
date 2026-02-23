@@ -23,7 +23,7 @@ Next.js 16 이상에는 MCP 지원이 포함되어 있어 코딩 에이전트가
 프로젝트 루트의 `.mcp.json` 파일에 `next-devtools-mcp`를 추가하세요:
 
 .mcp.json
-[code]
+```
     {
       "mcpServers": {
         "next-devtools": {
@@ -32,7 +32,7 @@ Next.js 16 이상에는 MCP 지원이 포함되어 있어 코딩 에이전트가
         }
       }
     }
-[/code]
+```
 
 이게 전부입니다! 개발 서버를 시작하면 `next-devtools-mcp`가 실행 중인 Next.js 인스턴스를 자동으로 감지하고 연결합니다.
 
@@ -66,9 +66,9 @@ Next.js 16 이상에는 MCP 지원이 포함되어 있어 코딩 에이전트가
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm dev
-[/code]
+```
 
   2. 코딩 에이전트가 `next-devtools-mcp`를 통해 실행 중인 Next.js 인스턴스에 자동으로 연결됩니다
   3. 브라우저에서 애플리케이션을 열어 페이지를 확인하세요
@@ -102,9 +102,9 @@ MCP 호환 코딩 에이전트는 Next.js 개발 서버를 자동으로 발견�
 ### 오류 감지 및 진단[](https://nextjs.org/docs/app/guides/mcp#error-detection-and-diagnosis)
 
 실시간으로 에이전트에게 오류를 물어보세요:
-[code]
+```
     User: "What errors are currently in my application?"
-[/code]
+```
 
 에이전트는 다음을 수행합니다:
 
@@ -113,7 +113,7 @@ MCP 호환 코딩 에이전트는 Next.js 개발 서버를 자동으로 발견�
   * 오류를 분석하고 실행 가능한 해결책을 제공합니다
 
 에이전트 응답(클릭하여 펼치기)
-[code]
+```
     > fix errors on the page
 
     ⏺ I'll help you fix the errors on the page. Let me first check what errors exist by looking at the
@@ -139,21 +139,21 @@ MCP 호환 코딩 에이전트는 Next.js 개발 서버를 자동으로 발견�
                 "type": "text",
                 "text": "# Found errors in 1 browser session(s)\n\n## Session: /about\n\n**1 error(s)
          found**\n\n### Runtime Errors\n\n#### Error 1 (Type: recoverable)\n\n**Error**: Hydration failed
-[/code]
+```
 
 ### 업그레이드 및 모범 사례[](https://nextjs.org/docs/app/guides/mcp#upgrading-and-best-practices)
 
 Next.js 개념과 마이그레이션에 대한 도움을 받아보세요:
-[code]
+```
     User: "Help me upgrade my Next.js app to version 16"
-[/code]
+```
 
 에이전트는 현재 버전을 분석하고, codemod가 포함된 자동 마이그레이션을 안내하며, 주요 변경 사항을 처리하기 위한 단계별 지침을 제공합니다.
 
 개념적 질문을 해보세요:
-[code]
+```
     User: "When should I use 'use client' in App Router?"
-[/code]
+```
 
 에이전트는 Next.js 지식 베이스를 질의하고 코드베이스 예시와 함께 문서 기반 설명을 제공합니다.
 

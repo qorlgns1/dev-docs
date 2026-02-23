@@ -19,4 +19,3 @@ Learn about the Next.js architecture and how it works under the hood.
   - Browser support and which JavaScript features are supported by Next.js.
 
 ---
-

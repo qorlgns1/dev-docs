@@ -44,13 +44,13 @@ Next.js는 라우트를 기준으로 애플리케이션을 더 작은 JavaScript
 app/ui/nav-link.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function NavLink() {
       return <Link href="/about">About</Link>
     }
-[/code]
+```
 
 **Context**| **Prefetched payload**| **Client Cache TTL**
 ---|---|---
@@ -62,7 +62,7 @@ JavaScriptTypeScript
 ## 수동 프리페치[](https://nextjs.org/docs/app/guides/prefetching#manual-prefetch)
 
 수동 프리페칭을 하려면 `next/navigation`에서 `useRouter` 훅을 가져와 뷰포트 밖의 라우트나 애널리틱스, 호버, 스크롤 등에 대응하여 `router.prefetch()`를 호출해 워밍업합니다.
-[code]
+```
     'use client'
 
     import { useRouter } from 'next/navigation'
@@ -78,7 +78,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 컴포넌트가 로드될 때 URL을 프리페치하려는 경우 Link를 확장하거나 분리하는 [예시]를 확인하세요.
 
@@ -89,7 +89,7 @@ JavaScriptTypeScript
 Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사용자는 필요에 따라 분리하여 수정할 수 있습니다. 성능과 리소스 사용 사이의 균형을 직접 제어할 수 있습니다.
 
 예를 들어, 뷰포트에 들어올 때(기본 동작)가 아니라 호버 시에만 프리페치하도록 만들어야 할 수 있습니다.
-[code]
+```
     'use client'
 
     import Link from 'next/link'
@@ -114,7 +114,7 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
         </Link>
       )
     }
-[/code]
+```
 
 `prefetch={null}`은 사용자가 의도를 보인 이후 기본(정적) 프리페칭을 복원합니다.
 
@@ -123,7 +123,7 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
 `<Link>` 컴포넌트를 확장해 자체 프리페칭 전략을 만들 수 있습니다. 예를 들어 사용자 커서 방향을 예측해 링크를 프리페치하는 [ForesightJS](https://foresightjs.com/docs/integrations/nextjs) 라이브러리를 사용할 수 있습니다.
 
 또는 [`useRouter`](https://nextjs.org/docs/app/api-reference/functions/use-router)를 사용해 기본 `<Link>` 일부 동작을 재현할 수도 있습니다. 다만 이 경우 프리페칭과 캐시 무효화를 직접 관리해야 합니다.
-[code]
+```
     'use client'
 
     import { useRouter } from 'next/navigation'
@@ -161,7 +161,7 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
         </a>
       )
     }
-[/code]
+```
 
 [`onInvalidate`](https://nextjs.org/docs/app/api-reference/functions/use-router#userouter)는 Next.js가 캐시 데이터가 오래되었다고 판단할 때 호출되어 프리페치를 새로 고칠 수 있게 합니다.
 
@@ -170,7 +170,7 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
 ## 프리페치 비활성화[](https://nextjs.org/docs/app/guides/prefetching#disabled-prefetch)
 
 특정 라우트의 프리페칭을 완전히 비활성화해 리소스 사용을 보다 세밀하게 제어할 수 있습니다.
-[code]
+```
     'use client'
 
     import Link, { LinkProps } from 'next/link'
@@ -181,7 +181,7 @@ Next.js는 기본적으로 적절한 프리페칭을 시도하지만, 고급 사
     }: LinkProps & { children: React.ReactNode }) {
       return <Link {...rest} prefetch={false} />
     }
-[/code]
+```
 
 예를 들어 애플리케이션 전체에서 `<Link>`를 일관되게 사용하고 싶지만, 푸터의 링크는 뷰포트에 들어왔을 때 프리페칭할 필요가 없을 수 있습니다.
 
@@ -223,7 +223,7 @@ PPR이 활성화되면 페이지가 정적 셸과 스트리밍되는 동적 섹�
 app/dashboard/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { trackPageView } from '@/lib/analytics'
 
     export default function Layout({ children }: { children: React.ReactNode }) {
@@ -232,14 +232,14 @@ JavaScriptTypeScript
 
       return <div>{children}</div>
     }
-[/code]
+```
 
 **After** :
 
 app/ui/analytics-tracker.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useEffect } from 'react'
@@ -252,12 +252,12 @@ JavaScriptTypeScript
 
       return null
     }
-[/code]
+```
 
 app/dashboard/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { AnalyticsTracker } from '@/app/ui/analytics-tracker'
 
     export default function Layout({ children }: { children: React.ReactNode }) {
@@ -268,7 +268,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ### 너무 많은 프리페치를 방지[](https://nextjs.org/docs/app/guides/prefetching#preventing-too-many-prefetches)
 
@@ -281,11 +281,11 @@ Next.js는 `<Link>` 컴포넌트를 사용할 때 뷰포트에 있는 링크를 
 app/ui/no-prefetch-link.tsx
 
 JavaScriptTypeScript
-[code]
+```
     <Link prefetch={false} href={`/blog/${post.id}`}>
       {post.title}
     </Link>
-[/code]
+```
 
 하지만 이렇게 하면 정적 라우트는 클릭 시에만 가져오고, 동적 라우트는 네비게이션 전에 서버 렌더링을 기다리게 됩니다.
 
@@ -294,7 +294,7 @@ JavaScriptTypeScript
 app/ui/hover-prefetch-link.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Link from 'next/link'
@@ -319,6 +319,6 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 보내기

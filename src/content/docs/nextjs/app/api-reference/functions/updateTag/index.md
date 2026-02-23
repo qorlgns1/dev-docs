@@ -24,9 +24,9 @@ Route Handler나 다른 컨텍스트에서 캐시 태그를 무효화해야 한�
 > **알아두면 좋아요**: `updateTag`는 지정된 태그의 캐시된 데이터를 즉시 만료시킵니다. 다음 요청은 캐시에 있는 오래된 콘텐츠를 제공하는 대신 새 데이터를 가져올 때까지 대기하므로, 사용자는 즉시 자신의 변경 사항을 확인할 수 있습니다.
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/updateTag#parameters)
-[code]
+```
     updateTag(tag: string): void;
-[/code]
+```
 
   * `tag`: 업데이트하려는 데이터와 연결된 캐시 태그를 나타내는 문자열입니다. 256자를 초과할 수 없으며, 대소문자를 구분합니다.
 
@@ -34,13 +34,13 @@ Route Handler나 다른 컨텍스트에서 캐시 태그를 무효화해야 한�
 
   * 외부 API 요청을 캐시하기 위해 `fetch`와 함께 [`next.tags`](https://nextjs.org/docs/app/guides/caching#fetch-optionsnexttags-and-revalidatetag) 옵션을 사용하는 방법:
 
-[code]
+```
     fetch(url, { next: { tags: ['posts'] } })
-[/code]
+```
 
   * `'use cache'` 지시어를 사용하는 캐시된 함수나 컴포넌트 내부에서 [`cacheTag`](https://nextjs.org/docs/app/api-reference/functions/cacheTag)를 호출하는 방법:
 
-[code]
+```
     import { cacheTag } from 'next/cache'
 
     async function getData() {
@@ -48,7 +48,7 @@ Route Handler나 다른 컨텍스트에서 캐시 태그를 무효화해야 한�
       cacheTag('posts')
       // ...
     }
-[/code]
+```
 
 ## Returns[](https://nextjs.org/docs/app/api-reference/functions/updateTag#returns)
 
@@ -77,7 +77,7 @@ Route Handler나 다른 컨텍스트에서 캐시 태그를 무효화해야 한�
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { updateTag } from 'next/cache'
@@ -101,14 +101,14 @@ JavaScriptTypeScript
       // Redirect to the new post - user will see fresh data, not cached
       redirect(`/posts/${post.id}`)
     }
-[/code]
+```
 
 ### Error when used outside Server Actions[](https://nextjs.org/docs/app/api-reference/functions/updateTag#error-when-used-outside-server-actions)
 
 app/api/posts/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { updateTag } from 'next/cache'
 
     export async function POST() {
@@ -119,7 +119,7 @@ JavaScriptTypeScript
       // Use revalidateTag instead in Route Handlers
       revalidateTag('posts', 'max')
     }
-[/code]
+```
 
 ## When to use updateTag[](https://nextjs.org/docs/app/api-reference/functions/updateTag#when-to-use-updatetag)
 

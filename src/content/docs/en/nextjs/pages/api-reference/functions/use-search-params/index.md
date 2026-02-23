@@ -321,4 +321,3 @@ export function SearchBar() {
 | --------- | ----------------------------- |
 | `v13.0.0` | `useSearchParams` introduced. |
 ---
-

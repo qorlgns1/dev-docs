@@ -23,9 +23,9 @@ Source URL: https://nextjs.org/docs/pages/guides/third-party-libraries
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add @next/third-parties@latest next@latest
-[/code]
+```
 
 `@next/third-parties` 는 현재 활발히 개발 중인 **실험적** 라이브러리입니다. 더 많은 서드파티 통합을 추가하는 동안 **latest** 또는 **canary** 플래그로 설치하는 것을 권장합니다.
 
@@ -40,7 +40,7 @@ Google에서 지원되는 모든 서드파티 라이브러리는 `@next/third-pa
 모든 라우트에서 Google Tag Manager를 로드하려면 커스텀 `_app` 에 컴포넌트를 직접 포함하고 GTM 컨테이너 ID를 전달하세요:
 
 pages/_app.js
-[code]
+```
     import { GoogleTagManager } from '@next/third-parties/google'
 
     export default function MyApp({ Component, pageProps }) {
@@ -51,25 +51,25 @@ pages/_app.js
         </>
       )
     }
-[/code]
+```
 
 단일 라우트에서 Google Tag Manager를 로드하려면 페이지 파일에 컴포넌트를 포함하세요:
 
 pages/index.js
-[code]
+```
     import { GoogleTagManager } from '@next/third-parties/google'
 
     export default function Page() {
       return <GoogleTagManager gtmId="GTM-XYZ" />
     }
-[/code]
+```
 
 #### 이벤트 전송[](https://nextjs.org/docs/pages/guides/third-party-libraries#sending-events)
 
 `sendGTMEvent` 함수는 `dataLayer` 객체를 사용해 이벤트를 전송함으로써 페이지에서 사용자 상호작용을 추적할 수 있습니다. 이 함수가 작동하려면 `<GoogleTagManager />` 컴포넌트를 상위 레이아웃, 페이지, 컴포넌트 중 하나에 포함하거나 동일한 파일에 직접 포함해야 합니다.
 
 pages/index.js
-[code]
+```
     import { sendGTMEvent } from '@next/third-parties/google'
 
     export function EventButton() {
@@ -83,7 +83,7 @@ pages/index.js
         </div>
       )
     }
-[/code]
+```
 
 함수에 전달할 수 있는 다양한 변수와 이벤트에 대해서는 Tag Manager [개발자 문서](https://developers.google.com/tag-platform/tag-manager/datalayer)를 참고하세요.
 
@@ -115,7 +115,7 @@ Name| Type| Description
 모든 라우트에서 Google Analytics를 로드하려면 커스텀 `_app` 에 컴포넌트를 직접 포함하고 측정 ID를 전달하세요:
 
 pages/_app.js
-[code]
+```
     import { GoogleAnalytics } from '@next/third-parties/google'
 
     export default function MyApp({ Component, pageProps }) {
@@ -126,25 +126,25 @@ pages/_app.js
         </>
       )
     }
-[/code]
+```
 
 단일 라우트에서 Google Analytics를 로드하려면 페이지 파일에 컴포넌트를 포함하세요:
 
 pages/index.js
-[code]
+```
     import { GoogleAnalytics } from '@next/third-parties/google'
 
     export default function Page() {
       return <GoogleAnalytics gaId="G-XYZ" />
     }
-[/code]
+```
 
 #### 이벤트 전송[](https://nextjs.org/docs/pages/guides/third-party-libraries#sending-events-1)
 
 `sendGAEvent` 함수는 `dataLayer` 객체를 사용해 이벤트를 전송함으로써 페이지에서 사용자 상호작용을 측정할 수 있습니다. 이 함수가 작동하려면 `<GoogleAnalytics />` 컴포넌트를 상위 레이아웃, 페이지, 컴포넌트 중 하나에 포함하거나 동일한 파일에 직접 포함해야 합니다.
 
 pages/index.js
-[code]
+```
     import { sendGAEvent } from '@next/third-parties/google'
 
     export function EventButton() {
@@ -158,7 +158,7 @@ pages/index.js
         </div>
       )
     }
-[/code]
+```
 
 이벤트 매개변수에 대해 더 알아보려면 Google Analytics [개발자 문서](https://developers.google.com/analytics/devguides/collection/ga4/event-parameters)를 참조하세요.
 
@@ -185,7 +185,7 @@ Name| Type| Description
 `GoogleMapsEmbed` 컴포넌트를 사용하면 페이지에 [Google Maps Embed](https://developers.google.com/maps/documentation/embed/embedding-map)를 추가할 수 있습니다. 기본적으로 `loading` 속성을 사용하여 화면 아래쪽에서 임베드를 지연 로드합니다.
 
 pages/index.js
-[code]
+```
     import { GoogleMapsEmbed } from '@next/third-parties/google'
 
     export default function Page() {
@@ -199,7 +199,7 @@ pages/index.js
         />
       )
     }
-[/code]
+```
 
 #### 옵션[](https://nextjs.org/docs/pages/guides/third-party-libraries#options-2)
 
@@ -226,13 +226,13 @@ Name| Type| Description
 `YouTubeEmbed` 컴포넌트는 YouTube 임베드를 로드하고 표시하는 데 사용할 수 있습니다. 이 컴포넌트는 내부적으로 [`lite-youtube-embed`](https://github.com/paulirish/lite-youtube-embed)를 사용해 더 빠르게 로드됩니다.
 
 pages/index.js
-[code]
+```
     import { YouTubeEmbed } from '@next/third-parties/google'
 
     export default function Page() {
       return <YouTubeEmbed videoid="ogfYd705cRs" height={400} params="controls=0" />
     }
-[/code]
+```
 
 #### 옵션[](https://nextjs.org/docs/pages/guides/third-party-libraries#options-3)
 

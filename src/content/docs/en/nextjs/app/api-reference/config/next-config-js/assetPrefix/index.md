@@ -54,4 +54,3 @@ While `assetPrefix` covers requests to `_next/static`, it does not influence the
 
 * Files in the [public](https://nextjs.org/docs/app/api-reference/file-conventions/public-folder) folder; if you want to serve those assets over a CDN, you'll have to introduce the prefix yourself
 ---
-

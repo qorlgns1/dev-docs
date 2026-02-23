@@ -26,26 +26,26 @@ Next.js에는 이 문제를 해결하는 **드래프트 모드** 기능이 있�
 먼저 **API 경로**를 만듭니다. 이름은 자유롭게 정할 수 있습니다(예: `pages/api/draft.ts`).
 
 이 API 경로에서는 응답 객체에서 `setDraftMode`를 호출해야 합니다.
-[code]
+```
     export default function handler(req, res) {
       // ...
       res.setDraftMode({ enable: true })
       // ...
     }
-[/code]
+```
 
 이렇게 하면 드래프트 모드를 활성화하는 **쿠키**가 설정됩니다. 이 쿠키가 포함된 후속 요청은 **드래프트 모드**를 트리거하여 정적으로 생성된 페이지의 동작을 변경합니다(자세한 내용은 아래 참고).
 
 브라우저에서 수동으로 아래와 같은 API 경로를 만들어 직접 접근해 볼 수도 있습니다:
 
 pages/api/draft.ts
-[code]
+```
     // simple example for testing it manually from your browser.
     export default function handler(req, res) {
       res.setDraftMode({ enable: true })
       res.end('Draft mode is enabled')
     }
-[/code]
+```
 
 브라우저 개발자 도구를 열고 `/api/draft`를 방문하면 `__prerender_bypass`라는 쿠키가 `Set-Cookie` 응답 헤더에 있는 것을 확인할 수 있습니다.
 
@@ -60,9 +60,9 @@ pages/api/draft.ts
 **두 번째**, 헤드리스 CMS가 사용자 지정 드래프트 URL을 지원한다면 아래 값을 드래프트 URL로 지정합니다. 드래프트 API 경로가 `pages/api/draft.ts`에 있다고 가정합니다.
 
 터미널
-[code]
+```
     https://<your-site>/api/draft?secret=<token>&slug=<path>
-[/code]
+```
 
   * `<your-site>`은 배포 도메인입니다.
   * `<token>`에는 생성한 비밀 토큰을 넣습니다.
@@ -76,7 +76,7 @@ pages/api/draft.ts
   *   * `res.setDraftMode`를 호출합니다.
   * 그런 다음 브라우저를 `slug`에 지정된 경로로 리디렉션합니다(아래 예시는 [307 리디렉션](https://developer.mozilla.org/docs/Web/HTTP/Status/307)을 사용).
 
-[code]
+```
     export default async (req, res) => {
       // Check the secret and next parameters
       // This secret should only be known to this API route and the CMS
@@ -100,7 +100,7 @@ pages/api/draft.ts
       // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
       res.redirect(post.slug)
     }
-[/code]
+```
 
 성공하면 브라우저가 드래프트 모드 쿠키와 함께 보고 싶은 경로로 리디렉션됩니다.
 
@@ -111,13 +111,13 @@ pages/api/draft.ts
 `res.setDraftMode`로 쿠키가 설정된 상태에서 `getStaticProps`가 있는 페이지를 요청하면, `getStaticProps`는 빌드 시점이 아니라 **요청 시점**에 호출됩니다.
 
 또한 `context.draftMode`가 `true`인 `context` 객체와 함께 호출됩니다.
-[code]
+```
     export async function getStaticProps(context) {
       if (context.draftMode) {
         // dynamic data
       }
     }
-[/code]
+```
 
 드래프트 API 경로에서 `res.setDraftMode`를 사용했으므로 `context.draftMode`는 `true`가 됩니다.
 
@@ -128,7 +128,7 @@ pages/api/draft.ts
 `context.draftMode`에 따라 다른 데이터를 가져오도록 `getStaticProps`를 업데이트할 수 있습니다.
 
 예를 들어 헤드리스 CMS가 드래프트 게시물용 다른 API 엔드포인트를 제공한다면 다음과 같이 엔드포인트 URL을 바꿀 수 있습니다:
-[code]
+```
     export async function getStaticProps(context) {
       const url = context.draftMode
         ? 'https://draft.example.com'
@@ -136,16 +136,16 @@ pages/api/draft.ts
       const res = await fetch(url)
       // ...
     }
-[/code]
+```
 
 이제 끝입니다! 헤드리스 CMS에서(또는 수동으로) `secret`과 `slug`를 포함한 드래프트 API 경로에 접근하면 드래프트 콘텐츠를 볼 수 있습니다. 게시하지 않고 초안을 업데이트하더라도 계속 확인할 수 있습니다.
 
 헤드리스 CMS에서 드래프트 URL로 설정하거나 수동으로 접근하면 드래프트를 볼 수 있습니다.
 
 터미널
-[code]
+```
     https://<your-site>/api/draft?secret=<token>&slug=<path>
-[/code]
+```
 
 ## 추가 정보[](https://nextjs.org/docs/pages/guides/draft-mode#more-details)
 
@@ -156,11 +156,11 @@ pages/api/draft.ts
 드래프트 모드 쿠키를 수동으로 지우려면 `setDraftMode({ enable: false })`를 호출하는 API 경로를 만듭니다:
 
 pages/api/disable-draft.ts
-[code]
+```
     export default function handler(req, res) {
       res.setDraftMode({ enable: false })
     }
-[/code]
+```
 
 그런 다음 `/api/disable-draft`로 요청을 보내 API 경로를 호출합니다. [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link)로 이 경로를 호출하는 경우 프리패치 시 쿠키가 실수로 삭제되는 것을 방지하려면 `prefetch={false}`를 전달해야 합니다.
 
@@ -173,13 +173,13 @@ pages/api/disable-draft.ts
 ### API Routes와 함께 작동[](https://nextjs.org/docs/pages/guides/draft-mode#works-with-api-routes)
 
 API Routes는 요청 객체에서 `draftMode`에 접근할 수 있습니다. 예:
-[code]
+```
     export default function myApiRoute(req, res) {
       if (req.draftMode) {
         // get draft data
       }
     }
-[/code]
+```
 
 ### `next build`마다 고유[](https://nextjs.org/docs/pages/guides/draft-mode#unique-per-next-build)
 

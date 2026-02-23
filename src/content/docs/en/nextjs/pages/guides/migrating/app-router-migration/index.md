@@ -975,4 +975,3 @@ Instead, you can [optimize navigations](https://vercel.com/guides/optimizing-har
 
 Next.js provides Codemod transformations to help upgrade your codebase when a feature is deprecated. See [Codemods](https://nextjs.org/docs/app/guides/upgrading/codemods) for more information.
 ---
-

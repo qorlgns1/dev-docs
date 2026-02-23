@@ -62,14 +62,14 @@ local environment 설정은 프로젝트 루트의 `.codex` 폴더 안에 있어
 Codex 앱과 Codex CLI는 동일한 기반 Codex 에이전트와 설정을 사용하지만, 시점에 따라 서로 다른 에이전트 버전에 의존할 수 있으며 일부 실험적 기능은 Codex CLI에 먼저 적용될 수 있습니다.
 
 시스템에 설치된 Codex CLI 버전을 확인하려면 다음을 실행하세요:
-[code] 
+```
     codex --version
-[/code]
+```
 
 Codex 앱에 번들된 Codex 버전을 확인하려면 다음을 실행하세요:
-[code] 
+```
     /Applications/Codex.app/Contents/Resources/codex --version
-[/code]
+```
 
 ## 피드백 및 로그
 

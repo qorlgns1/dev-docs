@@ -20,4 +20,3 @@ Remove all duplicate polyfills. If you need to add polyfills but are not sure if
 ## Useful Links
 
 - [Supported Browsers and Features](https://nextjs.org/docs/architecture/supported-browsers)
-

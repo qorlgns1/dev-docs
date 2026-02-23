@@ -20,7 +20,7 @@ Copy page
 이 기능을 활성화하려면 `next.config.js` 파일에서 `viewTransition` 속성을 `true`로 설정해야 합니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       experimental: {
@@ -29,16 +29,16 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 > 중요 공지: `<ViewTransition>` 컴포넌트는 이미 React의 Canary 릴리스 채널에서 제공됩니다. `experimental.viewTransition`은 Next.js 기능과의 더 깊은 통합(예: 내비게이션 시 [Transition types 추가](https://react.dev/reference/react/addTransitionType)를 자동으로 처리)을 활성화하는 데만 필요합니다. Next.js 전용 전환 타입은 아직 구현되지 않았습니다.
 
 ## Usage[](https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition#usage)
 
 애플리케이션에서 React의 [`<ViewTransition>` 컴포넌트](https://react.dev/reference/react/ViewTransition)를 import하여 사용할 수 있습니다:
-[code]
+```
     import { ViewTransition } from 'react'
-[/code]
+```
 
 ### Live Demo[](https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition#live-demo)
 

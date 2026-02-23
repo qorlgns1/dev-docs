@@ -22,7 +22,7 @@ Google Font에서 font-display 디스크립터가 누락되었거나 `auto`, `bl
 대부분의 경우, 커스텀 폰트에 가장 적합한 font-display 전략은 `optional`입니다.
 
 pages/index.js
-[code]
+```
     import Head from 'next/head'
 
     export default function IndexPage() {
@@ -37,7 +37,7 @@ pages/index.js
         </div>
       )
     }
-[/code]
+```
 
 `display=optional`을 지정하면 보이지 않는 텍스트나 레이아웃 이동 위험을 최소화합니다. 폰트가 로드된 뒤 커스텀 폰트로 교체되는 것이 중요하다면 `display=swap`을 사용하세요.
 

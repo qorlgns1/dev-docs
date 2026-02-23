@@ -14,4 +14,3 @@ Source URL: https://nextjs.org/docs/pages/api-reference/config
   - Next.js reports ESLint errors and warnings during builds by default. Learn how to opt-out of this behavior here.
 
 ---
-

@@ -155,4 +155,3 @@ During `next build`, Next.js will automatically trace each page and its dependen
 
 If you are currently using the `target` option set to `serverless`, please read the [documentation on how to leverage the new output](https://nextjs.org/docs/pages/api-reference/config/next-config-js/output).
 ---
-

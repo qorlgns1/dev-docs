@@ -16,7 +16,7 @@ description: '브라우저에 웹 애플리케이션 정보를 제공하려면  
 ## 정적 Manifest 파일[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest#static-manifest-file)
 
 app/manifest.json | app/manifest.webmanifest
-[code]
+```
     {
       "name": "My Next.js Application",
       "short_name": "Next.js App",
@@ -24,7 +24,7 @@ app/manifest.json | app/manifest.webmanifest
       "start_url": "/"
       // ...
     }
-[/code]
+```
 
 ## Manifest 파일 생성[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest#generate-a-manifest-file)
 
@@ -35,7 +35,7 @@ app/manifest.json | app/manifest.webmanifest
 app/manifest.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { MetadataRoute } from 'next'
 
     export default function manifest(): MetadataRoute.Manifest {
@@ -56,7 +56,7 @@ JavaScriptTypeScript
         ],
       }
     }
-[/code]
+```
 
 ### Manifest 객체[](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest#manifest-object)
 

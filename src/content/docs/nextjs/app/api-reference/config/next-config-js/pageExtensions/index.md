@@ -14,7 +14,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/page
 기본적으로 Next.js는 `.tsx`, `.ts`, `.jsx`, `.js` 확장자를 가진 파일을 허용합니다. 이는 마크다운(`.md`, `.mdx`)과 같은 다른 확장자를 포함하도록 수정할 수 있습니다.
 
 next.config.js
-[code]
+```
     const withMDX = require('@next/mdx')()
 
     /** @type {import('next').NextConfig} */
@@ -23,4 +23,4 @@ next.config.js
     }
 
     module.exports = withMDX(nextConfig)
-[/code]
+```

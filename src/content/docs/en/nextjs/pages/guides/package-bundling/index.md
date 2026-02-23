@@ -279,4 +279,3 @@ Learn more about optimizing your application for production.
   - Recommendations to ensure the best performance and user experience before taking your Next.js application to production.
 
 ---
-

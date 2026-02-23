@@ -347,4 +347,3 @@ Learn how to [configure ISR](https://nextjs.org/docs/app/guides/self-hosting#cac
 | `v12.0.0` | Pages Router: [Bot-aware ISR fallback](https://nextjs.org/blog/next-12#bot-aware-isr-fallback) added. |
 | `v9.5.0`  | Pages Router: [Stable ISR introduced](https://nextjs.org/blog/next-9-5).                              |
 ---
-

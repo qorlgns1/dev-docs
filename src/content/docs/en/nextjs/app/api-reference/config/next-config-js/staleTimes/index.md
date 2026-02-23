@@ -49,4 +49,3 @@ You can learn more about the Client Router Cache [here](https://nextjs.org/docs/
 | `v15.0.0` | The `dynamic` `staleTimes` default changed from 30s to 0s. |
 | `v14.2.0` | Experimental `staleTimes` introduced.                      |
 ---
-

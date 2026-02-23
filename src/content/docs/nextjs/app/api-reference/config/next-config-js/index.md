@@ -14,7 +14,7 @@ description: '최종 업데이트: 2026년 2월 20일'
 Next.js는 프로젝트 디렉터리 루트(예: `package.json`)에 있는 `next.config.js` 파일의 기본 export를 통해 구성할 수 있습니다.
 
 next.config.js
-[code]
+```
     // @ts-check
 
     /** @type {import('next').NextConfig} */
@@ -23,7 +23,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 ## ECMAScript 모듈[](https://nextjs.org/docs/app/api-reference/config/next-config-js#ecmascript-modules)
 
@@ -32,7 +32,7 @@ next.config.js
 [ECMAScript 모듈](https://nodejs.org/api/esm.html)이 필요하다면 `next.config.mjs`를 사용할 수 있습니다:
 
 next.config.mjs
-[code]
+```
     // @ts-check
 
     /**
@@ -43,7 +43,7 @@ next.config.mjs
     }
 
     export default nextConfig
-[/code]
+```
 
 > **알아두세요** : `.cjs` 또는 `.cts` 확장을 가진 `next.config`는 현재 지원되지 않습니다.
 
@@ -52,7 +52,7 @@ next.config.mjs
 함수를 사용할 수도 있습니다:
 
 next.config.mjs
-[code]
+```
     // @ts-check
 
     export default (phase, { defaultConfig }) => {
@@ -64,14 +64,14 @@ next.config.mjs
       }
       return nextConfig
     }
-[/code]
+```
 
 ### 비동기 구성[](https://nextjs.org/docs/app/api-reference/config/next-config-js#async-configuration)
 
 Next.js 12.1.0부터는 비동기 함수를 사용할 수 있습니다:
 
 next.config.js
-[code]
+```
     // @ts-check
 
     module.exports = async (phase, { defaultConfig }) => {
@@ -83,14 +83,14 @@ next.config.js
       }
       return nextConfig
     }
-[/code]
+```
 
 ### 페이즈[](https://nextjs.org/docs/app/api-reference/config/next-config-js#phase)
 
 `phase`는 구성이 로드되는 현재 컨텍스트입니다. 사용 가능한 [페이즈](https://github.com/vercel/next.js/blob/5e6b008b561caf2710ab7be63320a3d549474a5b/packages/next/shared/lib/constants.ts#L19-L23)를 확인할 수 있습니다. 페이즈는 `next/constants`에서 import할 수 있습니다:
 
 next.config.js
-[code]
+```
     // @ts-check
 
     const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
@@ -106,14 +106,14 @@ next.config.js
         /* config options for all phases except development here */
       }
     }
-[/code]
+```
 
 ## TypeScript[](https://nextjs.org/docs/app/api-reference/config/next-config-js#typescript)
 
 프로젝트에서 TypeScript를 사용 중이라면 `next.config.ts`를 통해 구성에 TypeScript를 적용할 수 있습니다:
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -121,7 +121,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 주석 처리된 줄은 `next.config.js`에서 허용되는 구성(이 [파일](https://github.com/vercel/next.js/blob/canary/packages/next/src/server/config-shared.ts)에 정의됨)을 넣을 수 있는 위치입니다.
 
@@ -138,7 +138,7 @@ Next.js 15.1부터 `next/experimental/testing/server` 패키지는 `next.config.
 `unstable_getResponseFromNextConfig` 함수는 제공된 요청 정보를 사용해 `next.config.js`의 [`headers`](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers), [`redirects`](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects), [`rewrites`](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites) 함수를 실행하고 라우팅 결과가 담긴 `NextResponse`를 반환합니다.
 
 > `unstable_getResponseFromNextConfig`의 응답은 `next.config.js` 필드만 고려하며 프록시나 파일 시스템 라우트는 고려하지 않으므로, 프로덕션의 결과가 단위 테스트와 다를 수 있습니다.
-[code]
+```
     import {
       getRedirectUrl,
       unstable_getResponseFromNextConfig,
@@ -154,7 +154,7 @@ Next.js 15.1부터 `next/experimental/testing/server` 패키지는 `next.config.
     })
     expect(response.status).toEqual(307)
     expect(getRedirectUrl(response)).toEqual('https://nextjs.org/test2')
-[/code]
+```
 
 - [experimental.adapterPath](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath)
   - Next.js의 빌드 프로세스에 `modifyConfig`와 `onBuildComplete` 콜백으로 훅을 거는 커스텀 어댑터를 구성합니다.

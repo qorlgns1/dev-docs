@@ -23,20 +23,20 @@ description: '기존 CSS-in-JS 솔루션은 모두 사용할 수 있습니다. �
   * [Stitches](https://github.com/vercel/next.js/tree/canary/examples/with-stitches)
 
 기존 CSS-in-JS 솔루션은 모두 사용할 수 있습니다. 가장 간단한 방법은 인라인 스타일입니다:
-[code]
+```
     function HiThere() {
       return <p style={{ color: 'red' }}>hi there</p>
     }
 
     export default HiThere
-[/code]
+```
 
 우리는 [styled-jsx](https://github.com/vercel/styled-jsx)를 번들링해 격리된 범위의 CSS를 지원합니다. 목표는 Web Components와 유사한 "shadow CSS"를 지원하는 것이지만, 안타깝게도 [서버 렌더링을 지원하지 않고 JS 전용](https://github.com/w3c/webcomponents/issues/71)입니다.
 
 Styled Components와 같은 다른 인기 있는 CSS-in-JS 솔루션은 위의 예제를 참고하세요.
 
 `styled-jsx`를 사용하는 컴포넌트는 다음과 같습니다:
-[code]
+```
     function HelloWorld() {
       return (
         <div>
@@ -65,7 +65,7 @@ Styled Components와 같은 다른 인기 있는 CSS-in-JS 솔루션은 위의 �
     }
 
     export default HelloWorld
-[/code]
+```
 
 더 많은 예시는 [styled-jsx 문서](https://github.com/vercel/styled-jsx)를 참고하세요.
 

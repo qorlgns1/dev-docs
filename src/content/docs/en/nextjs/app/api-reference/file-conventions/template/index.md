@@ -157,4 +157,3 @@ Navigating to `/blog/second-post` (same first segment, different child segment),
 | --------- | ---------------------- |
 | `v13.0.0` | `template` introduced. |
 ---
-

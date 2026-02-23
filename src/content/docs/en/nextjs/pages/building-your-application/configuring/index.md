@@ -13,4 +13,3 @@ Next.js allows you to customize your project to meet specific requirements. This
   - Handle errors in your Next.js app.
 
 ---
-

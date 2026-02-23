@@ -19,4 +19,3 @@ module.exports = {
 
 Depending on the type of proxy between the browser and the server, the headers can be truncated. For example, if you are using a reverse proxy that doesn't support long headers, you should set a lower value to ensure that the headers are not truncated.
 ---
-

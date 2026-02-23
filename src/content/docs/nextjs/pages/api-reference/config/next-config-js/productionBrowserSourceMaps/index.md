@@ -16,11 +16,11 @@ Source URL: https://nextjs.org/docs/pages/api-reference/config/next-config-js/pr
 Next.js는 프로덕션 빌드 동안 브라우저 소스 맵 생성을 활성화할 수 있는 구성 플래그를 제공합니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       productionBrowserSourceMaps: true,
     }
-[/code]
+```
 
 `productionBrowserSourceMaps` 옵션을 활성화하면 JavaScript 파일과 동일한 디렉터리에 소스 맵이 출력됩니다. Next.js는 요청이 들어오면 이러한 파일을 자동으로 제공합니다.
 

@@ -16,7 +16,7 @@ description: '헤더를 사용하면 특정 경로로 들어오는 요청에 대
 커스텀 HTTP 헤더를 설정하려면 `next.config.js`의 `headers` 키를 사용할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async headers() {
         return [
@@ -36,7 +36,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 `headers` 는 `source` 및 `headers` 속성을 가진 객체들을 담은 배열을 반환하는 async 함수입니다:
 
@@ -54,7 +54,7 @@ next.config.js
 두 헤더가 동일한 경로와 동일한 헤더 키를 설정하면 마지막 헤더 키가 첫 번째 것을 재정의합니다. 아래 헤더를 사용하면 경로 `/hello` 에서 최종적으로 설정된 값이 `world` 이므로 `x-hello` 헤더가 `world` 가 됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async headers() {
         return [
@@ -79,14 +79,14 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## 경로 매칭[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#path-matching)
 
 경로 매칭을 사용할 수 있으며, 예를 들어 `/blog/:slug` 는 `/blog/first-post` 와 매칭됩니다(중첩 경로 없음):
 
 next.config.js
-[code]
+```
     module.exports = {
       async headers() {
         return [
@@ -106,7 +106,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 패턴 `/blog/:slug` 는 `/blog/first-post` 와 `/blog/post-1` 에 매칭되지만 `/blog/a/b` 같은 중첩 경로에는 매칭되지 않습니다. 패턴은 시작 지점에 고정되므로 `/blog/:slug` 는 `/archive/blog/first-post` 에 매칭되지 않습니다.
 
@@ -119,7 +119,7 @@ next.config.js
 와일드카드 경로를 매칭하려면 매개변수 뒤에 `*` 를 사용할 수 있습니다. 예를 들어 `/blog/:slug*` 는 `/blog/a/b/c/d/hello-world` 와 매칭됩니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async headers() {
         return [
@@ -139,14 +139,14 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ### 정규식 경로 매칭[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#regex-path-matching)
 
 정규식 경로를 매칭하려면 매개변수 뒤에 괄호로 정규식을 감싸면 됩니다. 예를 들어 `/blog/:slug(\\d{1,})` 는 `/blog/123` 와 매칭되지만 `/blog/abc` 와는 매칭되지 않습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async headers() {
         return [
@@ -162,12 +162,12 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 `(`, `)`, `{`, `}`, `:`, `*`, `+`, `?` 문자는 정규식 경로 매칭에 사용되므로 `source` 에서 특수 문자가 아닌 값으로 사용하려면 앞에 `\\` 를 붙여 이스케이프해야 합니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async headers() {
         return [
@@ -184,7 +184,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## 헤더, 쿠키, 그리고 쿼리 매칭[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#header-cookie-and-query-matching)
 
@@ -197,7 +197,7 @@ next.config.js
   * `value`: `String` 또는 `undefined` \- 확인할 값이며, `undefined` 인 경우 아무 값이나 매칭됩니다. `first-(?<paramName>.*)` 처럼 특정 부분을 캡처하는 정규식 형태의 문자열을 사용할 수 있으며, `first-second` 값에 이를 적용하면 `second` 를 `:paramName` 으로 목적지에서 사용할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async headers() {
         return [
@@ -299,14 +299,14 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## basePath 지원이 있는 헤더[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#headers-with-basepath-support)
 
 헤더에서 [`basePath` 지원](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)을 활용하면 각 `source` 가 자동으로 `basePath` 로 접두사 처리됩니다. 헤더에 `basePath: false` 를 추가하면 해당 접두사가 적용되지 않습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       basePath: '/docs',
 
@@ -334,14 +334,14 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## i18n 지원이 있는 헤더[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#headers-with-i18n-support)
 
 헤더에서 [`i18n` 지원](https://nextjs.org/docs/app/guides/internationalization)을 활용하면 `locale: false` 를 추가하지 않는 한 각 `source` 가 구성된 `locales` 를 다룰 수 있도록 자동으로 접두사 처리됩니다. `locale: false` 를 사용하면 올바르게 매칭되도록 `source` 에 locale을 직접 접두사로 붙여야 합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       i18n: {
         locales: ['en', 'fr', 'de'],
@@ -396,7 +396,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## Cache-Control[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#cache-control)
 
@@ -411,7 +411,7 @@ App Router와 함께하는 [캐싱](https://nextjs.org/docs/app/guides/caching)�
 ### CORS[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#cors)
 
 [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS)는 어떤 사이트가 리소스에 접근할 수 있는지 제어할 수 있게 해 주는 보안 기능입니다. 특정 오리진이 Route Handler에 접근하도록 허용하려면 `Access-Control-Allow-Origin` 헤더를 설정할 수 있습니다.
-[code]
+```
     async headers() {
         return [
           {
@@ -433,71 +433,71 @@ App Router와 함께하는 [캐싱](https://nextjs.org/docs/app/guides/caching)�
           },
         ];
       },
-[/code]
+```
 
 ### X-DNS-Prefetch-Control[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#x-dns-prefetch-control)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control)는 브라우저가 외부 링크, 이미지, CSS, JavaScript 등에 대해 도메인 이름 해석을 선행하도록 제어합니다. 이 프리페치는 백그라운드에서 수행되므로 참조된 항목이 필요해질 때까지 [DNS](https://developer.mozilla.org/docs/Glossary/DNS)가 미리 해결될 가능성이 높아집니다. 그 결과 사용자가 링크를 클릭할 때 지연 시간이 줄어듭니다.
-[code]
+```
     {
       key: 'X-DNS-Prefetch-Control',
       value: 'on'
     }
-[/code]
+```
 
 ### Strict-Transport-Security[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#strict-transport-security)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/Strict-Transport-Security)는 브라우저에 HTTP 대신 HTTPS로만 접근해야 한다고 알립니다. 아래 구성은 현재와 미래의 모든 서브도메인에 대해 2년(`max-age` 2년) 동안 HTTPS를 사용하도록 강제합니다. 이는 HTTP로만 제공 가능한 페이지나 서브도메인 접근을 차단합니다.
-[code]
+```
     {
       key: 'Strict-Transport-Security',
       value: 'max-age=63072000; includeSubDomains; preload'
     }
-[/code]
+```
 
 ### X-Frame-Options[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#x-frame-options)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Frame-Options)는 사이트를 `iframe` 내부에 표시할 수 있는지 여부를 나타냅니다. 이는 클릭재킹 공격을 방지할 수 있습니다.
 
 **이 헤더는 현대 브라우저 지원이 더 나은 CSP의 `frame-ancestors` 옵션으로 대체되었습니다.** 구성 방법은 [Content Security Policy](https://nextjs.org/docs/app/guides/content-security-policy)를 참고하세요.
-[code]
+```
     {
       key: 'X-Frame-Options',
       value: 'SAMEORIGIN'
     }
-[/code]
+```
 
 ### Permissions-Policy[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#permissions-policy)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy)는 브라우저에서 어떤 기능과 API를 사용할 수 있는지 제어합니다. 이전 명칭은 `Feature-Policy`였습니다.
-[code]
+```
     {
       key: 'Permissions-Policy',
       value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()'
     }
-[/code]
+```
 
 ### X-Content-Type-Options[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#x-content-type-options)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Content-Type-Options)는 `Content-Type` 헤더가 명시적으로 설정되지 않은 경우 브라우저가 콘텐츠 유형을 추측하려는 시도를 막습니다. 이는 사용자가 파일을 업로드하고 공유할 수 있는 웹사이트에서 XSS 공격을 예방할 수 있습니다.
 
 예를 들어 사용자가 이미지를 다운로드하려고 했는데 실행 파일과 같은 다른 `Content-Type`으로 처리되어 악성일 수 있는 상황을 막습니다. 이 헤더는 브라우저 확장 프로그램을 다운로드할 때에도 적용됩니다. 사용할 수 있는 유일한 값은 `nosniff`입니다.
-[code]
+```
     {
       key: 'X-Content-Type-Options',
       value: 'nosniff'
     }
-[/code]
+```
 
 ### Referrer-Policy[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#referrer-policy)
 
 [이 헤더](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy)는 현재 웹사이트(오리진)에서 다른 곳으로 이동할 때 브라우저가 얼마나 많은 정보를 포함할지 제어합니다.
-[code]
+```
     {
       key: 'Referrer-Policy',
       value: 'origin-when-cross-origin'
     }
-[/code]
+```
 
 ### Content-Security-Policy[](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#content-security-policy)
 

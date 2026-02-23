@@ -21,9 +21,9 @@ Source URL: https://nextjs.org/docs/app/api-reference/functions/redirect
 ### Parameters[](https://nextjs.org/docs/app/api-reference/functions/redirect#parameters)
 
 `redirect` 함수는 두 개의 인수를 받습니다:
-[code]
+```
     redirect(path, type)
-[/code]
+```
 
 Parameter| Type| Description
 ---|---|---
@@ -33,13 +33,13 @@ Parameter| Type| Description
 기본적으로 `redirect`는 [서버 액션](https://nextjs.org/docs/app/getting-started/updating-data)에서는 `push`(브라우저 히스토리 스택에 새 항목 추가)를 사용하고, 그 외 모든 곳에서는 `replace`(브라우저 히스토리 스택의 현재 URL 교체)를 사용합니다. `type` 매개변수를 지정해 이 동작을 재정의할 수 있습니다.
 
 `RedirectType` 객체는 `type` 매개변수에 사용 가능한 옵션을 포함합니다.
-[code]
+```
     import { redirect, RedirectType } from 'next/navigation'
 
     redirect('/redirect-to', RedirectType.replace)
     // or
     redirect('/redirect-to', RedirectType.push)
-[/code]
+```
 
 `type` 매개변수는 서버 컴포넌트에서 사용할 때는 아무 효과가 없습니다.
 
@@ -65,7 +65,7 @@ Parameter| Type| Description
 app/team/[id]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { redirect } from 'next/navigation'
 
     async function fetchTeam(id: string) {
@@ -88,7 +88,7 @@ JavaScriptTypeScript
 
       // ...
     }
-[/code]
+```
 
 > **알아두면 좋은 점** : `redirect`는 TypeScript [`never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never) 타입을 사용하므로 `return redirect()` 형태로 쓸 필요가 없습니다.
 
@@ -99,7 +99,7 @@ JavaScriptTypeScript
 components/client-redirect.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { redirect, usePathname } from 'next/navigation'
@@ -113,7 +113,7 @@ JavaScriptTypeScript
 
       return <div>Login Page</div>
     }
-[/code]
+```
 
 > **알아두면 좋은 점** : 클라이언트 컴포넌트에서 서버 사이드 렌더링(SSR) 중 초기 페이지 로드 시 `redirect`를 사용하면 서버 측 리디렉션이 수행됩니다.
 
@@ -122,7 +122,7 @@ JavaScriptTypeScript
 app/client-redirect.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { navigate } from './actions'
@@ -135,12 +135,12 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { redirect } from 'next/navigation'
@@ -148,7 +148,7 @@ JavaScriptTypeScript
     export async function navigate(data: FormData) {
       redirect(`/posts/${data.get('id')}`)
     }
-[/code]
+```
 
 ## FAQ[](https://nextjs.org/docs/app/api-reference/functions/redirect#faq)
 

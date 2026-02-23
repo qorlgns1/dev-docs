@@ -40,7 +40,7 @@ Source URL: https://nextjs.org/docs/app/getting-started/server-and-client-compon
 app/[id]/page.tsx
 
 JavaScript/TypeScript
-[code]
+```
     import LikeButton from '@/app/ui/like-button'
     import { getPost } from '@/lib/data'
 
@@ -62,12 +62,12 @@ JavaScript/TypeScript
         </div>
       )
     }
-[/code]
+```
 
 app/ui/like-button.tsx
 
 JavaScript/TypeScript
-[code]
+```
     'use client'
 
     import { useState } from 'react'
@@ -75,7 +75,7 @@ JavaScript/TypeScript
     export default function LikeButton({ likes }: { likes: number }) {
       // ...
     }
-[/code]
+```
 
 ## Next.js에서 서버 및 클라이언트 컴포넌트는 어떻게 동작하나요?[](https://nextjs.org/docs/app/getting-started/server-and-client-components#how-do-server-and-client-components-work-in-nextjs)
 
@@ -123,7 +123,7 @@ JavaScript/TypeScript
 app/ui/counter.tsx
 
 JavaScript/TypeScript
-[code]
+```
     'use client'
 
     import { useState } from 'react'
@@ -138,7 +138,7 @@ JavaScript/TypeScript
         </div>
       )
     }
-[/code]
+```
 
 `"use client"`는 서버와 클라이언트 모듈 그래프(트리) 사이의 **경계**를 선언하는 데 사용됩니다.
 
@@ -153,7 +153,7 @@ JavaScript/TypeScript
 app/layout.tsx
 
 JavaScript/TypeScript
-[code]
+```
     // Client Component
     import Search from './search'
     // Server Component
@@ -171,18 +171,18 @@ JavaScript/TypeScript
         </>
       )
     }
-[/code]
+```
 
 app/ui/search.tsx
 
 JavaScript/TypeScript
-[code]
+```
     'use client'
 
     export default function Search() {
       // ...
     }
-[/code]
+```
 
 ### 서버에서 클라이언트 컴포넌트로 데이터 전달하기[](https://nextjs.org/docs/app/getting-started/server-and-client-components#passing-data-from-server-to-client-components)
 
@@ -191,7 +191,7 @@ JavaScript/TypeScript
 app/[id]/page.tsx
 
 JavaScript/TypeScript
-[code]
+```
     import LikeButton from '@/app/ui/like-button'
     import { getPost } from '@/lib/data'
 
@@ -205,18 +205,18 @@ JavaScript/TypeScript
 
       return <LikeButton likes={post.likes} />
     }
-[/code]
+```
 
 app/ui/like-button.tsx
 
 JavaScript/TypeScript
-[code]
+```
     'use client'
 
     export default function LikeButton({ likes }: { likes: number }) {
       // ...
     }
-[/code]
+```
 
 또는 [`use` API](https://react.dev/reference/react/use)를 사용해 서버 컴포넌트에서 클라이언트 컴포넌트로 데이터를 스트리밍할 수도 있습니다. [예제](https://nextjs.org/docs/app/getting-started/fetching-data#streaming-data-with-the-use-api)를 참고하세요.
 
@@ -231,20 +231,20 @@ JavaScript/TypeScript
 app/ui/modal.tsx
 
 JavaScript/TypeScript
-[code]
+```
     'use client'
 
     export default function Modal({ children }: { children: React.ReactNode }) {
       return <div>{children}</div>
     }
-[/code]
+```
 
 그런 다음 상위 서버 컴포넌트(예: `<Page>`)에서 `<Cart>`를 `<Modal>`의 자식으로 전달할 수 있습니다.
 
 app/page.tsx
 
 JavaScript/TypeScript
-[code]
+```
     import Modal from './ui/modal'
     import Cart from './ui/cart'
 
@@ -255,7 +255,7 @@ JavaScript/TypeScript
         </Modal>
       )
     }
-[/code]
+```
 
 이 패턴에서는 props로 전달된 컴포넌트를 포함해 모든 서버 컴포넌트가 사전에 서버에서 렌더링됩니다. 결과 RSC Payload에는 컴포넌트 트리 내에서 클라이언트 컴포넌트가 렌더링되어야 할 위치에 대한 참조가 포함됩니다.
 
@@ -268,7 +268,7 @@ JavaScript/TypeScript
 app/theme-provider.tsx
 
 JavaScript/TypeScript
-[code]
+```
     'use client'
 
     import { createContext } from 'react'
@@ -282,14 +282,14 @@ JavaScript/TypeScript
     }) {
       return <ThemeContext.Provider value="dark">{children}</ThemeContext.Provider>
     }
-[/code]
+```
 
 그런 다음 서버 컴포넌트(예: `layout`)에 이를 import합니다.
 
 app/layout.tsx
 
 JavaScript/TypeScript
-[code]
+```
     import ThemeProvider from './theme-provider'
 
     export default function RootLayout({
@@ -305,7 +305,7 @@ JavaScript/TypeScript
         </html>
       )
     }
-[/code]
+```
 
 이제 서버 컴포넌트가 프로바이더를 직접 렌더링할 수 있으며, 앱 전반의 다른 클라이언트 컴포넌트에서도 이 컨텍스트를 사용할 수 있습니다.
 
@@ -320,21 +320,21 @@ JavaScript/TypeScript
 app/lib/user.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cache } from 'react'
 
     export const getUser = cache(async () => {
       const res = await fetch('https://api.example.com/user')
       return res.json()
     })
-[/code]
+```
 
 프로미스를 저장하는 컨텍스트 프로바이더를 생성합니다:
 
 app/user-provider.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { createContext } from 'react'
@@ -355,14 +355,14 @@ JavaScriptTypeScript
     }) {
       return <UserContext value={userPromise}>{children}</UserContext>
     }
-[/code]
+```
 
 레이아웃에서 프로미스를 await 하지 않은 채 프로바이더로 전달합니다:
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import UserProvider from './user-provider'
     import { getUser } from './lib/user'
 
@@ -381,14 +381,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 클라이언트 컴포넌트는 컨텍스트에서 프로미스를 해소하기 위해 [`use()`](https://react.dev/reference/react/use)를 사용하고, 폴백 UI를 위해 `<Suspense>`로 감쌉니다:
 
 app/ui/profile.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { use, useContext } from 'react'
@@ -402,12 +402,12 @@ JavaScriptTypeScript
       const user = use(userPromise)
       return <p>Welcome, {user.name}</p>
     }
-[/code]
+```
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Suspense } from 'react'
     import { Profile } from './ui/profile'
 
@@ -418,21 +418,21 @@ JavaScriptTypeScript
         </Suspense>
       )
     }
-[/code]
+```
 
 서버 컴포넌트도 `getUser()`를 직접 호출할 수 있습니다:
 
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { getUser } from '../lib/user'
 
     export default async function DashboardPage() {
       const user = await getUser() // Cached - same request, no duplicate fetch
       return <h1>Dashboard for {user.name}</h1>
     }
-[/code]
+```
 
 `getUser`가 `React.cache`로 감싸져 있으므로, 동일한 요청 내에서 여러 번 호출해도 서버 컴포넌트에서 직접 호출하거나 클라이언트 컴포넌트에서 컨텍스트를 통해 해소하든 같은 메모이즈된 결과를 반환합니다.
 
@@ -449,7 +449,7 @@ JavaScriptTypeScript
 app/gallery.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useState } from 'react'
@@ -466,7 +466,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 그러나 서버 컴포넌트에서 직접 사용하려 하면 오류가 발생합니다. Next.js가 `<Carousel />`이 클라이언트 전용 기능을 사용한다는 사실을 알 수 없기 때문입니다.
 
@@ -475,20 +475,20 @@ JavaScriptTypeScript
 app/carousel.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { Carousel } from 'acme-carousel'
 
     export default Carousel
-[/code]
+```
 
 이제 서버 컴포넌트에서 `<Carousel />`을 직접 사용할 수 있습니다:
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Carousel from './carousel'
 
     export default function Page() {
@@ -500,7 +500,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 > **라이브러리 작성자를 위한 조언**
 >
@@ -515,7 +515,7 @@ JavaScript 모듈은 서버와 클라이언트 컴포넌트 모듈 모두에서 
 lib/data.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function getData() {
       const res = await fetch('https://external-service.com/data', {
         headers: {
@@ -525,7 +525,7 @@ JavaScriptTypeScript
 
       return res.json()
     }
-[/code]
+```
 
 이 함수에는 클라이언트에 노출되어서는 안 되는 `API_KEY`가 포함되어 있습니다.
 
@@ -538,7 +538,7 @@ Next.js에서는 `NEXT_PUBLIC_` 접두사가 붙은 환경 변수만 클라이�
 그런 다음 서버 전용 코드가 포함된 파일에 해당 패키지를 가져옵니다:
 
 lib/data.js
-[code]
+```
     import 'server-only'
 
     export async function getData() {
@@ -550,7 +550,7 @@ lib/data.js
 
       return res.json()
     }
-[/code]
+```
 
 이제 클라이언트 컴포넌트에서 모듈을 가져오려 하면 빌드 시 오류가 발생합니다.
 
@@ -561,9 +561,9 @@ Next.js에서는 `server-only` 또는 `client-only` 설치가 **선택 사항**�
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add server-only
-[/code]
+```
 
 Next.js는 모듈이 잘못된 환경에서 사용될 때 더 명확한 오류 메시지를 제공하기 위해 내부적으로 `server-only` 및 `client-only` 가져오기를 처리합니다. NPM에서 제공되는 해당 패키지의 실제 내용은 Next.js에서 사용되지 않습니다.
 

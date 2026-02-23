@@ -20,7 +20,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/functions/unauthorized
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -30,14 +30,14 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 `unauthorized`는 [Server Components](https://nextjs.org/docs/app/getting-started/server-and-client-components), [Server Functions](https://nextjs.org/docs/app/getting-started/updating-data), [Route Handlers](https://nextjs.org/docs/app/api-reference/file-conventions/route)에서 호출할 수 있습니다.
 
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { verifySession } from '@/app/lib/dal'
     import { unauthorized } from 'next/navigation'
 
@@ -56,7 +56,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 ## 알아두면 좋은 정보[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#good-to-know)
 
@@ -71,7 +71,7 @@ JavaScriptTypeScript
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { verifySession } from '@/app/lib/dal'
     import { unauthorized } from 'next/navigation'
 
@@ -84,12 +84,12 @@ JavaScriptTypeScript
 
       return <div>Dashboard</div>
     }
-[/code]
+```
 
 app/unauthorized.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Login from '@/app/components/Login'
 
     export default function UnauthorizedPage() {
@@ -101,7 +101,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 ### Server Actions와 함께 사용하는 변이[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#mutations-with-server-actions)
 
@@ -110,7 +110,7 @@ JavaScriptTypeScript
 app/actions/update-profile.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { verifySession } from '@/app/lib/dal'
@@ -128,7 +128,7 @@ JavaScriptTypeScript
       // Proceed with mutation
       // ...
     }
-[/code]
+```
 
 ### Route Handlers로 데이터 가져오기[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#fetching-data-with-route-handlers)
 
@@ -137,7 +137,7 @@ JavaScriptTypeScript
 app/api/profile/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
     import { verifySession } from '@/app/lib/dal'
     import { unauthorized } from 'next/navigation'
@@ -154,7 +154,7 @@ JavaScriptTypeScript
       // Fetch data
       // ...
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/unauthorized#version-history)
 

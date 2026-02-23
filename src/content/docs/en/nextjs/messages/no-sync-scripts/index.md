@@ -42,4 +42,3 @@ export default Home
 ## Useful Links
 
 - [Efficiently load third-party JavaScript](https://web.dev/efficiently-load-third-party-javascript/)
-

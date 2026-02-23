@@ -9,9 +9,9 @@ sidebar:
 
 Source URL: https://developers.openai.com/codex/changelog
 
-[code]
+```
     $ npm install -g @openai/codex@0.104.0
-[/code]
+```
 
 View details
 

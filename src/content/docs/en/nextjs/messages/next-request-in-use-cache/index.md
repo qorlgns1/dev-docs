@@ -54,4 +54,3 @@ export default async function Page() {
 - [`headers()` function](https://nextjs.org/docs/app/api-reference/functions/headers)
 - [`cookies()` function](https://nextjs.org/docs/app/api-reference/functions/cookies)
 - [`draftMode()` function](https://nextjs.org/docs/app/api-reference/functions/draft-mode)
-

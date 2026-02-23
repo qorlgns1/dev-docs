@@ -29,7 +29,7 @@ description: '지시문은 대부분의 애플리케이션 요구 사항을 충�
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -37,7 +37,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 그다음 원격 캐싱이 타당하다고 판단한 함수나 컴포넌트에 `'use cache: remote'`를 추가합니다. 핸들러 구현은 [`cacheHandlers`](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers)를 통해 구성하며, 대부분의 호스팅 제공자는 이를 자동으로 제공해야 합니다. 셀프 호스팅 중이라면 `cacheHandlers` 구성 참조를 확인해 캐시 스토리지를 설정하세요.
 
@@ -91,7 +91,7 @@ Feature| `use cache`| `'use cache: remote'`| `'use cache: private'`
 캐시 키에 포함할 값을 신중히 선택하세요. 고유 값이 늘어날수록 별도의 캐시 엔트리가 생성되어 활용률이 떨어집니다. 다음은 검색 필터를 포함한 예시입니다:
 
 app/products/[category]/page.tsx
-[code]
+```
     import { Suspense } from 'react'
 
     export default async function ProductsPage({
@@ -138,7 +138,7 @@ app/products/[category]/page.tsx
       // Much better utilization than caching every price filter value
       return db.products.findByCategory(category)
     }
-[/code]
+```
 
 이 예에서 원격 핸들러는 캐시 엔트리당 더 많은 데이터(카테고리 내 모든 상품)를 저장해 캐시 적중률을 높입니다. 캐시 미스 시 백엔드 호출 비용이 더 크다면, 더 큰 엔트리를 저장하는 비용을 감수할 가치가 있습니다.
 
@@ -150,7 +150,7 @@ app/products/[category]/page.tsx
   * 언어별 엔트리를 생성하는 `getCMSContent(language)`를 원격 캐싱
 
 app/components/welcome-message.tsx
-[code]
+```
     import { cookies } from 'next/headers'
     import { cacheLife } from 'next/cache'
 
@@ -172,7 +172,7 @@ app/components/welcome-message.tsx
       // instead of thousands (one per user)
       return cms.getHomeContent(language)
     }
-[/code]
+```
 
 이렇게 하면 동일한 언어를 선호하는 모든 사용자가 하나의 캐시 엔트리를 공유해 캐시 활용률을 높이고 CMS 부하를 줄입니다.
 
@@ -191,7 +191,7 @@ app/components/welcome-message.tsx
   * 원격 캐시는 프라이빗 캐시(`'use cache: private'`) 안에 중첩될 수 없습니다
   * 프라이빗 캐시는 원격 캐시 안에 중첩될 수 없습니다
 
-[code]
+```
     // VALID: Remote inside remote
     async function outerRemote() {
       'use cache: remote'
@@ -228,7 +228,7 @@ app/components/welcome-message.tsx
       'use cache: remote'
       return getData()
     }
-[/code]
+```
 
 // INVALID: Private inside remote
     async function outerRemote() {
@@ -241,7 +241,6 @@ app/components/welcome-message.tsx
       'use cache: private'
       return getData()
     }
-[/code]
 
 ## 예시[](https://nextjs.org/docs/app/api-reference/directives/use-cache-remote#examples)
 
@@ -254,7 +253,7 @@ app/components/welcome-message.tsx
 app/product/[id]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Suspense } from 'react'
     import { cookies } from 'next/headers'
     import { cacheTag, cacheLife } from 'next/cache'
@@ -307,14 +306,14 @@ JavaScriptTypeScript
       // Cached per (productId, currency) - few currencies means high cache utilization
       return db.products.getPrice(productId, currency)
     }
-[/code]
+```
 
 ### 데이터베이스 부하 감소[](https://nextjs.org/docs/app/api-reference/directives/use-cache-remote#reducing-database-load)
 
 비용이 큰 데이터베이스 쿼리를 캐싱하여 데이터베이스 부하를 줄입니다. 이 예제에서는 `cookies()`, `headers()`, `searchParams`에 접근하지 않습니다. 통계 정보를 정적 셸에 포함하지 말아야 한다면 [`connection()`](https://nextjs.org/docs/app/api-reference/functions/connection)을 사용해 명시적으로 요청 시점으로 연기할 수 있습니다.
 
 app/dashboard/page.tsx
-[code]
+```
     import { Suspense } from 'react'
     import { connection } from 'next/server'
     import { cacheLife, cacheTag } from 'next/cache'
@@ -351,7 +350,7 @@ app/dashboard/page.tsx
 
       return stats
     }
-[/code]
+```
 
 이 설정이면 대시보드를 방문하는 사용자가 얼마나 많든 상관없이 업스트림 데이터베이스는 최대 분당 한 번만 요청을 받습니다.
 
@@ -360,7 +359,7 @@ app/dashboard/page.tsx
 스트리밍 중이거나 동적 작업 이후에 가져오는 API 응답을 캐싱합니다.
 
 app/feed/page.tsx
-[code]
+```
     import { Suspense } from 'react'
     import { connection } from 'next/server'
     import { cacheLife, cacheTag } from 'next/cache'
@@ -393,14 +392,14 @@ app/feed/page.tsx
       const response = await fetch('https://api.example.com/feed')
       return response.json()
     }
-[/code]
+```
 
 ### 동적 검사 이후의 계산된 데이터[](https://nextjs.org/docs/app/api-reference/directives/use-cache-remote#computed-data-after-dynamic-checks)
 
 동적 보안 또는 기능 검사 뒤에 수행되는 비용이 큰 계산을 캐싱합니다.
 
 app/reports/page.tsx
-[code]
+```
     import { connection } from 'next/server'
     import { cacheLife } from 'next/cache'
 
@@ -427,14 +426,14 @@ app/reports/page.tsx
         trends: calculateTrends(data),
       }
     }
-[/code]
+```
 
 ### 혼합 캐싱 전략[](https://nextjs.org/docs/app/api-reference/directives/use-cache-remote#mixed-caching-strategies)
 
 최적의 성능을 위해 정적, 원격, 프라이빗 캐싱을 조합합니다.
 
 app/product/[id]/page.tsx
-[code]
+```
     import { Suspense } from 'react'
     import { connection } from 'next/server'
     import { cookies } from 'next/headers'
@@ -534,7 +533,7 @@ app/product/[id]/page.tsx
         </ul>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >

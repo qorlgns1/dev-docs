@@ -22,7 +22,7 @@ Source URL: https://nextjs.org/docs/messages/no-document-import-in-page
 기본 `Document` 컴포넌트를 재정의하려면 `next/document`를 `pages/_document.js`(또는 `pages/_document.tsx`) 내부에서만 가져와 사용하세요:
 
 pages/_document.js
-[code]
+```
     import Document, { Html, Head, Main, NextScript } from 'next/document'
 
     class MyDocument extends Document {
@@ -30,7 +30,7 @@ pages/_document.js
     }
 
     export default MyDocument
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-document-import-in-page#useful-links)
 

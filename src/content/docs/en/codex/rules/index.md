@@ -18,7 +18,8 @@ Rules are experimental and may change.
   1. Create a `.rules` file under `./codex/rules/` (for example, `~/.codex/rules/default.rules`).
 
   2. Add a rule. This example prompts before allowing `gh pr view` to run outside the sandbox.
-[code] # Prompt before running commands with the prefix `gh pr view` outside the sandbox.
+```
+# Prompt before running commands with the prefix `gh pr view` outside the sandbox.
          prefix_rule(
              # The prefix to match.
              pattern = ["gh", "pr", "view"],
@@ -41,7 +42,7 @@ Rules are experimental and may change.
                  "gh pr --repo openai/codex view 7888",
              ],
          )
-[/code]
+```
 
   3. Restart Codex.
 
@@ -75,9 +76,9 @@ When Codex considers a command to run, it compares the command’s argument list
 ## Shell wrappers and compound commands
 
 Some tools wrap several shell commands into a single invocation, for example:
-[code] 
+```
     ["bash", "-lc", "git add . && rm -rf /"]
-[/code]
+```
 
 Because this kind of command can hide multiple actions inside one string, Codex treats `bash -lc`, `bash -c`, and their `zsh` / `sh` equivalents specially.
 
@@ -120,9 +121,9 @@ If the script uses more advanced shell features, such as:
 then Codex doesn’t try to interpret or split it.
 
 In those cases, the entire invocation is treated as:
-[code] 
+```
     ["bash", "-lc", "<full script>"]
-[/code]
+```
 
 and your rules are applied to that **single** invocation.
 
@@ -131,11 +132,11 @@ With this handling, you get the security of per-command evaluation when it’s s
 ## Test a rule file
 
 Use `codex execpolicy check` to test how your rules apply to a command:
-[code] 
+```
     codex execpolicy check --pretty \
       --rules ~/.codex/rules/default.rules \
       -- gh pr view 7888 --json title,body,comments
-[/code]
+```
 
 The command emits JSON showing the strictest decision and any matching rules, including any `justification` values from matched rules. Use more than one `--rules` flag to combine files, and add `--pretty` to format the output.
 

@@ -20,26 +20,26 @@ NextRequest는 [Web Request API](https://developer.mozilla.org/docs/Web/API/Requ
 ### `set(name, value)`[](https://nextjs.org/docs/pages/api-reference/functions/next-request#setname-value)
 
 이름을 지정하면 해당 값의 쿠키를 요청에 설정합니다.
-[code]
+```
     // Given incoming request /home
     // Set a cookie to hide the banner
     // request will have a `Set-Cookie:show-banner=false;path=/home` header
     request.cookies.set('show-banner', 'false')
-[/code]
+```
 
 ### `get(name)`[](https://nextjs.org/docs/pages/api-reference/functions/next-request#getname)
 
 쿠키 이름을 지정하면 해당 쿠키의 값을 반환합니다. 쿠키가 없으면 `undefined`가 반환되고, 여러 쿠키가 있으면 첫 번째 쿠키가 반환됩니다.
-[code]
+```
     // Given incoming request /home
     // { name: 'show-banner', value: 'false', Path: '/home' }
     request.cookies.get('show-banner')
-[/code]
+```
 
 ### `getAll()`[](https://nextjs.org/docs/pages/api-reference/functions/next-request#getall)
 
 쿠키 이름을 지정하면 해당 쿠키의 모든 값을 반환합니다. 이름을 지정하지 않으면 요청에 있는 모든 쿠키를 반환합니다.
-[code]
+```
     // Given incoming request /home
     // [
     //   { name: 'experiments', value: 'new-pricing-page', Path: '/home' },
@@ -48,40 +48,40 @@ NextRequest는 [Web Request API](https://developer.mozilla.org/docs/Web/API/Requ
     request.cookies.getAll('experiments')
     // Alternatively, get all cookies for the request
     request.cookies.getAll()
-[/code]
+```
 
 ### `delete(name)`[](https://nextjs.org/docs/pages/api-reference/functions/next-request#deletename)
 
 쿠키 이름을 지정하면 해당 쿠키를 요청에서 삭제합니다.
-[code]
+```
     // Returns true for deleted, false is nothing is deleted
     request.cookies.delete('experiments')
-[/code]
+```
 
 ### `has(name)`[](https://nextjs.org/docs/pages/api-reference/functions/next-request#hasname)
 
 쿠키 이름을 지정하면 해당 쿠키가 요청에 존재하면 `true`를 반환합니다.
-[code]
+```
     // Returns true if cookie exists, false if it does not
     request.cookies.has('experiments')
-[/code]
+```
 
 ### `clear()`[](https://nextjs.org/docs/pages/api-reference/functions/next-request#clear)
 
 요청에서 모든 쿠키를 제거합니다.
-[code]
+```
     request.cookies.clear()
-[/code]
+```
 
 ## `nextUrl`[](https://nextjs.org/docs/pages/api-reference/functions/next-request#nexturl)
 
 네이티브 [`URL`](https://developer.mozilla.org/docs/Web/API/URL) API를 확장하여 Next.js 전용 속성을 포함한 추가 편의 메서드를 제공합니다.
-[code]
+```
     // Given a request to /home, pathname is /home
     request.nextUrl.pathname
     // Given a request to /home?name=lee, searchParams is { 'name': 'lee' }
     request.nextUrl.searchParams
-[/code]
+```
 
 사용 가능한 옵션은 다음과 같습니다:
 

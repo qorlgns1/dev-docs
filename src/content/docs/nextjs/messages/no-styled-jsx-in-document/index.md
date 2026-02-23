@@ -24,7 +24,7 @@ description: '> 에서 를 사용하는 것을 방지하세요.'
 예를 들어 `styles.css`라는 다음 스타일시트를 살펴보세요:
 
 styles.css
-[code]
+```
     body {
       font-family:
         'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial',
@@ -33,19 +33,19 @@ styles.css
       max-width: 680px;
       margin: 0 auto;
     }
-[/code]
+```
 
 아직 없다면 `pages/_app.{js,tsx}` 파일을 생성한 뒤 `styles.css` 파일을 import하세요.
 
 pages/_app.js
-[code]
+```
     import '../styles.css'
 
     // This default export is required in a new `pages/_app.js` file.
     export default function MyApp({ Component, pageProps }) {
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 이 스타일(`styles.css`)은 애플리케이션의 모든 페이지와 컴포넌트에 적용됩니다.
 

@@ -86,4 +86,3 @@ Refer to each provider's documentation for information on supported Next.js feat
 
 > **Note:** We are working on a [Deployment Adapters API](https://github.com/vercel/next.js/discussions/77740) for all platforms to adopt. After completion, we will add documentation on how to write your own adapters.
 ---
-

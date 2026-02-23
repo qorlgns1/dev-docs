@@ -101,4 +101,3 @@ export default async function Page({ params } }) {
 | --------- | ---------------------------- |
 | `v14.0.0` | `unstable_cache` introduced. |
 ---
-

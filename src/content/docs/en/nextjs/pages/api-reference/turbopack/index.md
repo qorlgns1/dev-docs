@@ -262,4 +262,3 @@ Turbopack is a **Rust-based**, **incremental** bundler designed to make local de
 | `v15.3.0` | Experimental support for `build`                                                                                   |
 | `v15.0.0` | Turbopack for `dev` stable                                                                                         |
 ---
-

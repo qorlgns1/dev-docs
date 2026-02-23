@@ -21,7 +21,7 @@ URL 검색 매개변수를 업데이트하는 폼에 적합하며, 위 기능을
 /app/ui/search.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Form from 'next/form'
 
     export default function Page() {
@@ -34,7 +34,7 @@ JavaScriptTypeScript
         </Form>
       )
     }
-[/code]
+```
 
 ## 참고[](https://nextjs.org/docs/app/api-reference/components/form#reference)
 
@@ -95,7 +95,7 @@ Prop| 예시| 타입| 필수
 /app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Form from 'next/form'
 
     export default function Page() {
@@ -106,7 +106,7 @@ JavaScriptTypeScript
         </Form>
       )
     }
-[/code]
+```
 
 사용자가 입력 필드를 수정한 뒤 폼을 제출하면 폼 데이터가 `/search?query=abc`처럼 검색 매개변수로 URL에 인코딩됩니다.
 
@@ -117,7 +117,7 @@ JavaScriptTypeScript
 /app/search/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { getSearchResults } from '@/lib/search'
 
     export default async function SearchPage({
@@ -129,18 +129,18 @@ JavaScriptTypeScript
 
       return <div>...</div>
     }
-[/code]
+```
 
 `<Form>`이 사용자 뷰포트에 들어오면 `/search` 페이지의 공유 UI(`layout.js`, `loading.js` 등)가 사전 가져오기 됩니다. 제출과 동시에 폼은 새 라우트로 즉시 이동하며 결과를 가져오는 동안 로딩 UI를 표시합니다. [`loading.js`](https://nextjs.org/docs/app/api-reference/file-conventions/loading)를 사용해 폴백 UI를 설계할 수 있습니다.
 
 /app/search/loading.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Loading() {
       return <div>Loading...</div>
     }
-[/code]
+```
 
 공유 UI가 아직 로드되지 않은 경우에 대비해 [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus)를 사용해 사용자에게 즉각적인 피드백을 제공할 수 있습니다.
 
@@ -149,7 +149,7 @@ JavaScriptTypeScript
 /app/ui/search-button.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
     import { useFormStatus } from 'react-dom'
 
@@ -159,14 +159,14 @@ JavaScriptTypeScript
         <button type="submit">{status.pending ? 'Searching...' : 'Search'}</button>
       )
     }
-[/code]
+```
 
 그런 다음 검색 폼 페이지를 업데이트해 `SearchButton` 컴포넌트를 사용합니다.
 
 /app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Form from 'next/form'
     import { SearchButton } from '@/ui/search-button'
 
@@ -178,7 +178,7 @@ JavaScriptTypeScript
         </Form>
       )
     }
-[/code]
+```
 
 ### Server Action을 통한 변이[](https://nextjs.org/docs/app/api-reference/components/form#mutations-with-server-actions)
 
@@ -187,7 +187,7 @@ JavaScriptTypeScript
 /app/posts/create/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Form from 'next/form'
     import { createPost } from '@/posts/actions'
 
@@ -200,7 +200,7 @@ JavaScriptTypeScript
         </Form>
       )
     }
-[/code]
+```
 
 변이 후에는 새 리소스로 리디렉션하는 경우가 많습니다. `next/navigation`의 [`redirect`](https://nextjs.org/docs/app/guides/redirecting) 함수를 사용해 새 게시물 페이지로 이동할 수 있습니다.
 
@@ -209,7 +209,7 @@ JavaScriptTypeScript
 /app/posts/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
     import { redirect } from 'next/navigation'
 
@@ -220,14 +220,14 @@ JavaScriptTypeScript
       // Redirect to the new post
       redirect(`/posts/${data.id}`)
     }
-[/code]
+```
 
 새 페이지에서는 `params` prop을 사용해 데이터를 가져올 수 있습니다.
 
 /app/posts/[id]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { getPost } from '@/posts/data'
 
     export default async function PostPage({
@@ -245,6 +245,6 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 더 많은 예시는 [Server Actions](https://nextjs.org/docs/app/getting-started/updating-data) 문서를 참고하세요.

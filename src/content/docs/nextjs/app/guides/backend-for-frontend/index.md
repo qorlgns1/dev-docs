@@ -20,9 +20,9 @@ Next.js는 "Backend for Frontend" 패턴을 지원합니다. 이를 통해 공�
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create next-app --api
-[/code]
+```
 
 > **알아두면 좋아요**: Next.js의 백엔드 기능은 완전한 백엔드 대체제가 아닙니다. 다음과 같은 API 계층 역할을 합니다:
 >
@@ -46,9 +46,9 @@ Terminal
 /app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export function GET(request: Request) {}
-[/code]
+```
 
 이는 `/api`로 전송된 `GET` 요청을 처리합니다.
 
@@ -57,7 +57,7 @@ JavaScriptTypeScript
 /app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { submit } from '@/lib/submit'
 
     export async function POST(request: Request) {
@@ -71,7 +71,7 @@ JavaScriptTypeScript
         return new Response(message, { status: 500 })
       }
     }
-[/code]
+```
 
 클라이언트로 전송되는 오류 메시지에 민감한 정보를 노출하지 마세요.
 
@@ -100,7 +100,7 @@ Next.js는 일반적인 엔드포인트에 대해 파일 관례를 제공합니�
 /app/rss.xml/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET(request: Request) {
       const rssResponse = await fetch(/* rss endpoint */)
       const rssData = await rssResponse.json()
@@ -128,7 +128,7 @@ JavaScriptTypeScript
 
       return new Response(rssFeed, { headers })
     }
-[/code]
+```
 
 마크업 생성을 위해 사용하는 입력은 반드시 정제하세요.
 
@@ -141,19 +141,19 @@ Request [인스턴스 메서드](https://developer.mozilla.org/en-US/docs/Web/AP
 /app/api/echo-body/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function POST(request: Request) {
       const res = await request.json()
       return Response.json({ res })
     }
-[/code]
+```
 
 > **알아두면 좋아요**: 다른 시스템에 전달하기 전에 데이터를 검증하세요
 
 /app/api/send-email/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { sendMail, validateInputs } from '@/lib/email-transporter'
 
     export async function POST(request: Request) {
@@ -173,14 +173,14 @@ JavaScriptTypeScript
         return new Response(message, { status: 500 })
       }
     }
-[/code]
+```
 
 요청 본문은 한 번만 읽을 수 있습니다. 다시 읽어야 한다면 요청을 복제하세요:
 
 /app/api/clone/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function POST(request: Request) {
       try {
         const clonedRequest = request.clone()
@@ -194,14 +194,14 @@ JavaScriptTypeScript
         return new Response(null, { status: 500 })
       }
     }
-[/code]
+```
 
 ## 데이터 조작[](https://nextjs.org/docs/app/guides/backend-for-frontend#manipulating-data)
 
 라우트 핸들러는 하나 이상의 소스에서 데이터를 변환, 필터링, 집계할 수 있습니다. 이를 통해 프런트엔드에서 로직을 분리하고 내부 시스템 노출을 방지합니다.
 
 또한 무거운 계산을 서버로 오프로드해 클라이언트의 배터리와 데이터 사용량을 줄일 수 있습니다.
-[code]
+```
     import { parseWeatherData } from '@/lib/weather'
 
     export async function POST(request: Request) {
@@ -226,7 +226,7 @@ JavaScriptTypeScript
         return new Response(message, { status: 500 })
       }
     }
-[/code]
+```
 
 > **알아두면 좋아요**: 이 예시는 위치 데이터를 URL에 넣지 않기 위해 `POST`를 사용합니다. `GET` 요청은 캐시되거나 로깅될 수 있어 민감한 정보가 노출될 수 있습니다.
 
@@ -237,7 +237,7 @@ JavaScriptTypeScript
 /app/api/[...slug]/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { isValidRequest } from '@/lib/utils'
 
     export async function POST(request: Request, { params }) {
@@ -262,7 +262,7 @@ JavaScriptTypeScript
         return new Response(message, { status: 500 })
       }
     }
-[/code]
+```
 
 또는 다음을 사용하세요:
 
@@ -284,7 +284,7 @@ Next.js는 [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request)
 /app/echo-pathname/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { type NextRequest, NextResponse } from 'next/server'
 
     export async function GET(request: NextRequest) {
@@ -300,7 +300,7 @@ JavaScriptTypeScript
 
       return NextResponse.json({ pathname: nextUrl.pathname })
     }
-[/code]
+```
 
 [`NextRequest`](https://nextjs.org/docs/app/api-reference/functions/next-request)와 [`NextResponse`](https://nextjs.org/docs/app/api-reference/functions/next-response)에 대해 더 알아보세요.
 
@@ -313,7 +313,7 @@ JavaScriptTypeScript
 /app/webhook/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { type NextRequest, NextResponse } from 'next/server'
 
     export async function GET(request: NextRequest) {
@@ -333,18 +333,18 @@ JavaScriptTypeScript
 
       return NextResponse.json({ success: true })
     }
-[/code]
+```
 
 콜백 URL도 또 다른 사용 사례입니다. 사용자가 서드파티 플로우를 완료하면 서드파티가 콜백 URL로 사용자를 돌려보냅니다. 라우트 핸들러를 사용해 응답을 검증하고 사용자를 어디로 리디렉션할지 결정하세요.
 
 /app/auth/callback/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { type NextRequest, NextResponse } from 'next/server'
 
     export async function GET(request: NextRequest) {
-[/code]
+```
 
 const token = request.nextUrl.searchParams.get('session_token')
       const redirectUrl = request.nextUrl.searchParams.get('redirect_url')
@@ -362,20 +362,19 @@ const token = request.nextUrl.searchParams.get('session_token')
 
       return response
     }
-[/code]
 
 ## 리디렉션[](https://nextjs.org/docs/app/guides/backend-for-frontend#redirects)
 
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { redirect } from 'next/navigation'
 
     export async function GET(request: Request) {
       redirect('https://nextjs.org/')
     }
-[/code]
+```
 
 [`redirect`](https://nextjs.org/docs/app/api-reference/functions/redirect) 및 [`permanentRedirect`](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect)에서 리디렉션에 대해 더 알아보세요.
 
@@ -388,7 +387,7 @@ JavaScriptTypeScript
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { isAuthenticated } from '@lib/auth'
 
     export const config = {
@@ -403,14 +402,14 @@ JavaScriptTypeScript
         )
       }
     }
-[/code]
+```
 
 `proxy`를 사용하여 요청을 프록시할 수도 있습니다:
 
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse } from 'next/server'
 
     export function proxy(request: Request) {
@@ -419,14 +418,14 @@ JavaScriptTypeScript
         return NextResponse.rewrite(rewriteUrl)
       }
     }
-[/code]
+```
 
 `proxy`가 생성할 수 있는 또 다른 유형의 응답은 리디렉션입니다:
 
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse } from 'next/server'
 
     export function proxy(request: Request) {
@@ -435,7 +434,7 @@ JavaScriptTypeScript
         return NextResponse.redirect(request.nextUrl)
       }
     }
-[/code]
+```
 
 ## 보안[](https://nextjs.org/docs/app/guides/backend-for-frontend#security)
 
@@ -455,7 +454,7 @@ Next.js 백엔드에서 레이트 리미팅을 구현할 수 있습니다. 코�
 /app/resource/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse } from 'next/server'
     import { checkRateLimit } from '@/lib/rate-limit'
 
@@ -468,7 +467,7 @@ JavaScriptTypeScript
 
       return new Response(null, { status: 204 })
     }
-[/code]
+```
 
 ### 페이로드 검증[](https://nextjs.org/docs/app/guides/backend-for-frontend#verify-payloads)
 
@@ -499,7 +498,7 @@ JavaScriptTypeScript
 커뮤니티 라이브러리는 Route Handler를 위해 팩토리 패턴을 사용하는 경우가 많습니다.
 
 /app/api/[...path]/route.ts
-[code]
+```
     import { createHandler } from 'third-party-library'
 
     const handler = createHandler({
@@ -509,18 +508,18 @@ JavaScriptTypeScript
     export const GET = handler
     // or
     export { handler as POST }
-[/code]
+```
 
 이는 `GET`과 `POST` 요청에 공용 핸들러를 생성하며, 라이브러리는 요청의 `method`와 `pathname`을 기반으로 동작을 커스터마이즈합니다.
 
 라이브러리는 `proxy` 팩토리를 제공할 수도 있습니다.
 
 proxy.ts
-[code]
+```
     import { createMiddleware } from 'third-party-library'
 
     export default createMiddleware()
-[/code]
+```
 
 > **알아두면 좋아요**: 서드파티 라이브러리는 여전히 `proxy`를 `middleware`라고 부를 수 있습니다.
 
@@ -568,13 +567,13 @@ proxy.ts
 이는 정적 HTML, JSON, TXT 등 파일을 생성하는 데 사용할 수 있습니다.
 
 app/hello-world/route.ts
-[code]
+```
     export const dynamic = 'force-static'
 
     export function GET() {
       return new Response('Hello World', { status: 200 })
     }
-[/code]
+```
 
 ### 배포 환경[](https://nextjs.org/docs/app/guides/backend-for-frontend#deployment-environment)
 

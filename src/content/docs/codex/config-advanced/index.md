@@ -22,7 +22,7 @@ Source URL: https://developers.openai.com/codex/config-advanced
 프로파일은 현재 Codex IDE 확장에서 지원되지 않습니다.
 
 `config.toml`의 `[profiles.<name>]` 아래에 프로파일을 정의한 뒤 `codex --profile <name>`을 실행하세요:
-[code] 
+```
     model = "gpt-5-codex"
     approval_policy = "on-request"
     
@@ -34,7 +34,7 @@ Source URL: https://developers.openai.com/codex/config-advanced
     [profiles.lightweight]
     model = "gpt-4.1"
     approval_policy = "untrusted"
-[/code]
+```
 
 기본으로 사용할 프로파일을 지정하려면 `config.toml` 최상위에 `profile = "deep-review"`를 추가하세요. 이렇게 하면 커맨드 라인에서 다른 값을 지정하지 않는 한 Codex가 해당 프로파일을 로드합니다.
 
@@ -48,7 +48,7 @@ Source URL: https://developers.openai.com/codex/config-advanced
 
 
 예시:
-[code] 
+```
     # Dedicated flag
     codex --model gpt-5.2
     
@@ -56,7 +56,7 @@ Source URL: https://developers.openai.com/codex/config-advanced
     codex --config model='"gpt-5.2"'
     codex --config sandbox_workspace_write.network_access=true
     codex --config 'shell_environment_policy.include_only=["PATH","HOME"]'
-[/code]
+```
 
 참고:
 
@@ -84,10 +84,10 @@ Codex는 로컬 상태를 `CODEX_HOME`(기본값 `~/.codex`)에 저장합니다.
 리포지토리나 시스템 경로에 커밋된 공유 기본값, 규칙, 스킬은 [Team Config](https://developers.openai.com/codex/enterprise/admin-setup#team-config)를 확인하세요.
 
 기본 OpenAI 제공업체를 LLM 프록시·라우터·데이터 거주성 프로젝트에만 지정하면 된다면, 새 제공업체를 정의하지 말고 환경 변수 `OPENAI_BASE_URL`을 설정하세요. `config.toml`을 수정하지 않고도 기본 OpenAI 엔드포인트를 덮어씁니다.
-[code] 
+```
     export OPENAI_BASE_URL="https://api.openai.com/v1"
     codex
-[/code]
+```
 
 ## 프로젝트 구성 파일(`.codex/config.toml`)
 
@@ -106,10 +106,10 @@ Codex는 로컬 상태를 `CODEX_HOME`(기본값 `~/.codex`)에 저장합니다.
 Codex는 작업 디렉터리에서 위쪽으로 올라가면서 프로젝트 루트에 도달할 때까지 프로젝트 구성(예: `.codex/` 계층과 `AGENTS.md`)을 탐색합니다.
 
 기본적으로 Codex는 `.git`이 포함된 디렉터리를 프로젝트 루트로 간주합니다. 이 동작을 커스터마이즈하려면 `config.toml`에서 `project_root_markers`를 설정하세요:
-[code] 
+```
     # Treat a directory as the project root when it contains any of these markers.
     project_root_markers = [".git", ".hg", ".sl"]
-[/code]
+```
 
 부모 디렉터리 검색을 건너뛰고 현재 작업 디렉터리를 프로젝트 루트로 취급하려면 `project_root_markers = []`로 설정하세요.
 
@@ -118,7 +118,7 @@ Codex는 작업 디렉터리에서 위쪽으로 올라가면서 프로젝트 루
 모델 제공자는 Codex가 모델에 연결하는 방식을 정의합니다(기본 URL, wire API, 선택적 HTTP 헤더).
 
 추가 제공자를 정의하고 `model_provider`가 이를 가리키도록 설정하세요:
-[code] 
+```
     model = "gpt-5.1"
     model_provider = "proxy"
     
@@ -135,25 +135,25 @@ Codex는 작업 디렉터리에서 위쪽으로 올라가면서 프로젝트 루
     name = "Mistral"
     base_url = "https://api.mistral.ai/v1"
     env_key = "MISTRAL_API_KEY"
-[/code]
+```
 
 필요할 때 요청 헤더를 추가하세요:
-[code] 
+```
     [model_providers.example]
     http_headers = { "X-Example-Header" = "example-value" }
     env_http_headers = { "X-Example-Features" = "EXAMPLE_FEATURES" }
-[/code]
+```
 
 ## OSS 모드(로컬 제공자)
 
 `--oss`를 전달하면 Codex는 로컬 “오픈 소스” 제공자(예: Ollama 또는 LM Studio)에 대해 실행할 수 있습니다. 제공자를 지정하지 않고 `--oss`를 전달하면 Codex는 기본값으로 `oss_provider`를 사용합니다.
-[code] 
+```
     # Default local provider used with `--oss`
     oss_provider = "ollama" # or "lmstudio"
-[/code]
+```
 
 ## Azure 제공자 및 제공자별 튜닝
-[code] 
+```
     [model_providers.azure]
     name = "Azure"
     base_url = "https://YOUR_PROJECT_NAME.openai.azure.com/openai"
@@ -165,25 +165,25 @@ Codex는 작업 디렉터리에서 위쪽으로 올라가면서 프로젝트 루
     request_max_retries = 4
     stream_max_retries = 10
     stream_idle_timeout_ms = 300000
-[/code]
+```
 
 ## 데이터 레지던시를 사용하는 ChatGPT 고객
 
 [data residency](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt)를 활성화하여 생성한 프로젝트는 [올바른 프리픽스](https://platform.openai.com/docs/guides/your-data#which-models-and-features-are-eligible-for-data-residency)를 사용하도록 base_url을 업데이트하는 모델 제공자를 만들 수 있습니다.
-[code] 
+```
     model_provider = "openaidr"
     [model_providers.openaidr]
     name = "OpenAI Data Residency"
     base_url = "https://us.api.openai.com/v1" # Replace 'us' with domain prefix
-[/code]
+```
 
 ## 모델 추론, 상세도, 제한
-[code] 
+```
     model_reasoning_summary = "none"          # Disable summaries
     model_verbosity = "low"                   # Shorten responses
     model_supports_reasoning_summaries = true # Force reasoning
     model_context_window = 128000             # Context window size
-[/code]
+```
 
 `model_verbosity`는 Responses API를 사용하는 제공자에만 적용됩니다. Chat Completions 제공자는 이 설정을 무시합니다.
 
@@ -192,7 +192,7 @@ Codex는 작업 디렉터리에서 위쪽으로 올라가면서 프로젝트 루
 승인 엄격도(Codex가 일시 중지되는 시점에 영향)와 샌드박스 수준(파일/네트워크 접근에 영향)을 선택하세요.
 
 편집 중 `config.toml`에서 놓치기 쉬운 운영 세부 정보는 [Common sandbox and approval combinations](https://developers.openai.com/codex/security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](https://developers.openai.com/codex/security#protected-paths-in-writable-roots), [Network access](https://developers.openai.com/codex/security#network-access)를 참고하세요.
-[code] 
+```
     approval_policy = "untrusted"   # Other options: on-request, never
     sandbox_mode = "workspace-write"
     
@@ -201,28 +201,28 @@ Codex는 작업 디렉터리에서 위쪽으로 올라가면서 프로젝트 루
     exclude_slash_tmp = false       # Allow /tmp
     writable_roots = ["/Users/YOU/.pyenv/shims"]
     network_access = false          # Opt in to outbound network
-[/code]
+```
 
 전체 키 목록(프로필 범위 재정의와 요구사항 제약 포함)이 필요하다면 [Configuration Reference](https://developers.openai.com/codex/config-reference)와 [Managed configuration](https://developers.openai.com/codex/security#managed-configuration)을 확인하세요.
 
 워크스페이스 쓰기 모드에서도 일부 환경은 `.git/`과 `.codex/`를 읽기 전용으로 유지해 나머지 워크스페이스만 쓰기 가능하게 합니다. 이 때문에 `git commit` 같은 명령이 샌드박스 밖에서 실행될 때 여전히 승인이 필요할 수 있습니다. 특정 명령을 Codex가 건너뛰게 하고 싶다면(예: 샌드박스 밖 `git commit` 차단) [rules](https://developers.openai.com/codex/rules)를 사용하세요.
 
 샌드박싱을 완전히 비활성화하려면(환경이 이미 프로세스를 격리하는 경우에만 사용):
-[code] 
+```
     sandbox_mode = "danger-full-access"
-[/code]
+```
 
 ## Shell environment policy
 
 `shell_environment_policy`는 Codex가 실행하는 하위 프로세스(예: 모델이 제안한 도구 명령)를 어떤 환경 변수와 함께 실행할지 제어합니다. 깨끗한 시작점(`inherit = "none"`)이나 축약된 집합(`inherit = "core"`)에서 시작한 뒤, 비밀이 새지 않으면서 작업에 필요한 경로·키·플래그를 제공하도록 exclude/include/override를 순차적으로 추가하세요.
-[code] 
+```
     [shell_environment_policy]
     inherit = "none"
     set = { PATH = "/usr/bin", MY_FLAG = "1" }
     ignore_default_excludes = false
     exclude = ["AWS_*", "AZURE_*"]
     include_only = ["PATH", "HOME"]
-[/code]
+```
 
 패턴은 대소문자를 구분하지 않는 glob(`*`, `?`, `[A-Z]`)이며, `ignore_default_excludes = false`로 설정하면 include/exclude가 적용되기 전에 KEY/SECRET/TOKEN 자동 필터가 유지됩니다.
 
@@ -233,29 +233,29 @@ Codex는 작업 디렉터리에서 위쪽으로 올라가면서 프로젝트 루
 ## Observability and telemetry
 
 Codex 실행(API 요청, SSE/이벤트, 프롬프트, 도구 승인/결과)을 추적하려면 OpenTelemetry(OTel) 로그 내보내기를 활성화하세요. 기본은 비활성화이며 `[otel]`을 통해 옵트인합니다:
-[code] 
+```
     [otel]
     environment = "staging"   # defaults to "dev"
     exporter = "none"         # set to otlp-http or otlp-grpc to send events
     log_user_prompt = false   # redact user prompts unless explicitly enabled
-[/code]
+```
 
 내보내기 방식을 선택하세요:
-[code] 
+```
     [otel]
     exporter = { otlp-http = {
       endpoint = "https://otel.example.com/v1/logs",
       protocol = "binary",
       headers = { "x-otlp-api-key" = "${OTLP_TOKEN}" }
     }}
-[/code]
-[code] 
+```
+```
     [otel]
     exporter = { otlp-grpc = {
       endpoint = "https://otel.example.com:4317",
       headers = { "x-otlp-meta" = "abc123" }
     }}
-[/code]
+```
 
 `exporter = "none"`이면 Codex는 이벤트를 기록하지만 전송하지 않습니다. 내보내기는 비동기식으로 배치되며 종료 시 플러시됩니다. 이벤트 메타데이터에는 서비스 이름, CLI 버전, 환경 태그, 대화 ID, 모델, 샌드박스/승인 설정, 이벤트별 필드가 포함됩니다(자세한 내용은 [Config Reference](https://developers.openai.com/codex/config-reference) 참조).
 
@@ -300,10 +300,10 @@ Metric| Type| Fields| Description
 기본적으로 Codex는 OpenAI로 소량의 익명 사용량 및 상태 데이터를 주기적으로 전송합니다. 이는 Codex가 제대로 작동하지 않는 상황을 감지하고 어떤 기능과 구성 옵션이 사용되는지 파악해 Codex 팀이 중요한 영역에 집중하도록 돕습니다. 이 메트릭에는 개인 식별 정보(PII)가 포함되지 않습니다. 메트릭 수집은 OTel 로그/트레이스 내보내기와 독립적입니다.
 
 기기에서 Codex 전반의 메트릭 수집을 완전히 비활성화하려면 구성에서 analytics 플래그를 설정하세요:
-[code] 
+```
     [analytics]
     enabled = false
-[/code]
+```
 
 각 메트릭에는 자체 필드와 아래의 기본 컨텍스트 필드가 포함됩니다.
 
@@ -350,36 +350,36 @@ Metric| Type| Fields| Description
 ### 피드백 제어
 
 기본적으로 Codex는 `/feedback`에서 사용자가 피드백을 보낼 수 있도록 허용합니다. 모든 Codex 인터페이스에서 피드백 수집을 비활성화하려면 구성 파일을 업데이트하세요:
-[code] 
+```
     [feedback]
     enabled = false
-[/code]
+```
 
 비활성화되면 `/feedback`은 비활성화 메시지를 표시하며 Codex는 피드백 제출을 거부합니다.
 
 ### 추론 이벤트 숨김/표시
 
 시끄러운 “reasoning” 출력(예: CI 로그)을 줄이고 싶다면 다음 설정으로 억제할 수 있습니다:
-[code] 
+```
     hide_agent_reasoning = true
-[/code]
+```
 
 모델이 내보내는 원시 추론 내용을 노출하고 싶다면:
-[code] 
+```
     show_raw_agent_reasoning = true
-[/code]
+```
 
 워크플로에서 허용되는 경우에만 원시 추론을 활성화하세요. 일부 모델/제공자(예: `gpt-oss`)는 원시 추론을 내보내지 않으므로 이 경우 해당 설정은 효과가 없습니다.
 
 ## 알림
 
 Codex가 지원되는 이벤트(현재는 `agent-turn-complete`만) 발생 시 외부 프로그램을 트리거하려면 `notify`를 사용하세요. 이는 데스크톱 토스트, 채팅 웹훅, CI 업데이트 또는 기본 TUI 알림이 다루지 않는 기타 사이드 채널 알림에 유용합니다.
-[code] 
+```
     notify = ["python3", "/path/to/notify.py"]
-[/code]
+```
 
 `agent-turn-complete`에 반응하는 예시 `notify.py`(일부 생략):
-[code] 
+```
     #!/usr/bin/env python3
     import json, subprocess, sys
     
@@ -400,7 +400,7 @@ Codex가 지원되는 이벤트(현재는 `agent-turn-complete`만) 발생 시 �
     
     if __name__ == "__main__":
         sys.exit(main())
-[/code]
+```
 
 스크립트는 단일 JSON 인자를 받습니다. 공통 필드는 다음과 같습니다:
 
@@ -428,23 +428,23 @@ Codex가 지원되는 이벤트(현재는 `agent-turn-complete`만) 발생 시 �
 ## 기록 지속성
 
 기본적으로 Codex는 로컬 세션 대화록을 `CODEX_HOME`(예: `~/.codex/history.jsonl`) 아래에 저장합니다. 로컬 기록 저장을 비활성화하려면:
-[code] 
+```
     [history]
     persistence = "none"
-[/code]
+```
 
 기록 파일 크기에 상한을 두려면 `history.max_bytes`를 설정하세요. 파일이 상한을 초과하면 Codex가 가장 오래된 항목을 제거하고 최신 기록을 유지한 채로 파일을 압축합니다.
-[code] 
+```
     [history]
     max_bytes = 104857600 # 100 MiB
-[/code]
+```
 
 ## 클릭 가능한 인용
 
 해당 기능을 지원하는 터미널/에디터 통합을 사용한다면, Codex는 파일 인용을 클릭 가능한 링크로 렌더링할 수 있습니다. Codex가 사용할 URI 스킴을 선택하려면 `file_opener`를 설정하세요:
-[code] 
+```
     file_opener = "vscode" # or cursor, windsurf, vscode-insiders, none
-[/code]
+```
 
 예시: `/home/user/project/main.py:42` 같은 인용은 클릭 가능한 `vscode://file/...:42` 링크로 다시 쓸 수 있습니다.
 

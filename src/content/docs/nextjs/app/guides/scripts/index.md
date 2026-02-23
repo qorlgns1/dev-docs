@@ -18,7 +18,7 @@ Source URL: https://nextjs.org/docs/app/guides/scripts
 app/dashboard/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function DashboardLayout({
@@ -33,7 +33,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 폴더 라우트(예: `dashboard/page.js`)나 중첩 라우트(예: `dashboard/settings/page.js`)에 사용자가 접근하면 서드파티 스크립트가 가져와집니다. 동일한 레이아웃에서 여러 라우트를 이동하더라도 Next.js는 스크립트를 **한 번만 로드**하도록 보장합니다.
 
@@ -44,7 +44,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function RootLayout({
@@ -59,7 +59,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 이 스크립트는 애플리케이션의 _모든_ 라우트에 접근할 때 로드 및 실행됩니다. 사용자가 여러 페이지를 이동하더라도 Next.js는 스크립트를 **한 번만 로드**하도록 보장합니다.
 
@@ -85,22 +85,22 @@ JavaScriptTypeScript
 이 전략은 아직 실험 단계이므로 `next.config.js`에서 `nextScriptWorkers` 플래그를 활성화해야만 사용할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         nextScriptWorkers: true,
       },
     }
-[/code]
+```
 
 그런 다음 개발 서버를 실행하면 Next.js가 필요한 패키지 설치 과정을 안내합니다:
 
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm dev
-[/code]
+```
 
 `npm install @qwik.dev/partytown`을 실행해 Partytown을 설치하라는 안내를 확인하게 됩니다.
 
@@ -109,7 +109,7 @@ Terminal
 pages/home.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function Home() {
@@ -119,28 +119,28 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 서드파티 스크립트를 웹 워커에서 로드할 때 고려해야 할 트레이드오프가 여러 가지 있습니다. 자세한 내용은 Partytown의 [tradeoffs](https://partytown.qwik.dev/trade-offs) 문서를 참고하세요.
 
 ### 인라인 스크립트[](https://nextjs.org/docs/app/guides/scripts#inline-scripts)
 
 외부 파일에서 로드되지 않는 인라인 스크립트도 Script 컴포넌트에서 지원합니다. 중괄호 안에 JavaScript를 작성하면 됩니다:
-[code]
+```
     <Script id="show-banner">
       {`document.getElementById('banner').classList.remove('hidden')`}
     </Script>
-[/code]
+```
 
 또는 `dangerouslySetInnerHTML` 속성을 사용할 수 있습니다:
-[code]
+```
     <Script
       id="show-banner"
       dangerouslySetInnerHTML={{
         __html: `document.getElementById('banner').classList.remove('hidden')`,
       }}
     />
-[/code]
+```
 
 > **경고**: Next.js가 스크립트를 추적하고 최적화하려면 인라인 스크립트에 `id` 속성을 반드시 지정해야 합니다.
 
@@ -157,7 +157,7 @@ Script 컴포넌트에 이벤트 핸들러를 사용해 특정 이벤트 이후�
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Script from 'next/script'
@@ -174,7 +174,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 각 이벤트 핸들러에 대한 자세한 설명과 예시는 [`next/script`](https://nextjs.org/docs/app/api-reference/components/script#onload) API 레퍼런스를 참고하세요.
 
@@ -185,7 +185,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function Page() {
@@ -200,7 +200,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ## API 레퍼런스
 

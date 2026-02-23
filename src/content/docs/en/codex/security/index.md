@@ -40,17 +40,17 @@ Codex can also elicit approval for app (connector) tool calls that advertise sid
 For Codex cloud, see [agent internet access](https://developers.openai.com/codex/cloud/internet-access) to enable full internet access or a domain allow list.
 
 For the Codex app, CLI, or IDE Extension, the default `workspace-write` sandbox mode keeps network access turned off unless you enable it in your configuration:
-[code] 
+```
     [sandbox_workspace_write]
     network_access = true
-[/code]
+```
 
 You can also control the [web search tool](https://platform.openai.com/docs/guides/tools-web-search) without granting full network access to spawned commands. Codex defaults to using a web search cache to access results. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content, but you should still treat web results as untrusted. If you are using `--yolo` or another [full access sandbox setting](https://developers.openai.com/codex/security#common-sandbox-and-approval-combinations), web search defaults to live results. Use `--search` or set `web_search = "live"` to allow live browsing, or set it to `"disabled"` to turn the tool off:
-[code] 
+```
     web_search = "cached"  # default
     # web_search = "disabled"
     # web_search = "live"  # same as --search
-[/code]
+```
 
 Use caution when enabling network access or web search in Codex. Prompt injection can cause the agent to fetch and follow untrusted instructions.
 
@@ -105,7 +105,7 @@ With `--ask-for-approval untrusted`, Codex runs only known-safe read operations 
 #### Configuration in `config.toml`
 
 For the broader configuration workflow, see [Config basics](https://developers.openai.com/codex/config-basic), [Advanced Config](https://developers.openai.com/codex/config-advanced#approval-policies-and-sandbox-modes), and the [Configuration Reference](https://developers.openai.com/codex/config-reference).
-[code] 
+```
     # Always ask for approval mode
     approval_policy = "untrusted"
     sandbox_mode    = "read-only"
@@ -113,10 +113,10 @@ For the broader configuration workflow, see [Config basics](https://developers.o
     # Optional: Allow network in workspace-write mode
     [sandbox_workspace_write]
     network_access = true
-[/code]
+```
 
 You can also save presets as profiles, then select them with `codex --profile <name>`:
-[code] 
+```
     [profiles.full_auto]
     approval_policy = "on-request"
     sandbox_mode    = "workspace-write"
@@ -124,17 +124,17 @@ You can also save presets as profiles, then select them with `codex --profile <n
     [profiles.readonly_quiet]
     approval_policy = "never"
     sandbox_mode    = "read-only"
-[/code]
+```
 
 ### Test the sandbox locally
 
 To see what happens when a command runs under the Codex sandbox, use these Codex CLI commands:
-[code] 
+```
     # macOS
     codex sandbox macos [--full-auto] [--log-denials] [COMMAND]...
     # Linux
     codex sandbox linux [--full-auto] [COMMAND]...
-[/code]
+```
 
 The `sandbox` command is also available as `codex debug`, and the platform helpers have aliases (for example `codex sandbox seatbelt` and `codex sandbox landlock`).
 
@@ -149,11 +149,11 @@ Codex enforces the sandbox differently depending on your OS:
 
 
 If you use the Codex IDE extension on Windows, it supports WSL directly. Set the following in your VS Code settings to keep the agent inside WSL whenever it’s available:
-[code] 
+```
     {
       "chatgpt.runCodexInWindowsSubsystemForLinux": true
     }
-[/code]
+```
 
 This ensures the IDE extension inherits Linux sandbox semantics for commands, approvals, and filesystem access even when the host OS is Windows. Learn more in the [Windows setup guide](https://developers.openai.com/codex/windows).
 
@@ -188,32 +188,32 @@ Codex supports opt-in monitoring via OpenTelemetry (OTel) to help teams audit us
 ### Enable OTel (opt-in)
 
 Add an `[otel]` block to your Codex configuration (typically `~/.codex/config.toml`), choosing an exporter and whether to log prompt text.
-[code] 
+```
     [otel]
     environment = "staging"   # dev | staging | prod
     exporter = "none"          # none | otlp-http | otlp-grpc
     log_user_prompt = false     # redact prompt text unless policy allows
-[/code]
+```
 
   * `exporter = "none"` leaves instrumentation active but doesn’t send data anywhere.
   * To send events to your own collector, pick one of:
 
 
-[code] 
+```
     [otel]
     exporter = { otlp-http = {
       endpoint = "https://otel.example.com/v1/logs",
       protocol = "binary",
       headers = { "x-otlp-api-key" = "${OTLP_TOKEN}" }
     }}
-[/code]
-[code] 
+```
+```
     [otel]
     exporter = { otlp-grpc = {
       endpoint = "https://otel.example.com:4317",
       headers = { "x-otlp-meta" = "abc123" }
     }}
-[/code]
+```
 
 Codex batches events and flushes them on shutdown. Codex exports only telemetry produced by its OTel module.
 
@@ -289,15 +289,15 @@ For backwards compatibility, Codex also interprets legacy `managed_config.toml` 
 #### Example requirements.toml
 
 This example blocks `--ask-for-approval never` and `--sandbox danger-full-access` (including `--yolo`):
-[code] 
+```
     allowed_approval_policies = ["untrusted", "on-request"]
     allowed_sandbox_modes = ["read-only", "workspace-write"]
-[/code]
+```
 
 You can also constrain web search mode:
-[code] 
+```
     allowed_web_search_modes = ["cached"] # "disabled" remains implicitly allowed
-[/code]
+```
 
 `allowed_web_search_modes = []` effectively allows only `"disabled"`. For example, `allowed_web_search_modes = ["cached"]` prevents live web search even in `danger-full-access` sessions.
 
@@ -306,22 +306,22 @@ You can also constrain web search mode:
 Admins can also enforce restrictive command rules from `requirements.toml` using a `[rules]` table. These rules merge with regular `.rules` files, and the most restrictive decision still wins.
 
 Unlike `.rules`, requirements rules must specify `decision`, and that decision must be `"prompt"` or `"forbidden"` (not `"allow"`).
-[code] 
+```
     [rules]
     prefix_rules = [
       { pattern = [{ token = "rm" }], decision = "forbidden", justification = "Use git clean -fd instead." },
       { pattern = [{ token = "git" }, { any_of = ["push", "commit"] }], decision = "prompt", justification = "Require review before mutating history." },
     ]
-[/code]
+```
 
 To restrict which MCP servers Codex can enable, add an `mcp_servers` approved list. For stdio servers, match on `command`; for streamable HTTP servers, match on `url`:
-[code] 
+```
     [mcp_servers.docs]
     identity = { command = "codex-mcp" }
     
     [mcp_servers.remote]
     identity = { url = "https://example.com/mcp" }
-[/code]
+```
 
 If `mcp_servers` is present but empty, Codex disables all MCP servers.
 
@@ -381,7 +381,7 @@ Codex honors standard macOS MDM payloads, so you can distribute settings with to
 Avoid embedding secrets or high-churn dynamic values in the payload. Treat the managed TOML like any other MDM setting under change control.
 
 ### Example managed_config.toml
-[code] 
+```
     # Set conservative defaults
     approval_policy = "on-request"
     sandbox_mode    = "workspace-write"
@@ -394,7 +394,7 @@ Avoid embedding secrets or high-churn dynamic values in the payload. Treat the m
     exporter = "otlp-http"            # point at your collector
     log_user_prompt = false            # keep prompts redacted
     # exporter details live under exporter tables; see Monitoring and telemetry above
-[/code]
+```
 
 ### Recommended guardrails
 

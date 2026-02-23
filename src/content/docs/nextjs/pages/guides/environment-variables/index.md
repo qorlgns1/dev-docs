@@ -27,18 +27,18 @@ Next.js는 환경 변수를 위한 기본 제공 지원을 제공하며, 다음 
 Next.js는 `.env*` 파일의 환경 변수를 `process.env`로 불러오는 기능을 기본으로 제공합니다.
 
 .env
-[code]
+```
     DB_HOST=localhost
     DB_USER=myuser
     DB_PASS=mypassword
-[/code]
+```
 
 이렇게 하면 `process.env.DB_HOST`, `process.env.DB_USER`, `process.env.DB_PASS`가 Node.js 환경에 자동으로 로드되어 [Next.js 데이터 패칭 메서드](https://nextjs.org/docs/pages/building-your-application/data-fetching)와 [API 라우트](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)에서 사용할 수 있습니다.
 
 예를 들어 [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)를 사용할 때는 다음과 같습니다.
 
 pages/index.js
-[code]
+```
     export async function getStaticProps() {
       const db = await myDB.connect({
         host: process.env.DB_HOST,
@@ -47,7 +47,7 @@ pages/index.js
       })
       // ...
     }
-[/code]
+```
 
 ### `@next/env`로 환경 변수 로드[](https://nextjs.org/docs/pages/guides/environment-variables#loading-environment-variables-with-nextenv)
 
@@ -60,26 +60,26 @@ ORM이나 테스트 러너용 루트 구성 파일처럼 Next.js 런타임 외�
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add @next/env
-[/code]
+```
 
 envConfig.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { loadEnvConfig } from '@next/env'
 
     const projectDir = process.cwd()
     loadEnvConfig(projectDir)
-[/code]
+```
 
 그런 다음 필요한 위치에서 구성을 임포트하면 됩니다. 예:
 
 orm.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import './envConfig.ts'
 
     export default defineConfig({
@@ -87,17 +87,17 @@ JavaScriptTypeScript
         connectionString: process.env.DATABASE_URL!,
       },
     })
-[/code]
+```
 
 ### 다른 변수를 참조하기[](https://nextjs.org/docs/pages/guides/environment-variables#referencing-other-variables)
 
 Next.js는 `.env*` 파일 안에서 `$VARIABLE`처럼 `$`를 사용해 다른 변수를 참조하는 값을 자동으로 확장합니다. 즉, 다른 시크릿을 참조할 수 있습니다. 예:
 
 .env
-[code]
+```
     TWITTER_USER=nextjs
     TWITTER_URL=https://x.com/$TWITTER_USER
-[/code]
+```
 
 위 예시에서 `process.env.TWITTER_URL`은 `https://x.com/nextjs`로 설정됩니다.
 
@@ -110,16 +110,16 @@ Next.js는 `.env*` 파일 안에서 `$VARIABLE`처럼 `$`를 사용해 다른 �
 브라우저에서 환경 변수 값을 사용할 수 있도록 하려면 Next.js가 빌드 시점에 클라이언트로 전달되는 JS 번들에 값을 “인라인”하도록 할 수 있습니다. 즉, `process.env.[variable]`에 대한 모든 참조를 하드코딩된 값으로 대체합니다. 이를 지시하려면 변수에 `NEXT_PUBLIC_` 접두사를 붙이면 됩니다. 예:
 
 .env
-[code]
+```
     NEXT_PUBLIC_ANALYTICS_ID=abcdefghijk
-[/code]
+```
 
 이렇게 하면 Next.js는 Node.js 환경에서 `process.env.NEXT_PUBLIC_ANALYTICS_ID`에 대한 모든 참조를 `next build`를 실행한 환경의 값으로 대체하므로 코드 어디서든 사용할 수 있습니다. 브라우저로 전송되는 모든 JavaScript에도 인라인됩니다.
 
 > **Note** : 빌드가 끝난 뒤에는 이러한 환경 변수를 변경해도 앱이 반응하지 않습니다. 예를 들어 하나의 환경에서 빌드한 슬러그를 다른 환경으로 승격하는 Heroku 파이프라인을 사용하거나 단일 Docker 이미지를 여러 환경에 배포하는 경우, 모든 `NEXT_PUBLIC_` 변수는 빌드 시점의 값으로 고정됩니다. 따라서 프로젝트를 빌드할 때 이 값들을 적절히 설정해야 합니다. 런타임 환경 값을 사용하려면 클라이언트가 필요 시(온디맨드) 또는 초기화 중에 해당 값을 제공하는 자체 API를 설정해야 합니다.
 
 pages/index.js
-[code]
+```
     import setupAnalyticsService from '../lib/my-analytics-service'
 
     // 'NEXT_PUBLIC_ANALYTICS_ID' can be used here as it's prefixed by 'NEXT_PUBLIC_'.
@@ -131,10 +131,10 @@ pages/index.js
     }
 
     export default HomePage
-[/code]
+```
 
 다음과 같은 동적 조회는 인라인되지 않습니다.
-[code]
+```
     // This will NOT be inlined, because it uses a variable
     const varName = 'NEXT_PUBLIC_ANALYTICS_ID'
     setupAnalyticsService(process.env[varName])
@@ -142,7 +142,7 @@ pages/index.js
     // This will NOT be inlined, because it uses a variable
     const env = process.env
     setupAnalyticsService(env.NEXT_PUBLIC_ANALYTICS_ID)
-[/code]
+```
 
 ### 런타임 환경 변수[](https://nextjs.org/docs/pages/guides/environment-variables#runtime-environment-variables)
 
@@ -169,7 +169,7 @@ Next.js는 빌드 타임과 런타임 환경 변수를 모두 지원합니다.
 > **Good to know** : 기본 환경 변수와 마찬가지로 `.env.test` 파일은 저장소에 포함해야 하지만 `.env.test.local`은 포함하지 말아야 합니다. `.env*.local`은 `.gitignore`로 무시하도록 설계되었기 때문입니다.
 
 유닛 테스트를 실행하는 동안에도 `@next/env` 패키지의 `loadEnvConfig` 함수를 활용하여 Next.js와 동일한 방식으로 환경 변수를 로드할 수 있습니다.
-[code]
+```
     // The below can be used in a Jest global setup file or similar for your testing set-up
     import { loadEnvConfig } from '@next/env'
 
@@ -177,7 +177,7 @@ Next.js는 빌드 타임과 런타임 환경 변수를 모두 지원합니다.
       const projectDir = process.cwd()
       loadEnvConfig(projectDir)
     }
-[/code]
+```
 
 ## 환경 변수 로드 순서[](https://nextjs.org/docs/pages/guides/environment-variables#environment-variable-load-order)
 

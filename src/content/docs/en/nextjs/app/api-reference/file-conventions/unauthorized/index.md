@@ -118,4 +118,3 @@ export default function UnauthorizedPage() {
   - API Reference for the unauthorized function.
 
 ---
-

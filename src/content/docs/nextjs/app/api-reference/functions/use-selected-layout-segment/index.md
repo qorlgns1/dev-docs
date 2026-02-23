@@ -18,7 +18,7 @@ description: '최종 업데이트: 2026년 2월 20일'
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useSelectedLayoutSegment } from 'next/navigation'
@@ -28,7 +28,7 @@ JavaScriptTypeScript
 
       return <p>Active segment: {segment}</p>
     }
-[/code]
+```
 
 > **알아 두면 좋은 점** :
 >
@@ -38,9 +38,9 @@ JavaScriptTypeScript
 >
 
 ## 매개변수[](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#parameters)
-[code]
+```
     const segment = useSelectedLayoutSegment(parallelRoutesKey?: string)
-[/code]
+```
 
 `useSelectedLayoutSegment`는 선택적으로 [`parallelRoutesKey`](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes#with-useselectedlayoutsegments)를 받아 해당 슬롯 내의 활성 라우트 세그먼트를 읽을 수 있습니다.
 
@@ -74,7 +74,7 @@ Layout|Visited URL|Returned Segment
 app/blog/blog-nav-link.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Link from 'next/link'
@@ -103,12 +103,12 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 app/blog/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // Import the Client Component into a parent Layout (Server Component)
     import { BlogNavLink } from './blog-nav-link'
     import getFeaturedPosts from './get-featured-posts'
@@ -130,7 +130,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#version-history)
 

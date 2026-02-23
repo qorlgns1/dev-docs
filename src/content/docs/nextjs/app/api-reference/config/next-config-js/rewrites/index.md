@@ -17,7 +17,7 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 리라이트를 사용하려면 `next.config.js`에서 `rewrites` 키를 사용할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -28,7 +28,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 리라이트는 클라이언트 측 라우팅에 적용됩니다. 위 예시에서 `<Link href="/about">`로 이동하면 `/about` URL을 유지한 채 `/`의 콘텐츠를 제공합니다.
 
@@ -44,7 +44,7 @@ next.config.js
 `rewrites` 함수가 배열을 반환하면, 리라이트는 파일 시스템(페이지와 `/public` 파일) 확인 후 동적 라우트 전에 적용됩니다. `rewrites` 함수가 특정 형태의 배열 객체를 반환하면 Next.js `v10.1`부터 이 동작을 변경하고 더 정밀하게 제어할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return {
@@ -77,7 +77,7 @@ next.config.js
         }
       },
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `beforeFiles`의 리라이트는 source를 매칭한 직후 파일 시스템/동적 라우트를 확인하지 않고, 모든 `beforeFiles`가 확인될 때까지 계속됩니다.
 
@@ -96,7 +96,7 @@ Next.js에서 라우트를 확인하는 순서는 다음과 같습니다:
 리라이트에서 매개변수를 사용할 때, 해당 매개변수가 `destination`에 사용되지 않으면 기본적으로 쿼리에 전달됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -107,12 +107,12 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 매개변수가 destination에서 사용되면 어떤 매개변수도 자동으로 쿼리에 전달되지 않습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -123,12 +123,12 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 이미 destination에서 하나의 매개변수를 사용하고 있더라도, `destination`에서 쿼리를 지정하여 매개변수를 수동으로 전달할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -142,7 +142,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 > **알아두면 좋아요** : [Automatic Static Optimization](https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization)의 정적 페이지나 [프리렌더링](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)에서 리라이트로 전달된 매개변수는 하이드레이션 이후 클라이언트에서 파싱되어 쿼리로 제공됩니다.
 
@@ -151,7 +151,7 @@ next.config.js
 경로 매칭이 허용되며, 예를 들어 `/blog/:slug`는 `/blog/first-post`와 매칭됩니다(중첩 경로 없음).
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -162,7 +162,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 `/blog/:slug` 패턴은 `/blog/first-post`, `/blog/post-1`과 매칭되지만 `/blog/a/b`와는 매칭되지 않습니다(중첩 경로 없음). 패턴은 시작 지점에 고정되므로 `/blog/:slug`는 `/archive/blog/first-post`와 매칭되지 않습니다.
 
@@ -175,7 +175,7 @@ next.config.js
 와일드카드 경로를 매칭하려면 매개변수 뒤에 `*`를 사용할 수 있습니다. 예를 들어 `/blog/:slug*`는 `/blog/a/b/c/d/hello-world`와 매칭됩니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -186,14 +186,14 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ### 정규식 경로 매칭[](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites#regex-path-matching)
 
 정규식 경로를 매칭하려면 매개변수 뒤에 괄호로 정규식을 감싸면 됩니다. 예를 들어 `/blog/:slug(\\d{1,})`는 `/blog/123`와 매칭되지만 `/blog/abc`와는 매칭되지 않습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -204,12 +204,12 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 정규식 경로 매칭에 사용되는 문자는 `(`, `)`, `{`, `}`, `[`, `]`, `|`, `\`, `^`, `.`, `:`, `*`, `+`, `-`, `?`, `$`이며, `source`에서 특수 용도가 아닌 값으로 사용하려면 앞에 `\\`를 추가해 이스케이프해야 합니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -221,7 +221,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## 헤더, 쿠키, 쿼리 매칭[](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites#header-cookie-and-query-matching)
 
@@ -234,7 +234,7 @@ next.config.js
   * `value`: `String` 또는 `undefined` \- 확인할 값이며, undefined면 아무 값이나 매칭됩니다. `value`에 `first-(?<paramName>.*)`와 같은 정규식 문자열을 사용하면, `first-second` 값에서 `second`를 추출해 `:paramName`으로 destination에서 사용할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -293,7 +293,7 @@ next.config.js
                 key: 'x-authorized',
                 value: '(?<authorized>yes|true)',
               },
-[/code]
+```
 
 ],
             destination: '/home?authorized=:authorized',
@@ -313,7 +313,6 @@ next.config.js
         ]
       },
     }
-[/code]
 
 ## 외부 URL로 재작성[](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites#rewriting-to-an-external-url)
 
@@ -324,7 +323,7 @@ next.config.js
 리라이트를 사용하면 외부 URL로 라우트를 재작성할 수 있으므로 Next.js를 점진적으로 도입할 때 특히 유용합니다. 아래 예시는 메인 앱의 `/blog` 라우트를 외부 사이트로 리디렉션하기 위한 리라이트입니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return [
@@ -339,12 +338,12 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 `trailingSlash: true`를 사용하는 경우 `source` 파라미터에도 슬래시를 추가해야 합니다. 대상 서버가 트레일링 슬래시를 기대한다면 `destination` 파라미터에도 포함해야 합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       trailingSlash: true,
       async rewrites() {
@@ -360,7 +359,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ### Next.js 점진적 도입[](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites#incremental-adoption-of-nextjs)
 
@@ -369,7 +368,7 @@ next.config.js
 이렇게 하면 더 많은 페이지를 Next.js로 마이그레이션할 때마다 리라이트 구성을 변경할 필요가 없습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async rewrites() {
         return {
@@ -382,14 +381,14 @@ next.config.js
         }
       },
     }
-[/code]
+```
 
 ### basePath 지원과 함께하는 리라이트[](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites#rewrites-with-basepath-support)
 
 리라이트와 함께 [`basePath` 지원](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)을 활용하면 `basePath: false`를 리라이트에 추가하지 않는 한 각 `source`와 `destination`이 자동으로 `basePath`로 접두사 처리됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       basePath: '/docs',
 
@@ -409,7 +408,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites#version-history)
 

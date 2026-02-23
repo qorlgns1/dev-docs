@@ -26,7 +26,7 @@ Last updated February 20, 2026
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -36,7 +36,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/isolatedDevBuild#version-history)
 

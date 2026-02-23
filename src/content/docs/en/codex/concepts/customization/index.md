@@ -88,7 +88,7 @@ A skill is typically a `SKILL.md` file plus optional scripts, references, and as
 The skill directory can include a `scripts/` folder with CLI scripts that Codex invokes as part of the workflow (for example, seed data or run validations). When the workflow needs external systems (issue trackers, design tools, docs servers), pair the skill with [MCP](https://developers.openai.com/codex/mcp).
 
 Example `SKILL.md`:
-[code] 
+```
     ---
     name: commit
     description: Stage and commit changes in semantic groups. Use when the user wants to commit, organize commits, or clean up a branch before pushing.
@@ -98,7 +98,7 @@ Example `SKILL.md`:
     2. Group into separate commits: feat → test → docs → refactor → chore.
     3. Write concise commit messages that match the change scope.
     4. Keep each commit focused and reviewable.
-[/code]
+```
 
 Use skills for:
 

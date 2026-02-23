@@ -51,4 +51,3 @@ In case you do have custom webpack configuration, either through custom plugins 
 ## Useful Links
 
 In case you're running into issues you can connect with the community in [this help discussion](https://github.com/vercel/next.js/discussions/23498).
-

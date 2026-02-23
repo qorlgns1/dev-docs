@@ -263,4 +263,3 @@ As Partial Prerendering moves to stable, we will provide support through the Dep
 
 When stopping the server, ensure a graceful shutdown by sending `SIGINT` or `SIGTERM` signals and waiting. This allows the Next.js server to wait until after pending callback functions or promises used inside `after` have finished.
 ---
-

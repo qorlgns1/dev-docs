@@ -15,7 +15,7 @@ description: '는 Server Components에서 들어오는 HTTP 요청의 쿠키를 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { cookies } from 'next/headers'
 
     export default async function Page() {
@@ -23,7 +23,7 @@ JavaScriptTypeScript
       const theme = cookieStore.get('theme')
       return '...'
     }
-[/code]
+```
 
 ## 참조[](https://nextjs.org/docs/app/api-reference/functions/cookies#reference)
 
@@ -98,7 +98,7 @@ UI는 언마운트되지 않지만, 서버에서 온 데이터에 의존하는 �
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { cookies } from 'next/headers'
 
     export default async function Page() {
@@ -106,7 +106,7 @@ JavaScriptTypeScript
       const theme = cookieStore.get('theme')
       return '...'
     }
-[/code]
+```
 
 ### 모든 쿠키 가져오기[](https://nextjs.org/docs/app/api-reference/functions/cookies#getting-all-cookies)
 
@@ -115,7 +115,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { cookies } from 'next/headers'
 
     export default async function Page() {
@@ -127,7 +127,7 @@ JavaScriptTypeScript
         </div>
       ))
     }
-[/code]
+```
 
 ### 쿠키 설정하기[](https://nextjs.org/docs/app/api-reference/functions/cookies#setting-a-cookie)
 
@@ -136,7 +136,7 @@ JavaScriptTypeScript
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { cookies } from 'next/headers'
@@ -155,7 +155,7 @@ JavaScriptTypeScript
         path: '/',
       })
     }
-[/code]
+```
 
 ### 쿠키 존재 여부 확인하기[](https://nextjs.org/docs/app/api-reference/functions/cookies#checking-if-a-cookie-exists)
 
@@ -164,7 +164,7 @@ JavaScriptTypeScript
 app/page.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cookies } from 'next/headers'
 
     export default async function Page() {
@@ -172,7 +172,7 @@ JavaScriptTypeScript
       const hasCookie = cookieStore.has('theme')
       return '...'
     }
-[/code]
+```
 
 ### 쿠키 삭제하기[](https://nextjs.org/docs/app/api-reference/functions/cookies#deleting-cookies)
 
@@ -183,7 +183,7 @@ JavaScriptTypeScript
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { cookies } from 'next/headers'
@@ -192,14 +192,14 @@ JavaScriptTypeScript
       const cookieStore = await cookies()
       cookieStore.delete('name')
     }
-[/code]
+```
 
 동일한 이름과 빈 값으로 새 쿠키 설정:
 
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { cookies } from 'next/headers'
@@ -208,14 +208,14 @@ JavaScriptTypeScript
       const cookieStore = await cookies()
       cookieStore.set('name', '')
     }
-[/code]
+```
 
 `maxAge`를 0으로 설정하면 쿠키가 즉시 만료됩니다. `maxAge`는 초 단위 값을 받습니다.
 
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { cookies } from 'next/headers'
@@ -224,7 +224,7 @@ JavaScriptTypeScript
       const cookieStore = await cookies()
       cookieStore.set('name', 'value', { maxAge: 0 })
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/cookies#version-history)
 

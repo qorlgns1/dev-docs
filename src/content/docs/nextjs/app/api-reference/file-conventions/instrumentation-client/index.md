@@ -21,7 +21,7 @@ description: '파일을 사용하면 애플리케이션이 인터랙티브 상�
 instrumentation-client.ts
 
 JavaScriptTypeScript
-[code]
+```
     // Set up performance monitoring
     performance.mark('app-init')
 
@@ -33,7 +33,7 @@ JavaScriptTypeScript
       // Send to your error tracking service
       reportError(event.error)
     })
-[/code]
+```
 
 **오류 처리:** 모니터링을 견고하게 유지하려면 계측 코드에 try-catch 블록을 구현하세요. 이렇게 하면 개별 추적 실패가 다른 계측 기능에 영향을 주지 않습니다.
 
@@ -44,7 +44,7 @@ JavaScriptTypeScript
 instrumentation-client.ts
 
 JavaScriptTypeScript
-[code]
+```
     performance.mark('app-init')
 
     export function onRouterTransitionStart(
@@ -54,7 +54,7 @@ JavaScriptTypeScript
       console.log(`Navigation started: ${navigationType} to ${url}`)
       performance.mark(`nav-start-${Date.now()}`)
     }
-[/code]
+```
 
 `onRouterTransitionStart` 함수는 두 개의 매개변수를 받습니다:
 
@@ -86,7 +86,7 @@ React가 시작되기 전에 오류 추적을 초기화하고, 탐색 브레드�
 instrumentation-client.ts
 
 JavaScriptTypeScript
-[code]
+```
     import Monitor from './lib/monitoring'
 
     Monitor.initialize()
@@ -97,7 +97,7 @@ JavaScriptTypeScript
         category: 'navigation',
       })
     }
-[/code]
+```
 
 ### 분석 추적[](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client#analytics-tracking)
 
@@ -106,7 +106,7 @@ JavaScriptTypeScript
 instrumentation-client.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { analytics } from './lib/analytics'
 
     analytics.init()
@@ -118,7 +118,7 @@ JavaScriptTypeScript
         timestamp: Date.now(),
       })
     }
-[/code]
+```
 
 ### 성능 모니터링[](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client#performance-monitoring)
 
@@ -127,7 +127,7 @@ Performance Observer API와 퍼포먼스 마크를 사용해 Time to Interactive
 instrumentation-client.ts
 
 JavaScriptTypeScript
-[code]
+```
     const startTime = performance.now()
 
     const observer = new PerformanceObserver(
@@ -145,7 +145,7 @@ JavaScriptTypeScript
     export function onRouterTransitionStart(url: string) {
       performance.mark(`nav-start-${url}`)
     }
-[/code]
+```
 
 ### 폴리필[](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client#polyfills)
 
@@ -154,7 +154,7 @@ JavaScriptTypeScript
 instrumentation-client.ts
 
 JavaScriptTypeScript
-[code]
+```
     import './lib/polyfills'
 
     if (!window.ResizeObserver) {
@@ -162,7 +162,7 @@ JavaScriptTypeScript
         window.ResizeObserver = mod.default
       })
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client#version-history)
 

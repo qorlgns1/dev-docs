@@ -26,22 +26,25 @@ Codex는 비어 있는 파일을 건너뛰며, 합쳐진 크기가 `project_doc_
 모든 저장소가 기본 작업 합의를 상속하도록 Codex 홈 디렉터리에 지속적인 기본값을 만드세요.
 
   1. 디렉터리가 존재하는지 확인합니다:
-[code] mkdir -p ~/.codex
-[/code]
+```
+mkdir -p ~/.codex
+```
 
   2. 재사용 가능한 환경설정을 담은 `~/.codex/AGENTS.md`를 작성합니다:
-[code] # ~/.codex/AGENTS.md
+```
+# ~/.codex/AGENTS.md
          
          ## Working agreements
          
          - Always run `npm test` after modifying JavaScript files.
          - Prefer `pnpm` when installing dependencies.
          - Ask for confirmation before adding new production dependencies.
-[/code]
+```
 
   3. 어떤 위치에서든 Codex를 실행해 파일이 로드되는지 확인합니다:
-[code] codex --ask-for-approval never "Summarize the current instructions."
-[/code]
+```
+codex --ask-for-approval never "Summarize the current instructions."
+```
 
 예상 결과: Codex가 작업을 제안하기 전에 `~/.codex/AGENTS.md`에 있는 항목을 인용합니다.
 
@@ -52,26 +55,29 @@ Codex는 비어 있는 파일을 건너뛰며, 합쳐진 크기가 `project_doc_
 저장소 단위 파일은 전역 기본값을 상속하면서도 Codex가 프로젝트 규범을 인지하도록 유지합니다.
 
   1. 저장소 루트에 기본 설정을 다루는 `AGENTS.md`를 추가합니다:
-[code] # AGENTS.md
+```
+# AGENTS.md
          
          ## Repository expectations
          
          - Run `npm run lint` before opening a pull request.
          - Document public utilities in `docs/` when you change behavior.
-[/code]
+```
 
   2. 특정 팀에 다른 규칙이 필요할 때 하위 디렉터리에 오버라이드를 추가합니다. 예를 들어 `services/payments/` 내부에 `AGENTS.override.md`를 생성합니다:
-[code] # services/payments/AGENTS.override.md
+```
+# services/payments/AGENTS.override.md
          
          ## Payments service rules
          
          - Use `make test-payments` instead of `npm test`.
          - Never rotate API keys without notifying the security channel.
-[/code]
+```
 
   3. payments 디렉터리에서 Codex를 시작합니다:
-[code] codex --cd services/payments --ask-for-approval never "List the instruction sources you loaded."
-[/code]
+```
+codex --cd services/payments --ask-for-approval never "List the instruction sources you loaded."
+```
 
 예상 결과: Codex가 전역 파일을 먼저, 저장소 루트의 `AGENTS.md`를 두 번째, payments 오버라이드를 마지막으로 보고합니다.
 
@@ -102,10 +108,11 @@ Codex는 현재 디렉터리에 도달하면 검색을 멈추므로, 특화된 �
 이미 다른 파일 이름(예: `TEAM_GUIDE.md`)을 사용하는 리포지토리라면, 폴백 목록에 추가하여 Codex가 지침 파일로 인식하도록 하세요.
 
   1. Codex 구성을 편집합니다:
-[code] # ~/.codex/config.toml
+```
+# ~/.codex/config.toml
          project_doc_fallback_filenames = ["TEAM_GUIDE.md", ".agents.md"]
          project_doc_max_bytes = 65536
-[/code]
+```
 
   2. 업데이트된 구성이 로드되도록 Codex를 재시작하거나 새 명령을 실행합니다.
 
@@ -126,9 +133,9 @@ Codex는 현재 디렉터리에 도달하면 검색을 멈추므로, 특화된 �
       * …
 
 다른 프로필(예: 프로젝트 전용 자동화 사용자)이 필요할 때는 `CODEX_HOME` 환경 변수를 설정하세요:
-[code] 
+```
     CODEX_HOME=$(pwd)/.codex codex exec "List active instruction sources"
-[/code]
+```
 
 예상 결과: 출력에는 사용자 지정 `.codex` 디렉터리를 기준으로 한 파일 경로가 표시됩니다.
 

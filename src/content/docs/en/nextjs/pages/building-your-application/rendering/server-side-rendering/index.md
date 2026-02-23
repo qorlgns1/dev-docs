@@ -35,4 +35,3 @@ As you can see, `getServerSideProps` is similar to `getStaticProps`, but the dif
 
 To learn more about how `getServerSideProps` works, check out our [Data Fetching documentation](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props).
 ---
-

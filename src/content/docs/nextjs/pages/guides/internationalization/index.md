@@ -32,7 +32,7 @@ Next.js는 `v10.0.0`부터 국제화([i18n](https://en.wikipedia.org/wiki/Intern
 사용자 로케일이 `nl-BE`인데 설정에 없다면, `nl`이 있다면 그쪽으로, 없다면 기본 로케일로 리디렉션됩니다. 특정 국가의 모든 지역을 지원할 계획이 없다면, 폴백 역할을 할 국가 로케일을 포함해 두는 것이 좋습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       i18n: {
         // These are all the locales you want to support in
@@ -63,7 +63,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 ## 로케일 전략[](https://nextjs.org/docs/pages/guides/internationalization#locale-strategies)
 
@@ -74,14 +74,14 @@ next.config.js
 서브 경로 라우팅은 URL 경로에 로케일을 포함합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       i18n: {
         locales: ['en-US', 'fr', 'nl-NL'],
         defaultLocale: 'en-US',
       },
     }
-[/code]
+```
 
 위 설정을 사용하면 `en-US`, `fr`, `nl-NL`로 라우팅할 수 있고, `en-US`가 기본 로케일입니다. `pages/blog.js`가 있다면 다음 URL을 사용할 수 있습니다.
 
@@ -96,7 +96,7 @@ next.config.js
 도메인 라우팅을 사용하면 로케일별로 서로 다른 도메인에서 콘텐츠를 제공하도록 구성할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       i18n: {
         locales: ['en-US', 'fr', 'nl-NL', 'nl-BE'],
@@ -123,7 +123,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 예를 들어 `pages/blog.js`가 있다면 다음 URL이 제공됩니다.
 
@@ -153,7 +153,7 @@ Next.js 12와 [Proxy](https://nextjs.org/docs/pages/api-reference/file-conventio
 예를 들어, 몇 가지 언어를 지원하는 `next.config.js`는 다음과 같습니다. `"default"` 로케일을 의도적으로 추가했다는 점에 주목하세요.
 
 next.config.js
-[code]
+```
     module.exports = {
       i18n: {
         locales: ['default', 'en', 'de', 'fr'],
@@ -162,12 +162,12 @@ next.config.js
       },
       trailingSlash: true,
     }
-[/code]
+```
 
 이제 [Proxy](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy)를 사용해 사용자 지정 라우팅 규칙을 추가할 수 있습니다.
 
 proxy.ts
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
 
     const PUBLIC_FILE = /\.(.*)$/
@@ -189,7 +189,7 @@ proxy.ts
         )
       }
     }
-[/code]
+```
 
 이 [Proxy](https://nextjs.org/docs/pages/api-reference/file-conventions/proxy)는 [API Routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)와 [public](https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder) 폴더의 글꼴·이미지 같은 파일에는 기본 접두사를 추가하지 않습니다. 기본 로케일로 요청이 들어오면 `/en` 접두사로 리디렉션합니다.
 
@@ -198,13 +198,13 @@ proxy.ts
 자동 로케일 감지는 다음 설정으로 비활성화할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       i18n: {
         localeDetection: false,
       },
     }
-[/code]
+```
 
 `localeDetection`을 `false`로 설정하면, Next.js는 더 이상 사용자가 선호하는 로케일을 기반으로 자동 리디렉션하지 않고, 앞서 설명한 대로 로케일 기반 도메인이나 경로에서 감지한 로케일 정보만 제공합니다.
 
@@ -226,7 +226,7 @@ Next.js 라우터를 통해 로케일 정보를 가져올 수 있습니다. 예�
 
 `next/link`에서는 현재 활성 로케일과 다른 로케일로 전환하려면 `locale` prop을 제공하면 됩니다. `locale` prop을 제공하지 않으면 클라이언트 전환 동안 현재 활성 `locale`이 사용됩니다. 예:
 
-[code]
+```
     import Link from 'next/link'
 
     export default function IndexPage(props) {
@@ -236,11 +236,11 @@ Next.js 라우터를 통해 로케일 정보를 가져올 수 있습니다. 예�
         </Link>
       )
     }
-[/code]
+```
 
 `next/router` 메서드를 직접 사용할 때는 전환 옵션으로 사용할 `locale`을 지정할 수 있습니다. 예:
 
-[code]
+```
     import { useRouter } from 'next/router'
 
     export default function IndexPage(props) {
@@ -256,21 +256,21 @@ Next.js 라우터를 통해 로케일 정보를 가져올 수 있습니다. 예�
         </div>
       )
     }
-[/code]
+```
 
 [동적 라우트](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)의 쿼리 값이나 숨겨진 href 쿼리 값 등 모든 라우팅 정보를 유지하면서 `locale`만 전환하려면 `href` 매개변수를 객체로 전달할 수 있습니다.
-[code]
+```
     import { useRouter } from 'next/router'
     const router = useRouter()
     const { pathname, asPath, query } = router
     // change just the locale and maintain all other route information including href's query
     router.push({ pathname, query }, asPath, { locale: nextLocale })
-[/code]
+```
 
 `router.push`에서 URL 객체 구조를 사용하는 방법은 [여기](https://nextjs.org/docs/pages/api-reference/functions/use-router#with-url-object)를 참고하세요.
 
 이미 로케일이 포함된 `href`가 있다면 로케일 접두사를 자동으로 처리하는 동작을 비활성화할 수 있습니다.
-[code]
+```
     import Link from 'next/link'
 
     export default function IndexPage(props) {
@@ -281,7 +281,7 @@ To /fr/another
         </Link>
       )
     }
-[/code]
+```
 
 ## `NEXT_LOCALE` 쿠키 활용하기[](https://nextjs.org/docs/pages/guides/internationalization#leveraging-the-next_locale-cookie)
 
@@ -304,7 +304,7 @@ Next.js는 페이지 변형을 알지 못하므로 [`next/head`](https://nextjs.
 `getStaticProps`를 [Dynamic Routes](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)와 함께 사용하는 페이지의 경우, 사전 렌더링하려는 페이지의 모든 로케일 변형을 [`getStaticPaths`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths)에서 반환해야 합니다. `paths`에 대해 반환되는 `params` 객체와 함께, 렌더링하려는 로케일을 지정하는 `locale` 필드를 반환할 수도 있습니다. 예:
 
 pages/blog/[slug].js
-[code]
+```
     export const getStaticPaths = ({ locales }) => {
       return {
         paths: [
@@ -315,7 +315,7 @@ pages/blog/[slug].js
         fallback: true,
       }
     }
-[/code]
+```
 
 [Automatically Statically Optimized](https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization) 페이지와 비동적 `getStaticProps` 페이지의 경우 **각 로케일마다 페이지 버전이 생성됩니다.** 이는 `getStaticProps`에 구성된 로케일 수에 따라 빌드 시간이 늘어날 수 있으므로 중요합니다.
 
@@ -330,7 +330,7 @@ pages/blog/[slug].js
 ### 비동적 getStaticProps 페이지[](https://nextjs.org/docs/pages/guides/internationalization#non-dynamic-getstaticprops-pages)
 
 비동적 `getStaticProps` 페이지도 위와 같이 각 로케일 버전이 생성됩니다. `getStaticProps`는 렌더링되는 각 `locale`과 함께 호출됩니다. 특정 로케일을 사전 렌더링에서 제외하려면 `getStaticProps`에서 `notFound: true`를 반환하면 해당 페이지 변형이 생성되지 않습니다.
-[code]
+```
     export async function getStaticProps({ locale }) {
       // Call an external API endpoint to get posts.
       // You can use any data fetching library
@@ -351,7 +351,7 @@ pages/blog/[slug].js
         },
       }
     }
-[/code]
+```
 
 ## i18n 구성 한계[](https://nextjs.org/docs/pages/guides/internationalization#limits-for-the-i18n-config)
 

@@ -18,7 +18,7 @@ Source URL: https://nextjs.org/docs/pages/api-reference/functions/use-params
 pages/shop/[slug].tsx
 
 JavaScript / TypeScript
-[code]
+```
     import { useParams } from 'next/navigation'
 
     export default function ShopPage() {
@@ -34,12 +34,12 @@ JavaScript / TypeScript
       // `params` -> { slug: 'shoes' }
       return <>Shop: {params.slug}</>
     }
-[/code]
+```
 
 ## 매개변수[](https://nextjs.org/docs/pages/api-reference/functions/use-params#parameters)
-[code]
+```
     const params = useParams()
-[/code]
+```
 
 `useParams`는 어떤 매개변수도 받지 않습니다.
 
@@ -74,7 +74,7 @@ Route| URL| `useParams()`
 pages/shop/[slug].tsx
 
 JavaScript / TypeScript
-[code]
+```
     import { useParams } from 'next/navigation'
 
     export default function ShopPage() {
@@ -88,7 +88,7 @@ JavaScript / TypeScript
 
       return <>Shop: {params.slug}</>
     }
-[/code]
+```
 
 ### `getServerSideProps`와 함께 사용[](https://nextjs.org/docs/pages/api-reference/functions/use-params#using-with-getserversideprops)
 
@@ -97,7 +97,7 @@ JavaScript / TypeScript
 pages/shop/[slug].tsx
 
 JavaScript / TypeScript
-[code]
+```
     import { useParams } from 'next/navigation'
 
     export default function ShopPage() {
@@ -117,7 +117,7 @@ JavaScript / TypeScript
     export async function getServerSideProps() {
       return { props: {} }
     }
-[/code]
+```
 
 ### `router.query`와의 비교[](https://nextjs.org/docs/pages/api-reference/functions/use-params#comparison-with-routerquery)
 
@@ -126,7 +126,7 @@ JavaScript / TypeScript
 pages/shop/[slug].tsx
 
 JavaScript / TypeScript
-[code]
+```
     import { useRouter } from 'next/router'
     import { useParams } from 'next/navigation'
 
@@ -141,7 +141,7 @@ JavaScript / TypeScript
 
       // ...
     }
-[/code]
+```
 
 ## 예시[](https://nextjs.org/docs/pages/api-reference/functions/use-params#examples)
 
@@ -152,7 +152,7 @@ JavaScript / TypeScript
 components/breadcrumb.tsx
 
 JavaScript / TypeScript
-[code]
+```
     import { useParams } from 'next/navigation'
 
     // This component works in both pages/ and app/
@@ -166,7 +166,7 @@ JavaScript / TypeScript
 
       return <nav>Home / {params.slug}</nav>
     }
-[/code]
+```
 
 > **알아두면 좋아요**: App Router에서 이 컴포넌트를 사용할 때 `useParams`는 `null`을 반환하지 않으므로 폴백 분기가 렌더링되지 않습니다.
 

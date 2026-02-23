@@ -22,9 +22,9 @@ description: '함수는 사용자를 다른 URL로 리디렉션하도록 해 줍
 ## 매개변수[](https://nextjs.org/docs/app/api-reference/functions/permanentRedirect#parameters)
 
 `permanentRedirect` 함수는 두 개의 인수를 받습니다:
-[code]
+```
     permanentRedirect(path, type)
-[/code]
+```
 
 Parameter| Type| Description
 ---|---|---
@@ -34,13 +34,13 @@ Parameter| Type| Description
 기본적으로 `permanentRedirect`는 [서버 액션](https://nextjs.org/docs/app/getting-started/updating-data)에서 `push`(브라우저 히스토리 스택에 새 항목 추가)를, 다른 모든 곳에서는 `replace`(브라우저 히스토리 스택의 현재 URL 교체)를 사용합니다. `type` 매개변수를 지정해 이 동작을 덮어쓸 수 있습니다.
 
 `RedirectType` 객체에는 `type` 매개변수에 사용할 수 있는 옵션이 포함되어 있습니다.
-[code]
+```
     import { permanentRedirect, RedirectType } from 'next/navigation'
 
     permanentRedirect('/redirect-to', RedirectType.replace)
     // or
     permanentRedirect('/redirect-to', RedirectType.push)
-[/code]
+```
 
 `type` 매개변수는 서버 컴포넌트에서 사용될 때는 영향을 주지 않습니다.
 
@@ -53,7 +53,7 @@ Parameter| Type| Description
 `permanentRedirect()` 함수를 호출하면 `NEXT_REDIRECT` 오류가 발생하고, 오류가 발생한 라우트 세그먼트의 렌더링이 종료됩니다.
 
 app/team/[id]/page.js
-[code]
+```
     import { permanentRedirect } from 'next/navigation'
 
     async function fetchTeam(id) {
@@ -71,7 +71,7 @@ app/team/[id]/page.js
 
       // ...
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `permanentRedirect`는 TypeScript [`never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never) 타입을 사용하기 때문에 `return permanentRedirect()`를 사용할 필요가 없습니다.
 

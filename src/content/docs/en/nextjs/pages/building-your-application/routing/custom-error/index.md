@@ -101,4 +101,3 @@ If you have a custom `Error` component be sure to import that one instead. `next
 * `Error` does not currently support Next.js [Data Fetching methods](https://nextjs.org/docs/pages/building-your-application/data-fetching) like [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props) or [`getServerSideProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props).
 * `_error`, like `_app`, is a reserved pathname. `_error` is used to define the customized layouts and behaviors of the error pages. `/_error` will render 404 when accessed directly via [routing](https://nextjs.org/docs/pages/building-your-application/routing) or rendering in a [custom server](https://nextjs.org/docs/pages/guides/custom-server).
 ---
-

@@ -26,7 +26,7 @@ description: '이 문서는 사용자 정의 App 컴포넌트를 업데이트하
 **Before**
 
 pages/_app.js
-[code]
+```
     import React from 'react'
     import App, { Container } from 'next/app'
 
@@ -42,12 +42,12 @@ pages/_app.js
     }
 
     export default MyApp
-[/code]
+```
 
 **After**
 
 pages/_app.js
-[code]
+```
     import React from 'react'
     import App from 'next/app'
 
@@ -59,7 +59,7 @@ pages/_app.js
     }
 
     export default MyApp
-[/code]
+```
 
 이 변경을 적용하면 `<Container>` 컴포넌트 없이도 사용자 정의 `<App>`이 예상대로 동작합니다.
 

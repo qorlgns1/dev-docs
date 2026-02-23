@@ -48,21 +48,21 @@ Codex는 두 가지 방법으로 스킬을 활성화합니다.
 ## 스킬 만들기
 
 기본 제공 크리에이터를 먼저 사용하세요.
-[code] 
+```
     $skill-creator
-[/code]
+```
 
 크리에이터는 스킬의 기능, 트리거 조건, 지침 전용으로 둘지 스크립트를 포함할지 묻습니다. 기본값은 지침 전용입니다.
 
 폴더와 `SKILL.md` 파일을 만들어 수동으로 스킬을 만들 수도 있습니다.
-[code] 
+```
     ---
     name: skill-name
     description: Explain exactly when this skill should and should not trigger.
     ---
     
     Skill instructions for Codex to follow.
-[/code]
+```
 
 Codex는 스킬 변경을 자동으로 감지합니다. 업데이트가 반영되지 않으면 Codex를 재시작하세요.
 
@@ -89,27 +89,27 @@ Codex는 심볼릭 링크된 스킬 폴더를 지원하며, 이러한 위치를 
 ## 스킬 설치
 
 기본 제공 스킬 외의 스킬을 설치하려면 `$skill-installer`를 사용하세요:
-[code] 
+```
     $skill-installer install the linear skill from the .experimental folder
-[/code]
+```
 
 또한 설치 프로그램에 다른 저장소에서 스킬을 다운로드하도록 지시할 수도 있습니다. Codex는 새로 설치된 스킬을 자동으로 감지하며, 표시되지 않으면 Codex를 다시 시작하세요.
 
 ## 스킬 활성화 또는 비활성화
 
 스킬을 삭제하지 않고 비활성화하려면 `~/.codex/config.toml`의 `[[skills.config]]` 항목을 사용하세요:
-[code] 
+```
     [[skills.config]]
     path = "/path/to/skill/SKILL.md"
     enabled = false
-[/code]
+```
 
 `~/.codex/config.toml`을 변경한 뒤에는 Codex를 다시 시작하세요.
 
 ## 선택적 메타데이터
 
 더 원활한 스킬 사용 경험을 위해 [Codex 앱](https://developers.openai.com/codex/app)에서 UI 메타데이터를 구성하고 호출 정책을 설정하며 도구 종속성을 선언하려면 `agents/openai.yaml`을 추가하세요.
-[code] 
+```
     interface:
       display_name: "Optional user-facing name"
       short_description: "Optional user-facing description"
@@ -128,7 +128,7 @@ Codex는 심볼릭 링크된 스킬 폴더를 지원하며, 이러한 위치를 
           description: "OpenAI Docs MCP server"
           transport: "streamable_http"
           url: "https://developers.openai.com/mcp"
-[/code]
+```
 
 `allow_implicit_invocation`(기본값: `true`): `false`이면 Codex는 사용자 프롬프트만으로 스킬을 암묵적으로 호출하지 않으며, 명시적인 `$skill` 호출은 계속 동작합니다.
 

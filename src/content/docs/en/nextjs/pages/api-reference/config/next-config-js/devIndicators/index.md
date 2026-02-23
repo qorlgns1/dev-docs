@@ -47,4 +47,3 @@ When exporting [`getServerSideProps`](https://nextjs.org/docs/pages/building-you
 | `v15.2.0` | Improved on-screen indicator with new `position` option. `appIsrStatus`, `buildActivity`, and `buildActivityPosition` options have been deprecated. |
 | `v15.0.0` | Static on-screen indicator added with `appIsrStatus` option.                                                                                        |
 ---
-

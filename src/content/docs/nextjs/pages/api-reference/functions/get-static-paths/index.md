@@ -16,7 +16,7 @@ description: 'pages/repo/[name].tsx'
 pages/repo/[name].tsx
 
 JavaScript TypeScript
-[code]
+```
     import type {
       InferGetStaticPropsType,
       GetStaticProps,
@@ -54,7 +54,7 @@ JavaScript TypeScript
     }: InferGetStaticPropsType<typeof getStaticProps>) {
       return repo.stargazers_count
     }
-[/code]
+```
 
 ## getStaticPaths 반환 값[](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#getstaticpaths-return-values)
 
@@ -63,7 +63,7 @@ JavaScript TypeScript
 ### `paths`[](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#paths)
 
 `paths` 키는 어떤 경로를 사전 렌더링할지를 결정합니다. 예를 들어 `pages/posts/[id].js` 이름의 [Dynamic Routes](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)를 사용하는 페이지가 있다고 가정해 봅시다. 이 페이지에서 `getStaticPaths`를 export하고 `paths`에 다음을 반환하면:
-[code]
+```
     return {
       paths: [
         { params: { id: '1' }},
@@ -75,7 +75,7 @@ JavaScript TypeScript
       ],
       fallback: ...
     }
-[/code]
+```
 
 Next.js는 `pages/posts/[id].js`의 페이지 컴포넌트를 사용하여 `next build` 중에 `/posts/1`과 `/posts/2`를 정적으로 생성합니다.
 
@@ -98,7 +98,7 @@ Next.js는 `pages/posts/[id].js`의 페이지 컴포넌트를 사용하여 `next
 다음 예제는 `pages/posts/[id].js`라는 페이지마다 하나의 블로그 글을 사전 렌더링합니다. 블로그 글 목록은 CMS에서 가져와 `getStaticPaths`가 반환하며, 각 페이지는 [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)를 사용해 CMS에서 글 데이터를 가져옵니다.
 
 pages/posts/[id].js
-[code]
+```
     function Post({ post }) {
       // Render post...
     }
@@ -131,7 +131,7 @@ pages/posts/[id].js
     }
 
     export default Post
-[/code]
+```
 
 ### `fallback: true`[](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-true)
 
@@ -187,7 +187,7 @@ pages/posts/[id].js
 다음 예시는 `isFallback` 사용법을 보여 줍니다.
 
 pages/posts/[id].js
-[code]
+```
     import { useRouter } from 'next/router'
 
     function Post({ post }) {
@@ -231,7 +231,7 @@ const post = await res.json()
     }
 
     export default Post
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#version-history)
 

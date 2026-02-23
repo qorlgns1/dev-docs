@@ -18,7 +18,7 @@ Copy page
 `useReportWebVitals`에 전달된 새 함수는 해당 시점까지 이용 가능한 메트릭과 함께 호출됩니다. 중복 데이터를 보고하지 않으려면 콜백 함수 참조가 변경되지 않도록 하세요(아래 코드 예제 참조).
 
 app/_components/web-vitals.js
-[code]
+```
     'use client'
 
     import { useReportWebVitals } from 'next/web-vitals'
@@ -32,10 +32,10 @@ app/_components/web-vitals.js
 
       return null
     }
-[/code]
+```
 
 app/layout.js
-[code]
+```
     import { WebVitals } from './_components/web-vitals'
 
     export default function Layout({ children }) {
@@ -48,7 +48,7 @@ app/layout.js
         </html>
       )
     }
-[/code]
+```
 
 > `useReportWebVitals` 훅에는 `'use client'` 지시문이 필요하므로, 루트 레이아웃이 가져오는 별도의 컴포넌트를 만드는 것이 가장 성능이 좋습니다. 이렇게 하면 클라이언트 경계가 `WebVitals` 컴포넌트에만 국한됩니다.
 
@@ -80,7 +80,7 @@ app/layout.js
 app/components/web-vitals.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useReportWebVitals } from 'next/web-vitals'
@@ -102,13 +102,13 @@ JavaScriptTypeScript
     export function WebVitals() {
       useReportWebVitals(handleWebVitals)
     }
-[/code]
+```
 
 ## 외부 시스템으로 결과 전송[](https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals#sending-results-to-external-systems)
 
 사이트에서 실제 사용자 성능을 측정·추적하기 위해 어떤 엔드포인트로든 결과를 전송할 수 있습니다. 예시:
 
-[code]
+```
     function postWebVitals(metrics) {
       const body = JSON.stringify(metric)
       const url = 'https://example.com/analytics'
@@ -122,12 +122,12 @@ JavaScriptTypeScript
     }
 
     useReportWebVitals(postWebVitals)
-[/code]
+```
 
 > **알아두면 좋아요**: [Google Analytics](https://analytics.google.com/analytics/web/)를 사용하는 경우 `id` 값을 활용해 메트릭 분포를 수동으로 구성(백분위 계산 등)할 수 있습니다.
 
 >
-[code]
+```
 >     useReportWebVitals(metric => {
 >       // Use `window.gtag` if you initialized Google Analytics as this example:
 >       // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics
@@ -137,7 +137,7 @@ JavaScriptTypeScript
 >         non_interaction: true, // avoids affecting bounce rate.
 >       });
 >     }
-[/code]
+```
 >
 > [Google Analytics로 결과를 전송하는 방법](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics)에 대해 더 알아보세요.
 

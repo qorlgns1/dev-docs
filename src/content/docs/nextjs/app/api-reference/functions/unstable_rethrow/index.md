@@ -18,7 +18,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow
 예를 들어 `notFound` 함수를 호출하면 내부 Next.js 오류가 발생하고 [`not-found.js`](https://nextjs.org/docs/app/api-reference/file-conventions/not-found) 컴포넌트가 렌더링됩니다. 그러나 `try/catch` 문의 `try` 블록에서 사용하면 오류가 포착되어 `not-found.js` 렌더링이 차단됩니다:
 
 @/app/ui/component.tsx
-[code]
+```
     import { notFound } from 'next/navigation'
 
     export default async function Page() {
@@ -32,12 +32,12 @@ Source URL: https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow
         console.error(err)
       }
     }
-[/code]
+```
 
 `unstable_rethrow` API를 사용하면 내부 오류를 다시 던져 예상된 동작을 이어갈 수 있습니다:
 
 @/app/ui/component.tsx
-[code]
+```
     import { notFound, unstable_rethrow } from 'next/navigation'
 
     export default async function Page() {
@@ -52,7 +52,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow
         console.error(err)
       }
     }
-[/code]
+```
 
 다음 Next.js API는 오류를 던지는 방식에 의존하므로 다시 던져서 Next.js 자체가 처리하도록 해야 합니다.
 

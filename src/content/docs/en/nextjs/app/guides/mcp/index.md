@@ -189,4 +189,3 @@ This architecture decouples the agent interface from the internal implementation
 * Restart your development server if it was already running
 * Check that your coding agent has loaded the MCP server configuration
 ---
-

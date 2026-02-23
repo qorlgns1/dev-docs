@@ -16,7 +16,7 @@ description: '구성은 스트리밍 메타데이터 대신 차단 메타데이�
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const config: NextConfig = {
@@ -24,7 +24,7 @@ JavaScriptTypeScript
     }
 
     export default config
-[/code]
+```
 
 ## 기본 목록[](https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots#default-list)
 
@@ -42,20 +42,20 @@ Next.js에는 다음을 포함한 기본 HTML 제한 봇 목록이 포함되어 
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     const config: NextConfig = {
       htmlLimitedBots: /MySpecialBot|MyAnotherSpecialBot|SimpleCrawler/,
     }
 
     export default config
-[/code]
+```
 
 ## 비활성화[](https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots#disabling)
 
 스트리밍 메타데이터를 완전히 비활성화하려면:
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const config: NextConfig = {
@@ -63,7 +63,7 @@ next.config.ts
     }
 
     export default config
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots#version-history)
 

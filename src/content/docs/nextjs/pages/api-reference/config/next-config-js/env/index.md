@@ -20,34 +20,34 @@ Copy page
 JavaScript 번들에 환경 변수를 추가하려면 `next.config.js`를 열고 `env` 구성을 추가합니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       env: {
         customKey: 'my-value',
       },
     }
-[/code]
+```
 
 이제 코드에서 `process.env.customKey`에 접근할 수 있습니다. 예를 들어:
-[code]
+```
     function Page() {
       return <h1>The value of customKey is: {process.env.customKey}</h1>
     }
 
     export default Page
-[/code]
+```
 
 Next.js는 빌드 시점에 `process.env.customKey`를 `'my-value'`로 대체합니다. webpack [DefinePlugin](https://webpack.js.org/plugins/define-plugin/)의 특성상 `process.env` 변수를 구조 분해하려고 하면 동작하지 않습니다.
 
 예를 들어, 다음과 같은 줄은:
-[code]
+```
     return <h1>The value of customKey is: {process.env.customKey}</h1>
-[/code]
+```
 
 다음과 같이 바뀝니다:
-[code]
+```
     return <h1>The value of customKey is: {'my-value'}</h1>
-[/code]
+```
 
 supported.
 

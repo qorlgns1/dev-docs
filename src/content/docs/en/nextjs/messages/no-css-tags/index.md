@@ -45,4 +45,3 @@ export class Home {
 ```
 
 Refer to the [Built-In CSS Support](https://nextjs.org/docs/app/getting-started/css) documentation to learn about all the ways to include CSS to your application.
-

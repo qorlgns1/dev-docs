@@ -1988,9 +1988,9 @@ Expand to view all
 You can find the latest JSON schema for `config.toml` [here](https://developers.openai.com/codex/config-schema.json).
 
 To get autocompletion and diagnostics when editing `config.toml` in VS Code or Cursor, you can install the [Even Better TOML](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) extension and add this line to the top of your `config.toml`:
-[code] 
+```
     #:schema https://developers.openai.com/codex/config-schema.json
-[/code]
+```
 
 Note: Rename `experimental_instructions_file` to `model_instructions_file`. Codex deprecates the old key; update existing configs to the new name.
 

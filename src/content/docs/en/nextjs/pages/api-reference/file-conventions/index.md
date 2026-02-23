@@ -16,4 +16,3 @@ Source URL: https://nextjs.org/docs/pages/api-reference/file-conventions
   - Save pages under the `src` folder as an alternative to the root `pages` directory.
 
 ---
-

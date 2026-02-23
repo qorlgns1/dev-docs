@@ -51,13 +51,13 @@ Next.js에서는 페이지를 **데이터 유무와 관계없이** 정적으로 
 ### Static Generation without data[](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation#static-generation-without-data)
 
 기본적으로 Next.js는 데이터를 가져오지 않고 Static Generation으로 페이지를 사전 렌더링합니다. 예시는 다음과 같습니다:
-[code]
+```
     function About() {
       return <div>About</div>
     }
 
     export default About
-[/code]
+```
 
 이 페이지는 사전 렌더링을 위해 외부 데이터를 가져올 필요가 없습니다. 이런 경우 Next.js는 빌드 시 각 페이지마다 단일 HTML 파일을 생성합니다.
 
@@ -71,7 +71,7 @@ Next.js에서는 페이지를 **데이터 유무와 관계없이** 정적으로 
 #### Scenario 1: Your page content depends on external data[](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation#scenario-1-your-page-content-depends-on-external-data)
 
 **예시** : 블로그 페이지가 CMS(콘텐츠 관리 시스템)에서 블로그 글 목록을 가져와야 할 수 있습니다.
-[code]
+```
     // TODO: Need to fetch `posts` (by calling some API endpoint)
     //       before this page can be pre-rendered.
     export default function Blog({ posts }) {
@@ -83,10 +83,10 @@ Next.js에서는 페이지를 **데이터 유무와 관계없이** 정적으로 
         </ul>
       )
     }
-[/code]
+```
 
 이 데이터를 사전 렌더링 시 가져오기 위해 Next.js는 동일한 파일에서 `getStaticProps` 라는 `async` 함수를 `export` 할 수 있게 합니다. 이 함수는 빌드 시 호출되며 가져온 데이터를 페이지의 `props` 로 전달할 수 있게 해줍니다.
-[code]
+```
     export default function Blog({ posts }) {
       // Render posts...
     }
@@ -105,7 +105,7 @@ Next.js에서는 페이지를 **데이터 유무와 관계없이** 정적으로 
         },
       }
     }
-[/code]
+```
 
 `getStaticProps` 작동 방식에 대해 더 알아보려면 [데이터 패칭 문서](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)를 확인하세요.
 
@@ -122,7 +122,7 @@ Next.js에서는 **동적 라우트** 로 페이지를 만들 수 있습니다. 
 이후 `id: 2`인 두 번째 글을 추가하면 `posts/2`도 사전 렌더링하고 싶을 것입니다.
 
 따라서 사전 렌더링할 페이지 **경로** 는 외부 데이터에 의존합니다. 이를 처리하기 위해 Next.js는 동적 페이지(이 경우 `pages/posts/[id].js`)에서 `getStaticPaths` 라는 `async` 함수를 `export` 할 수 있게 합니다. 이 함수는 빌드 시 호출되며 사전 렌더링하고 싶은 경로를 지정할 수 있습니다.
-[code]
+```
     // This function gets called at build time
     export async function getStaticPaths() {
       // Call an external API endpoint to get posts
@@ -138,10 +138,10 @@ Next.js에서는 **동적 라우트** 로 페이지를 만들 수 있습니다. 
       // { fallback: false } means other routes should 404.
       return { paths, fallback: false }
     }
-[/code]
+```
 
 또한 `pages/posts/[id].js` 에서 `getStaticProps` 를 내보내 `id` 에 해당하는 글의 데이터를 가져와 페이지를 사전 렌더링해야 합니다:
-[code]
+```
     export default function Post({ post }) {
       // Render post...
     }
@@ -160,7 +160,7 @@ Next.js에서는 **동적 라우트** 로 페이지를 만들 수 있습니다. 
       // Pass post data to the page via props
       return { props: { post } }
     }
-[/code]
+```
 
 `getStaticPaths` 작동 방식에 대해 더 알아보려면 [데이터 패칭 문서](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths)를 확인하세요.
 

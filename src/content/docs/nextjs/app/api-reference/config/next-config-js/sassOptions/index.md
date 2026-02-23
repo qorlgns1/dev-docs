@@ -15,7 +15,7 @@ description: '를 사용하면 Sass 컴파일러를 구성할 수 있습니다.'
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const sassOptions = {
@@ -32,7 +32,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 > **알아두면 좋은 점:**
 >

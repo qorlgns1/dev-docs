@@ -17,7 +17,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/components/script
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function Dashboard() {
@@ -27,7 +27,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ## Props[](https://nextjs.org/docs/app/api-reference/components/script#props)
 
@@ -75,7 +75,7 @@ Prop| 예시| 타입| 필수
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function RootLayout({
@@ -95,7 +95,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 > **알아 두세요**: `beforeInteractive` 스크립트는 컴포넌트 내 위치와 관계없이 항상 HTML 문서의 `head` 안에 삽입됩니다.
 
@@ -111,7 +111,7 @@ JavaScriptTypeScript
 `afterInteractive` 스크립트는 모든 페이지 또는 레이아웃 안에 배치할 수 있으며, 해당 페이지(또는 페이지 그룹)가 브라우저에서 열릴 때만 로드 및 실행됩니다.
 
 app/page.js
-[code]
+```
     import Script from 'next/script'
 
     export default function Page() {
@@ -121,7 +121,7 @@ app/page.js
         </>
       )
     }
-[/code]
+```
 
 `afterInteractive`에 적합한 스크립트 예시는 다음과 같습니다.
 
@@ -135,7 +135,7 @@ app/page.js
 `lazyOnload` 스크립트는 모든 페이지 또는 레이아웃 안에 배치할 수 있으며, 해당 페이지(또는 페이지 그룹)가 브라우저에서 열릴 때만 로드 및 실행됩니다.
 
 app/page.js
-[code]
+```
     import Script from 'next/script'
 
     export default function Page() {
@@ -145,7 +145,7 @@ app/page.js
         </>
       )
     }
-[/code]
+```
 
 즉시 로드할 필요가 없고 `lazyOnload`로 페치해도 되는 스크립트 예시는 다음과 같습니다.
 
@@ -161,20 +161,20 @@ app/page.js
 `worker` 전략을 사용하려면 `next.config.js`에서 `nextScriptWorkers` 플래그를 활성화해야 합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         nextScriptWorkers: true,
       },
     }
-[/code]
+```
 
 `worker` 스크립트는 **현재 `pages/` 디렉터리에서만 사용할 수 있습니다**.
 
 pages/home.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function Home() {
@@ -184,7 +184,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### `onLoad`[](https://nextjs.org/docs/app/api-reference/components/script#onload)
 
@@ -197,7 +197,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Script from 'next/script'
@@ -214,7 +214,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### `onReady`[](https://nextjs.org/docs/app/api-reference/components/script#onready)
 
@@ -227,7 +227,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useRef } from 'react'
@@ -252,7 +252,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### `onError`[](https://nextjs.org/docs/app/api-reference/components/script#onerror)
 
@@ -263,7 +263,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Script from 'next/script'
@@ -280,7 +280,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/components/script#version-history)
 

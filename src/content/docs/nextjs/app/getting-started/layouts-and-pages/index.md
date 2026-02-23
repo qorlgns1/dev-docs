@@ -22,11 +22,11 @@ Next.js는 **파일 시스템 기반 라우팅** 을 사용하므로 폴더와 �
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Page() {
       return <h1>Hello Next.js!</h1>
     }
-[/code]
+```
 
 ## 레이아웃 만들기[](https://nextjs.org/docs/app/getting-started/layouts-and-pages#creating-a-layout)
 
@@ -39,7 +39,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function DashboardLayout({
       children,
     }: {
@@ -55,7 +55,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 위 레이아웃은 `app` 디렉터리의 루트에 정의되어 있기 때문에 [루트 레이아웃](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout)이라고 합니다. 루트 레이아웃은 **필수** 이며 `html` 및 `body` 태그를 포함해야 합니다.
 
@@ -77,7 +77,7 @@ Next.js에서는:
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // Dummy imports
     import { getPosts } from '@/lib/posts'
     import { Post } from '@/ui/post'
@@ -93,20 +93,20 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 폴더를 계속 중첩해 중첩 라우트를 만들 수 있습니다. 예를 들어 특정 블로그 게시물용 라우트를 만들려면 `blog` 안에 새로운 `[slug]` 폴더를 만들고 `page` 파일을 추가합니다:
 
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     function generateStaticParams() {}
 
     export default function Page() {
       return <h1>Hello, Blog Post Page!</h1>
     }
-[/code]
+```
 
 폴더 이름을 대괄호(예: `[slug]`)로 감싸면 [동적 라우트 세그먼트](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes)가 생성되어 데이터로부터 여러 페이지를 만들 수 있습니다. 예: 블로그 게시물, 제품 페이지 등.
 
@@ -119,7 +119,7 @@ JavaScriptTypeScript
 app/blog/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function BlogLayout({
       children,
     }: {
@@ -127,7 +127,7 @@ JavaScriptTypeScript
     }) {
       return <section>{children}</section>
     }
-[/code]
+```
 
 위 두 레이아웃을 결합하면 루트 레이아웃(`app/layout.js`)이 블로그 레이아웃(`app/blog/layout.js`)을 감싸고, 블로그(`app/blog/page.js`)와 블로그 게시물 페이지(`app/blog/[slug]/page.js`)를 순서대로 감싸게 됩니다.
 
@@ -140,7 +140,7 @@ JavaScriptTypeScript
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function BlogPostPage({
       params,
     }: {
@@ -156,7 +156,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 [동적 세그먼트](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes)와 [`params`](https://nextjs.org/docs/app/api-reference/file-conventions/page#params-optional) props에 대해 더 알아보세요.
 
@@ -169,7 +169,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page({
       searchParams,
     }: {
@@ -177,7 +177,7 @@ JavaScriptTypeScript
     }) {
       const filters = (await searchParams).filters
     }
-[/code]
+```
 
 `searchParams`를 사용하면 검색 파라미터를 읽기 위해 들어오는 요청이 필요하므로 페이지가 [**동적 렌더링**](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)에 참여하게 됩니다.
 
@@ -200,7 +200,7 @@ JavaScriptTypeScript
 app/ui/post.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default async function Post({ post }) {
@@ -216,7 +216,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `<Link>`는 Next.js에서 라우트 간 이동의 기본 방식입니다. 보다 고급 네비게이션이 필요하면 [`useRouter` 훅](https://nextjs.org/docs/app/api-reference/functions/use-router)을 사용할 수 있습니다.
 
@@ -230,15 +230,15 @@ Next.js는 라우트 구조로부터 `params`와 명명된 슬롯을 추론하�
 이 헬퍼는 전역에서 사용 가능하며 `next dev`, `next build`, 또는 [`next typegen`](https://nextjs.org/docs/app/api-reference/cli/next#next-typegen-options)을 실행할 때 생성됩니다.
 
 app/blog/[slug]/page.tsx
-[code]
+```
     export default async function Page(props: PageProps<'/blog/[slug]'>) {
       const { slug } = await props.params
       return <h1>Blog post: {slug}</h1>
     }
-[/code]
+```
 
 app/dashboard/layout.tsx
-[code]
+```
     export default function Layout(props: LayoutProps<'/dashboard'>) {
       return (
         <section>
@@ -248,7 +248,7 @@ app/dashboard/layout.tsx
         </section>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요**
 >

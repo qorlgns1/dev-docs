@@ -30,4 +30,3 @@ Once a file is defined, Next.js will automatically serve the file (with hashes i
   - API Reference for the sitemap.xml file.
 
 ---
-

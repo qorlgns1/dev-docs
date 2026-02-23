@@ -52,4 +52,3 @@ Data fetching in Next.js allows you to render your content in different ways, de
   - Learn about client-side data fetching, and how to use SWR, a data fetching React Hook library that handles caching, revalidation, focus tracking, refetching on interval and more.
 
 ---
-

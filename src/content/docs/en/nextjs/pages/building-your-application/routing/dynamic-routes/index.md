@@ -70,4 +70,3 @@ For more information on what to do next, we recommend the following sections
   - Learn more about the API of the Next.js Router, and access the router instance in your page with the useRouter hook.
 
 ---
-

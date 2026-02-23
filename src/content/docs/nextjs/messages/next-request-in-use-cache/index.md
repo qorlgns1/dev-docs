@@ -22,7 +22,7 @@ Source URL: https://nextjs.org/docs/messages/next-request-in-use-cache
 Before:
 
 app/page.js
-[code]
+```
     import { cookies } from 'next/headers'
 
     async function getExampleData() {
@@ -35,12 +35,12 @@ app/page.js
       const data = await getExampleData()
       return ...
     }
-[/code]
+```
 
 After:
 
 app/page.js
-[code]
+```
     import { cookies } from 'next/headers'
 
     async function getExampleData(isLoggedIn) {
@@ -53,7 +53,7 @@ app/page.js
       const data = await getExampleData(isLoggedIn)
       return ...
     }
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/next-request-in-use-cache#useful-links)
 

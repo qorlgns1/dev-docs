@@ -31,34 +31,34 @@ Tailwind CSS 설치:
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add -D tailwindcss @tailwindcss/postcss
-[/code]
+```
 
 `postcss.config.mjs` 파일에 PostCSS 플러그인을 추가하세요:
 
 postcss.config.mjs
-[code]
+```
     export default {
       plugins: {
         '@tailwindcss/postcss': {},
       },
     }
-[/code]
+```
 
 글로벌 CSS 파일에서 Tailwind를 가져옵니다:
 
 app/globals.css
-[code]
+```
     @import 'tailwindcss';
-[/code]
+```
 
 루트 레이아웃에서 해당 CSS 파일을 가져옵니다:
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import './globals.css'
 
     export default function RootLayout({
@@ -72,14 +72,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 이제 애플리케이션에서 Tailwind 유틸리티 클래스를 사용할 수 있습니다:
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Page() {
       return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -87,7 +87,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요:** 매우 오래된 브라우저까지 폭넓게 지원해야 한다면 [Tailwind CSS v3 설정 가이드](https://nextjs.org/docs/app/guides/tailwind-v3-css)를 확인하세요.
 
@@ -98,22 +98,22 @@ CSS Modules는 고유한 클래스 이름을 생성해 CSS를 로컬 범위로 �
 CSS Modules를 시작하려면 `.module.css` 확장자를 가진 새 파일을 만들고 `app` 디렉터리 내부의 컴포넌트에서 가져오면 됩니다:
 
 app/blog/blog.module.css
-[code]
+```
     .blog {
       padding: 24px;
     }
-[/code]
+```
 
 app/blog/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import styles from './blog.module.css'
 
     export default function Page() {
       return <main className={styles.blog}></main>
     }
-[/code]
+```
 
 ## Global CSS[](https://nextjs.org/docs/app/getting-started/css#global-css)
 
@@ -122,18 +122,18 @@ JavaScriptTypeScript
 `app/global.css` 파일을 만들고 루트 레이아웃에서 가져오면 애플리케이션의 **모든 라우트**에 스타일이 적용됩니다:
 
 app/global.css
-[code]
+```
     body {
       padding: 20px 20px 60px;
       max-width: 680px;
       margin: 0 auto;
     }
-[/code]
+```
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // These styles apply to every route in the application
     import './global.css'
 
@@ -148,7 +148,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요:** 글로벌 스타일은 `app` 디렉터리 안의 어떤 레이아웃, 페이지, 컴포넌트에서도 가져올 수 있습니다. 하지만 Next.js는 Suspense와 통합하기 위해 React에 내장된 스타일시트 지원을 사용하므로, 라우트 간 내비게이션 시 스타일시트가 제거되지 않아 충돌이 발생할 수 있습니다. 진정한 글로벌 CSS(예: Tailwind의 기본 스타일)에는 글로벌 스타일을, 컴포넌트 스타일링에는 [Tailwind CSS](https://nextjs.org/docs/app/getting-started/css#tailwind-css)를, 필요할 때 커스텀 범위 CSS에는 [CSS Modules](https://nextjs.org/docs/app/getting-started/css#css-modules)을 사용하는 것을 권장합니다.
 
@@ -159,7 +159,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import 'bootstrap/dist/css/bootstrap.css'
 
     export default function RootLayout({
@@ -173,7 +173,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요:** React 19에서는 `<link rel="stylesheet" href="..." />`도 사용할 수 있습니다. 자세한 내용은 [React `link` 문서](https://react.dev/reference/react-dom/components/link)를 참고하세요.
 
@@ -186,25 +186,25 @@ Next.js는 프로덕션 빌드 중 스타일시트를 자동으로 청킹(병합
 page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { BaseButton } from './base-button'
     import styles from './page.module.css'
 
     export default function Page() {
       return <BaseButton className={styles.primary} />
     }
-[/code]
+```
 
 base-button.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import styles from './base-button.module.css'
 
     export function BaseButton() {
       return <button className={styles.primary} />
     }
-[/code]
+```
 
 ### Recommendations[](https://nextjs.org/docs/app/getting-started/css#recommendations)
 

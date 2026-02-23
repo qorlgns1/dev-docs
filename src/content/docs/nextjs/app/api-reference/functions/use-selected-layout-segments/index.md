@@ -20,7 +20,7 @@ Last updated February 20, 2026
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useSelectedLayoutSegments } from 'next/navigation'
@@ -36,7 +36,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 > **알아 두면 좋아요** :
 >
@@ -46,9 +46,9 @@ JavaScriptTypeScript
 >
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments#parameters)
-[code]
+```
     const segments = useSelectedLayoutSegments(parallelRoutesKey?: string)
-[/code]
+```
 
 `useSelectedLayoutSegments`는 선택적으로 [`parallelRoutesKey`](https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes#with-useselectedlayoutsegments)를 받아 해당 슬롯 내 활성 라우트 세그먼트를 읽을 수 있게 해줍니다.
 

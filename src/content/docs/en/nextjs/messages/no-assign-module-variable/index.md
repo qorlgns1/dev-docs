@@ -20,4 +20,3 @@ Use a different variable name:
 ```js filename="example.js"
 let myModule = {...}
 ```
-

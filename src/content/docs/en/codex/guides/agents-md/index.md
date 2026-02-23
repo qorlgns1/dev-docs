@@ -28,22 +28,25 @@ Codex skips empty files and stops adding files once the combined size reaches th
 Create persistent defaults in your Codex home directory so every repository inherits your working agreements.
 
   1. Ensure the directory exists:
-[code] mkdir -p ~/.codex
-[/code]
+```
+mkdir -p ~/.codex
+```
 
   2. Create `~/.codex/AGENTS.md` with reusable preferences:
-[code] # ~/.codex/AGENTS.md
+```
+# ~/.codex/AGENTS.md
          
          ## Working agreements
          
          - Always run `npm test` after modifying JavaScript files.
          - Prefer `pnpm` when installing dependencies.
          - Ask for confirmation before adding new production dependencies.
-[/code]
+```
 
   3. Run Codex anywhere to confirm it loads the file:
-[code] codex --ask-for-approval never "Summarize the current instructions."
-[/code]
+```
+codex --ask-for-approval never "Summarize the current instructions."
+```
 
 Expected: Codex quotes the items from `~/.codex/AGENTS.md` before proposing work.
 
@@ -57,26 +60,29 @@ Use `~/.codex/AGENTS.override.md` when you need a temporary global override with
 Repository-level files keep Codex aware of project norms while still inheriting your global defaults.
 
   1. In your repository root, add an `AGENTS.md` that covers basic setup:
-[code] # AGENTS.md
+```
+# AGENTS.md
          
          ## Repository expectations
          
          - Run `npm run lint` before opening a pull request.
          - Document public utilities in `docs/` when you change behavior.
-[/code]
+```
 
   2. Add overrides in nested directories when specific teams need different rules. For example, inside `services/payments/` create `AGENTS.override.md`:
-[code] # services/payments/AGENTS.override.md
+```
+# services/payments/AGENTS.override.md
          
          ## Payments service rules
          
          - Use `make test-payments` instead of `npm test`.
          - Never rotate API keys without notifying the security channel.
-[/code]
+```
 
   3. Start Codex from the payments directory:
-[code] codex --cd services/payments --ask-for-approval never "List the instruction sources you loaded."
-[/code]
+```
+codex --cd services/payments --ask-for-approval never "List the instruction sources you loaded."
+```
 
 Expected: Codex reports the global file first, the repository root `AGENTS.md` second, and the payments override last.
 
@@ -113,10 +119,11 @@ Here is a sample repository after you add a global file and a payments-specific 
 If your repository already uses a different filename (for example `TEAM_GUIDE.md`), add it to the fallback list so Codex treats it like an instructions file.
 
   1. Edit your Codex configuration:
-[code] # ~/.codex/config.toml
+```
+# ~/.codex/config.toml
          project_doc_fallback_filenames = ["TEAM_GUIDE.md", ".agents.md"]
          project_doc_max_bytes = 65536
-[/code]
+```
 
   2. Restart Codex or run a new command so the updated configuration loads.
 
@@ -143,9 +150,9 @@ With the fallback list in place, Codex treats the alternate files as instruction
 
 
 Set the `CODEX_HOME` environment variable when you want a different profile, such as a project-specific automation user:
-[code] 
+```
     CODEX_HOME=$(pwd)/.codex codex exec "List active instruction sources"
-[/code]
+```
 
 Expected: The output lists files relative to the custom `.codex` directory.
 

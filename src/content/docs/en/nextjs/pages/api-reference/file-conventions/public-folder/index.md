@@ -35,4 +35,3 @@ Cache-Control: public, max-age=0
 
 The folder is also useful for `robots.txt`, `favicon.ico`, Google Site Verification, and any other static files (including `.html`). But make sure to not have a static file with the same name as a file in the `pages/` directory, as this will result in an error. [Read more](https://nextjs.org/docs/messages/conflicting-public-file-page).
 ---
-

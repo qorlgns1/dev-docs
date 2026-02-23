@@ -20,7 +20,7 @@ Next.js는 빌드 프로세스에 연결할 수 있는 커스텀 어댑터를 �
 어댑터를 사용하려면 `experimental.adapterPath`에 어댑터 모듈 경로를 지정합니다:
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       experimental: {
@@ -29,12 +29,12 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 ## 어댑터 생성[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#creating-an-adapter)
 
 어댑터는 `NextAdapter` 인터페이스를 구현하는 객체를 내보내는 모듈입니다:
-[code]
+```
     export interface NextAdapter {
       name: string
       modifyConfig?: (
@@ -62,14 +62,14 @@ next.config.js
         nextVersion: string
       }) => Promise<void> | void
     }
-[/code]
+```
 
 ### 기본 어댑터 구조[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#basic-adapter-structure)
 
 다음은 최소한의 어댑터 예제입니다:
 
 my-adapter.js
-[code]
+```
     /** @type {import('next').NextAdapter} */
     const adapter = {
       name: 'my-custom-adapter',
@@ -117,7 +117,7 @@ my-adapter.js
     }
 
     module.exports = adapter
-[/code]
+```
 
 ## API Reference[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#api-reference)
 
@@ -158,7 +158,7 @@ my-adapter.js
 ### Pages (`outputs.pages`)[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#pages-outputspages)
 
 `pages/` 디렉터리의 React 페이지:
-[code]
+```
     {
       type: 'PAGES'
       id: string           // Route identifier
@@ -174,12 +174,12 @@ my-adapter.js
         env?: Record<string, string>  // Environment variables (edge runtime only)
       }
     }
-[/code]
+```
 
 ### API Routes (`outputs.pagesApi`)[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#api-routes-outputspagesapi)
 
 `pages/api/`의 API 라우트:
-[code]
+```
     {
       type: 'PAGES_API'
       id: string
@@ -195,12 +195,12 @@ my-adapter.js
         env?: Record<string, string>
       }
     }
-[/code]
+```
 
 ### App Pages (`outputs.appPages`)[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#app-pages-outputsapppages)
 
 `app/` 디렉터리의 `page.{js,ts,jsx,tsx}` React 페이지:
-[code]
+```
     {
       type: 'APP_PAGE'
       id: string
@@ -216,12 +216,12 @@ my-adapter.js
         env?: Record<string, string>
       }
     }
-[/code]
+```
 
 ### App Routes (`outputs.appRoutes`)[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#app-routes-outputsapproutes)
 
 `app/`의 `route.{js,ts,jsx,tsx}` API 및 메타데이터 라우트:
-[code]
+```
     {
       type: 'APP_ROUTE'
       id: string
@@ -237,12 +237,12 @@ my-adapter.js
         env?: Record<string, string>
       }
     }
-[/code]
+```
 
 ### Prerenders (`outputs.prerenders`)[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#prerenders-outputsprerenders)
 
 ISR 사용 라우트와 정적 프리렌더:
-[code]
+```
     {
       type: 'PRERENDER'
       id: string
@@ -269,24 +269,24 @@ ISR 사용 라우트와 정적 프리렌더:
         bypassToken?: string
       }
     }
-[/code]
+```
 
 ### Static Files (`outputs.staticFiles`)[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#static-files-outputsstaticfiles)
 
 정적 에셋과 자동 정적 최적화 페이지:
-[code]
+```
     {
       type: 'STATIC_FILE'
       id: string
       filePath: string
       pathname: string
     }
-[/code]
+```
 
 ### Middleware (`outputs.middleware`)[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#middleware-outputsmiddleware)
 
 미들웨어 함수(있는 경우):
-[code]
+```
     {
       type: 'MIDDLEWARE'
       id: string
@@ -308,7 +308,7 @@ ISR 사용 라우트와 정적 프리렌더:
         }>
       }
     }
-[/code]
+```
 
 ## 라우트 정보[](https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath#routes-information)
 

@@ -45,4 +45,3 @@ The following options are available:
 * `staticGenerationMaxConcurrency`: The maximum number of pages to be processed per worker.
 * `staticGenerationMinPagesPerWorker`: The minimum number of pages to be processed before starting a new worker.
 ---
-

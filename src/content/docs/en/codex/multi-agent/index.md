@@ -24,10 +24,10 @@ You can enable this feature from the CLI with `/experimental`. Enable **Multi-ag
 Multi-agent activity is currently surfaced in the CLI. Visibility in other surfaces (the Codex app and IDE Extension) is coming soon.
 
 You can also add the [`multi_agent` feature flag](https://developers.openai.com/codex/config-basic#feature-flags) directly to your configuration file (`~/.codex/config.toml`):
-[code] 
+```
     [features]
     multi_agent = true
-[/code]
+```
 
 ## Typical workflow
 
@@ -38,7 +38,7 @@ When many agents are running, Codex waits until all requested results are availa
 Codex will automatically decide when to spawn a new agent or you can explicitly ask it to do so.
 
 To see it in action, try the following prompt on your project:
-[code] 
+```
     I would like to review the following points on the current PR (this branch vs main). Spawn one agent per point, wait for all of them, and summarize the result for each point.
     1. Security issue
     2. Code quality
@@ -46,7 +46,7 @@ To see it in action, try the following prompt on your project:
     4. Race
     5. Test flakiness
     6. Maintainability of the code
-[/code]
+```
 
 ## Managing sub-agents
 
@@ -109,7 +109,7 @@ Field| Type| Required| Purpose
 Below is an example that overrides the definitions for the built-in `default` and `explorer` agent roles and defines a new `reviewer` role.
 
 Example `~/.codex/config.toml`:
-[code] 
+```
     [agents.default]
     description = "General-purpose helper."
     
@@ -120,18 +120,18 @@ Example `~/.codex/config.toml`:
     [agents.explorer]
     description = "Fast codebase explorer for read-heavy tasks."
     config_file = "agents/custom-explorer.toml"
-[/code]
+```
 
 Example config file for the `reviewer` role (`~/.codex/agents/reviewer.toml`):
-[code] 
+```
     model = "gpt-5.3-codex"
     model_reasoning_effort = "high"
     developer_instructions = "Focus on high priority issues, write tests to validate hypothesis before flagging an issue. When finding security issues give concrete steps on how to reproduce the vulnerability."
-[/code]
+```
 
 Example config file for the `explorer` role (`~/.codex/agents/custom-explorer.toml`):
-[code] 
+```
     model = "gpt-5.3-codex-spark"
     model_reasoning_effort = "medium"
     sandbox_mode = "read-only"
-[/code]
+```

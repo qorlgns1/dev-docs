@@ -16,14 +16,14 @@ description: '원본 URL: https://nextjs.org/docs/messages/no-async-client-compo
 ## 이 오류가 발생한 이유[](https://nextjs.org/docs/messages/no-async-client-component#why-this-error-occurred)
 
 Client Component를 async 함수로 정의하려고 할 때 오류가 발생합니다. React Client Component는 [async 함수를 지원하지 않습니다](https://github.com/acdlite/rfcs/blob/first-class-promises/text/0000-first-class-support-for-promises.md#why-cant-client-components-be-async-functions). 예를 들어:
-[code]
+```
     'use client'
 
     // This will cause an error
     async function ClientComponent() {
       // ...
     }
-[/code]
+```
 
 ## 해결 방법[](https://nextjs.org/docs/messages/no-async-client-component#possible-ways-to-fix-it)
 
@@ -37,7 +37,7 @@ Client Component를 async 함수로 정의하려고 할 때 오류가 발생합�
 데이터는 서버에서 패칭하는 것을 권장합니다. 예를 들어:
 
 app/page.tsx
-[code]
+```
     export default async function Page() {
       const data = await fetch('https://api.vercel.app/blog')
       const posts = await data.json()
@@ -49,7 +49,7 @@ app/page.tsx
         </ul>
       )
     }
-[/code]
+```
 
 ### Context Provider와 `use` 사용[](https://nextjs.org/docs/messages/no-async-client-component#using-use-with-context-provider)
 
@@ -58,7 +58,7 @@ app/page.tsx
 먼저 컨텍스트 프로바이더를 위한 별도 파일을 만듭니다:
 
 app/context.tsx
-[code]
+```
     'use client'
 
     import { createContext, useContext } from 'react'
@@ -84,12 +84,12 @@ app/context.tsx
       }
       return context
     }
-[/code]
+```
 
 이제 Server Component에서 Promise를 만들어 클라이언트로 스트리밍합니다:
 
 app/page.tsx
-[code]
+```
     import { BlogProvider } from './context'
 
     export default function Page() {
@@ -103,12 +103,12 @@ app/page.tsx
         </BlogProvider>
       )
     }
-[/code]
+```
 
 다음은 블로그 게시물을 렌더링하는 컴포넌트입니다:
 
 app/blog-posts.tsx
-[code]
+```
     'use client'
 
     import { use } from 'react'
@@ -120,7 +120,7 @@ app/blog-posts.tsx
 
       return <div>{posts.length} blog posts</div>
     }
-[/code]
+```
 
 이 패턴을 사용하면 데이터를 미리 패칭해 Promise 형태로 자식 컴포넌트에 전달하고, 자식에서 `use` API로 준비된 데이터를 바로 사용할 수 있습니다.
 
@@ -129,7 +129,7 @@ app/blog-posts.tsx
 클라이언트에서 데이터를 가져와야 하는 상황이라면 `useEffect` 안에서 `fetch`를 호출할 수 있고(권장하지 않음), 혹은 [SWR](https://swr.vercel.app/)이나 [React Query](https://tanstack.com/query/latest) 같은 커뮤니티의 인기 있는 React 라이브러리를 활용할 수 있습니다.
 
 app/page.tsx
-[code]
+```
     'use client'
 
     import { useState, useEffect } from 'react'
@@ -156,6 +156,6 @@ app/page.tsx
         </ul>
       )
     }
-[/code]
+```
 
 보내기

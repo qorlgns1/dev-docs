@@ -34,12 +34,12 @@ Multi-Zones를 지원하면 동일한 도메인에서 사용자에게 동일하�
 존은 일반적인 Next.js 애플리케이션이며, 다른 존의 페이지나 정적 파일과 충돌하지 않도록 [assetPrefix](https://nextjs.org/docs/app/api-reference/config/next-config-js/assetPrefix)를 추가로 구성합니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       assetPrefix: '/blog-static',
     }
-[/code]
+```
 
 JavaScript와 CSS 같은 Next.js 에셋은 `assetPrefix`가 접두사로 붙어 다른 존의 에셋과 충돌하지 않도록 합니다. 이러한 에셋은 각 존에서 `/assetPrefix/_next/...` 경로 아래에서 제공됩니다.
 
@@ -48,7 +48,7 @@ JavaScript와 CSS 같은 Next.js 에셋은 `assetPrefix`가 접두사로 붙어 
 Next.js 15 이전 버전에서는 정적 에셋을 처리하기 위한 추가 rewrite가 필요할 수 있습니다. Next.js 15에서는 더 이상 필요하지 않습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       assetPrefix: '/blog-static',
@@ -63,7 +63,7 @@ next.config.js
         }
       },
     }
-[/code]
+```
 
 ## 적절한 존으로 요청을 라우팅하는 방법[](https://nextjs.org/docs/pages/guides/multi-zones#how-to-route-requests-to-the-right-zone)
 
@@ -72,7 +72,7 @@ Multi-Zones 구성을 사용하면 서로 다른 애플리케이션이 요청을
 Next.js 애플리케이션을 사용해 올바른 존으로 라우팅하려면 [`rewrites`](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites)를 사용할 수 있습니다. 다른 존이 제공하는 각 경로에 대해 해당 경로를 다른 존의 도메인으로 전달하는 rewrite 규칙을 추가하고, 정적 에셋 요청도 다시 작성해야 합니다. 예시는 다음과 같습니다:
 
 next.config.js
-[code]
+```
     async rewrites() {
         return [
             {
@@ -89,7 +89,7 @@ next.config.js
             }
         ];
     }
-[/code]
+```
 
 `destination`은 존이 제공하는 URL(스킴과 도메인 포함)이어야 합니다. 이는 존의 프로덕션 도메인을 가리켜야 하지만, 로컬 개발 시 `localhost`로 요청을 라우팅하는 데도 사용할 수 있습니다.
 
@@ -100,14 +100,14 @@ next.config.js
 [`rewrites`](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites)를 통한 요청 라우팅은 요청 지연을 최소화하기 위해 권장되지만, 라우팅 시 동적인 결정이 필요할 때는 프록시도 사용할 수 있습니다. 예를 들어, 마이그레이션 중에 특정 경로를 어디로 보낼지 기능 플래그를 사용해 결정하는 경우 프록시를 활용할 수 있습니다.
 
 proxy.js
-[code]
+```
     export async function proxy(request) {
       const { pathname, search } = request.nextUrl
       if (pathname === '/your-path' && myFeatureFlag.isEnabled()) {
         return NextResponse.rewrite(`${rewriteDomain}${pathname}${search}`)
       }
     }
-[/code]
+```
 
 ## 존 간 링크 연결[](https://nextjs.org/docs/pages/guides/multi-zones#linking-between-zones)
 

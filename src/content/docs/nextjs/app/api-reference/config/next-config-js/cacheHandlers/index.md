@@ -39,7 +39,7 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -50,7 +50,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ### 핸들러 유형[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers#handler-types)
 
@@ -70,9 +70,9 @@ JavaScriptTypeScript
 ### `get()`[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers#get)
 
 주어진 캐시 키에 대한 캐시 항목을 가져옵니다.
-[code]
+```
     get(cacheKey: string, softTags: string[]): Promise<CacheEntry | undefined>
-[/code]
+```
 
 매개변수| 타입| 설명
 ---|---|---
@@ -82,7 +82,7 @@ JavaScriptTypeScript
 찾은 경우 `CacheEntry` 객체를 반환하고, 없거나 만료된 경우 `undefined`를 반환합니다.
 
 `get` 메서드는 스토리지에서 캐시 항목을 가져오고 `revalidate` 시간에 따라 만료되었는지 확인한 뒤, 누락되었거나 만료된 항목에 대해 `undefined`를 반환해야 합니다.
-[code]
+```
     const cacheHandler = {
       async get(cacheKey, softTags) {
         const entry = cache.get(cacheKey)
@@ -97,14 +97,14 @@ JavaScriptTypeScript
         return entry
       },
     }
-[/code]
+```
 
 ### `set()`[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers#set)
 
 주어진 캐시 키에 대한 캐시 항목을 저장합니다.
-[code]
+```
     set(cacheKey: string, pendingEntry: Promise<CacheEntry>): Promise<void>
-[/code]
+```
 
 매개변수| 타입| 설명
 ---|---|---
@@ -116,7 +116,7 @@ JavaScriptTypeScript
 `Promise<void>`를 반환합니다.
 
 `set` 메서드는 캐시 항목이 생성 중일 수 있으므로 저장하기 전에 반드시 `pendingEntry` 프로미스를 await 해야 합니다. 프로미스가 해결되면 캐시 시스템에 항목을 저장하세요.
-[code]
+```
     const cacheHandler = {
       async set(cacheKey, pendingEntry) {
         // Wait for the entry to be ready
@@ -126,35 +126,35 @@ JavaScriptTypeScript
         cache.set(cacheKey, entry)
       },
     }
-[/code]
+```
 
 ### `refreshTags()`[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers#refreshtags)
 
 새 요청을 시작하기 전에 외부 태그 서비스와 동기화하기 위해 주기적으로 호출됩니다.
-[code]
+```
     refreshTags(): Promise<void>
-[/code]
+```
 
 여러 인스턴스나 서비스 간에 캐시 무효화를 조율할 때 유용합니다. 메모리 내 캐시에서는 아무 작업이 필요 없을 수 있습니다.
 
 `Promise<void>`를 반환합니다.
 
 메모리 내 캐시에서는 무시할 수 있고, 분산 캐시에서는 요청 처리 전에 외부 서비스나 데이터베이스에서 태그 상태를 동기화하는 데 사용하세요.
-[code]
+```
     const cacheHandler = {
       async refreshTags() {
         // For in-memory cache, no action needed
         // For distributed cache, sync tag state from external service
       },
     }
-[/code]
+```
 
 ### `getExpiration()`[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers#getexpiration)
 
 태그 집합에 대한 최대 재검증 타임스탬프를 가져옵니다.
-[code]
+```
     getExpiration(tags: string[]): Promise<number>
-[/code]
+```
 
 매개변수| 타입| 설명
 ---|---|---
@@ -167,7 +167,7 @@ JavaScriptTypeScript
   * `Infinity`(소프트 태그 확인을 `get` 메서드에서 처리하려는 경우)
 
 태그 재검증 타임스탬프를 추적하지 않는다면 `0`을 반환하세요. 그렇지 않다면 제공된 모든 태그 중 가장 최근 재검증 타임스탬프를 찾습니다. 소프트 태그 확인을 `get` 메서드에서 처리하려면 `Infinity`를 반환하세요.
-[code]
+```
     const cacheHandler = {
       async getExpiration(tags) {
         // Return 0 if not tracking tag revalidation
@@ -177,14 +177,14 @@ JavaScriptTypeScript
         // return Math.max(...tags.map(tag => tagTimestamps.get(tag) || 0));
       },
     }
-[/code]
+```
 
 ### `updateTags()`[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers#updatetags)
 
 태그가 재검증되거나 만료될 때 호출됩니다.
-[code]
+```
     updateTags(tags: string[], durations?: { expire?: number }): Promise<void>
-[/code]
+```
 
 매개변수| 타입| 설명
 ---|---|---
@@ -196,7 +196,7 @@ JavaScriptTypeScript
 `Promise<void>`를 반환합니다.
 
 태그가 재검증되면 핸들러는 해당 태그를 포함한 모든 캐시 항목을 무효화해야 합니다. 캐시를 순회하여 제공된 목록과 일치하는 태그가 있는 항목을 제거하세요.
-[code]
+```
     const cacheHandler = {
       async updateTags(tags, durations) {
         // Invalidate all cache entries with matching tags
@@ -207,12 +207,12 @@ JavaScriptTypeScript
         }
       },
     }
-[/code]
+```
 
 ## CacheEntry 타입[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers#cacheentry-type)
 
 [`CacheEntry`](https://github.com/vercel/next.js/blob/canary/packages/next/src/server/lib/cache-handlers/types.ts) 객체는 다음 구조를 가집니다.
-[code]
+```
     interface CacheEntry {
       value: ReadableStream<Uint8Array>
       tags: string[]
@@ -221,7 +221,7 @@ JavaScriptTypeScript
       expire: number
       revalidate: number
     }
-[/code]
+```
 
 속성| 타입| 설명
 ---|---|---
@@ -245,7 +245,7 @@ JavaScriptTypeScript
 스토리지로 `Map`을 사용하는 최소 구현 예시입니다. 핵심 개념을 보여 주며, LRU 제거, 오류 처리, 태그 관리를 포함한 프로덕션 수준 구현은 [기본 캐시 핸들러](https://github.com/vercel/next.js/blob/canary/packages/next/src/server/lib/cache-handlers/default.ts)를 참조하세요.
 
 cache-handlers/memory-handler.js
-[code]
+```
     const cache = new Map()
     const pendingSets = new Map()
 
@@ -277,7 +277,7 @@ cache-handlers/memory-handler.js
         const pendingPromise = new Promise((resolve) => {
           resolvePending = resolve
         })
-[/code]
+```
 
 pendingSets.set(cacheKey, pendingPromise)
 
@@ -311,14 +311,13 @@ pendingSets.set(cacheKey, pendingPromise)
         }
       },
     }
-[/code]
 
 ### 외부 스토리지 패턴[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers#external-storage-pattern)
 
 Redis나 데이터베이스 같은 영속 스토리지를 사용하려면 캐시 엔트리를 직렬화해야 합니다. 다음은 간단한 Redis 예시입니다:
 
 cache-handlers/redis-handler.js
-[code]
+```
     const { createClient } = require('redis')
 
     const client = createClient({ url: process.env.REDIS_URL })
@@ -399,7 +398,7 @@ cache-handlers/redis-handler.js
         // Could iterate over keys with matching tags and delete them
       },
     }
-[/code]
+```
 
 ## 플랫폼 지원[](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers#platform-support)
 

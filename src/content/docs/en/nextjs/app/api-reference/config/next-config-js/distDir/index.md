@@ -21,4 +21,3 @@ Now if you run `next build` Next.js will use `build` instead of the default `.ne
 
 > `distDir` **should not** leave your project directory. For example, `../build` is an **invalid** directory.
 ---
-

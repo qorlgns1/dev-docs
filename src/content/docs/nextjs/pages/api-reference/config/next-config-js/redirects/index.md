@@ -16,7 +16,7 @@ description: '리디렉션을 사용하면 들어오는 요청 경로를 다른 
 리디렉션을 설정하려면 `next.config.js`에서 `redirects` 키를 사용하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       async redirects() {
         return [
@@ -28,7 +28,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 `redirects`는 `source`, `destination`, `permanent` 속성을 가진 객체 배열을 반환해야 하는 async 함수입니다.
 
@@ -48,13 +48,13 @@ next.config.js
 Pages Router를 사용할 때는 [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)가 존재하여 경로와 일치하지 않는 한 클라이언트 측 라우팅(`Link`, `router.push`)에는 리디렉션이 적용되지 않습니다.
 
 리디렉션이 적용되면 요청에 제공된 쿼리 값은 리디렉션 목적지로 그대로 전달됩니다. 예를 들어 다음 리디렉션 구성을 보세요:
-[code]
+```
     {
       source: '/old-blog/:path*',
       destination: '/blog/:path*',
       permanent: false
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `source`와 `destination` 경로의 경로 매개변수에서 콜론 `:` 앞에 슬래시 `/`를 반드시 포함하세요. 그렇지 않으면 경로가 리터럴 문자열로 처리되어 무한 리디렉션이 발생할 수 있습니다.
 
@@ -65,7 +65,7 @@ Pages Router를 사용할 때는 [Proxy](https://nextjs.org/docs/app/api-referen
 경로 매칭이 허용되며, 예를 들어 `/old-blog/:slug`는 `/old-blog/first-post`와 일치합니다(중첩 경로 없음).
 
 next.config.js
-[code]
+```
     module.exports = {
       async redirects() {
         return [
@@ -77,7 +77,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 `/old-blog/:slug` 패턴은 `/old-blog/first-post`와 `/old-blog/post-1`에는 매칭되지만 `/old-blog/a/b`에는 매칭되지 않습니다(중첩 경로 없음). 패턴은 시작 위치에 고정되므로 `/old-blog/:slug`는 `/archive/old-blog/first-post`와 일치하지 않습니다.
 
@@ -90,7 +90,7 @@ next.config.js
 와일드카드 경로를 매칭하려면 매개변수 뒤에 `*`를 사용할 수 있습니다. 예를 들어 `/blog/:slug*`는 `/blog/a/b/c/d/hello-world`와 일치합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async redirects() {
         return [
@@ -102,14 +102,14 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ### 정규식 경로 매칭[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects#regex-path-matching)
 
 정규식 경로를 매칭하려면 매개변수 뒤를 괄호로 감싼 정규식으로 정의할 수 있습니다. 예를 들어 `/post/:slug(\\d{1,})`는 `/post/123`과는 매칭되지만 `/post/abc`와는 매칭되지 않습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async redirects() {
         return [
@@ -121,12 +121,12 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 `(`, `)`, `{`, `}`, `:`, `*`, `+`, `?` 문자는 정규식 경로 매칭에 사용되므로 `source`에서 특수 문자가 아닌 값으로 사용하려면 앞에 `\\`를 붙여 이스케이프해야 합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async redirects() {
         return [
@@ -139,7 +139,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## 헤더, 쿠키, 쿼리 매칭[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects#header-cookie-and-query-matching)
 
@@ -152,7 +152,7 @@ next.config.js
   * `value`: `String` 또는 `undefined` \- 확인할 값이며, undefined이면 모든 값과 일치합니다. `first-(?<paramName>.*)`처럼 특정 부분을 캡처하는 정규식 형태의 문자열을 사용할 수 있으며, `first-second` 값에 사용하면 `second`를 `:paramName`으로 목적지에서 참조할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       async redirects() {
         return [
@@ -234,14 +234,14 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ### basePath 지원과 함께 사용하는 리디렉션[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects#redirects-with-basepath-support)
 
 리디렉션에서 [`basePath` 지원](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)을 사용하는 경우 `basePath: false`를 추가하지 않는 한 각 `source`와 `destination`에 `basePath`가 자동으로 접두사로 붙습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       basePath: '/docs',
 
@@ -262,14 +262,14 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ### i18n 지원과 함께 사용하는 리디렉션[](https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects#redirects-with-i18n-support)
 
 리디렉션에서 [`i18n` 지원](https://nextjs.org/docs/pages/guides/internationalization)을 사용하는 경우 `locale: false`를 추가하지 않는 한 각 `source`와 `destination`은 구성된 `locales`를 처리하도록 자동으로 접두사가 붙습니다. `locale: false`를 사용하면 올바르게 매칭되도록 `source`와 `destination` 앞에 로케일을 명시해야 합니다.
 
 next.config.js
-[code]
+````
     module.exports = {
       i18n: {
         locales: ['en', 'fr', 'de'],
@@ -316,7 +316,7 @@ source: '/:locale/page',
         ]
       },
     }
-[/code]
+````
 ```
 
 드물게는 이전 HTTP 클라이언트가 올바르게 리디렉션되도록 맞춤 상태 코드를 지정해야 할 수 있습니다. 이런 경우 `permanent` 속성 대신 `statusCode` 속성을 사용할 수 있지만 두 가지를 동시에 사용할 수는 없습니다. IE11 호환성을 보장하기 위해 308 상태 코드에는 자동으로 `Refresh` 헤더가 추가됩니다.

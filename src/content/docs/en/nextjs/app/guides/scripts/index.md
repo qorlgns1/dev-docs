@@ -274,4 +274,3 @@ Learn more about the next/script API.
   - Optimize third-party scripts in your Next.js application using the built-in `next/script` Component.
 
 ---
-

@@ -31,7 +31,7 @@ Last updated February 20, 2026
 pages/blog/[id].tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { GetStaticPaths, GetStaticProps } from 'next'
 
     interface Post {
@@ -80,7 +80,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 이 예시는 다음과 같이 동작합니다:
 
@@ -109,7 +109,7 @@ JavaScriptTypeScript
 pages/api/revalidate.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     export default async function handler(
@@ -132,7 +132,7 @@ JavaScriptTypeScript
         return res.status(500).send('Error revalidating')
       }
     }
-[/code]
+```
 
 온디맨드 재검증을 사용 중이라면 `getStaticProps` 안에 `revalidate` 시간을 지정할 필요가 없습니다. Next.js는 기본값 `false`(재검증 없음)를 사용하며, `res.revalidate()`가 호출될 때만 페이지를 온디맨드로 재검증합니다.
 
@@ -143,7 +143,7 @@ JavaScriptTypeScript
 pages/blog/[id].tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { GetStaticProps } from 'next'
 
     interface Post {
@@ -181,7 +181,7 @@ JavaScriptTypeScript
         revalidate: 60,
       }
     }
-[/code]
+```
 
 ### 캐시 위치 커스터마이징[](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#customizing-the-cache-location)
 
@@ -194,7 +194,7 @@ JavaScriptTypeScript
 `fetch` API를 사용하는 경우, 요청이 캐시되었는지 여부를 파악하기 위해 추가 로깅을 추가할 수 있습니다. [`logging` 옵션에 대해 더 알아보기](https://nextjs.org/docs/app/api-reference/config/next-config-js/logging).
 
 next.config.js
-[code]
+```
     module.exports = {
       logging: {
         fetches: {
@@ -202,7 +202,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 ### 프로덕션 동작 검증[](https://nextjs.org/docs/pages/guides/incremental-static-regeneration#verifying-correct-production-behavior)
 
@@ -211,9 +211,9 @@ next.config.js
 이렇게 하면 프로덕션 환경에서와 동일하게 ISR 동작을 확인할 수 있습니다. 추가 디버깅이 필요하면 `.env` 파일에 다음 환경 변수를 추가하세요:
 
 .env
-[code]
+```
     NEXT_PRIVATE_DEBUG_CACHE=1
-[/code]
+```
 
 이렇게 하면 Next.js 서버 콘솔이 ISR 캐시 히트 및 미스를 로그로 출력합니다. `next build` 중에 생성되는 페이지와 경로에 접근할 때 페이지가 어떻게 업데이트되는지 출력을 통해 확인할 수 있습니다.
 

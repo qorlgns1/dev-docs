@@ -18,7 +18,7 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/file-convent
 mdx-components.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { MDXComponents } from 'mdx/types'
 
     const components: MDXComponents = {}
@@ -26,7 +26,7 @@ JavaScriptTypeScript
     export function useMDXComponents(): MDXComponents {
       return components
     }
-[/code]
+```
 
 ## 내보내기[](https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#exports)
 
@@ -37,7 +37,7 @@ JavaScriptTypeScript
 mdx-components.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { MDXComponents } from 'mdx/types'
 
     const components: MDXComponents = {}
@@ -45,7 +45,7 @@ JavaScriptTypeScript
     export function useMDXComponents(): MDXComponents {
       return components
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#version-history)
 

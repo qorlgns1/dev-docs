@@ -164,4 +164,3 @@ export async function createUser(data, token) {
 
 See the [React documentation](https://react.dev/reference/rsc/use-server) for more information on `use server`.
 ---
-

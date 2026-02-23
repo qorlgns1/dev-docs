@@ -19,7 +19,7 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/functions/ca
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -27,14 +27,14 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 `cacheTag` 함수는 하나 이상의 문자열 값을 받습니다.
 
 app/data.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cacheTag } from 'next/cache'
 
     export async function getData() {
@@ -43,14 +43,14 @@ JavaScriptTypeScript
       const data = await fetch('/api/data')
       return data
     }
-[/code]
+```
 
 그런 다음 [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag) API를 사용해 필요할 때 캐시를 온디맨드로 비울 수 있습니다. 예를 들어 [route handler](https://nextjs.org/docs/app/api-reference/file-conventions/route)나 [Server Action](https://nextjs.org/docs/app/getting-started/updating-data) 같은 다른 함수에서 활용할 수 있습니다:
 
 app/action.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { revalidateTag } from 'next/cache'
@@ -59,16 +59,16 @@ JavaScriptTypeScript
       await addPost()
       revalidateTag('my-data')
     }
-[/code]
+```
 
 ## 알아두면 좋은 점[](https://nextjs.org/docs/app/api-reference/functions/cacheTag#good-to-know)
 
 - **멱등 태그** : 동일한 태그를 여러 번 적용해도 추가 효과가 없습니다.
 - **다중 태그** : `cacheTag`에 여러 문자열 값을 전달해 하나의 캐시 항목에 여러 태그를 지정할 수 있습니다.
 
-[code]
+```
     cacheTag('tag-one', 'tag-two')
-[/code]
+```
 
 - **제한 사항** : 사용자 지정 태그의 최대 길이는 256자이며 태그 항목 수는 최대 128개입니다.
 
@@ -81,7 +81,7 @@ JavaScriptTypeScript
 app/components/bookings.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { cacheTag } from 'next/cache'
 
     interface BookingsProps {
@@ -99,7 +99,7 @@ JavaScriptTypeScript
 
       return //...
     }
-[/code]
+```
 
 ### 외부 데이터로 태그 생성[](https://nextjs.org/docs/app/api-reference/functions/cacheTag#creating-tags-from-external-data)
 
@@ -108,7 +108,7 @@ JavaScriptTypeScript
 app/components/bookings.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { cacheTag } from 'next/cache'
 
     interface BookingsProps {
@@ -124,7 +124,7 @@ JavaScriptTypeScript
       }
       return //...
     }
-[/code]
+```
 
 ### 태그된 캐시 무효화[](https://nextjs.org/docs/app/api-reference/functions/cacheTag#invalidating-tagged-cache)
 
@@ -133,7 +133,7 @@ JavaScriptTypeScript
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { revalidateTag } from 'next/cache'
@@ -142,7 +142,7 @@ JavaScriptTypeScript
       await updateBookingData()
       revalidateTag('bookings-data')
     }
-[/code]
+```
 
 ## 관련
 

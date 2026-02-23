@@ -178,4 +178,3 @@ export const config = {
 
 Be warned that if these statements are executed on the Edge, *they will throw and cause a runtime error*.
 ---
-

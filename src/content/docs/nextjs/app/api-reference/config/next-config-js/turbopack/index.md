@@ -20,7 +20,7 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -30,7 +30,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 > **참고** :
 >
@@ -110,14 +110,14 @@ Next.js는 다음 파일 중 하나를 찾는 방식으로 프로젝트의 루�
 워크스페이스를 사용하지 않는 등 프로젝트 구조가 다른 경우 `root` 옵션을 수동으로 설정할 수 있습니다.
 
 next.config.js
-[code]
+```
     const path = require('path')
     module.exports = {
       turbopack: {
         root: path.join(__dirname, '..'),
       },
     }
-[/code]
+```
 
 프로젝트 루트 외부의 연결된 의존성(`npm link`, `yarn link`, `pnpm link` 등)을 해석하려면 프로젝트와 연결된 의존성의 상위 디렉터리를 `turbopack.root`로 설정해야 합니다.
 
@@ -136,7 +136,7 @@ next.config.js
 다음은 `.svg` 파일을 import하여 React 컴포넌트로 렌더링할 수 있게 해 주는 [`@svgr/webpack`](https://www.npmjs.com/package/@svgr/webpack) 로더를 사용하는 예시입니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       turbopack: {
         rules: {
@@ -147,7 +147,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 > **참고** : `rules` 객체에서 사용하는 glob은 파일 이름 기준으로 일치하며, glob에 `/` 문자가 포함되면 프로젝트 상대 전체 파일 경로 기준으로 일치합니다. Windows 파일 경로는 유닉스 스타일의 `/` 구분자를 사용하도록 정규화됩니다.
 >
@@ -156,7 +156,7 @@ next.config.js
 구성 옵션이 필요한 로더의 경우 문자열 대신 객체 형식을 사용할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       turbopack: {
         rules: {
@@ -174,7 +174,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 > **참고** : Next.js 13.4.4 이전 버전에서는 `turbopack.rules`가 `turbo.loaders`로 불렸으며 `*.mdx` 대신 `.mdx`처럼 파일 확장자만 허용했습니다.
 
@@ -183,7 +183,7 @@ next.config.js
 고급 `condition` 구문을 사용하면 로더가 실행되는 위치를 더 제한할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       turbopack: {
         rules: {
@@ -213,7 +213,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
   * 지원되는 불리언 연산자는 `{all: [...]}`, `{any: [...]}`, `{not: ...}`입니다.
   * 지원되는 사용자 지정 연산자는 `{path: string | RegExp}`와 `{content: RegExp}`입니다. 동일한 객체에 `path`와 `content`를 함께 지정하면 암묵적인 `and`로 동작합니다.
@@ -230,7 +230,7 @@ next.config.js
 규칙은 객체 또는 객체 배열이 될 수 있습니다. 서로 겹치지 않는 조건을 모델링해야 할 때 배열이 유용합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       turbopack: {
         rules: {
@@ -249,7 +249,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 > **참고** : 일치하는 모든 규칙은 선언된 순서대로 실행됩니다.
 
@@ -260,7 +260,7 @@ Turbopack은 webpack의 [`resolve.alias`](https://webpack.js.org/configuration/r
 별칭을 구성하려면 `next.config.js`에서 import 패턴을 새 대상에 매핑하세요.
 
 next.config.js
-[code]
+```
     module.exports = {
       turbopack: {
         resolveAlias: {
@@ -269,7 +269,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 이 구성은 `underscore` 패키지 import를 `lodash` 패키지로 별칭 처리합니다. 즉, `import underscore from 'underscore'`는 `underscore` 대신 `lodash` 모듈을 로드합니다.
 
@@ -282,13 +282,13 @@ Turbopack은 webpack의 [`resolve.extensions`](https://webpack.js.org/configurat
 `next.config.js`에서 `resolveExtensions` 필드를 사용해 해석할 확장자를 설정하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       turbopack: {
         resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
       },
     }
-[/code]
+```
 
 이 설정은 기존 해석 확장자 목록을 제공한 목록으로 덮어씁니다. 기본 확장자가 포함되어 있는지 확인하세요.
 
@@ -301,13 +301,13 @@ Turbopack은 JavaScript 번들과 소스 맵에 [debug IDs](https://github.com/t
 `next.config.js`에서 `debugIds` 필드를 사용해 디버그 ID를 설정하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       turbopack: {
         debugIds: true,
       },
     }
-[/code]
+```
 
 이 옵션은 호환성을 보장하기 위해 JavaScript 번들에 디버그 ID용 폴리필을 자동으로 추가합니다. 디버그 ID는 `globalThis._debugIds` 전역 변수에서 확인할 수 있습니다.
 

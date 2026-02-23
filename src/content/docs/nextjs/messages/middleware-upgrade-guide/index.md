@@ -64,7 +64,7 @@ Vercel에서 Next.js를 사용 중이라면, Middleware를 사용하는 기존 �
 Middleware는 **앱의 모든 라우트**에 대해 호출되며, 커스텀 matcher를 사용해 매칭 필터를 정의할 수 있습니다. 아래는 `/about/*` 및 `/dashboard/:path*`에서 작동하는 Middleware 예시로, 커스텀 matcher는 내보낸 config 객체에 정의되어 있습니다.
 
 middleware.ts
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
 
@@ -76,12 +76,12 @@ middleware.ts
     export const config = {
       matcher: ['/about/:path*', '/dashboard/:path*'],
     }
-[/code]
+```
 
 matcher config는 전체 정규식을 지원하므로 부정형 전방 탐색이나 문자 매칭 등도 사용할 수 있습니다. 특정 경로를 제외한 모든 경로를 매칭하는 부정형 전방 탐색 예시는 다음과 같습니다.
 
 middleware.ts
-[code]
+```
     export const config = {
       matcher: [
         /*
@@ -93,12 +93,12 @@ middleware.ts
         '/((?!api|_next/static|favicon.ico).*)',
       ],
     }
-[/code]
+```
 
 config 옵션은 모든 요청마다 호출되지 않으므로 권장되지만, 조건문을 사용해 특정 경로에만 Middleware를 실행할 수도 있습니다. 조건문을 사용하면 Middleware 실행 순서를 명시적으로 정의할 수 있다는 장점이 있습니다. 다음 예시는 이전의 중첩 Middleware 두 개를 통합하는 방법을 보여 줍니다.
 
 middleware.ts
-[code]
+```
     import type { NextRequest } from 'next/server'
 
     export function middleware(request: NextRequest) {
@@ -110,7 +110,7 @@ middleware.ts
         // This logic is only applied to /dashboard
       }
     }
-[/code]
+```
 
 ## 응답 본문 없음[](https://nextjs.org/docs/messages/middleware-upgrade-guide#no-response-body)
 
@@ -125,12 +125,12 @@ middleware.ts
 클라이언트 및 서버 내비게이션의 차이를 존중하고, 개발자가 보안에 취약한 Middleware를 만들지 않도록 하기 위해 Middleware에서 응답 본문을 전송하는 기능을 제거했습니다. 이제 Middleware는 `rewrite`, `redirect` 또는 들어오는 요청 수정(예: [쿠키 설정](https://nextjs.org/docs/messages/middleware-upgrade-guide#cookies-api-revamped))에만 사용됩니다.
 
 다음 패턴은 더 이상 동작하지 않습니다.
-[code]
+```
     new Response('a text value')
     new Response(streamOrBuffer)
     new Response(JSON.stringify(obj), { headers: 'application/json' })
     NextResponse.json()
-[/code]
+```
 
 ### 업그레이드 방법[](https://nextjs.org/docs/messages/middleware-upgrade-guide#how-to-upgrade-1)
 
@@ -139,7 +139,7 @@ middleware.ts
 #### 이전[](https://nextjs.org/docs/messages/middleware-upgrade-guide#before)
 
 pages/_middleware.ts
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
     import { isAuthValid } from './lib/auth'
@@ -152,12 +152,12 @@ pages/_middleware.ts
 
       return NextResponse.json({ message: 'Auth required' }, { status: 401 })
     }
-[/code]
+```
 
 #### 이후[](https://nextjs.org/docs/messages/middleware-upgrade-guide#after)
 
 middleware.ts
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
     import { isAuthValid } from './lib/auth'
@@ -173,14 +173,14 @@ middleware.ts
 
       return NextResponse.redirect(loginUrl)
     }
-[/code]
+```
 
 #### Edge API Routes[](https://nextjs.org/docs/messages/middleware-upgrade-guide#edge-api-routes)
 
 이전에 Middleware를 사용해 외부 API로 헤더를 전달했다면 이제 [Edge API Routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)를 사용할 수 있습니다.
 
 pages/api/proxy.ts
-[code]
+```
     import { type NextRequest } from 'next/server'
 
     export const config = {
@@ -197,7 +197,7 @@ pages/api/proxy.ts
         redirect: 'manual',
       })
     }
-[/code]
+```
 
 ## Cookies API 개편[](https://nextjs.org/docs/messages/middleware-upgrade-guide#cookies-api-revamped)
 
@@ -226,7 +226,7 @@ pages/api/proxy.ts
 #### 이전[](https://nextjs.org/docs/messages/middleware-upgrade-guide#before-1)
 
 pages/_middleware.ts
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
 
@@ -251,12 +251,12 @@ pages/_middleware.ts
 
       return response
     }
-[/code]
+```
 
 #### 이후[](https://nextjs.org/docs/messages/middleware-upgrade-guide#after-1)
 
 middleware.ts
-[code]
+```
     export function middleware() {
       const response = new NextResponse()
 
@@ -276,7 +276,7 @@ middleware.ts
 
       return response
     }
-[/code]
+```
 
 ## 새 User-Agent 헬퍼[](https://nextjs.org/docs/messages/middleware-upgrade-guide#new-user-agent-helper)
 
@@ -299,7 +299,7 @@ Middleware 크기를 줄이기 위해 요청 객체에서 user agent를 분리�
 #### 이전[](https://nextjs.org/docs/messages/middleware-upgrade-guide#before-2)
 
 pages/_middleware.ts
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
 
     export function middleware(request: NextRequest) {
@@ -308,12 +308,12 @@ pages/_middleware.ts
       url.searchParams.set('viewport', viewport)
       return NextResponse.rewrite(url)
     }
-[/code]
+```
 
 #### 이후[](https://nextjs.org/docs/messages/middleware-upgrade-guide#after-2)
 
 middleware.ts
-[code]
+```
     import { NextRequest, NextResponse, userAgent } from 'next/server'
 
     export function middleware(request: NextRequest) {
@@ -323,7 +323,7 @@ middleware.ts
       url.searchParams.set('viewport', viewport)
       return NextResponse.rewrite(url)
     }
-[/code]
+```
 
 ## 페이지 매치 데이터 없음[](https://nextjs.org/docs/messages/middleware-upgrade-guide#no-more-page-match-data)
 
@@ -344,7 +344,7 @@ middleware.ts
 #### 이전[](https://nextjs.org/docs/messages/middleware-upgrade-guide#before-3)
 
 pages/_middleware.ts
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest, NextFetchEvent } from 'next/server'
 
@@ -358,12 +358,12 @@ pages/_middleware.ts
         return NextResponse.redirect(url)
       }
     }
-[/code]
+```
 
 #### 이후[](https://nextjs.org/docs/messages/middleware-upgrade-guide#after-3)
 
 middleware.ts
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
 
@@ -397,7 +397,7 @@ middleware.ts
         return NextResponse.redirect(url)
       }
     }
-[/code]
+```
 
 ## 내부 Next.js 요청에서 Middleware 실행[](https://nextjs.org/docs/messages/middleware-upgrade-guide#executing-middleware-on-internal-nextjs-requests)
 
@@ -434,12 +434,11 @@ Middleware를 권한 부여에 사용하는 경우, 권한 오류 페이지나 �
 
       return response
     }
-[/code]
 
 #### 이후[](https://nextjs.org/docs/messages/middleware-upgrade-guide#after-1)
 
 middleware.ts
-[code]
+```
     export function middleware() {
       const response = new NextResponse()
 
@@ -459,7 +458,7 @@ middleware.ts
 
       return response
     }
-[/code]
+```
 
 ## 새로운 User-Agent Helper[](https://nextjs.org/docs/messages/middleware-upgrade-guide#new-user-agent-helper)
 
@@ -482,7 +481,7 @@ Middleware 크기를 줄이기 위해 요청 객체에서 사용자 에이전트
 #### 이전[](https://nextjs.org/docs/messages/middleware-upgrade-guide#before-2)
 
 pages/_middleware.ts
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
 
     export function middleware(request: NextRequest) {
@@ -491,12 +490,12 @@ pages/_middleware.ts
       url.searchParams.set('viewport', viewport)
       return NextResponse.rewrite(url)
     }
-[/code]
+```
 
 #### 이후[](https://nextjs.org/docs/messages/middleware-upgrade-guide#after-2)
 
 middleware.ts
-[code]
+```
     import { NextRequest, NextResponse, userAgent } from 'next/server'
 
     export function middleware(request: NextRequest) {
@@ -506,7 +505,7 @@ middleware.ts
       url.searchParams.set('viewport', viewport)
       return NextResponse.rewrite(url)
     }
-[/code]
+```
 
 ## 페이지 매치 데이터 삭제[](https://nextjs.org/docs/messages/middleware-upgrade-guide#no-more-page-match-data)
 
@@ -527,7 +526,7 @@ middleware.ts
 #### 이전[](https://nextjs.org/docs/messages/middleware-upgrade-guide#before-3)
 
 pages/_middleware.ts
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest, NextFetchEvent } from 'next/server'
 
@@ -541,12 +540,12 @@ pages/_middleware.ts
         return NextResponse.redirect(url)
       }
     }
-[/code]
+```
 
 #### 이후[](https://nextjs.org/docs/messages/middleware-upgrade-guide#after-3)
 
 middleware.ts
-[code]
+```
     import { NextResponse } from 'next/server'
     import type { NextRequest } from 'next/server'
 
@@ -580,7 +579,7 @@ middleware.ts
         return NextResponse.redirect(url)
       }
     }
-[/code]
+```
 
 ## 내부 Next.js 요청에서 Middleware 실행[](https://nextjs.org/docs/messages/middleware-upgrade-guide#executing-middleware-on-internal-nextjs-requests)
 

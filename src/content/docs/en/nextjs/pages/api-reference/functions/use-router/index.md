@@ -591,4 +591,3 @@ class MyComponent extends React.Component<MyComponentProps> {
 export default withRouter(MyComponent)
 ```
 ---
-

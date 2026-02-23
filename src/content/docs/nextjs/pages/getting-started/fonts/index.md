@@ -22,7 +22,7 @@ Copy page
 pages/_app.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Geist } from 'next/font/google'
     import type { AppProps } from 'next/app'
 
@@ -37,14 +37,14 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 `<html>` 요소에 폰트를 적용하려면 [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) (`pages/_document`)를 사용할 수 있습니다.
 
 pages/_document.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Html, Head, Main, NextScript } from 'next/document'
     import { Geist } from 'next/font/google'
 
@@ -63,7 +63,7 @@ JavaScriptTypeScript
         </Html>
       )
     }
-[/code]
+```
 
 ## Google 폰트[](https://nextjs.org/docs/pages/getting-started/fonts#google-fonts)
 
@@ -74,7 +74,7 @@ Google Font를 사용하려면 `next/font/google`에서 원하는 폰트를 임�
 pages/_app.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Geist } from 'next/font/google'
     import type { AppProps } from 'next/app'
 
@@ -89,14 +89,14 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 최고의 성능과 유연성을 위해 [variable fonts](https://fonts.google.com/variablefonts)를 사용할 것을 권장합니다. variable font를 사용할 수 없는 경우 가중치를 지정해야 합니다.
 
 pages/_app.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Roboto } from 'next/font/google'
     import type { AppProps } from 'next/app'
 
@@ -112,7 +112,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 ## 로컬 폰트[](https://nextjs.org/docs/pages/getting-started/fonts#local-fonts)
 
@@ -121,7 +121,7 @@ JavaScriptTypeScript
 pages/_app.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import localFont from 'next/font/local'
     import type { AppProps } from 'next/app'
 
@@ -136,10 +136,10 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 하나의 폰트 패밀리에 여러 파일을 사용하려면 `src`를 배열로 지정할 수 있습니다.
-[code]
+```
     const roboto = localFont({
       src: [
         {
@@ -164,7 +164,7 @@ JavaScriptTypeScript
         },
       ],
     })
-[/code]
+```
 
 ## API Reference
 

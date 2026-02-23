@@ -25,4 +25,3 @@ Learn how to upgrade to the latest versions of Next.js following the versions-sp
   - Upgrade your Next.js Application from Version 8 to Version 9.
 
 ---
-

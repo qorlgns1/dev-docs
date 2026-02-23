@@ -82,4 +82,3 @@ Source URL: https://nextjs.org/docs/app/api-reference/functions
   - The userAgent helper extends the Web Request API with additional properties and methods to interact with the user agent object from the request.
 
 ---
-

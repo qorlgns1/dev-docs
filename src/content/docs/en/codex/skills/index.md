@@ -48,21 +48,21 @@ Because implicit matching depends on `description`, write descriptions with clea
 ## Create a skill
 
 Use the built-in creator first:
-[code] 
+```
     $skill-creator
-[/code]
+```
 
 The creator asks what the skill does, when it should trigger, and whether it should stay instruction-only or include scripts. Instruction-only is the default.
 
 You can also create a skill manually by creating a folder with a `SKILL.md` file:
-[code] 
+```
     ---
     name: skill-name
     description: Explain exactly when this skill should and should not trigger.
     ---
     
     Skill instructions for Codex to follow.
-[/code]
+```
 
 Codex detects skill changes automatically. If an update doesn’t appear, restart Codex.
 
@@ -89,27 +89,27 @@ Codex supports symlinked skill folders and follows the symlink target when scann
 ## Install skills
 
 To install skills beyond the built-ins, use `$skill-installer`:
-[code] 
+```
     $skill-installer install the linear skill from the .experimental folder
-[/code]
+```
 
 You can also prompt the installer to download skills from other repositories. Codex detects newly installed skills automatically; if one doesn’t appear, restart Codex.
 
 ## Enable or disable skills
 
 Use `[[skills.config]]` entries in `~/.codex/config.toml` to disable a skill without deleting it:
-[code] 
+```
     [[skills.config]]
     path = "/path/to/skill/SKILL.md"
     enabled = false
-[/code]
+```
 
 Restart Codex after changing `~/.codex/config.toml`.
 
 ## Optional metadata
 
 Add `agents/openai.yaml` to configure UI metadata in the [Codex app](https://developers.openai.com/codex/app), to set invocation policy, and to declare tool dependencies for a more seamless experience with using the skill.
-[code] 
+```
     interface:
       display_name: "Optional user-facing name"
       short_description: "Optional user-facing description"
@@ -128,7 +128,7 @@ Add `agents/openai.yaml` to configure UI metadata in the [Codex app](https://dev
           description: "OpenAI Docs MCP server"
           transport: "streamable_http"
           url: "https://developers.openai.com/mcp"
-[/code]
+```
 
 `allow_implicit_invocation` (default: `true`): When `false`, Codex won’t implicitly invoke the skill based on user prompt; explicit `$skill` invocation still works.
 

@@ -13,6 +13,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 import sys
 import tempfile
@@ -21,6 +22,8 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).parent.parent.parent.parent
+LEGACY_CODE_OPEN_RE = re.compile(r"^(?:>\s*)?\[code\].*$", re.IGNORECASE)
+LEGACY_CODE_CLOSE_RE = re.compile(r"^(?:>\s*)?\[/code\]\s*$", re.IGNORECASE)
 
 
 # ── Chunking ─────────────────────────────────────────────────────────────────
@@ -35,8 +38,15 @@ def split_chunks(text: str, max_chars: int) -> list[str]:
     in_code = False
 
     for line in text.splitlines():
-        if line.strip().startswith("```"):
+        stripped = line.strip()
+
+        if stripped.startswith("```"):
             in_code = not in_code
+        elif not in_code and LEGACY_CODE_OPEN_RE.match(stripped):
+            in_code = True
+        elif in_code and LEGACY_CODE_CLOSE_RE.match(stripped):
+            in_code = False
+
         line_size = len(line) + 1
         if buf and size + line_size > max_chars and not in_code:
             chunks.append("\n".join(buf).strip())

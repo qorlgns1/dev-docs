@@ -74,4 +74,3 @@ module.exports = {
 
 Notice that `isServer` is `true` when `nextRuntime` is `"edge"` or `"nodejs"`, `nextRuntime` `"edge"` is currently for proxy and Server Components in edge runtime only.
 ---
-

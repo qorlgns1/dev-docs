@@ -16,13 +16,13 @@ description: '는 Server Component에서 Draft Mode가 활성화되어 있는지
 app/page.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { draftMode } from 'next/headers'
 
     export default async function Page() {
       const { isEnabled } = await draftMode()
     }
-[/code]
+```
 
 ## 참고[](https://nextjs.org/docs/app/api-reference/functions/draft-mode#reference)
 
@@ -50,7 +50,7 @@ Draft Mode를 활성화하려면 새 [Route Handler](https://nextjs.org/docs/app
 app/draft/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { draftMode } from 'next/headers'
 
     export async function GET(request: Request) {
@@ -58,7 +58,7 @@ JavaScriptTypeScript
       draft.enable()
       return new Response('Draft mode is enabled')
     }
-[/code]
+```
 
 ### Draft Mode 비활성화[](https://nextjs.org/docs/app/api-reference/functions/draft-mode#disabling-draft-mode)
 
@@ -69,7 +69,7 @@ Draft Mode를 수동으로 비활성화하려면 [Route Handler](https://nextjs.
 app/draft/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { draftMode } from 'next/headers'
 
     export async function GET(request: Request) {
@@ -77,7 +77,7 @@ JavaScriptTypeScript
       draft.disable()
       return new Response('Draft mode is disabled')
     }
-[/code]
+```
 
 이후 Route Handler를 호출하도록 요청을 전송합니다. [`<Link>` 컴포넌트](https://nextjs.org/docs/app/api-reference/components/link)를 사용해 라우트를 호출하는 경우, 사전 가져오기 시 쿠키가 실수로 삭제되는 것을 막기 위해 반드시 `prefetch={false}`를 전달해야 합니다.
 
@@ -88,7 +88,7 @@ Server Component에서 `isEnabled` 속성으로 Draft Mode가 활성화되어 �
 app/page.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { draftMode } from 'next/headers'
 
     export default async function Page() {
@@ -100,7 +100,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/draft-mode#version-history)
 

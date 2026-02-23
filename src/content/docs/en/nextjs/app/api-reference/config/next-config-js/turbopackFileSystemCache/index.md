@@ -50,4 +50,3 @@ module.exports = nextConfig
 | `v16.0.0` | Beta release with separate flags for build and dev             |
 | `v15.5.0` | Persistent caching released as experimental on canary releases |
 ---
-

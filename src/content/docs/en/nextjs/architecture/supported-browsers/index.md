@@ -130,4 +130,3 @@ Next.js has built-in TypeScript support. [Learn more here](https://nextjs.org/do
 
 You can customize babel configuration. [Learn more here](https://nextjs.org/docs/pages/guides/babel).
 ---
-

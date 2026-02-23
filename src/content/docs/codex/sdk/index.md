@@ -29,14 +29,14 @@ TypeScript 라이브러리는 애플리케이션 내부에서 Codex를 제어할
 ### 설치
 
 시작하려면 `npm`으로 Codex SDK를 설치하세요:
-[code] 
+```
     npm install @openai/codex-sdk
-[/code]
+```
 
 ### 사용법
 
 Codex와 스레드를 시작한 뒤, 프롬프트로 실행합니다.
-[code] 
+```
     import { Codex } from "@openai/codex-sdk";
     
     const codex = new Codex();
@@ -46,10 +46,10 @@ Codex와 스레드를 시작한 뒤, 프롬프트로 실행합니다.
     );
     
     console.log(result);
-[/code]
+```
 
 동일한 스레드를 계속하려면 `run()`을 다시 호출하고, 스레드 ID를 제공하여 과거 스레드를 재개할 수도 있습니다.
-[code] 
+```
     // running the same thread
     const result = await thread.run("Implement the plan");
     
@@ -62,6 +62,6 @@ Codex와 스레드를 시작한 뒤, 프롬프트로 실행합니다.
     const result2 = await thread2.run("Pick up where you left off");
     
     console.log(result2);
-[/code]
+```
 
 자세한 내용은 [TypeScript 저장소](https://github.com/openai/codex/tree/main/sdk/typescript)를 확인하세요.

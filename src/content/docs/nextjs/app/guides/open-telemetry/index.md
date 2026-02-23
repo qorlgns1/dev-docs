@@ -31,22 +31,22 @@ OpenTelemetry는 확장 가능하지만 올바르게 설정하려면 다소 장�
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add @vercel/otel @opentelemetry/sdk-logs @opentelemetry/api-logs @opentelemetry/instrumentation
-[/code]
+```
 
 그다음 프로젝트 **루트 디렉터리**(또는 `src` 폴더를 사용하는 경우 그 안)에 커스텀 [`instrumentation.ts`](https://nextjs.org/docs/app/guides/instrumentation)(또는 `.js`) 파일을 만드세요:
 
 your-project/instrumentation.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { registerOTel } from '@vercel/otel'
 
     export function register() {
       registerOTel({ serviceName: 'next-app' })
     }
-[/code]
+```
 
 추가 구성 옵션은 [`@vercel/otel` 문서](https://www.npmjs.com/package/@vercel/otel)를 참고하세요.
 
@@ -66,27 +66,27 @@ JavaScriptTypeScript
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add @opentelemetry/sdk-node @opentelemetry/resources @opentelemetry/semantic-conventions @opentelemetry/sdk-trace-node @opentelemetry/exporter-trace-otlp-http
-[/code]
+```
 
 이제 `instrumentation.ts`에서 `NodeSDK`를 초기화할 수 있습니다. `@vercel/otel`과 달리 `NodeSDK`는 엣지 런타임과 호환되지 않으므로 `process.env.NEXT_RUNTIME === 'nodejs'`일 때만 임포트하도록 해야 합니다. node를 사용할 때만 조건부로 임포트하는 새로운 `instrumentation.node.ts` 파일을 만드는 것이 좋습니다:
 
 instrumentation.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function register() {
       if (process.env.NEXT_RUNTIME === 'nodejs') {
         await import('./instrumentation.node.ts')
       }
     }
-[/code]
+```
 
 instrumentation.node.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http'
     import { resourceFromAttributes } from '@opentelemetry/resources'
     import { NodeSDK } from '@opentelemetry/sdk-node'
@@ -100,7 +100,7 @@ JavaScriptTypeScript
       spanProcessor: new SimpleSpanProcessor(new OTLPTraceExporter()),
     })
     sdk.start()
-[/code]
+```
 
 이렇게 하면 `@vercel/otel`을 사용하는 것과 동일하지만, `@vercel/otel`에서 노출하지 않는 일부 기능을 수정하거나 확장할 수 있습니다. 엣지 런타임 지원이 필요하다면 `@vercel/otel`을 사용해야 합니다.
 
@@ -143,12 +143,12 @@ OpenTelemetry Collector가 필수는 아닙니다. [`@vercel/otel`](https://next
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add @opentelemetry/api
-[/code]
+```
 
 다음 예시는 GitHub stars를 가져오고 페치 요청 결과를 추적하기 위해 커스텀 `fetchGithubStars` span을 추가하는 함수를 보여 줍니다:
-[code]
+```
     import { trace } from '@opentelemetry/api'
 
     export async function fetchGithubStars() {
@@ -162,7 +162,7 @@ pnpmnpmyarnbun
           }
         })
     }
-[/code]
+```
 
 `register` 함수는 새로운 환경에서 코드가 실행되기 전에 실행됩니다. 새 span을 생성하면 내보낸 트레이스에 올바르게 추가됩니다.
 

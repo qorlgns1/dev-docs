@@ -20,24 +20,24 @@ Copy page
 선호하는 패키지 관리자를 사용해 Next.js 버전 14로 업데이트하려면 다음 명령을 실행하세요.
 
 Terminal
-[code]
+```
     npm i next@next-14 react@18 react-dom@18 && npm i eslint-config-next@next-14 -D
-[/code]
+```
 
 Terminal
-[code]
+```
     yarn add next@next-14 react@18 react-dom@18 && yarn add eslint-config-next@next-14 -D
-[/code]
+```
 
 Terminal
-[code]
+```
     pnpm i next@next-14 react@18 react-dom@18 && pnpm i eslint-config-next@next-14 -D
-[/code]
+```
 
 Terminal
-[code]
+```
     bun add next@next-14 react@18 react-dom@18 && bun add eslint-config-next@next-14 -D
-[/code]
+```
 
 > **알아두면 좋아요:** TypeScript를 사용 중이라면 `@types/react`와 `@types/react-dom`도 최신 버전으로 업그레이드하세요.
 

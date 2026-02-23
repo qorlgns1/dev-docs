@@ -24,7 +24,7 @@ Next.js는 이러한 정적 내보내기를 지원하므로 HTML/CSS/JS 정적 �
 정적 내보내기를 활성화하려면 `next.config.js`에서 출력 모드를 변경하세요:
 
 next.config.js
-[code]
+```
     /**
      * @type {import('next').NextConfig}
      */
@@ -42,7 +42,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 `next build`를 실행하면 Next.js가 애플리케이션용 HTML/CSS/JS 자산이 들어 있는 `out` 폴더를 생성합니다.
 
@@ -59,7 +59,7 @@ Next.js의 코어는 정적 내보내기를 지원하도록 설계되어 있습�
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       // This fetch will run on the server during `next build`
       const res = await fetch('https://api.example.com/...')
@@ -67,7 +67,7 @@ JavaScriptTypeScript
 
       return <main>...</main>
     }
-[/code]
+```
 
 ### 클라이언트 컴포넌트[](https://nextjs.org/docs/app/guides/static-exports#client-components)
 
@@ -76,7 +76,7 @@ JavaScriptTypeScript
 app/other/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import useSWR from 'swr'
@@ -93,14 +93,14 @@ JavaScriptTypeScript
 
       return data.title
     }
-[/code]
+```
 
 라우트 전환이 클라이언트에서 일어나므로 이는 기존 SPA처럼 동작합니다. 예를 들어, 다음 인덱스 라우트는 클라이언트에서 다른 게시물로 이동할 수 있게 해 줍니다:
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -119,14 +119,14 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### 이미지 최적화[](https://nextjs.org/docs/app/guides/static-exports#image-optimization)
 
 `next/image`를 통한 [이미지 최적화](https://nextjs.org/docs/app/api-reference/components/image)는 `next.config.js`에 사용자 정의 이미지 로더를 정의해 정적 내보내기에서도 사용할 수 있습니다. 예를 들어 Cloudinary 같은 서비스를 통해 이미지를 최적화할 수 있습니다:
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       output: 'export',
@@ -137,14 +137,14 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 이 사용자 정의 로더는 원격 소스에서 이미지를 가져오는 방법을 정의합니다. 예를 들어, 아래 로더는 Cloudinary용 URL을 구성합니다:
 
 my-loader.ts
 
 JavaScriptTypeScript
-[code]
+```
     export default function cloudinaryLoader({
       src,
       width,
@@ -159,20 +159,20 @@ JavaScriptTypeScript
         ','
       )}${src}`
     }
-[/code]
+```
 
 그런 다음 애플리케이션에서 `next/image`를 사용할 때 Cloudinary의 이미지로 가는 상대 경로를 지정할 수 있습니다:
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Image from 'next/image'
 
     export default function Page() {
       return <Image alt="turtles" src="/turtles.jpg" width={300} height={300} />
     }
-[/code]
+```
 
 ### 라우트 핸들러[](https://nextjs.org/docs/app/guides/static-exports#route-handlers)
 
@@ -181,11 +181,11 @@ JavaScriptTypeScript
 app/data.json/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET() {
       return Response.json({ name: 'Lee' })
     }
-[/code]
+```
 
 위 `app/data.json/route.ts` 파일은 `next build` 중 정적 파일로 렌더링되어 `{ name: 'Lee' }`가 포함된 `data.json`을 생성합니다.
 
@@ -194,7 +194,7 @@ JavaScriptTypeScript
 ### 브라우저 API[](https://nextjs.org/docs/app/guides/static-exports#browser-apis)
 
 클라이언트 컴포넌트는 `next build` 중 HTML로 미리 렌더링됩니다. `window`, `localStorage`, `navigator` 같은 [웹 API](https://developer.mozilla.org/docs/Web/API)는 서버에서 사용할 수 없으므로, 브라우저에서 실행될 때만 안전하게 접근해야 합니다. 예:
-[code]
+```
     'use client';
 
     import { useEffect } from 'react';
@@ -207,7 +207,7 @@ JavaScriptTypeScript
 
       return ...;
     }
-[/code]
+```
 
 ## 지원되지 않는 기능[](https://nextjs.org/docs/app/guides/static-exports#unsupported-features)
 
@@ -228,9 +228,9 @@ Node.js 서버가 필요하거나 빌드 과정에서 계산할 수 없는 동�
   * [Intercepting Routes](https://nextjs.org/docs/app/api-reference/file-conventions/intercepting-routes)
 
 이러한 기능을 `next dev`와 함께 사용하려 하면, 루트 레이아웃에서 [`dynamic`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic) 옵션을 `error`로 설정했을 때와 유사한 오류가 발생합니다.
-[code]
+```
     export const dynamic = 'error'
-[/code]
+```
 
 ## 배포[](https://nextjs.org/docs/app/guides/static-exports#deploying)
 
@@ -251,7 +251,7 @@ Node.js 서버가 필요하거나 빌드 과정에서 계산할 수 없는 동�
 Nginx 같은 정적 호스트를 사용한다면, 들어오는 요청을 올바른 파일로 리라이트하도록 구성할 수 있습니다:
 
 nginx.conf
-[code]
+```
     server {
       listen 80;
       server_name acme.com;
@@ -273,7 +273,7 @@ nginx.conf
           internal;
       }
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/guides/static-exports#version-history)
 

@@ -24,19 +24,19 @@ Source URL: https://developers.openai.com/codex/noninteractive
 ## 기본 사용법
 
 작업 프롬프트를 하나의 인수로 전달합니다:
-[code] 
+```
     codex exec "summarize the repository structure and list the top 5 risky areas"
-[/code]
+```
 
 `codex exec`가 실행되는 동안 Codex는 진행 상황을 `stderr`로 스트리밍하고 최종 에이전트 메시지만 `stdout`에 출력합니다. 따라서 최종 결과를 리디렉션하거나 파이프 처리하기가 쉽습니다:
-[code] 
+```
     codex exec "generate release notes for the last 10 commits" | tee release-notes.md
-[/code]
+```
 
 세션 rollout 파일을 디스크에 남기고 싶지 않다면 `--ephemeral`을 사용하세요:
-[code] 
+```
     codex exec --ephemeral "triage this repository and suggest next steps"
-[/code]
+```
 
 ## 권한 및 안전성
 
@@ -52,22 +52,22 @@ Source URL: https://developers.openai.com/codex/noninteractive
 ## 출력물을 기계가 읽을 수 있도록 만들기
 
 스크립트에서 Codex 출력물을 처리하려면 JSON Lines 출력을 사용하세요:
-[code] 
+```
     codex exec --json "summarize the repo structure" | jq
-[/code]
+```
 
 `--json`을 활성화하면 `stdout`이 JSON Lines(JSONL) 스트림이 되어 Codex가 실행 중에 내보내는 모든 이벤트를 캡처할 수 있습니다. 이벤트 유형에는 `thread.started`, `turn.started`, `turn.completed`, `turn.failed`, `item.*`, `error`가 포함됩니다.
 
 아이템 유형에는 에이전트 메시지, 추론, 명령 실행, 파일 변경, MCP 도구 호출, 웹 검색, 플랜 업데이트가 포함됩니다.
 
 샘플 JSON 스트림(각 줄이 JSON 객체):
-[code] 
+```
     {"type":"thread.started","thread_id":"0199a213-81c0-7800-8aa1-bbab2a035a53"}
     {"type":"turn.started"}
     {"type":"item.started","item":{"id":"item_1","type":"command_execution","command":"bash -lc ls","status":"in_progress"}}
     {"type":"item.completed","item":{"id":"item_3","type":"agent_message","text":"Repo contains docs, sdk, and examples directories."}}
     {"type":"turn.completed","usage":{"input_tokens":24763,"cached_input_tokens":24448,"output_tokens":122}}
-[/code]
+```
 
 최종 메시지만 필요하다면 `-o <path>`/`--output-last-message <path>`로 파일에 기록하세요. 이 옵션은 최종 메시지를 파일에 쓰면서도 `stdout`에는 계속 출력합니다(자세한 내용은 [`codex exec`](https://developers.openai.com/codex/cli/reference#codex-exec) 참조).
 
@@ -76,7 +76,7 @@ Source URL: https://developers.openai.com/codex/noninteractive
 후속 단계에서 구조화된 데이터가 필요하다면 `--output-schema`를 사용하여 JSON Schema를 만족하는 최종 응답을 요청하세요. 이는 작업 요약, 위험 보고서, 릴리스 메타데이터처럼 안정적인 필드가 필요한 자동화 워크플로에 유용합니다.
 
 `schema.json`
-[code] 
+```
     {
       "type": "object",
       "properties": {
@@ -89,24 +89,23 @@ Source URL: https://developers.openai.com/codex/noninteractive
       "required": ["project_name", "programming_languages"],
       "additionalProperties": false
     }
-[/code]
+```
 
 스키마와 함께 Codex를 실행하고 최종 JSON 응답을 디스크에 기록하세요:
-[code] 
+```
     codex exec "Extract project metadata" \
-[/code]
+```
 
 --output-schema ./schema.json \
       -o ./project-metadata.json
-[/code]
 
 예시 최종 출력(stdout):
-[code] 
+```
     {
       "project_name": "Codex CLI",
       "programming_languages": ["Rust", "TypeScript", "Shell"]
     }
-[/code]
+```
 
 ## CI에서 인증하기
 
@@ -116,19 +115,19 @@ Source URL: https://developers.openai.com/codex/noninteractive
   * 프롬프트와 도구 출력을 유념하세요. 민감한 코드나 데이터가 포함될 수 있습니다.
 
 단일 실행에서 다른 API 키를 사용하려면 `CODEX_API_KEY`를 인라인으로 설정하세요:
-[code] 
+```
     CODEX_API_KEY=<api-key> codex exec --json "triage open bug reports"
-[/code]
+```
 
 `CODEX_API_KEY`는 `codex exec`에서만 지원됩니다.
 
 ## 비대화형 세션 다시 이어가기
 
 이전 실행(예: 2단계 파이프라인)을 계속해야 한다면 `resume` 하위 명령을 사용하세요:
-[code] 
+```
     codex exec "review the change for race conditions"
     codex exec resume --last "fix the race conditions you found"
-[/code]
+```
 
 `codex exec resume <SESSION_ID>`로 특정 세션 ID를 지정할 수도 있습니다.
 
@@ -151,7 +150,7 @@ CI 워크플로우가 실패했을 때 `codex exec`으로 자동 수정 제안�
 #### Codex CLI를 사용하는 최소 워크플로우
 
 아래 예시는 핵심 단계를 보여줍니다. 스택에 맞게 설치 및 테스트 명령을 조정하세요.
-[code] 
+```
     name: Codex auto-fix on CI failure
     
     on:
@@ -206,7 +205,7 @@ CI 워크플로우가 실패했을 때 `codex exec`으로 자동 수정 제안�
               branch: codex/auto-fix-${{ github.event.workflow_run.run_id }}
               base: ${{ env.FAILED_HEAD_BRANCH }}
               title: "Auto-fix failing CI via Codex"
-[/code]
+```
 
 #### 대안: Codex GitHub Action 사용
 

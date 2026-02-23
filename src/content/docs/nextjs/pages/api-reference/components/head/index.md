@@ -14,7 +14,7 @@ Copy page
 마지막 업데이트 2026년 2월 20일
 
 다음과 같이 페이지의 `head`에 요소를 추가하는 내장 컴포넌트를 제공합니다:
-[code]
+```
     import Head from 'next/head'
 
     function IndexPage() {
@@ -29,12 +29,12 @@ Copy page
     }
 
     export default IndexPage
-[/code]
+```
 
 ## 중복 태그 피하기[](https://nextjs.org/docs/pages/api-reference/components/head#avoid-duplicated-tags)
 
 `head`에서 태그가 중복되지 않도록 `key` 속성을 사용하면 태그가 한 번만 렌더링되도록 보장합니다. 다음 예제를 참고하세요:
-[code]
+```
     import Head from 'next/head'
 
     function IndexPage() {
@@ -53,7 +53,7 @@ Copy page
     }
 
     export default IndexPage
-[/code]
+```
 
 이 경우 두 번째 `<meta property="og:title" />`만 렌더링됩니다. 중복된 `key` 속성을 가진 `meta` 태그는 자동으로 처리됩니다.
 

@@ -60,14 +60,14 @@ If you started a thread with the wrong target (**Local** , **Worktree** , or **C
 The Codex app and Codex CLI use the same underlying Codex agent and configuration but might rely on different versions of the agent at any time and some experimental features might land in the Codex CLI first.
 
 To get the version of the Codex CLI on your system run:
-[code] 
+```
     codex --version
-[/code]
+```
 
 To get the version of Codex bundled with your Codex app run:
-[code] 
+```
     /Applications/Codex.app/Contents/Resources/codex --version
-[/code]
+```
 
 ## Feedback and logs
 

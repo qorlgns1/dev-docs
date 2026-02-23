@@ -16,7 +16,7 @@ Next.js는 개발 환경에서 빌드된 페이지를 서버가 메모리에 유
 기본값을 변경하려면 `next.config.js`를 열고 `onDemandEntries` 구성을 추가하세요.
 
 next.config.js
-[code]
+```
     module.exports = {
       onDemandEntries: {
         // period (in ms) where the server will keep pages in the buffer
@@ -25,6 +25,6 @@ next.config.js
         pagesBufferLength: 2,
       },
     }
-[/code]
+```
 
 보내기

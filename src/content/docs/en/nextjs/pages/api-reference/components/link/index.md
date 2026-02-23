@@ -586,4 +586,3 @@ export default function Home() {
 | `v8.0.0`  | Improved prefetching performance.                                                                                                                                            |
 | `v1.0.0`  | `next/link` introduced.                                                                                                                                                      |
 ---
-

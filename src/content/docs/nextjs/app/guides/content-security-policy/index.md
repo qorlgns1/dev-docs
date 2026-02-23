@@ -46,7 +46,7 @@ CSP는 공격을 막기 위해 인라인 및 외부 스크립트를 모두 차�
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
 
     export function proxy(request: NextRequest) {
@@ -89,7 +89,7 @@ JavaScriptTypeScript
 
       return response
     }
-[/code]
+```
 
 기본적으로 Proxy는 모든 요청에서 실행됩니다. [`matcher`](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#matcher)를 사용해 특정 경로에서만 Proxy가 실행되도록 필터링할 수 있습니다.
 
@@ -98,7 +98,7 @@ CSP 헤더가 필요 없는 `next/link` 프리페치와 정적 자산은 매칭�
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     export const config = {
       matcher: [
         /*
@@ -117,7 +117,7 @@ JavaScriptTypeScript
         },
       ],
     }
-[/code]
+```
 
 ### Next.js에서 nonce가 동작하는 방식[](https://nextjs.org/docs/app/guides/content-security-policy#how-nonces-work-in-nextjs)
 
@@ -142,7 +142,7 @@ nonce를 사용한다면 페이지를 명시적으로 동적 렌더링으로 전
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { connection } from 'next/server'
 
     export default async function Page() {
@@ -150,7 +150,7 @@ JavaScriptTypeScript
       await connection()
       // Your page content
     }
-[/code]
+```
 
 ### nonce 읽기[](https://nextjs.org/docs/app/guides/content-security-policy#reading-the-nonce)
 
@@ -159,7 +159,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { headers } from 'next/headers'
     import Script from 'next/script'
 
@@ -174,7 +174,7 @@ JavaScriptTypeScript
         />
       )
     }
-[/code]
+```
 
 ## CSP와 정적/동적 렌더링 비교[](https://nextjs.org/docs/app/guides/content-security-policy#static-vs-dynamic-rendering-with-csp)
 
@@ -213,7 +213,7 @@ CSP에서 nonce를 사용하면 **모든 페이지가 동적 렌더링**되어�
 nonce가 필요하지 않은 애플리케이션은 [`next.config.js`](https://nextjs.org/docs/app/api-reference/config/next-config-js)에서 직접 CSP 헤더를 설정할 수 있습니다.
 
 next.config.js
-[code]
+```
     const isDev = process.env.NODE_ENV === 'development'
 
     const cspHeader = `
@@ -244,7 +244,7 @@ next.config.js
         ]
       },
     }
-[/code]
+```
 
 ## Subresource Integrity(실험적)[](https://nextjs.org/docs/app/guides/content-security-policy#subresource-integrity-experimental)
 
@@ -261,7 +261,7 @@ nonce 대신 SRI는 빌드 시 JavaScript 파일의 암호화 해시를 생성�
 `next.config.js`에 실험적 SRI 구성을 추가하세요.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       experimental: {
@@ -272,7 +272,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 ### SRI와 함께하는 CSP 구성[](https://nextjs.org/docs/app/guides/content-security-policy#csp-configuration-with-sri)
 
@@ -281,7 +281,7 @@ SRI를 활성화해도 기존 CSP 정책을 계속 사용할 수 있습니다. S
 > **알아 두면 좋아요**: 동적 렌더링 시나리오에서는 필요하다면 proxy로 nonce를 계속 생성해 SRI 무결성 속성과 nonce 기반 CSP를 결합할 수 있습니다.
 
 next.config.js
-[code]
+```
     const isDev = process.env.NODE_ENV === 'development'
 
     const cspHeader = `
@@ -294,7 +294,7 @@ next.config.js
         base-uri 'self';
         form-action 'self';
         frame-ancestors 'none';
-[/code]
+```
 
 upgrade-insecure-requests;
     `
@@ -319,7 +319,6 @@ upgrade-insecure-requests;
         ]
       },
     }
-[/code]
 
 ### 넌스 대비 SRI의 이점[](https://nextjs.org/docs/app/guides/content-security-policy#benefits-of-sri-over-nonces)
 
@@ -346,7 +345,7 @@ CSP 구현은 개발 환경과 프로덕션 환경에서 다르게 동작합니�
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     export function proxy(request: NextRequest) {
       const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
       const isDev = process.env.NODE_ENV === 'development'
@@ -366,7 +365,7 @@ JavaScriptTypeScript
 
       // Rest of proxy implementation
     }
-[/code]
+```
 
 ### 프로덕션 배포[](https://nextjs.org/docs/app/guides/content-security-policy#production-deployment)
 
@@ -385,7 +384,7 @@ CSP와 함께 서드파티 스크립트를 사용할 때:
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { GoogleTagManager } from '@next/third-parties/google'
     import { headers } from 'next/headers'
 
@@ -405,21 +404,21 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 CSP를 업데이트해 서드파티 도메인을 허용하세요:
 
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     const cspHeader = `
       default-src 'self';
       script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
       connect-src 'self' https://www.google-analytics.com;
       img-src 'self' data: https://www.google-analytics.com;
     `
-[/code]
+```
 
 ### 일반적인 CSP 위반[](https://nextjs.org/docs/app/guides/content-security-policy#common-csp-violations)
 

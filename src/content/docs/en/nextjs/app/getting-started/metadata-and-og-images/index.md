@@ -329,4 +329,3 @@ Learn more about the Metadata APIs mentioned in this page.
   - Specify a list of user agents that should receive blocking metadata.
 
 ---
-

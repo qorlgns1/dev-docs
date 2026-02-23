@@ -18,14 +18,14 @@ Copy page
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { headers } from 'next/headers'
 
     export default async function Page() {
       const headersList = await headers()
       const userAgent = headersList.get('user-agent')
     }
-[/code]
+```
 
 ## 참조[](https://nextjs.org/docs/app/api-reference/functions/headers#reference)
 
@@ -56,7 +56,7 @@ JavaScriptTypeScript
 ### Authorization 헤더 사용[](https://nextjs.org/docs/app/api-reference/functions/headers#using-the-authorization-header)
 
 app/page.js
-[code]
+```
     import { headers } from 'next/headers'
 
     export default async function Page() {
@@ -68,7 +68,7 @@ app/page.js
 
       return <h1>{user.name}</h1>
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/headers#version-history)
 

@@ -24,4 +24,3 @@ module.exports = nextConfig
 | --------- | -------------------------- |
 | `v13.0.0` | `transpilePackages` added. |
 ---
-

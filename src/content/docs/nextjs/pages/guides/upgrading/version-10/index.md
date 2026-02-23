@@ -18,24 +18,24 @@ description: '버전 9와 10 사이에는 호환을 깨뜨리는 변경 사항�
 버전 10으로 업그레이드하려면 다음 명령을 실행하세요:
 
 터미널
-[code]
+```
     npm i next@10
-[/code]
+```
 
 터미널
-[code]
+```
     yarn add next@10
-[/code]
+```
 
 터미널
-[code]
+```
     pnpm up next@10
-[/code]
+```
 
 터미널
-[code]
+```
     bun add next@10
-[/code]
+```
 
 > **알아 두면 좋아요:** TypeScript를 사용 중이라면 `@types/react`와 `@types/react-dom`도 해당 버전에 맞게 함께 업그레이드하세요.
 

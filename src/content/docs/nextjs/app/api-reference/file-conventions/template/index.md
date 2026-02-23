@@ -26,21 +26,21 @@ description: '파일에서 기본 React 컴포넌트를 export하여 템플릿�
 app/template.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Template({ children }: { children: React.ReactNode }) {
       return <div>{children}</div>
     }
-[/code]
+```
 
 중첩 관점에서 `template.js`는 레이아웃과 그 자식 사이에 렌더링된다. 다음은 단순화된 출력이다.
 
 출력
-[code]
+```
     <Layout>
       {/* Note that the template is given a unique key. */}
       <Template key={routeParam}>{children}</Template>
     </Layout>
-[/code]
+```
 
 ## Props[](https://nextjs.org/docs/app/api-reference/file-conventions/template#props)
 
@@ -49,12 +49,12 @@ JavaScriptTypeScript
 Template은 `children` prop을 받는다.
 
 출력
-[code]
+```
     <Layout>
       {/* Note that the template is automatically given a unique key. */}
       <Template key={routeParam}>{children}</Template>
     </Layout>
-[/code]
+```
 
 ## 동작[](https://nextjs.org/docs/app/api-reference/file-conventions/template#behavior)
 
@@ -69,7 +69,7 @@ Template은 `children` prop을 받는다.
 이 섹션은 템플릿이 내비게이션 동안 어떻게 동작하는지 보여준다. 각 라우트 변경에서 어떤 템플릿이 왜 다시 마운트되는지 단계별로 설명한다.
 
 다음 프로젝트 트리를 예로 들자:
-[code]
+```
     app
     ├── about
     │   ├── page.tsx
@@ -82,38 +82,38 @@ Template은 `children` prop을 받는다.
     ├── page.tsx
     └── template.tsx
 
-[/code]
+```
 
 `/`에서 시작하면 React 트리는 대략 다음과 같다.
 
 > 참고: 예시의 `key` 값은 설명을 위한 것으로, 실제 애플리케이션에서는 다를 수 있다.
 
 출력
-[code]
+```
     <RootLayout>
       {/* app/template.tsx */}
       <Template key="/">
         <Page />
       </Template>
     </RootLayout>
-[/code]
+```
 
 `/about`으로 이동하면(첫 번째 세그먼트 변경) 루트 템플릿 키가 바뀌고 다시 마운트된다.
 
 출력
-[code]
+```
     <RootLayout>
       {/* app/template.tsx */}
       <Template key="/about">
         <AboutPage />
       </Template>
     </RootLayout>
-[/code]
+```
 
 `/blog`로 이동하면(첫 번째 세그먼트 변경) 루트 템플릿 키가 바뀌어 다시 마운트되고, 블로그 레벨 템플릿이 마운트된다.
 
 출력
-[code]
+```
     <RootLayout>
       {/* app/template.tsx (root) */}
       <Template key="/blog">
@@ -123,12 +123,12 @@ Template은 `children` prop을 받는다.
         </Template>
       </Template>
     </RootLayout>
-[/code]
+```
 
 같은 첫 번째 세그먼트 내에서 `/blog/first-post`로 이동하면(자식 세그먼트 변경) 루트 템플릿 키는 그대로지만 블로그 레벨 템플릿 키가 바뀌어 다시 마운트된다.
 
 출력
-[code]
+```
     <RootLayout>
       {/* app/template.tsx (root) */}
       <Template key="/blog">
@@ -139,12 +139,12 @@ Template은 `children` prop을 받는다.
         </Template>
       </Template>
     </RootLayout>
-[/code]
+```
 
 `/blog/second-post`로 이동하면(같은 첫 번째 세그먼트, 다른 자식 세그먼트) 루트 템플릿 키는 그대로지만 블로그 레벨 템플릿 키가 바뀌어 다시 마운트된다.
 
 출력
-[code]
+```
     <RootLayout>
       {/* app/template.tsx (root) */}
       <Template key="/blog">
@@ -155,7 +155,7 @@ Template은 `children` prop을 받는다.
         </Template>
       </Template>
     </RootLayout>
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/template#version-history)
 

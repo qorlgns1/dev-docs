@@ -156,4 +156,3 @@ Use `revalidateTag` instead when:
 * [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag) - For invalidating tags in Route Handlers
 * [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath) - For invalidating specific paths
 ---
-

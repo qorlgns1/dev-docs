@@ -20,7 +20,7 @@ description: '커스텀 는 Page를 렌더링할 때 사용되는  및  태그�
 pages/_document.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Html, Head, Main, NextScript } from 'next/document'
 
     export default function Document() {
@@ -34,7 +34,7 @@ JavaScriptTypeScript
         </Html>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >
@@ -57,7 +57,7 @@ JavaScriptTypeScript
 pages/_document.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Document, {
       Html,
       Head,
@@ -102,7 +102,7 @@ JavaScriptTypeScript
     }
 
     export default MyDocument
-[/code]
+```
 
 > **알아두면 좋아요** :
 >

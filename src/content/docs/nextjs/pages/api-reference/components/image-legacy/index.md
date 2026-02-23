@@ -111,7 +111,7 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
   * [`quality`](https://nextjs.org/docs/pages/api-reference/components/image-legacy#quality)
 
 커스텀 loader를 사용하는 예시는 다음과 같습니다.
-[code]
+```
     import Image from 'next/legacy/image'
 
     const myLoader = ({ src, width, quality }) => {
@@ -129,7 +129,7 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
         />
       )
     }
-[/code]
+```
 
 ### sizes[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#sizes)
 
@@ -142,7 +142,7 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
 둘째, `sizes` 값이 구문 분석되어 자동 생성된 소스 집합의 값을 잘라내는 데 사용됩니다. 뷰포트 너비의 비율을 나타내는 `50vw`와 같은 값이 `sizes`에 포함되어 있으면, 소스 집합에서 필요 이상으로 작은 값은 제거됩니다.
 
 예를 들어 스타일링으로 인해 모바일에서는 전체 너비, 태블릿에서는 2열, 데스크톱에서는 3열 레이아웃을 사용할 것임을 알고 있다면 아래와 같은 sizes 속성을 포함해야 합니다.
-[code]
+```
     import Image from 'next/legacy/image'
     const Example = () => (
       <div className="grid-element">
@@ -155,7 +155,7 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
         />
       </div>
     )
-[/code]
+```
 
 이 예시 `sizes`는 성능 지표에 큰 영향을 줄 수 있습니다. `33vw` 사이즈가 없으면 서버에서 선택되는 이미지는 실제 필요 크기보다 3배 넓습니다. 파일 크기는 너비의 제곱에 비례하므로 `sizes` 없이 이미지는 필요보다 9배 큰 용량으로 다운로드됩니다.
 
@@ -264,7 +264,7 @@ URL을 해석하는 데 사용하는 커스텀 함수입니다. Image 컴포넌�
 Ref는 DOM 요소이거나, 기본 DOM 요소로 [전달된 Ref를 전달](https://react.dev/reference/react/forwardRef)하는 React 컴포넌트를 가리켜야 합니다.
 
 **DOM 요소를 가리키는 예시**
-[code]
+```
     import Image from 'next/legacy/image'
     import React from 'react'
 
@@ -278,10 +278,10 @@ Ref는 DOM 요소이거나, 기본 DOM 요소로 [전달된 Ref를 전달](https
         </div>
       )
     }
-[/code]
+```
 
 **React 컴포넌트를 가리키는 예시**
-[code]
+```
     import Image from 'next/legacy/image'
     import React from 'react'
 
@@ -303,7 +303,7 @@ Ref는 DOM 요소이거나, 기본 DOM 요소로 [전달된 Ref를 전달](https
         </Container>
       )
     }
-[/code]
+```
 
 [자세히 알아보기](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/root)
 
@@ -312,24 +312,24 @@ Ref는 DOM 요소이거나, 기본 DOM 요소로 [전달된 Ref를 전달](https
 `true`일 때 원본 이미지가 품질, 크기, 형식 변경 없이 `src`에서 그대로 제공됩니다. 기본값은 `false`입니다.
 
 1KB 미만의 작은 이미지, 벡터 이미지(SVG), 애니메이션 이미지(GIF)처럼 최적화 이점이 없는 이미지에 유용합니다.
-[code]
+```
     import Image from 'next/image'
 
     const UnoptimizedImage = (props) => {
       return <Image {...props} unoptimized />
     }
-[/code]
+```
 
 Next.js 12.3.0부터는 `next.config.js`를 다음 설정으로 업데이트하여 모든 이미지에 이 prop을 적용할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         unoptimized: true,
       },
     }
-[/code]
+```
 
 ## 기타 Props[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#other-props)
 
@@ -346,7 +346,7 @@ next.config.js
 애플리케이션을 악의적인 사용자로부터 보호하려면 외부 이미지를 사용하기 위한 구성이 필요합니다. 이렇게 하면 Next.js Image Optimization API가 귀하의 계정에서 허용한 외부 이미지만 제공하도록 보장합니다. 아래와 같이 `next.config.js` 파일의 `remotePatterns` 속성으로 외부 이미지를 구성할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         remotePatterns: [
@@ -360,14 +360,14 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 > **알아두면 좋아요**: 위 예시는 `next/legacy/image`의 `src` 속성이 `https://example.com/account123/`로 시작하고 쿼리 문자열을 포함하지 않아야 함을 보장합니다. 다른 protocol, hostname, port 또는 일치하지 않는 경로는 400 Bad Request로 응답합니다.
 
 다음은 `hostname`에 와일드카드 패턴을 사용하는 `next.config.js`의 `remotePatterns` 예시입니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         remotePatterns: [
@@ -380,7 +380,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 > **알아두면 좋아요**: 위 예시는 `next/legacy/image`의 `src`가 `https://img1.example.com`이나 `https://me.avatar.example.com` 등 임의의 서브도메인으로 시작해야 하며, port나 쿼리 문자열을 포함할 수 없도록 합니다. 다른 protocol이나 일치하지 않는 hostname은 400 Bad Request로 응답합니다.
 
@@ -396,7 +396,7 @@ next.config.js
 다음은 `search`를 사용하는 `next.config.js`의 `remotePatterns` 예시입니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         remotePatterns: [
@@ -408,7 +408,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 > **알아두면 좋아요**: 위 예시는 `next/legacy/image`의 `src`가 `https://assets.example.com`으로 시작하고 정확히 `?v=1727111025337` 쿼리 문자열을 포함해야 함을 보장합니다. 다른 protocol이나 쿼리 문자열은 400 Bad Request로 응답합니다.
 
@@ -423,40 +423,40 @@ next.config.js
 아래는 `next.config.js` 파일에서 `domains` 속성을 사용하는 예시입니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         domains: ['assets.acme.com'],
       },
     }
-[/code]
+```
 
 ### 로더 구성[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#loader-configuration)
 
 Next.js 기본 Image Optimization API 대신 클라우드 공급자를 사용해 이미지를 최적화하려면 `next.config.js` 파일에서 `loader` 와 `path` 접두사를 설정할 수 있습니다. 그러면 Image [`src`](https://nextjs.org/docs/pages/api-reference/components/image-legacy#src)에 상대 URL을 사용할 수 있고, 공급자에 맞는 올바른 절대 URL이 자동으로 생성됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         loader: 'imgix',
         path: 'https://example.com/myaccount/',
       },
     }
-[/code]
+```
 
 #### 기본 이미지 경로 사용자 지정[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#customizing-the-built-in-image-path)
 
 기본 Next.js 이미지 최적화 경로나 접두사를 변경하고 싶다면 `path` 속성으로 설정할 수 있습니다. `path` 의 기본값은 `/_next/image` 입니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         path: '/my-prefix/_next/image',
       },
     }
-[/code]
+```
 
 ### 기본 제공 로더[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#built-in-loaders)
 
@@ -484,13 +484,13 @@ next.config.js
 구성을 제공하지 않으면 아래 기본값이 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
       },
     }
-[/code]
+```
 
 ### 이미지 크기[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#image-sizes)
 
@@ -501,13 +501,13 @@ next.config.js
 구성을 제공하지 않으면 아래 기본값이 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         imageSizes: [32, 48, 64, 96, 128, 256, 384],
       },
     }
-[/code]
+```
 
 ### 허용 가능한 포맷[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#acceptable-formats)
 
@@ -518,35 +518,35 @@ next.config.js
 구성을 제공하지 않으면 아래 기본값이 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         formats: ['image/webp'],
       },
     }
-[/code]
+```
 
 브라우저가 [AVIF를 지원하지 않는](https://caniuse.com/avif) 경우 `src` 이미지의 원본 포맷으로 돌아가도록 AVIF 지원을 활성화할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         formats: ['image/avif'],
       },
     }
-[/code]
+```
 
 AVIF와 WebP를 함께 활성화할 수도 있습니다. 지원하는 브라우저에서는 AVIF가 우선이며, WebP는 폴백으로 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         formats: ['image/avif', 'image/webp'],
       },
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >
@@ -581,24 +581,24 @@ next.config.js
 구성을 제공하지 않으면 아래 기본값이 사용됩니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         minimumCacheTTL: 14400, // 4 hours
       },
     }
-[/code]
+```
 
 TTL을 늘려 재검증 횟수를 줄이고 비용을 낮출 수도 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         minimumCacheTTL: 2678400, // 31 days
       },
     }
-[/code]
+```
 
 최적화된 이미지의 만료(Max Age)는 `minimumCacheTTL` 과 업스트림 이미지의 `Cache-Control` 헤더 중 더 큰 값으로 정의됩니다.
 
@@ -615,13 +615,13 @@ next.config.js
 `next.config.js` 에서 정적 이미지 임포트를 비활성화할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         disableStaticImages: true,
       },
     }
-[/code]
+```
 
 ### Dangerously Allow SVG[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#dangerously-allow-svg)
 
@@ -632,7 +632,7 @@ next.config.js
 하지만 기본 Image Optimization API로 SVG 이미지를 제공해야 한다면 `next.config.js` 내에서 `dangerouslyAllowSVG`를 설정할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         dangerouslyAllowSVG: true,
@@ -640,7 +640,7 @@ next.config.js
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
       },
     }
-[/code]
+```
 
 또한 브라우저가 이미지를 다운로드하도록 강제하는 `contentDispositionType`과 이미지에 포함된 스크립트 실행을 차단하기 위한 `contentSecurityPolicy`를 함께 설정하는 것이 강력히 권장됩니다.
 
@@ -653,13 +653,13 @@ next.config.js
 필요하다면 `inline`으로 구성하여 사용자가 이미지를 직접 방문할 때 다운로드 없이 렌더링되도록 허용할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       images: {
         contentDispositionType: 'inline',
       },
     }
-[/code]
+```
 
 ### Animated Images[](https://nextjs.org/docs/pages/api-reference/components/image-legacy#animated-images)
 

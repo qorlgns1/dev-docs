@@ -31,7 +31,7 @@ API Routes는 Next.js로 **공개 API** 를 구축할 수 있는 솔루션을 �
 pages/api/hello.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     type ResponseData = {
@@ -44,7 +44,7 @@ JavaScriptTypeScript
     ) {
       res.status(200).json({ message: 'Hello from Next.js!' })
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >
@@ -54,11 +54,11 @@ JavaScriptTypeScript
 >
 
 ## Parameters[](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#parameters)
-[code]
+```
     export default function handler(req: NextApiRequest, res: NextApiResponse) {
       // ...
     }
-[/code]
+```
 
   * `req`: [http.IncomingMessage](https://nodejs.org/api/http.html#class-httpincomingmessage)의 인스턴스
   * `res`: [http.ServerResponse](https://nodejs.org/api/http.html#class-httpserverresponse)의 인스턴스
@@ -70,7 +70,7 @@ API Route에서 다양한 HTTP 메서드를 처리하려면 요청 핸들러에�
 pages/api/hello.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     export default function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -80,7 +80,7 @@ JavaScriptTypeScript
         // Handle any other HTTP method
       }
     }
-[/code]
+```
 
 ## Request Helpers[](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#request-helpers)
 
@@ -93,7 +93,7 @@ API Routes는 들어오는 요청(`req`)을 파싱하는 기본 제공 요청 �
 ### Custom config[](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#custom-config)
 
 모든 API Route는 다음과 같은 기본 구성을 변경하기 위해 `config` 객체를 내보낼 수 있습니다:
-[code]
+```
     export const config = {
       api: {
         bodyParser: {
@@ -103,21 +103,21 @@ API Routes는 들어오는 요청(`req`)을 파싱하는 기본 제공 요청 �
       // Specifies the maximum allowed duration for this function to execute (in seconds)
       maxDuration: 5,
     }
-[/code]
+```
 
 `bodyParser` 는 자동으로 활성화됩니다. body를 `Stream` 또는 [`raw-body`](https://www.npmjs.com/package/raw-body)로 소비하려면 이를 `false` 로 설정하세요.
 
 자동 `bodyParsing` 을 비활성화하는 한 가지 사용 사례는 예를 들어 [GitHub](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks#validating-payloads-from-github)와 같은 **웹훅** 요청의 원시 body를 검증하는 것입니다.
-[code]
+```
     export const config = {
       api: {
         bodyParser: false,
       },
     }
-[/code]
+```
 
 `bodyParser.sizeLimit` 는 [bytes](https://github.com/visionmedia/bytes.js)가 지원하는 형식이라면 어떤 것이든 사용할 수 있으며, 파싱된 body의 최대 크기입니다:
-[code]
+```
     export const config = {
       api: {
         bodyParser: {
@@ -125,36 +125,36 @@ API Routes는 들어오는 요청(`req`)을 파싱하는 기본 제공 요청 �
         },
       },
     }
-[/code]
+```
 
 `externalResolver` 는 이 라우트가 _express_ 또는 _connect_ 와 같은 외부 리졸버에 의해 처리되고 있음을 서버에 명시적으로 알리는 플래그입니다. 이 옵션을 활성화하면 해결되지 않은 요청에 대한 경고가 비활성화됩니다.
-[code]
+```
     export const config = {
       api: {
         externalResolver: true,
       },
     }
-[/code]
+```
 
 `responseLimit` 는 기본적으로 활성화되어 있으며 API Routes의 응답 본문이 4MB를 초과하면 경고합니다.
 
 서버리스 환경이 아닌 곳에서 Next.js를 사용하고 CDN 또는 전용 미디어 호스트를 사용하지 않을 때의 성능 영향을 이해한다면, 이 제한을 `false` 로 설정할 수 있습니다.
-[code]
+```
     export const config = {
       api: {
         responseLimit: false,
       },
     }
-[/code]
+```
 
 `responseLimit` 은 바이트 수나 `bytes` 가 지원하는 문자열 형식(`1000`, `'500kb'`, `'3mb'` 등)을 받을 수도 있습니다. 이 값은 경고가 표시되기 전의 최대 응답 크기입니다. 기본값은 4MB입니다(위 참조).
-[code]
+```
     export const config = {
       api: {
         responseLimit: '8mb',
       },
     }
-[/code]
+```
 
 ## Response Helpers[](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#response-helpers)
 
@@ -177,7 +177,7 @@ API Routes는 들어오는 요청(`req`)을 파싱하는 기본 제공 요청 �
 pages/api/hello.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     type ResponseData = {
@@ -190,7 +190,7 @@ JavaScriptTypeScript
     ) {
       res.status(200).json({ message: 'Hello from Next.js!' })
     }
-[/code]
+```
 
 ### JSON 응답 보내기[](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#sending-a-json-response)
 
@@ -201,7 +201,7 @@ JavaScriptTypeScript
 pages/api/hello.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     export default async function handler(
@@ -215,7 +215,7 @@ JavaScriptTypeScript
         res.status(500).json({ error: 'failed to load data' })
       }
     }
-[/code]
+```
 
 ### HTTP 응답 보내기[](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#sending-a-http-response)
 
@@ -226,7 +226,7 @@ HTTP 응답을 보내는 방법은 JSON 응답을 보낼 때와 동일합니다.
 pages/api/hello.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     export default async function handler(
@@ -240,7 +240,7 @@ JavaScriptTypeScript
         res.status(500).send({ error: 'failed to fetch data' })
       }
     }
-[/code]
+```
 
 ### 지정된 경로나 URL로 리디렉션[](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#redirects-to-a-specified-path-or-url)
 
@@ -251,7 +251,7 @@ JavaScriptTypeScript
 pages/api/hello.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     export default async function handler(
@@ -267,12 +267,12 @@ JavaScriptTypeScript
         res.status(500).send({ error: 'Failed to fetch data' })
       }
     }
-[/code]
+```
 
 ### TypeScript 타입 추가하기[](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#adding-typescript-types)
 
 API Routes를 더 타입 안전하게 만들려면 `next` 에서 `NextApiRequest` 및 `NextApiResponse` 타입을 가져올 수 있으며, 여기에 응답 데이터 타입도 지정할 수 있습니다:
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     type ResponseData = {
@@ -285,7 +285,7 @@ API Routes를 더 타입 안전하게 만들려면 `next` 에서 `NextApiRequest
     ) {
       res.status(200).json({ message: 'Hello from Next.js!' })
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `NextApiRequest`의 본문은 클라이언트가 어떤 페이로드든 보낼 수 있기 때문에 `any`입니다. 사용하기 전에 반드시 런타임에서 본문의 타입과 구조를 검증하세요.
 
@@ -296,14 +296,14 @@ API 라우트는 [동적 라우트](https://nextjs.org/docs/pages/building-your-
 pages/api/post/[pid].ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     export default function handler(req: NextApiRequest, res: NextApiResponse) {
       const { pid } = req.query
       res.end(`Post: ${pid}`)
     }
-[/code]
+```
 
 이제 `/api/post/abc` 요청은 `Post: abc`라는 텍스트로 응답합니다.
 
@@ -316,28 +316,28 @@ API 라우트는 대괄호 안에 점 세 개(`...`)를 추가하여 모든 경�
 > **알아두면 좋아요** : `slug` 대신 `[...param]`처럼 다른 이름을 사용할 수 있습니다.
 
 매칭된 파라미터는 페이지로 쿼리 파라미터(예시에서는 `slug`)로 전달되며, 항상 배열 형태입니다. 따라서 `/api/post/a` 경로는 다음과 같은 `query` 객체를 갖습니다:
-[code]
+```
     { "slug": ["a"] }
-[/code]
+```
 
 `/api/post/a/b`와 동일하게 매칭되는 다른 경로의 경우, 새로운 파라미터가 배열에 추가됩니다:
-[code]
+```
     { "slug": ["a", "b"] }
-[/code]
+```
 
 예시:
 
 pages/api/post/[...slug].ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
 
     export default function handler(req: NextApiRequest, res: NextApiResponse) {
       const { slug } = req.query
       res.end(`Post: ${slug.join(', ')}`)
     }
-[/code]
+```
 
 이제 `/api/post/a/b/c` 요청은 `Post: a, b, c`라는 텍스트로 응답합니다.
 
@@ -350,11 +350,11 @@ JavaScriptTypeScript
 캣치올과 선택적 캣치올 라우트의 주요 차이는 선택적 라우트에서는 파라미터 없이도 경로가 매칭된다는 점입니다(위 예시의 `/api/post`).
 
 `query` 객체는 다음과 같습니다:
-[code]
+```
     { } // GET `/api/post` (빈 객체)
     { "slug": ["a"] } // `GET /api/post/a` (단일 요소 배열)
     { "slug": ["a", "b"] } // `GET /api/post/a/b` (다중 요소 배열)
-[/code]
+```
 
 ### 주의 사항[](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#caveats)
 
@@ -372,7 +372,7 @@ Pages Router는 API 라우트에서 스트리밍 응답을 지원하지만, Next
 pages/api/hello.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextApiRequest, NextApiResponse } from 'next'
 
     export default async function handler(
@@ -391,6 +391,6 @@ JavaScriptTypeScript
       }
       res.end()
     }
-[/code]
+```
 
 보내기

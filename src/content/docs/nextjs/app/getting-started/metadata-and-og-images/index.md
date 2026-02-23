@@ -30,10 +30,10 @@ description: '메타데이터 API는 애플리케이션 메타데이터를 정�
   * [meta charset 태그](https://developer.mozilla.org/docs/Web/HTML/Element/meta#attr-charset)는 웹사이트의 문자 인코딩을 설정합니다.
   * [meta viewport 태그](https://developer.mozilla.org/docs/Web/HTML/Viewport_meta_tag)는 다양한 기기에 맞춰 웹사이트의 뷰포트 너비와 배율을 설정합니다.
 
-[code]
+```
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-[/code]
+```
 
 다른 메타데이터 필드는 [`Metadata` 객체](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#static-metadata)([정적 메타데이터](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#static-metadata)용) 또는 `generateMetadata` 함수([생성된 메타데이터](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#generated-metadata)용)로 정의할 수 있습니다.
 
@@ -44,7 +44,7 @@ description: '메타데이터 API는 애플리케이션 메타데이터를 정�
 app/blog/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Metadata } from 'next'
 
     export const metadata: Metadata = {
@@ -53,7 +53,7 @@ JavaScriptTypeScript
     }
 
     export default function Layout() {}
-[/code]
+```
 
 사용 가능한 전체 옵션 목록은 [`generateMetadata` 문서](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields)에서 확인하세요.
 
@@ -64,7 +64,7 @@ JavaScriptTypeScript
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Metadata, ResolvingMetadata } from 'next'
 
     type Props = {
@@ -90,7 +90,7 @@ JavaScriptTypeScript
     }
 
     export default function Page({ params, searchParams }: Props) {}
-[/code]
+```
 
 ### 스트리밍 메타데이터[](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#streaming-metadata)
 
@@ -113,7 +113,7 @@ Next.js 구성 파일의 [`htmlLimitedBots`](https://nextjs.org/docs/app/api-ref
 app/lib/data.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cache } from 'react'
     import { db } from '@/app/lib/db'
 
@@ -122,12 +122,12 @@ JavaScriptTypeScript
       const res = await db.query.posts.findFirst({ where: eq(posts.slug, slug) })
       return res
     })
-[/code]
+```
 
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { getPost } from '@/app/lib/data'
 
     export async function generateMetadata({
@@ -146,7 +146,7 @@ JavaScriptTypeScript
       const post = await getPost(params.slug)
       return <div>{post.title}</div>
     }
-[/code]
+```
 
 ## 파일 기반 메타데이터[](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#file-based-metadata)
 
@@ -184,7 +184,7 @@ JavaScriptTypeScript
 app/blog/[slug]/opengraph-image.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { ImageResponse } from 'next/og'
     import { getPost } from '@/app/lib/data'
 
@@ -219,7 +219,7 @@ JavaScriptTypeScript
         )
       )
     }
-[/code]
+```
 
 `ImageResponse`는 플렉스박스와 절대 위치를 포함한 일반적인 CSS 속성, 사용자 지정 폰트, 줄 바꿈, 중앙 정렬, 중첩 이미지를 지원합니다. [지원되는 CSS 속성 전체 목록](https://nextjs.org/docs/app/api-reference/functions/image-response)을 확인하세요.
 

@@ -107,4 +107,3 @@ The following options are available:
 | --------- | ----------------------- |
 | `v15.0.0` | `ip` and `geo` removed. |
 ---
-

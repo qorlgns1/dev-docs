@@ -24,7 +24,7 @@ Copy page
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Geist } from 'next/font/google'
 
     const geist = Geist({
@@ -38,7 +38,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 폰트는 사용되는 컴포넌트 범위에만 적용됩니다. 전체 애플리케이션에 폰트를 적용하려면 [Root Layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout)에 추가하세요.
 
@@ -51,7 +51,7 @@ Google Font 사용을 시작하려면 `next/font/google`에서 원하는 폰트�
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Geist } from 'next/font/google'
 
     const geist = Geist({
@@ -69,14 +69,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 최상의 성능과 유연성을 위해 [variable fonts](https://fonts.google.com/variablefonts) 사용을 권장합니다. variable font를 사용할 수 없다면 `weight`를 지정해야 합니다:
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Roboto } from 'next/font/google'
 
     const roboto = Roboto({
@@ -95,7 +95,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 ## 로컬 폰트[](https://nextjs.org/docs/app/getting-started/fonts#local-fonts)
 
@@ -104,7 +104,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import localFont from 'next/font/local'
 
     const myFont = localFont({
@@ -122,10 +122,10 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 단일 폰트 패밀리에 여러 파일을 사용하려면 `src`를 배열로 지정할 수 있습니다:
-[code]
+```
     const roboto = localFont({
       src: [
         {
@@ -150,7 +150,7 @@ JavaScriptTypeScript
         },
       ],
     })
-[/code]
+```
 
 ## API Reference
 

@@ -26,4 +26,3 @@ Explicitly opt-out certain packages from being bundled using the [`serverExterna
 | --------- | --------------------------------------------------------------------------------------------------------- |
 | `v15.0.0` | Moved from experimental to stable. Renamed from `bundlePagesExternals` to `bundlePagesRouterDependencies` |
 ---
-

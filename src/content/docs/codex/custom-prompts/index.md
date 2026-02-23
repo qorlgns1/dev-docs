@@ -16,11 +16,13 @@ Source URL: https://developers.openai.com/codex/custom-prompts
 커스텀 프롬프트는 명시적 호출이 필요하며 로컬 Codex 홈 디렉터리(예: `~/.codex`)에 저장되므로 리포지토리를 통해 공유되지 않습니다. 프롬프트를 공유하거나 Codex가 암묵적으로 호출하도록 하려면 [스킬을 사용](https://developers.openai.com/codex/skills)하세요.
 
   1. 프롬프트 디렉터리를 만듭니다:
-[code] mkdir -p ~/.codex/prompts
-[/code]
+```
+mkdir -p ~/.codex/prompts
+```
 
   2. 재사용 가능한 가이드를 포함한 `~/.codex/prompts/draftpr.md`를 생성합니다:
-[code] ---
+```
+---
          description: Prep a branch, commit, and open a draft PR
          argument-hint: [FILES=<paths>] [PR_TITLE="<title>"]
          ---
@@ -29,7 +31,7 @@ Source URL: https://developers.openai.com/codex/custom-prompts
          If files are specified, stage them first: $FILES.
          Commit the staged changes with a clear message.
          Open a draft PR on the same branch. Use $PR_TITLE when supplied; otherwise write a concise summary yourself.
-[/code]
+```
 
   3. 새 프롬프트가 로드되도록 Codex를 재시작합니다(CLI 세션을 다시 시작하고, IDE 확장을 사용하는 경우 다시 로드).
 
@@ -59,8 +61,9 @@ Codex는 세션이 다시 시작될 때 프롬프트 메타데이터를 읽고 �
   2. `prompts:` 또는 프롬프트 이름을 입력합니다. 예: `/prompts:draftpr`.
 
   3. 필요한 인자를 제공합니다:
-[code] /prompts:draftpr FILES="src/pages/index.astro src/lib/api.ts" PR_TITLE="Add hero animation"
-[/code]
+```
+/prompts:draftpr FILES="src/pages/index.astro src/lib/api.ts" PR_TITLE="Add hero animation"
+```
 
   4. Enter를 눌러 확장된 지침을 전송합니다(필요하지 않은 인자는 생략).
 

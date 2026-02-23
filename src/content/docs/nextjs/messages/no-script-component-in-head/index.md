@@ -24,7 +24,7 @@ Source URL: https://nextjs.org/docs/messages/no-script-component-in-head
 **변경 전**
 
 pages/index.js
-[code]
+```
     import Script from 'next/script'
     import Head from 'next/head'
 
@@ -36,12 +36,12 @@ pages/index.js
         </Head>
       )
     }
-[/code]
+```
 
 **변경 후**
 
 pages/index.js
-[code]
+```
     import Script from 'next/script'
     import Head from 'next/head'
 
@@ -55,7 +55,7 @@ pages/index.js
         </>
       )
     }
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-script-component-in-head#useful-links)
 

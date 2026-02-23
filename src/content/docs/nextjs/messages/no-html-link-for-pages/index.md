@@ -26,7 +26,7 @@ description: '원본 URL: https://nextjs.org/docs/messages/no-html-link-for-page
 **변경 전:**
 
 pages/index.js
-[code]
+```
     function Home() {
       return (
         <div>
@@ -34,12 +34,12 @@ pages/index.js
         </div>
       )
     }
-[/code]
+```
 
 **변경 후:**
 
 pages/index.js
-[code]
+```
     import Link from 'next/link'
 
     function Home() {
@@ -51,7 +51,7 @@ pages/index.js
     }
 
     export default Home
-[/code]
+```
 
 ### 옵션[](https://nextjs.org/docs/messages/no-html-link-for-pages#options)
 
@@ -64,13 +64,13 @@ pages/index.js
 일부 경우에는 `pages` 디렉터리를 직접 지정하여 이 규칙을 구성해야 할 수도 있습니다. 단일 경로나 경로 배열을 제공할 수 있습니다.
 
 eslint.config.json
-[code]
+```
     {
       "rules": {
         "@next/next/no-html-link-for-pages": ["error", "packages/my-app/pages/"]
       }
     }
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-html-link-for-pages#useful-links)
 

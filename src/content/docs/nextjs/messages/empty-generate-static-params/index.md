@@ -30,7 +30,7 @@ Cache Components가 활성화되면 Next.js는 라우트가 런타임 동적 액
 `generateStaticParams` 함수가 최소 한 세트의 매개변수를 반환하도록 수정하세요. 가장 일반적인 해결책이며 빌드 시 유효성 검사가 정상적으로 작동하게 합니다.
 
 app/blog/[slug]/page.tsx
-[code]
+```
     // This will cause an error with Cache Components
     export async function generateStaticParams() {
       return [] // Empty array not allowed
@@ -40,7 +40,7 @@ app/blog/[slug]/page.tsx
     export async function generateStaticParams() {
       return [{ slug: 'hello-world' }, { slug: 'getting-started' }]
     }
-[/code]
+```
 
 이러한 샘플은 두 가지 목적을 수행합니다:
 
@@ -54,7 +54,7 @@ app/blog/[slug]/page.tsx
 빌드 시 실제 값을 모른다면 검증용 플레이스홀더를 사용할 수 있습니다. 다만 이는 빌드 시 유효성 검사의 목적을 무력화하므로 피해야 합니다:
 
 app/blog/[slug]/page.tsx
-[code]
+```
     export async function generateStaticParams() {
       // Placeholder only validates one code path
       return [{ slug: '__placeholder__' }]
@@ -78,7 +78,7 @@ app/blog/[slug]/page.tsx
       const post = await getPost(slug)
       return <div>{post.title}</div>
     }
-[/code]
+```
 
 플레이스홀더를 사용하면 빌드 시 유효성 검사가 최소한으로만 이루어져 실제 매개변수 값에서 런타임 오류가 발생할 위험이 커집니다.
 

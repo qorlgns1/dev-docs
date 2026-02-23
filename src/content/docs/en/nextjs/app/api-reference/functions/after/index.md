@@ -306,4 +306,3 @@ const handler = (req, res) => {
 | `v15.1.0`    | `after` became stable.       |
 | `v15.0.0-rc` | `unstable_after` introduced. |
 ---
-

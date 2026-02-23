@@ -18,7 +18,7 @@ description: '> 알아두면 좋아요 : 는 레거시 API입니다. 대신  또
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { NextPageContext } from 'next'
 
     Page.getInitialProps = async (ctx: NextPageContext) => {
@@ -30,7 +30,7 @@ JavaScriptTypeScript
     export default function Page({ stars }: { stars: number }) {
       return stars
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >

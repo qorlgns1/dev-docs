@@ -38,20 +38,20 @@ SWC를 기반으로 선택한 이유는 다음과 같습니다.
 먼저 Next.js를 최신 버전으로 업데이트하세요: `npm install next@latest`. 그런 다음 `next.config.js` 파일을 업데이트합니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         styledComponents: true,
       },
     }
-[/code]
+```
 
 고급 사용 사례에서는 styled-components 컴파일을 위해 개별 속성을 구성할 수 있습니다.
 
 > 참고: Next.js에서 `styled-components`를 사용하려면 `ssr`과 `displayName` 변환이 핵심 요구 사항입니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         // see https://styled-components.com/docs/tooling#babel-plugin for more info on the options.
@@ -80,7 +80,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 ### Jest[](https://nextjs.org/docs/architecture/nextjs-compiler#jest)
 
@@ -96,7 +96,7 @@ Next.js Compiler는 테스트를 트랜스파일하며 다음과 같이 Jest와 
 먼저 Next.js를 최신 버전으로 업데이트하세요: `npm install next@latest`. 그런 다음 `jest.config.js` 파일을 업데이트합니다:
 
 jest.config.js
-[code]
+```
     const nextJest = require('next/jest')
 
     // Providing the path to your Next.js app which will enable loading next.config.js and .env files
@@ -109,14 +109,14 @@ jest.config.js
 
     // createJestConfig is exported in this way to ensure that next/jest can load the Next.js configuration, which is async
     module.exports = createJestConfig(customJestConfig)
-[/code]
+```
 
 ### Relay[](https://nextjs.org/docs/architecture/nextjs-compiler#relay)
 
 [Relay](https://relay.dev/) 지원을 활성화하려면:
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         relay: {
@@ -128,7 +128,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 > **알아두면 좋은 점**: Next.js에서는 `pages` 디렉터리 안의 모든 JavaScript 파일을 라우트로 간주합니다. 따라서 `relay-compiler`에서는 `artifactDirectory` 설정을 `pages` 바깥으로 지정해야 합니다. 그렇지 않으면 `relay-compiler`가 `__generated__` 디렉터리의 소스 파일 옆에 파일을 생성하고, 이 파일이 라우트로 간주되어 프로덕션 빌드가 실패합니다.
 
@@ -139,18 +139,18 @@ JSX 속성을 제거할 수 있으며, 이는 주로 테스트에 사용됩니�
 기본 정규식 `^data-test`와 일치하는 속성을 제거하려면:
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         reactRemoveProperties: true,
       },
     }
-[/code]
+```
 
 사용자 지정 속성을 제거하려면:
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         // The regexes defined here are processed in Rust so the syntax is different from
@@ -158,7 +158,7 @@ next.config.js
         reactRemoveProperties: { properties: ['^data-custom$'] },
       },
     }
-[/code]
+```
 
 ### Remove Console[](https://nextjs.org/docs/architecture/nextjs-compiler#remove-console)
 
@@ -167,18 +167,18 @@ next.config.js
 모든 `console.*` 호출을 제거하려면:
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         removeConsole: true,
       },
     }
-[/code]
+```
 
 `console.error`를 제외한 `console.*` 출력을 제거하려면:
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         removeConsole: {
@@ -186,7 +186,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 ### Legacy Decorators[](https://nextjs.org/docs/architecture/nextjs-compiler#legacy-decorators)
 
@@ -195,26 +195,26 @@ Next.js는 `jsconfig.json` 또는 `tsconfig.json`에서 `experimentalDecorators`
 이 플래그는 기존 애플리케이션과의 호환성만을 위해 지원됩니다. 새 애플리케이션에서는 레거시 데코레이터 사용을 권장하지 않습니다.
 
 먼저 Next.js를 최신 버전으로 업데이트하세요: `npm install next@latest`. 그런 다음 `jsconfig.json` 또는 `tsconfig.json` 파일을 업데이트합니다:
-[code]
+```
     {
       "compilerOptions": {
         "experimentalDecorators": true
       }
     }
-[/code]
+```
 
 ### importSource[](https://nextjs.org/docs/architecture/nextjs-compiler#importsource)
 
 Next.js는 `jsconfig.json` 또는 `tsconfig.json`의 `jsxImportSource`를 자동으로 감지하여 적용합니다. 이는 [Theme UI](https://theme-ui.com) 같은 라이브러리에서 자주 사용됩니다.
 
 먼저 Next.js를 최신 버전으로 업데이트하세요: `npm install next@latest`. 그런 다음 `jsconfig.json` 또는 `tsconfig.json` 파일을 업데이트합니다:
-[code]
+```
     {
       "compilerOptions": {
         "jsxImportSource": "theme-ui"
       }
     }
-[/code]
+```
 
 ### Emotion[](https://nextjs.org/docs/architecture/nextjs-compiler#emotion)
 
@@ -223,7 +223,7 @@ Next.js는 `jsconfig.json` 또는 `tsconfig.json`의 `jsxImportSource`를 자동
 먼저 Next.js를 최신 버전으로 업데이트하세요: `npm install next@latest`. 그런 다음 `next.config.js` 파일을 업데이트합니다:
 
 next.config.js
-[code]
+```
 
     module.exports = {
       compiler: {
@@ -254,7 +254,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 ### Minification[](https://nextjs.org/docs/architecture/nextjs-compiler#minification)
 
@@ -267,11 +267,11 @@ Next.js의 swc 컴파일러는 v13부터 기본적으로 최소화에 사용되�
 Next.js는 로컬 패키지(모노레포 등)나 외부 의존성(`node_modules`)에서 종속성을 자동으로 트랜스파일하고 번들링할 수 있습니다. 이는 `next-transpile-modules` 패키지를 대체합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       transpilePackages: ['@acme/ui', 'lodash-es'],
     }
-[/code]
+```
 
 ### Modularize Imports[](https://nextjs.org/docs/architecture/nextjs-compiler#modularize-imports)
 
@@ -284,7 +284,7 @@ next.config.js
 `next.config.js`에서 `compiler.define` 필드를 사용하면 모든 환경(서버, 엣지, 클라이언트)에 변수를 정의할 수 있습니다. 또는 `compiler.defineServer`를 사용해 서버 측(서버 및 엣지) 코드에만 변수를 정의할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         define: {
@@ -296,7 +296,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 ### Build Lifecycle Hooks[](https://nextjs.org/docs/architecture/nextjs-compiler#build-lifecycle-hooks)
 
@@ -307,7 +307,7 @@ Next.js Compiler는 빌드 프로세스의 특정 지점에서 사용자 정의 
 프로덕션 빌드 컴파일이 완료된 직후, 타입 검사나 정적 페이지 생성 같은 후속 작업을 실행하기 전에 동작하는 훅 함수입니다. 이 훅은 프로젝트 디렉터리와 빌드 출력 디렉터리 등 프로젝트 메타데이터에 접근할 수 있어 서드파티 도구가 소스맵과 같은 빌드 아웃풋을 수집하는 데 유용합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         runAfterProductionCompile: async ({ distDir, projectDir }) => {
@@ -315,7 +315,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 훅은 다음 속성을 가진 객체를 전달받습니다.
 
@@ -329,13 +329,13 @@ next.config.js
 Chromium의 [trace event format](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview?mode=html#%21=)으로 SWC 내부 변환 트레이스를 생성할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         swcTraceProfiling: true,
       },
     }
-[/code]
+```
 
 활성화하면 swc는 `.next/` 아래에 `swc-trace-profile-${timestamp}.json` 이름의 트레이스를 생성합니다. Chromium trace viewer(chrome://tracing/, <https://ui.perfetto.dev/>[](https://ui.perfetto.dev/))나 호환 플레임그래프 뷰어(<https://www.speedscope.app/>[](https://www.speedscope.app/))에서 생성된 트레이스를 로드해 시각화할 수 있습니다.
 
@@ -344,7 +344,7 @@ next.config.js
 변환 동작을 커스터마이즈하기 위해 wasm으로 작성된 SWC 실험적 플러그인 지원을 사용하도록 swc 변환을 구성할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         swcPlugins: [
@@ -357,7 +357,7 @@ next.config.js
         ],
       },
     }
-[/code]
+```
 
 `swcPlugins`는 플러그인을 구성하기 위한 튜플 배열을 받습니다. 각 플러그인 튜플에는 플러그인의 경로와 플러그인 설정을 위한 객체가 포함됩니다. 플러그인 경로는 npm 모듈 패키지 이름일 수도 있고 `.wasm` 바이너리 자체에 대한 절대 경로일 수도 있습니다.
 

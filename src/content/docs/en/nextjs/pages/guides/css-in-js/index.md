@@ -75,4 +75,3 @@ Please see the [styled-jsx documentation](https://github.com/vercel/styled-jsx) 
 
 Yes, if you disable JavaScript the CSS will still be loaded in the production build (`next start`). During development, we require JavaScript to be enabled to provide the best developer experience with [Fast Refresh](https://nextjs.org/blog/next-9-4#fast-refresh).
 ---
-

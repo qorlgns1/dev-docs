@@ -22,7 +22,7 @@ Last updated February 20, 2026
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { after } from 'next/server'
     // Custom logging function
     import { log } from '@/app/utils'
@@ -34,7 +34,7 @@ JavaScriptTypeScript
       })
       return <>{children}</>
     }
-[/code]
+```
 
 > **알아 두면 좋아요:** `after`는 [Dynamic API](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)가 아니며, 이를 호출해도 라우트가 동적으로 변하지 않습니다. 정적 페이지에서 사용하면 콜백은 빌드 시점 또는 페이지가 재검증될 때 실행됩니다.
 
@@ -67,7 +67,7 @@ JavaScriptTypeScript
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { after } from 'next/server'
     import { cookies, headers } from 'next/headers'
     import { logUserAction } from '@/app/utils'
@@ -90,7 +90,7 @@ JavaScriptTypeScript
         headers: { 'Content-Type': 'application/json' },
       })
     }
-[/code]
+```
 
 #### In Server Components (pages and layouts)[](https://nextjs.org/docs/app/api-reference/functions/after#in-server-components-pages-and-layouts)
 
@@ -101,7 +101,7 @@ Server Component에서 `after` 콜백에 요청 데이터가 필요하다면 먼
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { after } from 'next/server'
     import { cookies, headers } from 'next/headers'
     import { logUserAction } from '@/app/utils'
@@ -120,7 +120,7 @@ JavaScriptTypeScript
 
       return <h1>My Page</h1>
     }
-[/code]
+```
 
 Server Component에서 `after` 콜백 내부에서 `cookies()`나 `headers()`를 호출하면 런타임 오류가 발생합니다.
 
@@ -133,7 +133,7 @@ Server Component에서 `after` 콜백 내부에서 `cookies()`나 `headers()`를
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Suspense } from 'react'
     import { after } from 'next/server'
     import { cookies } from 'next/headers'
@@ -161,7 +161,7 @@ JavaScriptTypeScript
 
       return <p>Your session: {sessionCookie}</p>
     }
-[/code]
+```
 
 이 예시에서 `<h1>`과 `<Suspense>` 폴백은 정적 셸에 포함됩니다. `DynamicContent`는 렌더링 중 쿠키를 읽고 클로저를 통해 `after`에 전달합니다. `cookies()` 호출이 `after` 콜백 **외부**(컴포넌트 렌더링 시)에 있기 때문에 제대로 동작합니다.
 
@@ -183,14 +183,14 @@ Reference: serverless 플랫폼에서 `after` 지원
 사용자도 `after`를 실행할 수 있도록 하려면 유사하게 동작하는 `waitUntil` 구현을 제공해야 합니다.
 
 `after`가 호출되면 Next.js는 다음과 같이 `waitUntil`에 접근합니다:
-[code]
+```
     const RequestContext = globalThis[Symbol.for('@next/request-context')]
     const contextValue = RequestContext?.get()
     const waitUntil = contextValue?.waitUntil
-[/code]
+```
 
 이는 `globalThis[Symbol.for('@next/request-context')]`가 다음과 같은 객체를 포함해야 함을 의미합니다:
-[code]
+```
     type NextRequestContext = {
       get(): NextRequestContextValue | undefined
     }
@@ -198,10 +198,10 @@ Reference: serverless 플랫폼에서 `after` 지원
     type NextRequestContextValue = {
       waitUntil?: (promise: Promise<any>) => void
     }
-[/code]
+```
 
 구현 예시는 다음과 같습니다.
-[code]
+```
     import { AsyncLocalStorage } from 'node:async_hooks'
 
     const RequestContextStorage = new AsyncLocalStorage<NextRequestContextValue>()
@@ -219,7 +219,7 @@ Reference: serverless 플랫폼에서 `after` 지원
       // Provide the value
       return RequestContextStorage.run(contextValue, () => nextJsHandler(req, res))
     }
-[/code]
+```
 
 ## Version History[](https://nextjs.org/docs/app/api-reference/functions/after#version-history)
 

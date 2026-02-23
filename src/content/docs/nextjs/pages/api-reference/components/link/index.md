@@ -18,13 +18,13 @@ description: '은 HTML  요소를 확장하여 prefetching과 라우트 간 클�
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
       return <Link href="/dashboard">Dashboard</Link>
     }
-[/code]
+```
 
 ## Reference[](https://nextjs.org/docs/pages/api-reference/components/link#reference)
 
@@ -50,7 +50,7 @@ Prop| Example| Type| Required
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     // Navigate to /about?name=test
@@ -66,7 +66,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### `replace`[](https://nextjs.org/docs/pages/api-reference/components/link#replace)
 
@@ -75,7 +75,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
@@ -85,7 +85,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### `scroll`[](https://nextjs.org/docs/pages/api-reference/components/link#scroll)
 
@@ -98,7 +98,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
@@ -108,7 +108,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### `prefetch`[](https://nextjs.org/docs/pages/api-reference/components/link#prefetch)
 
@@ -122,7 +122,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
@@ -132,7 +132,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### `shallow`[](https://nextjs.org/docs/pages/api-reference/components/link#shallow)
 
@@ -141,7 +141,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
@@ -151,7 +151,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### `locale`[](https://nextjs.org/docs/pages/api-reference/components/link#locale)
 
@@ -160,7 +160,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
@@ -181,7 +181,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 ### `as`[](https://nextjs.org/docs/pages/api-reference/components/link#as)
 
@@ -196,7 +196,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -215,7 +215,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 > **알아두면 좋은 사항** : `onClick`과 `onNavigate`는 비슷해 보이지만 용도가 다릅니다. `onClick`은 모든 클릭 이벤트에서 실행되지만 `onNavigate`는 클라이언트 측 내비게이션에서만 실행됩니다. 주요 차이점은 다음과 같습니다.
 >
@@ -237,7 +237,7 @@ JavaScriptTypeScript
 pages/blog/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     function Posts({ posts }) {
@@ -251,17 +251,17 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 ### Scrolling to an `id`[](https://nextjs.org/docs/pages/api-reference/components/link#scrolling-to-an-id)
 
 내비게이션 시 특정 `id`로 스크롤하려면 URL에 `#` 해시 링크를 추가하거나 `href` 프로퍼티에 해시 링크만 전달하면 됩니다. `<Link>`가 `<a>` 요소로 렌더링되기 때문에 가능합니다.
-[code]
+```
     <Link href="/dashboard#settings">Settings</Link>
 
     // Output
     <a href="/dashboard#settings">Settings</a>
-[/code]
+```
 
 ### Passing a URL Object[](https://nextjs.org/docs/pages/api-reference/components/link#passing-a-url-object)
 
@@ -270,7 +270,7 @@ JavaScriptTypeScript
 pages/index.ts
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     function Home() {
@@ -301,7 +301,7 @@ JavaScriptTypeScript
     }
 
     export default Home
-[/code]
+```
 
 위 예제에는 다음 링크가 포함되어 있습니다.
 
@@ -317,7 +317,7 @@ JavaScriptTypeScript
 pages/index.js
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
@@ -327,7 +327,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### 페이지 맨 위로 스크롤되는 동작 비활성화[](https://nextjs.org/docs/pages/api-reference/components/link#disable-scrolling-to-the-top-of-the-page)
 
@@ -336,7 +336,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Home() {
@@ -346,7 +346,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### Proxy에서 링크 미리 가져오기[](https://nextjs.org/docs/pages/api-reference/components/link#prefetching-links-in-proxy)
 
@@ -357,7 +357,7 @@ JavaScriptTypeScript
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse } from 'next/server'
 
     export function proxy(request: Request) {
@@ -370,14 +370,14 @@ JavaScriptTypeScript
         }
       }
     }
-[/code]
+```
 
 이 경우 `<Link />` 컴포넌트에서 다음 코드를 사용하면 됩니다:
 
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Link from 'next/link'
@@ -392,7 +392,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요**: [Dynamic Routes](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#convention)를 사용하는 경우 `as`와 `href` props를 조정해야 합니다. 예를 들어 `/dashboard/authed/[user]`처럼 Proxy를 통해 다르게 보여주고 싶은 Dynamic Route가 있다면 `<Link href={{ pathname: '/dashboard/authed/[user]', query: { user: username } }} as="/dashboard/[user]">Profile</Link>`처럼 작성합니다.
 

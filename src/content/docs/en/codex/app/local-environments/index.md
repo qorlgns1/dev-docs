@@ -22,10 +22,10 @@ Since worktrees run in different directories than your local tasks, your project
 Use this script to run any command required to configure your environment, such as installing dependencies or running a build process.
 
 For example, for a TypeScript project you might want to install the dependencies and do an initial build using a setup script:
-[code] 
+```
     npm install
     npm run build
-[/code]
+```
 
 If your setup is platform-specific, define setup scripts for macOS, Windows, or Linux to override the default.
 
@@ -36,9 +36,9 @@ Use actions to define common tasks like starting your app’s development server
 Actions are helpful to keep you from typing common actions like triggering a build for your project or starting a development server. For one-off quick debugging you can use the integrated terminal directly.
 
 For example, for a Node.js project you might create a “Run” action that contains the following script:
-[code] 
+```
     npm start
-[/code]
+```
 
 If the commands for your action are platform-specific, define platform-specific scripts for macOS, Windows, and Linux.
 

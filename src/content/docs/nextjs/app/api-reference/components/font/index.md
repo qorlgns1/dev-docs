@@ -20,7 +20,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/components/font
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Inter } from 'next/font/google'
 
     // If loading a variable font, you don't need to specify the font weight
@@ -40,7 +40,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 > **🎥 시청:** `next/font` 사용법 자세히 알아보기 → [YouTube (6분)](https://www.youtube.com/watch?v=L8_98i_bMMA).
 
@@ -217,7 +217,7 @@ Google 폰트를 사용하려면 `next/font/google`에서 함수로 import하세
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Inter } from 'next/font/google'
 
     // If loading a variable font, you don't need to specify the font weight
@@ -237,14 +237,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 variable 폰트를 사용할 수 없다면 **weight를 지정해야 합니다**:
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Roboto } from 'next/font/google'
 
     const roboto = Roboto({
@@ -264,19 +264,19 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 배열을 사용해 여러 weight와/또는 style을 지정할 수도 있습니다.
 
 app/layout.js
-[code]
+```
     const roboto = Roboto({
       weight: ['400', '700'],
       style: ['normal', 'italic'],
       subsets: ['latin'],
       display: 'swap',
     })
-[/code]
+```
 
 > **알아두면 좋아요**: 여러 단어로 구성된 폰트 이름에는 밑줄(_)을 사용하세요. 예: `Roboto Mono`는 `Roboto_Mono`로 import해야 합니다.
 
@@ -289,9 +289,9 @@ Google Fonts는 자동으로 [서브셋](https://fonts.google.com/knowledge/glos
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     const inter = Inter({ subsets: ['latin'] })
-[/code]
+```
 
 자세한 내용은 [Font API Reference](https://nextjs.org/docs/app/api-reference/components/font)를 확인하세요.
 
@@ -304,7 +304,7 @@ JavaScriptTypeScript
 app/fonts.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { Inter, Roboto_Mono } from 'next/font/google'
 
     export const inter = Inter({
@@ -316,12 +316,12 @@ JavaScriptTypeScript
       subsets: ['latin'],
       display: 'swap',
     })
-[/code]
+```
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { inter } from './fonts'
 
     export default function Layout({ children }: { children: React.ReactNode }) {
@@ -333,12 +333,12 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { roboto_mono } from './fonts'
 
     export default function Page() {
@@ -348,7 +348,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 위 예제에서 `Inter`는 전역으로 적용되고, `Roboto Mono`는 필요한 곳에 임포트해 적용할 수 있습니다.
 
@@ -357,7 +357,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Inter, Roboto_Mono } from 'next/font/google'
     import styles from './global.css'
 
@@ -387,10 +387,10 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 app/global.css
-[code]
+```
     html {
       font-family: var(--font-inter);
     }
@@ -398,7 +398,7 @@ app/global.css
     h1 {
       font-family: var(--font-roboto-mono);
     }
-[/code]
+```
 
 위 예제에서 `Inter`는 전역에 적용되고, 모든 `<h1>` 태그는 `Roboto Mono`로 스타일링됩니다.
 
@@ -411,7 +411,7 @@ app/global.css
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import localFont from 'next/font/local'
 
     // Font files can be colocated inside of `app`
@@ -431,10 +431,10 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 단일 폰트 패밀리에 여러 파일을 사용하려면 `src`를 배열로 지정할 수 있습니다:
-[code]
+```
     const roboto = localFont({
       src: [
         {
@@ -459,7 +459,7 @@ JavaScriptTypeScript
         },
       ],
     })
-[/code]
+```
 
 자세한 내용은 [Font API Reference](https://nextjs.org/docs/app/api-reference/components/font)를 참고하세요.
 
@@ -474,7 +474,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Inter, Roboto_Mono } from 'next/font/google'
 
     const inter = Inter({
@@ -503,24 +503,24 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 마지막으로 [Tailwind CSS 설정](https://nextjs.org/docs/app/getting-started/css#tailwind-css)에 CSS 변수를 추가합니다:
 
 global.css
-[code]
+```
     @import 'tailwindcss';
 
     @theme inline {
       --font-sans: var(--font-inter);
       --font-mono: var(--font-roboto-mono);
     }
-[/code]
+```
 
 ### Tailwind CSS v3[](https://nextjs.org/docs/app/api-reference/components/font#tailwind-css-v3)
 
 tailwind.config.js
-[code]
+```
     /** @type {import('tailwindcss').Config} */
     module.exports = {
       content: [
@@ -538,13 +538,13 @@ tailwind.config.js
       },
       plugins: [],
     }
-[/code]
+```
 
 이제 `font-sans`, `font-mono` 유틸리티 클래스를 사용해 요소에 폰트를 적용할 수 있습니다.
-[code]
+```
     <p class="font-sans ...">The quick brown fox ...</p>
     <p class="font-mono ...">The quick brown fox ...</p>
-[/code]
+```
 
 ### 스타일 적용하기[](https://nextjs.org/docs/app/api-reference/components/font#applying-styles)
 
@@ -557,16 +557,16 @@ tailwind.config.js
 #### `className`[](https://nextjs.org/docs/app/api-reference/components/font#classname)
 
 로드된 폰트를 HTML 요소에 전달할 수 있는 읽기 전용 CSS `className`을 반환합니다.
-[code]
+```
     <p className={inter.className}>Hello, Next.js!</p>
-[/code]
+```
 
 #### `style`[](https://nextjs.org/docs/app/api-reference/components/font#style-1)
 
 로드된 폰트를 HTML 요소에 전달할 수 있는 읽기 전용 CSS `style` 객체를 반환하며, `style.fontFamily`를 통해 폰트 패밀리 이름과 폴백 폰트에 접근할 수 있습니다.
-[code]
+```
     <p style={inter.style}>Hello World</p>
-[/code]
+```
 
 #### CSS Variables[](https://nextjs.org/docs/app/api-reference/components/font#css-variables)
 
@@ -577,36 +577,36 @@ tailwind.config.js
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Inter } from 'next/font/google'
     import styles from '../styles/component.module.css'
 
     const inter = Inter({
       variable: '--font-inter',
     })
-[/code]
+```
 
 폰트를 사용하려면 스타일링하려는 텍스트의 부모 컨테이너 `className`을 폰트 로더의 `variable` 값으로 지정하고, 텍스트의 `className`을 외부 CSS 파일의 `styles` 속성으로 설정합니다.
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     <main className={inter.variable}>
       <p className={styles.text}>Hello World</p>
     </main>
-[/code]
+```
 
 `component.module.css` CSS 파일에서 `text` 셀렉터 클래스를 다음과 같이 정의합니다:
 
 styles/component.module.css
-[code]
+```
     .text {
       font-family: var(--font-inter);
       font-weight: 200;
       font-style: italic;
     }
-[/code]
+```
 
 이 예제에서는 `Hello World` 텍스트가 `Inter` 폰트와 생성된 폰트 폴백을 사용하여 `font-weight: 200`, `font-style: italic`으로 스타일링됩니다.
 
@@ -621,7 +621,7 @@ styles/component.module.css
 styles/fonts.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { Inter, Lora, Source_Sans_3 } from 'next/font/google'
     import localFont from 'next/font/local'
 
@@ -635,14 +635,14 @@ JavaScriptTypeScript
     const greatVibes = localFont({ src: './GreatVibes-Regular.ttf' })
 
     export { inter, lora, sourceCodePro400, sourceCodePro700, greatVibes }
-[/code]
+```
 
 이제 코드에서 다음과 같이 정의를 사용할 수 있습니다:
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { inter, lora, sourceCodePro700, greatVibes } from '../styles/fonts'
 
     export default function Page() {
@@ -657,12 +657,12 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 코드에서 폰트 정의에 쉽게 접근하려면 `tsconfig.json` 또는 `jsconfig.json` 파일에 다음과 같이 경로 별칭을 정의할 수 있습니다:
 
 tsconfig.json
-[code]
+```
     {
       "compilerOptions": {
         "paths": {
@@ -670,16 +670,16 @@ tsconfig.json
         }
       }
     }
-[/code]
+```
 
 You can now import any font definition as follows:
 
 app/about/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { greatVibes, sourceCodePro400 } from '@/fonts'
-[/code]
+```
 
 ### 프리로딩[](https://nextjs.org/docs/app/api-reference/components/font#preloading)
 

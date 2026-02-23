@@ -74,4 +74,3 @@ If you have a reason to only load a font for a particular page or don't care abo
 
 - [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
 - [Font Optimization](https://nextjs.org/docs/pages/api-reference/components/font)
-

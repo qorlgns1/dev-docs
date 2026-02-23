@@ -24,18 +24,18 @@ description: '이 문서는 Draft Mode를 활성화하고 사용하는 방법을
 app/api/draft/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET(request: Request) {
       return new Response('')
     }
-[/code]
+```
 
 그런 다음 [`draftMode`](https://nextjs.org/docs/app/api-reference/functions/draft-mode) 함수를 가져와 `enable()` 메서드를 호출합니다.
 
 app/api/draft/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { draftMode } from 'next/headers'
 
     export async function GET(request: Request) {
@@ -43,7 +43,7 @@ JavaScriptTypeScript
       draft.enable()
       return new Response('Draft mode is enabled')
     }
-[/code]
+```
 
 이렇게 하면 Draft Mode를 활성화하는 **쿠키**가 설정됩니다. 이 쿠키가 포함된 이후 요청은 Draft Mode를 트리거하여 정적으로 생성된 페이지의 동작을 변경합니다.
 
@@ -59,9 +59,9 @@ JavaScriptTypeScript
   2. 헤드리스 CMS가 사용자 지정 초안 URL을 지원한다면 초안 URL을 지정합니다(여기서는 Route Handler가 `app/api/draft/route.ts`에 있다고 가정). 예시는 다음과 같습니다.
 
 Terminal
-[code]
+```
     https://<your-site>/api/draft?secret=<token>&slug=<path>
-[/code]
+```
 
 >   * `<your-site>`에는 배포 도메인을 입력합니다.
 >   * `<token>`에는 생성한 비밀 토큰을 넣습니다.
@@ -76,7 +76,7 @@ Terminal
 app/api/draft/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { draftMode } from 'next/headers'
     import { redirect } from 'next/navigation'
 
@@ -109,7 +109,7 @@ JavaScriptTypeScript
       // We don't redirect to searchParams.slug as that might lead to open redirect vulnerabilities
       redirect(post.slug)
     }
-[/code]
+```
 
 성공하면 브라우저가 Draft Mode 쿠키와 함께 원하는 경로로 리디렉션됩니다.
 
@@ -124,7 +124,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     // page that fetches data
     import { draftMode } from 'next/headers'
 
@@ -150,7 +150,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 헤드리스 CMS에서(또는 URL을 이용해 수동으로) `secret`과 `slug`가 포함된 초안 Route Handler에 접근하면 이제 초안 콘텐츠를 볼 수 있습니다. 초안을 게시하지 않고 업데이트하더라도 초안 상태를 계속 확인할 수 있습니다.
 

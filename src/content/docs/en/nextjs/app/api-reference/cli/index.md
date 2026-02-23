@@ -18,4 +18,3 @@ Next.js comes with **two** Command Line Interface (CLI) tools:
   - Learn how to run and build your application with the Next.js CLI.
 
 ---
-

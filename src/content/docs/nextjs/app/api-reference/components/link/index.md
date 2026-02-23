@@ -22,13 +22,13 @@ Last updated February 20, 2026
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
       return <Link href="/dashboard">Dashboard</Link>
     }
-[/code]
+```
 
 ## Reference[](https://nextjs.org/docs/app/api-reference/components/link#reference)
 
@@ -51,7 +51,7 @@ Prop| Example| Type| Required
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     // Navigate to /about?name=test
@@ -67,7 +67,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### `replace`[](https://nextjs.org/docs/app/api-reference/components/link#replace)
 
@@ -76,7 +76,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -86,7 +86,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### `scroll`[](https://nextjs.org/docs/app/api-reference/components/link#scroll)
 
@@ -99,7 +99,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -109,7 +109,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### `prefetch`[](https://nextjs.org/docs/app/api-reference/components/link#prefetch)
 
@@ -124,7 +124,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -134,7 +134,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### `onNavigate`[](https://nextjs.org/docs/app/api-reference/components/link#onnavigate)
 
@@ -143,7 +143,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -162,7 +162,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `onClick`과 `onNavigate`는 비슷해 보이지만 목적이 다릅니다. `onClick`은 모든 클릭 이벤트에서 실행되지만, `onNavigate`는 클라이언트 측 내비게이션 중에만 실행됩니다. 주요 차이점:
 >
@@ -182,7 +182,7 @@ JavaScriptTypeScript
 app/blog/post-list.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     interface Post {
@@ -202,7 +202,7 @@ JavaScriptTypeScript
         </ul>
       )
     }
-[/code]
+```
 
 ### 활성 링크 확인하기[](https://nextjs.org/docs/app/api-reference/components/link#checking-active-links)
 
@@ -211,7 +211,7 @@ JavaScriptTypeScript
 app/ui/nav-links.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { usePathname } from 'next/navigation'
@@ -235,17 +235,17 @@ JavaScriptTypeScript
         </nav>
       )
     }
-[/code]
+```
 
 ### `id`로 스크롤하기[](https://nextjs.org/docs/app/api-reference/components/link#scrolling-to-an-id)
 
 내비게이션 시 특정 `id`로 스크롤하려면 URL에 `#` 해시 링크를 추가하거나 해시 링크만 `href` prop에 전달하면 됩니다. `<Link>`가 `<a>` 요소로 렌더링되기 때문에 가능합니다.
-[code]
+```
     <Link href="/dashboard#settings">Settings</Link>
 
     // Output
     <a href="/dashboard#settings">Settings</a>
-[/code]
+```
 
 > **알아두면 좋아요** :
 >
@@ -259,7 +259,7 @@ JavaScriptTypeScript
 app/page.js
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -269,7 +269,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### 페이지 상단으로 스크롤하는 동작 비활성화[](https://nextjs.org/docs/app/api-reference/components/link#disable-scrolling-to-the-top-of-the-page)
 
@@ -280,7 +280,7 @@ Next.js에서 `<Link>`의 기본 스크롤 동작은 **스크롤 위치를 유�
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -290,17 +290,17 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 `router.push()` 또는 `router.replace()` 사용:
-[code]
+```
     // useRouter
     import { useRouter } from 'next/navigation'
 
     const router = useRouter()
 
     router.push('/dashboard', { scroll: false })
-[/code]
+```
 
 ### Proxy에서 링크 프리패칭하기[](https://nextjs.org/docs/app/api-reference/components/link#prefetching-links-in-proxy)
 
@@ -311,7 +311,7 @@ JavaScriptTypeScript
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse } from 'next/server'
 
     export function proxy(request: Request) {
@@ -324,14 +324,14 @@ JavaScriptTypeScript
         }
       }
     }
-[/code]
+```
 
 이 경우 `<Link />` 컴포넌트에서 다음 코드를 사용하면 됩니다:
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Link from 'next/link'
@@ -346,7 +346,7 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 ### 탐색 차단[](https://nextjs.org/docs/app/api-reference/components/link#blocking-navigation)
 
@@ -355,7 +355,7 @@ JavaScriptTypeScript
 app/contexts/navigation-blocker.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { createContext, useState, useContext } from 'react'
@@ -388,14 +388,14 @@ JavaScriptTypeScript
     export function useNavigationBlocker() {
       return useContext(NavigationBlockerContext)
     }
-[/code]
+```
 
 컨텍스트를 사용하는 폼 컴포넌트를 만듭니다:
 
 app/components/form.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useNavigationBlocker } from '../contexts/navigation-blocker'
@@ -416,14 +416,14 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 탐색을 차단하는 커스텀 Link 컴포넌트를 만듭니다:
 
 app/components/custom-link.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Link from 'next/link'
@@ -452,14 +452,14 @@ JavaScriptTypeScript
         </Link>
       )
     }
-[/code]
+```
 
 탐색 컴포넌트를 만듭니다:
 
 app/components/nav.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { CustomLink as Link } from './custom-link'
@@ -472,14 +472,14 @@ JavaScriptTypeScript
         </nav>
       )
     }
-[/code]
+```
 
 마지막으로 루트 레이아웃에서 `NavigationBlockerProvider`로 앱을 감싸고 페이지에서 컴포넌트를 사용합니다:
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { NavigationBlockerProvider } from './contexts/navigation-blocker'
 
     export default function RootLayout({
@@ -495,14 +495,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 그런 다음 페이지에서 `Nav`와 `Form` 컴포넌트를 사용합니다:
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Nav from './components/nav'
     import Form from './components/form'
 
@@ -517,7 +517,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 사용자가 폼에 저장되지 않은 변경 사항이 있는 상태에서 `CustomLink`를 통해 다른 페이지로 이동하려고 하면, 떠나기 전에 확인하라는 메시지가 표시됩니다.
 

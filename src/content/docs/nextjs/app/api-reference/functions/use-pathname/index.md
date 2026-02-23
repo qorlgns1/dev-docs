@@ -20,7 +20,7 @@ Copy page
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { usePathname } from 'next/navigation'
@@ -29,7 +29,7 @@ JavaScriptTypeScript
       const pathname = usePathname()
       return <p>Current pathname: {pathname}</p>
     }
-[/code]
+```
 
 `usePathname`은 [클라이언트 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components) 사용을 의도적으로 요구합니다. 클라이언트 컴포넌트는 비최적화 요소가 아니라 [서버 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components) 아키텍처의 필수 요소임을 기억하세요.
 
@@ -48,9 +48,9 @@ Pages Router와의 호환성
 라우팅 시스템 간 호환성을 높이기 위해 프로젝트에 `app`과 `pages` 디렉터리가 모두 존재하면 Next.js가 `usePathname`의 반환 타입을 자동으로 조정합니다.
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/use-pathname#parameters)
-[code]
+```
     const pathname = usePathname()
-[/code]
+```
 
 `usePathname`은 매개변수를 받지 않습니다.
 
@@ -72,7 +72,7 @@ URL| 반환 값
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useEffect } from 'react'
@@ -85,7 +85,7 @@ JavaScriptTypeScript
         // Do something here...
       }, [pathname, searchParams])
     }
-[/code]
+```
 
 ### rewrites로 인한 수화 불일치 방지[](https://nextjs.org/docs/app/api-reference/functions/use-pathname#avoid-hydration-mismatch-with-rewrites)
 
@@ -96,7 +96,7 @@ JavaScriptTypeScript
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useEffect, useState } from 'react'
@@ -116,7 +116,7 @@ JavaScriptTypeScript
         </p>
       )
     }
-[/code]
+```
 
 Version| 변경 사항
 ---|---

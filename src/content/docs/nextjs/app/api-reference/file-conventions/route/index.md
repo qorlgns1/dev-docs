@@ -16,11 +16,11 @@ Route Handler를 사용하면 Web [Request](https://developer.mozilla.org/docs/W
 route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET() {
       return Response.json({ message: 'Hello World' })
     }
-[/code]
+```
 
 ## Reference[](https://nextjs.org/docs/app/api-reference/file-conventions/route#reference)
 
@@ -31,7 +31,7 @@ JavaScriptTypeScript
 route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET(request: Request) {}
 
     export async function HEAD(request: Request) {}
@@ -46,7 +46,7 @@ JavaScriptTypeScript
 
     // If `OPTIONS` is not defined, Next.js will automatically implement `OPTIONS` and set the appropriate Response `Allow` header depending on the other methods defined in the Route Handler.
     export async function OPTIONS(request: Request) {}
-[/code]
+```
 
 ### Parameters[](https://nextjs.org/docs/app/api-reference/file-conventions/route#parameters)
 
@@ -57,13 +57,13 @@ JavaScriptTypeScript
 route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextRequest } from 'next/server'
 
     export async function GET(request: NextRequest) {
       const url = request.nextUrl
     }
-[/code]
+```
 
 #### `context` (optional)[](https://nextjs.org/docs/app/api-reference/file-conventions/route#context-optional)
 
@@ -72,14 +72,14 @@ JavaScriptTypeScript
 app/dashboard/[team]/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET(
       request: Request,
       { params }: { params: Promise<{ team: string }> }
     ) {
       const { team } = await params
     }
-[/code]
+```
 
 예시| URL| `params`
 ---|---|---
@@ -92,14 +92,14 @@ JavaScriptTypeScript
 라우트 리터럴에서 강한 타입의 `params`를 얻기 위해 `RouteContext`를 사용하여 Route Handler 컨텍스트에 타입을 지정할 수 있습니다. `RouteContext`는 전역적으로 사용할 수 있는 헬퍼입니다.
 
 app/users/[id]/route.ts
-[code]
+```
     import type { NextRequest } from 'next/server'
 
     export async function GET(_req: NextRequest, ctx: RouteContext<'/users/[id]'>) {
       const { id } = await ctx.params
       return Response.json({ id })
     }
-[/code]
+```
 
 > **알아두면 좋아요**
 >
@@ -116,7 +116,7 @@ app/users/[id]/route.ts
 route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cookies } from 'next/headers'
 
     export async function GET(request: NextRequest) {
@@ -126,14 +126,14 @@ JavaScriptTypeScript
       const b = cookieStore.set('b', '1')
       const c = cookieStore.delete('c')
     }
-[/code]
+```
 
 또는 [`Set-Cookie`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie) 헤더가 포함된 새 `Response`를 반환할 수도 있습니다.
 
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cookies } from 'next/headers'
 
     export async function GET(request: Request) {
@@ -145,20 +145,20 @@ JavaScriptTypeScript
         headers: { 'Set-Cookie': `token=${token.value}` },
       })
     }
-[/code]
+```
 
 기본 Web API를 사용하여 요청에서 쿠키를 읽을 수도 있습니다([`NextRequest`](https://nextjs.org/docs/app/api-reference/functions/next-request)).
 
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { type NextRequest } from 'next/server'
 
     export async function GET(request: NextRequest) {
       const token = request.cookies.get('token')
     }
-[/code]
+```
 
 ### Headers[](https://nextjs.org/docs/app/api-reference/file-conventions/route#headers)
 
@@ -167,7 +167,7 @@ JavaScriptTypeScript
 route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { headers } from 'next/headers'
     import type { NextRequest } from 'next/server'
 
@@ -175,14 +175,14 @@ JavaScriptTypeScript
       const headersList = await headers()
       const referer = headersList.get('referer')
     }
-[/code]
+```
 
 이 `headers` 인스턴스는 읽기 전용입니다. 헤더를 설정하려면 새 `headers`가 포함된 새로운 `Response`를 반환해야 합니다.
 
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { headers } from 'next/headers'
 
     export async function GET(request: Request) {
@@ -194,20 +194,20 @@ JavaScriptTypeScript
         headers: { referer: referer },
       })
     }
-[/code]
+```
 
 기본 Web API를 사용하여 요청에서 헤더를 읽을 수도 있습니다([`NextRequest`](https://nextjs.org/docs/app/api-reference/functions/next-request)).
 
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { type NextRequest } from 'next/server'
 
     export async function GET(request: NextRequest) {
       const requestHeaders = new Headers(request.headers)
     }
-[/code]
+```
 
 ### Revalidating Cached Data[](https://nextjs.org/docs/app/api-reference/file-conventions/route#revalidating-cached-data)
 
@@ -216,7 +216,7 @@ JavaScriptTypeScript
 app/posts/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export const revalidate = 60
 
     export async function GET() {
@@ -225,20 +225,20 @@ JavaScriptTypeScript
 
       return Response.json(posts)
     }
-[/code]
+```
 
 ### Redirects[](https://nextjs.org/docs/app/api-reference/file-conventions/route#redirects)
 
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { redirect } from 'next/navigation'
 
     export async function GET(request: Request) {
       redirect('https://nextjs.org/')
     }
-[/code]
+```
 
 ### Dynamic Route Segments[](https://nextjs.org/docs/app/api-reference/file-conventions/route#dynamic-route-segments)
 
@@ -247,14 +247,14 @@ Route Handler는 [동적 세그먼트](https://nextjs.org/docs/app/api-reference
 app/items/[slug]/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET(
       request: Request,
       { params }: { params: Promise<{ slug: string }> }
     ) {
       const { slug } = await params // 'a', 'b', or 'c'
     }
-[/code]
+```
 
 Route| 예시 URL| `params`
 ---|---|---
@@ -277,7 +277,7 @@ Route Handler에 전달되는 요청 객체는 `NextRequest` 인스턴스이며,
 app/api/search/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { type NextRequest } from 'next/server'
 
     export function GET(request: NextRequest) {
@@ -285,7 +285,7 @@ JavaScriptTypeScript
       const query = searchParams.get('query')
       // query is "hello" for /api/search?query=hello
     }
-[/code]
+```
 
 ### Streaming[](https://nextjs.org/docs/app/api-reference/file-conventions/route#streaming)
 
@@ -294,7 +294,7 @@ JavaScriptTypeScript
 app/api/chat/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { openai } from '@ai-sdk/openai'
     import { StreamingTextResponse, streamText } from 'ai'
 
@@ -307,14 +307,14 @@ JavaScriptTypeScript
 
       return new StreamingTextResponse(result.toAIStream())
     }
-[/code]
+```
 
 이러한 추상화는 Web API를 사용해 스트림을 생성합니다. 기본 Web API를 직접 사용할 수도 있습니다.
 
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
     function iteratorToStream(iterator: any) {
       return new ReadableStream({
@@ -348,13 +348,12 @@ JavaScriptTypeScript
 
     export async function GET() {
       const iterator = makeIterator()
-[/code]
+```
 
 const stream = iteratorToStream(iterator)
 
       return new Response(stream)
     }
-[/code]
 
 ### 요청 본문[](https://nextjs.org/docs/app/api-reference/file-conventions/route#request-body)
 
@@ -363,12 +362,12 @@ const stream = iteratorToStream(iterator)
 app/items/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function POST(request: Request) {
       const res = await request.json()
       return Response.json({ res })
     }
-[/code]
+```
 
 ### 요청 본문 FormData[](https://nextjs.org/docs/app/api-reference/file-conventions/route#request-body-formdata)
 
@@ -377,14 +376,14 @@ JavaScriptTypeScript
 app/items/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function POST(request: Request) {
       const formData = await request.formData()
       const name = formData.get('name')
       const email = formData.get('email')
       return Response.json({ name, email })
     }
-[/code]
+```
 
 `formData`의 데이터는 모두 문자열이므로, 요청을 검증하고 원하는 형식(예: `number`)으로 데이터를 가져오려면 [`zod-form-data`](https://www.npmjs.com/zod-form-data)를 사용하는 것이 좋습니다.
 
@@ -395,7 +394,7 @@ JavaScriptTypeScript
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET(request: Request) {
       return new Response('Hello, Next.js!', {
         status: 200,
@@ -406,7 +405,7 @@ JavaScriptTypeScript
         },
       })
     }
-[/code]
+```
 
 > **알아두면 좋은 점** :
 >
@@ -420,7 +419,7 @@ Route Handler를 사용해 서드파티 서비스에서 오는 webhook을 받을
 app/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function POST(request: Request) {
       try {
         const text = await request.text()
@@ -435,7 +434,7 @@ JavaScriptTypeScript
         status: 200,
       })
     }
-[/code]
+```
 
 특히 Pages Router의 API Routes와 달리, 추가 구성이 필요하더라도 `bodyParser`를 사용할 필요가 없습니다.
 
@@ -446,7 +445,7 @@ Route Handler를 사용해 UI가 아닌 콘텐츠를 반환할 수 있습니다.
 app/rss.xml/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function GET() {
       return new Response(
         `<?xml version="1.0" encoding="UTF-8" ?>
@@ -466,7 +465,7 @@ JavaScriptTypeScript
         }
       )
     }
-[/code]
+```
 
 ### 세그먼트 설정 옵션[](https://nextjs.org/docs/app/api-reference/file-conventions/route#segment-config-options)
 
@@ -475,14 +474,14 @@ Route Handler는 페이지와 레이아웃과 동일한 [route segment 구성](h
 app/items/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export const dynamic = 'auto'
     export const dynamicParams = true
     export const revalidate = false
     export const fetchCache = 'auto'
     export const runtime = 'nodejs'
     export const preferredRegion = 'auto'
-[/code]
+```
 
 자세한 내용은 [API reference](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config)를 참고하세요.
 

@@ -18,7 +18,7 @@ description: '생성자는 JSX와 CSS를 사용해 동적 이미지를 생성할
 ### 매개변수[](https://nextjs.org/docs/app/api-reference/functions/image-response#parameters)
 
 다음 매개변수를 `ImageResponse`에서 사용할 수 있습니다:
-[code]
+```
     import { ImageResponse } from 'next/og'
 
     new ImageResponse(
@@ -41,7 +41,7 @@ description: '생성자는 JSX와 CSS를 사용해 동적 이미지를 생성할
         headers?: Record<string, string>
       },
     )
-[/code]
+```
 
 > 예시는 [Vercel OG Playground](https://og-playground.vercel.app/)에서 확인할 수 있습니다.
 
@@ -65,7 +65,7 @@ description: '생성자는 JSX와 CSS를 사용해 동적 이미지를 생성할
 `ImageResponse`는 라우트 핸들러에서 요청 시점에 이미지를 동적으로 생성하는 데 사용할 수 있습니다.
 
 app/api/route.js
-[code]
+```
     import { ImageResponse } from 'next/og'
 
     export async function GET() {
@@ -117,14 +117,14 @@ app/api/route.js
         })
       }
     }
-[/code]
+```
 
 ### 파일 기반 메타데이터[](https://nextjs.org/docs/app/api-reference/functions/image-response#file-based-metadata)
 
 [`opengraph-image.tsx`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image) 파일에서 `ImageResponse`를 사용해 Open Graph 이미지를 빌드 타임 또는 요청 시점에 동적으로 생성할 수 있습니다.
 
 app/opengraph-image.tsx
-[code]
+```
     import { ImageResponse } from 'next/og'
 
     // Image metadata
@@ -163,14 +163,14 @@ app/opengraph-image.tsx
         }
       )
     }
-[/code]
+```
 
 ### 사용자 지정 폰트[](https://nextjs.org/docs/app/api-reference/functions/image-response#custom-fonts)
 
 옵션에 `fonts` 배열을 제공하면 `ImageResponse`에서 사용자 지정 폰트를 사용할 수 있습니다.
 
 app/opengraph-image.tsx
-[code]
+```
     import { ImageResponse } from 'next/og'
     import { readFile } from 'node:fs/promises'
     import { join } from 'node:path'
@@ -211,7 +211,7 @@ app/opengraph-image.tsx
         }
       )
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/image-response#version-history)
 

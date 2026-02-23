@@ -262,4 +262,3 @@ export default Post
 | `v9.5.0`  | Stable [Incremental Static Regeneration](https://nextjs.org/docs/pages/guides/incremental-static-regeneration)                                                                                                      |
 | `v9.3.0`  | `getStaticPaths` introduced.                                                                                                                                                                      |
 ---
-

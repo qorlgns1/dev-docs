@@ -72,4 +72,3 @@ Source URL: https://nextjs.org/docs/pages/guides
   - Learn how to upgrade to the latest versions of Next.js.
 
 ---
-

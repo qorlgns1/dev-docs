@@ -227,4 +227,3 @@ if (!window.ResizeObserver) {
 | ------- | ----------------------------------- |
 | `v15.3` | `instrumentation-client` introduced |
 ---
-

@@ -50,19 +50,19 @@ Turbopack은 이제 Next.js 개발의 기본 번들러이며 webpack 대비 큰 
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add next@latest
     pnpm dev  # Turbopack is used by default
-[/code]
+```
 
 Turbopack 대신 Webpack을 사용해야 한다면 옵트인할 수 있습니다:
 
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm dev --webpack
-[/code]
+```
 
 [Turbopack에 대해 자세히 알아보기](https://nextjs.org/blog/turbopack-for-development-stable). [업그레이드 가이드](https://nextjs.org/docs/app/guides/upgrading)와 코드모드도 참고하세요.
 
@@ -73,13 +73,13 @@ Terminal
 #### 아이콘 라이브러리[](https://nextjs.org/docs/app/guides/local-development#icon-libraries)
 
 `@material-ui/icons`, `@phosphor-icons/react`, `react-icons` 같은 라이브러리는 몇 개만 사용해도 수천 개의 아이콘을 import할 수 있습니다. 필요한 아이콘만 import하도록 해보세요:
-[code]
+```
     // Instead of this:
     import { TriangleIcon } from '@phosphor-icons/react'
 
     // Do this:
     import { TriangleIcon } from '@phosphor-icons/react/dist/csr/Triangle'
-[/code]
+```
 
 사용 중인 아이콘 라이브러리 문서에서 어떤 import 패턴을 사용할지 확인할 수 있습니다. 이 예시는 [`@phosphor-icons/react`](https://www.npmjs.com/package/@phosphor-icons/react#import-performance-optimization)의 권장 사항을 따릅니다.
 
@@ -103,13 +103,13 @@ Terminal
 #### 패키지 import 최적화[](https://nextjs.org/docs/app/guides/local-development#optimize-package-imports)
 
 Next.js는 특정 패키지의 import를 자동으로 최적화할 수 있습니다. 배럴 파일을 사용하는 패키지를 사용한다면 `next.config.js`에 추가하세요:
-[code]
+```
     module.exports = {
       experimental: {
         optimizePackageImports: ['package-name'],
       },
     }
-[/code]
+```
 
 Turbopack은 import를 자동 분석하고 최적화합니다. 이 설정이 필요하지 않습니다.
 
@@ -122,7 +122,8 @@ Tailwind CSS를 사용한다면 올바르게 설정되었는지 확인하세요.
 Tailwind CSS 3.4.8 이상은 빌드를 느려지게 할 수 있는 설정에 대해 경고합니다.
 
   1. `tailwind.config.js`에서 검색할 파일을 명확히 지정하세요:
-[code] module.exports = {
+```
+module.exports = {
            content: [
              './src/**/*.{js,ts,jsx,tsx}', // Good
              // This might be too broad
@@ -130,16 +131,17 @@ Tailwind CSS 3.4.8 이상은 빌드를 느려지게 할 수 있는 설정에 대
              // '../../packages/**/*.{js,ts,jsx,tsx}',
            ],
          }
-[/code]
+```
 
   2. 불필요한 파일 검색을 피하세요:
-[code] module.exports = {
+```
+module.exports = {
            content: [
              // Better - only scans the 'src' folder
              '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',
            ],
          }
-[/code]
+```
 
 ### 5\. 커스텀 webpack 설정 점검[](https://nextjs.org/docs/app/guides/local-development#5-check-custom-webpack-settings)
 
@@ -180,7 +182,7 @@ Mac과 Windows에서 Docker의 파일 시스템 접근 방식은 로컬 개발�
 ### 상세 fetch 로깅[](https://nextjs.org/docs/app/guides/local-development#detailed-fetch-logging)
 
 개발 중에 무슨 일이 일어나는지 자세히 확인하려면 `next.config.js` 파일에서 `logging.fetches` 옵션을 사용하세요:
-[code]
+```
     module.exports = {
       logging: {
         fetches: {
@@ -188,7 +190,7 @@ Mac과 Windows에서 Docker의 파일 시스템 접근 방식은 로컬 개발�
         },
       },
     }
-[/code]
+```
 
 [fetch 로깅에 대해 더 알아보기](https://nextjs.org/docs/app/api-reference/config/next-config-js/logging).
 
@@ -203,8 +205,9 @@ Turbopack 추적은 로컬 개발 중 애플리케이션 성능을 이해하도�
 pnpmnpmyarnbun
 
 Terminal
-[code]NEXT_TURBOPACK_TRACING=1 pnpm dev
-[/code]
+```
+NEXT_TURBOPACK_TRACING=1 pnpm dev
+```
 
   3. 애플리케이션을 탐색하거나 파일을 수정해 문제를 재현합니다.
 
@@ -213,12 +216,14 @@ Terminal
   5. `.next/dev` 폴더에 `trace-turbopack`이라는 파일이 생성됩니다.
 
   6. `npx next internal trace [path-to-file]`로 파일을 해석할 수 있습니다:
-[code] npx next internal trace .next/dev/trace-turbopack
-[/code]
+```
+npx next internal trace .next/dev/trace-turbopack
+```
 
 `trace`를 사용할 수 없는 버전에서는 명령이 `turbo-trace-server`였습니다:
-[code] npx next internal turbo-trace-server .next/dev/trace-turbopack
-[/code]
+```
+npx next internal turbo-trace-server .next/dev/trace-turbopack
+```
 
   7. 트레이스 서버가 실행되면 <https://trace.nextjs.org/>[](https://trace.nextjs.org/)에서 트레이스를 볼 수 있습니다.
 

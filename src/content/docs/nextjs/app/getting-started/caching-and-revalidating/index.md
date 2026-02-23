@@ -33,11 +33,11 @@ Next.js는 캐싱과 재검증을 처리하기 위한 여러 API를 제공합니
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       const data = await fetch('https://...', { cache: 'force-cache' })
     }
-[/code]
+```
 
 > **알아두면 좋아요** : `fetch` 요청은 기본적으로 캐시되지 않지만, Next.js는 `fetch` 요청이 있는 라우트를 [사전 렌더링](https://nextjs.org/docs/app/guides/caching#static-rendering)하고 HTML을 캐시합니다. 라우트를 확실히 [동적](https://nextjs.org/docs/app/guides/caching#dynamic-rendering)으로 유지하려면 [`connection` API](https://nextjs.org/docs/app/api-reference/functions/connection)를 사용하세요.
 
@@ -46,11 +46,11 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       const data = await fetch('https://...', { next: { revalidate: 3600 } })
     }
-[/code]
+```
 
 이 설정은 지정된 초가 지난 후 데이터를 재검증합니다.
 
@@ -59,7 +59,7 @@ JavaScriptTypeScript
 app/lib/data.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function getUserById(id: string) {
       const data = await fetch(`https://...`, {
         next: {
@@ -67,7 +67,7 @@ JavaScriptTypeScript
         },
       })
     }
-[/code]
+```
 
 자세한 내용은 [`fetch` API 레퍼런스](https://nextjs.org/docs/app/api-reference/functions/fetch)를 확인하세요.
 
@@ -80,7 +80,7 @@ Cache Components에서는 [`use cache`](https://nextjs.org/docs/app/api-referenc
 app/lib/data.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { cacheTag } from 'next/cache'
 
     export async function getProducts() {
@@ -90,7 +90,7 @@ JavaScriptTypeScript
       const products = await db.query('SELECT * FROM products')
       return products
     }
-[/code]
+```
 
 태그를 지정하면 [`revalidateTag`](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#revalidatetag) 또는 [`updateTag`](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#updatetag)를 사용해 제품 캐시 항목을 무효화할 수 있습니다.
 
@@ -110,14 +110,14 @@ JavaScriptTypeScript
 app/lib/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { revalidateTag } from 'next/cache'
 
     export async function updateUser(id: string) {
       // Mutate data
       revalidateTag('user', 'max') // Recommended: Uses stale-while-revalidate
     }
-[/code]
+```
 
 동일한 태그를 여러 함수에서 재사용해 한 번에 모두 재검증할 수 있습니다.
 
@@ -130,7 +130,7 @@ JavaScriptTypeScript
 app/lib/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { updateTag } from 'next/cache'
     import { redirect } from 'next/navigation'
 
@@ -149,7 +149,7 @@ JavaScriptTypeScript
 
       redirect(`/posts/${post.id}`)
     }
-[/code]
+```
 
 `revalidateTag`와 `updateTag`의 주요 차이점은 다음과 같습니다.
 
@@ -165,13 +165,13 @@ JavaScriptTypeScript
 app/lib/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { revalidatePath } from 'next/cache'
 
     export async function updateUser(id: string) {
       // Mutate data
       revalidatePath('/profile')
-[/code]
+```
 
 자세한 내용은 [`revalidatePath` API 레퍼런스](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)를 확인하세요.
 
@@ -184,7 +184,7 @@ JavaScriptTypeScript
 app/lib/data.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { db } from '@/lib/db'
     export async function getUserById(id: string) {
       return db
@@ -193,12 +193,12 @@ JavaScriptTypeScript
         .where(eq(users.id, id))
         .then((res) => res[0])
     }
-[/code]
+```
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { unstable_cache } from 'next/cache'
     import { getUserById } from '@/app/lib/data'
 
@@ -216,7 +216,7 @@ JavaScriptTypeScript
         [userId] // add the user ID to the cache key
       )
     }
-[/code]
+```
 
 이 함수는 캐시 재검증 방식을 정의하는 세 번째 선택적 객체를 받습니다. 다음 옵션을 지원합니다.
 
@@ -226,7 +226,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     const getCachedUser = unstable_cache(
       async () => {
         return getUserById(userId)
@@ -237,7 +237,7 @@ JavaScriptTypeScript
         revalidate: 3600,
       }
     )
-[/code]
+```
 
 자세한 내용은 [`unstable_cache` API 레퍼런스](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)를 확인하세요.
 

@@ -27,11 +27,11 @@ Windows에서 Codex를 네이티브로 실행하면, 에이전트 모드는 실�
   * [WSL 확장](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)이 설치된 VS Code.
 
 #### Open VS Code from a WSL terminal
-[code] 
+```
     # From your WSL shell
     cd ~/code/your-project
     code .
-[/code]
+```
 
 이 작업은 WSL 원격 창을 열고, 필요하다면 VS Code Server를 설치하며, 통합 터미널이 Linux에서 실행되도록 보장합니다.
 
@@ -42,8 +42,9 @@ Windows에서 Codex를 네이티브로 실행하면, 에이전트 모드는 실�
   * 통합 터미널이 `C:\` 대신 `/home/...` 같은 Linux 경로를 보여야 합니다.
 
   * 다음 명령으로 확인할 수 있습니다:
-[code] echo $WSL_DISTRO_NAME
-[/code]
+```
+echo $WSL_DISTRO_NAME
+```
 
 이 명령은 배포판 이름을 출력합니다.
 
@@ -52,16 +53,16 @@ Windows에서 Codex를 네이티브로 실행하면, 에이전트 모드는 실�
 ### Use Codex CLI with WSL
 
 승격된 PowerShell 또는 Windows Terminal에서 다음 명령을 실행하세요:
-[code] 
+```
     # Install default Linux distribution (like Ubuntu)
     wsl --install
     
     # Start a shell inside Windows Subsystem for Linux
     wsl
-[/code]
+```
 
 그다음 WSL 셸에서 아래 명령을 실행합니다:
-[code] 
+```
     # https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
     # Install Node.js in WSL (via nvm)
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
@@ -72,15 +73,16 @@ Windows에서 Codex를 네이티브로 실행하면, 에이전트 모드는 실�
     # Install and run Codex in WSL
     npm i -g @openai/codex
     codex
-[/code]
+```
 
 ### Working on code inside WSL
 
   * `/mnt/c/…`처럼 Windows에 마운트된 경로에서 작업하면 Windows 네이티브 경로보다 느릴 수 있습니다. 리포지토리를 `~/code/my-app` 같은 Linux 홈 디렉터리 아래에 두면 I/O가 더 빠르고 심볼릭 링크 및 권한 문제도 줄어듭니다: 
-[code]mkdir -p ~/code && cd ~/code
+```
+mkdir -p ~/code && cd ~/code
         git clone https://github.com/your/repo.git
         cd repo
-[/code]
+```
 
   * Windows에서 파일에 접근해야 한다면 Explorer에서 `\wsl$\Ubuntu\home&lt;user>` 아래에 위치합니다.
 
@@ -97,9 +99,9 @@ Windows 샌드박스 지원은 실험적입니다. 동작 방식은 다음과 �
 ### 샌드박스 읽기 권한 부여
 
 Windows 샌드박스가 디렉터리를 읽지 못해 명령이 실패할 때는 다음을 실행하세요:
-[code] 
+```
     /sandbox-add-read-dir C:\absolute\directory\path
-[/code]
+```
 
 경로는 반드시 존재하는 절대 디렉터리여야 합니다. 명령이 성공하면, 이후 샌드박스에서 실행되는 명령은 현재 세션 동안 해당 디렉터리를 읽을 수 있습니다.
 
@@ -119,15 +121,16 @@ Windows 샌드박스가 디렉터리를 읽지 못해 명령이 실패할 때는
 
   * `/mnt/c` 아래에서 작업 중이 아닌지 확인하세요. 리포지토리를 WSL로 옮기세요(예: `~/code/...`).
   * 필요하다면 WSL의 메모리와 CPU를 늘리고, 최신 버전으로 업데이트하세요: 
-[code]wsl --update
+```
+wsl --update
         wsl --shutdown
-[/code]
+```
 
 #### WSL의 VS Code가 `codex`를 찾지 못함
 
 WSL 내부에서 바이너리가 존재하고 PATH에 있는지 확인하세요:
-[code] 
+```
     which codex || echo "codex not found"
-[/code]
+```
 
 바이너리를 찾지 못하면 위 링크의 [설치 안내](https://developers.openai.com/codex/windows#use-codex-cli-with-wsl)를 따라 설치하세요.

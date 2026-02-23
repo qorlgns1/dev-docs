@@ -376,4 +376,3 @@ Attributes:
 
 This zero-length span represents the time when the first byte has been sent in the response.
 ---
-

@@ -772,4 +772,3 @@ When a user tries to navigate away using `CustomLink` while the form has unsaved
 | `v8.0.0`  | Improved prefetching performance.                                                                                                                                            |
 | `v1.0.0`  | `next/link` introduced.                                                                                                                                                      |
 ---
-

@@ -36,7 +36,7 @@ description: '공개 페이지는 모든 사용자에게 동일한 콘텐츠를 
 간단한 헤더부터 시작하겠습니다.
 
 app/products/page.tsx
-[code]
+```
     // Static component
     function Header() {
       return <h1>Shop</h1>
@@ -49,7 +49,7 @@ app/products/page.tsx
         </>
       )
     }
-[/code]
+```
 
 #### 정적 컴포넌트[](https://nextjs.org/docs/app/guides/public-static-pages#static-components)
 
@@ -60,13 +60,13 @@ app/products/page.tsx
 이는 [`next build`](https://nextjs.org/docs/app/api-reference/cli/next#next-build-options)를 실행해 확인할 수 있습니다.
 
 터미널
-[code]
+```
     Route (app)      Revalidate  Expire
     ┌ ○ /products           15m      1y
     └ ○ /_not-found
 
     ○  (Static)  prerendered as static content
-[/code]
+```
 
 제품 경로에 별도 설정을 추가하지 않았어도 정적으로 표시되는 것을 확인할 수 있습니다.
 
@@ -75,7 +75,7 @@ app/products/page.tsx
 이제 제품 목록을 가져와 렌더링해 보겠습니다.
 
 app/products/page.tsx
-[code]
+```
     import db from '@/db'
     import { List } from '@/app/products/ui'
 
@@ -95,7 +95,7 @@ app/products/page.tsx
         </>
       )
     }
-[/code]
+```
 
 헤더와 달리 제품 목록은 외부 데이터에 의존합니다.
 
@@ -123,7 +123,7 @@ app/products/page.tsx
 [`'use cache'`](https://nextjs.org/docs/app/api-reference/directives/use-cache) 지시문으로 함수를 캐시 가능하게 표시할 수 있습니다.
 
 app/products/page.tsx
-[code]
+```
     import db from '@/db'
     import { List } from '@/app/products/ui'
 
@@ -144,7 +144,7 @@ app/products/page.tsx
         </>
       )
     }
-[/code]
+```
 
 이렇게 하면 [cache component](https://nextjs.org/docs/app/glossary#cache-components)가 됩니다. 처음 실행될 때 반환한 값이 캐시되어 재사용됩니다.
 
@@ -153,13 +153,13 @@ app/products/page.tsx
 다시 새로고침하면 캐시 컴포넌트가 응답을 차단하지 않으므로 페이지가 즉시 로드되는 것을 볼 수 있습니다. `next build`를 다시 실행하면 페이지가 여전히 정적임을 확인할 수 있습니다.
 
 터미널
-[code]
+```
     Route (app)      Revalidate  Expire
     ┌ ○ /products           15m      1y
     └ ○ /_not-found
 
     ○  (Static)  prerendered as static content
-[/code]
+```
 
 하지만 페이지가 영원히 정적으로 남아 있지는 않습니다.
 
@@ -168,7 +168,7 @@ app/products/page.tsx
 언젠가는 간단한 페이지에도 동적 콘텐츠가 필요해집니다. 이를 보여 주기 위해 프로모션 배너를 추가해 보겠습니다.
 
 app/products/page.tsx
-[code]
+```
     import db from '@/db'
     import { List, Promotion } from '@/app/products/ui'
     import { getPromotion } from '@/app/products/data'
@@ -192,7 +192,7 @@ app/products/page.tsx
         </>
       )
     }
-[/code]
+```
 
 다시 한 번, 이 컴포넌트는 동적으로 시작합니다. 그리고 이전과 마찬가지로 차단 동작을 도입하면 Next.js 경고가 발생합니다.
 
@@ -205,7 +205,7 @@ app/products/page.tsx
 Next.js는 기본적으로 스트리밍을 지원합니다. [Suspense 경계](https://nextjs.org/docs/app/glossary#suspense-boundary)를 사용해 프레임워크에 스트리밍 응답을 _청크_로 나누는 지점과 콘텐츠 로딩 중에 표시할 폴백 UI를 알려줄 수 있습니다.
 
 app/products/page.tsx
-[code]
+```
     import { Suspense } from 'react'
     import db from '@/db'
     import { List, Promotion, PromotionSkeleton } from '@/app/products/ui'
@@ -232,7 +232,7 @@ app/products/page.tsx
         </>
       )
     }
-[/code]
+```
 
 폴백은 정적 콘텐츠와 캐시된 콘텐츠와 함께 사전 렌더링됩니다. 내부 컴포넌트는 비동기 작업이 완료되면 나중에 스트리밍됩니다.
 
@@ -241,13 +241,13 @@ app/products/page.tsx
 다시 `next build`를 실행해 이를 확인할 수 있습니다.
 
 터미널
-[code]
+```
     Route (app)      Revalidate  Expire
     ┌ ◐ /products    15m      1y
     └ ◐ /_not-found
 
     ◐  (Partial Prerender)  Prerendered as static HTML with dynamic server-streamed content
-[/code]
+```
 
 [**build time**](https://nextjs.org/docs/app/glossary#build-time)에 헤더, 제품 목록, 프로모션 폴백을 포함한 페이지 대부분이 렌더링되어 캐시되고 콘텐츠 전송 네트워크에 푸시됩니다.
 

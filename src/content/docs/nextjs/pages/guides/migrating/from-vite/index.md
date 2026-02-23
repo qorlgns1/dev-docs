@@ -63,16 +63,16 @@ Next.js에서도 클라이언트 데이터 패칭이 가능하지만, 데이터�
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add next@latest
-[/code]
+```
 
 ### 2단계: Next.js 구성 파일 생성[](https://nextjs.org/docs/pages/guides/migrating/from-vite#step-2-create-the-nextjs-configuration-file)
 
 프로젝트 루트에 `next.config.mjs`를 생성합니다. 이 파일은 [Next.js 구성 옵션](https://nextjs.org/docs/app/api-reference/config/next-config-js)을 담습니다.
 
 next.config.mjs
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       output: 'export', // Outputs a Single-Page Application (SPA).
@@ -80,7 +80,7 @@ next.config.mjs
     }
 
     export default nextConfig
-[/code]
+```
 
 > **알아두면 좋아요:** Next.js 구성 파일은 `.js` 또는 `.mjs` 중 원하는 확장자를 사용할 수 있습니다.
 
@@ -101,7 +101,7 @@ TypeScript를 사용 중이라면, Next.js와 호환되도록 `tsconfig.json`을
 다음은 이러한 변경 사항을 적용한 `tsconfig.json` 예시입니다.
 
 tsconfig.json
-[code]
+```
     {
       "compilerOptions": {
         "target": "ES2020",
@@ -128,7 +128,7 @@ tsconfig.json
       "include": ["./src", "./dist/types/**/*.ts", "./next-env.d.ts"],
       "exclude": ["./node_modules"]
     }
-[/code]
+```
 
 TypeScript 구성에 대한 자세한 내용은 [Next.js 문서](https://nextjs.org/docs/app/api-reference/config/typescript#ide-plugin)에서 확인할 수 있습니다.
 
@@ -146,7 +146,7 @@ Vite 애플리케이션에서 루트 레이아웃과 가장 유사한 파일은 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -154,7 +154,7 @@ JavaScriptTypeScript
     }) {
       return '...'
     }
-[/code]
+```
 
 > **알아두면 좋아요**: 레이아웃 파일에는 `.js`, `.jsx`, `.tsx` 확장자를 사용할 수 있습니다.
 
@@ -163,7 +163,7 @@ JavaScriptTypeScript
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -184,14 +184,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
   4. Next.js는 [meta charset](https://developer.mozilla.org/docs/Web/HTML/Element/meta#charset)과 [meta viewport](https://developer.mozilla.org/docs/Web/HTML/Viewport_meta_tag) 태그를 기본으로 포함하므로 `<head>`에서 제거해도 안전합니다.
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -210,14 +210,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
   5. `favicon.ico`, `icon.png`, `robots.txt`와 같은 [메타데이터 파일](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#file-based-metadata)은 `app` 디렉터리 최상위에 배치하기만 하면 애플리케이션 `<head>` 태그에 자동으로 추가됩니다. [지원되는 모든 파일](https://nextjs.org/docs/app/getting-started/metadata-and-og-images#file-based-metadata)을 `app` 디렉터리로 옮긴 후에는 `<link>` 태그를 안전하게 삭제할 수 있습니다.
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function RootLayout({
       children,
     }: {
@@ -236,14 +236,14 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
   6. 마지막으로 Next.js는 [Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images)를 통해 마지막 `<head>` 태그를 관리할 수 있습니다. 최종 메타데이터 정보를 내보낸 [`metadata` 객체](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-object)로 옮기세요.
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import type { Metadata } from 'next'
 
     export const metadata: Metadata = {
@@ -264,7 +264,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 위 변경으로 `index.html`에서 모든 것을 선언하던 방식에서 프레임워크에 내장된 Next.js의 관례 기반 접근 방식([Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images))으로 전환했습니다. 이 접근 방식은 페이지의 SEO와 웹 공유성을 더욱 쉽게 개선할 수 있게 해 줍니다.
 
@@ -283,7 +283,7 @@ Next.js에서는 `page.tsx` 파일을 생성해 애플리케이션의 엔트리�
 app/[[...slug]]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import '../../index.css'
 
     export function generateStaticParams() {
@@ -293,7 +293,7 @@ JavaScriptTypeScript
     export default function Page() {
       return '...' // We'll update this
     }
-[/code]
+```
 
 > **알아두면 좋아요**: Page 파일에는 `.js`, `.jsx`, `.tsx` 확장자를 모두 사용할 수 있습니다.
 
@@ -306,7 +306,7 @@ JavaScriptTypeScript
 app/[[...slug]]/client.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import React from 'react'
@@ -317,21 +317,21 @@ JavaScriptTypeScript
     export function ClientOnly() {
       return <App />
     }
-[/code]
+```
 
 이 파일은 `'use client'` 지시문으로 정의된 [클라이언트 컴포넌트](https://nextjs.org/docs/app/getting-started/server-and-client-components)입니다. 클라이언트 컴포넌트는 클라이언트로 전송되기 전에 서버에서 [HTML로 프리렌더링](https://nextjs.org/docs/app/getting-started/server-and-client-components#how-do-server-and-client-components-work-in-nextjs)됩니다.
 
 클라이언트 전용 애플리케이션으로 시작하려는 경우, `App` 컴포넌트 이하에서 프리렌더링을 비활성화하도록 Next.js를 구성할 수 있습니다.
-[code]
+```
     const App = dynamic(() => import('../../App'), { ssr: false })
-[/code]
+```
 
 이제 엔트리포인트 페이지를 새 컴포넌트를 사용하도록 업데이트하세요.
 
 app/[[...slug]]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import '../../index.css'
     import { ClientOnly } from './client'
 
@@ -342,20 +342,20 @@ JavaScriptTypeScript
     export default function Page() {
       return <ClientOnly />
     }
-[/code]
+```
 
 ### Step 6: Update Static Image Imports[](https://nextjs.org/docs/pages/guides/migrating/from-vite#step-6-update-static-image-imports)
 
 Next.js는 Vite와 약간 다르게 정적 이미지 import를 처리합니다. Vite에서는 이미지 파일을 import하면 공개 URL을 문자열로 반환합니다.
 
 App.tsx
-[code]
+```
     import image from './img.png' // `image` will be '/assets/img.2d8efhg.png' in production
 
     export default function App() {
       return <img src={image} />
     }
-[/code]
+```
 
 Next.js에서는 정적 이미지 import가 객체를 반환합니다. 이 객체는 Next.js [`<Image>` 컴포넌트](https://nextjs.org/docs/app/api-reference/components/image)와 바로 사용할 수 있고, 기존 `<img>` 태그에 객체의 `src` 속성을 전달할 수도 있습니다.
 
@@ -365,23 +365,23 @@ Next.js에서는 정적 이미지 import가 객체를 반환합니다. 이 객�
 
   1. **`/public`에서 import한 이미지의 절대 import 경로를 상대 import로 변환하세요.**
 
-[code]
+```
     // Before
     import logo from '/logo.png'
 
     // After
     import logo from '../public/logo.png'
-[/code]
+```
 
   2. **전체 이미지 객체 대신 이미지의 `src` 속성을 `<img>` 태그에 전달하세요.**
 
-[code]
+```
     // Before
     <img src={logo} />
 
     // After
     <img src={logo.src} />
-[/code]
+```
 
 또는 파일 이름을 기준으로 이미지 자산의 공개 URL을 참조할 수도 있습니다. 예를 들어 `public/logo.png`는 애플리케이션에서 `/logo.png`로 이미지를 제공하므로 해당 값을 `src`로 사용할 수 있습니다.
 
@@ -405,15 +405,15 @@ Next.js는 내장 `BASE_URL` 환경 변수를 제공하지 않습니다. 하지�
   1. **`.env` 파일에 다음을 추가하세요.**
 
 .env
-[code]
+```
     # ...
     NEXT_PUBLIC_BASE_PATH="/some-base-path"
-[/code]
+```
 
   2. **`next.config.mjs` 파일에서 [`basePath`](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)를 `process.env.NEXT_PUBLIC_BASE_PATH`로 설정하세요.**
 
 next.config.mjs
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       output: 'export', // Outputs a Single-Page Application (SPA).
@@ -422,7 +422,7 @@ next.config.mjs
     }
 
     export default nextConfig
-[/code]
+```
 
   3. **`import.meta.env.BASE_URL` 사용을 `process.env.NEXT_PUBLIC_BASE_PATH`로 업데이트하세요.**
 
@@ -431,7 +431,7 @@ next.config.mjs
 이제 애플리케이션을 실행해 Next.js로 성공적으로 마이그레이션했는지 테스트할 수 있습니다. 그 전에 `package.json`의 `scripts`를 Next.js 관련 명령으로 업데이트하고, `.gitignore`에 `.next`와 `next-env.d.ts`를 추가하세요.
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -439,15 +439,15 @@ package.json
         "start": "next start"
       }
     }
-[/code]
+```
 
 .gitignore
-[code]
+```
     # ...
     .next
     next-env.d.ts
     dist
-[/code]
+```
 
 이제 `npm run dev`를 실행하고 [`http://localhost:3000`](http://localhost:3000)을 열어 보세요. Next.js에서 실행 중인 애플리케이션을 확인할 수 있습니다.
 

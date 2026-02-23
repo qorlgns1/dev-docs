@@ -14,4 +14,3 @@ Source URL: https://nextjs.org/docs/app/api-reference/config
   - Learn how to use and configure the ESLint plugin to catch common issues and problems in a Next.js application.
 
 ---
-

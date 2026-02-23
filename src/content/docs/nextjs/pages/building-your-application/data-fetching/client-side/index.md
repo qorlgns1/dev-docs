@@ -22,7 +22,7 @@ description: '클라이언트 측 데이터 페칭은 페이지가 SEO 인덱싱
 ## useEffect를 사용한 클라이언트 측 데이터 페칭[](https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side#client-side-data-fetching-with-useeffect)
 
 다음 예시는 useEffect 훅을 사용해 클라이언트 측에서 데이터를 가져오는 방법을 보여줍니다.
-[code]
+```
     import { useState, useEffect } from 'react'
 
     function Profile() {
@@ -48,7 +48,7 @@ description: '클라이언트 측 데이터 페칭은 페이지가 SEO 인덱싱
         </div>
       )
     }
-[/code]
+```
 
 ## SWR을 사용한 클라이언트 측 데이터 페칭[](https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side#client-side-data-fetching-with-swr)
 
@@ -57,7 +57,7 @@ Next.js 팀은 [**SWR**](https://swr.vercel.app/)이라는 데이터 페칭용 R
 앞선 예시와 동일한 패턴을 사용해 이번에는 SWR로 프로필 데이터를 가져올 수 있습니다. SWR은 데이터를 자동으로 캐시하고 데이터가 오래되면 재검증합니다.
 
 SWR 사용 방법에 대한 자세한 내용은 [SWR 문서](https://swr.vercel.app/docs/getting-started)를 참고하세요.
-[code]
+```
     import useSWR from 'swr'
 
     const fetcher = (...args) => fetch(...args).then((res) => res.json())
@@ -75,6 +75,6 @@ SWR 사용 방법에 대한 자세한 내용은 [SWR 문서](https://swr.vercel.
         </div>
       )
     }
-[/code]
+```
 
 보내기

@@ -42,4 +42,3 @@ Check out our [Next.js View Transition Demo](https://view-transition-example.ver
 
 As this API evolves, we will update our documentation and share more examples. However, for now, we strongly advise against using this feature in production.
 ---
-

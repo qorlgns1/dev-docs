@@ -22,7 +22,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/cach
 `cacheComponents` 플래그를 활성화하려면 `next.config.ts` 파일에서 값을 `true`로 설정합니다:
 
 next.config.ts
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -30,7 +30,7 @@ next.config.ts
     }
 
     export default nextConfig
-[/code]
+```
 
 `cacheComponents`를 활성화하면 다음 캐시 함수와 구성을 사용할 수 있습니다:
 

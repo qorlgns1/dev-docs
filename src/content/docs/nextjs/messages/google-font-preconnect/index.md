@@ -24,9 +24,9 @@ Google Fonts 도메인에 대한 요청에 preconnect 리소스 힌트가 사용
 Google Font 도메인의 `<link>` 태그에 `rel="preconnect"`를 추가하세요:
 
 pages/_document.js
-[code]
+```
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-[/code]
+```
 
 > **참고**: `preconnect`를 지원하지 않는 브라우저를 위한 폴백으로 `dns-prefetch`가 있는 **별도의** 링크를 사용할 수 있지만 필수는 아닙니다.
 

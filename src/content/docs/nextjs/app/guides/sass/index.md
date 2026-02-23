@@ -20,9 +20,9 @@ Next.js는 패키지를 설치한 뒤 `.scss`와 `.sass` 확장자를 모두 활
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add -D sass
-[/code]
+```
 
 > **알아 두면 좋아요** :
 >
@@ -37,7 +37,7 @@ Sass 옵션을 구성하려면 `next.config`에서 `sassOptions`를 사용하세
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -47,7 +47,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 #### 구현[](https://nextjs.org/docs/app/guides/sass#implementation)
 
@@ -56,7 +56,7 @@ JavaScriptTypeScript
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -66,7 +66,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ### Sass 변수[](https://nextjs.org/docs/app/guides/sass#sass-variables)
 
@@ -75,16 +75,16 @@ Next.js는 CSS Module 파일에서 export된 Sass 변수를 지원합니다.
 예를 들어 export된 `primaryColor` Sass 변수를 사용하는 방법은 다음과 같습니다.
 
 app/variables.module.scss
-[code]
+```
     $primary-color: #64ff00;
 
     :export {
       primaryColor: $primary-color;
     }
-[/code]
+```
 
 app/page.js
-[code]
+```
     // maps to root `/` URL
 
     import variables from './variables.module.scss'
@@ -92,4 +92,4 @@ app/page.js
     export default function Page() {
       return <h1 style={{ color: variables.primaryColor }}>Hello, Next.js!</h1>
     }
-[/code]
+```

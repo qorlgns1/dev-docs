@@ -143,4 +143,3 @@ export async function getServerSideProps(context) {
 | `v10.0.0` | `locale`, `locales`, `defaultLocale`, and `notFound` options added.                               |
 | `v9.3.0`  | `getServerSideProps` introduced.                                                                  |
 ---
-

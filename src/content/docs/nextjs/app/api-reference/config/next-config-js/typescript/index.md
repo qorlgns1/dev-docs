@@ -14,14 +14,14 @@ Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/type
 `next.config.js`에서 `typescript` 옵션으로 TypeScript 동작을 구성하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       typescript: {
         ignoreBuildErrors: false,
         tsconfigPath: 'tsconfig.json',
       },
     }
-[/code]
+```
 
 ## 옵션[](https://nextjs.org/docs/app/api-reference/config/next-config-js/typescript#options)
 
@@ -39,7 +39,7 @@ next.config.js
 비활성화한 경우 빌드나 배포 프로세스의 일부로 타입 검사를 실행해야 합니다. 그렇지 않으면 매우 위험할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       typescript: {
         // !! WARN !!
@@ -49,20 +49,20 @@ next.config.js
         ignoreBuildErrors: true,
       },
     }
-[/code]
+```
 
 ## `tsconfigPath`[](https://nextjs.org/docs/app/api-reference/config/next-config-js/typescript#tsconfigpath)
 
 빌드나 도구를 위해 다른 TypeScript 구성 파일을 사용하세요:
 
 next.config.js
-[code]
+```
     module.exports = {
       typescript: {
         tsconfigPath: 'tsconfig.build.json',
       },
     }
-[/code]
+```
 
 자세한 내용은 [TypeScript 구성](https://nextjs.org/docs/app/api-reference/config/typescript#custom-tsconfig-path) 페이지를 참고하세요.
 

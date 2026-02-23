@@ -18,7 +18,7 @@ Next.js 애플리케이션에서 Server Actions 동작을 구성하기 위한 �
 Server Actions를 호출할 수 있도록 허용할 추가 안전 출처 도메인 목록입니다. Next.js는 Server Action 요청의 origin을 호스트 도메인과 비교하여 일치하는지 확인함으로써 CSRF 공격을 방지합니다. 값을 지정하지 않으면 동일한 origin만 허용됩니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
 
     module.exports = {
@@ -28,7 +28,7 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 ## `bodySizeLimit`[](https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions#bodysizelimit)
 
@@ -37,7 +37,7 @@ next.config.js
 그러나 `serverActions.bodySizeLimit` 옵션을 사용해 이 제한을 구성할 수 있습니다. 바이트 수나 bytes 패키지가 지원하는 문자열 형식(`1000`, `'500kb'`, `'3mb'` 등)을 사용할 수 있습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
 
     module.exports = {
@@ -47,14 +47,14 @@ next.config.js
         },
       },
     }
-[/code]
+```
 
 ## Enabling Server Actions (v13)[](https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions#enabling-server-actions-v13)
 
 Server Actions는 Next.js 14에서 안정적인 기능이 되었으며 기본적으로 활성화됩니다. 하지만 더 이전 버전의 Next.js를 사용 중이라면 `experimental.serverActions`를 `true`로 설정하여 활성화할 수 있습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const config = {
       experimental: {
@@ -63,4 +63,4 @@ next.config.js
     }
 
     module.exports = config
-[/code]
+```

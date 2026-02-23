@@ -109,4 +109,3 @@ export default function Page() {
 
 - [`@next/third-parties` Documentation](https://nextjs.org/docs/app/guides/third-party-libraries)
 - [`next/script` Documentation](https://nextjs.org/docs/app/guides/scripts)
-

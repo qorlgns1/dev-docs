@@ -29,14 +29,14 @@ Use the library server-side; it requires Node.js 18 or later.
 ### Installation
 
 To get started, install the Codex SDK using `npm`:
-[code] 
+```
     npm install @openai/codex-sdk
-[/code]
+```
 
 ### Usage
 
 Start a thread with Codex and run it with your prompt.
-[code] 
+```
     import { Codex } from "@openai/codex-sdk";
     
     const codex = new Codex();
@@ -46,10 +46,10 @@ Start a thread with Codex and run it with your prompt.
     );
     
     console.log(result);
-[/code]
+```
 
 Call `run()` again to continue on the same thread, or resume a past thread by providing a thread ID.
-[code] 
+```
     // running the same thread
     const result = await thread.run("Implement the plan");
     
@@ -62,6 +62,6 @@ Call `run()` again to continue on the same thread, or resume a past thread by pr
     const result2 = await thread2.run("Pick up where you left off");
     
     console.log(result2);
-[/code]
+```
 
 For more details, check out the [TypeScript repo](https://github.com/openai/codex/tree/main/sdk/typescript).

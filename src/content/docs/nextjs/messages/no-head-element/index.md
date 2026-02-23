@@ -22,7 +22,7 @@ Source URL: https://nextjs.org/docs/messages/no-head-element
 `<Head />` 컴포넌트를 가져와 사용하세요:
 
 pages/index.js
-[code]
+```
     import Head from 'next/head'
 
     function Index() {
@@ -37,7 +37,7 @@ pages/index.js
     }
 
     export default Index
-[/code]
+```
 
 ## 유용한 링크[](https://nextjs.org/docs/messages/no-head-element#useful-links)
 

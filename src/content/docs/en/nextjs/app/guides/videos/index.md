@@ -272,4 +272,3 @@ Explore these video streaming platforms for integrating video into your Next.js 
 * The integration provides an `<IKVideo>` component, offering [seamless video support](https://imagekit.io/docs/integration/nextjs#rendering-videos).
 * You can also explore other [ImageKit libraries](https://imagekit.io/docs), such as the Node.js SDK, which is also available.
 ---
-

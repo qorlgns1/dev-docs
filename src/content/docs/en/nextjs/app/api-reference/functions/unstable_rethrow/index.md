@@ -69,4 +69,3 @@ If a route segment is marked to throw an error unless it's static, a Dynamic API
 > * Only use `unstable_rethrow` if your caught exceptions may include both application errors and framework-controlled exceptions (like `redirect()` or `notFound()`).
 > * Any resource cleanup (like clearing intervals, timers, etc) would have to either happen prior to the call to `unstable_rethrow` or within a `finally` block.
 ---
-

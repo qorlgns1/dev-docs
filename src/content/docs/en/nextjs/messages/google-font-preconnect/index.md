@@ -30,4 +30,3 @@ Add `rel="preconnect"` to the Google Font domain `<link>` tag:
 - [Preconnect to required origins](https://web.dev/uses-rel-preconnect/)
 - [Preconnect and dns-prefetch](https://web.dev/preconnect-and-dns-prefetch/#resolve-domain-name-early-with-reldns-prefetch)
 - [Next.js Font Optimization](https://nextjs.org/docs/pages/api-reference/components/font)
-

@@ -61,4 +61,3 @@ function connection(): Promise<void>
 | `v15.0.0`    | `connection` stabilized. |
 | `v15.0.0-RC` | `connection` introduced. |
 ---
-

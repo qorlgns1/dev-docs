@@ -21,7 +21,7 @@ description: '훅을 사용하면 의 pending 상태를 추적할 수 있습니�
 app/hint.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import Link from 'next/link'
@@ -43,7 +43,7 @@ JavaScriptTypeScript
         </header>
       )
     }
-[/code]
+```
 
 > **참고하면 좋아요** :
 >
@@ -65,9 +65,9 @@ JavaScriptTypeScript
 내비게이션은 보통 빠릅니다. 느린 전환을 발견했을 때 `useLinkStatus`로 재빨리 보완하고, 이후 프리패칭이나 `loading.js` 폴백으로 근본 원인을 해결하세요.
 
 ## 매개변수[](https://nextjs.org/docs/app/api-reference/functions/use-link-status#parameters)
-[code]
+```
     const { pending } = useLinkStatus()
-[/code]
+```
 
 `useLinkStatus`는 매개변수를 받지 않습니다.
 
@@ -88,7 +88,7 @@ pending| boolean| 기록이 업데이트되기 전에는 `true`, 이후에는 `f
 app/components/loading-indicator.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useLinkStatus } from 'next/link'
@@ -99,12 +99,12 @@ JavaScriptTypeScript
         <span aria-hidden className={`link-hint ${pending ? 'is-pending' : ''}`} />
       )
     }
-[/code]
+```
 
 app/shop/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
     import LoadingIndicator from './components/loading-indicator'
 
@@ -134,14 +134,14 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ## 빠른 내비게이션을 우아하게 처리하기[](https://nextjs.org/docs/app/api-reference/functions/use-link-status#gracefully-handling-fast-navigation)
 
 새 라우트로의 내비게이션이 빠르면 불필요한 힌트 깜박임이 보일 수 있습니다. 사용자 경험을 개선하고 내비게이션 완료에 시간이 걸릴 때만 힌트를 표시하려면 초깃값 애니메이션 지연(예: 100ms)을 추가하고 애니메이션을 투명 상태(예: `opacity: 0`)에서 시작하세요.
 
 app/styles/global.css
-[code]
+```
     .link-hint {
       display: inline-block;
       width: 0.6em;
@@ -176,7 +176,7 @@ app/styles/global.css
         opacity: 0.15;
       }
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/use-link-status#version-history)
 

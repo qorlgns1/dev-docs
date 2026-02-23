@@ -18,7 +18,7 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 app/unauthorized.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Login from '@/app/components/Login'
 
     export default function Unauthorized() {
@@ -30,7 +30,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 ## Reference[](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized#reference)
 
@@ -47,7 +47,7 @@ JavaScriptTypeScript
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { verifySession } from '@/app/lib/dal'
     import { unauthorized } from 'next/navigation'
 
@@ -60,12 +60,12 @@ JavaScriptTypeScript
 
       return <div>Dashboard</div>
     }
-[/code]
+```
 
 app/unauthorized.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Login from '@/app/components/Login'
 
     export default function UnauthorizedPage() {
@@ -77,7 +77,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized#version-history)
 

@@ -76,4 +76,3 @@ For example:
 | --------- | ----------------------- |
 | `v13.3.0` | `useParams` introduced. |
 ---
-

@@ -35,7 +35,7 @@ Next.js에서 지연 로딩을 구현하는 방법은 두 가지입니다.
 ### Client Components 임포트하기[](https://nextjs.org/docs/app/guides/lazy-loading#importing-client-components)
 
 app/page.js
-[code]
+```
     'use client'
 
     import { useState } from 'react'
@@ -63,7 +63,7 @@ app/page.js
         </div>
       )
     }
-[/code]
+```
 
 > **참고:** Server Component가 Client Component를 동적으로 임포트할 때는 자동 [코드 분할](https://developer.mozilla.org/docs/Glossary/Code_splitting)이 현재 지원되지 않습니다.
 
@@ -74,16 +74,16 @@ app/page.js
 > **참고:** `ssr: false` 옵션은 Client Components에서만 작동하므로, 클라이언트 코드 분할이 제대로 이루어지도록 해당 옵션을 Client Component로 옮기세요.
 
 Client Component에 대해 사전 렌더링을 비활성화하려면 `ssr` 옵션을 `false`로 설정하면 됩니다.
-[code]
+```
     const ComponentC = dynamic(() => import('../components/C'), { ssr: false })
-[/code]
+```
 
 ### Server Components 임포트하기[](https://nextjs.org/docs/app/guides/lazy-loading#importing-server-components)
 
 Server Component를 동적으로 임포트하면, 해당 Server Component 자체가 아니라 그 자식인 Client Components만 지연 로드됩니다. 또한 Server Components에서 사용할 때 CSS 같은 정적 자산을 미리 로드하는 데도 도움이 됩니다.
 
 app/page.js
-[code]
+```
     import dynamic from 'next/dynamic'
 
     // Server Component:
@@ -96,7 +96,7 @@ app/page.js
         </div>
       )
     }
-[/code]
+```
 
 > **참고:** Server Components에서는 `ssr: false` 옵션을 지원하지 않습니다. Server Components에서 사용하려 하면 오류가 발생합니다. `next/dynamic`을 사용할 때 `ssr: false`는 Client Component에서만 허용됩니다.
 
@@ -105,7 +105,7 @@ app/page.js
 외부 라이브러리는 [`import()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import) 함수를 통해 필요할 때 로드할 수 있습니다. 다음 예시는 퍼지 검색을 위해 외부 라이브러리 `fuse.js`를 사용하며, 사용자가 검색 입력란에 값을 입력한 후에야 클라이언트에서 모듈이 로드됩니다.
 
 app/page.js
-[code]
+```
     'use client'
 
     import { useState } from 'react'
@@ -133,12 +133,12 @@ app/page.js
         </div>
       )
     }
-[/code]
+```
 
 ### 사용자 정의 로딩 컴포넌트 추가하기[](https://nextjs.org/docs/app/guides/lazy-loading#adding-a-custom-loading-component)
 
 app/page.js
-[code]
+```
     'use client'
 
     import dynamic from 'next/dynamic'
@@ -158,29 +158,29 @@ app/page.js
         </div>
       )
     }
-[/code]
+```
 
 ### Named Export 임포트하기[](https://nextjs.org/docs/app/guides/lazy-loading#importing-named-exports)
 
 Named export를 동적으로 임포트하려면 [`import()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import) 함수가 반환하는 Promise에서 해당 export를 반환하면 됩니다.
 
 components/hello.js
-[code]
+```
     'use client'
 
     export function Hello() {
       return <p>Hello!</p>
     }
-[/code]
+```
 
 app/page.js
-[code]
+```
     import dynamic from 'next/dynamic'
 
     const ClientComponent = dynamic(() =>
       import('../components/hello').then((mod) => mod.Hello)
     )
-[/code]
+```
 
 Was this helpful?
 

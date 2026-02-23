@@ -16,9 +16,9 @@ Codex IDE 확장을 사용하면 VS Code, Cursor, Windsurf 및 기타 VS Code �
 에디터에서 Codex를 사용하면 채팅, 편집, 변경 사항 미리보기를 매끄럽게 수행할 수 있습니다. Codex가 열린 파일과 선택한 코드의 컨텍스트를 갖고 있을 때, 더 짧은 프롬프트로 더 빠르고 관련성 높은 결과를 받을 수 있습니다.
 
 프롬프트에서 다음과 같이 파일을 태그하여 에디터의 어떤 파일이든 참조할 수 있습니다.
-[code] 
+```
     Use @example.tsx as a reference to add a new page named "Resources" to the app that contains a list of resources defined in @resources.ts
-[/code]
+```
 
 ## 모델 전환
 

@@ -22,7 +22,7 @@ React는 HTML [`<form>`](https://developer.mozilla.org/docs/Web/HTML/Element/for
 app/invoices/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Page() {
       async function createInvoice(formData: FormData) {
         'use server'
@@ -39,7 +39,7 @@ JavaScriptTypeScript
 
       return <form action={createInvoice}>...</form>
     }
-[/code]
+```
 
 > **알아두면 좋은 점:** 필드가 많은 폼에서는 JavaScript [`Object.fromEntries()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries)를 사용하세요. 예: `const rawFormData = Object.fromEntries(formData)`. 이 객체에는 `$ACTION_` 접두사가 붙은 추가 속성이 포함됩니다.
 
@@ -50,7 +50,7 @@ JavaScriptTypeScript
 app/client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { updateUser } from './actions'
@@ -65,18 +65,18 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 Server Function은 추가 인수로 `userId`를 받습니다:
 
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     export async function updateUser(userId: string, formData: FormData) {}
-[/code]
+```
 
 > **알아두면 좋은 점** :
 >
@@ -94,7 +94,7 @@ JavaScriptTypeScript
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { z } from 'zod'
@@ -119,7 +119,7 @@ JavaScriptTypeScript
 
       // Mutate data
     }
-[/code]
+```
 
 ## 검증 오류[](https://nextjs.org/docs/app/guides/forms#validation-errors)
 
@@ -130,7 +130,7 @@ JavaScriptTypeScript
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { z } from 'zod'
@@ -141,14 +141,14 @@ JavaScriptTypeScript
       })
       // ...
     }
-[/code]
+```
 
 그런 다음 `state` 객체를 기반으로 오류 메시지를 조건부로 렌더링할 수 있습니다.
 
 app/ui/signup.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useActionState } from 'react'
@@ -171,7 +171,7 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 ## 대기 상태[](https://nextjs.org/docs/app/guides/forms#pending-states)
 
@@ -180,7 +180,7 @@ JavaScriptTypeScript
 app/ui/signup.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useActionState } from 'react'
@@ -196,14 +196,14 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 또는 [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus) 훅을 사용해 액션 실행 중 로딩 인디케이터를 표시할 수 있습니다. 이 훅을 사용할 때는 로딩 인디케이터를 렌더링할 별도의 컴포넌트를 만들어야 합니다. 예를 들어 액션이 대기 중일 때 버튼을 비활성화하려면 다음과 같습니다:
 
 app/ui/button.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useFormStatus } from 'react-dom'
@@ -217,14 +217,14 @@ JavaScriptTypeScript
         </button>
       )
     }
-[/code]
+```
 
 그런 다음 `SubmitButton` 컴포넌트를 폼 내부에 중첩시킬 수 있습니다:
 
 app/ui/signup.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { SubmitButton } from './button'
     import { createUser } from '@/app/actions'
 
@@ -236,7 +236,7 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 > **알아두면 좋은 점:** React 19에서는 `useFormStatus`가 data, method, action과 같은 추가 키를 반환 객체에 포함합니다. React 19를 사용하지 않는다면 `pending` 키만 제공됩니다.
 
@@ -247,7 +247,7 @@ React [`useOptimistic`](https://react.dev/reference/react/useOptimistic) 훅을 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useOptimistic } from 'react'
@@ -281,7 +281,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ## 중첩된 폼 요소[](https://nextjs.org/docs/app/guides/forms#nested-form-elements)
 
@@ -296,7 +296,7 @@ JavaScriptTypeScript
 app/entry.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     export function Entry() {
@@ -316,6 +316,6 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 이렇게 하면 가장 가까운 `<form>` 조상 요소의 제출이 트리거되어 Server Function이 호출됩니다.

@@ -230,4 +230,3 @@ export async function Dashboard() {
 
 A better approach is to remove `SERVICE_API_KEY` from the data returned by `getSystemConfig`.
 ---
-

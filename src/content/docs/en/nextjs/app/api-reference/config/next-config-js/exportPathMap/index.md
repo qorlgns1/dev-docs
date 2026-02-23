@@ -79,4 +79,3 @@ next export -o outdir
 
 > **Warning**: Using `exportPathMap` is deprecated and is overridden by `getStaticPaths` inside `pages`. We don't recommend using them together.
 ---
-

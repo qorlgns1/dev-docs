@@ -118,4 +118,3 @@ You can learn more about Playwright and Continuous Integration from these resour
 * [Playwright on your CI provider](https://playwright.dev/docs/ci)
 * [Playwright Discord](https://discord.com/invite/playwright-807756831384403968)
 ---
-

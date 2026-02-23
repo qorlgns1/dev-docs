@@ -24,4 +24,3 @@ Before Next.js 13, the Pages Router was the main way to create routes in Next.js
 - [Building Your ApplicationLearn how to use Next.js features to build your application.](https://nextjs.org/docs/pages/building-your-application)
 
 - [API ReferenceNext.js API Reference for the Pages Router.](https://nextjs.org/docs/pages/api-reference)
-

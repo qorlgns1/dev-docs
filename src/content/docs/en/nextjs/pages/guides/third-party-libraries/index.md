@@ -271,4 +271,3 @@ export default function Page() {
 | `params`    | Optional | The video player params defined [here](https://developers.google.com/youtube/player_parameters#Parameters).  Params are passed as a query param string.  Eg: `params="controls=0&start=10&end=30"` |
 | `style`     | Optional | Used to apply styles to the video container.                                                                                                                                                                 |
 ---
-

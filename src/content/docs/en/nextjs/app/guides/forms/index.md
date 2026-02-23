@@ -493,4 +493,3 @@ export function Entry() {
 
 This will trigger the submission of the nearest `<form>` ancestor, which will invoke the Server Function.
 ---
-

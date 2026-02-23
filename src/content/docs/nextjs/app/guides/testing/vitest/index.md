@@ -24,9 +24,9 @@ Vitest와 React Testing Library는 **단위 테스트**에 자주 함께 사용�
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create next-app --example with-vitest with-vitest-app
-[/code]
+```
 
 ## 수동 설정[](https://nextjs.org/docs/app/guides/testing/vitest#manual-setup)
 
@@ -35,19 +35,19 @@ Vitest를 수동으로 설정하려면 `vitest`와 다음 패키지를 dev depen
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     # Using TypeScript
     pnpm add -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom vite-tsconfig-paths
     # Using JavaScript
     pnpm add -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom
-[/code]
+```
 
 프로젝트 루트에 `vitest.config.mts|js` 파일을 만들고 다음 옵션을 추가합니다:
 
 vitest.config.mts
 
 JavaScriptTypeScript
-[code]
+```
     import { defineConfig } from 'vitest/config'
     import react from '@vitejs/plugin-react'
     import tsconfigPaths from 'vite-tsconfig-paths'
@@ -58,14 +58,14 @@ JavaScriptTypeScript
         environment: 'jsdom',
       },
     })
-[/code]
+```
 
 Vitest 구성에 대한 자세한 내용은 [Vitest Configuration](https://vitest.dev/config/#configuration) 문서를 참고하세요.
 
 이후 `package.json`에 `test` 스크립트를 추가합니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -74,7 +74,7 @@ package.json
         "test": "vitest"
       }
     }
-[/code]
+```
 
 `npm run test`를 실행하면 Vitest가 기본적으로 프로젝트 변경 사항을 **감시(watch)** 합니다.
 
@@ -85,7 +85,7 @@ package.json
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -96,12 +96,12 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 __tests__/page.test.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { expect, test } from 'vitest'
     import { render, screen } from '@testing-library/react'
     import Page from '../app/page'
@@ -110,7 +110,7 @@ JavaScriptTypeScript
       render(<Page />)
       expect(screen.getByRole('heading', { level: 1, name: 'Home' })).toBeDefined()
     })
-[/code]
+```
 
 > **알아두면 좋아요**: 위 예시는 일반적인 `__tests__` 규칙을 사용하지만, 테스트 파일은 `app` 라우터 내부에 함께 배치할 수도 있습니다.
 
@@ -121,9 +121,9 @@ JavaScriptTypeScript
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm test
-[/code]
+```
 
 ## 추가 자료[](https://nextjs.org/docs/app/guides/testing/vitest#additional-resources)
 

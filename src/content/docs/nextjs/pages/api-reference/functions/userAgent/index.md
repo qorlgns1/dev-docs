@@ -18,7 +18,7 @@ Copy page
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextRequest, NextResponse, userAgent } from 'next/server'
 
     export function proxy(request: NextRequest) {
@@ -32,7 +32,7 @@ JavaScriptTypeScript
       url.searchParams.set('viewport', viewport)
       return NextResponse.rewrite(url)
     }
-[/code]
+```
 
 ## `isBot`[](https://nextjs.org/docs/pages/api-reference/functions/userAgent#isbot)
 

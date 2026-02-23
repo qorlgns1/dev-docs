@@ -232,4 +232,3 @@ export default Blog
 | `v9.5.0`  | Stable [Incremental Static Regeneration](https://nextjs.org/docs/pages/guides/incremental-static-regeneration)                                                             |
 | `v9.3.0`  | `getStaticProps` introduced.                                                                                                                             |
 ---
-

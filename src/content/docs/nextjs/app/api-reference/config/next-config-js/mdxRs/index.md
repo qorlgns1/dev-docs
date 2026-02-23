@@ -16,7 +16,7 @@ description: '이 기능은 현재 실험 단계이며 변경될 수 있으므�
 `@next/mdx`와 함께 실험적으로 사용합니다. 새로운 Rust 컴파일러를 사용해 MDX 파일을 컴파일합니다.
 
 next.config.js
-[code]
+```
     const withMDX = require('@next/mdx')()
 
     /** @type {import('next').NextConfig} */
@@ -28,6 +28,6 @@ next.config.js
     }
 
     module.exports = withMDX(nextConfig)
-[/code]
+```
 
 보내기

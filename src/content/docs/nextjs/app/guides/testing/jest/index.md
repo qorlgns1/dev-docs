@@ -24,9 +24,9 @@ Next.js [with-jest](https://github.com/vercel/next.js/tree/canary/examples/with-
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create next-app --example with-jest with-jest-app
-[/code]
+```
 
 ## 수동 설정[](https://nextjs.org/docs/app/guides/testing/jest#manual-setup)
 
@@ -37,18 +37,18 @@ Jest를 설정하려면 `jest`와 다음 패키지를 devDependencies로 설치�
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add -D jest jest-environment-jsdom @testing-library/react @testing-library/dom @testing-library/jest-dom ts-node @types/jest
-[/code]
+```
 
 다음 명령으로 기본 Jest 구성 파일을 생성합니다:
 
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create jest@latest
-[/code]
+```
 
 이 명령은 프로젝트에 맞는 Jest 설정 질문을 안내하며 자동으로 `jest.config.ts|js` 파일을 생성합니다.
 
@@ -57,7 +57,7 @@ Terminal
 jest.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { Config } from 'jest'
     import nextJest from 'next/jest.js'
 
@@ -76,7 +76,7 @@ JavaScriptTypeScript
 
     // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
     export default createJestConfig(config)
-[/code]
+```
 
 `next/jest`는 내부적으로 다음과 같이 Jest 구성을 자동 처리합니다:
 
@@ -94,7 +94,7 @@ JavaScriptTypeScript
 프로젝트에서 [Module Path Aliases](https://nextjs.org/docs/app/getting-started/installation#set-up-absolute-imports-and-module-path-aliases)를 사용한다면, `jsconfig.json`의 paths 옵션과 `jest.config.js`의 `moduleNameMapper` 옵션이 일치하도록 설정하여 Jest가 import를 해석하도록 해야 합니다. 예시는 다음과 같습니다:
 
 tsconfig.json 또는 jsconfig.json
-[code]
+```
     {
       "compilerOptions": {
         "module": "esnext",
@@ -105,15 +105,15 @@ tsconfig.json 또는 jsconfig.json
         }
       }
     }
-[/code]
+```
 
 jest.config.js
-[code]
+```
     moduleNameMapper: {
       // ...
       '^@/components/(.*)$': '<rootDir>/components/$1',
     }
-[/code]
+```
 
 ## 선택 사항: 커스텀 matcher로 Jest 확장하기[](https://nextjs.org/docs/app/guides/testing/jest#optional-extend-jest-with-custom-matchers)
 
@@ -122,18 +122,18 @@ jest.config.js
 jest.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts']
-[/code]
+```
 
 그런 다음 `jest.setup` 내부에 다음 import를 추가하세요:
 
 jest.setup.ts
 
 JavaScriptTypeScript
-[code]
+```
     import '@testing-library/jest-dom'
-[/code]
+```
 
 > **알아두면 좋아요:** [`extend-expect`는 `v6.0`에서 제거](https://github.com/testing-library/jest-dom/releases/tag/v6.0.0)되었으므로, 6 이전 버전의 `@testing-library/jest-dom`을 사용한다면 대신 `@testing-library/jest-dom/extend-expect`를 import해야 합니다.
 
@@ -144,7 +144,7 @@ JavaScriptTypeScript
 마지막으로 `package.json` 파일에 Jest `test` 스크립트를 추가하세요:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -154,7 +154,7 @@ package.json
         "test:watch": "jest --watch"
       }
     }
-[/code]
+```
 
 `jest --watch`는 파일이 변경될 때마다 테스트를 다시 실행합니다. 더 많은 Jest CLI 옵션은 [Jest Docs](https://jestjs.io/docs/cli#reference)를 참고하세요.
 
@@ -165,7 +165,7 @@ package.json
 예를 들어 `<Page />` 컴포넌트가 제목을 제대로 렌더링하는지 확인하는 테스트를 추가할 수 있습니다:
 
 app/page.js
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -176,10 +176,10 @@ app/page.js
         </div>
       )
     }
-[/code]
+```
 
 __tests__/page.test.jsx
-[code]
+```
     import '@testing-library/jest-dom'
     import { render, screen } from '@testing-library/react'
     import Page from '../app/page'
@@ -193,12 +193,12 @@ __tests__/page.test.jsx
         expect(heading).toBeInTheDocument()
       })
     })
-[/code]
+```
 
 선택적으로 [스냅샷 테스트](https://jestjs.io/docs/snapshot-testing)를 추가하여 컴포넌트에 예기치 않은 변경이 생기는지를 추적할 수 있습니다:
 
 __tests__/snapshot.js
-[code]
+```
     import { render } from '@testing-library/react'
     import Page from '../app/page'
 
@@ -206,7 +206,7 @@ __tests__/snapshot.js
       const { container } = render(<Page />)
       expect(container).toMatchSnapshot()
     })
-[/code]
+```
 
 ## 테스트 실행[](https://nextjs.org/docs/app/guides/testing/jest#running-your-tests)
 
@@ -215,9 +215,9 @@ __tests__/snapshot.js
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm test
-[/code]
+```
 
 ## 추가 리소스[](https://nextjs.org/docs/app/guides/testing/jest#additional-resources)
 

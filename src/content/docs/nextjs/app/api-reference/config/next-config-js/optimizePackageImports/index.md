@@ -20,13 +20,13 @@ description: '원본 URL: https://nextjs.org/docs/app/api-reference/config/next-
 패키지를 `experimental.optimizePackageImports`에 추가하면 실제로 사용하는 모듈만 로드하면서도 다수의 이름이 지정된 export를 사용하는 import 문 작성의 편의성을 유지할 수 있습니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         optimizePackageImports: ['package-name'],
       },
     }
-[/code]
+```
 
 다음 라이브러리는 기본적으로 최적화됩니다.
 

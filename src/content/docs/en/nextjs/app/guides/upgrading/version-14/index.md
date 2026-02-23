@@ -37,4 +37,3 @@ bun add next@next-14 react@18 react-dom@18 && bun add eslint-config-next@next-14
 * The `@next/font` package has been fully removed in favor of the built-in `next/font`. A [codemod is available](https://nextjs.org/docs/app/guides/upgrading/codemods#built-in-next-font) to safely and automatically rename your imports.
 * The WASM target for `next-swc` has been removed.
 ---
-

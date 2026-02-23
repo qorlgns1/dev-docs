@@ -16,24 +16,24 @@ description: '원본 URL: https://nextjs.org/docs/pages/guides/upgrading/version
 버전 12로 업그레이드하려면 다음 명령을 실행하세요:
 
 터미널
-[code]
+```
     npm i next@12 react@17 react-dom@17 eslint-config-next@12
-[/code]
+```
 
 터미널
-[code]
+```
     yarn add next@12 react@17 react-dom@17 eslint-config-next@12
-[/code]
+```
 
 터미널
-[code]
+```
     pnpm up next@12 react@17 react-dom@17 eslint-config-next@12
-[/code]
+```
 
 터미널
-[code]
+```
     bun add next@12 react@17 react-dom@17 eslint-config-next@12
-[/code]
+```
 
 > **알아두면 좋아요:** TypeScript를 사용 중이라면 `@types/react`와 `@types/react-dom`도 해당 버전에 맞춰 업그레이드하세요.
 
@@ -48,7 +48,7 @@ description: '원본 URL: https://nextjs.org/docs/pages/guides/upgrading/version
 [최소 React 버전](https://react.dev/learn/add-react-to-an-existing-project) \- 필요한 최소 React 버전은 `17.0.2`입니다. 업그레이드하려면 터미널에서 다음 명령을 실행하세요:
 
 터미널
-[code]
+```
     npm install react@latest react-dom@latest
 
     yarn add react@latest react-dom@latest
@@ -56,7 +56,7 @@ description: '원본 URL: https://nextjs.org/docs/pages/guides/upgrading/version
     pnpm update react@latest react-dom@latest
 
     bun add react@latest react-dom@latest
-[/code]
+```
 
 #### Babel을 대체하는 SWC[](https://nextjs.org/docs/pages/guides/upgrading/version-12#swc-replacing-babel)
 
@@ -79,11 +79,11 @@ SWC 채택에 도움이 되는 변환의 우선순위를 정하기 위해 [이 �
 `next.config.js`에서 플래그를 사용해 Terser 대신 SWC를 사용하도록 선택하면 JavaScript 축소 작업 속도를 최대 7배까지 높일 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       swcMinify: true,
     }
-[/code]
+```
 
 SWC를 이용한 축소는 Next.js 12.1에서 기본값이 되기 전에 더 많은 실제 Next.js 애플리케이션에서 테스트할 수 있도록 옵트인 플래그로 제공됩니다. 축소에 대한 의견이 있다면 [이 피드백 스레드](https://github.com/vercel/next.js/discussions/30237)에 남겨 주세요.
 
@@ -110,17 +110,17 @@ Rust 기반 컴파일러 위에 styled-jsx Babel 변환에서 사용하는 것�
 이전에는 Next.js가 HMR 이벤트를 받기 위해 [server-sent events](https://developer.mozilla.org/docs/Web/API/Server-sent_events) 연결을 사용했습니다. 이제 Next.js 12는 WebSocket 연결을 사용합니다.
 
 Next.js 개발 서버로 요청을 프록시하는 경우 업그레이드 요청이 올바로 처리되도록 해야 합니다. 예를 들어 `nginx`에서는 다음 구성을 추가해야 합니다:
-[code]
+```
     location /_next/webpack-hmr {
         proxy_pass http://localhost:3000/_next/webpack-hmr;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
     }
-[/code]
+```
 
 Apache(2.x)를 사용하는 경우 서버에서 웹소켓을 활성화하려면 다음 구성을 추가할 수 있습니다. 포트, 호스트 이름, 서버 이름을 확인하세요.
-[code]
+```
     <VirtualHost *:443>
      # ServerName yourwebsite.local
      ServerName "${WEBSITE_SERVER_NAME}"
@@ -138,14 +138,14 @@ Apache(2.x)를 사용하는 경우 서버에서 웹소켓을 활성화하려면 
      </Location>
     </VirtualHost>
 
-[/code]
+```
 
 `express` 같은 커스텀 서버의 경우, 요청이 올바르게 전달되도록 `app.all`을 사용해야 할 수 있습니다. 예시는 다음과 같습니다:
-[code]
+```
     app.all('/_next/webpack-hmr', (req, res) => {
       nextjsRequestHandler(req, res)
     })
-[/code]
+```
 
 #### Webpack 4 지원 제거[](https://nextjs.org/docs/pages/guides/upgrading/version-12#webpack-4-support-has-been-removed)
 

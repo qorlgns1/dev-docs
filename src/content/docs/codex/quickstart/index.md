@@ -97,12 +97,14 @@ Codex CLI는 macOS, Windows, Linux에서 지원됩니다.
   1. Codex CLI를 설치하세요
 
 npm으로 설치:
-[code] npm install -g @openai/codex
-[/code]
+```
+npm install -g @openai/codex
+```
 
 Homebrew로 설치:
-[code] brew install codex
-[/code]
+```
+brew install codex
+```
 
   2. `codex`를 실행하고 로그인하세요
 
@@ -144,8 +146,9 @@ Codex는 코드베이스를 수정할 수 있으므로, 필요 시 변경 사항
 작업이 완료되면 diff 뷰에서 제안된 변경 사항을 검토하세요. 결과를 반복하거나 GitHub 리포지토리에서 바로 풀 리퀘스트를 생성할 수 있습니다.
 
 Codex는 변경 사항 미리 보기 역시 제공합니다. 그대로 PR을 수락하거나 브랜치를 로컬에 체크아웃해 변경 사항을 테스트할 수 있습니다:
-[code] git fetch
+```
+git fetch
          git checkout <branch-name>
-[/code]
+```
 
 [ Codex 클라우드에 대해 더 알아보기 ](https://developers.openai.com/codex/cloud)

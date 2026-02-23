@@ -16,7 +16,7 @@ description: '파일을 사용하면 경로에 고유한 UI를 정의할 수 있
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Page({
       params,
       searchParams,
@@ -26,7 +26,7 @@ JavaScriptTypeScript
     }) {
       return <h1>My Page</h1>
     }
-[/code]
+```
 
 ## 알아두면 좋은 내용[](https://nextjs.org/docs/app/api-reference/file-conventions/page#good-to-know)
 
@@ -46,7 +46,7 @@ JavaScriptTypeScript
 app/shop/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page({
       params,
     }: {
@@ -54,7 +54,7 @@ JavaScriptTypeScript
     }) {
       const { slug } = await params
     }
-[/code]
+```
 
 예시 경로| URL| `params`
 ---|---|---
@@ -72,7 +72,7 @@ JavaScriptTypeScript
 app/shop/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page({
       searchParams,
     }: {
@@ -80,14 +80,14 @@ JavaScriptTypeScript
     }) {
       const filters = (await searchParams).filters
     }
-[/code]
+```
 
 클라이언트 컴포넌트 **페이지**에서도 React의 [`use`](https://react.dev/reference/react/use) 훅으로 `searchParams`를 사용할 수 있습니다:
 
 app/shop/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
     import { use } from 'react'
 
@@ -98,7 +98,7 @@ JavaScriptTypeScript
     }) {
       const filters = use(searchParams).filters
     }
-[/code]
+```
 
 예시 URL| `searchParams`
 ---|---
@@ -116,13 +116,13 @@ JavaScriptTypeScript
 페이지를 `PageProps`로 타이핑하면 라우트 리터럴에서 강력하게 타입 지정된 `params`와 `searchParams`를 사용할 수 있습니다. `PageProps`는 전역적으로 사용할 수 있는 헬퍼입니다.
 
 app/blog/[slug]/page.tsx
-[code]
+```
     export default async function Page(props: PageProps<'/blog/[slug]'>) {
       const { slug } = await props.params
       const query = await props.searchParams
       return <h1>Blog Post: {slug}</h1>
     }
-[/code]
+```
 
 > **알아두면 좋은 내용**
 >
@@ -141,7 +141,7 @@ app/blog/[slug]/page.tsx
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page({
       params,
     }: {
@@ -150,7 +150,7 @@ JavaScriptTypeScript
       const { slug } = await params
       return <h1>Blog Post: {slug}</h1>
     }
-[/code]
+```
 
 ### `searchParams`로 필터링 처리[](https://nextjs.org/docs/app/api-reference/file-conventions/page#handling-filtering-with-searchparams)
 
@@ -159,7 +159,7 @@ JavaScriptTypeScript
 app/shop/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page({
       searchParams,
     }: {
@@ -176,7 +176,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ### 클라이언트 컴포넌트에서 `searchParams`와 `params` 읽기[](https://nextjs.org/docs/app/api-reference/file-conventions/page#reading-searchparams-and-params-in-client-components)
 
@@ -185,7 +185,7 @@ JavaScriptTypeScript
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { use } from 'react'
@@ -200,7 +200,7 @@ JavaScriptTypeScript
       const { slug } = use(params)
       const { query } = use(searchParams)
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/file-conventions/page#version-history)
 

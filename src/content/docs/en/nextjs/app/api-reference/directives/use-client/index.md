@@ -126,4 +126,3 @@ export default function Page() {
 
 See the [React documentation](https://react.dev/reference/rsc/use-client) for more information on `'use client'`.
 ---
-

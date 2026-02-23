@@ -25,7 +25,7 @@ Next.js는 Node.js 서버, Docker 컨테이너, 정적 내보내기, 또는 다�
 Next.js는 Node.js를 지원하는 모든 제공업체에 배포할 수 있습니다. `package.json`에 `"build"`와 `"start"` 스크립트가 포함되어 있는지 확인하세요:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -33,7 +33,7 @@ package.json
         "start": "next start"
       }
     }
-[/code]
+```
 
 그런 다음 애플리케이션을 빌드하려면 `npm run build`, Node.js 서버를 시작하려면 `npm run start`를 실행하세요. 이 서버는 모든 Next.js 기능을 지원합니다. 필요하다면 [custom server](https://nextjs.org/docs/app/guides/custom-server)로 전환할 수도 있습니다.
 

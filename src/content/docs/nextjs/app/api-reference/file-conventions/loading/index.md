@@ -16,12 +16,12 @@ description: '특수 파일 는 React Suspense를 사용해 의미 있는 로딩
 app/feed/loading.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Loading() {
       // Or a custom loading skeleton component
       return <p>Loading...</p>
     }
-[/code]
+```
 
 `loading.js` 파일 내부에는 가벼운 로딩 UI를 자유롭게 추가할 수 있습니다. [React Developer Tools](https://react.dev/learn/react-developer-tools)를 사용해 직접 Suspense 경계를 토글해 보는 것도 도움이 됩니다.
 
@@ -50,12 +50,12 @@ Instant loading state는 내비게이션 직후 즉시 표시되는 Fallback UI�
 app/dashboard/loading.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default function Loading() {
       // You can add any UI inside Loading, including a Skeleton.
       return <LoadingSkeleton />
     }
-[/code]
+```
 
 같은 폴더에서 `loading.js`는 `layout.js` 안에 중첩됩니다. 이는 `page.js` 및 그 하위 자식을 `<Suspense>` 경계로 자동 래핑합니다.
 
@@ -111,7 +111,7 @@ Next.js를 셀프 호스팅할 때 [스트리밍 구성](https://nextjs.org/docs
 app/dashboard/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { Suspense } from 'react'
     import { PostFeed, Weather } from './Components'
 
@@ -127,7 +127,7 @@ JavaScriptTypeScript
         </section>
       )
     }
-[/code]
+```
 
 Suspense를 사용하면 다음과 같은 이점을 얻습니다.
 

@@ -81,4 +81,3 @@ Using placeholders provides minimal build-time validation and increases the risk
 - [Cache Components Documentation](https://nextjs.org/docs/app/getting-started/cache-components)
 - [generateStaticParams API Reference](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
 - [Dynamic Routes with Cache Components](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#with-cache-components)
-

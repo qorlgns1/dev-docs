@@ -271,4 +271,3 @@ export default function Icon() {}
 | `v16.0.0` | `params` is now a promise that resolves to an object |
 | `v13.3.0` | `favicon` `icon` and `apple-icon` introduced         |
 ---
-

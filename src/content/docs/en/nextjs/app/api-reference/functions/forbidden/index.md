@@ -176,4 +176,3 @@ export async function updateRole(formData) {
   - API reference for the forbidden.js special file.
 
 ---
-

@@ -29,7 +29,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/directives/use-cache
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -37,10 +37,10 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 그런 다음 파일, 컴포넌트, 함수 단위로 `use cache`를 추가합니다:
-[code]
+```
     // File level
     'use cache'
 
@@ -60,7 +60,7 @@ JavaScriptTypeScript
       const data = await fetch('/api/data')
       return data
     }
-[/code]
+```
 
 > **알아 두면 좋아요**: 파일 단위로 사용하면 모든 함수 export가 async 함수여야 합니다.
 
@@ -78,7 +78,7 @@ JavaScriptTypeScript
 캐시된 함수가 외부 스코프의 변수를 참조하면 해당 변수가 자동으로 캡처되어 인자로 바인딩되며, 캐시 키의 일부가 됩니다.
 
 lib/data.ts
-[code]
+```
     async function Component({ userId }: { userId: string }) {
       const getData = async (filter: string) => {
         'use cache'
@@ -88,7 +88,7 @@ lib/data.ts
 
       return getData('active')
     }
-[/code]
+```
 
 위 스니펫에서 `userId`는 외부 스코프에서 캡처되고 `filter`는 인자로 전달되므로 둘 다 `getData` 함수의 캐시 키에 포함됩니다. 즉, 사용자와 필터 조합마다 별도의 캐시 항목이 생성됩니다.
 
@@ -125,7 +125,7 @@ lib/data.ts
   * URL 인스턴스
 
 app/components/user-card.tsx
-[code]
+```
     // Valid - primitives and plain objects
     async function UserCard({
       id,
@@ -144,14 +144,14 @@ app/components/user-card.tsx
       // Error: Cannot serialize class instance
       return <div>{user.name}</div>
     }
-[/code]
+```
 
 ### 패스스루(직렬화할 수 없는 인자)[](https://nextjs.org/docs/app/api-reference/directives/use-cache#pass-through-non-serializable-arguments)
 
 값을 **읽지만 않으면** 직렬화할 수 없는 값을 받을 수 있습니다. 이를 통해 `children`과 Server Actions를 활용한 구성 패턴이 가능합니다:
 
 app/components/cached-wrapper.tsx
-[code]
+```
     async function CachedWrapper({ children }: { children: ReactNode }) {
       'use cache'
       // Don't read or modify children - just pass it through
@@ -171,18 +171,18 @@ app/components/cached-wrapper.tsx
         </CachedWrapper>
       )
     }
-[/code]
+```
 
 캐시된 컴포넌트를 통해 Server Actions도 전달할 수 있습니다:
 
 app/components/cached-form.tsx
-[code]
+```
     async function CachedForm({ action }: { action: () => Promise<void> }) {
       'use cache'
       // Don't call action here - just pass it through
       return <form action={action}>{/* ... */}</form>
     }
-[/code]
+```
 
 ## 제약사항[](https://nextjs.org/docs/app/api-reference/directives/use-cache#constraints)
 
@@ -212,7 +212,7 @@ Environment| Runtime Caching Behavior
 [`React.cache`](https://react.dev/reference/react/cache)는 `use cache` 경계 내부에서 격리된 스코프로 동작합니다. `use cache` 함수 밖에서 `React.cache`로 저장한 값은 안쪽에서 보이지 않습니다.
 
 따라서 `React.cache`를 사용해 데이터를 `use cache` 범위 안으로 전달할 수 없습니다:
-[code]
+```
     import { cache } from 'react'
 
     const store = cache(() => ({ current: null as string | null }))
@@ -230,7 +230,7 @@ Environment| Runtime Caching Behavior
       // use cache has its own isolated React.cache scope
       return <div>{shared.current}</div>
     }
-[/code]
+```
 
 이 격리는 캐시된 함수가 예측 가능한 자체 포함형 동작을 유지하도록 보장합니다. 데이터를 `use cache` 범위에 전달하려면 함수 인자를 사용하세요.
 
@@ -251,20 +251,20 @@ Environment| Runtime Caching Behavior
   * **expire**: 시간 기반 만료 없음
 
 lib/data.ts
-[code]
+```
     async function getData() {
       'use cache'
       // Implicitly uses default profile
       return fetch('/api/data')
     }
-[/code]
+```
 
 ### 캐시 수명 커스터마이징[](https://nextjs.org/docs/app/api-reference/directives/use-cache#customizing-cache-lifetime)
 
 [`cacheLife`](https://nextjs.org/docs/app/api-reference/functions/cacheLife) 함수를 사용해 캐시 지속 시간을 커스터마이즈하세요:
 
 lib/data.ts
-[code]
+```
     import { cacheLife } from 'next/cache'
 
     async function getData() {
@@ -272,26 +272,25 @@ lib/data.ts
       cacheLife('hours') // Use built-in 'hours' profile
       return fetch('/api/data')
     }
-[/code]
+```
 
 ### 온디맨드 재검증[](https://nextjs.org/docs/app/api-reference/directives/use-cache#on-demand-revalidation)
 
 온디맨드 캐시 무효화를 위해 [`cacheTag`](https://nextjs.org/docs/app/api-reference/functions/cacheTag), [`updateTag`](https://nextjs.org/docs/app/api-reference/functions/updateTag), [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag)를 사용하세요:
 
 lib/data.ts
-[code]
+```
     import { cacheTag } from 'next/cache'
-[/code]
+```
 
 async function getProducts() {
       'use cache'
       cacheTag('products')
       return fetch('/api/products')
     }
-[/code]
 
 app/actions.ts
-[code]
+```
     'use server'
 
     import { updateTag } from 'next/cache'
@@ -300,7 +299,7 @@ app/actions.ts
       await db.products.update(...)
       updateTag('products') // Invalidates all 'products' caches
     }
-[/code]
+```
 
 `cacheLife`와 `cacheTag`는 클라이언트와 서버 캐싱 계층 전반에 통합되어, 한 곳에서 캐싱 의미를 정의하면 어디서든 적용됩니다.
 
@@ -313,20 +312,20 @@ app/actions.ts
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use cache'
 
     export default async function Layout({ children }: { children: ReactNode }) {
       return <div>{children}</div>
     }
-[/code]
+```
 
 `page` 파일에 임포트되어 중첩된 모든 컴포넌트는 해당 `page`와 연결된 캐시 출력의 일부가 됩니다.
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use cache'
 
     async function Users() {
@@ -341,7 +340,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 > **알아두면 좋아요** :
 >
@@ -354,7 +353,7 @@ JavaScriptTypeScript
 app/components/bookings.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export async function Bookings({ type = 'haircut' }: BookingsProps) {
       'use cache'
       async function getBookingsData() {
@@ -367,7 +366,7 @@ JavaScriptTypeScript
     interface BookingsProps {
       type: string
     }
-[/code]
+```
 
 ### `use cache`로 함수 출력 캐싱[](https://nextjs.org/docs/app/api-reference/directives/use-cache#caching-function-output-with-use-cache)
 
@@ -376,14 +375,14 @@ JavaScriptTypeScript
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function getData() {
       'use cache'
 
       const data = await fetch('/api/data')
       return data
     }
-[/code]
+```
 
 ### 인터리빙[](https://nextjs.org/docs/app/api-reference/directives/use-cache#interleaving)
 
@@ -394,7 +393,7 @@ React에서는 `children` 또는 슬롯을 활용한 컴포지션이 유연한 �
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page() {
       const uncachedData = await getData()
       return (
@@ -423,14 +422,14 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 또한 캐시 가능한 함수 안에서 호출하지 않고도, 캐시된 컴포넌트를 거쳐 Server Action을 Client Component로 전달할 수 있습니다.
 
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import ClientComponent from './ClientComponent'
 
     export default async function Page() {
@@ -452,12 +451,12 @@ JavaScriptTypeScript
       // Do not call performUpdate here
       return <ClientComponent action={performUpdate} />
     }
-[/code]
+```
 
 app/ClientComponent.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     export default function ClientComponent({
@@ -467,7 +466,7 @@ JavaScriptTypeScript
     }) {
       return <button onClick={action}>Update</button>
     }
-[/code]
+```
 
 ## 문제 해결[](https://nextjs.org/docs/app/api-reference/directives/use-cache#troubleshooting)
 
@@ -476,11 +475,11 @@ JavaScriptTypeScript
 #### 상세 로깅[](https://nextjs.org/docs/app/api-reference/directives/use-cache#verbose-logging)
 
 상세한 캐시 로그를 보려면 `NEXT_PRIVATE_DEBUG_CACHE=1`을 설정하세요:
-[code]
+```
     NEXT_PRIVATE_DEBUG_CACHE=1 npm run dev
     # or for production
     NEXT_PRIVATE_DEBUG_CACHE=1 npm run start
-[/code]
+```
 
 > **알아두면 좋아요:** 이 환경 변수는 ISR 및 기타 캐싱 메커니즘도 로깅합니다. 자세한 내용은 [Verifying correct production behavior](https://nextjs.org/docs/app/guides/incremental-static-regeneration#verifying-correct-production-behavior)를 참고하세요.
 
@@ -503,7 +502,7 @@ JavaScriptTypeScript
 **런타임 데이터 Promise를 props로 전달하는 경우:**
 
 app/page.tsx
-[code]
+```
     import { cookies } from 'next/headers'
     import { Suspense } from 'react'
 
@@ -525,14 +524,14 @@ app/page.tsx
       const data = await promise // Waits for runtime data during build
       return <p>..</p>
     }
-[/code]
+```
 
 `Dynamic` 컴포넌트에서 `cookies` 스토어를 기다린 뒤, 쿠키 값을 `Cached` 컴포넌트에 전달하세요.
 
 **공유 중복 제거 저장소:**
 
 app/page.tsx
-[code]
+```
     // Problem: Map stores dynamic Promises, accessed by cached code
     import { Suspense } from 'react'
 
@@ -562,7 +561,7 @@ app/page.tsx
       'use cache'
       return <p>{await cache.get(id)}</p> // Build hangs - retrieves dynamic Promise
     }
-[/code]
+```
 
 Next.js의 내장 `fetch()` 중복 제거를 사용하거나 캐시 컨텍스트와 비캐시 컨텍스트에 대해 별도의 Map을 사용하세요.
 

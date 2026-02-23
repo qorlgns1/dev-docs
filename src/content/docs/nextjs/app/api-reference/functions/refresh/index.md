@@ -20,9 +20,9 @@ Copy page
 `refresh`는 **오직** 서버 액션 내부에서만 호출할 수 있습니다. 라우트 핸들러, 클라이언트 컴포넌트 또는 다른 어떤 컨텍스트에서도 사용할 수 없습니다.
 
 ## 매개변수[](https://nextjs.org/docs/app/api-reference/functions/refresh#parameters)
-[code]
+```
     refresh(): void;
-[/code]
+```
 
 ## 반환값[](https://nextjs.org/docs/app/api-reference/functions/refresh#returns)
 
@@ -33,7 +33,7 @@ Copy page
 app/actions.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { refresh } from 'next/cache'
@@ -49,21 +49,21 @@ JavaScriptTypeScript
 
       refresh()
     }
-[/code]
+```
 
 ### 서버 액션 외부에서 사용하면 발생하는 오류[](https://nextjs.org/docs/app/api-reference/functions/refresh#error-when-used-outside-server-actions)
 
 app/api/posts/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { refresh } from 'next/cache'
 
     export async function POST() {
       // This will throw an error
       refresh()
     }
-[/code]
+```
 
 supported.
 

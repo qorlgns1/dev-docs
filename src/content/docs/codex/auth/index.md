@@ -55,10 +55,10 @@ Codex는 로그인 정보를 `~/.codex/auth.json` 또는 OS별 자격 증명 저
 ## 자격 증명 저장
 
 Codex CLI가 캐시된 자격 증명을 저장할 위치를 제어하려면 `cli_auth_credentials_store`를 사용하세요:
-[code] 
+```
     # file | keyring | auto
     cli_auth_credentials_store = "keyring"
-[/code]
+```
 
   * `file`은 `CODEX_HOME`(기본값은 `~/.codex`) 아래의 `auth.json`에 자격 증명을 저장합니다.
   * `keyring`은 운영체제의 자격 증명 저장소에 자격 증명을 저장합니다.
@@ -69,13 +69,13 @@ Codex CLI가 캐시된 자격 증명을 저장할 위치를 제어하려면 `cli
 ## 로그인 방식 또는 워크스페이스 강제
 
 관리 환경에서는 관리자가 사용자 인증 방식을 제한할 수 있습니다:
-[code] 
+```
     # Only allow ChatGPT login or only allow API key login.
     forced_login_method = "chatgpt" # or "api"
     
     # When using ChatGPT login, restrict users to a specific workspace.
     forced_chatgpt_workspace_id = "00000000-0000-0000-0000-000000000000"
-[/code]
+```
 
 활성 자격 증명이 구성된 제한과 일치하지 않으면 Codex는 사용자를 로그아웃시키고 종료합니다.
 
@@ -119,23 +119,23 @@ Codex CLI로 ChatGPT에 로그인하는 경우 브라우저 기반 로그인 UI�
 운영체제가 `~/.codex/auth.json` 대신 자격 증명을 크리덴셜 스토어에 저장한다면 이 방법은 적용되지 않을 수 있습니다. 파일 기반 저장소 구성 방법은 [Credential storage](https://developers.openai.com/codex/auth#credential-storage) 를 참조하세요.
 
 SSH로 원격 머신에 복사:
-[code] 
+```
     ssh user@remote 'mkdir -p ~/.codex'
     scp ~/.codex/auth.json user@remote:~/.codex/auth.json
-[/code]
+```
 
 또는 `scp` 를 사용하지 않는 원라이너:
-[code] 
+```
     ssh user@remote 'mkdir -p ~/.codex && cat > ~/.codex/auth.json' < ~/.codex/auth.json
-[/code]
+```
 
 Docker 컨테이너에 복사:
-[code] 
+```
     # Replace MY_CONTAINER with the name or ID of your container.
     CONTAINER_HOME=$(docker exec MY_CONTAINER printenv HOME)
     docker exec MY_CONTAINER mkdir -p "$CONTAINER_HOME/.codex"
     docker cp ~/.codex/auth.json MY_CONTAINER:"$CONTAINER_HOME/.codex/auth.json"
-[/code]
+```
 
 ### 대체: SSH로 localhost 콜백 포워딩
 
@@ -144,9 +144,9 @@ Docker 컨테이너에 복사:
   1. 로컬 머신에서 포트 포워딩을 시작합니다:
 
 
-[code] 
+```
     ssh -L 1455:localhost:1455 user@remote
-[/code]
+```
 
   2. 해당 SSH 세션에서 `codex login` 을 실행하고 로컬 머신에 표시된 주소를 따릅니다.
 

@@ -22,9 +22,9 @@ Jest와 React Testing Library는 **단위 테스트** 및 **스냅샷 테스트*
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm create next-app --example with-jest with-jest-app
-[/code]
+```
 
 ## Manual setup[](https://nextjs.org/docs/pages/guides/testing/jest#manual-setup)
 
@@ -35,18 +35,18 @@ Jest를 설정하려면 `jest`와 다음 패키지를 devDependencies로 설치�
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add -D jest jest-environment-jsdom @testing-library/react @testing-library/dom @testing-library/jest-dom ts-node @types/jest
-[/code]
+```
 
 다음 명령으로 기본 Jest 구성 파일을 생성하세요:
 
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm create jest@latest
-[/code]
+```
 
 이 작업은 Jest 설정을 위한 일련의 프롬프트를 안내하며, `jest.config.ts|js` 파일도 자동으로 생성합니다.
 
@@ -55,7 +55,7 @@ pnpmnpmyarnbun
 jest.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { Config } from 'jest'
     import nextJest from 'next/jest.js'
 
@@ -74,7 +74,7 @@ JavaScriptTypeScript
 
     // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
     export default createJestConfig(config)
-[/code]
+```
 
 내부적으로 `next/jest`는 다음을 포함해 Jest 구성을 자동으로 처리합니다:
 
@@ -94,7 +94,7 @@ JavaScriptTypeScript
 Next.js용 Jest 구성에 권장되는 옵션은 다음과 같습니다:
 
 jest.config.js
-[code]
+```
     module.exports = {
       collectCoverage: true,
       // on node 14.x coverage provider v8 offers good speed and more or less good report
@@ -144,7 +144,7 @@ jest.config.js
         '^.+\\.module\\.(css|sass|scss)$',
       ],
     }
-[/code]
+```
 
 각 구성 옵션에 대한 자세한 내용은 [Jest 문서](https://jestjs.io/docs/configuration)를 참고하세요. 또한 Next.js가 Jest를 어떻게 구성하는지 확인하려면 [`next/jest` 구성](https://github.com/vercel/next.js/blob/e02fe314dcd0ae614c65b505c6daafbdeebb920e/packages/next/src/build/jest/jest.ts)을 검토하는 것이 좋습니다.
 
@@ -155,14 +155,14 @@ jest.config.js
 위 구성에서 참조한 `fileMock.js`와 `styleMock.js` 모크 파일을 `__mocks__` 디렉터리 안에 만드세요:
 
 __mocks__/fileMock.js
-[code]
+```
     module.exports = 'test-file-stub'
-[/code]
+```
 
 __mocks__/styleMock.js
-[code]
+```
     module.exports = {}
-[/code]
+```
 
 정적 에셋 처리에 대한 자세한 내용은 [Jest 문서](https://jestjs.io/docs/webpack#handling-static-assets)를 참고하세요.
 
@@ -171,7 +171,7 @@ __mocks__/styleMock.js
 폰트를 처리하려면 `__mocks__` 디렉터리에 `nextFontMock.js` 파일을 만들고 다음 구성을 추가하세요:
 
 __mocks__/nextFontMock.js
-[code]
+```
     module.exports = new Proxy(
       {},
       {
@@ -184,14 +184,14 @@ __mocks__/nextFontMock.js
         },
       }
     )
-[/code]
+```
 
 ## 선택 사항: 절대 import 및 모듈 경로 별칭 처리[](https://nextjs.org/docs/pages/guides/testing/jest#optional-handling-absolute-imports-and-module-path-aliases)
 
 프로젝트에서 [모듈 경로 별칭](https://nextjs.org/docs/app/getting-started/installation#set-up-absolute-imports-and-module-path-aliases)을 사용한다면, `jsconfig.json`의 paths 옵션과 `jest.config.js`의 `moduleNameMapper` 옵션을 일치시켜 Jest가 import를 해석하도록 구성해야 합니다. 예:
 
 tsconfig.json 또는 jsconfig.json
-[code]
+```
     {
       "compilerOptions": {
         "module": "esnext",
@@ -202,15 +202,15 @@ tsconfig.json 또는 jsconfig.json
         }
       }
     }
-[/code]
+```
 
 jest.config.js
-[code]
+```
     moduleNameMapper: {
       // ...
       '^@/components/(.*)$': '<rootDir>/components/$1',
     }
-[/code]
+```
 
 ## 선택 사항: Jest를 사용자 정의 matcher로 확장[](https://nextjs.org/docs/pages/guides/testing/jest#optional-extend-jest-with-custom-matchers)
 
@@ -219,18 +219,18 @@ jest.config.js
 jest.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts']
-[/code]
+```
 
 그런 다음 `jest.setup` 내부에 다음 import를 추가하세요:
 
 jest.setup.ts
 
 JavaScriptTypeScript
-[code]
+```
     import '@testing-library/jest-dom'
-[/code]
+```
 
 > **알아두면 좋아요:** [`extend-expect`는 `v6.0`에서 제거되었습니다](https://github.com/testing-library/jest-dom/releases/tag/v6.0.0). 따라서 `@testing-library/jest-dom` 6 이전 버전을 사용하는 경우 `@testing-library/jest-dom/extend-expect`를 대신 import해야 합니다.
 
@@ -241,7 +241,7 @@ JavaScriptTypeScript
 마지막으로 `package.json` 파일에 Jest `test` 스크립트를 추가하세요:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -251,7 +251,7 @@ package.json
         "test:watch": "jest --watch"
       }
     }
-[/code]
+```
 
 `jest --watch`는 파일이 변경될 때 테스트를 다시 실행합니다. 더 많은 Jest CLI 옵션은 [Jest 문서](https://jestjs.io/docs/cli#reference)를 참고하세요.
 
@@ -260,14 +260,14 @@ package.json
 이제 프로젝트에서 테스트를 실행할 준비가 되었습니다. 프로젝트 루트 디렉터리에 `__tests__` 폴더를 만드세요.
 
 예를 들어 `<Home />` 컴포넌트가 헤딩을 성공적으로 렌더링하는지 확인하는 테스트를 추가할 수 있습니다:
-[code]
+```
     export default function Home() {
       return <h1>Home</h1>
     }
-[/code]
+```
 
 __tests__/index.test.js
-[code]
+```
     import '@testing-library/jest-dom'
     import { render, screen } from '@testing-library/react'
     import Home from '../pages/index'
@@ -281,12 +281,12 @@ __tests__/index.test.js
         expect(heading).toBeInTheDocument()
       })
     })
-[/code]
+```
 
 선택적으로, 컴포넌트의 예기치 않은 변화를 추적하기 위해 [스냅샷 테스트](https://jestjs.io/docs/snapshot-testing)를 추가하세요:
 
 __tests__/snapshot.js
-[code]
+```
     import { render } from '@testing-library/react'
     import Home from '../pages/index'
 
@@ -294,7 +294,7 @@ __tests__/snapshot.js
       const { container } = render(<Home />)
       expect(container).toMatchSnapshot()
     })
-[/code]
+```
 
 > **알아두면 좋아요**: 페이지 라우터 내부의 파일은 모두 라우트로 간주되므로, 테스트 파일을 페이지 라우터 안에 포함하지 마세요.
 
@@ -305,9 +305,9 @@ __tests__/snapshot.js
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm test
-[/code]
+```
 
 ## 추가 자료[](https://nextjs.org/docs/pages/guides/testing/jest#additional-resources)
 

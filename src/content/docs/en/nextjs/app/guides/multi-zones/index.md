@@ -132,4 +132,3 @@ const nextConfig = {
 
 See [`serverActions.allowedOrigins`](https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions#allowedorigins) for more information.
 ---
-

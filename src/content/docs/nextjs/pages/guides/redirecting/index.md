@@ -28,7 +28,7 @@ API| 목적| 위치| 상태 코드
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { useRouter } from 'next/router'
 
     export default function Page() {
@@ -40,7 +40,7 @@ JavaScriptTypeScript
         </button>
       )
     }
-[/code]
+```
 
 > **알아두면 좋은 점** :
 >
@@ -60,7 +60,7 @@ JavaScriptTypeScript
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -83,7 +83,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 자세한 내용은 [`redirects` API 레퍼런스](https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects)를 참고하세요.
 
@@ -103,7 +103,7 @@ Proxy는 요청이 완료되기 전에 코드를 실행할 수 있게 해줍니�
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse, NextRequest } from 'next/server'
     import { authenticate } from 'auth-provider'
 
@@ -122,7 +122,7 @@ JavaScriptTypeScript
     export const config = {
       matcher: '/dashboard/:path*',
     }
-[/code]
+```
 
 > **알아두면 좋은 점** :
 >
@@ -147,7 +147,7 @@ JavaScriptTypeScript
 리디렉션 맵은 데이터베이스(일반적으로 키-값 저장소) 또는 JSON 파일에 저장할 수 있는 리디렉션 목록입니다.
 
 다음 데이터 구조를 참고하세요:
-[code]
+```
     {
       "/old": {
         "destination": "/new",
@@ -158,14 +158,14 @@ JavaScriptTypeScript
         "permanent": true
       }
     }
-[/code]
+```
 
 [Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)에서 Vercel의 [Edge Config](https://vercel.com/docs/edge-config/get-started)나 [Redis](https://vercel.com/docs/redis) 같은 데이터베이스를 읽어 들어오는 요청에 따라 사용자를 리디렉션할 수 있습니다:
 
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse, NextRequest } from 'next/server'
     import { get } from '@vercel/edge-config'
 
@@ -187,7 +187,7 @@ JavaScriptTypeScript
       // No redirect found, continue without redirecting
       return NextResponse.next()
     }
-[/code]
+```
 
 ### 2\. 데이터 조회 성능 최적화[](https://nextjs.org/docs/pages/guides/redirecting#2-optimizing-data-lookup-performance)
 
@@ -203,7 +203,7 @@ JavaScriptTypeScript
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextResponse, NextRequest } from 'next/server'
     import { ScalableBloomFilter } from 'bloom-filters'
     import GeneratedBloomFilter from './redirects/bloom-filter.json'
@@ -252,14 +252,14 @@ JavaScriptTypeScript
       // No redirect found, continue the request without redirecting
       return NextResponse.next()
     }
-[/code]
+```
 
 API Route에서는 다음과 같이 처리합니다:
 
 pages/api/redirects.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
     import redirects from '@/app/redirects/redirects.json'
 
@@ -285,7 +285,7 @@ JavaScriptTypeScript
       // Return the redirect entry
       return res.json(redirect)
     }
-[/code]
+```
 
 > **알아두면 좋은 점:**
 >

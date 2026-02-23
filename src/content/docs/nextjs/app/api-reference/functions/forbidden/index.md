@@ -22,7 +22,7 @@ Copy page
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -32,14 +32,14 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 `forbidden`은 [Server Components](https://nextjs.org/docs/app/getting-started/server-and-client-components), [Server Functions](https://nextjs.org/docs/app/getting-started/updating-data), [Route Handlers](https://nextjs.org/docs/app/api-reference/file-conventions/route)에서 호출할 수 있습니다.
 
 app/auth/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { verifySession } from '@/app/lib/dal'
     import { forbidden } from 'next/navigation'
 
@@ -54,7 +54,7 @@ JavaScriptTypeScript
       // Render the admin page for authorized users
       return <></>
     }
-[/code]
+```
 
 ## 알아두면 좋은 점[](https://nextjs.org/docs/app/api-reference/functions/forbidden#good-to-know)
 
@@ -69,7 +69,7 @@ JavaScriptTypeScript
 app/admin/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { verifySession } from '@/app/lib/dal'
     import { forbidden } from 'next/navigation'
 
@@ -89,7 +89,7 @@ JavaScriptTypeScript
         </main>
       )
     }
-[/code]
+```
 
 ### Server Actions에서의 변이[](https://nextjs.org/docs/app/api-reference/functions/forbidden#mutations-with-server-actions)
 
@@ -98,7 +98,7 @@ Server Actions에서 변이를 구현할 때 `forbidden`을 사용하면 특정 
 app/actions/update-role.ts
 
 JavaScriptTypeScript
-[code]
+```
     'use server'
 
     import { verifySession } from '@/app/lib/dal'
@@ -116,7 +116,7 @@ JavaScriptTypeScript
       // Perform the role update for authorized users
       // ...
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/app/api-reference/functions/forbidden#version-history)
 

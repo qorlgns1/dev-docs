@@ -37,9 +37,9 @@ Next.js 번들 분석기는 Turbopack의 모듈 그래프와 통합되어 있습
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm next experimental-analyze
-[/code]
+```
 
 ### 2단계: 모듈 필터링 및 검사[](https://nextjs.org/docs/app/guides/package-bundling#step-2-filter-and-inspect-modules)
 
@@ -62,16 +62,16 @@ Next.js Bundle Analyzer import chain 뷰
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm next experimental-analyze --output
-[/code]
+```
 
 이 명령은 출력물을 `.next/diagnostics/analyze`에 기록합니다. 결과를 비교하려면 이 디렉터리를 다른 위치로 복사하세요.
 
 터미널
-[code]
+```
     cp -r .next/diagnostics/analyze ./analyze-before-refactor
-[/code]
+```
 
 > 번들 분석기에는 더 많은 옵션이 있습니다. 전체 목록은 Next.js CLI 레퍼런스를 참조하세요.
 
@@ -86,14 +86,14 @@ pnpmnpmyarnbun
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm add @next/bundle-analyzer
-[/code]
+```
 
 그다음 `next.config.js`에 번들 분석기 설정을 추가합니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {}
 
@@ -102,18 +102,18 @@ next.config.js
     })
 
     module.exports = withBundleAnalyzer(nextConfig)
-[/code]
+```
 
 ### 2단계: 리포트 생성[](https://nextjs.org/docs/app/guides/package-bundling#step-2-generating-a-report)
 
 다음 명령을 실행하여 번들을 분석하세요.
-[code]
+```
     ANALYZE=true npm run build
     # or
     ANALYZE=true yarn build
     # or
     ANALYZE=true pnpm build
-[/code]
+```
 
 리포트는 브라우저에 새 탭 세 개로 열리며, 각각을 확인할 수 있습니다.
 
@@ -126,7 +126,7 @@ next.config.js
 수백 개의 모듈을 export하는 패키지(아이콘, 유틸리티 라이브러리 등)를 사용하는 경우 `next.config.js` 파일에서 [`optimizePackageImports`](https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports) 옵션으로 import 해석 방식을 최적화할 수 있습니다. 이 옵션은 많은 named export를 사용하는 import 문을 그대로 작성하면서도 실제 사용하는 모듈만 로드합니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       experimental: {
@@ -135,7 +135,7 @@ next.config.js
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 > **알아두면 좋아요:** Next.js가 자동으로 최적화하는 라이브러리도 있어 `optimizePackageImports` 목록에 포함할 필요가 없습니다. [전체 목록](https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports)을 확인하세요.
 
@@ -148,7 +148,7 @@ next.config.js
 아래 예시는 프리즘 기반 하이라이터가 클라이언트 컴포넌트에서 실행되는 경우입니다. 최종 출력은 `<code>` 블록이지만 전체 하이라이트 라이브러리가 클라이언트 번들에 포함됩니다.
 
 app/blog/[slug]/page.tsx
-[code]
+```
     'use client'
 
     import Highlight from 'prism-react-renderer'
@@ -182,14 +182,14 @@ app/blog/[slug]/page.tsx
         </article>
       )
     }
-[/code]
+```
 
 이렇게 하면 결과가 정적 HTML임에도 클라이언트가 하이라이팅 라이브러리를 다운로드하고 실행해야 하므로 번들 크기가 증가합니다.
 
 대신 하이라이팅 로직을 서버 컴포넌트로 옮겨 서버에서 최종 HTML을 렌더링하면 클라이언트는 렌더링된 마크업만 받습니다.
 
 app/blog/[slug]/page.tsx
-[code]
+```
     import { codeToHtml } from 'shiki'
 
     export default async function Page() {
@@ -214,7 +214,7 @@ app/blog/[slug]/page.tsx
         </article>
       )
     }
-[/code]
+```
 
 ### 특정 패키지를 번들에서 제외하기[](https://nextjs.org/docs/app/guides/package-bundling#opting-specific-packages-out-of-bundling)
 
@@ -223,14 +223,14 @@ app/blog/[slug]/page.tsx
 `next.config.js`에서 [`serverExternalPackages`](https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages) 옵션을 사용해 특정 패키지를 번들에서 제외할 수 있습니다.
 
 next.config.js
-[code]
+```
     /** @type {import('next').NextConfig} */
     const nextConfig = {
       serverExternalPackages: ['package-name'],
     }
 
     module.exports = nextConfig
-[/code]
+```
 
 ##
 

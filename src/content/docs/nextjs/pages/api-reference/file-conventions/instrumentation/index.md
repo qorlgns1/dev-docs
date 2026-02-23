@@ -24,13 +24,13 @@ description: '원본 URL: https://nextjs.org/docs/pages/api-reference/file-conve
 instrumentation.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { registerOTel } from '@vercel/otel'
 
     export function register() {
       registerOTel('next-app')
     }
-[/code]
+```
 
 ### `onRequestError` (선택 사항)[](https://nextjs.org/docs/pages/api-reference/file-conventions/instrumentation#onrequesterror-optional)
 
@@ -42,7 +42,7 @@ JavaScriptTypeScript
 instrumentation.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { type Instrumentation } from 'next'
 
     export const onRequestError: Instrumentation.onRequestError = async (
@@ -62,14 +62,14 @@ JavaScriptTypeScript
         },
       })
     }
-[/code]
+```
 
 #### 매개변수[](https://nextjs.org/docs/pages/api-reference/file-conventions/instrumentation#parameters)
 
 이 함수는 `error`, `request`, `context` 세 개의 매개변수를 받습니다.
 
 타입
-[code]
+```
     export function onRequestError(
       error: { digest: string } & Error,
       request: {
@@ -89,7 +89,7 @@ JavaScriptTypeScript
         renderType: 'dynamic' | 'dynamic-resume' // 'dynamic-resume' for PPR
       }
     ): void | Promise<void>
-[/code]
+```
 
   * `error`: 포착된 오류 자체(`Error` 타입)이며, 고유 ID 인 `digest` 속성을 포함합니다.
   * `request`: 오류와 연관된 읽기 전용 요청 정보입니다.
@@ -100,7 +100,7 @@ JavaScriptTypeScript
 `instrumentation.js` 파일은 Node.js 와 Edge 런타임 모두에서 동작하지만, 특정 런타임을 대상으로 하려면 `process.env.NEXT_RUNTIME` 을 사용할 수 있습니다.
 
 instrumentation.js
-[code]
+```
     export function register() {
       if (process.env.NEXT_RUNTIME === 'edge') {
         return require('./register.edge')
@@ -116,7 +116,7 @@ instrumentation.js
         return require('./on-request-error.node')
       }
     }
-[/code]
+```
 
 ## 버전 기록[](https://nextjs.org/docs/pages/api-reference/file-conventions/instrumentation#version-history)
 

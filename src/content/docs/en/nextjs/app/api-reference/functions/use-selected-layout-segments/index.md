@@ -88,4 +88,3 @@ For catch-all routes (`[...slug]`), all matched path segments are returned as a 
 | --------- | --------------------------------------- |
 | `v13.0.0` | `useSelectedLayoutSegments` introduced. |
 ---
-

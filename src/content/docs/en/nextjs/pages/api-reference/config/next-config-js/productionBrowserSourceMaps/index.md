@@ -22,4 +22,3 @@ When the `productionBrowserSourceMaps` option is enabled, the source maps will b
 * Adding source maps can increase `next build` time
 * Increases memory usage during `next build`
 ---
-

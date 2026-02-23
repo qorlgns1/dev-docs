@@ -20,7 +20,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/config/next-config-js/inli
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -30,7 +30,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ## 트레이드오프[](https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss#trade-offs)
 

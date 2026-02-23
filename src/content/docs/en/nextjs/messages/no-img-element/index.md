@@ -90,4 +90,3 @@ module.exports = {
 - [next/image API Reference](https://nextjs.org/docs/pages/api-reference/components/image)
 - [Largest Contentful Paint (LCP)](https://nextjs.org/learn/seo/web-performance/lcp)
 - [Next.js config loaderFile option](https://nextjs.org/docs/pages/api-reference/components/image#loaderfile)
-

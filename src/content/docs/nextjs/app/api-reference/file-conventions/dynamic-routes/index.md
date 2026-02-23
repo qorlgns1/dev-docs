@@ -22,7 +22,7 @@ Source URL: https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-r
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export default async function Page({
       params,
     }: {
@@ -31,7 +31,7 @@ JavaScriptTypeScript
       const { slug } = await params
       return <div>My Post: {slug}</div>
     }
-[/code]
+```
 
 동적 세그먼트는 [`layout`](https://nextjs.org/docs/app/api-reference/file-conventions/layout), [`page`](https://nextjs.org/docs/app/api-reference/file-conventions/page), [`route`](https://nextjs.org/docs/app/api-reference/file-conventions/route), [`generateMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function) 함수에 `params` prop으로 전달됩니다.
 
@@ -48,7 +48,7 @@ JavaScriptTypeScript
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
     import { use } from 'react'
 
@@ -65,7 +65,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 또는 클라이언트 컴포넌트는 [`useParams`](https://nextjs.org/docs/app/api-reference/functions/use-params) 훅을 사용해 클라이언트 컴포넌트 트리 어디서든 `params`에 접근할 수 있습니다.
 
@@ -112,7 +112,7 @@ TypeScript를 사용할 때는 설정된 라우트 세그먼트에 따라 `param
 `params`가 유효한 값 집합 중 하나로만 제한되는 라우트를 작업 중이라면(예: 알려진 언어 코드 집합을 갖는 `[locale]` 파라미터), 런타임 검증을 사용해 사용자가 입력한 잘못된 파라미터를 처리하고, 애플리케이션의 나머지는 알려진 집합에서 온 더 좁은 타입으로 작업할 수 있습니다.
 
 /app/[locale]/page.tsx
-[code]
+```
     import { notFound } from 'next/navigation'
     import type { Locale } from '@i18n/types'
     import { isValidLocale } from '@i18n/utils'
@@ -126,7 +126,7 @@ TypeScript를 사용할 때는 설정된 라우트 세그먼트에 따라 `param
       assertValidLocale(locale)
       // locale is now typed as Locale
     }
-[/code]
+```
 
 ## 동작[](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#behavior)
 
@@ -150,7 +150,7 @@ TypeScript를 사용할 때는 설정된 라우트 세그먼트에 따라 `param
 > **알아두면 좋은 내용** : 페이지 수준 폴백 UI로 [`loading.tsx`](https://nextjs.org/docs/app/api-reference/file-conventions/loading)를 사용할 수도 있습니다.
 
 app/blog/[slug]/page.tsx
-[code]
+```
     import { Suspense } from 'react'
 
     export default function Page({ params }: PageProps<'/blog/[slug]'>) {
@@ -177,7 +177,7 @@ app/blog/[slug]/page.tsx
         </article>
       )
     }
-[/code]
+```
 
 #### `generateStaticParams`와 함께[](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#with-generatestaticparams)
 
@@ -186,7 +186,7 @@ app/blog/[slug]/page.tsx
 빌드 과정에서 라우트는 각 샘플 파라미터로 실행되어 HTML 결과를 수집합니다. 동적 콘텐츠나 런타임 데이터를 잘못 접근하면 빌드가 실패합니다.
 
 app/blog/[slug]/page.tsx
-[code]
+```
     import { Suspense } from 'react'
 
     export async function generateStaticParams() {
@@ -219,12 +219,12 @@ app/blog/[slug]/page.tsx
       const res = await fetch(`https://api.vercel.app/blog/${slug}`)
       return res.json()
     }
-[/code]
+```
 
 빌드 시 검증은 샘플 파라미터로 실행되는 코드 경로만 다룹니다. 특정 파라미터 값에 대해 런타임 API를 호출하는 조건부 로직이 라우트에 있는 경우, 샘플에 없는 값으로 들어가는 분기는 빌드 타임에 검증되지 않습니다:
 
 app/blog/[slug]/page.tsx
-[code]
+```
     import { cookies } from 'next/headers'
 
     export async function generateStaticParams() {
@@ -247,14 +247,14 @@ app/blog/[slug]/page.tsx
       const token = (await cookies()).get('token')
       // ... fetch and render private post using token for auth
     }
-[/code]
+```
 
 `generateStaticParams`가 반환하지 않은 런타임 파라미터에 대해서는 첫 요청 시 검증이 이루어집니다. 위 예시에서 `private-`로 시작하는 슬러그는 `PrivatePost`가 `cookies()`를 Suspense 경계 없이 호출하기 때문에 실패합니다. 조건부 분기를 타지 않는 다른 런타임 파라미터는 정상적으로 렌더링되고 이후 요청을 위해 디스크에 저장됩니다.
 
 이를 해결하려면 `PrivatePost`를 Suspense로 감싸세요:
 
 app/blog/[slug]/page.tsx
-[code]
+```
     import { Suspense } from 'react'
     import { cookies } from 'next/headers'
 
@@ -267,7 +267,7 @@ app/blog/[slug]/page.tsx
 
       if (slug.startsWith('private-')) {
         return (
-[/code]
+```
 
 <Suspense fallback={<div>Loading...</div>}>
             <PrivatePost slug={slug} />
@@ -282,7 +282,6 @@ app/blog/[slug]/page.tsx
       const token = (await cookies()).get('token')
       // ... fetch and render private post using token for auth
     }
-[/code]
 
 ## 예시[](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes#examples)
 
@@ -293,7 +292,7 @@ app/blog/[slug]/page.tsx
 app/blog/[slug]/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     export async function generateStaticParams() {
       const posts = await fetch('https://.../posts').then((res) => res.json())
 
@@ -301,7 +300,7 @@ JavaScriptTypeScript
         slug: post.slug,
       }))
     }
-[/code]
+```
 
 `generateStaticParams` 함수 내부에서 `fetch`를 사용할 때 요청은 [자동으로 중복 제거](https://nextjs.org/docs/app/guides/caching#request-memoization)됩니다. 덕분에 동일한 데이터에 대해 레이아웃, 페이지, 다른 `generateStaticParams` 함수에서 여러 번 네트워크 호출을 하지 않아도 되어 빌드 시간이 빨라집니다.
 
@@ -312,7 +311,7 @@ JavaScriptTypeScript
 app/api/posts/[id]/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     export async function generateStaticParams() {
       const posts: { id: number }[] = await fetch(
         'https://api.vercel.app/blog'
@@ -337,7 +336,7 @@ JavaScriptTypeScript
       const post = await res.json()
       return Response.json(post)
     }
-[/code]
+```
 
 이 예제에서는 `generateStaticParams`가 반환한 모든 블로그 게시물 ID에 대한 Route Handler가 빌드 시점에 정적으로 생성됩니다. 다른 ID에 대한 요청은 요청 시점에 동적으로 처리됩니다.
 

@@ -15,4 +15,3 @@ The App Router ([`app` directory](https://nextjs.org/docs/app)) enables support 
 
 Using the `app` directory will automatically enable [React Strict Mode](https://react.dev/reference/react/StrictMode). Learn how to [incrementally adopt `app`](https://nextjs.org/docs/app/guides/migrating/app-router-migration#migrating-from-pages-to-app).
 ---
-

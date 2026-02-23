@@ -48,4 +48,3 @@ export default nextConfig
 | --------- | ---------------------------------------------- |
 | `v16.0.0` | `experimental.isolatedDevBuild` is introduced. |
 ---
-

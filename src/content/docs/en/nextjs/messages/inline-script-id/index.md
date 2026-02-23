@@ -33,4 +33,3 @@ export default function App({ Component, pageProps }) {
 ## Useful links
 
 - [Docs for Next.js Script component](https://nextjs.org/docs/pages/guides/scripts)
-

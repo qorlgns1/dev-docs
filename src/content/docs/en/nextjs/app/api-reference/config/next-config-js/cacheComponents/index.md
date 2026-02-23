@@ -43,4 +43,3 @@ When `cacheComponents` is enabled, you can use the following cache functions and
 | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | 16.0.0  | `cacheComponents` introduced. This flag controls the `ppr`, `useCache`, and `dynamicIO` flags as a single, unified configuration. |
 ---
-

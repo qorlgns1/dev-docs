@@ -187,4 +187,3 @@ Since that's a new page, it'll unload the current page, load the new one and wai
 
 When shallow routing is used with proxy it will not ensure the new page matches the current page like previously done without proxy. This is due to proxy being able to rewrite dynamically and can't be verified client-side without a data fetch which is skipped with shallow, so a shallow route change must always be treated as shallow.
 ---
-

@@ -52,7 +52,7 @@ CSS-in-JS 구성은 다음 세 단계의 옵트인 프로세스로 이루어집�
 app/registry.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import React, { useState } from 'react'
@@ -76,14 +76,14 @@ JavaScriptTypeScript
 
       return <StyleRegistry registry={jsxStyleRegistry}>{children}</StyleRegistry>
     }
-[/code]
+```
 
 그런 다음 [루트 레이아웃](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout)을 레지스트리로 감쌉니다:
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import StyledJsxRegistry from './registry'
 
     export default function RootLayout({
@@ -99,7 +99,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 [예시는 여기에서 확인하세요](https://github.com/vercel/next.js/tree/canary/examples/with-styled-jsx).
 
@@ -110,20 +110,20 @@ JavaScriptTypeScript
 먼저 `next.config.js`에서 styled-components를 활성화합니다.
 
 next.config.js
-[code]
+```
     module.exports = {
       compiler: {
         styledComponents: true,
       },
     }
-[/code]
+```
 
 그다음 렌더링 중 생성된 모든 CSS 스타일 규칙을 수집하는 전역 레지스트리 컴포넌트를 만들고, 해당 규칙을 반환하는 함수를 `styled-components` API로 작성합니다. 이어서 `useServerInsertedHTML` 훅을 사용해 레지스트리에 수집된 스타일을 루트 레이아웃의 `<head>` HTML 태그에 주입합니다.
 
 lib/registry.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import React, { useState } from 'react'
@@ -153,14 +153,14 @@ JavaScriptTypeScript
         </StyleSheetManager>
       )
     }
-[/code]
+```
 
 루트 레이아웃의 `children`을 스타일 레지스트리 컴포넌트로 감쌉니다:
 
 app/layout.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import StyledComponentsRegistry from './lib/registry'
 
     export default function RootLayout({
@@ -176,7 +176,7 @@ JavaScriptTypeScript
         </html>
       )
     }
-[/code]
+```
 
 [예시는 여기에서 확인하세요](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components).
 

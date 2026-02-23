@@ -72,6 +72,8 @@ META_NOISE_PREFIXES = (
 CARD_HEADING_RE = re.compile(r"^(#{3,6})\s+\[([^\]]+)\]\((https?://[^)\s]+)\)\s*$")
 BREADCRUMB_RE = re.compile(r"^\[[^\]]+\]\([^)]+\)\[[^\]]+\]\([^)]+\)\S*$")
 MD_LINK_RE = re.compile(r"(!?\[[^\]]*\]\()([^)]+)(\))")
+LEGACY_CODE_OPEN_RE = re.compile(r"^(?P<prefix>\s*(?:>\s*)*)\[code\](?P<rest>.*)$", re.IGNORECASE)
+LEGACY_CODE_CLOSE_RE = re.compile(r"^(?P<prefix>\s*(?:>\s*)*)\[/code\]\s*$", re.IGNORECASE)
 
 
 # ── URL helpers ──────────────────────────────────────────────────────────────
@@ -308,7 +310,10 @@ def normalize_markdown(md: str) -> str:
     - Split compacted card headings: `... )### [ ... ]`
     - Convert heading-style cards (`### [..](..)` ) to bullet links
     - Remove common feedback/breadcrumb noise lines
+    - Convert legacy [code]...[/code] blocks to fenced code blocks
     """
+    md = normalize_legacy_code_blocks(md)
+
     # 카드 링크가 한 줄에 이어붙는 패턴 분리
     md = re.sub(r"\)(?=#{3,6}\s+\[)", ")\n\n", md)
     md = re.sub(r"(?<!\n)(#{3,6}\s+\[)", r"\n\1", md)
@@ -353,6 +358,68 @@ def normalize_markdown(md: str) -> str:
     normalized = "\n".join(out)
     normalized = re.sub(r"\n{3,}", "\n\n", normalized).strip() + "\n"
     return normalized
+
+
+def normalize_legacy_code_blocks(md: str) -> str:
+    """
+    Convert legacy markdown code tags into fenced code blocks.
+    Supports plain (`[code]`) and blockquote-prefixed (`> [code]`) forms.
+    """
+    out: list[str] = []
+    in_legacy_code = False
+    fence_prefix = ""
+    code_lines: list[str] = []
+
+    def flush_legacy_block() -> None:
+        # Pick a fence length that will not conflict with backticks
+        # inside the captured code lines.
+        max_backticks = 0
+        for code_line in code_lines:
+            for m in re.finditer(r"`+", code_line):
+                max_backticks = max(max_backticks, len(m.group(0)))
+        fence = "`" * max(3, max_backticks + 1)
+
+        out.append(f"{fence_prefix}{fence}")
+        out.extend(code_lines)
+        out.append(f"{fence_prefix}{fence}")
+
+    for raw in md.splitlines():
+        line = raw.rstrip()
+
+        if not in_legacy_code:
+            m_open = LEGACY_CODE_OPEN_RE.match(line)
+            if not m_open:
+                # Some sources include stray closing tags without a matching opener.
+                # Drop them to avoid leaking raw [/code] markers into rendered docs.
+                if LEGACY_CODE_CLOSE_RE.match(line):
+                    continue
+                out.append(line)
+                continue
+
+            fence_prefix = m_open.group("prefix") or ""
+            code_lines = []
+
+            first_code_line = (m_open.group("rest") or "").lstrip()
+            if first_code_line:
+                code_lines.append(f"{fence_prefix}{first_code_line}")
+
+            in_legacy_code = True
+            continue
+
+        m_close = LEGACY_CODE_CLOSE_RE.match(line)
+        if m_close and (m_close.group("prefix") or "") == fence_prefix:
+            flush_legacy_block()
+            in_legacy_code = False
+            fence_prefix = ""
+            code_lines = []
+            continue
+
+        code_lines.append(line)
+
+    if in_legacy_code:
+        flush_legacy_block()
+
+    return "\n".join(out)
 
 
 # ── Nav extraction ───────────────────────────────────────────────────────────

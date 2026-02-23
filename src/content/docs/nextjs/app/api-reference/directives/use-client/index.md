@@ -26,7 +26,7 @@ Client Component의 진입점을 선언하려면 `'use client'` 지시문을 **�
 app/components/counter.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useState } from 'react'
@@ -41,14 +41,14 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 `'use client'` 지시문을 사용할 때 Client Component의 props는 [직렬화 가능](https://react.dev/reference/rsc/use-client#serializable-types)해야 합니다. 즉, 서버에서 클라이언트로 데이터를 보낼 때 React가 직렬화할 수 있는 형식이어야 합니다.
 
 app/components/counter.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     export default function Counter({
@@ -60,7 +60,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ## Server Component 안에 Client Component 중첩하기[](https://nextjs.org/docs/app/api-reference/directives/use-client#nesting-client-components-within-server-components)
 
@@ -78,7 +78,7 @@ Server Component와 Client Component를 조합하면 성능과 상호작용성�
 app/page.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Header from './header'
     import Counter from './counter' // This is a Client Component
 
@@ -90,7 +90,7 @@ JavaScriptTypeScript
         </div>
       )
     }
-[/code]
+```
 
 ## 참고자료[](https://nextjs.org/docs/app/api-reference/directives/use-client#reference)
 

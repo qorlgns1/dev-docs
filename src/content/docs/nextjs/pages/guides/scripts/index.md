@@ -16,7 +16,7 @@ description: '모든 라우트에서 서드파티 스크립트를 로드하려�
 모든 라우트에서 서드파티 스크립트를 로드하려면 `next/script`를 임포트한 뒤 사용자 정의 `_app`에 스크립트를 직접 포함하세요:
 
 pages/_app.js
-[code]
+```
     import Script from 'next/script'
 
     export default function MyApp({ Component, pageProps }) {
@@ -27,7 +27,7 @@ pages/_app.js
         </>
       )
     }
-[/code]
+```
 
 이 스크립트는 애플리케이션의 _어떤_ 라우트를 요청하더라도 로드되고 실행됩니다. Next.js는 사용자가 여러 페이지를 오가더라도 스크립트를 **한 번만 로드**하도록 보장합니다.
 
@@ -53,22 +53,22 @@ pages/_app.js
 이 전략은 아직 실험 단계이므로 `next.config.js`에서 `nextScriptWorkers` 플래그를 활성화해야만 사용할 수 있습니다:
 
 next.config.js
-[code]
+```
     module.exports = {
       experimental: {
         nextScriptWorkers: true,
       },
     }
-[/code]
+```
 
 그다음 개발 서버를 실행하면 Next.js가 필요한 패키지를 설치하는 과정을 안내해 설정을 마칠 수 있습니다:
 
 pnpmnpmyarnbun
 
 터미널
-[code]
+```
     pnpm dev
-[/code]
+```
 
 예를 들어 `npm install @qwik.dev/partytown`을 실행해 Partytown을 설치하라는 메시지를 볼 수 있습니다.
 
@@ -77,7 +77,7 @@ pnpmnpmyarnbun
 pages/home.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function Home() {
@@ -87,7 +87,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 웹 워커에 서드파티 스크립트를 로드할 때 고려해야 할 트레이드오프가 여러 가지 있습니다. 자세한 내용은 Partytown의 [tradeoffs](https://partytown.qwik.dev/trade-offs) 문서를 확인하세요.
 
@@ -98,7 +98,7 @@ JavaScriptTypeScript
 추가 구성 옵션을 넣고 싶다면 [사용자 정의 `_document.js`](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)에 사용하는 `<Head />` 컴포넌트 안에 포함할 수 있습니다:
 
 _pages/document.jsx
-[code]
+```
     import { Html, Head, Main, NextScript } from 'next/document'
 
     export default function Document() {
@@ -124,7 +124,7 @@ _pages/document.jsx
         </Html>
       )
     }
-[/code]
+```
 
 Partytown 구성을 수정하려면 다음 조건을 충족해야 합니다.
 
@@ -138,21 +138,21 @@ Partytown 구성을 수정하려면 다음 조건을 충족해야 합니다.
 ### 인라인 스크립트[](https://nextjs.org/docs/pages/guides/scripts#inline-scripts)
 
 외부 파일에서 로드하지 않는 인라인 스크립트도 Script 컴포넌트에서 지원합니다. 중괄호 안에 JavaScript를 넣어 작성할 수 있습니다.
-[code]
+```
     <Script id="show-banner">
       {`document.getElementById('banner').classList.remove('hidden')`}
     </Script>
-[/code]
+```
 
 또는 `dangerouslySetInnerHTML` 속성을 사용할 수 있습니다.
-[code]
+```
     <Script
       id="show-banner"
       dangerouslySetInnerHTML={{
         __html: `document.getElementById('banner').classList.remove('hidden')`,
       }}
     />
-[/code]
+```
 
 > **경고** : Next.js가 스크립트를 추적하고 최적화하려면 인라인 스크립트에 반드시 `id` 속성을 지정해야 합니다.
 
@@ -169,7 +169,7 @@ Partytown 구성을 수정하려면 다음 조건을 충족해야 합니다.
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function Page() {
@@ -184,7 +184,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 각 이벤트 핸들러에 대한 자세한 설명과 예시는 [`next/script`](https://nextjs.org/docs/pages/api-reference/components/script#onload) API 레퍼런스를 참고하세요.
 
@@ -195,7 +195,7 @@ JavaScriptTypeScript
 pages/index.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import Script from 'next/script'
 
     export default function Page() {
@@ -210,7 +210,7 @@ JavaScriptTypeScript
         </>
       )
     }
-[/code]
+```
 
 supported.
 

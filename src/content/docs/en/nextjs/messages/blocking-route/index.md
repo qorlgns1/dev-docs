@@ -290,4 +290,3 @@ Alternatively you can add a Suspense boundary above the component that is access
 - [`connection` function](https://nextjs.org/docs/app/api-reference/functions/connection)
 - [`cacheLife` function](https://nextjs.org/docs/app/api-reference/functions/cacheLife)
 - [`cacheTag` function](https://nextjs.org/docs/app/api-reference/functions/cacheTag)
-

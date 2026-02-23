@@ -27,11 +27,11 @@ Next.js는 **모던 브라우저**를 추가 설정 없이 지원합니다.
 특정 브라우저나 기능을 타깃팅하고 싶다면, Next.js에서는 `package.json` 파일에서 [Browserslist](https://browsersl.ist) 구성을 지원합니다. Next.js는 기본적으로 다음 Browserslist 구성을 사용합니다:
 
 package.json
-[code]
+```
     {
       "browserslist": ["chrome 111", "edge 111", "firefox 111", "safari 16.4"]
     }
-[/code]
+```
 
 ## 폴리필[](https://nextjs.org/docs/architecture/supported-browsers#polyfills)
 
@@ -54,9 +54,9 @@ package.json
 폴리필을 포함하려면 [`instrumentation-client.js` 파일](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client)에 임포트할 수 있습니다.
 
 instrumentation-client.ts
-[code]
+```
     import './polyfills'
-[/code]
+```
 
 #### Pages Router에서[](https://nextjs.org/docs/architecture/supported-browsers#in-pages-router)
 
@@ -65,7 +65,7 @@ instrumentation-client.ts
 pages/_app.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import './polyfills'
 
     import type { AppProps } from 'next/app'
@@ -73,7 +73,7 @@ JavaScriptTypeScript
     export default function MyApp({ Component, pageProps }: AppProps) {
       return <Component {...pageProps} />
     }
-[/code]
+```
 
 #### 조건부 폴리필 로딩[](https://nextjs.org/docs/architecture/supported-browsers#conditionally-loading-polyfills)
 
@@ -82,7 +82,7 @@ JavaScriptTypeScript
 hooks/analytics.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { useCallback } from 'react'
 
     export const useAnalytics = () => {
@@ -98,7 +98,7 @@ JavaScriptTypeScript
 
       return tracker
     }
-[/code]
+```
 
 ## JavaScript 언어 기능[](https://nextjs.org/docs/architecture/supported-browsers#javascript-language-features)
 

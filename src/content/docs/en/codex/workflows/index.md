@@ -39,13 +39,14 @@ Use this when you are onboarding, inheriting a service, or trying to reason abou
   2. Select the code you care about (optional but recommended).
 
   3. Prompt Codex:
-[code] Explain how the request flows through the selected code.
+```
+Explain how the request flows through the selected code.
          
          Include:
          - a short summary of the responsibilities of each module involved
          - what data is validated and where
          - one or two "gotchas" to watch for when changing this
-[/code]
+```
 
 
 
@@ -55,19 +56,21 @@ Verification:
   * Ask for a diagram or checklist you can validate quickly:
 
 
-[code] 
+```
     Summarize the request flow as a numbered list of steps. Then list the files involved.
-[/code]
+```
 
 ### CLI workflow (good when you want a transcript + shell commands)
 
   1. Start an interactive session:
-[code] codex
-[/code]
+```
+codex
+```
 
   2. Attach the files (optional) and prompt:
-[code] I need to understand the protocol used by this service. Read @foo.ts @schema.ts and explain the schema and request/response flow. Focus on required vs optional fields and backward compatibility rules.
-[/code]
+```
+I need to understand the protocol used by this service. Read @foo.ts @schema.ts and explain the schema and request/response flow. Focus on required vs optional fields and backward compatibility rules.
+```
 
 
 
@@ -87,11 +90,13 @@ Use this when you have a failing behavior you can reproduce locally.
 ### CLI workflow (tight loop with reproduction and verification)
 
   1. Start Codex at the repo root:
-[code] codex
-[/code]
+```
+codex
+```
 
   2. Give Codex a reproduction recipe, plus the file(s) you suspect:
-[code] Bug: Clicking "Save" on the settings screen sometimes shows "Saved" but doesn't persist the change.
+```
+Bug: Clicking "Save" on the settings screen sometimes shows "Saved" but doesn't persist the change.
          
          Repro:
          1) Start the app: npm run dev
@@ -105,7 +110,7 @@ Use this when you have a failing behavior you can reproduce locally.
          - Keep the fix minimal and add a regression test if feasible.
          
          Start by reproducing the bug locally, then propose a patch and run checks.
-[/code]
+```
 
 
 
@@ -123,17 +128,18 @@ Verification:
   * If you have a standard check pipeline, ask it to run it:
 
 
-[code] 
+```
     After the fix, run lint + the smallest relevant test suite. Report the commands and results.
-[/code]
+```
 
 ### IDE extension workflow
 
   1. Open the file where you think the bug lives, plus its nearest caller.
 
   2. Prompt Codex:
-[code] Find the bug causing "Saved" to show without persisting changes. After proposing the fix, tell me how to verify it in the UI.
-[/code]
+```
+Find the bug causing "Saved" to show without persisting changes. After proposing the fix, tell me how to verify it in the UI.
+```
 
 
 
@@ -151,8 +157,9 @@ Use this when you want to be very explicit about the scope you want tested.
   2. Select the lines that define the function. Choose “Add to Codex Thread” from command palette to add these lines to the context.
 
   3. Prompt Codex:
-[code] Write a unit test for this function. Follow conventions used in other tests.
-[/code]
+```
+Write a unit test for this function. Follow conventions used in other tests.
+```
 
 
 
@@ -166,12 +173,14 @@ Context notes:
 ### CLI workflow (path + line range described in prompt)
 
   1. Start Codex:
-[code] codex
-[/code]
+```
+codex
+```
 
   2. Prompt with a function name:
-[code] Add a test for the invert_list function in @transform.ts. Cover the happy path plus edge cases.
-[/code]
+```
+Add a test for the invert_list function in @transform.ts. Cover the happy path plus edge cases.
+```
 
 
 
@@ -187,13 +196,15 @@ Use this when you have a design mock, screenshot, or UI reference and you want a
   1. Save your screenshot locally (for example `./specs/ui.png`).
 
   2. Run Codex:
-[code] codex
-[/code]
+```
+codex
+```
 
   3. Drag the image file into the terminal to attach it to the prompt.
 
   4. Follow up with constraints and structure:
-[code] Create a new dashboard based on this image.
+```
+Create a new dashboard based on this image.
          
          Constraints:
          - Use react, vite, and tailwind. Write the code in typescript.
@@ -203,7 +214,7 @@ Use this when you have a design mock, screenshot, or UI reference and you want a
          - A new route/page that renders the UI
          - Any small components needed
          - README.md with instructions to run it locally
-[/code]
+```
 
 
 
@@ -220,18 +231,19 @@ Verification:
   * Ask Codex to run the dev server (if allowed) and tell you exactly where to look:
 
 
-[code] 
+```
     Start the dev server and tell me the local URL/route to view the prototype.
-[/code]
+```
 
 ### IDE extension workflow (image + existing files)
 
   1. Attach the image in the Codex chat (drag-and-drop or paste).
 
   2. Prompt Codex:
-[code] Create a new settings page. Use the attached screenshot as the target UI.
+```
+Create a new settings page. Use the attached screenshot as the target UI.
          Follow design and visual patterns from other files in this project.
-[/code]
+```
 
 
 
@@ -245,30 +257,35 @@ Use this when you want a tight “design → tweak → refresh → tweak” loop
 ### CLI workflow (run Vite, then iterate with small prompts)
 
   1. Start Codex:
-[code] codex
-[/code]
+```
+codex
+```
 
   2. Start the dev server in a separate terminal window:
-[code] npm run dev
-[/code]
+```
+npm run dev
+```
 
   3. Prompt Codex to make changes:
-[code] Propose 2-3 styling improvements for the landing page.
-[/code]
+```
+Propose 2-3 styling improvements for the landing page.
+```
 
   4. Pick a direction and iterate with small, specific prompts:
-[code] Go with option 2.
+```
+Go with option 2.
          
          Change only the header:
          - make the typography more editorial
          - increase whitespace
          - ensure it still looks good on mobile
-[/code]
+```
 
   5. Repeat with focused requests:
-[code] Next iteration: reduce visual noise.
+```
+Next iteration: reduce visual noise.
          Keep the layout, but simplify colors and remove any redundant borders.
-[/code]
+```
 
 
 
@@ -292,7 +309,8 @@ Use this when you want to design carefully (local context, quick inspection), th
   1. Make sure your current work is committed or at least stashed so you can compare changes cleanly.
 
   2. Ask Codex to produce a refactor plan. If you have the `$plan` skill available, invoke it explicitly:
-[code] $plan
+```
+$plan
          
          We need to refactor the auth subsystem to:
          - split responsibilities (token parsing vs session loading vs permissions)
@@ -303,13 +321,14 @@ Use this when you want to design carefully (local context, quick inspection), th
          - No user-visible behavior changes
          - Keep public APIs stable
          - Include a step-by-step migration plan
-[/code]
+```
 
   3. Review the plan and negotiate changes:
-[code] Revise the plan to:
+```
+Revise the plan to:
          - specify exactly which files move in each milestone
          - include a rollback strategy
-[/code]
+```
 
 
 
@@ -327,8 +346,9 @@ Context notes:
   2. Click on the cloud icon beneath the prompt composer and select your cloud environment.
 
   3. When you enter the next prompt, Codex creates a new thread in the cloud that carries over the existing thread context (including the plan and any local source changes).
-[code] Implement Milestone 1 from the plan.
-[/code]
+```
+Implement Milestone 1 from the plan.
+```
 
   4. Review the cloud diff, iterate if needed.
 
@@ -348,16 +368,19 @@ Use this when you want a second set of eyes before committing or creating a PR.
 ### CLI workflow (review your working tree)
 
   1. Start Codex:
-[code] codex
-[/code]
+```
+codex
+```
 
   2. Run the review command:
-[code] /review
-[/code]
+```
+/review
+```
 
   3. Optional: provide custom focus instructions:
-[code] /review Focus on edge cases and security issues
-[/code]
+```
+/review Focus on edge cases and security issues
+```
 
 
 
@@ -381,12 +404,14 @@ Before you can use this, enable Codex **Code review** on your repository. See [C
   1. Open the pull request on GitHub.
 
   2. Leave a comment that tags Codex with explicit focus areas:
-[code] @codex review
-[/code]
+```
+@codex review
+```
 
   3. Optional: Provide more explicit instructions.
-[code] @codex review for security vulnerabilities and security concerns
-[/code]
+```
+@codex review for security vulnerabilities and security concerns
+```
 
 
 
@@ -402,8 +427,9 @@ Use this when you need a doc change that is accurate and clear.
   1. Identify the doc file(s) to change and open them (IDE) or `@` mention them (IDE or CLI).
 
   2. Prompt Codex with scope and validation requirements:
-[code] Update the "advanced features" documentation to provide authentication troubleshooting guidance. Verify that all links are valid.
-[/code]
+```
+Update the "advanced features" documentation to provide authentication troubleshooting guidance. Verify that all links are valid.
+```
 
   3. After Codex drafts the changes, review the documentation and iterate as needed.
 

@@ -27,9 +27,9 @@ Last updated February 20, 2026
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create next-app --example with-cypress with-cypress-app
-[/code]
+```
 
 ## 수동 설정[](https://nextjs.org/docs/app/guides/testing/cypress#manual-setup)
 
@@ -38,14 +38,14 @@ Cypress를 수동으로 설정하려면 `cypress`를 devDependencies로 설치�
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm add -D cypress
-[/code]
+```
 
 `package.json`의 scripts 필드에 Cypress `open` 명령을 추가합니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         "dev": "next dev",
@@ -55,16 +55,16 @@ package.json
         "cypress:open": "cypress open"
       }
     }
-[/code]
+```
 
 처음으로 Cypress를 실행하여 Cypress 테스트 스위트를 엽니다:
 
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm cypress:open
-[/code]
+```
 
 **E2E Testing** 및/또는 **Component Testing** 구성을 선택할 수 있습니다. 이 옵션 중 하나를 선택하면 프로젝트에 `cypress.config.js` 파일과 `cypress` 폴더가 자동으로 생성됩니다.
 
@@ -75,7 +75,7 @@ Terminal
 cypress.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { defineConfig } from 'cypress'
 
     export default defineConfig({
@@ -83,12 +83,12 @@ JavaScriptTypeScript
         setupNodeEvents(on, config) {},
       },
     })
-[/code]
+```
 
 그런 다음 두 개의 새로운 Next.js 파일을 만듭니다:
 
 app/page.js
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -99,10 +99,10 @@ app/page.js
         </div>
       )
     }
-[/code]
+```
 
 app/about/page.js
-[code]
+```
     import Link from 'next/link'
 
     export default function Page() {
@@ -113,12 +113,12 @@ app/about/page.js
         </div>
       )
     }
-[/code]
+```
 
 내비게이션이 올바르게 작동하는지 확인하는 테스트를 추가합니다:
 
 cypress/e2e/app.cy.js
-[code]
+```
     describe('Navigation', () => {
       it('should navigate to the about page', () => {
         // Start from the index page
@@ -134,7 +134,7 @@ cypress/e2e/app.cy.js
         cy.get('h1').contains('About')
       })
     })
-[/code]
+```
 
 ### E2E 테스트 실행[](https://nextjs.org/docs/app/guides/testing/cypress#running-e2e-tests)
 
@@ -159,7 +159,7 @@ Cypress 앱에서 **Component Testing**을 선택한 후 프런트엔드 프레�
 cypress.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { defineConfig } from 'cypress'
 
     export default defineConfig({
@@ -170,12 +170,12 @@ JavaScriptTypeScript
         },
       },
     })
-[/code]
+```
 
 앞서 사용한 동일한 컴포넌트를 가정하고, 컴포넌트가 예상 출력으로 렌더링되는지 검증하는 테스트를 추가합니다:
 
 cypress/component/about.cy.tsx
-[code]
+```
     import Page from '../../app/page'
 
     describe('<Page />', () => {
@@ -191,7 +191,7 @@ cypress/component/about.cy.tsx
         cy.get('a[href="/about"]').should('be.visible')
       })
     })
-[/code]
+```
 
 > **알아두면 좋아요** :
 >
@@ -208,7 +208,7 @@ cypress/component/about.cy.tsx
 대화형 테스트 외에도 CI 환경에 더 적합한 `cypress run` 명령을 사용하여 헤드리스 모드로 Cypress를 실행할 수 있습니다:
 
 package.json
-[code]
+```
     {
       "scripts": {
         //...
@@ -218,7 +218,7 @@ package.json
         "component:headless": "cypress run --component"
       }
     }
-[/code]
+```
 
 Cypress와 지속적 통합에 대해 더 알아보려면 다음 자료를 참고하세요:
 

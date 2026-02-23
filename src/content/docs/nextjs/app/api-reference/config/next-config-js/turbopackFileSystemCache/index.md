@@ -20,7 +20,7 @@ Turbopack 파일시스템 캐시는 `next dev` 또는 `next build` 명령 전반
 next.config.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextConfig } from 'next'
 
     const nextConfig: NextConfig = {
@@ -33,7 +33,7 @@ JavaScriptTypeScript
     }
 
     export default nextConfig
-[/code]
+```
 
 ## 버전 변경 사항[](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache#version-changes)
 

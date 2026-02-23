@@ -164,18 +164,18 @@ Support for the Chat Completions API is deprecated and will be removed in future
 ### Configure your default local model
 
 The Codex CLI and IDE extension use the same `config.toml` [configuration file](https://developers.openai.com/codex/config-basic). To specify a model, add a `model` entry to your configuration file. If you don’t specify a model, the Codex app, CLI, or IDE Extension defaults to a recommended model.
-[code] 
+```
     model = "gpt-5.2"
-[/code]
+```
 
 ### Choosing a different local model temporarily
 
 In the Codex CLI, you can use the `/model` command during an active thread to change the model. In the IDE extension, you can use the model selector below the input box to choose your model.
 
 To start a new Codex CLI thread with a specific model or to specify the model for `codex exec` you can use the `--model`/`-m` flag:
-[code] 
+```
     codex -m gpt-5.3-codex
-[/code]
+```
 
 ### Choosing your model for cloud tasks
 

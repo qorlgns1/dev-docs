@@ -37,7 +37,7 @@ description: '인증을 이해하는 것은 애플리케이션 데이터를 보�
 pages/login.tsx
 
 JavaScriptTypeScript
-[code]
+```
     import { FormEvent } from 'react'
     import { useRouter } from 'next/router'
 
@@ -72,7 +72,7 @@ JavaScriptTypeScript
         </form>
       )
     }
-[/code]
+```
 
 위 폼에는 사용자의 이메일과 비밀번호를 입력받는 두 개의 인풋 필드가 있습니다. 제출 시 `/api/auth/login` API 라우트로 POST 요청을 보내는 함수를 실행합니다.
 
@@ -81,7 +81,7 @@ JavaScriptTypeScript
 pages/api/auth/login.ts
 
 JavaScriptTypeScript
-[code]
+```
     import type { NextApiRequest, NextApiResponse } from 'next'
     import { signIn } from '@/auth'
 
@@ -102,7 +102,7 @@ JavaScriptTypeScript
         }
       }
     }
-[/code]
+```
 
 ## Session Management[](https://nextjs.org/docs/pages/guides/authentication#session-management)
 
@@ -124,7 +124,7 @@ JavaScriptTypeScript
 pages/api/login.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { serialize } from 'cookie'
     import type { NextApiRequest, NextApiResponse } from 'next'
     import { encrypt } from '@/app/lib/session'
@@ -142,7 +142,7 @@ JavaScriptTypeScript
       res.setHeader('Set-Cookie', cookie)
       res.status(200).json({ message: 'Successfully set cookie!' })
     }
-[/code]
+```
 
 ### Database Sessions[](https://nextjs.org/docs/pages/guides/authentication#database-sessions)
 
@@ -157,7 +157,7 @@ JavaScriptTypeScript
 pages/api/create-session.ts
 
 JavaScriptTypeScript
-[code]
+```
     import db from '../../lib/db'
     import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -179,7 +179,7 @@ JavaScriptTypeScript
         res.status(500).json({ error: 'Internal Server Error' })
       }
     }
-[/code]
+```
 
 ## Authorization[](https://nextjs.org/docs/pages/guides/authentication#authorization)
 
@@ -210,7 +210,7 @@ JavaScriptTypeScript
 proxy.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextRequest, NextResponse } from 'next/server'
     import { decrypt } from '@/app/lib/session'
     import { cookies } from 'next/headers'
@@ -250,7 +250,7 @@ JavaScriptTypeScript
     export const config = {
       matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
     }
-[/code]
+```
 
 Proxy는 초기 체크에 유용하지만 데이터를 보호하는 유일한 방어선이 되어서는 안 됩니다. 대부분의 보안 체크는 데이터 소스에 가능한 한 가깝게 배치해야 하며, 자세한 내용은 [Data Access Layer](https://nextjs.org/docs/pages/guides/authentication#creating-a-data-access-layer-dal)를 참고하세요.
 
@@ -273,7 +273,7 @@ Next.js의 API Routes는 서버 측 로직과 데이터 관리를 처리하는 �
 pages/api/route.ts
 
 JavaScriptTypeScript
-[code]
+```
     import { NextApiRequest, NextApiResponse } from 'next'
 
     export default async function handler(
@@ -301,7 +301,7 @@ JavaScriptTypeScript
       // Proceed with the route for authorized users
       // ... implementation of the API Route
     }
-[/code]
+```
 
 이 예시는 인증과 인가를 위한 이중 보안 검사를 수행하는 API Route를 보여 줍니다. 먼저 활성 세션이 있는지 확인하고, 이어서 로그인한 사용자가 'admin'인지 검증합니다. 이 접근 방식은 인증되고 권한이 부여된 사용자에게만 요청 처리를 허용하여 강력한 보안을 유지합니다.
 

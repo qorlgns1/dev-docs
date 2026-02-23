@@ -171,4 +171,3 @@ export default config
 
 Next.js doesn't unload these JavaScript modules, meaning that even with this optimization disabled, the memory footprint of your Next.js server will eventually be the same if all pages are eventually requested.
 ---
-

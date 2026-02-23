@@ -23,7 +23,7 @@ Source URL: https://nextjs.org/docs/messages/no-page-custom-font
 `./pages/_document.js` 파일을 만들고 커스텀 Document에 폰트를 추가합니다:
 
 pages/_document.js
-[code]
+```
     import Document, { Html, Head, Main, NextScript } from 'next/document'
 
     class MyDocument extends Document {
@@ -46,12 +46,12 @@ pages/_document.js
     }
 
     export default MyDocument
-[/code]
+```
 
 또는 함수 컴포넌트로 작성할 수도 있습니다:
 
 pages/_document.js
-[code]
+```
     import { Html, Head, Main, NextScript } from 'next/document'
 
     export default function Document() {
@@ -70,7 +70,7 @@ pages/_document.js
         </Html>
       )
     }
-[/code]
+```
 
 ### 사용하지 않아도 되는 경우[](https://nextjs.org/docs/messages/no-page-custom-font#when-not-to-use-it)
 

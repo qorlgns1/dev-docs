@@ -18,9 +18,9 @@ description: 'CLI를 사용하면 기본 템플릿이나 공개 GitHub 리포지
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create next-app [project-name] [options]
-[/code]
+```
 
 ## Reference[](https://nextjs.org/docs/app/api-reference/cli/create-next-app#reference)
 
@@ -65,25 +65,25 @@ Options| Description
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create next-app
-[/code]
+```
 
 설치 과정에서 다음과 같은 프롬프트가 표시됩니다:
 
 Terminal
-[code]
+```
     What is your project named? my-app
     Would you like to use the recommended Next.js defaults?
         Yes, use recommended defaults - TypeScript, ESLint, Tailwind CSS, App Router, Turbopack
         No, reuse previous settings
         No, customize settings - Choose your own preferences
-[/code]
+```
 
 `customize settings`를 선택하면 다음 프롬프트가 이어집니다:
 
 Terminal
-[code]
+```
     Would you like to use TypeScript? No / Yes
     Which linter would you like to use? ESLint / Biome / None
     Would you like to use React Compiler? No / Yes
@@ -92,7 +92,7 @@ Terminal
     Would you like to use App Router? (recommended) No / Yes
     Would you like to customize the import alias (`@/*` by default)? No / Yes
     What import alias would you like configured? @/*
-[/code]
+```
 
 프롬프트가 끝나면 `create-next-app`이 프로젝트 이름으로 폴더를 생성하고 필요한 의존성을 설치합니다.
 
@@ -113,9 +113,9 @@ Terminal
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create next-app --example [example-name] [your-project-name]
-[/code]
+```
 
 사용 가능한 모든 예제와 설정 방법은 [Next.js 저장소](https://github.com/vercel/next.js/tree/canary/examples)에서 확인할 수 있습니다.
 
@@ -126,9 +126,9 @@ Terminal
 pnpmnpmyarnbun
 
 Terminal
-[code]
+```
     pnpm create next-app --example "https://github.com/.../" [your-project-name]
-[/code]
+```
 
 supported.
 

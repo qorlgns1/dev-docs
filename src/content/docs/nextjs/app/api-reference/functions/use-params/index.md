@@ -18,7 +18,7 @@ Copy page
 app/example-client-component.tsx
 
 JavaScriptTypeScript
-[code]
+```
     'use client'
 
     import { useParams } from 'next/navigation'
@@ -33,12 +33,12 @@ JavaScriptTypeScript
 
       return '...'
     }
-[/code]
+```
 
 ## Parameters[](https://nextjs.org/docs/app/api-reference/functions/use-params#parameters)
-[code]
+```
     const params = useParams()
-[/code]
+```
 
 `useParams`는 어떠한 매개변수도 받지 않습니다.
 
