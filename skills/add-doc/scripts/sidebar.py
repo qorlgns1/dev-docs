@@ -21,7 +21,7 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import unquote, urlparse
 
 REPO_ROOT = Path(__file__).parent.parent.parent.parent
 REFS_DIR = Path(__file__).parent.parent / "references"
@@ -34,10 +34,14 @@ def url_to_slug(url: str, base_path: str, section: str) -> str | None:
     """절대 URL을 Starlight slug로 변환."""
     path = urlparse(url).path.rstrip("/")
     base = base_path.rstrip("/")
+    section_slug = section.strip().strip("/")
+
     if path == base:
-        return section
+        return section_slug
     if path.startswith(base + "/"):
-        return section + "/" + path[len(base) + 1:]
+        rel = path[len(base) + 1:]
+        rel_parts = [unquote(seg).strip() for seg in rel.split("/") if seg.strip()]
+        return "/".join([section_slug, *rel_parts]) if rel_parts else section_slug
     return None
 
 
