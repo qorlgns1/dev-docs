@@ -1,104 +1,100 @@
-# dev-doc-vault
+# dev-docs
 
-개인 기술 문서를 영어 원문 + 한국어 번역으로 보관하는 저장소입니다.
+개발자 도구의 공식 문서를 한국어로 번역해 제공하는 Astro Starlight 기반 문서 사이트입니다.
 
-## Directory Layout
+- 사이트: [docs.moodybeard.com](https://docs.moodybeard.com)
+- 기본 언어: 한국어 (루트 경로)
+- 영어: `/en/` 경로
+
+## 문서 구성
+
+| 섹션 | 원문 출처 | 한국어 경로 | 영어 경로 |
+|------|----------|------------|----------|
+| Codex | [developers.openai.com/codex](https://developers.openai.com/codex/) | `/codex/` | `/en/codex/` |
+| Next.js | [nextjs.org/docs](https://nextjs.org/docs) | `/nextjs/` | `/en/nextjs/` |
+
+## 디렉토리 구조
 
 ```text
-dev-doc-vault/
-  docs/
-    codex/
-      en/                 # 원문 Markdown
-      ko/                 # 한국어 Markdown
-  skills/
-    translate-docs-ko/
-      scripts/
-        translate_docs.py
-        translate_markdown_tree_codex.py
+dev-docs/
+├── src/content/docs/
+│   ├── index.md                  # 홈페이지
+│   ├── codex/                    # 한국어 Codex 문서
+│   ├── nextjs/                   # 한국어 Next.js 문서
+│   └── en/
+│       ├── codex/                # 영어 Codex 문서
+│       └── nextjs/               # 영어 Next.js 문서
+├── scripts/
+│   └── pipeline_codex_ko.py      # Codex 문서 동기화 파이프라인
+└── skills/
+    ├── translate-docs-ko/        # 문서 번역 스킬
+    └── sync-codex-ko/            # Codex KO 동기화 스킬
+```
+
+## 개발 환경
+
+```bash
+pnpm install
+pnpm dev       # http://localhost:4321
+pnpm build
 ```
 
 ## Prerequisites
-
-1. Python 3.12+
-2. Codex CLI 로그인 상태
 
 ```bash
 codex login
 python3 -m pip install --user -r skills/translate-docs-ko/scripts/requirements.txt
 ```
 
-## Usage
+## Codex 문서 동기화 파이프라인
 
-1. 원문 수집 (`docs/codex/en` 생성)
+`en/codex` 문서가 업데이트되면 아래 파이프라인으로 한국어 동기화, frontmatter 주입, 커밋/푸시까지 자동화합니다.
+
+```bash
+# 신규 파일만 번역
+python3 scripts/pipeline_codex_ko.py
+
+# 전체 재번역
+python3 scripts/pipeline_codex_ko.py --force
+
+# 5개 파일 테스트 (push 없음)
+python3 scripts/pipeline_codex_ko.py --limit 5 --no-push
+
+# 번역 스킵 — frontmatter 재처리 + commit만
+python3 scripts/pipeline_codex_ko.py --skip-translate
+```
+
+### 파이프라인 단계
+
+1. **번역** — Codex CLI로 `en/codex` → `codex` (한국어)
+2. **frontmatter** — title/description 자동 추출 및 주입
+3. **commit & push** — `origin/main` 자동 반영
+
+## Codex에서 호출
+
+Codex 대화에서 `$sync-codex-ko` 스킬로 바로 실행할 수 있습니다.
+
+```text
+$sync-codex-ko 를 사용해서 새로운 Codex 문서를 한국어로 동기화해줘.
+```
+
+강제 재번역:
+
+```text
+$sync-codex-ko --force 로 전체 Codex 문서를 재번역해줘.
+```
+
+## 영어 원문 수집 (신규 문서 추가 시)
 
 ```bash
 python3 skills/translate-docs-ko/scripts/translate_docs.py \
   --base-url https://developers.openai.com/codex/ \
-  --output-dir docs/codex \
+  --output-dir tmp/codex \
   --no-translate
 ```
 
-2. 한글 번역 (`docs/codex/ko` 생성)
+수집 후 `tmp/codex/en/` 파일을 `src/content/docs/en/codex/`로 이동하고 파이프라인을 실행합니다.
 
-```bash
-python3 skills/translate-docs-ko/scripts/translate_markdown_tree_codex.py \
-  --source-root docs/codex/en \
-  --dest-root docs/codex/ko \
-  --style natural \
-  --model gpt-5-codex \
-  --reasoning-effort high \
-  --max-chars 4000
-```
+## 배포
 
-## Use In Codex
-
-Codex 대화에서 아래처럼 요청하면 `translate-docs-ko` 스킬 흐름으로 바로 작업할 수 있습니다.
-
-예시 1: 전체 수집 + 번역
-
-```text
-$translate-docs-ko 를 사용해서 https://developers.openai.com/codex/ 전체를
-docs/codex/en, docs/codex/ko 구조로 갱신해줘.
-스타일은 자연스러운 한국어로 하고 코드/링크는 보존해줘.
-```
-
-예시 2: 일부만 빠르게 번역
-
-```text
-$translate-docs-ko 를 사용해서 docs/codex/en/codex/quickstart/index.md만
-한국어로 번역해서 docs/codex/ko/codex/quickstart/index.md에 반영해줘.
-```
-
-예시 3: 강제 재생성
-
-```text
-$translate-docs-ko 를 사용해서 docs/codex/en, docs/codex/ko를 --force 기준으로
-전체 재생성해줘.
-```
-
-## Refresh Existing Docs
-
-전체를 다시 생성하려면:
-
-```bash
-python3 skills/translate-docs-ko/scripts/translate_docs.py \
-  --base-url https://developers.openai.com/codex/ \
-  --output-dir docs/codex \
-  --no-translate \
-  --force
-
-python3 skills/translate-docs-ko/scripts/translate_markdown_tree_codex.py \
-  --source-root docs/codex/en \
-  --dest-root docs/codex/ko \
-  --style natural \
-  --model gpt-5-codex \
-  --reasoning-effort high \
-  --max-chars 4000 \
-  --force
-```
-
-## Notes
-
-1. 번역 실행 결과는 `docs/codex/ko/manifest-ko.json`에 기록됩니다.
-2. 원문 추출 결과는 `docs/codex/manifest.json`에 기록됩니다.
-3. 코드 블록/링크/경로/플래그는 보존하도록 설계되어 있습니다.
+Vercel에 자동 배포됩니다. `main` 브랜치에 push하면 [docs.moodybeard.com](https://docs.moodybeard.com)에 반영됩니다.
