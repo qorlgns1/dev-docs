@@ -1,6 +1,8 @@
 ---
 title: Review
 description: The review pane helps you understand what Codex changed, give targeted feedback, and decide what to keep.
+sidebar:
+  order: 4
 ---
 
 # Review

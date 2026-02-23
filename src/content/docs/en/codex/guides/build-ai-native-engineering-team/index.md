@@ -1,6 +1,8 @@
 ---
 title: Building an AI-Native Engineering Team
 description: AI models are rapidly expanding the range of tasks they can perform, with significant implications for engineering. Frontier systems now sustain multi...
+sidebar:
+  order: 3
 ---
 
 # Building an AI-Native Engineering Team

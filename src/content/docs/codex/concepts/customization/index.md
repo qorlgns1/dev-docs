@@ -1,6 +1,8 @@
 ---
 title: 맞춤화
 description: 맞춤화는 Codex가 팀의 작업 방식에 맞춰 작동하도록 만드는 방법입니다.
+sidebar:
+  order: 1
 ---
 
 # 맞춤화

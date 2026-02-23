@@ -1,6 +1,8 @@
 ---
 title: Codex 앱 기능
 description: Codex 앱은 Codex 스레드를 병렬로 작업할 수 있도록 설계된 집중형 데스크톱 환경으로, 기본 제공 worktree 지원, 자동화, Git 기능을 제공합니다.
+sidebar:
+  order: 2
 ---
 
 # Codex 앱 기능

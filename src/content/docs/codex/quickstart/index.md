@@ -1,6 +1,8 @@
 ---
 title: 빠른 시작
 description: ChatGPT Plus, Pro, Business, Edu, 그리고 Enterprise 요금제에는 Codex가 포함됩니다. ChatGPT 구독과 함께 Codex를 사용하면 최신 Codex 모델과 기능에 접근할 수 있습니다.
+sidebar:
+  order: 3
 ---
 
 # 빠른 시작

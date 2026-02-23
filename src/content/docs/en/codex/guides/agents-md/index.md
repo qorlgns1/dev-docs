@@ -1,6 +1,8 @@
 ---
 title: Custom instructions with AGENTS.md
 description: Codex reads  files before doing any work. By layering global guidance with project-specific overrides, you can start each task with consistent expecta...
+sidebar:
+  order: 1
 ---
 
 # Custom instructions with AGENTS.md

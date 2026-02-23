@@ -1,6 +1,8 @@
 ---
 title: Codex CLI
 description: "출처 URL: https://developers.openai.com/codex/cli"
+sidebar:
+  order: 22
 ---
 
 # Codex CLI

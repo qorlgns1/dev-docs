@@ -1,6 +1,8 @@
 ---
 title: Automations
 description: Automate recurring tasks in the background. Codex adds findings to the inbox, or automatically archives the task if there’s nothing to report. You can...
+sidebar:
+  order: 5
 ---
 
 # Automations

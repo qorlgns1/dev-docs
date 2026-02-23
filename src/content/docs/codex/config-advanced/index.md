@@ -1,6 +1,8 @@
 ---
 title: 고급 구성
 description: 제공업체, 정책, 통합을 더 세밀하게 제어해야 할 때 이 옵션을 사용하세요. 빠른 시작은 Config basics를 참고하세요.
+sidebar:
+  order: 31
 ---
 
 # 고급 구성

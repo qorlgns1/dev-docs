@@ -1,6 +1,8 @@
 ---
 title: Codex 밋업
 description: "출처 URL: https://developers.openai.com/codex/community/meetups"
+sidebar:
+  order: 1
 ---
 
 # Codex 밋업

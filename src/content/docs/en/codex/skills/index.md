@@ -1,6 +1,8 @@
 ---
 title: Agent Skills
 description: Use agent skills to extend Codex with task-specific capabilities. A skill packages instructions, resources, and optional scripts so Codex can follow a...
+sidebar:
+  order: 37
 ---
 
 # Agent Skills

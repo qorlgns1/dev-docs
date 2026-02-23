@@ -1,9 +1,11 @@
 ---
-title: Codex 가격
+title: 가격
 description: "출처 URL: https://developers.openai.com/codex/pricing"
+sidebar:
+  order: 5
 ---
 
-# Codex 가격
+# 가격
 
 출처 URL: https://developers.openai.com/codex/pricing
 

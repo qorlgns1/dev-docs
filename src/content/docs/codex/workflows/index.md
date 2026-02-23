@@ -1,6 +1,8 @@
 ---
 title: 워크플로우
 description: "Codex는 명시적인 컨텍스트와 명확한 '완료' 정의를 갖춘 팀원처럼 대할 때 가장 잘 작동합니다. 이 페이지는 Codex IDE 확장, Codex CLI, Codex Cloud에 대한 엔드투엔드 워크플로우 예시를 제공합니다."
+sidebar:
+  order: 8
 ---
 
 # 워크플로우

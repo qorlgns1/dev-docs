@@ -1,6 +1,8 @@
 ---
 title: Codex 앱
 description: "소스 URL: https://developers.openai.com/codex/app"
+sidebar:
+  order: 20
 ---
 
 # Codex 앱

@@ -1,6 +1,8 @@
 ---
 title: 리뷰
 description: "원본 URL: https://developers.openai.com/codex/app/review"
+sidebar:
+  order: 4
 ---
 
 # 리뷰

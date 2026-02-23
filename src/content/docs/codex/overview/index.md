@@ -1,6 +1,8 @@
 ---
 title: Codex
 description: "Codex는 소프트웨어 개발을 위한 OpenAI의 코딩 에이전트입니다. ChatGPT Plus, Pro, Business, Edu, 그리고 Enterprise 플랜에 Codex가 포함되어 있습니다. Codex는 다음과 같은 작업을 도와줄 수 있습니다:"
+sidebar:
+  order: 2
 ---
 
 # Codex

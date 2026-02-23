@@ -1,6 +1,8 @@
 ---
 title: Agents SDK와 함께 Codex 사용
 description: "출처 URL: https://developers.openai.com/codex/guides/agents-sdk"
+sidebar:
+  order: 2
 ---
 
 # Agents SDK와 함께 Codex 사용

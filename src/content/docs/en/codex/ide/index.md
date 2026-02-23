@@ -1,6 +1,8 @@
 ---
 title: Codex IDE extension
 description: Codex is OpenAI’s coding agent that can read, edit, and run code. It helps you build faster, squash bugs, and understand unfamiliar code. With the Cod...
+sidebar:
+  order: 21
 ---
 
 # Codex IDE extension

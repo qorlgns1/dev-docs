@@ -1,6 +1,8 @@
 ---
 title: Codex Models
 description: Most capable agentic coding model to date, combining frontier coding performance with stronger reasoning and professional knowledge capabilities.
+sidebar:
+  order: 9
 ---
 
 # Codex Models

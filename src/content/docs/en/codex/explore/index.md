@@ -1,6 +1,8 @@
 ---
 title: Explore
 description: Find and fix bugs in my codebase with minimal, high-confidence changes.Propose and implement one high-leverage viral feature for my app.Create a dashb...
+sidebar:
+  order: 4
 ---
 
 # Explore

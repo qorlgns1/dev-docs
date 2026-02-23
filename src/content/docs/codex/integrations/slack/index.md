@@ -1,6 +1,8 @@
 ---
 title: Slack에서 Codex 사용하기
 description: Slack 채널과 스레드에서 코딩 작업을 시작하려면 Codex를 사용하세요. 를 멘션하고 프롬프트를 입력하면 Codex가 클라우드 작업을 생성하고 결과로 응답합니다.
+sidebar:
+  order: 2
 ---
 
 # Slack에서 Codex 사용하기

@@ -1,6 +1,8 @@
 ---
 title: 오픈 소스
 description: OpenAI는 Codex의 핵심 부분을 공개적으로 개발합니다. 해당 작업은 GitHub에 공개되어 있어 진행 상황을 따르고, 이슈를 보고하고, 개선 사항을 기여할 수 있습니다.
+sidebar:
+  order: 82
 ---
 
 # 오픈 소스

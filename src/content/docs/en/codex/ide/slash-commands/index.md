@@ -1,6 +1,8 @@
 ---
 title: Codex IDE extension slash commands
 description: Slash commands let you control Codex without leaving the chat input. Use them to check status, switch between local and cloud mode, or send feedback.
+sidebar:
+  order: 5
 ---
 
 # Codex IDE extension slash commands

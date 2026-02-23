@@ -1,6 +1,8 @@
 ---
 title: Codex app features
 description: The Codex app is a focused desktop experience for working on Codex threads in parallel, with built-in worktree support, automations, and Git functiona...
+sidebar:
+  order: 2
 ---
 
 # Codex app features

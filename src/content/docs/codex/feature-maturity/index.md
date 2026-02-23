@@ -1,6 +1,8 @@
 ---
 title: 기능 성숙도
 description: "출처 URL: https://developers.openai.com/codex/feature-maturity"
+sidebar:
+  order: 81
 ---
 
 # 기능 성숙도

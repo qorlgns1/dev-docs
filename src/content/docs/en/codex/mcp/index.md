@@ -1,6 +1,8 @@
 ---
 title: Model Context Protocol
 description: Model Context Protocol (MCP) connects models to tools and context. Use it to give Codex access to third-party documentation, or to let it interact wit...
+sidebar:
+  order: 36
 ---
 
 # Model Context Protocol

@@ -1,6 +1,8 @@
 ---
 title: Use Codex in Slack
 description: Use Codex in Slack to kick off coding tasks from channels and threads. Mention  with a prompt, and Codex creates a cloud task and replies with the res...
+sidebar:
+  order: 2
 ---
 
 # Use Codex in Slack

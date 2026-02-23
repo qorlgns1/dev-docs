@@ -1,6 +1,8 @@
 ---
 title: Codex 모델
 description: "출처 URL: https://developers.openai.com/codex/models"
+sidebar:
+  order: 9
 ---
 
 # Codex 모델

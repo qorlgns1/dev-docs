@@ -1,6 +1,8 @@
 ---
 title: Codex 앰배서더
 description: "출처 URL: https://developers.openai.com/codex/ambassadors"
+sidebar:
+  order: 70
 ---
 
 # Codex 앰배서더

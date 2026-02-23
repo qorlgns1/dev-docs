@@ -1,6 +1,8 @@
 ---
 title: Cloud environments
 description: Use environments to control what Codex installs and runs during cloud tasks. For example, you can add dependencies, install tools like linters and for...
+sidebar:
+  order: 2
 ---
 
 # Cloud environments

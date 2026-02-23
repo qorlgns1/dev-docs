@@ -1,6 +1,8 @@
 ---
 title: Codex 앱 명령어
 description: 이 명령어와 키보드 단축키를 사용해 Codex 앱을 탐색하세요.
+sidebar:
+  order: 8
 ---
 
 # Codex 앱 명령어

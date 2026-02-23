@@ -1,6 +1,8 @@
 ---
 title: Codex Meetups
 description: LocationAll locations
+sidebar:
+  order: 1
 ---
 
 # Codex Meetups

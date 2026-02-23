@@ -1,6 +1,8 @@
 ---
 title: Codex IDE 확장 프로그램
 description: Codex는 코드를 읽고, 편집하고, 실행할 수 있는 OpenAI의 코딩 에이전트입니다. 개발 속도를 높이고 버그를 없애며, 익숙하지 않은 코드를 이해하도록 도와줍니다. Codex VS Code 확장 프로그램을 사용하면 IDE에서 Codex와 나란히 작업하거나 Code...
+sidebar:
+  order: 21
 ---
 
 # Codex IDE 확장 프로그램

@@ -1,6 +1,8 @@
 ---
 title: Authentication
 description: "Codex supports two ways to sign in when using OpenAI models:"
+sidebar:
+  order: 40
 ---
 
 # Authentication

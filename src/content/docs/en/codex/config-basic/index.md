@@ -1,6 +1,8 @@
 ---
 title: Config basics
 description: Codex reads configuration details from more than one location. Your personal defaults live in , and you can add project overrides with  files. For sec...
+sidebar:
+  order: 30
 ---
 
 # Config basics

@@ -1,6 +1,8 @@
 ---
 title: Codex SDK
 description: If you use Codex through the Codex CLI, the IDE extension, or Codex Web, you can also control it programmatically.
+sidebar:
+  order: 51
 ---
 
 # Codex SDK

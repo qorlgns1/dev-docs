@@ -1,6 +1,8 @@
 ---
 title: Codex app commands
 description: Use these commands and keyboard shortcuts to navigate the Codex app.
+sidebar:
+  order: 8
 ---
 
 # Codex app commands

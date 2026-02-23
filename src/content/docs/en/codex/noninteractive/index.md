@@ -1,6 +1,8 @@
 ---
 title: Non-interactive mode
 description: Non-interactive mode lets you run Codex from scripts (for example, continuous integration (CI) jobs) without opening the interactive TUI. You invoke i...
+sidebar:
+  order: 50
 ---
 
 # Non-interactive mode

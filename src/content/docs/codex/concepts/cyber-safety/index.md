@@ -1,6 +1,8 @@
 ---
 title: 사이버 안전
 description: "출처 URL: https://developers.openai.com/codex/concepts/cyber-safety"
+sidebar:
+  order: 3
 ---
 
 # 사이버 안전

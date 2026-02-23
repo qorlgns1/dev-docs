@@ -1,6 +1,8 @@
 ---
 title: 자동화
 description: "원본 URL: https://developers.openai.com/codex/app/automations"
+sidebar:
+  order: 5
 ---
 
 # 자동화

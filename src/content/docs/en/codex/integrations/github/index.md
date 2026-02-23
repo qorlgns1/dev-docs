@@ -1,6 +1,8 @@
 ---
 title: Use Codex in GitHub
 description: Use Codex to review pull requests without leaving GitHub. Add a pull request comment with , and Codex replies with a standard GitHub code review.
+sidebar:
+  order: 1
 ---
 
 # Use Codex in GitHub

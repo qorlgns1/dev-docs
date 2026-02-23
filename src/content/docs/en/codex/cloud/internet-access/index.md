@@ -1,6 +1,8 @@
 ---
 title: Agent internet access
 description: By default, Codex blocks internet access during the agent phase. Setup scripts still run with internet access so you can install dependencies. You can...
+sidebar:
+  order: 3
 ---
 
 # Agent internet access

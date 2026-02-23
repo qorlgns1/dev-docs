@@ -1,6 +1,8 @@
 ---
 title: Codex
 description: "Codex is OpenAI’s coding agent for software development. ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. It can help you:"
+sidebar:
+  order: 1
 ---
 
 # Codex

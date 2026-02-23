@@ -1,6 +1,8 @@
 ---
 title: Codex Ambassadors
 description: Codex is rapidly becoming one of the most powerful ways to build, driven by builders who share real-world workflows and lessons with each other.
+sidebar:
+  order: 70
 ---
 
 # Codex Ambassadors

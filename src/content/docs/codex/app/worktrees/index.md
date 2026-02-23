@@ -1,6 +1,8 @@
 ---
 title: 워크트리
 description: "원본 URL: https://developers.openai.com/codex/app/worktrees"
+sidebar:
+  order: 6
 ---
 
 # 워크트리

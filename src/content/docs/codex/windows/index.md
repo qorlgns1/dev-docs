@@ -1,6 +1,8 @@
 ---
 title: Windows
 description: "출처 URL: https://developers.openai.com/codex/windows"
+sidebar:
+  order: 43
 ---
 
 # Windows

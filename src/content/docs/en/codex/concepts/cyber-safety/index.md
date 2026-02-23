@@ -1,6 +1,8 @@
 ---
 title: Cyber Safety
 description: GPT-5.3-Codex is the first model we are treating as High cybersecurity capability under our Preparedness Framework, which requires additional safeguar...
+sidebar:
+  order: 3
 ---
 
 # Cyber Safety

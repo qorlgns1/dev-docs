@@ -1,6 +1,8 @@
 ---
 title: Advanced Configuration
 description: Use these options when you need more control over providers, policies, and integrations. For a quick start, see Config basics.
+sidebar:
+  order: 31
 ---
 
 # Advanced Configuration

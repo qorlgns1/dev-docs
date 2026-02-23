@@ -1,6 +1,8 @@
 ---
 title: 규칙
 description: "원본 URL: https://developers.openai.com/codex/rules"
+sidebar:
+  order: 34
 ---
 
 # 규칙

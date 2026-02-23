@@ -1,6 +1,8 @@
 ---
 title: Admin Setup
 description: This guide is for ChatGPT Enterprise admins who want to set up Codex for their workspace.
+sidebar:
+  order: 1
 ---
 
 # Admin Setup

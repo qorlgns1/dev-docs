@@ -1,6 +1,8 @@
 ---
 title: 관리자 설정
 description: 이 가이드는 워크스페이스에서 Codex를 설정하려는 ChatGPT Enterprise 관리자용입니다.
+sidebar:
+  order: 1
 ---
 
 # 관리자 설정

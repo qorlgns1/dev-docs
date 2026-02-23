@@ -1,6 +1,8 @@
 ---
 title: Multi-agents
 description: Codex can run multi-agent workflows by spawning specialized agents in parallel and then collecting their results in one response. This can be particul...
+sidebar:
+  order: 10
 ---
 
 # Multi-agents

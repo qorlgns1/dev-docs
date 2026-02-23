@@ -1,6 +1,8 @@
 ---
 title: Codex GitHub Action
 description: Use the Codex GitHub Action () to run Codex in CI/CD jobs, apply patches, or post reviews from a GitHub Actions workflow. The action installs the Code...
+sidebar:
+  order: 53
 ---
 
 # Codex GitHub Action

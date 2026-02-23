@@ -1,6 +1,8 @@
 ---
 title: Local environments
 description: Local environments let you configure setup steps for worktrees as well as common actions for a project.
+sidebar:
+  order: 7
 ---
 
 # Local environments

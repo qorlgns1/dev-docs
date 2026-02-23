@@ -1,6 +1,8 @@
 ---
 title: Command line options
 description: This page catalogs every documented Codex CLI command and flag. Use the interactive tables to search by key or description. Each section indicates whe...
+sidebar:
+  order: 3
 ---
 
 # Command line options

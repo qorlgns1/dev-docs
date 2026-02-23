@@ -1,6 +1,8 @@
 ---
 title: 클라우드 환경
 description: "출처 URL: https://developers.openai.com/codex/cloud/environments"
+sidebar:
+  order: 2
 ---
 
 # 클라우드 환경

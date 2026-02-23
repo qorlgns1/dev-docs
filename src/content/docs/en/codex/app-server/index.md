@@ -1,6 +1,8 @@
 ---
 title: Codex App Server
 description: Codex app-server is the interface Codex uses to power rich clients (for example, the Codex VS Code extension). Use it when you want a deep integration...
+sidebar:
+  order: 52
 ---
 
 # Codex App Server

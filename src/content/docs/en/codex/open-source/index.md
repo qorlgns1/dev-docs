@@ -1,6 +1,8 @@
 ---
 title: Open Source
 description: OpenAI develops key parts of Codex in the open. That work lives on GitHub so you can follow progress, report issues, and contribute improvements.
+sidebar:
+  order: 82
 ---
 
 # Open Source

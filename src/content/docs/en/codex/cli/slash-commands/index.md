@@ -1,6 +1,8 @@
 ---
 title: Slash commands in Codex CLI
 description: Slash commands give you fast, keyboard-first control over Codex. Type  in the composer to open the slash popup, choose a command, and Codex will perfo...
+sidebar:
+  order: 4
 ---
 
 # Slash commands in Codex CLI

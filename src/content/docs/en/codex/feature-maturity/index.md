@@ -1,6 +1,8 @@
 ---
 title: Feature Maturity
 description: Some Codex features ship behind a maturity label so you can understand how reliable each one is, what might change, and what level of support to expec...
+sidebar:
+  order: 81
 ---
 
 # Feature Maturity

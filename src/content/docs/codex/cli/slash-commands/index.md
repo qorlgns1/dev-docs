@@ -1,6 +1,8 @@
 ---
 title: Codex CLI의 슬래시 명령
 description: "출처 URL: https://developers.openai.com/codex/cli/slash-commands"
+sidebar:
+  order: 4
 ---
 
 # Codex CLI의 슬래시 명령

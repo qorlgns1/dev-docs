@@ -1,6 +1,8 @@
 ---
 title: Workflows
 description: Codex works best when you treat it like a teammate with explicit context and a clear definition of “done.” This page gives end-to-end workflow example...
+sidebar:
+  order: 8
 ---
 
 # Workflows

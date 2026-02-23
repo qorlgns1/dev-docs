@@ -1,6 +1,8 @@
 ---
 title: Codex IDE 확장 명령
 description: "출처 URL: https://developers.openai.com/codex/ide/commands"
+sidebar:
+  order: 4
 ---
 
 # Codex IDE 확장 명령

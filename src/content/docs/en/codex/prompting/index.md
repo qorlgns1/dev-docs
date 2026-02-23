@@ -1,6 +1,8 @@
 ---
 title: Prompting
 description: You interact with Codex by sending prompts (user messages) that describe what you want it to do.
+sidebar:
+  order: 7
 ---
 
 # Prompting

@@ -1,6 +1,8 @@
 ---
 title: 탐색
 description: "소스 URL: https://developers.openai.com/codex/explore"
+sidebar:
+  order: 4
 ---
 
 # 탐색

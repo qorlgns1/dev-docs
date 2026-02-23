@@ -1,6 +1,8 @@
 ---
 title: Codex 앱 서버
 description: "Codex app-server는 Codex가 풍부한 클라이언트를 구동할 때 사용하는 인터페이스입니다(예: Codex VS Code 확장). 인증, 대화 기록, 승인, 스트리밍 에이전트 이벤트까지 포함한 깊은 제품 내 통합이 필요할 때 사용하세요. app-server 구..."
+sidebar:
+  order: 52
 ---
 
 # Codex 앱 서버

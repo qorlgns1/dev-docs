@@ -1,6 +1,8 @@
 ---
 title: Rules
 description: Use rules to control which commands Codex can run outside the sandbox.
+sidebar:
+  order: 34
 ---
 
 # Rules

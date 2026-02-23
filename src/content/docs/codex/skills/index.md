@@ -1,6 +1,8 @@
 ---
 title: 에이전트 스킬
 description: "출처 URL: https://developers.openai.com/codex/skills"
+sidebar:
+  order: 37
 ---
 
 # 에이전트 스킬

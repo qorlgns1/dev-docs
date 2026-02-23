@@ -1,6 +1,8 @@
 ---
 title: Use Codex with the Agents SDK
 description: You can run Codex as an MCP server and connect it from other MCP clients (for example, an agent built with the OpenAI Agents SDK).
+sidebar:
+  order: 2
 ---
 
 # Use Codex with the Agents SDK

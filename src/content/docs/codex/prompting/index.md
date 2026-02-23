@@ -1,6 +1,8 @@
 ---
 title: 프롬프트 작성
 description: 프롬프트(사용자 메시지)를 보내 원하는 작업을 설명하면 Codex와 상호작용할 수 있습니다.
+sidebar:
+  order: 7
 ---
 
 # 프롬프트 작성

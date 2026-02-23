@@ -1,6 +1,8 @@
 ---
 title: Codex IDE 확장 기능
 description: "출처 URL: https://developers.openai.com/codex/ide/features"
+sidebar:
+  order: 2
 ---
 
 # Codex IDE 확장 기능

@@ -1,6 +1,8 @@
 ---
 title: Troubleshooting
 description: If your project is inside a Git repository, the review panel automatically shows changes based on your project’s Git state, including changes that Cod...
+sidebar:
+  order: 9
 ---
 
 # Troubleshooting

@@ -1,6 +1,8 @@
 ---
 title: Codex CLI
 description: Codex CLI is OpenAI’s coding agent that you can run locally from your terminal. It can read, change, and run code on your machine in the selected dire...
+sidebar:
+  order: 22
 ---
 
 # Codex CLI

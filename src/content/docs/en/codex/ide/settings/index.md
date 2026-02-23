@@ -1,6 +1,8 @@
 ---
 title: Codex IDE extension settings
 description: Use these settings to customize the Codex IDE extension.
+sidebar:
+  order: 3
 ---
 
 # Codex IDE extension settings

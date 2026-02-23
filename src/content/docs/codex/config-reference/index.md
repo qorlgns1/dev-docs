@@ -1,6 +1,8 @@
 ---
 title: Configuration Reference
 description: Codex 구성 파일에 대한 검색 가능한 참고 자료로 이 페이지를 활용하세요. 개념적 안내와 예제는 Config basics와 Advanced Config에서 시작하세요.
+sidebar:
+  order: 32
 ---
 
 # Configuration Reference

@@ -1,6 +1,8 @@
 ---
 title: Codex GitHub 액션
 description: "출처 URL: https://developers.openai.com/codex/github-action"
+sidebar:
+  order: 53
 ---
 
 # Codex GitHub 액션

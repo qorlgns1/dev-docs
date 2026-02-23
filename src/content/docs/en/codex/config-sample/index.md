@@ -1,6 +1,8 @@
 ---
 title: Sample Configuration
 description: Use this example configuration as a starting point. It includes most keys Codex reads from , along with defaults and short notes.
+sidebar:
+  order: 33
 ---
 
 # Sample Configuration

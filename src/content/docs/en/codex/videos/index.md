@@ -1,6 +1,8 @@
 ---
 title: Videos
 description: Resources  Cookbook  Blog
+sidebar:
+  order: 60
 ---
 
 # Videos

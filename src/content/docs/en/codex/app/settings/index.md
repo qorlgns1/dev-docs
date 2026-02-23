@@ -1,6 +1,8 @@
 ---
 title: Codex app settings
 description: Use the settings panel to tune how the Codex app behaves, how it opens files, and how it connects to tools. Open Settings from the app menu or press +...
+sidebar:
+  order: 3
 ---
 
 # Codex app settings

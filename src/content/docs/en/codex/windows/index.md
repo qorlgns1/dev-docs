@@ -1,6 +1,8 @@
 ---
 title: Windows
 description: The easiest way to use Codex on Windows is to set up the IDE extension or install the CLI and run it from PowerShell.
+sidebar:
+  order: 43
 ---
 
 # Windows

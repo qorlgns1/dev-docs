@@ -1,6 +1,8 @@
 ---
 title: 보안
 description: Codex는 코드와 데이터를 보호하고 오용 위험을 낮추는 데 도움을 줍니다.
+sidebar:
+  order: 41
 ---
 
 # 보안

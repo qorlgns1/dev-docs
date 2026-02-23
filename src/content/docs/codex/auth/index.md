@@ -1,6 +1,8 @@
 ---
 title: 인증
 description: "원본 URL: https://developers.openai.com/codex/auth"
+sidebar:
+  order: 40
 ---
 
 # 인증

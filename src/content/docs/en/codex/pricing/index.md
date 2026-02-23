@@ -1,9 +1,11 @@
 ---
-title: Codex Pricing
+title: Pricing
 description: For a limited time, try Codex for free in ChatGPT Free and Go , or enjoy 2x Codex rate limits with Plus, Pro, Business and Enterprise subscriptions.
+sidebar:
+  order: 5
 ---
 
-# Codex Pricing
+# Pricing
 
 Source URL: https://developers.openai.com/codex/pricing
 

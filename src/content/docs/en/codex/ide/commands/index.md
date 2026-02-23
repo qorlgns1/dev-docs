@@ -1,6 +1,8 @@
 ---
 title: Codex IDE extension commands
 description: Use these commands to control Codex from the VS Code Command Palette. You can also bind them to keyboard shortcuts.
+sidebar:
+  order: 4
 ---
 
 # Codex IDE extension commands

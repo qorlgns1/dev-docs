@@ -1,6 +1,8 @@
 ---
 title: Codex IDE 확장 설정
 description: Codex IDE 확장을 맞춤 설정하려면 다음 설정을 사용하세요.
+sidebar:
+  order: 3
 ---
 
 # Codex IDE 확장 설정

@@ -1,6 +1,8 @@
 ---
 title: Linear에서 Codex 사용
 description: "원본 URL: https://developers.openai.com/codex/integrations/linear"
+sidebar:
+  order: 3
 ---
 
 # Linear에서 Codex 사용

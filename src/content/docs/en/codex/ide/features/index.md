@@ -1,6 +1,8 @@
 ---
 title: Codex IDE extension features
 description: The Codex IDE extension gives you access to Codex directly in VS Code, Cursor, Windsurf, and other VS Code-compatible editors. It uses the same agent...
+sidebar:
+  order: 2
 ---
 
 # Codex IDE extension features

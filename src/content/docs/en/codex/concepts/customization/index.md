@@ -1,6 +1,8 @@
 ---
 title: Customization
 description: Customization is how you make Codex work the way your team works.
+sidebar:
+  order: 1
 ---
 
 # Customization

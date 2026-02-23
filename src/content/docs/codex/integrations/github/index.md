@@ -1,6 +1,8 @@
 ---
 title: GitHub에서 Codex 사용
 description: GitHub를 벗어나지 않고도 Codex로 풀 리퀘스트를 리뷰할 수 있습니다. 풀 리퀘스트 댓글에 를 추가하면 Codex가 표준 GitHub 코드 리뷰로 응답합니다.
+sidebar:
+  order: 1
 ---
 
 # GitHub에서 Codex 사용

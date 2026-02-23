@@ -1,6 +1,8 @@
 ---
 title: Use Codex in Linear
 description: Use Codex in Linear to delegate work from issues. Assign an issue to Codex or mention  in a comment, and Codex creates a cloud task and replies with p...
+sidebar:
+  order: 3
 ---
 
 # Use Codex in Linear

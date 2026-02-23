@@ -1,6 +1,8 @@
 ---
 title: Codex CLI 기능
 description: Codex는 채팅을 넘어서는 워크플로우를 지원합니다. 각 워크플로우가 어떤 기능을 제공하고 언제 사용해야 하는지 알아보려면 이 가이드를 참고하세요.
+sidebar:
+  order: 2
 ---
 
 # Codex CLI 기능

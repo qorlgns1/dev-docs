@@ -1,6 +1,8 @@
 ---
 title: Configuration Reference
 description: Use this page as a searchable reference for Codex configuration files. For conceptual guidance and examples, start with Config basics and Advanced Con...
+sidebar:
+  order: 32
 ---
 
 # Configuration Reference

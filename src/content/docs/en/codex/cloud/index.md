@@ -1,6 +1,8 @@
 ---
 title: Codex web
 description: Codex is OpenAI’s coding agent that can read, edit, and run code. It helps you build faster, fix bugs, and understand unfamiliar code. With Codex clou...
+sidebar:
+  order: 23
 ---
 
 # Codex web

@@ -1,6 +1,8 @@
 ---
 title: Worktrees
 description: In the Codex app, worktrees let Codex run multiple independent tasks in the same project without interfering with each other. For Git repositories, au...
+sidebar:
+  order: 6
 ---
 
 # Worktrees

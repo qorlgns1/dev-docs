@@ -1,6 +1,8 @@
 ---
 title: Codex SDK
 description: "출처 URL: https://developers.openai.com/codex/sdk"
+sidebar:
+  order: 51
 ---
 
 # Codex SDK

@@ -1,6 +1,8 @@
 ---
 title: 로컬 환경
 description: "소스 URL: https://developers.openai.com/codex/app/local-environments"
+sidebar:
+  order: 7
 ---
 
 # 로컬 환경

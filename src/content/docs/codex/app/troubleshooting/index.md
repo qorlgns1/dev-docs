@@ -1,6 +1,8 @@
 ---
 title: 문제 해결
 description: "원본 URL: https://developers.openai.com/codex/app/troubleshooting"
+sidebar:
+  order: 9
 ---
 
 # 문제 해결

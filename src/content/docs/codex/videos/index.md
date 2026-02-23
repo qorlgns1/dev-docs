@@ -1,6 +1,8 @@
 ---
 title: 비디오
 description: Resources  Cookbook  Blog
+sidebar:
+  order: 60
 ---
 
 # 비디오

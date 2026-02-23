@@ -1,6 +1,8 @@
 ---
 title: Quickstart
 description: ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Using Codex with your ChatGPT subscription gives you access to the latest Codex...
+sidebar:
+  order: 3
 ---
 
 # Quickstart

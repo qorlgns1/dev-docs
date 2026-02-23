@@ -1,6 +1,8 @@
 ---
 title: Codex CLI features
 description: Codex supports workflows beyond chat. Use this guide to learn what each one unlocks and when to use it.
+sidebar:
+  order: 2
 ---
 
 # Codex CLI features

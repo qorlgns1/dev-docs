@@ -1,6 +1,8 @@
 ---
 title: Codex changelog
 description: $ npm install -g @openai/codex@0.104.0
+sidebar:
+  order: 80
 ---
 
 # Codex changelog

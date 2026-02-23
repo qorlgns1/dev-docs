@@ -1,6 +1,8 @@
 ---
 title: Custom Prompts
 description: Custom prompts are deprecated. Use skills for reusable instructions that Codex can invoke explicitly or implicitly.
+sidebar:
+  order: 38
 ---
 
 # Custom Prompts

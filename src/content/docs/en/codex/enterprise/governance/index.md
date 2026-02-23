@@ -1,6 +1,8 @@
 ---
 title: Governance
 description: Codex gives enterprise teams visibility into adoption and impact, plus the auditability needed for security and compliance programs. Use the self-serv...
+sidebar:
+  order: 2
 ---
 
 # Governance

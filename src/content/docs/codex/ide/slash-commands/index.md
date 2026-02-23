@@ -1,6 +1,8 @@
 ---
 title: Codex IDE 확장 슬래시 명령어
 description: "출처 URL: https://developers.openai.com/codex/ide/slash-commands"
+sidebar:
+  order: 5
 ---
 
 # Codex IDE 확장 슬래시 명령어

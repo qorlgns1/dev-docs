@@ -1,6 +1,8 @@
 ---
 title: Codex 앱 설정
 description: "소스 URL: https://developers.openai.com/codex/app/settings"
+sidebar:
+  order: 3
 ---
 
 # Codex 앱 설정

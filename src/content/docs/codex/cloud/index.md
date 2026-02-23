@@ -1,6 +1,8 @@
 ---
 title: Codex 웹
 description: "원본 URL: https://developers.openai.com/codex/cloud"
+sidebar:
+  order: 23
 ---
 
 # Codex 웹
