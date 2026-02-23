@@ -17,9 +17,9 @@ Use the bundled script for full-site sections and repeatable localization tasks.
 - Use `--urls-file` for mixed sources or curated lists.
 2. Run the script and write English/Korean Markdown trees.
 - Export English Markdown first:
-  - `python3 scripts/translate_docs.py --base-url <url> --output-dir <dir> --no-translate`
+  - `python3 scripts/translate_docs.py --base-url {base_url} --output-dir {output_dir} --no-translate`
 - Translate Markdown tree with Codex CLI (no API key):
-  - `python3 scripts/translate_markdown_tree_codex.py --source-root <dir>/en --dest-root <dir>/ko --style natural`
+  - `python3 scripts/translate_markdown_tree_codex.py --source-root {source_root} --dest-root {dest_root} --style natural`
 3. Review quality and terminology.
 - Load `references/style-guide.md` and apply wording consistency.
 - Check headings, lists, tables, links, and fenced code blocks for formatting regressions.
@@ -32,14 +32,14 @@ Use the bundled script for full-site sections and repeatable localization tasks.
 ```bash
 # Export /codex/* from sitemap (English source tree)
 python3 scripts/translate_docs.py \
-  --base-url https://developers.openai.com/codex/ \
-  --output-dir docs/codex \
+  --base-url {base_url} \
+  --output-dir {output_dir} \
   --no-translate
 
 # Translate to Korean with Codex CLI and write ko tree
 python3 scripts/translate_markdown_tree_codex.py \
-  --source-root docs/codex/en \
-  --dest-root docs/codex/ko \
+  --source-root {source_root} \
+  --dest-root {dest_root} \
   --style natural
 ```
 
