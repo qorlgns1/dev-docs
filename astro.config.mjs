@@ -7,6 +7,9 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'dev-docs',
+			components: {
+				Head: './src/components/Head.astro',
+			},
 			head: [
 				{
 					tag: 'script',
