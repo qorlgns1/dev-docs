@@ -1,13 +1,11 @@
 ---
-title: Codex
-description: "Codex is OpenAI’s coding agent for software development. ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. It can help you:"
-sidebar:
-  order: 1
+title: 'Codex'
+description: 'Codex is OpenAI’s coding agent for software development. ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. It can help you:'
 ---
 
-# Codex
-
 Source URL: https://developers.openai.com/codex
+
+# Codex
 
 Codex is OpenAI’s coding agent for software development. ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. It can help you:
 
@@ -21,9 +19,11 @@ Codex is OpenAI’s coding agent for software development. ChatGPT Plus, Pro, Bu
 
   * **Automate development tasks** : Codex can run repetitive workflows such as refactoring, testing, migrations, and setup tasks so you can focus on higher-level engineering work.
 
-
-
-
 [ Get started with Codex ](https://developers.openai.com/codex/quickstart)
 
-### [ Quickstart  Download and start building with Codex.  Get started  ](https://developers.openai.com/codex/quickstart)### [ Explore  Get inspirations on what you can build with Codex.  Learn more  ](https://developers.openai.com/codex/explore)### [ Community  Explore Codex Ambassadors and upcoming community meetups by location.  See community  ](https://developers.openai.com/codex/community/meetups)
+- [Quickstart  Download and start building with Codex.  Get started](https://developers.openai.com/codex/quickstart)
+
+- [Explore  Get inspirations on what you can build with Codex.  Learn more](https://developers.openai.com/codex/explore)
+
+- [Community  Explore Codex Ambassadors and upcoming community meetups by location.  See community](https://developers.openai.com/codex/community/meetups)
+

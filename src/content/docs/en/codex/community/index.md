@@ -1,8 +1,5 @@
 ---
-title: Community
-description: "Join the Codex community."
-sidebar:
-  order: 71
+title: 'Community'
 ---
 
 # Community

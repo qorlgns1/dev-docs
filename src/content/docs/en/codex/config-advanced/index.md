@@ -1,13 +1,11 @@
 ---
-title: Advanced Configuration
-description: Use these options when you need more control over providers, policies, and integrations. For a quick start, see Config basics.
-sidebar:
-  order: 31
+title: 'Advanced Configuration'
+description: 'Use these options when you need more control over providers, policies, and integrations. For a quick start, see Config basics.'
 ---
 
-# Advanced Configuration
-
 Source URL: https://developers.openai.com/codex/config-advanced
+
+# Advanced Configuration
 
 Use these options when you need more control over providers, policies, and integrations. For a quick start, see [Config basics](https://developers.openai.com/codex/config-basic).
 
@@ -22,18 +20,19 @@ Profiles are experimental and may change or be removed in future releases.
 Profiles are not currently supported in the Codex IDE extension.
 
 Define profiles under `[profiles.<name>]` in `config.toml`, then run `codex --profile <name>`:
-```
-    model = "gpt-5-codex"
-    approval_policy = "on-request"
-    
-    [profiles.deep-review]
-    model = "gpt-5-pro"
-    model_reasoning_effort = "high"
-    approval_policy = "never"
-    
-    [profiles.lightweight]
-    model = "gpt-4.1"
-    approval_policy = "untrusted"
+
+```toml
+model = "gpt-5-codex"
+approval_policy = "on-request"
+
+[profiles.deep-review]
+model = "gpt-5-pro"
+model_reasoning_effort = "high"
+approval_policy = "never"
+
+[profiles.lightweight]
+model = "gpt-4.1"
+approval_policy = "untrusted"
 ```
 
 To make a profile the default, add `profile = "deep-review"` at the top level of `config.toml`. Codex loads that profile unless you override it on the command line.
@@ -42,29 +41,26 @@ To make a profile the default, add `profile = "deep-review"` at the top level of
 
 In addition to editing `~/.codex/config.toml`, you can override configuration for a single run from the CLI:
 
-  * Prefer dedicated flags when they exist (for example, `--model`).
-  * Use `-c` / `--config` when you need to override an arbitrary key.
-
-
+- Prefer dedicated flags when they exist (for example, `--model`).
+- Use `-c` / `--config` when you need to override an arbitrary key.
 
 Examples:
-```
-    # Dedicated flag
-    codex --model gpt-5.2
-    
-    # Generic key/value override (value is TOML, not JSON)
-    codex --config model='"gpt-5.2"'
-    codex --config sandbox_workspace_write.network_access=true
-    codex --config 'shell_environment_policy.include_only=["PATH","HOME"]'
+
+```shell
+# Dedicated flag
+codex --model gpt-5.2
+
+# Generic key/value override (value is TOML, not JSON)
+codex --config model='"gpt-5.2"'
+codex --config sandbox_workspace_write.network_access=true
+codex --config 'shell_environment_policy.include_only=["PATH","HOME"]'
 ```
 
 Notes:
 
-  * Keys can use dot notation to set nested values (for example, `mcp_servers.context7.enabled=false`).
-  * `--config` values are parsed as TOML. When in doubt, quote the value so your shell doesn’t split it on spaces.
-  * If the value can’t be parsed as TOML, Codex treats it as a string.
-
-
+- Keys can use dot notation to set nested values (for example, `mcp_servers.context7.enabled=false`).
+- `--config` values are parsed as TOML. When in doubt, quote the value so your shell doesn't split it on spaces.
+- If the value can't be parsed as TOML, Codex treats it as a string.
 
 ## Config and state locations
 
@@ -72,21 +68,20 @@ Codex stores its local state under `CODEX_HOME` (defaults to `~/.codex`).
 
 Common files you may see there:
 
-  * `config.toml` (your local configuration)
-  * `auth.json` (if you use file-based credential storage) or your OS keychain/keyring
-  * `history.jsonl` (if history persistence is enabled)
-  * Other per-user state such as logs and caches
-
-
+- `config.toml` (your local configuration)
+- `auth.json` (if you use file-based credential storage) or your OS keychain/keyring
+- `history.jsonl` (if history persistence is enabled)
+- Other per-user state such as logs and caches
 
 For authentication details (including credential storage modes), see [Authentication](https://developers.openai.com/codex/auth). For the full list of configuration keys, see [Configuration Reference](https://developers.openai.com/codex/config-reference).
 
 For shared defaults, rules, and skills checked into repos or system paths, see [Team Config](https://developers.openai.com/codex/enterprise/admin-setup#team-config).
 
 If you just need to point the built-in OpenAI provider at an LLM proxy, router, or data-residency enabled project, set environment variable `OPENAI_BASE_URL` instead of defining a new provider. This overrides the default OpenAI endpoint without a `config.toml` change.
-```
-    export OPENAI_BASE_URL="https://api.openai.com/v1"
-    codex
+
+```shell
+export OPENAI_BASE_URL="https://api.openai.com/v1"
+codex
 ```
 
 ## Project config files (`.codex/config.toml`)
@@ -106,9 +101,10 @@ For multi-agent role configuration (`[agents]` in `config.toml`), see [Multi-age
 Codex discovers project configuration (for example, `.codex/` layers and `AGENTS.md`) by walking up from the working directory until it reaches a project root.
 
 By default, Codex treats a directory containing `.git` as the project root. To customize this behavior, set `project_root_markers` in `config.toml`:
-```
-    # Treat a directory as the project root when it contains any of these markers.
-    project_root_markers = [".git", ".hg", ".sl"]
+
+```toml
+# Treat a directory as the project root when it contains any of these markers.
+project_root_markers = [".git", ".hg", ".sl"]
 ```
 
 Set `project_root_markers = []` to skip searching parent directories and treat the current working directory as the project root.
@@ -118,71 +114,77 @@ Set `project_root_markers = []` to skip searching parent directories and treat t
 A model provider defines how Codex connects to a model (base URL, wire API, and optional HTTP headers).
 
 Define additional providers and point `model_provider` at them:
-```
-    model = "gpt-5.1"
-    model_provider = "proxy"
-    
-    [model_providers.proxy]
-    name = "OpenAI using LLM proxy"
-    base_url = "http://proxy.example.com"
-    env_key = "OPENAI_API_KEY"
-    
-    [model_providers.ollama]
-    name = "Ollama"
-    base_url = "http://localhost:11434/v1"
-    
-    [model_providers.mistral]
-    name = "Mistral"
-    base_url = "https://api.mistral.ai/v1"
-    env_key = "MISTRAL_API_KEY"
+
+```toml
+model = "gpt-5.1"
+model_provider = "proxy"
+
+[model_providers.proxy]
+name = "OpenAI using LLM proxy"
+base_url = "http://proxy.example.com"
+env_key = "OPENAI_API_KEY"
+
+[model_providers.ollama]
+name = "Ollama"
+base_url = "http://localhost:11434/v1"
+
+[model_providers.mistral]
+name = "Mistral"
+base_url = "https://api.mistral.ai/v1"
+env_key = "MISTRAL_API_KEY"
 ```
 
 Add request headers when needed:
-```
-    [model_providers.example]
-    http_headers = { "X-Example-Header" = "example-value" }
-    env_http_headers = { "X-Example-Features" = "EXAMPLE_FEATURES" }
+
+```toml
+[model_providers.example]
+http_headers = { "X-Example-Header" = "example-value" }
+env_http_headers = { "X-Example-Features" = "EXAMPLE_FEATURES" }
 ```
 
 ## OSS mode (local providers)
 
-Codex can run against a local “open source” provider (for example, Ollama or LM Studio) when you pass `--oss`. If you pass `--oss` without specifying a provider, Codex uses `oss_provider` as the default.
-```
-    # Default local provider used with `--oss`
-    oss_provider = "ollama" # or "lmstudio"
+Codex can run against a local "open source" provider (for example, Ollama or LM Studio) when you pass `--oss`. If you pass `--oss` without specifying a provider, Codex uses `oss_provider` as the default.
+
+```toml
+# Default local provider used with `--oss`
+oss_provider = "ollama" # or "lmstudio"
 ```
 
 ## Azure provider and per-provider tuning
-```
-    [model_providers.azure]
-    name = "Azure"
-    base_url = "https://YOUR_PROJECT_NAME.openai.azure.com/openai"
-    env_key = "AZURE_OPENAI_API_KEY"
-    query_params = { api-version = "2025-04-01-preview" }
-    wire_api = "responses"
-    
-    [model_providers.openai]
-    request_max_retries = 4
-    stream_max_retries = 10
-    stream_idle_timeout_ms = 300000
+
+```toml
+[model_providers.azure]
+name = "Azure"
+base_url = "https://YOUR_PROJECT_NAME.openai.azure.com/openai"
+env_key = "AZURE_OPENAI_API_KEY"
+query_params = { api-version = "2025-04-01-preview" }
+wire_api = "responses"
+
+[model_providers.openai]
+request_max_retries = 4
+stream_max_retries = 10
+stream_idle_timeout_ms = 300000
 ```
 
 ## ChatGPT customers using data residency
 
 Projects created with [data residency](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt) enabled can create a model provider to update the base_url with the [correct prefix](https://platform.openai.com/docs/guides/your-data#which-models-and-features-are-eligible-for-data-residency).
-```
-    model_provider = "openaidr"
-    [model_providers.openaidr]
-    name = "OpenAI Data Residency"
-    base_url = "https://us.api.openai.com/v1" # Replace 'us' with domain prefix
+
+```toml
+model_provider = "openaidr"
+[model_providers.openaidr]
+name = "OpenAI Data Residency"
+base_url = "https://us.api.openai.com/v1" # Replace 'us' with domain prefix
 ```
 
 ## Model reasoning, verbosity, and limits
-```
-    model_reasoning_summary = "none"          # Disable summaries
-    model_verbosity = "low"                   # Shorten responses
-    model_supports_reasoning_summaries = true # Force reasoning
-    model_context_window = 128000             # Context window size
+
+```toml
+model_reasoning_summary = "none"          # Disable summaries
+model_verbosity = "low"                   # Shorten responses
+model_supports_reasoning_summaries = true # Force reasoning
+model_context_window = 128000             # Context window size
 ```
 
 `model_verbosity` applies only to providers using the Responses API. Chat Completions providers will ignore the setting.
@@ -192,36 +194,44 @@ Projects created with [data residency](https://help.openai.com/en/articles/99034
 Pick approval strictness (affects when Codex pauses) and sandbox level (affects file/network access).
 
 For operational details that are easy to miss while editing `config.toml`, see [Common sandbox and approval combinations](https://developers.openai.com/codex/security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](https://developers.openai.com/codex/security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/security#network-access).
-```
-    approval_policy = "untrusted"   # Other options: on-request, never
-    sandbox_mode = "workspace-write"
-    
-    [sandbox_workspace_write]
-    exclude_tmpdir_env_var = false  # Allow $TMPDIR
-    exclude_slash_tmp = false       # Allow /tmp
-    writable_roots = ["/Users/YOU/.pyenv/shims"]
-    network_access = false          # Opt in to outbound network
+
+```toml
+approval_policy = "untrusted"   # Other options: on-request, never
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+exclude_tmpdir_env_var = false  # Allow $TMPDIR
+exclude_slash_tmp = false       # Allow /tmp
+writable_roots = ["/Users/YOU/.pyenv/shims"]
+network_access = false          # Opt in to outbound network
 ```
 
 Need the complete key list (including profile-scoped overrides and requirements constraints)? See [Configuration Reference](https://developers.openai.com/codex/config-reference) and [Managed configuration](https://developers.openai.com/codex/security#managed-configuration).
 
-In workspace-write mode, some environments keep `.git/` and `.codex/` read-only even when the rest of the workspace is writable. This is why commands like `git commit` may still require approval to run outside the sandbox. If you want Codex to skip specific commands (for example, block `git commit` outside the sandbox), use [rules](https://developers.openai.com/codex/rules).
+In workspace-write mode, some environments keep `.git/` and `.codex/`
+  read-only even when the rest of the workspace is writable. This is why
+  commands like `git commit` may still require approval to run outside the
+  sandbox. If you want Codex to skip specific commands (for example, block `git
+  commit` outside the sandbox), use
+  <a href="/codex/rules">rules</a>.
 
 Disable sandboxing entirely (use only if your environment already isolates processes):
-```
-    sandbox_mode = "danger-full-access"
+
+```toml
+sandbox_mode = "danger-full-access"
 ```
 
 ## Shell environment policy
 
 `shell_environment_policy` controls which environment variables Codex passes to any subprocess it launches (for example, when running a tool-command the model proposes). Start from a clean start (`inherit = "none"`) or a trimmed set (`inherit = "core"`), then layer on excludes, includes, and overrides to avoid leaking secrets while still providing the paths, keys, or flags your tasks need.
-```
-    [shell_environment_policy]
-    inherit = "none"
-    set = { PATH = "/usr/bin", MY_FLAG = "1" }
-    ignore_default_excludes = false
-    exclude = ["AWS_*", "AZURE_*"]
-    include_only = ["PATH", "HOME"]
+
+```toml
+[shell_environment_policy]
+inherit = "none"
+set = { PATH = "/usr/bin", MY_FLAG = "1" }
+ignore_default_excludes = false
+exclude = ["AWS_*", "AZURE_*"]
+include_only = ["PATH", "HOME"]
 ```
 
 Patterns are case-insensitive globs (`*`, `?`, `[A-Z]`); `ignore_default_excludes = false` keeps the automatic KEY/SECRET/TOKEN filter before your includes/excludes run.
@@ -233,28 +243,31 @@ See the dedicated [MCP documentation](https://developers.openai.com/codex/mcp) f
 ## Observability and telemetry
 
 Enable OpenTelemetry (OTel) log export to track Codex runs (API requests, SSE/events, prompts, tool approvals/results). Disabled by default; opt in via `[otel]`:
-```
-    [otel]
-    environment = "staging"   # defaults to "dev"
-    exporter = "none"         # set to otlp-http or otlp-grpc to send events
-    log_user_prompt = false   # redact user prompts unless explicitly enabled
+
+```toml
+[otel]
+environment = "staging"   # defaults to "dev"
+exporter = "none"         # set to otlp-http or otlp-grpc to send events
+log_user_prompt = false   # redact user prompts unless explicitly enabled
 ```
 
 Choose an exporter:
+
+```toml
+[otel]
+exporter = { otlp-http = {
+  endpoint = "https://otel.example.com/v1/logs",
+  protocol = "binary",
+  headers = { "x-otlp-api-key" = "${OTLP_TOKEN}" }
+}}
 ```
-    [otel]
-    exporter = { otlp-http = {
-      endpoint = "https://otel.example.com/v1/logs",
-      protocol = "binary",
-      headers = { "x-otlp-api-key" = "${OTLP_TOKEN}" }
-    }}
-```
-```
-    [otel]
-    exporter = { otlp-grpc = {
-      endpoint = "https://otel.example.com:4317",
-      headers = { "x-otlp-meta" = "abc123" }
-    }}
+
+```toml
+[otel]
+exporter = { otlp-grpc = {
+  endpoint = "https://otel.example.com:4317",
+  headers = { "x-otlp-meta" = "abc123" }
+}}
 ```
 
 If `exporter = "none"` Codex records events but sends nothing. Exporters batch asynchronously and flush on shutdown. Event metadata includes service name, CLI version, env tag, conversation id, model, sandbox/approval settings, and per-event fields (see [Config Reference](https://developers.openai.com/codex/config-reference)).
@@ -263,15 +276,13 @@ If `exporter = "none"` Codex records events but sends nothing. Exporters batch a
 
 Codex emits structured log events for runs and tool usage. Representative event types include:
 
-  * `codex.conversation_starts` (model, reasoning settings, sandbox/approval policy)
-  * `codex.api_request` (attempt, status/success, duration, and error details)
-  * `codex.sse_event` (stream event kind, success/failure, duration, plus token counts on `response.completed`)
-  * `codex.websocket_request` and `codex.websocket_event` (request duration plus per-message kind/success/error)
-  * `codex.user_prompt` (length; content redacted unless explicitly enabled)
-  * `codex.tool_decision` (approved/denied and whether the decision came from config vs user)
-  * `codex.tool_result` (duration, success, output snippet)
-
-
+- `codex.conversation_starts` (model, reasoning settings, sandbox/approval policy)
+- `codex.api_request` (attempt, status/success, duration, and error details)
+- `codex.sse_event` (stream event kind, success/failure, duration, plus token counts on `response.completed`)
+- `codex.websocket_request` and `codex.websocket_event` (request duration plus per-message kind/success/error)
+- `codex.user_prompt` (length; content redacted unless explicitly enabled)
+- `codex.tool_decision` (approved/denied and whether the decision came from config vs user)
+- `codex.tool_result` (duration, success, output snippet)
 
 ### OTel metrics emitted
 
@@ -279,147 +290,148 @@ When the OTel metrics pipeline is enabled, Codex emits counters and duration his
 
 Each metric below also includes default metadata tags: `auth_mode`, `originator`, `session_source`, `model`, and `app.version`.
 
-Metric| Type| Fields| Description  
----|---|---|---  
-`codex.api_request`| counter| `status`, `success`| API request count by HTTP status and success/failure.  
-`codex.api_request.duration_ms`| histogram| `status`, `success`| API request duration in milliseconds.  
-`codex.sse_event`| counter| `kind`, `success`| SSE event count by event kind and success/failure.  
-`codex.sse_event.duration_ms`| histogram| `kind`, `success`| SSE event processing duration in milliseconds.  
-`codex.websocket.request`| counter| `success`| WebSocket request count by success/failure.  
-`codex.websocket.request.duration_ms`| histogram| `success`| WebSocket request duration in milliseconds.  
-`codex.websocket.event`| counter| `kind`, `success`| WebSocket message/event count by type and success/failure.  
-`codex.websocket.event.duration_ms`| histogram| `kind`, `success`| WebSocket message/event processing duration in milliseconds.  
-`codex.tool.call`| counter| `tool`, `success`| Tool invocation count by tool name and success/failure.  
-`codex.tool.call.duration_ms`| histogram| `tool`, `success`| Tool execution duration in milliseconds by tool name and outcome.  
-  
+| Metric                                | Type      | Fields              | Description                                                       |
+| ------------------------------------- | --------- | ------------------- | ----------------------------------------------------------------- |
+| `codex.api_request`                   | counter   | `status`, `success` | API request count by HTTP status and success/failure.             |
+| `codex.api_request.duration_ms`       | histogram | `status`, `success` | API request duration in milliseconds.                             |
+| `codex.sse_event`                     | counter   | `kind`, `success`   | SSE event count by event kind and success/failure.                |
+| `codex.sse_event.duration_ms`         | histogram | `kind`, `success`   | SSE event processing duration in milliseconds.                    |
+| `codex.websocket.request`             | counter   | `success`           | WebSocket request count by success/failure.                       |
+| `codex.websocket.request.duration_ms` | histogram | `success`           | WebSocket request duration in milliseconds.                       |
+| `codex.websocket.event`               | counter   | `kind`, `success`   | WebSocket message/event count by type and success/failure.        |
+| `codex.websocket.event.duration_ms`   | histogram | `kind`, `success`   | WebSocket message/event processing duration in milliseconds.      |
+| `codex.tool.call`                     | counter   | `tool`, `success`   | Tool invocation count by tool name and success/failure.           |
+| `codex.tool.call.duration_ms`         | histogram | `tool`, `success`   | Tool execution duration in milliseconds by tool name and outcome. |
+
 For more security and privacy guidance around telemetry, see [Security](https://developers.openai.com/codex/security#monitoring-and-telemetry).
 
 ### Metrics
 
-By default, Codex periodically sends a small amount of anonymous usage and health data back to OpenAI. This helps detect when Codex isn’t working correctly and shows what features and configuration options are being used, so the Codex team can focus on what matters most. These metrics don’t contain any personally identifiable information (PII). Metrics collection is independent of OTel log/trace export.
+By default, Codex periodically sends a small amount of anonymous usage and health data back to OpenAI. This helps detect when Codex isn't working correctly and shows what features and configuration options are being used, so the Codex team can focus on what matters most. These metrics don't contain any personally identifiable information (PII). Metrics collection is independent of OTel log/trace export.
 
 If you want to disable metrics collection entirely across Codex surfaces on a machine, set the analytics flag in your config:
-```
-    [analytics]
-    enabled = false
+
+```toml
+[analytics]
+enabled = false
 ```
 
 Each metric includes its own fields plus the default context fields below.
 
 #### Default context fields (applies to every event/metric)
 
-  * `auth_mode`: `swic` | `api` | `unknown`.
-  * `model`: name of the model used.
-  * `app.version`: Codex version.
-
-
+- `auth_mode`: `swic` | `api` | `unknown`.
+- `model`: name of the model used.
+- `app.version`: Codex version.
 
 #### Metrics catalog
 
-Each metric includes the required fields plus the default context fields above. Every metric is prefixed by `codex.`. If a metric includes the `tool` field, it reflects the internal tool used (for example, `apply_patch` or `shell`) and doesn’t contain the actual shell command or patch `codex` is trying to apply.
+Each metric includes the required fields plus the default context fields above. Every metric is prefixed by `codex.`.
+If a metric includes the `tool` field, it reflects the internal tool used (for example, `apply_patch` or `shell`) and doesn't contain the actual shell command or patch `codex` is trying to apply.
 
-Metric| Type| Fields| Description  
----|---|---|---  
-`feature.state`| counter| `feature`, `value`| Feature values that differ from defaults (emit one row per non-default).  
-`thread.started`| counter| `is_git`| New thread created.  
-`thread.fork`| counter| | New thread created by forking an existing thread.  
-`thread.rename`| counter| | Thread renamed.  
-`task.compact`| counter| `type`| Number of compactions per type (`remote` or `local`), including manual and auto.  
-`task.user_shell`| counter| | Number of user shell actions (`!` in the TUI for example).  
-`task.review`| counter| | Number of reviews triggered.  
-`task.undo`| counter| | Number of undo actions triggered.  
-`approval.requested`| counter| `tool`, `approved`| Tool approval request result (`approved`, `approved_with_amendment`, `approved_for_session`, `denied`, `abort`).  
-`conversation.turn.count`| counter| | User/assistant turns per thread, recorded at the end of the thread.  
-`turn.e2e_duration_ms`| histogram| | End-to-end time for a full turn.  
-`mcp.call`| counter| `status`| MCP tool invocation result (`ok` or error string).  
-`model_warning`| counter| | Warning sent to the model.  
-`tool.call`| counter| `tool`, `success`| Tool invocation result (`success`: `true` or `false`).  
-`tool.call.duration_ms`| histogram| `tool`, `success`| Tool execution time.  
-`remote_models.fetch_update.duration_ms`| histogram| | Time to fetch remote model definitions.  
-`remote_models.load_cache.duration_ms`| histogram| | Time to load the remote model cache.  
-`shell_snapshot`| counter| `success`| Whether taking a shell snapshot succeeded.  
-`shell_snapshot.duration_ms`| histogram| `success`| Time to take a shell snapshot.  
-`db.init`| counter| `status`| State DB initialization outcomes (`opened`, `created`, `open_error`, `init_error`).  
-`db.backfill`| counter| `status`| Initial state DB backfill results (`upserted`, `failed`).  
-`db.backfill.duration_ms`| histogram| `status`| Duration of the initial state DB backfill, tagged with `success`, `failed`, or `partial_failure`.  
-`db.error`| counter| `stage`| Errors during state DB operations (for example, `extract_metadata_from_rollout`, `backfill_sessions`, `apply_rollout_items`).  
-`db.compare_error`| counter| `stage`, `reason`| State DB discrepancies detected during reconciliation.  
-  
+| Metric                                   | Type      | Fields             | Description                                                                                                                   |
+| ---------------------------------------- | --------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `feature.state`                          | counter   | `feature`, `value` | Feature values that differ from defaults (emit one row per non-default).                                                      |
+| `thread.started`                         | counter   | `is_git`           | New thread created.                                                                                                           |
+| `thread.fork`                            | counter   |                    | New thread created by forking an existing thread.                                                                             |
+| `thread.rename`                          | counter   |                    | Thread renamed.                                                                                                               |
+| `task.compact`                           | counter   | `type`             | Number of compactions per type (`remote` or `local`), including manual and auto.                                              |
+| `task.user_shell`                        | counter   |                    | Number of user shell actions (`!` in the TUI for example).                                                                    |
+| `task.review`                            | counter   |                    | Number of reviews triggered.                                                                                                  |
+| `task.undo`                              | counter   |                    | Number of undo actions triggered.                                                                                             |
+| `approval.requested`                     | counter   | `tool`, `approved` | Tool approval request result (`approved`, `approved_with_amendment`, `approved_for_session`, `denied`, `abort`).              |
+| `conversation.turn.count`                | counter   |                    | User/assistant turns per thread, recorded at the end of the thread.                                                           |
+| `turn.e2e_duration_ms`                   | histogram |                    | End-to-end time for a full turn.                                                                                              |
+| `mcp.call`                               | counter   | `status`           | MCP tool invocation result (`ok` or error string).                                                                            |
+| `model_warning`                          | counter   |                    | Warning sent to the model.                                                                                                    |
+| `tool.call`                              | counter   | `tool`, `success`  | Tool invocation result (`success`: `true` or `false`).                                                                        |
+| `tool.call.duration_ms`                  | histogram | `tool`, `success`  | Tool execution time.                                                                                                          |
+| `remote_models.fetch_update.duration_ms` | histogram |                    | Time to fetch remote model definitions.                                                                                       |
+| `remote_models.load_cache.duration_ms`   | histogram |                    | Time to load the remote model cache.                                                                                          |
+| `shell_snapshot`                         | counter   | `success`          | Whether taking a shell snapshot succeeded.                                                                                    |
+| `shell_snapshot.duration_ms`             | histogram | `success`          | Time to take a shell snapshot.                                                                                                |
+| `db.init`                                | counter   | `status`           | State DB initialization outcomes (`opened`, `created`, `open_error`, `init_error`).                                           |
+| `db.backfill`                            | counter   | `status`           | Initial state DB backfill results (`upserted`, `failed`).                                                                     |
+| `db.backfill.duration_ms`                | histogram | `status`           | Duration of the initial state DB backfill, tagged with `success`, `failed`, or `partial_failure`.                             |
+| `db.error`                               | counter   | `stage`            | Errors during state DB operations (for example, `extract_metadata_from_rollout`, `backfill_sessions`, `apply_rollout_items`). |
+| `db.compare_error`                       | counter   | `stage`, `reason`  | State DB discrepancies detected during reconciliation.                                                                        |
+
 ### Feedback controls
 
 By default, Codex lets users send feedback from `/feedback`. To disable feedback collection across Codex surfaces on a machine, update your config:
-```
-    [feedback]
-    enabled = false
+
+```toml
+[feedback]
+enabled = false
 ```
 
 When disabled, `/feedback` shows a disabled message and Codex rejects feedback submissions.
 
 ### Hide or surface reasoning events
 
-If you want to reduce noisy “reasoning” output (for example in CI logs), you can suppress it:
-```
-    hide_agent_reasoning = true
+If you want to reduce noisy "reasoning" output (for example in CI logs), you can suppress it:
+
+```toml
+hide_agent_reasoning = true
 ```
 
 If you want to surface raw reasoning content when a model emits it:
-```
-    show_raw_agent_reasoning = true
+
+```toml
+show_raw_agent_reasoning = true
 ```
 
-Enable raw reasoning only if it’s acceptable for your workflow. Some models/providers (like `gpt-oss`) don’t emit raw reasoning; in that case, this setting has no visible effect.
+Enable raw reasoning only if it's acceptable for your workflow. Some models/providers (like `gpt-oss`) don't emit raw reasoning; in that case, this setting has no visible effect.
 
 ## Notifications
 
-Use `notify` to trigger an external program whenever Codex emits supported events (currently only `agent-turn-complete`). This is handy for desktop toasts, chat webhooks, CI updates, or any side-channel alerting that the built-in TUI notifications don’t cover.
-```
-    notify = ["python3", "/path/to/notify.py"]
+Use `notify` to trigger an external program whenever Codex emits supported events (currently only `agent-turn-complete`). This is handy for desktop toasts, chat webhooks, CI updates, or any side-channel alerting that the built-in TUI notifications don't cover.
+
+```toml
+notify = ["python3", "/path/to/notify.py"]
 ```
 
 Example `notify.py` (truncated) that reacts to `agent-turn-complete`:
-```
-    #!/usr/bin/env python3
-    import json, subprocess, sys
-    
-    def main() -> int:
-        notification = json.loads(sys.argv[1])
-        if notification.get("type") != "agent-turn-complete":
-            return 0
-        title = f"Codex: {notification.get('last-assistant-message', 'Turn Complete!')}"
-        message = " ".join(notification.get("input-messages", []))
-        subprocess.check_output([
-            "terminal-notifier",
-            "-title", title,
-            "-message", message,
-            "-group", "codex-" + notification.get("thread-id", ""),
-            "-activate", "com.googlecode.iterm2",
-        ])
+
+```python
+#!/usr/bin/env python3
+import json, subprocess, sys
+
+def main() -> int:
+    notification = json.loads(sys.argv[1])
+    if notification.get("type") != "agent-turn-complete":
         return 0
-    
-    if __name__ == "__main__":
-        sys.exit(main())
+    title = f"Codex: {notification.get('last-assistant-message', 'Turn Complete!')}"
+    message = " ".join(notification.get("input-messages", []))
+    subprocess.check_output([
+        "terminal-notifier",
+        "-title", title,
+        "-message", message,
+        "-group", "codex-" + notification.get("thread-id", ""),
+        "-activate", "com.googlecode.iterm2",
+    ])
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())
 ```
 
 The script receives a single JSON argument. Common fields include:
 
-  * `type` (currently `agent-turn-complete`)
-  * `thread-id` (session identifier)
-  * `turn-id` (turn identifier)
-  * `cwd` (working directory)
-  * `input-messages` (user messages that led to the turn)
-  * `last-assistant-message` (last assistant message text)
-
-
+- `type` (currently `agent-turn-complete`)
+- `thread-id` (session identifier)
+- `turn-id` (turn identifier)
+- `cwd` (working directory)
+- `input-messages` (user messages that led to the turn)
+- `last-assistant-message` (last assistant message text)
 
 Place the script somewhere on disk and point `notify` to it.
 
 #### `notify` vs `tui.notifications`
 
-  * `notify` runs an external program (good for webhooks, desktop notifiers, CI hooks).
-  * `tui.notifications` is built in to the TUI and can optionally filter by event type (for example, `agent-turn-complete` and `approval-requested`).
-  * `tui.notification_method` controls how the TUI emits terminal notifications (`auto`, `osc9`, or `bel`).
-
-
+- `notify` runs an external program (good for webhooks, desktop notifiers, CI hooks).
+- `tui.notifications` is built in to the TUI and can optionally filter by event type (for example, `agent-turn-complete` and `approval-requested`).
+- `tui.notification_method` controls how the TUI emits terminal notifications (`auto`, `osc9`, or `bel`).
 
 In `auto` mode, Codex prefers OSC 9 notifications (a terminal escape sequence some terminals interpret as a desktop notification) and falls back to BEL (`\x07`) otherwise.
 
@@ -428,22 +440,25 @@ See [Configuration Reference](https://developers.openai.com/codex/config-referen
 ## History persistence
 
 By default, Codex saves local session transcripts under `CODEX_HOME` (for example, `~/.codex/history.jsonl`). To disable local history persistence:
-```
-    [history]
-    persistence = "none"
+
+```toml
+[history]
+persistence = "none"
 ```
 
 To cap the history file size, set `history.max_bytes`. When the file exceeds the cap, Codex drops the oldest entries and compacts the file while keeping the newest records.
-```
-    [history]
-    max_bytes = 104857600 # 100 MiB
+
+```toml
+[history]
+max_bytes = 104857600 # 100 MiB
 ```
 
 ## Clickable citations
 
 If you use a terminal/editor integration that supports it, Codex can render file citations as clickable links. Configure `file_opener` to pick the URI scheme Codex uses:
-```
-    file_opener = "vscode" # or cursor, windsurf, vscode-insiders, none
+
+```toml
+file_opener = "vscode" # or cursor, windsurf, vscode-insiders, none
 ```
 
 Example: a citation like `/home/user/project/main.py:42` can be rewritten into a clickable `vscode://file/...:42` link.
@@ -452,10 +467,8 @@ Example: a citation like `/home/user/project/main.py:42` can be rewritten into a
 
 Codex reads `AGENTS.md` (and related files) and includes a limited amount of project guidance in the first turn of a session. Two knobs control how this works:
 
-  * `project_doc_max_bytes`: how much to read from each `AGENTS.md` file
-  * `project_doc_fallback_filenames`: additional filenames to try when `AGENTS.md` is missing at a directory level
-
-
+- `project_doc_max_bytes`: how much to read from each `AGENTS.md` file
+- `project_doc_fallback_filenames`: additional filenames to try when `AGENTS.md` is missing at a directory level
 
 For a detailed walkthrough, see [Custom instructions with AGENTS.md](https://developers.openai.com/codex/guides/agents-md).
 
@@ -463,14 +476,13 @@ For a detailed walkthrough, see [Custom instructions with AGENTS.md](https://dev
 
 Running `codex` with no subcommand launches the interactive terminal UI (TUI). Codex exposes some TUI-specific configuration under `[tui]`, including:
 
-  * `tui.notifications`: enable/disable notifications (or restrict to specific types)
-  * `tui.notification_method`: choose `auto`, `osc9`, or `bel` for terminal notifications
-  * `tui.animations`: enable/disable ASCII animations and shimmer effects
-  * `tui.alternate_screen`: control alternate screen usage (set to `never` to keep terminal scrollback)
-  * `tui.show_tooltips`: show or hide onboarding tooltips on the welcome screen
-
-
+- `tui.notifications`: enable/disable notifications (or restrict to specific types)
+- `tui.notification_method`: choose `auto`, `osc9`, or `bel` for terminal notifications
+- `tui.animations`: enable/disable ASCII animations and shimmer effects
+- `tui.alternate_screen`: control alternate screen usage (set to `never` to keep terminal scrollback)
+- `tui.show_tooltips`: show or hide onboarding tooltips on the welcome screen
 
 `tui.notification_method` defaults to `auto`. In `auto` mode, Codex prefers OSC 9 notifications (a terminal escape sequence some terminals interpret as a desktop notification) when the terminal appears to support them, and falls back to BEL (`\x07`) otherwise.
 
 See [Configuration Reference](https://developers.openai.com/codex/config-reference) for the full key list.
+

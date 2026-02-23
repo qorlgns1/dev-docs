@@ -8,11 +8,16 @@ to src/content/docs/en/<section>/.
 Usage:
   python3 fetch.py --url https://developers.openai.com/codex/
   python3 fetch.py --url https://nextjs.org/docs --section nextjs
+  python3 fetch.py --url https://example.com --extractor trafilatura
+  python3 fetch.py --url https://spa-site.com --js-fallback
+  python3 fetch.py --url https://example.com --no-cache   # bypass HTTP cache
+  python3 fetch.py --url https://example.com --format     # apply mdformat
 """
 
 from __future__ import annotations
 
 import argparse
+import gzip as _gzip_mod
 import json
 import sys
 import time
@@ -30,14 +35,61 @@ def require(name: str, import_name: str | None = None):
         sys.exit(2)
 
 
+# ── Core required libraries ───────────────────────────────────────────────────
+
 bs4 = require("beautifulsoup4", "bs4")
 html2text = require("html2text")
 httpx = require("httpx")
+
+# ── Phase 1: Retry (Tenacity) ─────────────────────────────────────────────────
+
+try:
+    from tenacity import (
+        retry as _tenacity_retry,
+        stop_after_attempt,
+        wait_exponential,
+        retry_if_exception,
+    )
+    HAS_TENACITY = True
+except ImportError:
+    HAS_TENACITY = False
+
+# ── Phase 1: HTTP Cache (Hishel) ──────────────────────────────────────────────
+
+try:
+    from hishel import SyncSqliteStorage as _HishelStorage
+    from hishel.httpx import SyncCacheClient as _HishelClient
+    HAS_HISHEL = True
+except ImportError:
+    HAS_HISHEL = False
+
+# ── Phase 3: Content extractor (Trafilatura) ──────────────────────────────────
+
+try:
+    import trafilatura as _trafilatura
+    HAS_TRAFILATURA = True
+except ImportError:
+    HAS_TRAFILATURA = False
+
+# ── Phase 4: Markdown formatter (mdformat) ────────────────────────────────────
+
+try:
+    import mdformat as _mdformat
+    HAS_MDFORMAT = True
+except ImportError:
+    HAS_MDFORMAT = False
+
+
+# ── Paths & constants ─────────────────────────────────────────────────────────
 
 REPO_ROOT = Path(__file__).parent.parent.parent.parent
 EN_DOCS = REPO_ROOT / "src/content/docs/en"
 REFS_DIR = REPO_ROOT / "skills/add-doc/references"
 USER_AGENT = "add-doc/1.0"
+
+# Phase 5: min body text length before triggering Playwright fallback
+_MIN_JS_CONTENT_LEN = 300
+
 GENERIC_SEGMENTS = {
     "docs",
     "doc",
@@ -74,9 +126,73 @@ BREADCRUMB_RE = re.compile(r"^\[[^\]]+\]\([^)]+\)\[[^\]]+\]\([^)]+\)\S*$")
 MD_LINK_RE = re.compile(r"(!?\[[^\]]*\]\()([^)]+)(\))")
 LEGACY_CODE_OPEN_RE = re.compile(r"^(?P<prefix>\s*(?:>\s*)*)\[code\](?P<rest>.*)$", re.IGNORECASE)
 LEGACY_CODE_CLOSE_RE = re.compile(r"^(?P<prefix>\s*(?:>\s*)*)\[/code\]\s*$", re.IGNORECASE)
+MDX_TAG_OPEN_RE = re.compile(r"^\s*<(?P<tag>[A-Z][A-Za-z0-9]*)\b")
+MDX_TAG_CLOSE_RE = re.compile(r"^\s*</[A-Z][A-Za-z0-9]*\s*>\s*$")
+SIMPLE_WRAPPER_RE = re.compile(r"^\s*</?(?:div|section)\b[^>]*>\s*$", re.IGNORECASE)
+BR_TAG_RE = re.compile(r"^\s*<br\s*/?>\s*$", re.IGNORECASE)
+ELEVATED_RISK_BADGE_RE = re.compile(r"\s*<ElevatedRiskBadge\b[^>]*/>\s*")
 
 
-# ── URL helpers ──────────────────────────────────────────────────────────────
+# ── Module-level runtime settings (configured from CLI args in main()) ─────────
+
+_EXTRACTOR: str = "html2text"   # "trafilatura" with --extractor=trafilatura
+_JS_FALLBACK: bool = False       # True with --js-fallback
+_FORMAT_MD: bool = False         # True with --format
+
+
+# ── HTTP client (Phase 1) ─────────────────────────────────────────────────────
+
+_http_client = None  # httpx.Client or hishel SyncCacheClient
+
+
+def _get_client():
+    """Return shared HTTP client. Falls back to plain httpx.Client if not initialised."""
+    global _http_client
+    if _http_client is None:
+        _http_client = httpx.Client()
+    return _http_client
+
+
+def init_http_client(use_cache: bool, cache_dir: Path) -> None:
+    """Initialise the shared HTTP client. Must be called once from main()."""
+    global _http_client
+    if use_cache and HAS_HISHEL:
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        storage = _HishelStorage(database_path=str(cache_dir / "hishel.db"))
+        _http_client = _HishelClient(storage=storage)
+        print(f"[http] Cache enabled → {cache_dir / 'hishel.db'}", flush=True)
+    else:
+        _http_client = httpx.Client()
+        if use_cache and not HAS_HISHEL:
+            print(
+                "[http] hishel not installed — caching disabled "
+                "(pip install hishel)",
+                file=sys.stderr,
+            )
+
+
+# ── Retry decorator (Phase 1) ─────────────────────────────────────────────────
+
+
+def _is_retryable(exc: Exception) -> bool:
+    if isinstance(exc, httpx.HTTPStatusError):
+        return exc.response.status_code >= 500
+    return isinstance(exc, (httpx.TimeoutException, httpx.ConnectError))
+
+
+if HAS_TENACITY:
+    _with_retry = _tenacity_retry(
+        retry=retry_if_exception(_is_retryable),
+        wait=wait_exponential(multiplier=1, min=2, max=16),
+        stop=stop_after_attempt(3),
+        reraise=True,
+    )
+else:
+    _with_retry = lambda fn: fn  # noqa: E731 — identity when tenacity unavailable
+
+
+# ── URL helpers ───────────────────────────────────────────────────────────────
+
 
 def canonicalize(url: str) -> str:
     p = urlparse(url)
@@ -114,10 +230,47 @@ def in_scope(url: str, scope: str) -> bool:
     return path == scope or path.startswith(scope + "/")
 
 
+@_with_retry
 def fetch(url: str) -> str:
-    r = httpx.get(url, timeout=30, follow_redirects=True, headers={"User-Agent": USER_AGENT})
+    """Fetch URL and return text. Retries on 5xx / timeout / connection errors."""
+    r = _get_client().get(url, timeout=30, follow_redirects=True, headers={"User-Agent": USER_AGENT})
     r.raise_for_status()
     return r.text
+
+
+@_with_retry
+def _fetch_raw(url: str) -> bytes:
+    """Fetch URL and return raw bytes. Retries on 5xx / timeout / connection errors."""
+    r = _get_client().get(url, timeout=30, follow_redirects=True, headers={"User-Agent": USER_AGENT})
+    r.raise_for_status()
+    return r.content
+
+
+# ── Sitemap helpers (Phase 2) ─────────────────────────────────────────────────
+
+
+def _fetch_xml(url: str) -> str:
+    """Fetch a sitemap URL, transparently decompressing gzip content if needed."""
+    raw = _fetch_raw(url)
+    if raw[:2] == b"\x1f\x8b":  # gzip magic bytes
+        raw = _gzip_mod.decompress(raw)
+    return raw.decode("utf-8", errors="replace")
+
+
+def _sitemap_urls_from_robots(origin: str) -> list[str]:
+    """Return all Sitemap: URLs declared in robots.txt."""
+    try:
+        text = fetch(f"{origin}/robots.txt")
+    except Exception:
+        return []
+    urls = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.lower().startswith("sitemap:"):
+            url = stripped[len("sitemap:"):].strip()
+            if url:
+                urls.append(url)
+    return urls
 
 
 def markdown_candidate(url: str) -> str:
@@ -155,7 +308,7 @@ def fetch_markdown_source(page_url: str) -> str | None:
         return None
 
     try:
-        r = httpx.get(
+        r = _get_client().get(
             md_url,
             timeout=30,
             follow_redirects=True,
@@ -196,16 +349,19 @@ def collect_urls(base_url: str) -> list[str]:
     origin = f"{p.scheme}://{p.netloc}"
 
     urls: list[str] = []
-    sitemap_entries: list[str] = []
+    sitemap_index_entries: list[str] = []
+    processed: set[str] = set()
 
+    # Primary discovery: try standard sitemap paths (break on first success)
     for sitemap_url in (f"{origin}/sitemap-index.xml", f"{origin}/sitemap.xml"):
         try:
-            xml = fetch(sitemap_url)
+            xml = _fetch_xml(sitemap_url)
         except Exception:
             continue
+        processed.add(sitemap_url)
         kind, locs = parse_sitemap(xml)
         if kind == "sitemapindex":
-            sitemap_entries.extend(locs)
+            sitemap_index_entries.extend(locs)
             break
         if kind == "urlset":
             for loc in locs:
@@ -214,11 +370,33 @@ def collect_urls(base_url: str) -> list[str]:
                     urls.append(norm)
             break
 
-    for sm in sitemap_entries:
+    # Supplementary: robots.txt may declare additional sitemaps not in standard paths
+    for sitemap_url in _sitemap_urls_from_robots(origin):
+        if sitemap_url in processed:
+            continue
         try:
-            sm_xml = fetch(sm)
+            xml = _fetch_xml(sitemap_url)
         except Exception:
             continue
+        processed.add(sitemap_url)
+        kind, locs = parse_sitemap(xml)
+        if kind == "sitemapindex":
+            sitemap_index_entries.extend(locs)
+        elif kind == "urlset":
+            for loc in locs:
+                norm = canonicalize(loc)
+                if in_scope(norm, scope):
+                    urls.append(norm)
+
+    # Expand all discovered sitemap index entries
+    for sm in sitemap_index_entries:
+        if sm in processed:
+            continue
+        try:
+            sm_xml = _fetch_xml(sm)
+        except Exception:
+            continue
+        processed.add(sm)
         kind, locs = parse_sitemap(sm_xml)
         if kind == "urlset":
             for loc in locs:
@@ -240,7 +418,8 @@ def url_to_relpath(url: str, base_path: str) -> Path:
     return Path(rel) / "index.md"
 
 
-# ── HTML → Markdown ──────────────────────────────────────────────────────────
+# ── HTML → Markdown ───────────────────────────────────────────────────────────
+
 
 def choose_main(soup):
     for sel in ["article", "main article", "main", "[data-pagefind-body]", "[data-content]", "body"]:
@@ -265,7 +444,8 @@ def clean_node(node, page_url: str):
         img["src"] = urljoin(page_url, img["src"])
 
 
-def html_to_markdown(html: str, page_url: str) -> str:
+def html_to_markdown_html2text(html: str, page_url: str) -> str:
+    """html2text-based extraction (original pipeline)."""
     soup = bs4.BeautifulSoup(html, "html.parser")
 
     title = ""
@@ -292,72 +472,366 @@ def html_to_markdown(html: str, page_url: str) -> str:
         body = f"# {title}\n\n{body}"
 
     md = f"Source URL: {page_url}\n\n{body}\n"
-    return normalize_markdown(md)
+    return normalize_markdown(md, page_url)
+
+
+def html_to_markdown_trafilatura(html: str, page_url: str) -> str:
+    """Trafilatura-based extraction (Phase 3). Falls back to html2text if unavailable or empty."""
+    if not HAS_TRAFILATURA:
+        print("[extractor] trafilatura not installed, falling back to html2text", file=sys.stderr)
+        return html_to_markdown_html2text(html, page_url)
+
+    md = _trafilatura.extract(
+        html,
+        url=page_url,
+        output_format="markdown",
+        include_links=True,
+        include_images=False,
+        include_tables=True,
+        favor_recall=True,
+    )
+
+    if not md:
+        return html_to_markdown_html2text(html, page_url)
+
+    if not re.search(r"(?m)^#\s+\S", md):
+        meta = _trafilatura.extract_metadata(html, default_url=page_url)
+        if meta and meta.title:
+            md = f"# {meta.title}\n\n{md}"
+
+    body = f"Source URL: {page_url}\n\n{md}\n"
+    return normalize_markdown(body, page_url)
+
+
+def html_to_markdown(html: str, page_url: str) -> str:
+    """Dispatch to the configured extractor (_EXTRACTOR)."""
+    if _EXTRACTOR == "trafilatura":
+        return html_to_markdown_trafilatura(html, page_url)
+    return html_to_markdown_html2text(html, page_url)
+
+
+# ── JS fallback (Phase 5) ─────────────────────────────────────────────────────
+
+
+def _fetch_html_with_playwright(url: str) -> str:
+    """Render page with headless Chromium and return fully rendered HTML."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        raise ImportError(
+            "playwright not installed. "
+            "Run: pip install playwright && playwright install chromium"
+        )
+
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch(headless=True)
+        try:
+            context = browser.new_context(user_agent=USER_AGENT)
+            page = context.new_page()
+            page.goto(url, timeout=30_000, wait_until="networkidle")
+            return page.content()
+        finally:
+            browser.close()
 
 
 def page_to_markdown(page_url: str) -> str:
     md_src = fetch_markdown_source(page_url)
     if md_src is not None:
-        return normalize_markdown(f"Source URL: {page_url}\n\n{md_src}\n")
+        return normalize_markdown(f"Source URL: {page_url}\n\n{md_src}\n", page_url)
 
     html = fetch(page_url)
+
+    # JS fallback: if body text is too sparse, retry with Playwright (Phase 5)
+    if _JS_FALLBACK:
+        soup_tmp = bs4.BeautifulSoup(html, "html.parser")
+        body_text_len = len((soup_tmp.body or soup_tmp).get_text(" ", strip=True))
+        if body_text_len < _MIN_JS_CONTENT_LEN:
+            print(
+                f"[js-fallback] Sparse content ({body_text_len} chars), "
+                f"retrying with Playwright: {page_url}",
+                flush=True,
+            )
+            try:
+                html = _fetch_html_with_playwright(page_url)
+            except Exception as e:
+                print(f"[js-fallback] Playwright failed: {e}", file=sys.stderr)
+
     return html_to_markdown(html, page_url)
 
 
-def normalize_markdown(md: str) -> str:
-    """
-    Post-process markdown generated by html2text.
-    - Split compacted card headings: `... )### [ ... ]`
-    - Convert heading-style cards (`### [..](..)` ) to bullet links
-    - Remove common feedback/breadcrumb noise lines
-    - Convert legacy [code]...[/code] blocks to fenced code blocks
-    """
-    md = normalize_legacy_code_blocks(md)
+def _extract_attr(text: str, key: str) -> str | None:
+    patterns = [
+        rf'{re.escape(key)}\s*=\s*"([^"]+)"',
+        rf"{re.escape(key)}\s*=\s*'([^']+)'",
+    ]
+    for pat in patterns:
+        m = re.search(pat, text)
+        if m:
+            return m.group(1).strip()
+    return None
 
-    # 카드 링크가 한 줄에 이어붙는 패턴 분리
-    md = re.sub(r"\)(?=#{3,6}\s+\[)", ")\n\n", md)
-    md = re.sub(r"(?<!\n)(#{3,6}\s+\[)", r"\n\1", md)
 
+def _collect_tag_declaration(lines: list[str], start_idx: int) -> tuple[list[str], int]:
+    decl = [lines[start_idx].rstrip()]
+    idx = start_idx
+    while idx + 1 < len(lines):
+        if decl[-1].strip().endswith(">"):
+            break
+        idx += 1
+        decl.append(lines[idx].rstrip())
+    return decl, idx
+
+
+def _collect_until_self_closing(lines: list[str], decl: list[str], idx: int) -> tuple[list[str], int]:
+    while idx + 1 < len(lines):
+        if decl[-1].strip().endswith("/>"):
+            break
+        idx += 1
+        decl.append(lines[idx].rstrip())
+    return decl, idx
+
+
+def _to_abs_href(href: str | None, page_url: str) -> str | None:
+    if not href:
+        return None
+    return urljoin(page_url, href)
+
+
+def normalize_mdx_components(md: str, page_url: str) -> str:
+    """
+    Convert common OpenAI docs MDX components into plain Markdown so Starlight
+    can render stable content without MDX runtime components.
+    """
+    lines = md.splitlines()
     out: list[str] = []
+    i = 0
     in_code = False
 
-    for raw in md.splitlines():
-        line = raw.rstrip()
+    while i < len(lines):
+        line = lines[i].rstrip()
         stripped = line.strip()
 
         if stripped.startswith("```"):
             in_code = not in_code
             out.append(line)
+            i += 1
             continue
 
         if in_code:
             out.append(line)
+            i += 1
             continue
 
-        if stripped and stripped.lower() in FEEDBACK_NOISE_LINES:
+        # Inline component used in security heading.
+        if "<ElevatedRiskBadge" in line:
+            line = ELEVATED_RISK_BADGE_RE.sub(" ", line).rstrip()
+            stripped = line.strip()
+
+        if not stripped:
+            out.append(line)
+            i += 1
             continue
 
-        if stripped and stripped.lower().startswith(META_NOISE_PREFIXES):
+        # Strip presentation-only wrappers.
+        if BR_TAG_RE.match(stripped) or SIMPLE_WRAPPER_RE.match(stripped):
+            i += 1
             continue
 
-        if stripped and BREADCRUMB_RE.match(stripped):
+        if re.match(r"^</(?:BentoContainer|WorkflowSteps|ExampleGallery|Tabs|ToggleSection)\s*>\s*$", stripped):
+            i += 1
             continue
 
-        if "docs/llms.txt" in stripped and "overview" in stripped.lower():
+        open_match = MDX_TAG_OPEN_RE.match(stripped)
+        if open_match:
+            tag = open_match.group("tag")
+            decl, decl_end = _collect_tag_declaration(lines, i)
+            decl_text = "\n".join(decl)
+
+            if tag == "BentoContent":
+                href = _to_abs_href(_extract_attr(decl_text, "href"), page_url)
+                i = decl_end + 1
+                content_lines: list[str] = []
+                while i < len(lines):
+                    inner = lines[i].rstrip()
+                    if re.match(r"^\s*</BentoContent>\s*$", inner.strip()):
+                        break
+                    content_lines.append(inner)
+                    i += 1
+
+                for inner in content_lines:
+                    inner_stripped = inner.strip()
+                    heading = re.match(r"^(#{1,6})\s+(.+)$", inner_stripped)
+                    if heading and href:
+                        title = heading.group(2).strip()
+                        if re.match(r"^\[[^\]]+\]\([^)]+\)$", title):
+                            out.append(f"{heading.group(1)} {title}")
+                        else:
+                            out.append(f"{heading.group(1)} [{title}]({href})")
+                        continue
+                    out.append(inner)
+
+                if out and out[-1] != "":
+                    out.append("")
+                if i < len(lines) and re.match(r"^\s*</BentoContent>\s*$", lines[i].strip()):
+                    i += 1
+                continue
+
+            if tag in {"BentoContainer", "WorkflowSteps", "ExampleGallery", "Tabs"}:
+                i = decl_end + 1
+                continue
+
+            if tag == "ToggleSection":
+                title = _extract_attr(decl_text, "title")
+                if title:
+                    out.append(f"### {title}")
+                i = decl_end + 1
+                continue
+
+            if tag == "CtaPillLink":
+                decl, decl_end = _collect_until_self_closing(lines, decl, decl_end)
+                decl_text = "\n".join(decl)
+                href = _to_abs_href(_extract_attr(decl_text, "href"), page_url)
+                label = _extract_attr(decl_text, "label")
+                if label and href:
+                    out.append(f"[{label}]({href})")
+                elif label:
+                    out.append(label)
+                i = decl_end + 1
+                continue
+
+            if tag == "YouTubeEmbed":
+                decl, decl_end = _collect_until_self_closing(lines, decl, decl_end)
+                decl_text = "\n".join(decl)
+                title = _extract_attr(decl_text, "title") or "Video"
+                video_id = _extract_attr(decl_text, "videoId")
+                if video_id:
+                    out.append(f"- [{title}](https://www.youtube.com/watch?v={video_id})")
+                else:
+                    out.append(f"- {title}")
+                i = decl_end + 1
+                continue
+
+            if tag == "CodexScreenshot":
+                decl, decl_end = _collect_until_self_closing(lines, decl, decl_end)
+                decl_text = "\n".join(decl)
+                alt = _extract_attr(decl_text, "alt") or "Screenshot"
+                src = _to_abs_href(_extract_attr(decl_text, "lightSrc") or _extract_attr(decl_text, "darkSrc"), page_url)
+                if src:
+                    out.append(f"![{alt}]({src})")
+                else:
+                    out.append(alt)
+                i = decl_end + 1
+                continue
+
+            if tag == "LinkCard":
+                decl, decl_end = _collect_until_self_closing(lines, decl, decl_end)
+                decl_text = "\n".join(decl)
+                title = _extract_attr(decl_text, "title")
+                href = _to_abs_href(_extract_attr(decl_text, "href"), page_url)
+                desc = _extract_attr(decl_text, "description")
+                if title and href:
+                    out.append(f"### [{title}]({href})")
+                elif title:
+                    out.append(f"### {title}")
+                if desc:
+                    out.append(desc)
+                if out and out[-1] != "":
+                    out.append("")
+                i = decl_end + 1
+                continue
+
+            if tag == "PricingCard":
+                title = _extract_attr(decl_text, "name")
+                subtitle = _extract_attr(decl_text, "subtitle")
+                price = _extract_attr(decl_text, "price")
+                interval = _extract_attr(decl_text, "interval") or ""
+                cta_label = _extract_attr(decl_text, "ctaLabel")
+                cta_href = _to_abs_href(_extract_attr(decl_text, "ctaHref"), page_url)
+
+                if title:
+                    out.append(f"### {title}")
+                if subtitle:
+                    out.append(subtitle)
+                if price:
+                    out.append(f"Price: {price}{interval}")
+                if cta_label and cta_href:
+                    out.append(f"[{cta_label}]({cta_href})")
+
+                i = decl_end + 1
+                while i < len(lines):
+                    inner = lines[i].rstrip()
+                    if re.match(r"^\s*</PricingCard>\s*$", inner.strip()):
+                        break
+                    out.append(inner)
+                    i += 1
+                if i < len(lines) and re.match(r"^\s*</PricingCard>\s*$", lines[i].strip()):
+                    i += 1
+                if out and out[-1] != "":
+                    out.append("")
+                continue
+
+            if tag == "ConfigTable":
+                decl, decl_end = _collect_until_self_closing(lines, decl, decl_end)
+                out.append("```tsx")
+                out.extend(decl)
+                out.append("```")
+                i = decl_end + 1
+                continue
+
+            if tag == "ModelDetails":
+                decl, decl_end = _collect_until_self_closing(lines, decl, decl_end)
+                decl_text = "\n".join(decl)
+                name = _extract_attr(decl_text, "name")
+                desc = _extract_attr(decl_text, "description")
+                slug = _extract_attr(decl_text, "slug")
+                if name:
+                    out.append(f"### {name}")
+                if desc:
+                    out.append(desc)
+                if slug:
+                    out.append(f"- Model ID: `{slug}`")
+                if out and out[-1] != "":
+                    out.append("")
+                i = decl_end + 1
+                continue
+
+            if tag == "FileTree":
+                decl, decl_end = _collect_until_self_closing(lines, decl, decl_end)
+                out.append("```tsx")
+                out.extend(decl)
+                out.append("```")
+                i = decl_end + 1
+                continue
+
+            if tag == "ExampleTask":
+                decl, decl_end = _collect_until_self_closing(lines, decl, decl_end)
+                decl_text = "\n".join(decl)
+                text = (
+                    _extract_attr(decl_text, "shortDescription")
+                    or _extract_attr(decl_text, "prompt")
+                    or _extract_attr(decl_text, "id")
+                )
+                if text:
+                    out.append(f"- {text}")
+                i = decl_end + 1
+                continue
+
+            if tag == "CliSetupSteps":
+                i = decl_end + 1
+                continue
+
+            # Generic fallback for unsupported MDX components.
+            i = decl_end + 1
             continue
 
-        m = CARD_HEADING_RE.match(stripped)
-        if m:
-            label = m.group(2).strip()
-            href = m.group(3).strip()
-            out.append(f"- [{label}]({href})")
+        if MDX_TAG_CLOSE_RE.match(stripped):
+            i += 1
             continue
 
         out.append(line)
+        i += 1
 
-    normalized = "\n".join(out)
-    normalized = re.sub(r"\n{3,}", "\n\n", normalized).strip() + "\n"
-    return normalized
+    return "\n".join(out)
 
 
 def normalize_legacy_code_blocks(md: str) -> str:
@@ -422,7 +896,79 @@ def normalize_legacy_code_blocks(md: str) -> str:
     return "\n".join(out)
 
 
-# ── Nav extraction ───────────────────────────────────────────────────────────
+# ── Markdown formatting (Phase 4) ─────────────────────────────────────────────
+
+
+def _apply_mdformat(md: str) -> str:
+    """Apply mdformat for CommonMark-compliant output. Opt-in via --format flag."""
+    if not _FORMAT_MD or not HAS_MDFORMAT:
+        return md
+    try:
+        return _mdformat.text(md)
+    except Exception:
+        return md
+
+
+def normalize_markdown(md: str, page_url: str) -> str:
+    """
+    Post-process markdown generated by html2text or trafilatura.
+    - Split compacted card headings: `... )### [ ... ]`
+    - Convert heading-style cards (`### [..](..)` ) to bullet links
+    - Remove common feedback/breadcrumb noise lines
+    - Convert legacy [code]...[/code] blocks to fenced code blocks
+    - Normalize common MDX components from markdown source files
+    - Apply mdformat if --format is set (Phase 4)
+    """
+    md = normalize_mdx_components(md, page_url)
+    md = normalize_legacy_code_blocks(md)
+
+    # 카드 링크가 한 줄에 이어붙는 패턴 분리
+    md = re.sub(r"\)(?=#{3,6}\s+\[)", ")\n\n", md)
+    md = re.sub(r"(?<!\n)(#{3,6}\s+\[)", r"\n\1", md)
+
+    out: list[str] = []
+    in_code = False
+
+    for raw in md.splitlines():
+        line = raw.rstrip()
+        stripped = line.strip()
+
+        if stripped.startswith("```"):
+            in_code = not in_code
+            out.append(line)
+            continue
+
+        if in_code:
+            out.append(line)
+            continue
+
+        if stripped and stripped.lower() in FEEDBACK_NOISE_LINES:
+            continue
+
+        if stripped and stripped.lower().startswith(META_NOISE_PREFIXES):
+            continue
+
+        if stripped and BREADCRUMB_RE.match(stripped):
+            continue
+
+        if "docs/llms.txt" in stripped and "overview" in stripped.lower():
+            continue
+
+        m = CARD_HEADING_RE.match(stripped)
+        if m:
+            label = m.group(2).strip()
+            href = m.group(3).strip()
+            out.append(f"- [{label}]({href})")
+            continue
+
+        out.append(line)
+
+    normalized = "\n".join(out)
+    normalized = re.sub(r"\n{3,}", "\n\n", normalized).strip() + "\n"
+    return _apply_mdformat(normalized)
+
+
+# ── Nav extraction ────────────────────────────────────────────────────────────
 
 def _find_nav_node(soup):
     """사이드바 내비게이션 노드를 찾아 반환."""
@@ -532,7 +1078,7 @@ def extract_nav(base_url: str, base_path: str, section: str) -> bool:
     return True
 
 
-# ── Main ─────────────────────────────────────────────────────────────────────
+# ── Main ──────────────────────────────────────────────────────────────────────
 
 def parse_args():
     p = argparse.ArgumentParser(description="Fetch documentation → English Markdown")
@@ -542,11 +1088,53 @@ def parse_args():
     p.add_argument("--limit", type=int, default=None, help="Max pages to fetch")
     p.add_argument("--interval", type=float, default=0.2, help="Delay between requests (s)")
     p.add_argument("--no-nav", action="store_true", help="Skip nav structure extraction")
+
+    # Phase 1: HTTP caching
+    p.add_argument(
+        "--no-cache", action="store_true",
+        help="Disable HTTP response cache (cache is on by default when hishel is installed)",
+    )
+    p.add_argument(
+        "--cache-dir", type=Path, default=Path(".cache/fetch-http"),
+        help="HTTP cache storage directory (default: .cache/fetch-http)",
+    )
+
+    # Phase 3: extractor
+    p.add_argument(
+        "--extractor", choices=["html2text", "trafilatura"], default="html2text",
+        help="HTML→Markdown extractor (default: html2text)",
+    )
+
+    # Phase 4: mdformat
+    p.add_argument(
+        "--format", action="store_true", dest="format_md",
+        help="Apply mdformat for CommonMark-compliant output (opt-in)",
+    )
+
+    # Phase 5: JS rendering fallback
+    p.add_argument(
+        "--js-fallback", action="store_true",
+        help=(
+            "Use Playwright to re-fetch pages whose body text is shorter than "
+            f"{_MIN_JS_CONTENT_LEN} chars "
+            "(requires: pip install playwright && playwright install chromium)"
+        ),
+    )
+
     return p.parse_args()
 
 
 def main() -> int:
+    global _EXTRACTOR, _JS_FALLBACK, _FORMAT_MD
     args = parse_args()
+
+    # Phase 1: initialise HTTP client (cache or plain)
+    init_http_client(use_cache=not args.no_cache, cache_dir=args.cache_dir)
+
+    # Phase 3 / 4 / 5: configure runtime settings
+    _EXTRACTOR = args.extractor
+    _JS_FALLBACK = args.js_fallback
+    _FORMAT_MD = args.format_md
 
     base_url = canonicalize(args.url)
     base_path = urlparse(base_url).path.rstrip("/") or "/"
@@ -559,9 +1147,10 @@ def main() -> int:
         section_source = f"auto:{inferred_by}"
     out_root = EN_DOCS / section
 
-    print(f"[fetch] URL   : {base_url}", flush=True)
-    print(f"[fetch] Section: {section} ({section_source})", flush=True)
-    print(f"[fetch] Output : {out_root}", flush=True)
+    print(f"[fetch] URL      : {base_url}", flush=True)
+    print(f"[fetch] Section  : {section} ({section_source})", flush=True)
+    print(f"[fetch] Output   : {out_root}", flush=True)
+    print(f"[fetch] Extractor: {_EXTRACTOR}", flush=True)
 
     urls = collect_urls(base_url)
     if args.limit:

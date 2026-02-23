@@ -1,8 +1,5 @@
 ---
-title: Enterprise
-description: "Enterprise administration for Codex."
-sidebar:
-  order: 42
+title: 'Enterprise'
 ---
 
 # Enterprise

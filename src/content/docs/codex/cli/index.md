@@ -1,77 +1,69 @@
 ---
-title: Codex CLI
-description: "출처 URL: https://developers.openai.com/codex/cli"
-sidebar:
-  order: 22
+title: 'Codex CLI'
+description: 'description: "Codex CLI는 터미널에서 로컬로 실행할 수 있는 OpenAI의 코딩 에이전트입니다. 선택한 디렉터리에서 머신의 코드를 읽고, 변경하고, 실행할 수 있습니다..."'
 ---
+
+title: 'Codex CLI'
+description: "Codex CLI는 터미널에서 로컬로 실행할 수 있는 OpenAI의 코딩 에이전트입니다. 선택한 디렉터리에서 머신의 코드를 읽고, 변경하고, 실행할 수 있습니다..."
+
+Source URL: https://developers.openai.com/codex/cli
 
 # Codex CLI
 
-출처 URL: https://developers.openai.com/codex/cli
+Codex CLI는 터미널에서 로컬로 실행할 수 있는 OpenAI의 코딩 에이전트입니다. 선택한 디렉터리에서 머신의 코드를 읽고, 변경하고, 실행할 수 있습니다.
+빠르고 효율적인 실행을 위해 Rust로 작성되었으며 [오픈 소스](https://github.com/openai/codex)입니다.
 
-Codex CLI는 터미널에서 로컬로 실행할 수 있는 OpenAI의 코딩 에이전트입니다. 선택한 디렉터리의 코드를 읽고, 수정하고, 실행할 수 있습니다. Rust로 구축된 [오픈 소스](https://github.com/openai/codex) 프로젝트로 속도와 효율을 제공합니다.
+Codex는 ChatGPT Plus, Pro, Business, Edu, Enterprise 플랜에 포함되어 있습니다. 포함된 내용은 [여기](https://developers.openai.com/codex/pricing)에서 확인하세요.
 
-Codex는 ChatGPT Plus, Pro, Business, Edu, Enterprise 플랜에 포함되어 있습니다. 어떤 항목이 포함되어 있는지는 [구성 안내](https://developers.openai.com/codex/pricing)를 참고하세요.
-
-  
-
+- [Codex CLI 개요](https://www.youtube.com/watch?v=iqNzfK4_meQ)
 
 ## CLI 설정
 
-패키지 관리자를 선택하세요
+Codex CLI는 macOS와 Linux에서 사용할 수 있습니다. Windows 지원은
+  실험적입니다. Windows에서 최적의 경험을 얻으려면 WSL 작업 공간에서 Codex를 사용하고
+  우리의 <a href="/codex/windows">Windows 설정 가이드</a>를 따르세요.
 
-npm홈브루
+---
 
-  1. 1
+## Codex CLI로 작업하기
 
-### 설치
+- [Codex 대화형 실행](https://developers.openai.com/codex/cli/features#running-in-interactive-mode)
 
-npm으로 Codex CLI를 설치하세요.
+`codex`를 실행하여 대화형 터미널 UI(TUI) 세션을 시작하세요.
 
-npm 설치 명령
+- [모델 및 추론 제어](https://developers.openai.com/codex/cli/features#models-reasoning)
 
-npm i -g @openai/codexCopy
+`/model`을 사용하여 GPT-5.3-Codex 및 사용 가능한 다른 모델 사이를 전환하거나 추론 수준을 조정하세요.
 
-  2. 2
+- [이미지 입력](https://developers.openai.com/codex/cli/features#image-inputs)
 
-### 실행
+스크린샷이나 디자인 명세서를 첨부하여 Codex가 프롬프트와 함께 읽을 수 있게 하세요.
 
-터미널에서 Codex를 실행하면 리포지토리를 살펴보고, 파일을 편집하고, 명령을 실행할 수 있습니다.
+- [로컬 코드 리뷰 실행](https://developers.openai.com/codex/cli/features#running-local-code-review)
 
-Codex 실행 명령
+변경 사항을 커밋하거나 푸시하기 전에 별도의 Codex 에이전트로 코드 리뷰를 받으세요.
 
-codexCopy
+- [멀티 에이전트 사용](https://developers.openai.com/codex/multi-agent)
 
-Codex를 처음 실행하면 로그인하라는 메시지가 표시됩니다. ChatGPT 계정 또는 API 키로 인증하세요.
+실험적인 멀티 에이전트 협업을 활성화하여 복잡한 작업을 병렬화하세요.
 
-어떤 플랜에 Codex가 포함되는지 확실하지 않다면 [가격 페이지](https://developers.openai.com/codex/pricing)를 확인하세요.
+- [웹 검색](https://developers.openai.com/codex/cli/features#web-search)
 
-  3. 3
+Codex를 사용하여 웹을 검색하고 작업에 최신 정보를 가져오세요.
 
-### 업그레이드
+- [Codex Cloud 작업](https://developers.openai.com/codex/cli/features#working-with-codex-cloud)
 
-Codex CLI의 새 버전은 정기적으로 릴리스됩니다. 릴리스 노트는 [변경 로그](https://developers.openai.com/codex/changelog)에서 확인하세요. npm으로 업그레이드하려면 다음을 실행하세요.
+Codex Cloud 작업을 시작하고, 환경을 선택하고, 터미널을 떠나지 않고 결과 diff를 적용하세요.
 
-npm 업그레이드 명령
+- [Codex 스크립팅](https://developers.openai.com/codex/sdk#using-codex-cli-programmatically)
 
-npm i -g @openai/codex@latestCopy
+`exec` 명령으로 Codex를 스크립팅하여 반복 가능한 워크플로를 자동화하세요.
 
+- [모델 컨텍스트 프로토콜](https://developers.openai.com/codex/mcp)
 
+Model Context Protocol(MCP)을 통해 Codex에 추가 서드파티 도구와 컨텍스트 접근을 제공하세요.
 
+- [승인 모드](https://developers.openai.com/codex/cli/features#approval-modes)
 
-Codex CLI는 macOS와 Linux에서 사용할 수 있습니다. Windows 지원은 실험 단계입니다. 최상의 Windows 환경을 위해서는 WSL 워크스페이스에서 Codex를 사용하고 [Windows 설정 가이드](https://developers.openai.com/codex/windows)를 따르세요.
+Codex가 명령을 편집하거나 실행하기 전에 자신의 편안한 수준에 맞는 승인 모드를 선택하세요.
 
-* * *
-
-## Codex CLI로 작업
-
-### [Codex를 대화형으로 실행합니다. `codex`를 실행해 대화형 터미널 UI(TUI) 세션을 시작하세요.](https://developers.openai.com/codex/cli/features#running-in-interactive-mode)
-### [모델과 추론을 제어합니다. `/model`을 사용해 GPT-5.3-Codex와 다른 사용 가능 모델을 전환하거나 추론 수준을 조정하세요.](https://developers.openai.com/codex/cli/features#models-reasoning)
-### [이미지 입력을 사용합니다. 스크린샷이나 디자인 사양을 첨부하여 프롬프트와 함께 Codex가 읽도록 하세요.](https://developers.openai.com/codex/cli/features#image-inputs)
-### [로컬 코드 리뷰를 실행합니다. 커밋이나 푸시 전에 별도의 Codex 에이전트로부터 코드를 리뷰받으세요.](https://developers.openai.com/codex/cli/features#running-local-code-review)
-### [멀티 에이전트를 사용합니다. 실험적 멀티 에이전트 협업을 활성화해 복잡한 작업을 병렬화하세요.](https://developers.openai.com/codex/multi-agent)
-### [웹 검색을 활용합니다. Codex로 웹을 검색해 작업에 필요한 최신 정보를 얻으세요.](https://developers.openai.com/codex/cli/features#web-search)
-### [Codex Cloud 작업을 실행합니다. 터미널을 떠나지 않고 Codex Cloud 작업을 실행하고 환경을 선택한 뒤 생성된 diff를 적용하세요.](https://developers.openai.com/codex/cli/features#working-with-codex-cloud)
-### [Codex 스크립팅을 활용합니다. `exec` 명령으로 Codex를 스크립팅해 반복 가능한 워크플로를 자동화하세요.](https://developers.openai.com/codex/sdk#using-codex-cli-programmatically)
-### [Model Context Protocol을 사용합니다. Model Context Protocol(MCP)로 Codex에 추가 서드파티 도구와 컨텍스트에 대한 접근 권한을 부여하세요.](https://developers.openai.com/codex/mcp)
-### [승인 모드를 선택합니다. Codex가 편집하거나 명령을 실행하기 전에 본인에게 맞는 승인 모드를 고르세요.](https://developers.openai.com/codex/cli/features#approval-modes)

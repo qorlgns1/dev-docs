@@ -1,20 +1,17 @@
 ---
-title: Codex IDE extension
-description: Codex is OpenAI’s coding agent that can read, edit, and run code. It helps you build faster, squash bugs, and understand unfamiliar code. With the Cod...
-sidebar:
-  order: 21
+title: 'Codex IDE extension'
+description: "Codex is OpenAI's coding agent that can read, edit, and run code. It helps you build faster, squash bugs, and understand unfamiliar code. With the Cod..."
 ---
-
-# Codex IDE extension
 
 Source URL: https://developers.openai.com/codex/ide
 
-Codex is OpenAI’s coding agent that can read, edit, and run code. It helps you build faster, squash bugs, and understand unfamiliar code. With the Codex VS Code extension, you can use Codex side by side in your IDE or delegate tasks to Codex Cloud.
+# Codex IDE extension
 
-ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more about [what’s included](https://developers.openai.com/codex/pricing).
+Codex is OpenAI's coding agent that can read, edit, and run code. It helps you build faster, squash bugs, and understand unfamiliar code. With the Codex VS Code extension, you can use Codex side by side in your IDE or delegate tasks to Codex Cloud.
 
-  
+ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more about [what's included](https://developers.openai.com/codex/pricing).
 
+- [Codex IDE extension overview](https://www.youtube.com/watch?v=sd21Igx4HtA)
 
 ## Extension setup
 
@@ -22,37 +19,43 @@ The Codex IDE extension works with VS Code forks like Cursor and Windsurf.
 
 You can get the Codex extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt), or download it for your IDE:
 
-  * [Download for Visual Studio Code](vscode:extension/openai.chatgpt)
-  * [Download for Cursor](cursor:extension/openai.chatgpt)
-  * [Download for Windsurf](windsurf:extension/openai.chatgpt)
-  * [Download for Visual Studio Code Insiders](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
-  * [Download for JetBrains IDEs](https://developers.openai.com/codex/ide#jetbrains-ide-integration)
+- [Download for Visual Studio Code](vscode:extension/openai.chatgpt)
+- [Download for Cursor](cursor:extension/openai.chatgpt)
+- [Download for Windsurf](windsurf:extension/openai.chatgpt)
+- [Download for Visual Studio Code Insiders](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
+- [Download for JetBrains IDEs](#jetbrains-ide-integration)
 
+The Codex VS Code extension is available on macOS and Linux. Windows support
+  is experimental. For the best Windows experience, use Codex in a WSL workspace
+  and follow our <a href="/codex/windows">Windows setup guide</a>.
 
+After you install it, you'll find the extension in your left sidebar next to your other extensions.
+If you're using VS Code, restart the editor if you don't see Codex right away.
 
-The Codex VS Code extension is available on macOS and Linux. Windows support is experimental. For the best Windows experience, use Codex in a WSL workspace and follow our [Windows setup guide](https://developers.openai.com/codex/windows).
+If you're using Cursor, the activity bar displays horizontally by default. Collapsed items can hide Codex, so you can pin it and reorganize the order of the extensions.
 
-After you install it, you’ll find the extension in your left sidebar next to your other extensions. If you’re using VS Code, restart the editor if you don’t see Codex right away.
-
-If you’re using Cursor, the activity bar displays horizontally by default. Collapsed items can hide Codex, so you can pin it and reorganize the order of the extensions.
+  <img src="https://cdn.openai.com/devhub/docs/codex-extension.webp"
+    alt="Codex extension"
+    class="block h-auto w-full mx-0!"
+  />
 
 ## JetBrains IDE integration
 
 If you want to use Codex in JetBrains IDEs like Rider, IntelliJ, PyCharm, or WebStorm, install the JetBrains IDE integration. It supports signing in with ChatGPT, an API key, or a JetBrains AI subscription.
 
-[ Install Codex for JetBrains IDEs ](https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/)
+[Install Codex for JetBrains IDEs](https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/)
 
-### Move Codex to the right sidebar 
+### Move Codex to the right sidebar <a id="right-sidebar"></a>
 
 In VS Code, you can drag the Codex icon to the right of your editor to move it to the right sidebar.
 
 In some IDEs, like Cursor, you may need to temporarily change the activity bar orientation first:
 
-  1. Open your editor settings and search for `activity bar` (in Workbench settings).
-  2. Change the orientation to `vertical`.
-  3. Restart your editor.
+1. Open your editor settings and search for `activity bar` (in Workbench settings).
+2. Change the orientation to `vertical`.
+3. Restart your editor.
 
-
+![codex-workbench-setting](https://cdn.openai.com/devhub/docs/codex-workbench-setting.webp)
 
 Now drag the Codex icon to the right sidebar (for example, next to your Cursor chat). Codex appears as another tab in the sidebar.
 
@@ -70,10 +73,47 @@ The extension updates automatically, but you can also open the extension page in
 
 Codex includes commands you can bind as keyboard shortcuts in your IDE settings (for example, toggle the Codex chat or add items to the Codex context).
 
-To see all available commands and bind them as keyboard shortcuts, select the settings icon in the Codex chat and select **Keyboard shortcuts**. You can also refer to the [Codex IDE extension commands](https://developers.openai.com/codex/ide/commands) page. For a list of supported slash commands, see [Codex IDE extension slash commands](https://developers.openai.com/codex/ide/slash-commands).
+To see all available commands and bind them as keyboard shortcuts, select the settings icon in the Codex chat and select **Keyboard shortcuts**.
+You can also refer to the [Codex IDE extension commands](https://developers.openai.com/codex/ide/commands) page.
+For a list of supported slash commands, see [Codex IDE extension slash commands](https://developers.openai.com/codex/ide/slash-commands).
 
-* * *
+---
 
 ## Work with the Codex IDE extension
 
-### [Prompt with editor contextUse open files, selections, and `@file` references to get more relevant results with shorter prompts.](https://developers.openai.com/codex/ide/features#prompting-codex)### [Switch modelsUse the default model or switch to other models to leverage their respective strengths.](https://developers.openai.com/codex/ide/features#switch-between-models)### [Adjust reasoning effortChoose `low`, `medium`, or `high` to trade off speed and depth based on the task.](https://developers.openai.com/codex/ide/features#adjust-reasoning-effort)### [Choose an approval modeSwitch between `Chat`, `Agent`, and `Agent (Full Access)` depending on how much autonomy you want Codex to have.](https://developers.openai.com/codex/ide/features#choose-an-approval-mode)### [Delegate to the cloudOffload longer jobs to a cloud environment, then monitor progress and review results without leaving your IDE.](https://developers.openai.com/codex/ide/features#cloud-delegation)### [Follow up on cloud workPreview cloud changes, ask for follow-ups, and apply the resulting diffs locally to test and finish.](https://developers.openai.com/codex/ide/features#cloud-task-follow-up)### [IDE extension commandsBrowse the full list of commands you can run from the command palette and bind to keyboard shortcuts.](https://developers.openai.com/codex/ide/commands)### [Slash commandsUse slash commands to control how Codex behaves and quickly change common settings from chat.](https://developers.openai.com/codex/ide/slash-commands)### [Extension settingsTune Codex to your workflow with editor settings for models, approvals, and other defaults.](https://developers.openai.com/codex/ide/settings)
+- [Prompt with editor context](https://developers.openai.com/codex/ide/features#prompting-codex)
+
+Use open files, selections, and `@file` references to get more relevant results with shorter prompts.
+
+- [Switch models](https://developers.openai.com/codex/ide/features#switch-between-models)
+
+Use the default model or switch to other models to leverage their respective strengths.
+
+- [Adjust reasoning effort](https://developers.openai.com/codex/ide/features#adjust-reasoning-effort)
+
+Choose `low`, `medium`, or `high` to trade off speed and depth based on the task.
+
+- [Choose an approval mode](https://developers.openai.com/codex/ide/features#choose-an-approval-mode)
+
+Switch between `Chat`, `Agent`, and `Agent (Full Access)` depending on how much autonomy you want Codex to have.
+
+- [Delegate to the cloud](https://developers.openai.com/codex/ide/features#cloud-delegation)
+
+Offload longer jobs to a cloud environment, then monitor progress and review results without leaving your IDE.
+
+- [Follow up on cloud work](https://developers.openai.com/codex/ide/features#cloud-task-follow-up)
+
+Preview cloud changes, ask for follow-ups, and apply the resulting diffs locally to test and finish.
+
+- [IDE extension commands](https://developers.openai.com/codex/ide/commands)
+
+Browse the full list of commands you can run from the command palette and bind to keyboard shortcuts.
+
+- [Slash commands](https://developers.openai.com/codex/ide/slash-commands)
+
+Use slash commands to control how Codex behaves and quickly change common settings from chat.
+
+- [Extension settings](https://developers.openai.com/codex/ide/settings)
+
+Tune Codex to your workflow with editor settings for models, approvals, and other defaults.
+

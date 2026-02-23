@@ -1,154 +1,137 @@
 ---
-title: 빠른 시작
-description: ChatGPT Plus, Pro, Business, Edu, 그리고 Enterprise 요금제에는 Codex가 포함됩니다. ChatGPT 구독과 함께 Codex를 사용하면 최신 Codex 모델과 기능에 접근할 수 있습니다.
-sidebar:
-  order: 3
+title: 'index'
+description: 'git checkout <branch-name>'
 ---
 
-# 빠른 시작
+**Quickstart 번역**
 
-Source URL: https://developers.openai.com/codex/quickstart
+- ChatGPT Plus, Pro, Business, Edu, Enterprise 요금제에는 Codex가 포함되어 있습니다. ChatGPT 구독으로 Codex를 사용하면 최신 Codex 모델 및 기능에 접근할 수 있습니다.
+- OpenAI API 키로 로그인하면 API 크레딧으로 Codex도 사용할 수 있습니다.
+- 현재 기간 한정으로 **ChatGPT Free와 Go에서 Codex를 무료로 사용**하거나 Plus, Pro, Business, Enterprise 구독으로 **2배 Codex 속도 제한**을 활용할 수 있습니다.
 
-ChatGPT Plus, Pro, Business, Edu, 그리고 Enterprise 요금제에는 Codex가 포함됩니다. ChatGPT 구독과 함께 Codex를 사용하면 최신 Codex 모델과 기능에 접근할 수 있습니다.
+**Setup**
 
-OpenAI API 키로 로그인하여 API 크레딧으로 Codex를 사용할 수도 있습니다.
+- Codex 앱은 macOS(Apple Silicon)에서 사용할 수 있습니다.
 
-한시적으로 **ChatGPT Free 및 Go에서 무료로 Codex를 사용해 보고**, Plus, Pro, Business, Enterprise 구독에서는 **2배 Codex 속도 제한**을 즐겨보세요.
+1. Codex 앱 다운로드 및 설치
 
-## 설정
+    - Codex 앱은 현재 macOS에서만 사용할 수 있습니다.
 
-옵션을 선택하세요 
+[Download for macOS](https://persistent.oaistatic.com/codex-app-prod/Codex.dmg)
 
-App추천 (macOS only)IDE 확장IDE에서 CodexCLICodex 터미널Cloud브라우저에서 Codex
+      [Get notified for Windows and Linux](https://openai.com/form/codex-app/)
 
-Codex 앱은 macOS(Apple Silicon)에서 사용할 수 있습니다.
+2. Codex 열기 및 로그인
 
-  1. Codex 앱을 다운로드하여 설치하세요
+   - Codex 앱을 다운로드하고 설치한 후 열어서 ChatGPT 계정 또는 OpenAI API 키로 로그인합니다.
+   - OpenAI API 키로 로그인하면 [cloud threads](https://developers.openai.com/codex/prompting#threads)와 같은 일부 기능을 사용할 수 없을 수 있습니다.
 
-Codex 앱은 현재 macOS에서만 사용할 수 있습니다.
+3. 프로젝트 선택
 
-[ Download for macOS ](https://persistent.oaistatic.com/codex-app-prod/Codex.dmg)
+   - Codex가 작업할 프로젝트 폴더를 선택합니다.
+   - 이전에 Codex 앱, CLI, IDE 확장을 사용했다면 작업했던 이전 프로젝트가 표시됩니다.
 
-[Get notified for Windows and Linux](https://openai.com/form/codex-app/)
+4. 첫 메시지 보내기
 
-  2. Codex를 열고 로그인하세요
+   - 프로젝트를 선택한 후 Codex가 로컬에서 작업하도록 **Local**이 선택되어 있는지 확인하고 첫 메시지를 보냅니다.
+   - 프로젝트나 컴퓨터 전반에 대해 Codex에게 무엇이든 물어볼 수 있습니다. 예시:
+     - Tell me about this project
+     - Build a classic Snake game in this repo.
+     - Find and fix bugs in my codebase with minimal, high-confidence changes.
+   - 추가 아이디어가 필요하면 [explore section](https://developers.openai.com/codex/explore)을 참고하세요.
 
-Codex 앱을 다운로드하고 설치한 후 실행하여 ChatGPT 계정이나 OpenAI API 키로 로그인하세요.
+[Learn more about the Codex app](https://developers.openai.com/codex/app)
 
-OpenAI API 키로 로그인하면 [cloud threads](https://developers.openai.com/codex/prompting#threads)와 같은 일부 기능을 사용할 수 없을 수 있습니다.
+**IDE용 Codex 확장 설치**
 
-  3. 프로젝트를 선택하세요
+1. Codex 확장 설치
 
-Codex가 작업할 프로젝트 폴더를 선택하세요.
+    - 사용 중인 에디터용으로 다운로드합니다:
+      - [Download for Visual Studio Code](vscode:extension/openai.chatgpt)
+      - [Download for Cursor](cursor:extension/openai.chatgpt)
+      - [Download for Windsurf](windsurf:extension/openai.chatgpt)
+      - [Download for Visual Studio Code Insiders](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
 
+2. Codex 패널 열기
 
+    - 설치 후 Codex 확장이 다른 확장과 함께 사이드바에 나타납니다. 축소된 섹션에 숨겨져 있을 수 있습니다. 원하는 경우 Codex 패널을 에디터 오른쪽으로 이동할 수 있습니다.
 
+3. 로그인하고 첫 작업 시작
 
-이전에 Codex 앱, CLI 또는 IDE 확장을 사용한 적이 있다면 작업했던 과거 프로젝트가 표시됩니다.
+    - ChatGPT 계정 또는 API 키로 로그인하면 시작할 수 있습니다.
+    - Codex는 기본적으로 Agent 모드로 시작하여 파일을 읽고, 명령을 실행하고, 프로젝트 디렉터리에 변경사항을 작성합니다.
 
-  4. 첫 메시지를 보내세요
+- Tell me about this project
+- Build a classic Snake game in this repo.
+- Find and fix bugs in my codebase with minimal, high-confidence changes.
 
-프로젝트를 선택한 후 Codex가 로컬에서 작업하도록 **Local**을 선택하고 Codex에 첫 메시지를 보내세요.
+4. Git 체크포인트 사용
 
-프로젝트나 컴퓨터 전반에 대해 Codex에 무엇이든 질문할 수 있습니다. 예시는 다음과 같습니다:
+    - Codex는 코드베이스를 수정할 수 있으므로 작업 전후에 Git 체크포인트를 생성하여 필요 시 쉽게 변경 내용을 되돌릴 수 있도록 고려하세요.
 
-이 저장소에서 클래식 Snake 게임을 만들어줘.최소한의 고신뢰 변경으로 코드베이스의 버그를 찾아 고쳐줘.
+[Learn more about the Codex IDE extension](https://developers.openai.com/codex/ide)
 
-더 많은 영감을 얻고 싶다면 [explore 섹션](https://developers.openai.com/codex/explore)을 확인하세요.
+**Codex CLI**
 
-[ Learn more about the Codex app ](https://developers.openai.com/codex/app)
+- Codex CLI는 macOS, Windows, Linux에서 지원됩니다.
 
+1. Codex CLI 설치
 
+    - npm으로 설치:
+      ```bash
+      npm install -g @openai/codex
+      ```
+    - Homebrew로 설치:
+      ```bash
+      brew install codex
+      ```
 
+2. `codex` 실행 및 로그인
 
-IDE용 Codex 확장을 설치하세요.
+    - 터미널에서 `codex`를 실행하여 시작합니다. ChatGPT 계정 또는 API 키로 로그인하라는 메시지가 나타납니다.
 
-  1. Codex 확장을 설치하세요
+3. 현재 디렉터리에서 작업 요청
 
-에디터용 다운로드:
+    - 인증이 완료되면 현재 디렉터리에서 작업을 수행하도록 Codex에 요청할 수 있습니다.
 
-     * [Download for Visual Studio Code](vscode:extension/openai.chatgpt)
-     * [Download for Cursor](cursor:extension/openai.chatgpt)
-     * [Download for Windsurf](windsurf:extension/openai.chatgpt)
-     * [Download for Visual Studio Code Insiders](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
-  2. Codex 패널을 여세요
+- Tell me about this project
+- Build a classic Snake game in this repo.
+- Find and fix bugs in my codebase with minimal, high-confidence changes.
 
-설치하면 Codex 확장이 다른 확장들과 함께 사이드바에 나타납니다. 접힌 섹션에 숨겨져 있을 수 있습니다. 원한다면 Codex 패널을 에디터 오른쪽으로 옮길 수 있습니다.
+4. Git 체크포인트 사용
 
-  3. 로그인하고 첫 작업을 시작하세요
+    - Codex가 코드베이스를 수정할 수 있으므로 작업 전후에 Git 체크포인트를 만들어 변경 내용을 쉽게 되돌릴 수 있도록 하세요.
 
-시작하려면 ChatGPT 계정이나 API 키로 로그인하세요.
+[Learn more about the Codex CLI](https://developers.openai.com/codex/cli)
 
-Codex는 기본적으로 Agent 모드에서 시작하며, 프로젝트 디렉터리에서 파일을 읽고, 명령을 실행하며, 변경 사항을 작성할 수 있습니다.
+**클라우드에서 Codex 사용**
 
-이 프로젝트에 대해 알려줘이 저장소에서 클래식 Snake 게임을 만들어줘최소한의 고신뢰 변경으로 코드베이스의 버그를 찾아 고쳐줘.
+- [chatgpt.com/codex](https://chatgpt.com/codex)에서 Codex를 사용할 수 있습니다.
 
-  4. Git 체크포인트를 사용하세요
+1. 브라우저에서 Codex 열기
 
-Codex는 코드베이스를 변경할 수 있으므로 필요하면 쉽게 되돌릴 수 있도록 각 작업 전후로 Git 체크포인트를 생성하는 것을 고려하세요.
+    - [chatgpt.com/codex](https://chatgpt.com/codex)로 이동하세요. GitHub 풀 리퀘스트 댓글에서 `@codex`를 태그하면 작업을 Codex에 맡길 수도 있습니다(이 경우 ChatGPT에 로그인해야 합니다).
 
-[ Learn more about the Codex IDE extension ](https://developers.openai.com/codex/ide)
+2. 환경 설정
 
+    - 첫 작업을 시작하기 전에 Codex 환경을 설정합니다. [chatgpt.com/codex](https://chatgpt.com/codex/settings/environments)에서 환경 설정을 열고 GitHub 리포지토리를 연결하는 단계를 따르세요.
 
+3. 작업 시작 및 진행 상황 모니터링
 
+    - 환경 준비가 완료되면 [Codex 인터페이스](https://chatgpt.com/codex)에서 코딩 작업을 시작하세요. 로그를 보면서 실시간 진행 상황을 확인하거나 백그라운드에서 작업을 실행하도록 둘 수 있습니다.
 
-Codex CLI는 macOS, Windows, Linux에서 지원됩니다.
+- Tell me about this project
+- Explain the top failure modes of my application's architecture.
+- Find and fix bugs in my codebase with minimal, high-confidence changes.
 
-  1. Codex CLI를 설치하세요
+4. 변경 사항 검토 및 Pull Request 생성
 
-npm으로 설치:
-```
-npm install -g @openai/codex
-```
+    - 작업이 완료되면 diff 보기에서 제안된 변경 사항을 검토합니다. 결과를 반복하거나 GitHub 리포지토리에 직접 Pull Request를 만들 수 있습니다.
+    - Codex는 변경 사항 미리보기도 제공합니다. PR을 그대로 수락하거나 로컬에서 브랜치를 체크아웃하여 변경 사항을 테스트하세요:
+      ```bash
+      git fetch
+      git checkout <branch-name>
+      ```
 
-Homebrew로 설치:
-```
-brew install codex
-```
+[Learn more about Codex cloud](https://developers.openai.com/codex/cloud)
 
-  2. `codex`를 실행하고 로그인하세요
-
-터미널에서 `codex`를 실행하면 시작할 수 있습니다. ChatGPT 계정 또는 API 키로 로그인하라는 메시지가 표시됩니다.
-
-  3. 현재 디렉터리에서 Codex가 작업하도록 요청하세요
-
-인증이 완료되면 현재 디렉터리에서 Codex가 작업을 수행하도록 요청할 수 있습니다.
-
-이 프로젝트에 대해 알려줘이 저장소에서 클래식 Snake 게임을 만들어줘최소한의 고신뢰 변경으로 코드베이스의 버그를 찾아 고쳐줘.
-
-  4. Git 체크포인트를 사용하세요
-
-Codex는 코드베이스를 수정할 수 있으므로, 필요 시 변경 사항을 쉽게 되돌릴 수 있도록 각 작업 전후에 Git 체크포인트를 생성하는 것을 고려하세요.
-
-
-
-
-[ Codex CLI에 대해 더 알아보기 ](https://developers.openai.com/codex/cli)
-
-[chatgpt.com/codex](https://chatgpt.com/codex)에서 클라우드용 Codex를 사용하세요.
-
-  1. 브라우저에서 Codex 열기
-
-[chatgpt.com/codex](https://chatgpt.com/codex)로 이동하세요. GitHub 풀 리퀘스트 댓글에서 `@codex`를 태그해 Codex에 작업을 위임할 수도 있습니다(ChatGPT 로그인 필요).
-
-  2. 환경 설정
-
-첫 작업을 시작하기 전에 Codex용 환경을 설정하세요. [chatgpt.com/codex](https://chatgpt.com/codex/settings/environments)에서 환경 설정을 열고 GitHub 리포지토리를 연결하는 단계를 따르세요.
-
-  3. 작업 실행 및 진행 상황 모니터링
-
-환경이 준비되면 [Codex 인터페이스](https://chatgpt.com/codex)에서 코딩 작업을 실행하세요. 로그를 보며 실시간으로 진행 상황을 모니터링하거나 백그라운드에서 작업을 실행할 수 있습니다.
-
-이 프로젝트에 대해 알려 주세요애플리케이션 아키텍처의 주요 실패 모드를 설명해 주세요.최소한의, 높은 확신을 주는 변경으로 코드베이스의 버그를 찾아 수정해 주세요.
-
-  4. 변경 사항 검토 및 풀 리퀘스트 생성
-
-작업이 완료되면 diff 뷰에서 제안된 변경 사항을 검토하세요. 결과를 반복하거나 GitHub 리포지토리에서 바로 풀 리퀘스트를 생성할 수 있습니다.
-
-Codex는 변경 사항 미리 보기 역시 제공합니다. 그대로 PR을 수락하거나 브랜치를 로컬에 체크아웃해 변경 사항을 테스트할 수 있습니다:
-```
-git fetch
-         git checkout <branch-name>
-```
-
-[ Codex 클라우드에 대해 더 알아보기 ](https://developers.openai.com/codex/cloud)
