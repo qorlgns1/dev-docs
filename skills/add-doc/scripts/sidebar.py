@@ -336,7 +336,7 @@ def parse_args():
         "--section-label-ko", default=None,
         help="최상위 섹션의 한국어 레이블 (기본: 번역 결과 사용)",
     )
-    p.add_argument("--model", default="gpt-5-codex")
+    p.add_argument("--model", default="gpt-5.1-codex-mini")
     p.add_argument("--timeout", type=int, default=120, help="번역 타임아웃 (초)")
     p.add_argument("--no-translate", action="store_true", help="번역 건너뜀 (영어 레이블 사용)")
     p.add_argument("--dry-run", action="store_true", help="파일 수정 없이 생성 결과만 출력")

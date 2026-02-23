@@ -136,7 +136,7 @@ def parse_args():
     p = argparse.ArgumentParser(description="Translate Markdown tree to Korean via Codex CLI")
     p.add_argument("--source-root", type=Path, required=True)
     p.add_argument("--dest-root", type=Path, required=True)
-    p.add_argument("--model", default="gpt-5-codex")
+    p.add_argument("--model", default="gpt-5.1-codex-mini")
     p.add_argument("--effort", default="high", choices=["low", "medium", "high", "xhigh"])
     p.add_argument("--max-chars", type=int, default=12000)
     p.add_argument("--retries", type=int, default=3)
