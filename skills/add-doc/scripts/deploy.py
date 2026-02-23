@@ -39,6 +39,11 @@ def main() -> int:
         if d.exists():
             git(["add", str(d)])
 
+    # astro.config.mjs (sidebar 변경분 포함)
+    astro_config = REPO_ROOT / "astro.config.mjs"
+    if astro_config.exists():
+        git(["add", str(astro_config)])
+
     # 변경사항 없으면 종료
     diff = subprocess.run(
         ["git", "diff", "--cached", "--quiet"], cwd=str(REPO_ROOT)

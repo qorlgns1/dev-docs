@@ -13,6 +13,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import time
 import xml.etree.ElementTree as ET
@@ -35,6 +36,7 @@ httpx = require("httpx")
 
 REPO_ROOT = Path(__file__).parent.parent.parent.parent
 EN_DOCS = REPO_ROOT / "src/content/docs/en"
+REFS_DIR = REPO_ROOT / "skills/add-doc/references"
 USER_AGENT = "add-doc/1.0"
 GENERIC_SEGMENTS = {
     "docs",
@@ -181,6 +183,116 @@ def html_to_markdown(html: str, page_url: str) -> str:
     return f"# {title}\n\nSource URL: {page_url}\n\n{body}\n"
 
 
+# ── Nav extraction ───────────────────────────────────────────────────────────
+
+def _find_nav_node(soup):
+    """사이드바 내비게이션 노드를 찾아 반환."""
+    for sel in [
+        "nav[aria-label*='sidebar' i]",
+        "nav[aria-label*='documentation' i]",
+        "[data-testid*='sidebar']",
+        "[class*='sidebar'] > nav",
+        "[class*='sidebar'] > ul",
+        "aside > nav",
+        "nav",
+    ]:
+        for node in soup.select(sel):
+            if len(node.find_all("a")) >= 4:
+                return node
+    return None
+
+
+def _parse_ul(ul, base_url: str, base_path: str) -> list[dict]:
+    items = []
+    for li in ul.find_all("li", recursive=False):
+        item = _parse_li(li, base_url, base_path)
+        if item:
+            items.append(item)
+    return items
+
+
+def _parse_li(li, base_url: str, base_path: str) -> dict | None:
+    a = li.find("a", recursive=False)
+    sub_ul = li.find("ul")
+
+    label, url = "", None
+
+    if a:
+        label = a.get_text(strip=True)
+        href = a.get("href", "")
+        if href:
+            abs_url = canonicalize(urljoin(base_url, href))
+            if in_scope(abs_url, base_path):
+                url = abs_url
+
+    if not label:
+        for child in li.children:
+            if hasattr(child, "name") and child.name not in ("ul", "li", "a"):
+                t = child.get_text(strip=True)
+                if t:
+                    label = t
+                    break
+
+    if not label:
+        return None
+
+    if sub_ul:
+        children = _parse_ul(sub_ul, base_url, base_path)
+        if not children and url is None:
+            return None
+        item: dict = {"label": label, "items": children}
+        if url:
+            item["url"] = url
+        return item
+    elif url:
+        return {"label": label, "url": url}
+    return None
+
+
+def _item_count(items: list) -> int:
+    total = len(items)
+    for item in items:
+        if "items" in item:
+            total += _item_count(item["items"])
+    return total
+
+
+def extract_nav(base_url: str, base_path: str, section: str) -> bool:
+    """메인 페이지에서 내비게이션 구조를 추출해 references/<section>-nav.json 으로 저장."""
+    print(f"[nav] Extracting navigation from {base_url}", flush=True)
+    try:
+        html = fetch(base_url)
+    except Exception as e:
+        print(f"[nav] Warning: could not fetch page: {e}", file=sys.stderr)
+        return False
+
+    soup = bs4.BeautifulSoup(html, "html.parser")
+    nav_node = _find_nav_node(soup)
+    if not nav_node:
+        print("[nav] No navigation element found", file=sys.stderr)
+        return False
+
+    top_ul = nav_node if nav_node.name == "ul" else nav_node.find("ul")
+    if not top_ul:
+        print("[nav] No <ul> inside nav element", file=sys.stderr)
+        return False
+
+    items = _parse_ul(top_ul, base_url, base_path)
+    if not items:
+        print("[nav] Empty navigation (no in-scope links found)", file=sys.stderr)
+        return False
+
+    REFS_DIR.mkdir(parents=True, exist_ok=True)
+    out_file = REFS_DIR / f"{section}-nav.json"
+    out_file.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(
+        f"[nav] Saved: {out_file.relative_to(REPO_ROOT)} "
+        f"({_item_count(items)} items, {len(items)} top-level groups)",
+        flush=True,
+    )
+    return True
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def parse_args():
@@ -190,6 +302,7 @@ def parse_args():
     p.add_argument("--force", action="store_true", help="Overwrite existing files")
     p.add_argument("--limit", type=int, default=None, help="Max pages to fetch")
     p.add_argument("--interval", type=float, default=0.2, help="Delay between requests (s)")
+    p.add_argument("--no-nav", action="store_true", help="Skip nav structure extraction")
     return p.parse_args()
 
 
@@ -239,6 +352,10 @@ def main() -> int:
         time.sleep(args.interval)
 
     print(f"[fetch] Done. Failures: {failures}", flush=True)
+
+    if not args.no_nav:
+        extract_nav(base_url, base_path, section)
+
     return 1 if failures else 0
 
 
