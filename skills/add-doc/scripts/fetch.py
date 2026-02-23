@@ -17,6 +17,7 @@ import sys
 import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
+import re
 from urllib.parse import urljoin, urlparse, urlunparse
 
 
@@ -35,6 +36,21 @@ httpx = require("httpx")
 REPO_ROOT = Path(__file__).parent.parent.parent.parent
 EN_DOCS = REPO_ROOT / "src/content/docs/en"
 USER_AGENT = "add-doc/1.0"
+GENERIC_SEGMENTS = {
+    "docs",
+    "doc",
+    "documentation",
+    "guide",
+    "guides",
+    "learn",
+    "manual",
+    "reference",
+    "references",
+    "api",
+    "apis",
+    "developer",
+    "developers",
+}
 
 
 # ── URL helpers ──────────────────────────────────────────────────────────────
@@ -43,6 +59,30 @@ def canonicalize(url: str) -> str:
     p = urlparse(url)
     path = p.path.rstrip("/") or "/"
     return urlunparse((p.scheme or "https", p.netloc, path, "", "", ""))
+
+
+def slugify(name: str) -> str:
+    s = name.strip().lower()
+    s = re.sub(r"[^a-z0-9\-]+", "-", s)
+    s = re.sub(r"-{2,}", "-", s).strip("-")
+    return s or "docs"
+
+
+def infer_section(base_url: str) -> tuple[str, str]:
+    p = urlparse(base_url)
+    path_segments = [seg for seg in p.path.split("/") if seg]
+    non_generic = [seg for seg in path_segments if seg.lower() not in GENERIC_SEGMENTS]
+
+    # path에서 의미 있는 세그먼트가 있으면 우선 사용 (예: /codex, /docs/react)
+    if non_generic:
+        return slugify(non_generic[-1]), "path"
+
+    # path가 전부 generic이면 도메인에서 후보 추출 (예: nextjs.org -> nextjs)
+    host_parts = [h for h in p.netloc.lower().split(".") if h and h != "www"]
+    if host_parts:
+        return slugify(host_parts[0]), "domain"
+
+    return "docs", "fallback"
 
 
 def in_scope(url: str, scope: str) -> bool:
@@ -159,12 +199,16 @@ def main() -> int:
     base_url = canonicalize(args.url)
     base_path = urlparse(base_url).path.rstrip("/") or "/"
 
-    # section 자동 유도: URL 마지막 세그먼트
-    section = args.section or base_path.rstrip("/").split("/")[-1] or "docs"
+    if args.section:
+        section = slugify(args.section)
+        section_source = "manual"
+    else:
+        section, inferred_by = infer_section(base_url)
+        section_source = f"auto:{inferred_by}"
     out_root = EN_DOCS / section
 
     print(f"[fetch] URL   : {base_url}", flush=True)
-    print(f"[fetch] Section: {section}", flush=True)
+    print(f"[fetch] Section: {section} ({section_source})", flush=True)
     print(f"[fetch] Output : {out_root}", flush=True)
 
     urls = collect_urls(base_url)

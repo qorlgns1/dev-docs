@@ -54,7 +54,7 @@ URL 하나로 크롤링 → 번역 → frontmatter → 배포까지 자동화합
 SECTION=codex
 URL=https://developers.openai.com/codex/
 
-python3 skills/add-doc/scripts/fetch.py --url $URL --section $SECTION
+python3 skills/add-doc/scripts/fetch.py --url $URL   # --section 생략 가능 (자동 유도)
 python3 skills/add-doc/scripts/translate.py \
   --source-root src/content/docs/en/$SECTION \
   --dest-root   src/content/docs/$SECTION
@@ -69,6 +69,12 @@ python3 skills/add-doc/scripts/deploy.py --section $SECTION
 $add-doc https://developers.openai.com/codex/
 $add-doc https://nextjs.org/docs --section nextjs
 ```
+
+- `--section`은 필수가 아닙니다.
+- 생략하면 URL 기준으로 폴더명을 자동 유도합니다.
+  - 경로에 라이브러리명이 있으면 해당 세그먼트를 사용 (예: `/codex/` → `codex`)
+  - 경로가 `docs`, `guide`, `api` 같은 일반 세그먼트만 있으면 도메인에서 유도 (예: `nextjs.org/docs` → `nextjs`)
+- 자동 유도명이 마음에 들지 않으면 `--section`으로 명시하세요.
 
 ## 배포
 
