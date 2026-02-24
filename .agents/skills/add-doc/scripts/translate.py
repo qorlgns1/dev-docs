@@ -22,6 +22,7 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
+DEFAULT_MODEL = "gpt-5.3-codex"
 LEGACY_CODE_OPEN_RE = re.compile(r"^(?:>\s*)?\[code\].*$", re.IGNORECASE)
 LEGACY_CODE_CLOSE_RE = re.compile(r"^(?:>\s*)?\[/code\]\s*$", re.IGNORECASE)
 
@@ -146,7 +147,7 @@ def parse_args():
     p = argparse.ArgumentParser(description="Translate Markdown tree to Korean via Codex CLI")
     p.add_argument("--source-root", type=Path, required=True)
     p.add_argument("--dest-root", type=Path, required=True)
-    p.add_argument("--model", default="gpt-5.1-codex-mini")
+    p.add_argument("--model", default=DEFAULT_MODEL)
     p.add_argument("--effort", default="high", choices=["low", "medium", "high", "xhigh"])
     p.add_argument("--max-chars", type=int, default=12000)
     p.add_argument("--retries", type=int, default=3)
