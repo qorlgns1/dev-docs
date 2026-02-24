@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Step 4: Nav JSON → astro.config.mjs 사이드바 자동 업데이트.
+Step 4: Nav JSON → generated sidebar JSON 자동 업데이트.
 
 fetch.py가 저장한 nav JSON을 읽어 한국어 레이블을 번역하고,
-astro.config.mjs의 사이드바 섹션을 교체(또는 추가)합니다.
+src/config/sidebar.generated.json의 사이드바 섹션을 교체(또는 추가)합니다.
 
 Usage:
   python3 sidebar.py --section codex
@@ -25,7 +25,7 @@ from urllib.parse import unquote, urlparse
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 REFS_DIR = Path(__file__).parent.parent / "references"
-ASTRO_CONFIG = REPO_ROOT / "astro.config.mjs"
+GENERATED_SIDEBAR_JSON = REPO_ROOT / "src/config/sidebar.generated.json"
 DEFAULT_MODEL = "gpt-5.3-codex"
 
 
@@ -120,214 +120,123 @@ def translate_labels_batch(labels: list[str], model: str, timeout: int) -> dict[
     return {}
 
 
-# ── JS 생성 ───────────────────────────────────────────────────────────────────
+# ── Sidebar JSON 생성/업데이트 ────────────────────────────────────────────────
 
-def _esc(s: str) -> str:
-    return s.replace("\\", "\\\\").replace("'", "\\'")
-
-
-def items_to_js(items: list, base_path: str, section: str, ko: dict, indent: int) -> str:
-    """nav 아이템 리스트를 Starlight 사이드바 JS 배열 내용으로 직렬화."""
-    tab = "\t" * indent
-    lines: list[str] = []
+def items_to_sidebar_data(items: list, base_path: str, section: str, ko: dict) -> list[dict]:
+    """nav 아이템 리스트를 Starlight sidebar JSON 구조로 변환."""
+    result: list[dict] = []
 
     for item in items:
         en = item.get("label", "")
         ko_label = ko.get(en, en)
-        en_esc, ko_esc = _esc(en), _esc(ko_label)
 
         if "items" in item:
-            child_tab = "\t" * (indent + 1)
-            children_js = items_to_js(item["items"], base_path, section, ko, indent + 1)
+            child_items = items_to_sidebar_data(item["items"], base_path, section, ko)
 
             # 그룹이 URL을 가진 경우 → 첫 번째 자식으로 Overview 삽입
             if "url" in item:
                 slug = url_to_slug(item["url"], base_path, section)
                 if slug:
-                    overview_ko = ko.get("Overview", "개요")
-                    overview_line = (
-                        f"{child_tab}{{ slug: '{_esc(slug)}', "
-                        f"label: '{_esc(overview_ko)}', "
-                        f"translations: {{ en: 'Overview' }} }}"
+                    child_items.insert(
+                        0,
+                        {
+                            "slug": slug,
+                            "label": ko.get("Overview", "개요"),
+                            "translations": {"en": "Overview"},
+                        },
                     )
-                    children_js = overview_line + (",\n" + children_js if children_js else "")
 
-            block = (
-                f"{tab}{{\n"
-                f"{child_tab}label: '{ko_esc}',\n"
-                f"{child_tab}translations: {{ en: '{en_esc}' }},\n"
-                f"{child_tab}items: [\n{children_js}\n{child_tab}],\n"
-                f"{tab}}}"
+            result.append(
+                {
+                    "label": ko_label,
+                    "translations": {"en": en},
+                    "items": child_items,
+                }
             )
-            lines.append(block)
-
-        elif "url" in item:
-            slug = url_to_slug(item["url"], base_path, section)
-            if slug:
-                lines.append(
-                    f"{tab}{{ slug: '{_esc(slug)}', "
-                    f"label: '{ko_esc}', "
-                    f"translations: {{ en: '{en_esc}' }} }}"
-                )
-
-    return ",\n".join(lines)
-
-
-def build_section_js(
-    section_label_en: str,
-    section_label_ko: str,
-    items_js: str,
-    indent: int = 4,
-) -> str:
-    """전체 사이드바 섹션 블록 JS 생성."""
-    tab = "\t" * indent
-    itab = "\t" * (indent + 1)
-    en_esc, ko_esc = _esc(section_label_en), _esc(section_label_ko)
-    return (
-        f"{tab}{{\n"
-        f"{itab}label: '{ko_esc}',\n"
-        f"{itab}translations: {{ en: '{en_esc}' }},\n"
-        f"{itab}items: [\n"
-        f"{items_js}\n"
-        f"{itab}],\n"
-        f"{tab}}}"
-    )
-
-
-# ── astro.config.mjs 업데이트 ─────────────────────────────────────────────────
-
-def _find_matching_block(content: str, start: int) -> tuple[int, int] | None:
-    """start 위치의 '{' 에서 시작하는 블록의 (start, end) 반환."""
-    depth = 0
-    for i in range(start, len(content)):
-        if content[i] == "{":
-            depth += 1
-        elif content[i] == "}":
-            depth -= 1
-            if depth == 0:
-                return start, i + 1
-    return None
-
-
-def find_section_block(content: str, section: str) -> tuple[int, int] | None:
-    """
-    사이드바 배열에서 주어진 section을 참조하는 최상위 블록의 범위를 반환.
-    autogenerate directory 또는 root slug로 섹션을 식별.
-    """
-    sidebar_m = re.search(r'\bsidebar:\s*\[', content)
-    if not sidebar_m:
-        return None
-
-    # sidebar 배열의 끝 찾기
-    depth = 0
-    sidebar_close = -1
-    i = content.index("[", sidebar_m.start())
-    while i < len(content):
-        if content[i] == "[":
-            depth += 1
-        elif content[i] == "]":
-            depth -= 1
-            if depth == 0:
-                sidebar_close = i
-                break
-        i += 1
-    if sidebar_close == -1:
-        return None
-
-    sidebar_content = content[sidebar_m.start():sidebar_close + 1]
-    sidebar_offset = sidebar_m.start()
-
-    # section을 가리키는 패턴 검색
-    patterns = [
-        rf"directory:\s*['\"]({re.escape(section)})['\"]",
-        rf"slug:\s*['\"]({re.escape(section)})['\"]",
-    ]
-
-    for pat in patterns:
-        pm = re.search(pat, sidebar_content)
-        if not pm:
             continue
 
-        ref_abs = sidebar_offset + pm.start()
+        if "url" in item:
+            slug = url_to_slug(item["url"], base_path, section)
+            if slug:
+                result.append(
+                    {
+                        "slug": slug,
+                        "label": ko_label,
+                        "translations": {"en": en},
+                    }
+                )
 
-        # 참조 위치에서 역방향으로 올라가며 label: 을 포함하는 블록 찾기
-        for _ in range(3):  # 최대 3단계 상위 블록까지
-            depth_b = 0
-            block_start = -1
-            j = ref_abs - 1
-            while j >= sidebar_offset:
-                if content[j] == "}":
-                    depth_b += 1
-                elif content[j] == "{":
-                    if depth_b == 0:
-                        block_start = j
-                        break
-                    depth_b -= 1
-                j -= 1
+    return result
 
-            if block_start == -1:
-                break
 
-            bounds = _find_matching_block(content, block_start)
-            if bounds is None:
-                break
+def build_section_data(section_label_en: str, section_label_ko: str, items: list[dict]) -> dict:
+    """최상위 섹션 JSON 블록 생성."""
+    return {
+        "label": section_label_ko,
+        "translations": {"en": section_label_en},
+        "items": items,
+    }
 
-            block_text = content[bounds[0]:bounds[1]]
-            if "label:" in block_text:
-                return bounds
 
-            ref_abs = block_start  # 한 단계 더 위로
+def section_root_slug(section_obj: dict) -> str | None:
+    """사이드바 섹션에서 첫 slug의 루트 파트를 추출."""
+    queue = [section_obj]
+    while queue:
+        cur = queue.pop(0)
+        if not isinstance(cur, dict):
+            continue
+
+        slug = cur.get("slug")
+        if isinstance(slug, str) and slug.strip():
+            return slug.split("/")[0]
+
+        items = cur.get("items")
+        if isinstance(items, list):
+            queue.extend(items)
 
     return None
 
 
-def update_astro_config(config_path: Path, section: str, new_block: str) -> bool:
-    """astro.config.mjs 에서 섹션을 교체하거나 신규 추가."""
-    content = config_path.read_text(encoding="utf-8")
+def update_generated_sidebar(json_path: Path, section: str, new_section: dict) -> bool:
+    """sidebar.generated.json에서 섹션을 교체하거나 신규 추가."""
+    json_path.parent.mkdir(parents=True, exist_ok=True)
 
-    bounds = find_section_block(content, section)
+    if json_path.exists():
+        try:
+            existing = json.loads(json_path.read_text(encoding="utf-8"))
+            if not isinstance(existing, list):
+                print(f"[sidebar] Expected JSON array in {json_path}", file=sys.stderr)
+                return False
+            sections: list[dict] = existing
+        except json.JSONDecodeError as e:
+            print(f"[sidebar] Failed to parse {json_path}: {e}", file=sys.stderr)
+            return False
+    else:
+        sections = []
 
-    if bounds:
-        start, end = bounds
-        config_path.write_text(content[:start] + new_block + content[end:], encoding="utf-8")
-        print(f"[sidebar] Replaced existing '{section}' section in astro.config.mjs", flush=True)
-        return True
+    target = section.strip().strip("/")
+    replace_idx = None
+    for i, sec in enumerate(sections):
+        if isinstance(sec, dict) and section_root_slug(sec) == target:
+            replace_idx = i
+            break
 
-    # 섹션 없음 → sidebar 배열 끝에 추가
-    sidebar_m = re.search(r'\bsidebar:\s*\[', content)
-    if not sidebar_m:
-        print("[sidebar] 'sidebar:' not found in astro.config.mjs", file=sys.stderr)
-        return False
+    if replace_idx is None:
+        sections.append(new_section)
+        action = "Added"
+    else:
+        sections[replace_idx] = new_section
+        action = "Replaced"
 
-    depth = 0
-    sidebar_close = -1
-    i = content.index("[", sidebar_m.start())
-    while i < len(content):
-        if content[i] == "[":
-            depth += 1
-        elif content[i] == "]":
-            depth -= 1
-            if depth == 0:
-                sidebar_close = i
-                break
-        i += 1
-
-    if sidebar_close == -1:
-        return False
-
-    insert = f"\n{new_block},\n\t\t\t"
-    config_path.write_text(
-        content[:sidebar_close] + insert + content[sidebar_close:],
-        encoding="utf-8",
-    )
-    print(f"[sidebar] Added new '{section}' section to astro.config.mjs", flush=True)
+    json_path.write_text(json.dumps(sections, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"[sidebar] {action} '{target}' section in {json_path}", flush=True)
     return True
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def parse_args():
-    p = argparse.ArgumentParser(description="Nav JSON → astro.config.mjs sidebar")
+    p = argparse.ArgumentParser(description="Nav JSON → sidebar.generated.json")
     p.add_argument("--section", required=True, help="섹션 이름 (예: codex, nextjs)")
     p.add_argument(
         "--nav", type=Path, default=None,
@@ -398,22 +307,21 @@ def main() -> int:
 
     section_label_ko = args.section_label_ko or ko.get(section_label_en, section_label_en)
 
-    # JS 생성
-    items_js = items_to_js(nav_data, base_path, args.section, ko, indent=6)
-    section_js = build_section_js(section_label_en, section_label_ko, items_js, indent=4)
+    # JSON 생성
+    items_data = items_to_sidebar_data(nav_data, base_path, args.section, ko)
+    section_data = build_section_data(section_label_en, section_label_ko, items_data)
 
     if args.dry_run:
         print("\n" + "─" * 60)
-        print(section_js)
+        print(json.dumps(section_data, ensure_ascii=False, indent=2))
         print("─" * 60)
         return 0
 
-    # astro.config.mjs 업데이트
-    if not update_astro_config(ASTRO_CONFIG, args.section, section_js):
-        fallback = REFS_DIR / f"sidebar-{args.section}.js.tmp"
-        fallback.write_text(section_js, encoding="utf-8")
-        print(f"[sidebar] Saved generated JS → {fallback}", file=sys.stderr)
-        print("[sidebar] Paste this block into astro.config.mjs manually.", file=sys.stderr)
+    # generated sidebar JSON 업데이트
+    if not update_generated_sidebar(GENERATED_SIDEBAR_JSON, args.section, section_data):
+        fallback = REFS_DIR / f"sidebar-{args.section}.json.tmp"
+        fallback.write_text(json.dumps(section_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"[sidebar] Saved generated JSON → {fallback}", file=sys.stderr)
         return 1
 
     return 0
