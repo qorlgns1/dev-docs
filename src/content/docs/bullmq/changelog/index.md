@@ -1,0 +1,1613 @@
+---
+title: '변경 로그'
+---
+
+출처 URL: https://docs.bullmq.io/changelog
+
+# 변경 로그
+
+### [5.70.1](https://github.com/taskforcesh/bullmq/compare/v5.70.0...v5.70.1) (2026-02-23)
+
+#### 버그 수정
+
+* **deps:** ioredis 의존성을 v5.9.3으로 업데이트 ([#3821](https://github.com/taskforcesh/bullmq/issues/3821)) [#3793](https://github.com/taskforcesh/bullmq/issues/3793) 수정 ([0fafcc0](https://github.com/taskforcesh/bullmq/commit/0fafcc0950698f6a8a55a2b77ef1b82af5d5712f))
+
+## [5.70.0](https://github.com/taskforcesh/bullmq/compare/v5.69.4...v5.70.0) (2026-02-21)
+
+#### 기능
+
+* **worker:** sandboxed processor에 취소 지원 추가 ([#3806](https://github.com/taskforcesh/bullmq/issues/3806)) ([0d3879b](https://github.com/taskforcesh/bullmq/commit/0d3879b02ec9738d90213e1a479d53359f3a71aa))
+
+### [5.69.4](https://github.com/taskforcesh/bullmq/compare/v5.69.3...v5.69.4) (2026-02-21)
+
+#### 버그 수정
+
+* **sandbox:** bullmq가 아닌 메시지가 무시되도록 보장 ([#3704](https://github.com/taskforcesh/bullmq/issues/3704)) [#3703](https://github.com/taskforcesh/bullmq/issues/3703) 수정 ([9c72258](https://github.com/taskforcesh/bullmq/commit/9c722585bd9873561fae3f32971d65cf00a7d092))
+
+### [5.69.3](https://github.com/taskforcesh/bullmq/compare/v5.69.2...v5.69.3) (2026-02-16)
+
+#### 버그 수정
+
+* **job-scheduler:** 빈 scheduler hash 폴백 처리 ([#3797](https://github.com/taskforcesh/bullmq/issues/3797)) [#3796](https://github.com/taskforcesh/bullmq/issues/3796) 수정 ([87386ca](https://github.com/taskforcesh/bullmq/commit/87386ca88e29755fc68e6cc8fcfebfb7f8f8237f))
+
+### [5.69.2](https://github.com/taskforcesh/bullmq/compare/v5.69.1...v5.69.2) (2026-02-14)
+
+#### 버그 수정
+
+* **queue:** repeat 또는 job-scheduler 인스턴스의 오류 전달 ([#3775](https://github.com/taskforcesh/bullmq/issues/3775)) [#3774](https://github.com/taskforcesh/bullmq/issues/3774) 수정 ([a62241f](https://github.com/taskforcesh/bullmq/commit/a62241f5831a1d3bb6c328a9037ea852be7832cd))
+
+### [5.69.1](https://github.com/taskforcesh/bullmq/compare/v5.69.0...v5.69.1) (2026-02-13)
+
+#### 버그 수정
+
+* **utils:** DatabaseType의 정확한 import 사용 ([#3786](https://github.com/taskforcesh/bullmq/issues/3786)) ([d249301](https://github.com/taskforcesh/bullmq/commit/d249301ddc9afc607c9e86a8a44312af682e6be0))
+
+## [5.69.0](https://github.com/taskforcesh/bullmq/compare/v5.68.0...v5.69.0) (2026-02-12)
+
+#### 기능
+
+* **otel:** metrics 활성화 ([#3769](https://github.com/taskforcesh/bullmq/issues/3769)) ([f85e870](https://github.com/taskforcesh/bullmq/commit/f85e87032a822826cbeed19eedff7ccb1e6ce085))
+
+## [5.68.0](https://github.com/taskforcesh/bullmq/compare/v5.67.3...v5.68.0) (2026-02-11)
+
+#### 기능
+
+* **connection:** 버전 구분을 위한 datatype 추가 ([#3746](https://github.com/taskforcesh/bullmq/issues/3746)) ([af9197d](https://github.com/taskforcesh/bullmq/commit/af9197d16941d49c9e3d86f10d96681beea676bc))
+
+### [5.67.3](https://github.com/taskforcesh/bullmq/compare/v5.67.2...v5.67.3) (2026-02-05)
+
+#### 버그 수정
+
+* **connection:** cluster 복제 시 redisOptions 병합 ([#3759](https://github.com/taskforcesh/bullmq/issues/3759)) ([afb878f](https://github.com/taskforcesh/bullmq/commit/afb878f97ebeaf89c1308b7dde0b5a440381d113))
+
+### [5.67.2](https://github.com/taskforcesh/bullmq/compare/v5.67.1...v5.67.2) (2026-01-28)
+
+#### 버그 수정
+
+* **deps:** ioredis 의존성에 caret 버전 규칙 사용 ([#3719](https://github.com/taskforcesh/bullmq/issues/3719)) [#3718](https://github.com/taskforcesh/bullmq/issues/3718) 수정 ([de0fca8](https://github.com/taskforcesh/bullmq/commit/de0fca894f47d8aa2b2c66ca9475e526ca477508))
+
+### [5.67.1](https://github.com/taskforcesh/bullmq/compare/v5.67.0...v5.67.1) (2026-01-24)
+
+#### 버그 수정
+
+* cluster에서 worker 연결 이름 수정 [#3340](https://github.com/taskforcesh/bullmq/issues/3340) (elixir) (python) ([#3660](https://github.com/taskforcesh/bullmq/issues/3660)) ([fa22e84](https://github.com/taskforcesh/bullmq/commit/fa22e844d29961db95df58f2ae63b440d71c11f6))
+
+## [5.67.0](https://github.com/taskforcesh/bullmq/compare/v5.66.7...v5.67.0) (2026-01-24)
+
+#### 기능
+
+* **job:** complete, retry, delay 및 failed span에 telemetry attribute로 job name과 id 추가 ([#3707](https://github.com/taskforcesh/bullmq/issues/3707)) ref [#3692](https://github.com/taskforcesh/bullmq/issues/3692) ([6294b36](https://github.com/taskforcesh/bullmq/commit/6294b36f775c20f7d43387d9bde3185629e88df4))
+
+### [5.66.7](https://github.com/taskforcesh/bullmq/compare/v5.66.6...v5.66.7) (2026-01-23)
+
+#### 버그 수정
+
+* **deps:** ioredis 의존성을 v5.9.2로 업데이트 ([#3713](https://github.com/taskforcesh/bullmq/issues/3713)) ([87e74b5](https://github.com/taskforcesh/bullmq/commit/87e74b5713b5017c29789094d6ac6ff26bfe79c1))
+
+### [5.66.6](https://github.com/taskforcesh/bullmq/compare/v5.66.5...v5.66.6) (2026-01-22)
+
+#### 성능 개선
+
+* **job:** max age 기준으로 jobs를 제거할 때 limit 적용 (python) (elixir) ([#3694](https://github.com/taskforcesh/bullmq/issues/3694)) [#3672](https://github.com/taskforcesh/bullmq/issues/3672) 수정 ([a8fc316](https://github.com/taskforcesh/bullmq/commit/a8fc316c0989bd3edb54577ceb02bff0c600aa93))
+
+### [5.66.5](https://github.com/taskforcesh/bullmq/compare/v5.66.4...v5.66.5) (2026-01-12)
+
+#### 버그 수정
+
+* **deps:** ioredis 의존성을 v5.9.1로 업데이트 ([#3676](https://github.com/taskforcesh/bullmq/issues/3676)) [#3667](https://github.com/taskforcesh/bullmq/issues/3667) 수정 ([661c581](https://github.com/taskforcesh/bullmq/commit/661c581270186bc405967b91326daff061370d03))
+
+### [5.66.4](https://github.com/taskforcesh/bullmq/compare/v5.66.3...v5.66.4) (2025-12-27)
+
+#### 버그 수정
+
+* **flow:** flow producer에서 debounce 옵션 제거 ([#3646](https://github.com/taskforcesh/bullmq/issues/3646)) ([cc74805](https://github.com/taskforcesh/bullmq/commit/cc74805d5eda14ed684e2111c91de8890e752768))
+
+### [5.66.3](https://github.com/taskforcesh/bullmq/compare/v5.66.2...v5.66.3) (2025-12-26)
+
+#### 버그 수정
+
+* **flow:** flow producer에서 deduplication 옵션 제거 ([#3637](https://github.com/taskforcesh/bullmq/issues/3637)) ([f60c172](https://github.com/taskforcesh/bullmq/commit/f60c172725ab29c0159b804ae0b9d691105689c4))
+
+### [5.66.2](https://github.com/taskforcesh/bullmq/compare/v5.66.1...v5.66.2) (2025-12-19)
+
+#### 버그 수정
+
+* **telemetry:** 작업 완료 시 가장 최신의 attemptsMade 값 전송 ([#3623](https://github.com/taskforcesh/bullmq/issues/3623)) ([1380a16](https://github.com/taskforcesh/bullmq/commit/1380a16fa45c70f0bc5b938efdf178b33a19cac1))
+
+### [5.66.1](https://github.com/taskforcesh/bullmq/compare/v5.66.0...v5.66.1) (2025-12-17)
+
+#### 버그 수정
+
+* **deps:** dependencies 고정 ([#3609](https://github.com/taskforcesh/bullmq/issues/3609)) ([5fbf778](https://github.com/taskforcesh/bullmq/commit/5fbf778f0b8f58b90e82f9020c041f3248b0b269))
+
+## [5.66.0](https://github.com/taskforcesh/bullmq/compare/v5.65.1...v5.66.0) (2025-12-11)
+
+#### 기능
+
+* **job:** retry 시 attemptsMade 및 attemptsStarted attribute 재설정 허용 ([#3596](https://github.com/taskforcesh/bullmq/issues/3596)) ref [#2152](https://github.com/taskforcesh/bullmq/issues/2152) ([241d847](https://github.com/taskforcesh/bullmq/commit/241d847fbc798d957bf25ccfaa5c9ec96928a4ae))
+
+### [5.65.1](https://github.com/taskforcesh/bullmq/compare/v5.65.0...v5.65.1) (2025-12-01)
+
+#### 버그 수정
+
+* **stalled:** job이 더 이상 active 상태가 아닐 때 lock 오류 방지 ([#3579](https://github.com/taskforcesh/bullmq/issues/3579)) ([a8b9d76](https://github.com/taskforcesh/bullmq/commit/a8b9d76496afa5e913f823cf8c68eb428f6dd757))
+
+## [5.65.0](https://github.com/taskforcesh/bullmq/compare/v5.64.1...v5.65.0) (2025-11-26)
+
+#### 기능
+
+* **job:** removeDeduplicationKey method 지원 ([#3575](https://github.com/taskforcesh/bullmq/issues/3575)) ([b059cfc](https://github.com/taskforcesh/bullmq/commit/b059cfcba48524446a62fd29785142c3d1edc30d))
+
+### [5.64.1](https://github.com/taskforcesh/bullmq/compare/v5.64.0...v5.64.1) (2025-11-21)
+
+#### 성능 개선
+
+* **worker:** queue가 rate limited 상태일 때 delayed jobs 승격 ([#3561](https://github.com/taskforcesh/bullmq/issues/3561)) ([a474801](https://github.com/taskforcesh/bullmq/commit/a47480111a2f1238a57ea9bfbab44f7de958227f))
+
+## [5.64.0](https://github.com/taskforcesh/bullmq/compare/v5.63.2...v5.64.0) (2025-11-20)
+
+#### 기능
+
+* **worker:** job 취소 추가 ([#3564](https://github.com/taskforcesh/bullmq/issues/3564)) ([f41f5d0](https://github.com/taskforcesh/bullmq/commit/f41f5d0c64afe7707ad8c23a86cb9228c4d45671))
+
+### [5.63.2](https://github.com/taskforcesh/bullmq/compare/v5.63.1...v5.63.2) (2025-11-15)
+
+#### 버그 수정
+
+* **connection:** 연결 오류 확인 시 error code 고려 ([#3537](https://github.com/taskforcesh/bullmq/issues/3537)) ([045f3e7](https://github.com/taskforcesh/bullmq/commit/045f3e7a5d8edb85e1adbe82eb9e20ef33ad491b))
+
+### [5.63.1](https://github.com/taskforcesh/bullmq/compare/v5.63.0...v5.63.1) (2025-11-13)
+
+#### 버그 수정
+
+* **job-scheduler:** upsert에서 every를 변경하면 iterations가 재설정됨 ([#3551](https://github.com/taskforcesh/bullmq/issues/3551)) ([b4c7c65](https://github.com/taskforcesh/bullmq/commit/b4c7c6579b430b53d135b7a21d20d01d14c1814e))
+
+## [5.63.0](https://github.com/taskforcesh/bullmq/compare/v5.62.2...v5.63.0) (2025-10-31)
+
+#### 버그 수정
+
+* **queue:** updateJobProgress 호출 시 progress event 발생 ([#3528](https://github.com/taskforcesh/bullmq/issues/3528)) ([c82df83](https://github.com/taskforcesh/bullmq/commit/c82df834dc83b3cf889b6a1aba9d18ec8b5eaf70))
+
+#### 기능
+
+* **queue:** getMeta method 지원 ([#3513](https://github.com/taskforcesh/bullmq/issues/3513)) ([e212d1c](https://github.com/taskforcesh/bullmq/commit/e212d1c8f0945dbff2d95309afe1376366910482))
+
+### [5.62.2](https://github.com/taskforcesh/bullmq/compare/v5.62.1...v5.62.2) (2025-10-30)
+
+#### 버그 수정
+
+* upsertJobScheduler가 기존 scheduled job에 변경 사항을 적용하지 않음 ([#3524](https://github.com/taskforcesh/bullmq/issues/3524)) ([98f73b3](https://github.com/taskforcesh/bullmq/commit/98f73b3f33aa79cdd67d0c4090cc86a8e4cfeb4c)), closes [#3500](https://github.com/taskforcesh/bullmq/issues/3500)
+
+### [5.62.1](https://github.com/taskforcesh/bullmq/compare/v5.62.0...v5.62.1) (2025-10-30)
+
+#### 성능 개선
+
+* **worker:** 특수 오류 이후 moveToActive 호출 ([#3497](https://github.com/taskforcesh/bullmq/issues/3497)) ([37e9db5](https://github.com/taskforcesh/bullmq/commit/37e9db52a67b4e120139c1d2620cc0f73a08c006))
+
+## [5.62.0](https://github.com/taskforcesh/bullmq/compare/v5.61.2...v5.62.0) (2025-10-28)
+
+#### 기능
+
+* **queue:** getGlobalRateLimit method 지원 ([#3511](https://github.com/taskforcesh/bullmq/issues/3511)) ([6a31e0a](https://github.com/taskforcesh/bullmq/commit/6a31e0aeab1311d7d089811ede7e11a98b6dd408))
+
+### [5.61.2](https://github.com/taskforcesh/bullmq/compare/v5.61.0...v5.61.2) (2025-10-23)
+
+#### 버그 수정
+
+* **worker:** moveToActive가 실패했을 때만 error 발생 ([0aa7cc5](https://github.com/taskforcesh/bullmq/commit/0aa7cc57db27a4e7b9fe3c5f52600abba749b053))
+* **queue:** remove method 호출 시 removed event 발생 ([#3492](https://github.com/taskforcesh/bullmq/issues/3492)) [#2668](https://github.com/taskforcesh/bullmq/issues/2668) 수정 ([7a3f2fa1](https://github.com/taskforcesh/bullmq/commit/7a3f2fa131e20de80c45877a1018e1ccdf8a6506))
+* **worker:** moveToFinished에서 실패가 발생할 때 error를 한 번만 발생시킴 ([#3498](https://github.com/taskforcesh/bullmq/issues/3498)) ([4b4bd97e](https://github.com/taskforcesh/bullmq/commit/4b4bd97ee78af861121e2ccb90f210e4a74fbd26))
+
+### [5.61.0](https://github.com/taskforcesh/bullmq/compare/v5.60.0...v5.61.0) (2025-10-06)
+
+#### 기능
+
+* **queue:** removeGlobalRateLimit method 추가 ([#3481](https://github.com/taskforcesh/bullmq/issues/3481)) ([d3fff80](https://github.com/taskforcesh/bullmq/commit/d3fff80f7135251db65e22cba8852a5584030cb1))
+
+#### 버그 수정
+
+* **worker:** 연결 오류가 발생할 때 processor를 재시도하지 않음 ([#3482](https://github.com/taskforcesh/bullmq/issues/3482)) ([f1573b3](https://github.com/taskforcesh/bullmq/commit/f1573b3023807aab9a68ea6b2ce16a58afe4402b))
+
+### [5.60.0](https://github.com/taskforcesh/bullmq/compare/v5.59.0...v5.60.0) (2025-10-03)
+
+#### 기능
+
+* **queue:** 전역 rate limit 지원 ([#3468](https://github.com/taskforcesh/bullmq/issues/3468)) 참조 [#3019](https://github.com/taskforcesh/bullmq/issues/3019) ([bef57a0](https://github.com/taskforcesh/bullmq/commit/bef57a0e252a5d8bd0bf319d0bca3b1ad0e6519f))
+
+### [5.59.0](https://github.com/taskforcesh/bullmq/compare/v5.58.9...v5.59.0) (2025-09-29)
+
+#### 기능
+
+* **deduplication:** single mode에서 replace 옵션 지원 ([#3472](https://github.com/taskforcesh/bullmq/issues/3472)) ([eea35b7](https://github.com/taskforcesh/bullmq/commit/eea35b763c0965e129cf0ef4a104d05aa1f65f74))
+* **sandbox:** mjs 파일 지원 ([#3476](https://github.com/taskforcesh/bullmq/issues/3476)) 참조 [#3474](https://github.com/taskforcesh/bullmq/issues/3474) ([2e2b214](https://github.com/taskforcesh/bullmq/commit/2e2b21454cc6125fcf3abfec939d6d6d8d02c40b))
+* **worker:** maxStartedAttempts 옵션 지원 ([#3331](https://github.com/taskforcesh/bullmq/issues/3331)) ([9384a64](https://github.com/taskforcesh/bullmq/commit/9384a64d6d48718220e472c26d0c03e7b7e8e555))
+
+#### 성능 개선
+
+* **worker:** 연결 오류에서는 무한 재시도만 고려 ([#3473](https://github.com/taskforcesh/bullmq/issues/3473)) ([9d5a678](https://github.com/taskforcesh/bullmq/commit/9d5a678660f6bb927ad375d7de58814d392dbe9d))
+
+### [5.58.9](https://github.com/taskforcesh/bullmq/compare/v5.58.8...v5.58.9) (2025-09-26)
+
+#### 성능 개선
+
+* **metrics:** getMetrics 호출 시 lua script 사용 ([#3459](https://github.com/taskforcesh/bullmq/issues/3459)) ([61987c6](https://github.com/taskforcesh/bullmq/commit/61987c62ca71ec11a84b98e6dd51a6d5ebf1737d))
+
+### [5.58.8](https://github.com/taskforcesh/bullmq/compare/v5.58.7...v5.58.8) (2025-09-25)
+
+#### 버그 수정
+
+* **job-scheduler:** 불안정한 upsert 수정 ([#3446](https://github.com/taskforcesh/bullmq/issues/3446)) ([2241101](https://github.com/taskforcesh/bullmq/commit/22411010beca628d172790cfbac45e3cd3d102ed))
+
+### [5.58.7](https://github.com/taskforcesh/bullmq/compare/v5.58.6...v5.58.7) (2025-09-19)
+
+#### 버그 수정
+
+* **job:** : 포함을 방지하기 위해 사용자 지정 jobId 검증 추가 ([#3384](https://github.com/taskforcesh/bullmq/issues/3384)) 수정 [#3382](https://github.com/taskforcesh/bullmq/issues/3382) ([845a6f5](https://github.com/taskforcesh/bullmq/commit/845a6f5fdede9ecf4050e8b5617feb56dbb3c9a1))
+
+### [5.58.6](https://github.com/taskforcesh/bullmq/compare/v5.58.5...v5.58.6) (2025-09-19)
+
+#### 버그 수정
+
+* **deps:** uuid를 v11로 업그레이드 ([#3452](https://github.com/taskforcesh/bullmq/issues/3452)) ([bd8fbc1](https://github.com/taskforcesh/bullmq/commit/bd8fbc164caaa01f665d0c7e94177d0584d04f8c))
+* **events:** retryJob script 호출 시 prev param을 active로 설정 ([#3426](https://github.com/taskforcesh/bullmq/issues/3426)) ([e0ebd15](https://github.com/taskforcesh/bullmq/commit/e0ebd15e47b95f9300d6683475ec5d2176f07c95))
+* **deduplication:** id 옵션이 제공되었는지 검증 ([#3443](https://github.com/taskforcesh/bullmq/issues/3443)) 수정 [#3432](https://github.com/taskforcesh/bullmq/issues/3432) ([533b844](https://github.com/taskforcesh/bullmq/commit/533b84461a908a3d0182002f16e9c0c0a0260014))
+
+### [5.58.5](https://github.com/taskforcesh/bullmq/compare/v5.58.4...v5.58.5) (2025-09-04)
+
+#### 버그 수정
+
+* **queue:** JobBase에 대해 명시적 타입이 없을 때 Job 타입 추론 유지 ([#3423](https://github.com/taskforcesh/bullmq/issues/3423)) 수정 [#3421](https://github.com/taskforcesh/bullmq/issues/3421) ([f642818](https://github.com/taskforcesh/bullmq/commit/f6428188f39f054e8b94579435b16e260aff27cd))
+
+### [5.58.4](https://github.com/taskforcesh/bullmq/compare/v5.58.3...v5.58.4) (2025-08-30)
+
+#### 버그 수정
+
+* **types:** Processor 타입 export ([#3418](https://github.com/taskforcesh/bullmq/issues/3418)) ([70e8a3f](https://github.com/taskforcesh/bullmq/commit/70e8a3f91595dcdc2d21122170ef4af1f53972ad))
+
+### [5.58.3](https://github.com/taskforcesh/bullmq/compare/v5.58.2...v5.58.3) (2025-08-29)
+
+#### 버그 수정
+
+* **job-scheduler:** getJobScheduler 반환 타입에서 undefined 타입 고려 ([#3412](https://github.com/taskforcesh/bullmq/issues/3412)) ([ffc6e26](https://github.com/taskforcesh/bullmq/commit/ffc6e26eb66533fc6eae4c406bb4b9a9f7590d9b))
+
+### [5.58.2](https://github.com/taskforcesh/bullmq/compare/v5.58.1...v5.58.2) (2025-08-26)
+
+#### 버그 수정
+
+* **job:** 재시도 시 parent 업데이트 고려 ([#3402](https://github.com/taskforcesh/bullmq/issues/3402)) (python) 수정 [#3320](https://github.com/taskforcesh/bullmq/issues/3320) ([316d1ed](https://github.com/taskforcesh/bullmq/commit/316d1ed32680e690b1d2ab92c79a53e0d4c00c2d))
+
+### [5.58.1](https://github.com/taskforcesh/bullmq/compare/v5.58.0...v5.58.1) (2025-08-23)
+
+#### 버그 수정
+
+* **job:** getTraces에서 불필요한 tryCatch 호출 방지 ([#3400](https://github.com/taskforcesh/bullmq/issues/3400)) ([d71b872](https://github.com/taskforcesh/bullmq/commit/d71b87245c8196d19dfeaf82e6ef14c91fb9a7c5))
+
+## [5.58.0](https://github.com/taskforcesh/bullmq/compare/v5.57.0...v5.58.0) (2025-08-15)
+
+#### 기능
+
+* **worker:** processJob 호출 시 jobName 및 attemptsMade span attribute 추가 ([#3199](https://github.com/taskforcesh/bullmq/issues/3199)) ([db0a922](https://github.com/taskforcesh/bullmq/commit/db0a922741d8c7eae8d5119a0831cd734aba02a2))
+
+## [5.57.0](https://github.com/taskforcesh/bullmq/compare/v5.56.10...v5.57.0) (2025-08-13)
+
+#### 기능
+
+* **sandbox:** moveToWaitingChildren method 지원 ([#3389](https://github.com/taskforcesh/bullmq/issues/3389)) ([0fecc6c](https://github.com/taskforcesh/bullmq/commit/0fecc6cd0d0dea06f486ab0b0fe760d866f1fc34))
+
+### [5.56.10](https://github.com/taskforcesh/bullmq/compare/v5.56.9...v5.56.10) (2025-08-10)
+
+#### 버그 수정
+
+* **scheduler:** pattern 사용 시 nextMillis를 생성할 때 startDate 고려 ([#3385](https://github.com/taskforcesh/bullmq/issues/3385)) 수정 [#3378](https://github.com/taskforcesh/bullmq/issues/3378) ([53754fb](https://github.com/taskforcesh/bullmq/commit/53754fb239cf1b021ffc55391990d879d363dcf7))
+
+### [5.56.9](https://github.com/taskforcesh/bullmq/compare/v5.56.8...v5.56.9) (2025-07-31)
+
+#### 버그 수정
+
+* **worker:** moveToWaitingChildren에서 children이 실패했을 때 failed 이벤트 emit ([#3346](https://github.com/taskforcesh/bullmq/issues/3346)) ([93df852](https://github.com/taskforcesh/bullmq/commit/93df852f97f04023d791546d30a6af24fbca6114))
+
+### [5.56.8](https://github.com/taskforcesh/bullmq/compare/v5.56.7...v5.56.8) (2025-07-27)
+
+#### 버그 수정
+
+* **queue:** clean method에서 'waiting' parameter 지원 추가 ([#3338](https://github.com/taskforcesh/bullmq/issues/3338)) 수정 [#3125](https://github.com/taskforcesh/bullmq/issues/3125) ([edb7147](https://github.com/taskforcesh/bullmq/commit/edb714764066b06c068c8c8a5140b010f27c3b9a))
+
+### [5.56.7](https://github.com/taskforcesh/bullmq/compare/v5.56.6...v5.56.7) (2025-07-25)
+
+#### 버그 수정
+
+* **flow:** 실패한 children이 있을 때 parent를 active에서 제거 ([#3348](https://github.com/taskforcesh/bullmq/issues/3348)) ([34ee339](https://github.com/taskforcesh/bullmq/commit/34ee33955a660b0696f4b6cff6d8d39fdcd160db))
+* **worker:** 일시 중지하거나 종료할 때 active jobs를 유지하지 않음 ([#3350](https://github.com/taskforcesh/bullmq/issues/3350)) 수정 [#3349](https://github.com/taskforcesh/bullmq/issues/3349) ([424d155](https://github.com/taskforcesh/bullmq/commit/424d15508172a028479059920ed6bfcf1c54a389))
+
+### [5.56.6](https://github.com/taskforcesh/bullmq/compare/v5.56.5...v5.56.6) (2025-07-25)
+
+#### 버그 수정
+
+* **repeat:** 이전 형식이 있을 때 legacy updateRepeatableJob script 사용 ([#3364](https://github.com/taskforcesh/bullmq/issues/3364)) 수정 [#3275](https://github.com/taskforcesh/bullmq/issues/3275) ([1e221d5](https://github.com/taskforcesh/bullmq/commit/1e221d5404dcea750a08342c832a682e454135a3))
+
+### [5.56.5](https://github.com/taskforcesh/bullmq/compare/v5.56.4...v5.56.5) (2025-07-19)
+
+#### 버그 수정
+
+* **rate-limit:** job이 존재하지 않을 때 올바른 오류 메시지를 throw ([#3354](https://github.com/taskforcesh/bullmq/issues/3354)) ([83d9695](https://github.com/taskforcesh/bullmq/commit/83d969541f19fa9703eb73ff0006cd29a358c1e7))
+
+### [5.56.4](https://github.com/taskforcesh/bullmq/compare/v5.56.3...v5.56.4) (2025-07-11)
+
+#### 버그 수정
+
+* **connection:** skipVersionCheck가 true로 제공된 경우 info command 무시 ([#3342](https://github.com/taskforcesh/bullmq/issues/3342)) 수정 [#3341](https://github.com/taskforcesh/bullmq/issues/3341) ([b94d7ed](https://github.com/taskforcesh/bullmq/commit/b94d7ed5602e366b4401051b236f31ac2dd2a90d))
+
+### [5.56.3](https://github.com/taskforcesh/bullmq/compare/v5.56.2...v5.56.3) (2025-07-10)
+
+#### 버그 수정
+
+* **scheduler:** startMillis 계산에 offset 반영 ([#2944](https://github.com/taskforcesh/bullmq/issues/2944)) 수정 [#247](https://github.com/taskforcesh/bullmq/issues/247) ([1e3f3c5](https://github.com/taskforcesh/bullmq/commit/1e3f3c507a7ceb8d8147941adc9de69367947a5e))
+
+### [5.56.2](https://github.com/taskforcesh/bullmq/compare/v5.56.1...v5.56.2) (2025-07-08)
+
+#### 성능 개선
+
+* **woker:** delayed marker를 소비할 때 더 낮은 blockTimeout 유지 ([#3333](https://github.com/taskforcesh/bullmq/issues/3333)) ([e687d7c](https://github.com/taskforcesh/bullmq/commit/e687d7cf86108138bbd5e911b11ab3c5717fc23c))
+
+### [5.56.1](https://github.com/taskforcesh/bullmq/compare/v5.56.0...v5.56.1) (2025-07-03)
+
+#### 성능 개선
+
+* **worker:** job을 가져올 때 rate limit을 기다리지 않음 ([#3322](https://github.com/taskforcesh/bullmq/issues/3322)) ([c32e6a0](https://github.com/taskforcesh/bullmq/commit/c32e6a0ff6df8bc34c9c13238c192974a93f7ddb))
+
+## [5.56.0](https://github.com/taskforcesh/bullmq/compare/v5.55.0...v5.56.0) (2025-06-22)
+
+#### 기능
+
+* **deduplication:** replace 및 extend 옵션 지원 추가 ([#3260](https://github.com/taskforcesh/bullmq/issues/3260)) 참조 [#2767](https://github.com/taskforcesh/bullmq/issues/2767) [#3151](https://github.com/taskforcesh/bullmq/issues/3151) [#3250](https://github.com/taskforcesh/bullmq/issues/3250) ([4a53609](https://github.com/taskforcesh/bullmq/commit/4a5360936c1a543a1ff31ebbb6ab1289cc8ddf07))
+
+## [5.55.0](https://github.com/taskforcesh/bullmq/compare/v5.54.3...v5.55.0) (2025-06-21)
+
+#### 기능
+
+* **worker:** job이 처리 중일 때 moveToWait 호출 허용 ([#3302](https://github.com/taskforcesh/bullmq/issues/3302)) 참조 [#3296](https://github.com/taskforcesh/bullmq/issues/3296) ([e742511](https://github.com/taskforcesh/bullmq/commit/e742511baf35225718c01e621623eab661f37284))
+
+### [5.54.3](https://github.com/taskforcesh/bullmq/compare/v5.54.2...v5.54.3) (2025-06-18)
+
+#### 버그 수정
+
+* **scheduler:** every 사용 시 slot 계산 수정 ([#3307](https://github.com/taskforcesh/bullmq/issues/3307)) ([588719e](https://github.com/taskforcesh/bullmq/commit/588719ee49c7615affeb69d3a431025757115c10))
+
+### [5.54.2](https://github.com/taskforcesh/bullmq/compare/v5.54.1...v5.54.2) (2025-06-17)
+
+#### 버그 수정
+
+* scripts와 queue 간 순환 참조 방지 ([#3301](https://github.com/taskforcesh/bullmq/issues/3301)) ([fb65677](https://github.com/taskforcesh/bullmq/commit/fb65677f2d636e1aca3cc75cb3b740b8729b3358))
+
+### [5.54.1](https://github.com/taskforcesh/bullmq/compare/v5.54.0...v5.54.1) (2025-06-17)
+
+#### 성능 개선
+
+* **scheduler:** every가 제공될 때 offset 값 저장 ([#3142](https://github.com/taskforcesh/bullmq/issues/3142)) ([98f35bc](https://github.com/taskforcesh/bullmq/commit/98f35bc1eabb3ab1010737869c310d2001a84fac))
+
+## [5.54.0](https://github.com/taskforcesh/bullmq/compare/v5.53.3...v5.54.0) (2025-06-15)
+
+#### 기능
+
+* **backoff:** jitter 옵션 추가 ([#3291](https://github.com/taskforcesh/bullmq/issues/3291)) ([86c4c6d](https://github.com/taskforcesh/bullmq/commit/86c4c6dd25ef868f1f37c917ab11cb663e330e2f))
+
+### [5.53.3](https://github.com/taskforcesh/bullmq/compare/v5.53.2...v5.53.3) (2025-06-13)
+
+#### 버그 수정
+
+* **worker:** rate limit에서 큐가 멈추도록 만드는 dangling job 방지 ([#3297](https://github.com/taskforcesh/bullmq/issues/3297)) 수정 [#3289](https://github.com/taskforcesh/bullmq/issues/3289) ([263d33d](https://github.com/taskforcesh/bullmq/commit/263d33d536a92daf578c56cbb58765917046e052))
+
+### [5.53.2](https://github.com/taskforcesh/bullmq/compare/v5.53.1...v5.53.2) (2025-06-02)
+
+#### 성능 개선
+
+* **stalled:** stalled job를 지연(lazy) 방식으로 실패 처리 ([#3266](https://github.com/taskforcesh/bullmq/issues/3266)) ([5cbf064](https://github.com/taskforcesh/bullmq/commit/5cbf0647e106d45d78318a5e5e9fb017261374c9))
+
+### [5.53.1](https://github.com/taskforcesh/bullmq/compare/v5.53.0...v5.53.1) (2025-05-30)
+
+#### 버그 수정
+
+* **job:** getDependencies에서 무시된 실패를 파싱하지 않음 ([#3284](https://github.com/taskforcesh/bullmq/issues/3284)) 수정 [#3283](https://github.com/taskforcesh/bullmq/issues/3283) ([04ca6b5](https://github.com/taskforcesh/bullmq/commit/04ca6b55c15698aab3ceaf72bd2ed9c589d76197))
+* **scheduler:** delayed 상태일 때 현재 job 제거 ([#3269](https://github.com/taskforcesh/bullmq/issues/3269)) 수정 [#3262](https://github.com/taskforcesh/bullmq/issues/3262) [#3272](https://github.com/taskforcesh/bullmq/issues/3272) ([1ca4cbd](https://github.com/taskforcesh/bullmq/commit/1ca4cbd17a58c7eba83030bd6440d0f5e5d69633))
+
+## [5.53.0](https://github.com/taskforcesh/bullmq/compare/v5.52.3...v5.53.0) (2025-05-21)
+
+#### 기능
+
+* **sandbox:** job wrapper에 getIgnoredChildrenFailures 메서드 추가 ([#3263](https://github.com/taskforcesh/bullmq/issues/3263)) ([5d2723d](https://github.com/taskforcesh/bullmq/commit/5d2723dd82e636846e2ff886abb4c0161c15a441))
+
+### [5.52.3](https://github.com/taskforcesh/bullmq/compare/v5.52.2...v5.52.3) (2025-05-19)
+
+#### 버그 수정
+
+* **flow:** 부모에 실패한 자식이 있을 때 새 에러 코드 추가 ([#3268](https://github.com/taskforcesh/bullmq/issues/3268)) ([b8fba5e](https://github.com/taskforcesh/bullmq/commit/b8fba5e937a41d0c7ddc97443e9fa8d0f0de566b))
+
+#### 기능
+
+* **job:** moveToCompleted 메서드 추가 \[python] ([#3251](https://github.com/taskforcesh/bullmq/issues/3251)) ([6a8e3e2](https://github.com/taskforcesh/bullmq/commit/6a8e3e206384b56063c6f5a46ca030d2b330c712))
+
+### [5.52.2](https://github.com/taskforcesh/bullmq/compare/v5.52.1...v5.52.2) (2025-05-08)
+
+#### 버그 수정
+
+* **worker:** maxStalledCount가 0보다 작지 않도록 처리 ([#3249](https://github.com/taskforcesh/bullmq/issues/3249)) 수정 [#3248](https://github.com/taskforcesh/bullmq/issues/3248) ([34dcb8c](https://github.com/taskforcesh/bullmq/commit/34dcb8c3d01a822b07852bc928d882bd6e4049d2))
+
+### [5.52.1](https://github.com/taskforcesh/bullmq/compare/v5.52.0...v5.52.1) (2025-05-02)
+
+#### 버그 수정
+
+* **remove:** 올바른 children meta reference 전달 ([#3245](https://github.com/taskforcesh/bullmq/issues/3245)) ([01c62ad](https://github.com/taskforcesh/bullmq/commit/01c62ada0cea80c73ba28d79fd14ea5ba78fdc7d))
+
+## [5.52.0](https://github.com/taskforcesh/bullmq/compare/v5.51.1...v5.52.0) (2025-05-01)
+
+#### 버그 수정
+
+* **connection:** connection 옵션에 str 타입 추가 \[python] ([#3212](https://github.com/taskforcesh/bullmq/issues/3212)) ([72fac42](https://github.com/taskforcesh/bullmq/commit/72fac4297f5a60e0c2ae0831507cb16ce8baed5f))
+
+#### 기능
+
+* **flow:** getFlow 및 getDependencies 메서드에서 실패한 자식 지원 ([#3243](https://github.com/taskforcesh/bullmq/issues/3243)) ([d3b1cff](https://github.com/taskforcesh/bullmq/commit/d3b1cff4cf02aad8ae0812b1d465316a067118d0))
+
+### [5.51.1](https://github.com/taskforcesh/bullmq/compare/v5.51.0...v5.51.1) (2025-04-26)
+
+#### 버그 수정
+
+* **queue-events:** telemetry 옵션 생략 ([#3239](https://github.com/taskforcesh/bullmq/issues/3239)) ([e4dac2c](https://github.com/taskforcesh/bullmq/commit/e4dac2c39fac0c8cce34fbcb98a0c72c1619ed4e))
+
+## [5.51.0](https://github.com/taskforcesh/bullmq/compare/v5.50.0...v5.51.0) (2025-04-25)
+
+#### 버그 수정
+
+* **job-scheduler:** scheduler가 없어도 다음 delayed job이 존재하면 제거 ([#3203](https://github.com/taskforcesh/bullmq/issues/3203)) 참조 [#3197](https://github.com/taskforcesh/bullmq/issues/3197) ([61395bf](https://github.com/taskforcesh/bullmq/commit/61395bf0b2fc656d1cdaf094fc62a03920ebe07d))
+
+#### 기능
+
+* **flow:** getFlow 및 getDependencies 메서드에서 무시된 자식 지원 ([#3238](https://github.com/taskforcesh/bullmq/issues/3238)) 참조 [#3213](https://github.com/taskforcesh/bullmq/issues/3213) ([2927803](https://github.com/taskforcesh/bullmq/commit/2927803b4b1eaddb77d3690634beb9c071b5adf7))
+
+## [5.50.0](https://github.com/taskforcesh/bullmq/compare/v5.49.2...v5.50.0) (2025-04-25)
+
+#### 버그 수정
+
+* **deduplication:** 저장되는 마지막 jobId와 일치할 때만 deduplication key 제거 ([#3236](https://github.com/taskforcesh/bullmq/issues/3236)) ([192e82c](https://github.com/taskforcesh/bullmq/commit/192e82caa0f7f530ed495740ec2ade37fe89b43b))
+
+#### 기능
+
+* **queue:** getIgnoredChildrenFailures 메서드 추가 ([#3194](https://github.com/taskforcesh/bullmq/issues/3194)) ([4affb11](https://github.com/taskforcesh/bullmq/commit/4affb11be26afad9f867db19a210c361ba64dd4b))
+
+### [5.49.2](https://github.com/taskforcesh/bullmq/compare/v5.49.1...v5.49.2) (2025-04-21)
+
+#### 성능 개선
+
+* **flow:** 부모 실패를 지연(lazy) 방식으로 변경 ([#3228](https://github.com/taskforcesh/bullmq/issues/3228)) ([6b37a37](https://github.com/taskforcesh/bullmq/commit/6b37a379cc65abe7b4c60ba427065957c9080a08))
+
+### [5.49.1](https://github.com/taskforcesh/bullmq/compare/v5.49.0...v5.49.1) (2025-04-17)
+
+#### 버그 수정
+
+* **flow-producer:** getFlow 호출 시 기본적으로 FlowProducer prefix 사용 ([#3224](https://github.com/taskforcesh/bullmq/issues/3224)) ([bd17aad](https://github.com/taskforcesh/bullmq/commit/bd17aad64ec73917548e1bb45ee611b799363cc0))
+
+## [5.49.0](https://github.com/taskforcesh/bullmq/compare/v5.48.1...v5.49.0) (2025-04-16)
+
+#### 기능
+
+* **job:** stalledCounter 속성 노출 ([#3218](https://github.com/taskforcesh/bullmq/issues/3218)) ([9456472](https://github.com/taskforcesh/bullmq/commit/94564724593699d13bc0ac238e23c13737edbbf2))
+
+### [5.48.1](https://github.com/taskforcesh/bullmq/compare/v5.48.0...v5.48.1) (2025-04-10)
+
+#### 버그 수정
+
+* 줄 분할을 더 호환되게 개선 ([#3208](https://github.com/taskforcesh/bullmq/issues/3208)) ([3c2349a](https://github.com/taskforcesh/bullmq/commit/3c2349a2936d0c59cfa8d136585a0c0156de3212)), closes [#3204](https://github.com/taskforcesh/bullmq/issues/3204)
+
+## [5.48.0](https://github.com/taskforcesh/bullmq/compare/v5.47.3...v5.48.0) (2025-04-08)
+
+#### 기능
+
+* removeUnprocessedChildren 추가 ([#3190](https://github.com/taskforcesh/bullmq/issues/3190)) ([4b96266](https://github.com/taskforcesh/bullmq/commit/4b96266d4a7e2fe4b1b3eba12e9e7cc5a64fc044))
+
+### [5.47.3](https://github.com/taskforcesh/bullmq/compare/v5.47.2...v5.47.3) (2025-04-08)
+
+#### 버그 수정
+
+* **job-scheduler:** endDate 존재 여부 검증 수정 ([#3195](https://github.com/taskforcesh/bullmq/issues/3195)) ([339f13e](https://github.com/taskforcesh/bullmq/commit/339f13e277c7c087adc9023f5a433d9a21c661a2))
+
+### [5.47.2](https://github.com/taskforcesh/bullmq/compare/v5.47.1...v5.47.2) (2025-04-06)
+
+#### 버그 수정
+
+* **flow:** failParentOnFailure 또는 continueParentOnFailure일 때 dependencies에서 job 제거 ([#3201](https://github.com/taskforcesh/bullmq/issues/3201)) ([1fbcbec](https://github.com/taskforcesh/bullmq/commit/1fbcbec56969fc4aa628f77e4b05d2c6844894ae))
+
+### [5.47.1](https://github.com/taskforcesh/bullmq/compare/v5.47.0...v5.47.1) (2025-04-05)
+
+#### 버그 수정
+
+* **flow-producer:** addNode에 전달할 때 queueName otel 속성 수정 ([#3198](https://github.com/taskforcesh/bullmq/issues/3198)) ([758ea26](https://github.com/taskforcesh/bullmq/commit/758ea2647b3dad683796351919b0380172fa717f))
+
+## [5.47.0](https://github.com/taskforcesh/bullmq/compare/v5.46.1...v5.47.0) (2025-04-04)
+
+#### 기능
+
+* **flows:** continueParentOnFailure 옵션 추가 ([#3181](https://github.com/taskforcesh/bullmq/issues/3181)) ([738d375](https://github.com/taskforcesh/bullmq/commit/738d3752934746a347fd04e59e9dcd4726777508))
+
+### [5.46.1](https://github.com/taskforcesh/bullmq/compare/v5.46.0...v5.46.1) (2025-04-03)
+
+#### 버그 수정
+
+* **queue-events:** JobProgress 타입에 올바른 path 전달 ([#3192](https://github.com/taskforcesh/bullmq/issues/3192)) 수정 [#3191](https://github.com/taskforcesh/bullmq/issues/3191) ([33c62e6](https://github.com/taskforcesh/bullmq/commit/33c62e67268daf24d92653abb5b857ac2241b3aa))
+
+## [5.46.0](https://github.com/taskforcesh/bullmq/compare/v5.45.2...v5.46.0) (2025-04-02)
+
+#### 기능
+
+* **updateProgress:** progress로 더 많은 타입을 사용할 수 있도록 허용 ([#3187](https://github.com/taskforcesh/bullmq/issues/3187)) ([f16b748](https://github.com/taskforcesh/bullmq/commit/f16b748d7e3af2535ccdc54e12500af74874a235))
+
+### [5.45.2](https://github.com/taskforcesh/bullmq/compare/v5.45.1...v5.45.2) (2025-03-29)
+
+#### 버그 수정
+
+* **flow:** lock 제거 전에 pending dependencies 검증 ([#3182](https://github.com/taskforcesh/bullmq/issues/3182)) ([8d59e3b](https://github.com/taskforcesh/bullmq/commit/8d59e3b8084c60afad16372b4f7fc22f1b9d3f4e))
+
+### [5.45.1](https://github.com/taskforcesh/bullmq/compare/v5.45.0...v5.45.1) (2025-03-29)
+
+#### 버그 수정
+
+* **job-scheduler:** 다음 delayed job이 존재할 때 duplicated 이벤트 발생 ([#3172](https://github.com/taskforcesh/bullmq/issues/3172)) ([d57698f](https://github.com/taskforcesh/bullmq/commit/d57698f9af64fd1bb85f571f22b7fd663c3e05ee))
+
+## [5.45.0](https://github.com/taskforcesh/bullmq/compare/v5.44.4...v5.45.0) (2025-03-27)
+
+#### 기능
+
+* deduplicated 이벤트에 deduplicated job id 추가 ([0f21c10](https://github.com/taskforcesh/bullmq/commit/0f21c10bc9fd9a2290e8dde3c9b43bc366fcb15a))
+
+### [5.44.4](https://github.com/taskforcesh/bullmq/compare/v5.44.3...v5.44.4) (2025-03-24)
+
+#### 버그 수정
+
+* **scheduler:** 가능할 때 다음 delayed job 제거 ([#3153](https://github.com/taskforcesh/bullmq/issues/3153)) ([219c0db](https://github.com/taskforcesh/bullmq/commit/219c0dba7180143b19b4a21dc96db45af941ca7d))
+
+### [5.44.3](https://github.com/taskforcesh/bullmq/compare/v5.44.2...v5.44.3) (2025-03-22)
+
+#### 버그 수정
+
+* **flow:** completed로 이동할 때만 pending dependencies 검증 ([#3164](https://github.com/taskforcesh/bullmq/issues/3164)) ([d3c397f](https://github.com/taskforcesh/bullmq/commit/d3c397fa3f122287026018aaae5ed2c5dfad19aa))
+
+### [5.44.2](https://github.com/taskforcesh/bullmq/compare/v5.44.1...v5.44.2) (2025-03-22)
+
+#### 성능 개선
+
+* **flow:** failed로 이동 시도 전에 parentKey 존재 여부 검증 ([#3163](https://github.com/taskforcesh/bullmq/issues/3163)) ([5a88e47](https://github.com/taskforcesh/bullmq/commit/5a88e4745d9449e41c5e2c467b5d02ca21357703))
+
+### [5.44.1](https://github.com/taskforcesh/bullmq/compare/v5.44.0...v5.44.1) (2025-03-21)
+
+#### 버그 수정
+
+* **flow:** 부모를 failed로 이동할 때 prioritized 상태 고려 ([#3160](https://github.com/taskforcesh/bullmq/issues/3160)) ([d91d9f4](https://github.com/taskforcesh/bullmq/commit/d91d9f4398584506f5af8b46e4d47b769beaa212))
+
+## [5.44.0](https://github.com/taskforcesh/bullmq/compare/v5.43.1...v5.44.0) (2025-03-18)
+
+#### 기능
+
+* **prometheus export:** 전역 변수 노출 ([0325a39](https://github.com/taskforcesh/bullmq/commit/0325a39f4243f3bea682bcfc20dc43b62d3f9fd9))
+
+### [5.43.1](https://github.com/taskforcesh/bullmq/compare/v5.43.0...v5.43.1) (2025-03-15)
+
+#### 버그 수정
+
+* **job-scheduler:** 필요 시 job scheduler를 upsert할 때 marker 추가 ([#3145](https://github.com/taskforcesh/bullmq/issues/3145)) ([0e137b2](https://github.com/taskforcesh/bullmq/commit/0e137b2e78882b6206b3fa47d4a6babb4fcfc484))
+
+## [5.43.0](https://github.com/taskforcesh/bullmq/compare/v5.42.0...v5.43.0) (2025-03-13)
+
+#### 기능
+
+* **job:** getDependenciesCount에서 ignored 및 failed 카운트 지원 ([#3137](https://github.com/taskforcesh/bullmq/issues/3137)) ref [#3136](https://github.com/taskforcesh/bullmq/issues/3136) ([83953db](https://github.com/taskforcesh/bullmq/commit/83953db54cad80e4ec0a7659f41cb5bc086ccacf))
+
+## [5.42.0](https://github.com/taskforcesh/bullmq/compare/v5.41.9...v5.42.0) (2025-03-12)
+
+#### 버그 수정
+
+* **flow:** failParentOnFailure가 제공되면 waiting-children에 없는 부모를 실패 처리하도록 반영 ([#3098](https://github.com/taskforcesh/bullmq/issues/3098)) ([589adb4](https://github.com/taskforcesh/bullmq/commit/589adb4f89bcb7d7721200333c2d605eb6ba7864))
+* **job-scheduler:** iterationCount 속성 복원 ([#3134](https://github.com/taskforcesh/bullmq/issues/3134)) ([eec7114](https://github.com/taskforcesh/bullmq/commit/eec711468de39ec10da9206d7f8c5ad1eb0df882))
+
+#### 기능
+
+* **job:** moveToCompleted 메서드에 complete span 추가 ([#3132](https://github.com/taskforcesh/bullmq/issues/3132)) ([c37123c](https://github.com/taskforcesh/bullmq/commit/c37123cc84632328d8c4e251641688eb36ac1a8a))
+
+#### 성능 개선
+
+* **worker:** 실패한 job을 청크 단위로 가져오는 로직 최적화 ([#3127](https://github.com/taskforcesh/bullmq/issues/3127)) ([e0f02ce](https://github.com/taskforcesh/bullmq/commit/e0f02ceb00ced5ca00a6c73d96801a040c40d958))
+
+### [5.41.9](https://github.com/taskforcesh/bullmq/compare/v5.41.8...v5.41.9) (2025-03-11)
+
+#### 버그 수정
+
+* **scheduler:** job scheduler 업데이트 시 multi 제거 ([#3108](https://github.com/taskforcesh/bullmq/issues/3108)) ([4b619ca](https://github.com/taskforcesh/bullmq/commit/4b619cab9a6bf8d25efec83dcdf0adaaa362e12a))
+
+### [5.41.8](https://github.com/taskforcesh/bullmq/compare/v5.41.7...v5.41.8) (2025-03-08)
+
+#### 버그 수정
+
+* **job:** fromJSON에서 priority 역직렬화 ([#3126](https://github.com/taskforcesh/bullmq/issues/3126)) ([c3269b1](https://github.com/taskforcesh/bullmq/commit/c3269b11e2def4e2acd4eafc02ce7958a8fcf63e))
+* **worker:** delay\_until을 정수로 캐스팅 \[python] ([#3116](https://github.com/taskforcesh/bullmq/issues/3116)) ([db617e4](https://github.com/taskforcesh/bullmq/commit/db617e48ef1dd52446bfd73e15f24957df2ca315))
+
+### [5.41.7](https://github.com/taskforcesh/bullmq/compare/v5.41.6...v5.41.7) (2025-02-27)
+
+#### 버그 수정
+
+* **scheduler:** 실패한 job 정리 시 repeatKey가 있으면 검증 ([#3115](https://github.com/taskforcesh/bullmq/issues/3115)) fixes [#3114](https://github.com/taskforcesh/bullmq/issues/3114) ([d4cad84](https://github.com/taskforcesh/bullmq/commit/d4cad8402628f1773299c9cf33e6cc6a0e694037))
+
+### [5.41.6](https://github.com/taskforcesh/bullmq/compare/v5.41.5...v5.41.6) (2025-02-26)
+
+#### 버그 수정
+
+* **flow:** 부모를 failed로 이동할 때 delayed 상태를 고려 ([#3112](https://github.com/taskforcesh/bullmq/issues/3112)) ([6a28b86](https://github.com/taskforcesh/bullmq/commit/6a28b861346a3efa89574a78b396954d6c4ed113))
+* **telemetry:** moveToFailed 로직의 span 이름 수정 ([#3113](https://github.com/taskforcesh/bullmq/issues/3113)) ([7a4b500](https://github.com/taskforcesh/bullmq/commit/7a4b500dc63320807e051d8efd2b8fee07bb0db5))
+
+### [5.41.5](https://github.com/taskforcesh/bullmq/compare/v5.41.4...v5.41.5) (2025-02-21)
+
+#### 버그 수정
+
+* **job-scheduler:** 현재 job을 wait, paused 또는 prioritized에서 제거하는 경우를 고려 ([#3066](https://github.com/taskforcesh/bullmq/issues/3066)) ([97cd2b1](https://github.com/taskforcesh/bullmq/commit/97cd2b147d541e0984d1c2e107110e1a9d56d9b5))
+
+### [5.41.4](https://github.com/taskforcesh/bullmq/compare/v5.41.3...v5.41.4) (2025-02-21)
+
+#### 성능 개선
+
+* **delayed:** delayed job 승격 시 marker를 한 번만 추가 ([#3096](https://github.com/taskforcesh/bullmq/issues/3096)) (python) ([38912fb](https://github.com/taskforcesh/bullmq/commit/38912fba969d614eb44d05517ba2ec8bc418a16e))
+
+### [5.41.3](https://github.com/taskforcesh/bullmq/compare/v5.41.2...v5.41.3) (2025-02-19)
+
+#### 버그 수정
+
+* **worker:** 재개 시 processor가 정의되지 않았으면 run 메서드를 실행하지 않음 ([#3089](https://github.com/taskforcesh/bullmq/issues/3089)) ([4a66933](https://github.com/taskforcesh/bullmq/commit/4a66933496db68a84ec7eb7c153fcedb7bd14c7b))
+
+### [5.41.2](https://github.com/taskforcesh/bullmq/compare/v5.41.1...v5.41.2) (2025-02-16)
+
+#### 버그 수정
+
+* **worker:** 종료 중에는 resume하지 않음 ([#3080](https://github.com/taskforcesh/bullmq/issues/3080)) ([024ee0f](https://github.com/taskforcesh/bullmq/commit/024ee0f3f0e808c256712d3ccb1bcadb025eb931))
+
+### [5.41.1](https://github.com/taskforcesh/bullmq/compare/v5.41.0...v5.41.1) (2025-02-15)
+
+#### 버그 수정
+
+* **job:** moveToFinished에서 job을 active로 이동할 때 processedBy 설정 ([#3077](https://github.com/taskforcesh/bullmq/issues/3077)) fixes [#3073](https://github.com/taskforcesh/bullmq/issues/3073) ([1aa970c](https://github.com/taskforcesh/bullmq/commit/1aa970ced3c55949aea6726c4ad29531089f5370))
+
+## [5.41.0](https://github.com/taskforcesh/bullmq/compare/v5.40.5...v5.41.0) (2025-02-14)
+
+#### 기능
+
+* **job:** 수동 처리를 위한 moveToWait 메서드 추가 ([#2978](https://github.com/taskforcesh/bullmq/issues/2978)) ([5a97491](https://github.com/taskforcesh/bullmq/commit/5a97491a0319df320b7858657e03c357284e0108))
+* **queue:** removeGlobalConcurrency 메서드 지원 ([#3076](https://github.com/taskforcesh/bullmq/issues/3076)) ([ece8532](https://github.com/taskforcesh/bullmq/commit/ece853203adb420466dfaf3ff8bccc73fb917147))
+
+#### 성능 개선
+
+* **add-job:** delay가 0으로 제공될 때 job을 wait 또는 prioritized 상태에 추가 ([#3052](https://github.com/taskforcesh/bullmq/issues/3052)) ([3e990eb](https://github.com/taskforcesh/bullmq/commit/3e990eb742b3a12065110f33135f282711fdd7b9))
+
+### [5.40.5](https://github.com/taskforcesh/bullmq/compare/v5.40.4...v5.40.5) (2025-02-14)
+
+#### 버그 수정
+
+* **drain:** redis cluster용 delayed 키 전달 ([#3074](https://github.com/taskforcesh/bullmq/issues/3074)) ([05ea32b](https://github.com/taskforcesh/bullmq/commit/05ea32b7e4f0cd4099783fd81d2b3214d7a293d5))
+
+### [5.40.4](https://github.com/taskforcesh/bullmq/compare/v5.40.3...v5.40.4) (2025-02-13)
+
+#### 버그 수정
+
+* **job-scheduler:** limit 옵션이 저장되도록 복원 ([#3071](https://github.com/taskforcesh/bullmq/issues/3071)) ([3e649f7](https://github.com/taskforcesh/bullmq/commit/3e649f7399514b343447ed2073cc07e4661f7390))
+
+### [5.40.3](https://github.com/taskforcesh/bullmq/compare/v5.40.2...v5.40.3) (2025-02-12)
+
+#### 버그 수정
+
+* **job-scheduler:** getJobScheduler에서 존재하지 않으면 undefined 반환 ([#3065](https://github.com/taskforcesh/bullmq/issues/3065)) fixes [#3062](https://github.com/taskforcesh/bullmq/issues/3062) ([548cc1c](https://github.com/taskforcesh/bullmq/commit/548cc1ce8080042b4b44009ea99108bd24193895))
+
+### [5.40.2](https://github.com/taskforcesh/bullmq/compare/v5.40.1...v5.40.2) (2025-02-07)
+
+#### 버그 수정
+
+* getNextJob의 반환 타입 수정 ([b970281](https://github.com/taskforcesh/bullmq/commit/b9702812e6961f0f5a834f66d43cfb2feabaafd8))
+
+### [5.40.1](https://github.com/taskforcesh/bullmq/compare/v5.40.0...v5.40.1) (2025-02-07)
+
+#### 버그 수정
+
+* **worker:** 종료 시 가져온 job이 처리될 때까지 대기 ([#3059](https://github.com/taskforcesh/bullmq/issues/3059)) ([d4de2f5](https://github.com/taskforcesh/bullmq/commit/d4de2f5e88d57ea00274e62ab23d09f4806196f8))
+
+## [5.40.0](https://github.com/taskforcesh/bullmq/compare/v5.39.2...v5.40.0) (2025-02-02)
+
+#### 기능
+
+* **job-scheduler:** 동일 스크립트에서 delayed job 추가와 업데이트를 되돌림 ([9f0f1ba](https://github.com/taskforcesh/bullmq/commit/9f0f1ba9b17874a757ac38c1878792c0df3c5a9a))
+
+### [5.39.2](https://github.com/taskforcesh/bullmq/compare/v5.39.1...v5.39.2) (2025-02-02)
+
+#### 버그 수정
+
+* **worker:** failed로 이동할 때 job을 가져와야 하는지 평가 ([#3043](https://github.com/taskforcesh/bullmq/issues/3043)) ([406e21c](https://github.com/taskforcesh/bullmq/commit/406e21c9aadd7670f353c1c6b102a401fc327653))
+
+### [5.39.1](https://github.com/taskforcesh/bullmq/compare/v5.39.0...v5.39.1) (2025-01-30)
+
+#### 버그 수정
+
+* **retry-job:** job의 failures 업데이트를 고려 ([#3036](https://github.com/taskforcesh/bullmq/issues/3036)) ([21e8495](https://github.com/taskforcesh/bullmq/commit/21e8495b5f2bf5418d86f60b59fad25d306a0298))
+
+## [5.39.0](https://github.com/taskforcesh/bullmq/compare/v5.38.0...v5.39.0) (2025-01-29)
+
+#### 기능
+
+* **job-scheduler:** limit 옵션 저장 ([#3033](https://github.com/taskforcesh/bullmq/issues/3033)) ([a1571ea](https://github.com/taskforcesh/bullmq/commit/a1571ea03be6c6c41794fa272c38c29588351bbf))
+
+## [5.38.0](https://github.com/taskforcesh/bullmq/compare/v5.37.0...v5.38.0) (2025-01-28)
+
+#### 버그 수정
+
+* **flow-producer:** skipWaitingForReady 지원 추가 ([6d829fc](https://github.com/taskforcesh/bullmq/commit/6d829fceda9f204f193c533ffc780962692b8f16))
+
+#### 기능
+
+* **queue:** 연결 준비 완료까지의 대기를 건너뛰는 옵션 추가 ([e728299](https://github.com/taskforcesh/bullmq/commit/e72829922d4234b92290346dce5d33f5b98ee373))
+
+## [5.37.0](https://github.com/taskforcesh/bullmq/compare/v5.36.0...v5.37.0) (2025-01-25)
+
+#### 기능
+
+* **queue-getters:** Prometheus exporter 추가 ([078ae9d](https://github.com/taskforcesh/bullmq/commit/078ae9db80f6ca64ff0a8135b57a6dc71d71cb1e))
+
+## [5.36.0](https://github.com/taskforcesh/bullmq/compare/v5.35.1...v5.36.0) (2025-01-24)
+
+#### 기능
+
+* **job-scheduler:** iteration count 저장 ([#3018](https://github.com/taskforcesh/bullmq/issues/3018)) ([ad5c07c](https://github.com/taskforcesh/bullmq/commit/ad5c07cc7672a3f7a7185310b1250763a5fef76b))
+
+### [5.35.1](https://github.com/taskforcesh/bullmq/compare/v5.35.0...v5.35.1) (2025-01-23)
+
+#### 버그 수정
+
+* **worker:** worker 종료 시 발생 가능한 위험 회피 ([0f07467](https://github.com/taskforcesh/bullmq/commit/0f0746727176d7ff285ae2d1f35048109b4574c5))
+
+## [5.35.0](https://github.com/taskforcesh/bullmq/compare/v5.34.10...v5.35.0) (2025-01-22)
+
+#### 기능
+
+* **sandbox:** getChildrenValues 지원 추가 ([dcc3b06](https://github.com/taskforcesh/bullmq/commit/dcc3b0628f992546d7b93f509795e5d4eb3e1b15))
+
+### [5.34.10](https://github.com/taskforcesh/bullmq/compare/v5.34.9...v5.34.10) (2025-01-14)
+
+#### 버그 수정
+
+* **job-scheduler:** template data가 없을 때 delayed job 데이터 사용 ([#3010](https://github.com/taskforcesh/bullmq/issues/3010)) fixes [#3009](https://github.com/taskforcesh/bullmq/issues/3009) ([95edb40](https://github.com/taskforcesh/bullmq/commit/95edb4008fcd32f09ec0953d862692d4ac7608c0))
+
+### [5.34.9](https://github.com/taskforcesh/bullmq/compare/v5.34.8...v5.34.9) (2025-01-12)
+
+#### 버그 수정
+
+* **job-scheduler:** prevMillis가 producerId와 일치할 때만 다음 delayed job 추가 ([#3001](https://github.com/taskforcesh/bullmq/issues/3001)) ([4ea35dd](https://github.com/taskforcesh/bullmq/commit/4ea35dd9e16ff0197f204210696f41c0c5bd0e30))
+
+### [5.34.8](https://github.com/taskforcesh/bullmq/compare/v5.34.7...v5.34.8) (2025-01-08)
+
+#### 성능 개선
+
+* **job-scheduler:** 동일 스크립트에서 delayed job 추가 및 scheduler 업데이트 ([#2997](https://github.com/taskforcesh/bullmq/issues/2997)) ([9be28a0](https://github.com/taskforcesh/bullmq/commit/9be28a0c4a907798a447d02ca50662c12333dd82))
+
+### [5.34.7](https://github.com/taskforcesh/bullmq/compare/v5.34.6...v5.34.7) (2025-01-06)
+
+#### 성능 개선
+
+* **job-scheduler:** 동일 스크립트에서 delayed job과 scheduler 추가 ([#2993](https://github.com/taskforcesh/bullmq/issues/2993)) ([95718e8](https://github.com/taskforcesh/bullmq/commit/95718e888ba64b4071f21bbe0823b55a51ab145c))
+
+### [5.34.6](https://github.com/taskforcesh/bullmq/compare/v5.34.5...v5.34.6) (2024-12-31)
+
+#### 버그 수정
+
+* **job-scheduler:** 짧은 시간에 연속으로 upsert할 때 중복을 방지 ([#2991](https://github.com/taskforcesh/bullmq/issues/2991)) ([e8cdb99](https://github.com/taskforcesh/bullmq/commit/e8cdb99881bc7cebbc48cb7834da5eafa289712f))
+
+### [5.34.5](https://github.com/taskforcesh/bullmq/compare/v5.34.4...v5.34.5) (2024-12-25)
+
+#### 버그 수정
+
+* **dynamic-rate-limit:** job lock 케이스 검증 ([#2975](https://github.com/taskforcesh/bullmq/issues/2975)) ([8bb27ea](https://github.com/taskforcesh/bullmq/commit/8bb27ea4438cbd11e85fa4d0aa516bd1c0e7d51b))
+
+### [5.34.4](https://github.com/taskforcesh/bullmq/compare/v5.34.3...v5.34.4) (2024-12-21)
+
+#### 버그 수정
+
+* **sandbox:** job이 active 상태에 영구히 남을 수 있던 문제 수정 ([#2979](https://github.com/taskforcesh/bullmq/issues/2979)) ([c0a6bcd](https://github.com/taskforcesh/bullmq/commit/c0a6bcdf9594540ef6c8ec08df28550f4f5e1950))
+
+### [5.34.3](https://github.com/taskforcesh/bullmq/compare/v5.34.2...v5.34.3) (2024-12-18)
+
+#### 버그 수정
+
+* **sandboxed:** 기본 메시지를 전송해 특수 에러를 감지하는 문제 수정 ([#2967](https://github.com/taskforcesh/bullmq/issues/2967)) fixes [#2962](https://github.com/taskforcesh/bullmq/issues/2962) ([52b0e34](https://github.com/taskforcesh/bullmq/commit/52b0e34f0a38ac71ebd0667a5fa116ecd73ae4d2))
+
+### [5.34.2](https://github.com/taskforcesh/bullmq/compare/v5.34.1...v5.34.2) (2024-12-14)
+
+#### 버그 수정
+
+* **scripts:** unpack 전에 jobs 필드가 비어 있지 않은지 확인 ([4360572](https://github.com/taskforcesh/bullmq/commit/4360572745a929c7c4f6266ec03d4eba77a9715c))
+
+### [5.34.1](https://github.com/taskforcesh/bullmq/compare/v5.34.0...v5.34.1) (2024-12-13)
+
+#### 버그 수정
+
+* 모든 반복 작업이 슬롯에 배치되도록 보장 ([9917df1](https://github.com/taskforcesh/bullmq/commit/9917df166aff2e2f143c45297f41ac8520bfc8ae))
+* **job-scheduler:** 반복 작업 재시도 시 지연 작업이 중복되지 않도록 방지 ([af75315](https://github.com/taskforcesh/bullmq/commit/af75315f0c7923f5e0a667a9ed4606b28b89b719))
+
+## [5.34.0](https://github.com/taskforcesh/bullmq/compare/v5.33.1...v5.34.0) (2024-12-10)
+
+#### 기능
+
+* **telemetry:** job에서 컨텍스트 전파를 생략하는 옵션 추가 ([#2946](https://github.com/taskforcesh/bullmq/issues/2946)) ([6514c33](https://github.com/taskforcesh/bullmq/commit/6514c335231cb6e727819cf5e0c56ed3f5132838))
+
+### [5.33.1](https://github.com/taskforcesh/bullmq/compare/v5.33.0...v5.33.1) (2024-12-10)
+
+#### 버그 수정
+
+* **job-scheduler:** 템플릿 옵션에서 deduplication 및 debounce 옵션 생략 ([#2960](https://github.com/taskforcesh/bullmq/issues/2960)) ([b5fa6a3](https://github.com/taskforcesh/bullmq/commit/b5fa6a3208a8f2a39777dc30c2db2f498addb907))
+
+## [5.33.0](https://github.com/taskforcesh/bullmq/compare/v5.32.0...v5.33.0) (2024-12-09)
+
+#### 기능
+
+* moveToFailed에서 multi를 lua scripts로 대체 ([#2958](https://github.com/taskforcesh/bullmq/issues/2958)) ([c19c914](https://github.com/taskforcesh/bullmq/commit/c19c914969169c660a3e108126044c5152faf0cd))
+
+## [5.32.0](https://github.com/taskforcesh/bullmq/compare/v5.31.2...v5.32.0) (2024-12-08)
+
+#### 기능
+
+* **queue:** getJobSchedulers 메서드가 template 정보를 포함하도록 개선 ([#2956](https://github.com/taskforcesh/bullmq/issues/2956)) ref [#2875](https://github.com/taskforcesh/bullmq/issues/2875) ([5b005cd](https://github.com/taskforcesh/bullmq/commit/5b005cd94ba0f98677bed4a44f8669c81f073f26))
+
+### [5.31.2](https://github.com/taskforcesh/bullmq/compare/v5.31.1...v5.31.2) (2024-12-06)
+
+#### 버그 수정
+
+* **worker:** moveToActive 호출 시 connection error를 catch ([#2952](https://github.com/taskforcesh/bullmq/issues/2952)) ([544fc7c](https://github.com/taskforcesh/bullmq/commit/544fc7c9e4755e6b62b82216e25c0cb62734ed59))
+
+### [5.31.1](https://github.com/taskforcesh/bullmq/compare/v5.31.0...v5.31.1) (2024-12-04)
+
+#### 버그 수정
+
+* **scheduler-template:** template 정보를 가져올 때 console.log 제거 ([#2950](https://github.com/taskforcesh/bullmq/issues/2950)) ([3402bfe](https://github.com/taskforcesh/bullmq/commit/3402bfe0d01e5e5205db74d2106cd19d7df53fcb))
+
+## [5.31.0](https://github.com/taskforcesh/bullmq/compare/v5.30.1...v5.31.0) (2024-12-02)
+
+#### 기능
+
+* **queue:** getJobScheduler 메서드가 template 정보를 포함하도록 개선 ([#2929](https://github.com/taskforcesh/bullmq/issues/2929)) ref [#2875](https://github.com/taskforcesh/bullmq/issues/2875) ([cb99080](https://github.com/taskforcesh/bullmq/commit/cb990808db19dd79b5048ee99308fa7d1eaa2e9f))
+
+### [5.30.1](https://github.com/taskforcesh/bullmq/compare/v5.30.0...v5.30.1) (2024-11-30)
+
+#### 버그 수정
+
+* **flow:** 부모에서 removeOnFail 및 failParentOnFailure를 사용할 수 있도록 허용 ([#2947](https://github.com/taskforcesh/bullmq/issues/2947)) fixes [#2229](https://github.com/taskforcesh/bullmq/issues/2229) ([85f6f6f](https://github.com/taskforcesh/bullmq/commit/85f6f6f181003fafbf75304a268170f0d271ccc3))
+
+## [5.30.0](https://github.com/taskforcesh/bullmq/compare/v5.29.1...v5.30.0) (2024-11-29)
+
+#### 버그 수정
+
+* **job-scheduler:** 동일한 pattern options가 제공될 때 template를 upsert ([#2943](https://github.com/taskforcesh/bullmq/issues/2943)) ref [#2940](https://github.com/taskforcesh/bullmq/issues/2940) ([b56c3b4](https://github.com/taskforcesh/bullmq/commit/b56c3b45a87e52f5faf25406a2b992d1bfed4900))
+
+#### 기능
+
+* **queue:** getJobSchedulersCount 메서드 추가 ([#2945](https://github.com/taskforcesh/bullmq/issues/2945)) ([38820dc](https://github.com/taskforcesh/bullmq/commit/38820dc8c267c616ada9931198e9e3e9d2f0d536))
+
+### [5.29.1](https://github.com/taskforcesh/bullmq/compare/v5.29.0...v5.29.1) (2024-11-23)
+
+#### 버그 수정
+
+* **scheduler:** immediately 옵션의 deprecation warning 제거 ([#2923](https://github.com/taskforcesh/bullmq/issues/2923)) ([14ca7f4](https://github.com/taskforcesh/bullmq/commit/14ca7f44f31a393a8b6d0ce4ed244e0063198879))
+
+## [5.29.0](https://github.com/taskforcesh/bullmq/compare/v5.28.2...v5.29.0) (2024-11-22)
+
+#### 기능
+
+* **queue:** telemetry 확장을 허용하도록 protected addJob 메서드 리팩터링 ([09f2571](https://github.com/taskforcesh/bullmq/commit/09f257196f6d5a6690edbf55f12d585cec86ee8f))
+
+### [5.28.2](https://github.com/taskforcesh/bullmq/compare/v5.28.1...v5.28.2) (2024-11-22)
+
+#### 버그 수정
+
+* **queue:** 확장을 위해 \_jobScheduler를 private에서 protected로 변경 ([#2920](https://github.com/taskforcesh/bullmq/issues/2920)) ([34c2348](https://github.com/taskforcesh/bullmq/commit/34c23485bcb32b3c69046b2fb37e5db8927561ce))
+
+### [5.28.1](https://github.com/taskforcesh/bullmq/compare/v5.28.0...v5.28.1) (2024-11-20)
+
+#### 버그 수정
+
+* **scheduler:** 확장을 위해 getter에서 Job 클래스를 사용 ([#2917](https://github.com/taskforcesh/bullmq/issues/2917)) ([5fbb075](https://github.com/taskforcesh/bullmq/commit/5fbb075dd4abd51cc84a59575261de84e56633d8))
+
+## [5.28.0](https://github.com/taskforcesh/bullmq/compare/v5.27.0...v5.28.0) (2024-11-19)
+
+#### 기능
+
+* **job-scheduler:** job scheduler에 telemetry 지원 추가 ([72ea950](https://github.com/taskforcesh/bullmq/commit/72ea950ea251aa12f879ba19c0b5dfeb6a093da2))
+
+## [5.27.0](https://github.com/taskforcesh/bullmq/compare/v5.26.2...v5.27.0) (2024-11-19)
+
+#### 기능
+
+* **queue:** rateLimit 메서드 추가 ([#2896](https://github.com/taskforcesh/bullmq/issues/2896)) ([db84ad5](https://github.com/taskforcesh/bullmq/commit/db84ad51a945c754c3cd03e5e718cd8d0341a8b4))
+* **queue:** removeRateLimitKey 메서드 추가 ([#2806](https://github.com/taskforcesh/bullmq/issues/2806)) ([ff70613](https://github.com/taskforcesh/bullmq/commit/ff706131bf642fb7544b9d15994d75b1edcb27dc))
+
+#### 성능 개선
+
+* **marker:** job 소비 중 base marker를 추가해 worker가 바쁘게 유지되도록 함 ([#2904](https://github.com/taskforcesh/bullmq/issues/2904)) fixes [#2842](https://github.com/taskforcesh/bullmq/issues/2842) ([1759c8b](https://github.com/taskforcesh/bullmq/commit/1759c8bc111cab9e43d5fccb4d8d2dccc9c39fb4))
+
+### [5.26.2](https://github.com/taskforcesh/bullmq/compare/v5.26.1...v5.26.2) (2024-11-15)
+
+#### 버그 수정
+
+* **telemetry:** parent context가 undefined이면 span을 설정하지 않음 ([c417a23](https://github.com/taskforcesh/bullmq/commit/c417a23bb28d9effa42115e954b18cc41c1fc043))
+
+### [5.26.1](https://github.com/taskforcesh/bullmq/compare/v5.26.0...v5.26.1) (2024-11-14)
+
+#### 버그 수정
+
+* **queue:** generics를 올바르게 확장할 수 있도록 수정 ([f2495e5](https://github.com/taskforcesh/bullmq/commit/f2495e5ee9ecdb26492da510dc38730718cb28c5))
+
+## [5.26.0](https://github.com/taskforcesh/bullmq/compare/v5.25.6...v5.26.0) (2024-11-14)
+
+#### 기능
+
+* generic job type을 사용하도록 queue getter 개선 ([#2905](https://github.com/taskforcesh/bullmq/issues/2905)) ([c9531ec](https://github.com/taskforcesh/bullmq/commit/c9531ec7a49126a017611eb2fd2eaea8fcb5ada5))
+
+### [5.25.6](https://github.com/taskforcesh/bullmq/compare/v5.25.5...v5.25.6) (2024-11-11)
+
+#### 버그 수정
+
+* **job-scheculer:** job scheduler를 동시에 upsert할 때 발생하는 위험 회피 ([022f7b7](https://github.com/taskforcesh/bullmq/commit/022f7b7d0a0ce14387ed2b9fed791e1f56e34770))
+
+### [5.25.5](https://github.com/taskforcesh/bullmq/compare/v5.25.4...v5.25.5) (2024-11-11)
+
+#### 버그 수정
+
+* **connection:** blockingConnection 옵션 설정을 허용하지 않음 ([#2851](https://github.com/taskforcesh/bullmq/issues/2851)) ([9391cc2](https://github.com/taskforcesh/bullmq/commit/9391cc22200914ecc8958972ebc580862a70f63c))
+
+### [5.25.4](https://github.com/taskforcesh/bullmq/compare/v5.25.3...v5.25.4) (2024-11-10)
+
+#### 버그 수정
+
+* **repeatable:** immediately는 첫 번째 반복에만 적용 ([f69cfbc](https://github.com/taskforcesh/bullmq/commit/f69cfbcbc5516a854adbbc29b259d08e65a19705))
+
+### [5.25.3](https://github.com/taskforcesh/bullmq/compare/v5.25.2...v5.25.3) (2024-11-08)
+
+#### 버그 수정
+
+* **scripts:** 확장을 위해 기본적으로 package version을 설정 ([#2887](https://github.com/taskforcesh/bullmq/issues/2887)) ([b955340](https://github.com/taskforcesh/bullmq/commit/b955340b940e4c1e330445526cd572e0ab25daa9))
+
+### [5.25.2](https://github.com/taskforcesh/bullmq/compare/v5.25.1...v5.25.2) (2024-11-08)
+
+#### 버그 수정
+
+* **worker:** concurrency 값을 조회할 수 있도록 허용 ([#2883](https://github.com/taskforcesh/bullmq/issues/2883)) fixes [#2880](https://github.com/taskforcesh/bullmq/issues/2880) ([52f6317](https://github.com/taskforcesh/bullmq/commit/52f6317ecd2080a5c9684a4fe384e20d86f21de4))
+
+### [5.25.1](https://github.com/taskforcesh/bullmq/compare/v5.25.0...v5.25.1) (2024-11-07)
+
+#### 버그 수정
+
+* **connection:** 확장을 위해 packageVersion을 protected 속성으로 설정 ([#2884](https://github.com/taskforcesh/bullmq/issues/2884)) ([411ccae](https://github.com/taskforcesh/bullmq/commit/411ccae9419e008d916be6cf71c4d57dd2a07b2b))
+
+## [5.25.0](https://github.com/taskforcesh/bullmq/compare/v5.24.0...v5.25.0) (2024-11-06)
+
+#### 기능
+
+* **queue-events:** 사용자 정의 이벤트 게시를 위한 QueueEventsProducer 추가 ([#2844](https://github.com/taskforcesh/bullmq/issues/2844)) ([5eb03cd](https://github.com/taskforcesh/bullmq/commit/5eb03cd7f27027191eb4bc4ed7386755fd9be1fb))
+
+## [5.24.0](https://github.com/taskforcesh/bullmq/compare/v5.23.1...v5.24.0) (2024-11-05)
+
+#### 기능
+
+* **flows:** telemetry 지원 추가 ([#2879](https://github.com/taskforcesh/bullmq/issues/2879)) ([5ed154b](https://github.com/taskforcesh/bullmq/commit/5ed154ba240dbe9eb5c22e27ad02e851c0f3cf69))
+
+### [5.23.1](https://github.com/taskforcesh/bullmq/compare/v5.23.0...v5.23.1) (2024-11-05)
+
+#### 버그 수정
+
+* **deps:** ERR\_BUFFER\_OUT\_OF\_BOUNDS 오류 해결을 위해 msgpackr를 1.1.2로 상향 ([#2882](https://github.com/taskforcesh/bullmq/issues/2882)) ref [#2747](https://github.com/taskforcesh/bullmq/issues/2747) ([4d2136c](https://github.com/taskforcesh/bullmq/commit/4d2136cc6ba340e511a539c130c9a739fe1055d0))
+
+## [5.23.0](https://github.com/taskforcesh/bullmq/compare/v5.22.0...v5.23.0) (2024-11-02)
+
+#### 기능
+
+* **scheduler:** getJobScheduler 메서드 추가 ([#2877](https://github.com/taskforcesh/bullmq/issues/2877)) 참조 [#2875](https://github.com/taskforcesh/bullmq/issues/2875) ([956d98c](https://github.com/taskforcesh/bullmq/commit/956d98c6890484742bb080919c70692234f28c69))
+
+## [5.22.0](https://github.com/taskforcesh/bullmq/compare/v5.21.2...v5.22.0) (2024-10-31)
+
+#### 기능
+
+* **queue:** telemetry 인터페이스 추가 ([#2721](https://github.com/taskforcesh/bullmq/issues/2721)) ([273b574](https://github.com/taskforcesh/bullmq/commit/273b574e6b5628680990eb02e1930809c9cba5bb))
+
+### [5.21.2](https://github.com/taskforcesh/bullmq/compare/v5.21.1...v5.21.2) (2024-10-22)
+
+#### 버그 수정
+
+* 버전을 가져오는 올바른 방식 ([b4e25c1](https://github.com/taskforcesh/bullmq/commit/b4e25c13cafc001748ee6eb590133feb8ee24d7b))
+
+### [5.21.1](https://github.com/taskforcesh/bullmq/compare/v5.21.0...v5.21.1) (2024-10-18)
+
+#### 버그 수정
+
+* **scripts:** isJobInList에 누락된 wait 추가 ([9ef865c](https://github.com/taskforcesh/bullmq/commit/9ef865c7de6086cb3c906721fd046aeed1e0d27f))
+
+## [5.21.0](https://github.com/taskforcesh/bullmq/compare/v5.20.1...v5.21.0) (2024-10-18)
+
+#### 기능
+
+* **queue:** metas 업데이트를 건너뛰는 옵션 추가 ([b7dd925](https://github.com/taskforcesh/bullmq/commit/b7dd925e7f2a4468c98a05f3a3ca1a476482b6c0))
+
+### [5.20.1](https://github.com/taskforcesh/bullmq/compare/v5.20.0...v5.20.1) (2024-10-18)
+
+#### 버그 수정
+
+* **redis:** 로드된 lua 스크립트 이름 지정에 버전 사용 ([fe73f6d](https://github.com/taskforcesh/bullmq/commit/fe73f6d4d776dc9f99ad3a094e5c59c5fafc96f1))
+
+## [5.20.0](https://github.com/taskforcesh/bullmq/compare/v5.19.1...v5.20.0) (2024-10-13)
+
+#### 기능
+
+* **queue:** queue 버전 지원 추가 ([#2822](https://github.com/taskforcesh/bullmq/issues/2822)) ([3a4781b](https://github.com/taskforcesh/bullmq/commit/3a4781bf7cadf04f6a324871654eed8f01cdadae))
+
+### [5.19.1](https://github.com/taskforcesh/bullmq/compare/v5.19.0...v5.19.1) (2024-10-12)
+
+#### 버그 수정
+
+* **sandbox:** 순환 참조가 있을 때 오류 직렬화 수정 ([#2815](https://github.com/taskforcesh/bullmq/issues/2815)) fix [#2813](https://github.com/taskforcesh/bullmq/issues/2813) ([a384d92](https://github.com/taskforcesh/bullmq/commit/a384d926bee15bffa84178a8fad7b94a6a08b572))
+
+## [5.19.0](https://github.com/taskforcesh/bullmq/compare/v5.18.0...v5.19.0) (2024-10-11)
+
+#### 기능
+
+* **repeat:** job scheduler에서 immediately 지원 중단(deprecate) ([ed047f7](https://github.com/taskforcesh/bullmq/commit/ed047f7ab69ebdb445343b6cb325e90b95ee9dc5))
+
+## [5.18.0](https://github.com/taskforcesh/bullmq/compare/v5.17.1...v5.18.0) (2024-10-09)
+
+#### 기능
+
+* **job:** priority 값 노출 ([#2804](https://github.com/taskforcesh/bullmq/issues/2804)) ([9abec3d](https://github.com/taskforcesh/bullmq/commit/9abec3dbc4c69f2496c5ff6b5d724f4d1a5ca62f))
+
+### [5.17.1](https://github.com/taskforcesh/bullmq/compare/v5.17.0...v5.17.1) (2024-10-07)
+
+#### 버그 수정
+
+* **repeat:** "every" 사용 시 startDate도 고려 ([25bbaa8](https://github.com/taskforcesh/bullmq/commit/25bbaa81af87f9944a64bc4fb7e0c76ef223ada4))
+
+## [5.17.0](https://github.com/taskforcesh/bullmq/compare/v5.16.0...v5.17.0) (2024-10-07)
+
+#### 버그 수정
+
+* **sandbox:** exit 오류 캐치 ([#2800](https://github.com/taskforcesh/bullmq/issues/2800)) ([6babb9e](https://github.com/taskforcesh/bullmq/commit/6babb9e2f355feaf9bd1a8ed229c1001e6de7144))
+
+#### 기능
+
+* **job:** deduplication 로직 추가 ([#2796](https://github.com/taskforcesh/bullmq/issues/2796)) ([0a4982d](https://github.com/taskforcesh/bullmq/commit/0a4982d05d27c066248290ab9f59349b802d02d5))
+
+## [5.16.0](https://github.com/taskforcesh/bullmq/compare/v5.15.0...v5.16.0) (2024-10-06)
+
+#### 기능
+
+* **queue:** 새로운 upsertJobScheduler, getJobSchedulers 및 removeJobSchedulers 메서드 추가 ([dd6b6b2](https://github.com/taskforcesh/bullmq/commit/dd6b6b2263badd8f29db65d1fa6bcdf5a1e9f6e2))
+
+## [5.15.0](https://github.com/taskforcesh/bullmq/compare/v5.14.0...v5.15.0) (2024-10-01)
+
+#### 기능
+
+* **worker-fork:** fork 옵션 전달 허용 ([#2795](https://github.com/taskforcesh/bullmq/issues/2795)) ([f7a4292](https://github.com/taskforcesh/bullmq/commit/f7a4292e064b41236f4489b3d7785a4c599a6435))
+
+## [5.14.0](https://github.com/taskforcesh/bullmq/compare/v5.13.2...v5.14.0) (2024-09-30)
+
+#### 기능
+
+* **worker-thread:** Worker 옵션 전달 허용 ([#2791](https://github.com/taskforcesh/bullmq/issues/2791)) ref [#1555](https://github.com/taskforcesh/bullmq/issues/1555) ([6a1f7a9](https://github.com/taskforcesh/bullmq/commit/6a1f7a9f0303561d6ec7b2005ba0227132b89e07))
+
+### [5.13.2](https://github.com/taskforcesh/bullmq/compare/v5.13.1...v5.13.2) (2024-09-20)
+
+#### 버그 수정
+
+* **repeatable:** 다음 job이 이미 존재하면 delayed job 삭제 방지 ([#2778](https://github.com/taskforcesh/bullmq/issues/2778)) ([6a851c1](https://github.com/taskforcesh/bullmq/commit/6a851c1140b336f0e458b6dfe1022470ac41fceb))
+
+### [5.13.1](https://github.com/taskforcesh/bullmq/compare/v5.13.0...v5.13.1) (2024-09-18)
+
+#### 버그 수정
+
+* **connection:** IORedis에 connection string 전달 허용 ([#2746](https://github.com/taskforcesh/bullmq/issues/2746)) ([73005e8](https://github.com/taskforcesh/bullmq/commit/73005e8583110f43914df879aef3481b42f3b3af))
+
+## [5.13.0](https://github.com/taskforcesh/bullmq/compare/v5.12.15...v5.13.0) (2024-09-11)
+
+#### 기능
+
+* **queue:** getDebounceJobId 메서드 추가 ([#2717](https://github.com/taskforcesh/bullmq/issues/2717)) ([a68ead9](https://github.com/taskforcesh/bullmq/commit/a68ead95f32a7d9dabba602895d05c22794b2c02))
+
+### [5.12.15](https://github.com/taskforcesh/bullmq/compare/v5.12.14...v5.12.15) (2024-09-10)
+
+#### 버그 수정
+
+* **metrics:** 정확도를 높이기 위해 서로 다른 분의 포인트를 구분 ([#2766](https://github.com/taskforcesh/bullmq/issues/2766)) (python) ([7cb670e](https://github.com/taskforcesh/bullmq/commit/7cb670e1bf9560a24de3da52427b4f6b6152a59a))
+* **pattern:** immediately가 제공되면 offset을 저장하지 않음 ([#2756](https://github.com/taskforcesh/bullmq/issues/2756)) ([a8cb8a2](https://github.com/taskforcesh/bullmq/commit/a8cb8a21ea52437ac507097994ef0fde058c5433))
+
+### [5.12.14](https://github.com/taskforcesh/bullmq/compare/v5.12.13...v5.12.14) (2024-09-05)
+
+#### 성능 개선
+
+* **metrics:** 최대 데이터 포인트 수만큼 0 저장 ([#2758](https://github.com/taskforcesh/bullmq/issues/2758)) ([3473054](https://github.com/taskforcesh/bullmq/commit/347305451a9f5d7f2c16733eb139b5de96ea4b9c))
+
+### [5.12.13](https://github.com/taskforcesh/bullmq/compare/v5.12.12...v5.12.13) (2024-09-03)
+
+#### 버그 수정
+
+* **repeat:** repeat key 업데이트 시 delayed job 교체 ([88029bb](https://github.com/taskforcesh/bullmq/commit/88029bbeab2a58768f9c438318f540010cd286a7))
+
+### [5.12.12](https://github.com/taskforcesh/bullmq/compare/v5.12.11...v5.12.12) (2024-08-29)
+
+#### 버그 수정
+
+* **flows:** queueName에 콜론이 포함되면 오류 throw ([#2719](https://github.com/taskforcesh/bullmq/issues/2719)) fixes [#2718](https://github.com/taskforcesh/bullmq/issues/2718) ([9ef97c3](https://github.com/taskforcesh/bullmq/commit/9ef97c37663e209f03c501a357b6b1a662b24d99))
+
+### [5.12.11](https://github.com/taskforcesh/bullmq/compare/v5.12.10...v5.12.11) (2024-08-28)
+
+#### 버그 수정
+
+* **sandboxed:** wrapped job의 데이터를 올바르게 업데이트 ([#2739](https://github.com/taskforcesh/bullmq/issues/2739)) fixes [#2731](https://github.com/taskforcesh/bullmq/issues/2731) ([9c4b245](https://github.com/taskforcesh/bullmq/commit/9c4b2454025a14459de47b0586a09130d7a93cae))
+
+### [5.12.10](https://github.com/taskforcesh/bullmq/compare/v5.12.9...v5.12.10) (2024-08-22)
+
+#### 버그 수정
+
+* **flow:** parent가 fail로 이동될 때 debounce key 제거 ([#2720](https://github.com/taskforcesh/bullmq/issues/2720)) ([d51aabe](https://github.com/taskforcesh/bullmq/commit/d51aabe999a489c285f871d21e36c3c84e2bef33))
+
+### [5.12.9](https://github.com/taskforcesh/bullmq/compare/v5.12.8...v5.12.9) (2024-08-17)
+
+#### 성능 개선
+
+* **fifo-queue:** queue에 linked list 구조 사용 ([#2629](https://github.com/taskforcesh/bullmq/issues/2629)) ([df74578](https://github.com/taskforcesh/bullmq/commit/df7457844a769e5644eb11d31d1a05a9d5b4e084))
+
+### [5.12.8](https://github.com/taskforcesh/bullmq/compare/v5.12.7...v5.12.8) (2024-08-17)
+
+#### 버그 수정
+
+* **flow:** ignoreDependencyOnFailure 옵션을 재귀적으로 적용 ([#2712](https://github.com/taskforcesh/bullmq/issues/2712)) ([53bc9eb](https://github.com/taskforcesh/bullmq/commit/53bc9eb68b5bb0a470a8fe64ef78ece5cde44632))
+
+### [5.12.7](https://github.com/taskforcesh/bullmq/compare/v5.12.6...v5.12.7) (2024-08-16)
+
+#### 버그 수정
+
+* **job:** removeDependencyOnFailure와 ignoreDependencyOnFailure를 함께 사용하면 오류 throw ([#2711](https://github.com/taskforcesh/bullmq/issues/2711)) ([967632c](https://github.com/taskforcesh/bullmq/commit/967632c9ef8468aab59f0b36d1d828bcde1fbd70))
+
+### [5.12.6](https://github.com/taskforcesh/bullmq/compare/v5.12.5...v5.12.6) (2024-08-14)
+
+#### 버그 수정
+
+* **job:** jobData를 반영하도록 moveToFinished return type 변경 ([#2706](https://github.com/taskforcesh/bullmq/issues/2706)) ref [#2342](https://github.com/taskforcesh/bullmq/issues/2342) ([de094a3](https://github.com/taskforcesh/bullmq/commit/de094a361a25886acbee0112bb4341c6b285b1c9))
+* **stalled:** job이 stalled 상태일 때 removeDependencyOnFailure 옵션 지원 ([#2708](https://github.com/taskforcesh/bullmq/issues/2708)) ([e0d3790](https://github.com/taskforcesh/bullmq/commit/e0d3790e755c4dfe31006b52f177f08b40348e61))
+
+### [5.12.5](https://github.com/taskforcesh/bullmq/compare/v5.12.4...v5.12.5) (2024-08-13)
+
+#### 버그 수정
+
+* **connection:** 불필요한 process.env.CI 참조 제거 ([#2705](https://github.com/taskforcesh/bullmq/issues/2705)) ([53de304](https://github.com/taskforcesh/bullmq/commit/53de3049493ef79e02af40e8e450e2056c134155))
+
+### [5.12.4](https://github.com/taskforcesh/bullmq/compare/v5.12.3...v5.12.4) (2024-08-12)
+
+#### 버그 수정
+
+* **worker:** open handlers의 위험을 줄이도록 close sequence 수정 ([#2656](https://github.com/taskforcesh/bullmq/issues/2656)) ([8468e44](https://github.com/taskforcesh/bullmq/commit/8468e44e5e9e39c7b65691945c26688a9e5d2275))
+
+### [5.12.3](https://github.com/taskforcesh/bullmq/compare/v5.12.2...v5.12.3) (2024-08-10)
+
+#### 버그 수정
+
+* **flow:** stalled check가 발생할 때 ignoreDependencyOnFailure 전에 parentData 검증 (python) ([#2702](https://github.com/taskforcesh/bullmq/issues/2702)) ([9416501](https://github.com/taskforcesh/bullmq/commit/9416501551b1ad464e59bdba1045a5a9955e2ea4))
+
+### [5.12.2](https://github.com/taskforcesh/bullmq/compare/v5.12.1...v5.12.2) (2024-08-09)
+
+#### 성능 개선
+
+* **worker:** queue가 rate limited 상태일 때 delayed jobs 승격 ([#2697](https://github.com/taskforcesh/bullmq/issues/2697)) ref [#2582](https://github.com/taskforcesh/bullmq/issues/2582) ([f3290ac](https://github.com/taskforcesh/bullmq/commit/f3290ace2f117e26357f9fae611a255af26b950b))
+
+### [5.12.1](https://github.com/taskforcesh/bullmq/compare/v5.12.0...v5.12.1) (2024-08-07)
+
+#### 버그 수정
+
+* **job:** stackTraceLimit을 0으로 전달하는 경우 고려 ([#2692](https://github.com/taskforcesh/bullmq/issues/2692)) ref [#2487](https://github.com/taskforcesh/bullmq/issues/2487) ([509a36b](https://github.com/taskforcesh/bullmq/commit/509a36baf8d8cf37176e406fd28e33f712229d27))
+
+## [5.12.0](https://github.com/taskforcesh/bullmq/compare/v5.11.0...v5.12.0) (2024-08-01)
+
+#### 기능
+
+* **queue-events:** debounced event의 파라미터로 debounceId 전달 ([#2678](https://github.com/taskforcesh/bullmq/issues/2678)) ([97fb97a](https://github.com/taskforcesh/bullmq/commit/97fb97a054d6cebbe1d7ff1cb5c46d7da1c018d8))
+
+## [5.11.0](https://github.com/taskforcesh/bullmq/compare/v5.10.4...v5.11.0) (2024-07-29)
+
+#### 기능
+
+* **job:** 옵션으로 debounce 전달 허용 ([#2666](https://github.com/taskforcesh/bullmq/issues/2666)) ([163ccea](https://github.com/taskforcesh/bullmq/commit/163ccea19ef48191c4db6da27638ff6fb0080a74))
+
+### [5.10.4](https://github.com/taskforcesh/bullmq/compare/v5.10.3...v5.10.4) (2024-07-26)
+
+#### 버그 수정
+
+* **repeatable:** repeatable job 제거 시 repeat hash 제거 ([#2676](https://github.com/taskforcesh/bullmq/issues/2676)) ([97a297d](https://github.com/taskforcesh/bullmq/commit/97a297d90ad8b27bcddb7db6a8a158acfb549389))
+
+### [5.10.3](https://github.com/taskforcesh/bullmq/compare/v5.10.2...v5.10.3) (2024-07-19)
+
+#### 버그 수정
+
+* **repeatable:** 새 구조로 생성하는 대신 기존 legacy repeatables가 있으면 유지 ([#2665](https://github.com/taskforcesh/bullmq/issues/2665)) ([93fad41](https://github.com/taskforcesh/bullmq/commit/93fad41a9520961d0e6814d82454bc916a039501))
+
+### [5.10.2](https://github.com/taskforcesh/bullmq/compare/v5.10.1...v5.10.2) (2024-07-19)
+
+#### 성능 개선
+
+* **worker:** 실패 시 다음 작업 가져오기 ([#2342](https://github.com/taskforcesh/bullmq/issues/2342)) ([f917b80](https://github.com/taskforcesh/bullmq/commit/f917b8090f306c0580aac12f6bd4394fd9ef003d))
+
+### [5.10.1](https://github.com/taskforcesh/bullmq/compare/v5.10.0...v5.10.1) (2024-07-18)
+
+#### 버그 수정
+
+* **repeatable:** legacy repeatable job 제거 고려 ([#2658](https://github.com/taskforcesh/bullmq/issues/2658)) fixes [#2661](https://github.com/taskforcesh/bullmq/issues/2661) ([a6764ae](https://github.com/taskforcesh/bullmq/commit/a6764aecb557fb918d061f5e5c2e26e4afa3e8ee))
+* **repeatable:** CROSSSLOT 이슈 방지를 위해 addRepeatableJob에서 custom key를 args로 전달 ([#2662](https://github.com/taskforcesh/bullmq/issues/2662)) fixes [#2660](https://github.com/taskforcesh/bullmq/issues/2660) ([9d8f874](https://github.com/taskforcesh/bullmq/commit/9d8f874b959e09662985f38c4614b95ab4d5e89c))
+
+## [5.10.0](https://github.com/taskforcesh/bullmq/compare/v5.9.0...v5.10.0) (2024-07-16)
+
+#### 기능
+
+* **repeatable:** 새로운 repeatables 구조 ([#2617](https://github.com/taskforcesh/bullmq/issues/2617)) ref [#2612](https://github.com/taskforcesh/bullmq/issues/2612) fixes [#2399](https://github.com/taskforcesh/bullmq/issues/2399) [#2596](https://github.com/taskforcesh/bullmq/issues/2596) ([8376a9a](https://github.com/taskforcesh/bullmq/commit/8376a9a9007f58ac7eab1a3a1c2f9e7ec373bbd6))
+
+## [5.9.0](https://github.com/taskforcesh/bullmq/compare/v5.8.7...v5.9.0) (2024-07-15)
+
+#### 기능
+
+* **queue:** 전역 동시성 지원 ([#2496](https://github.com/taskforcesh/bullmq/issues/2496)) ref [#2465](https://github.com/taskforcesh/bullmq/issues/2465) ([47ba055](https://github.com/taskforcesh/bullmq/commit/47ba055c1ea36178b684fd11c1e82cde7ec93ac8))
+
+### [5.8.7](https://github.com/taskforcesh/bullmq/compare/v5.8.6...v5.8.7) (2024-07-11)
+
+#### 성능 개선
+
+* **delayed:** 큐가 일시 중지된 상태에서도 delayed jobs를 waiting으로 계속 이동 ([#2640](https://github.com/taskforcesh/bullmq/issues/2640)) (python) ([b89e2e0](https://github.com/taskforcesh/bullmq/commit/b89e2e0913c0886561fc1c2470771232f17f5b3b))
+
+### [5.8.6](https://github.com/taskforcesh/bullmq/compare/v5.8.5...v5.8.6) (2024-07-11)
+
+#### 버그 수정
+
+* **delayed:** delayed jobs 스케줄링 시 jobId 사용을 피함 ([#2587](https://github.com/taskforcesh/bullmq/issues/2587)) (python) ([228db2c](https://github.com/taskforcesh/bullmq/commit/228db2c780a1ca8323900fc568156495a13355a3))
+
+### [5.8.5](https://github.com/taskforcesh/bullmq/compare/v5.8.4...v5.8.5) (2024-07-10)
+
+#### 버그 수정
+
+* **parent:** 동일한 jobIds를 사용할 때 completed 상태의 child를 다시 추가하는 경우를 고려 ([#2627](https://github.com/taskforcesh/bullmq/issues/2627)) (python) fixes [#2554](https://github.com/taskforcesh/bullmq/issues/2554) ([00cd017](https://github.com/taskforcesh/bullmq/commit/00cd0174539fbe1cc4628b9b6e1a7eb87a5ef705))
+
+### [5.8.4](https://github.com/taskforcesh/bullmq/compare/v5.8.3...v5.8.4) (2024-07-05)
+
+#### 버그 수정
+
+* **queue-getters:** getRateLimitTtl 호출 시 maxJobs 전달을 고려 ([#2631](https://github.com/taskforcesh/bullmq/issues/2631)) fixes [#2628](https://github.com/taskforcesh/bullmq/issues/2628) ([9f6609a](https://github.com/taskforcesh/bullmq/commit/9f6609ab1856c473b2d5cf0710068ce2751d708e))
+
+### [5.8.3](https://github.com/taskforcesh/bullmq/compare/v5.8.2...v5.8.3) (2024-06-28)
+
+#### 버그 수정
+
+* **job:** priority를 0으로 변경하는 경우를 고려 ([#2599](https://github.com/taskforcesh/bullmq/issues/2599)) ([4dba122](https://github.com/taskforcesh/bullmq/commit/4dba122174ab5173315fca7fdbb7454761514a53))
+
+### [5.8.2](https://github.com/taskforcesh/bullmq/compare/v5.8.1...v5.8.2) (2024-06-15)
+
+#### 버그 수정
+
+* **priority:** getCountsPerPriority 호출 시 paused 상태를 고려 (python) ([#2609](https://github.com/taskforcesh/bullmq/issues/2609)) ([6e99250](https://github.com/taskforcesh/bullmq/commit/6e992504b2a7a2fa76f1d04ad53d1512e98add7f))
+
+### [5.8.1](https://github.com/taskforcesh/bullmq/compare/v5.8.0...v5.8.1) (2024-06-12)
+
+#### 버그 수정
+
+* **priority:** 순서 유지를 위해 bit.band 대신 module 사용 (python) ([#2597](https://github.com/taskforcesh/bullmq/issues/2597)) ([9ece15b](https://github.com/taskforcesh/bullmq/commit/9ece15b17420fe0bee948a5307e870915e3bce87))
+
+## [5.8.0](https://github.com/taskforcesh/bullmq/compare/v5.7.15...v5.8.0) (2024-06-11)
+
+#### 기능
+
+* **queue:** getCountsPerPriority 메서드 추가 ([#2595](https://github.com/taskforcesh/bullmq/issues/2595)) ([77971f4](https://github.com/taskforcesh/bullmq/commit/77971f42b9fc425ad66e0b581e800ea429fc254e))
+
+### [5.7.15](https://github.com/taskforcesh/bullmq/compare/v5.7.14...v5.7.15) (2024-06-04)
+
+#### 성능 개선
+
+* **job:** hmset을 사용해 processedBy 설정 ([#2592](https://github.com/taskforcesh/bullmq/issues/2592)) (python) ([238680b](https://github.com/taskforcesh/bullmq/commit/238680b84593690a73d542dbe1120611c3508b47))
+
+### [5.7.14](https://github.com/taskforcesh/bullmq/compare/v5.7.13...v5.7.14) (2024-05-29)
+
+#### 버그 수정
+
+* **worker:** 연결 끊김 중 blocking command를 올바르게 취소 ([2cf12b3](https://github.com/taskforcesh/bullmq/commit/2cf12b3622b0517f645971ece8acdcf673bede97))
+
+### [5.7.13](https://github.com/taskforcesh/bullmq/compare/v5.7.12...v5.7.13) (2024-05-28)
+
+#### 버그 수정
+
+* extendlock, createbulk에서 multi command 없이 pipeline 사용 ([#2584](https://github.com/taskforcesh/bullmq/pull/2584)) ([a053d9b](https://github.com/taskforcesh/bullmq/commit/a053d9b87e9799b151e2563b499dbff309b9d2e5))
+
+### [5.7.12](https://github.com/taskforcesh/bullmq/compare/v5.7.11...v5.7.12) (2024-05-24)
+
+#### 버그 수정
+
+* **repeat:** endDate가 과거를 가리킬 때 에러 발생 ([#2574](https://github.com/taskforcesh/bullmq/issues/2574)) ([5bd7990](https://github.com/taskforcesh/bullmq/commit/5bd79900ea3ace8ec6aa00525aff81a345f8e18e))
+
+### [5.7.11](https://github.com/taskforcesh/bullmq/compare/v5.7.10...v5.7.11) (2024-05-23)
+
+#### 버그 수정
+
+* **retry-job:** job이 active 상태가 아닐 때 에러 발생 ([#2576](https://github.com/taskforcesh/bullmq/issues/2576)) ([ca207f5](https://github.com/taskforcesh/bullmq/commit/ca207f593d0ed455ecc59d9e0ef389a9a50d9634))
+
+### [5.7.10](https://github.com/taskforcesh/bullmq/compare/v5.7.9...v5.7.10) (2024-05-21)
+
+#### 버그 수정
+
+* **sandboxed:** Sandboxed processors에서 DelayedError 검사 보장 ([#2567](https://github.com/taskforcesh/bullmq/issues/2567)) fixes [#2566](https://github.com/taskforcesh/bullmq/issues/2566) ([8158fa1](https://github.com/taskforcesh/bullmq/commit/8158fa114f57619b31f101bc8d0688a09c6218bb))
+
+### [5.7.9](https://github.com/taskforcesh/bullmq/compare/v5.7.8...v5.7.9) (2024-05-16)
+
+#### 버그 수정
+
+* **job:** 로그 추가 시 job 존재 여부 검증 ([#2562](https://github.com/taskforcesh/bullmq/issues/2562)) ([f87e3fe](https://github.com/taskforcesh/bullmq/commit/f87e3fe029e48d8964722da762326e531c2256ee))
+
+### [5.7.8](https://github.com/taskforcesh/bullmq/compare/v5.7.7...v5.7.8) (2024-05-01)
+
+#### 버그 수정
+
+* **worker:** bzpopmin 이후 clearTimeout이 항상 호출되도록 보장 ([782382e](https://github.com/taskforcesh/bullmq/commit/782382e599218024bb9912ff0572c4aa9b1f22a3))
+
+### [5.7.7](https://github.com/taskforcesh/bullmq/compare/v5.7.6...v5.7.7) (2024-04-30)
+
+#### 버그 수정
+
+* **worker:** bzpopmin command에 강제 timeout 적용 ([#2543](https://github.com/taskforcesh/bullmq/issues/2543)) ([ae7cb6c](https://github.com/taskforcesh/bullmq/commit/ae7cb6caefdbfa5ca0d28589cef4b896ffcce2db))
+
+### [5.7.6](https://github.com/taskforcesh/bullmq/compare/v5.7.5...v5.7.6) (2024-04-27)
+
+#### 성능 개선
+
+* **worker:** blockDelay가 0 이하일 때 bzpopmin을 호출하지 않음 ([#2544](https://github.com/taskforcesh/bullmq/issues/2544)) ref [#2466](https://github.com/taskforcesh/bullmq/issues/2466) ([9760b85](https://github.com/taskforcesh/bullmq/commit/9760b85dfbcc9b3c744f616961ef939e8951321d))
+
+### [5.7.5](https://github.com/taskforcesh/bullmq/compare/v5.7.4...v5.7.5) (2024-04-24)
+
+#### 버그 수정
+
+* **stalled:** ignoreDependencyOnFailure 옵션 고려 (python) ([#2540](https://github.com/taskforcesh/bullmq/issues/2540)) fixes [#2531](https://github.com/taskforcesh/bullmq/issues/2531) ([0140959](https://github.com/taskforcesh/bullmq/commit/0140959cabd2613794631e41ebe4c2ddee6f91da))
+
+### [5.7.4](https://github.com/taskforcesh/bullmq/compare/v5.7.3...v5.7.4) (2024-04-21)
+
+#### 성능 개선
+
+* **worker:** blockTimeout 값 생성 후 delays 초기화 ([#2529](https://github.com/taskforcesh/bullmq/issues/2529)) ([e92cea4](https://github.com/taskforcesh/bullmq/commit/e92cea4a9d7c99f649f6626d1c0a1e1e994179d6))
+
+### [5.7.3](https://github.com/taskforcesh/bullmq/compare/v5.7.2...v5.7.3) (2024-04-20)
+
+#### 버그 수정
+
+* **worker:** redis 버전에 따라 minimumBlockTimeout 반환 (python) ([#2532](https://github.com/taskforcesh/bullmq/issues/2532)) ([83dfb63](https://github.com/taskforcesh/bullmq/commit/83dfb63e72a1a36a4dfc40f122efb54fbb796339))
+
+### [5.7.2](https://github.com/taskforcesh/bullmq/compare/v5.7.1...v5.7.2) (2024-04-18)
+
+#### 버그 수정
+
+* **stalled:** child를 failed로 이동할 때 failParentOnFailure 고려 ([#2526](https://github.com/taskforcesh/bullmq/issues/2526)) fixes [#2464](https://github.com/taskforcesh/bullmq/issues/2464) (python) ([5e31eb0](https://github.com/taskforcesh/bullmq/commit/5e31eb096169ea57350db591bcebfc2264a6b6dc))
+
+### [5.7.1](https://github.com/taskforcesh/bullmq/compare/v5.7.0...v5.7.1) (2024-04-10)
+
+#### 버그 수정
+
+* **worker:** redis 버전이 7.0.8 미만일 때 최소 timeout으로 0.002 사용 ([#2515](https://github.com/taskforcesh/bullmq/issues/2515)) fixes [#2466](https://github.com/taskforcesh/bullmq/issues/2466) ([44f7d21](https://github.com/taskforcesh/bullmq/commit/44f7d21850747d9c636c78e08b9e577d684fb885))
+
+## [5.7.0](https://github.com/taskforcesh/bullmq/compare/v5.6.0...v5.7.0) (2024-04-09)
+
+#### 기능
+
+* 임의로 큰 drainDelay 허용 ([9693321](https://github.com/taskforcesh/bullmq/commit/96933217bf79658e5bb23fd7afe47e0b1150a40d))
+
+## [5.6.0](https://github.com/taskforcesh/bullmq/compare/v5.5.4...v5.6.0) (2024-04-08)
+
+#### 기능
+
+* 변경 사항 없음, python 버전 릴리스로 인해 트리거됨
+
+### [5.5.4](https://github.com/taskforcesh/bullmq/compare/v5.5.3...v5.5.4) (2024-04-07)
+
+#### 성능 개선
+
+* **stalled:** active에서 이동된 후 lock 제거 시 stalled에서 jobId 제거 (python) ([#2512](https://github.com/taskforcesh/bullmq/issues/2512)) ([64feec9](https://github.com/taskforcesh/bullmq/commit/64feec91b0b034fe640a846166bd95b546ff6d71))
+
+### [5.5.3](https://github.com/taskforcesh/bullmq/compare/v5.5.2...v5.5.3) (2024-04-07)
+
+#### 버그 수정
+
+* **deps:** script loader는 패키지 빌드 시에만 사용되므로 dist에서 제거 ([#2503](https://github.com/taskforcesh/bullmq/issues/2503)) ([6f9ca23](https://github.com/taskforcesh/bullmq/commit/6f9ca23a400e573c3ecb97246c1dda36ce1549ec))
+
+### [5.5.2](https://github.com/taskforcesh/bullmq/compare/v5.5.1...v5.5.2) (2024-04-06)
+
+#### 버그 수정
+
+* **client:** GCP에서 지원되지 않으므로 list 명령을 try-catch로 처리 ([#2506](https://github.com/taskforcesh/bullmq/issues/2506)) ([ca68a9e](https://github.com/taskforcesh/bullmq/commit/ca68a9eff070e8dc09c484b1fb298c7afaa18f6f))
+
+### [5.5.1](https://github.com/taskforcesh/bullmq/compare/v5.5.0...v5.5.1) (2024-04-03)
+
+#### 버그 수정
+
+* **connection:** 사용자 지정 종료 상태를 설정할 때 오류 무시 ([#2473](https://github.com/taskforcesh/bullmq/issues/2473)) ([3e17e45](https://github.com/taskforcesh/bullmq/commit/3e17e459a89a6ca9bccda64c5f06f91e70b372e4))
+
+## [5.5.0](https://github.com/taskforcesh/bullmq/compare/v5.4.6...v5.5.0) (2024-03-31)
+
+#### 기능
+
+* **getters:** getWorkersCount 추가 ([743c7aa](https://github.com/taskforcesh/bullmq/commit/743c7aa8f979760bc04f7b8f55844020559038e1))
+
+### [5.4.6](https://github.com/taskforcesh/bullmq/compare/v5.4.5...v5.4.6) (2024-03-26)
+
+#### 버그 수정
+
+* **job:** 스택 트레이스 제한 ([#2487](https://github.com/taskforcesh/bullmq/issues/2487)) ([cce3bc3](https://github.com/taskforcesh/bullmq/commit/cce3bc3092eb7cf56c2a6c68e9fd8980f5f1f26a))
+
+### [5.4.5](https://github.com/taskforcesh/bullmq/compare/v5.4.4...v5.4.5) (2024-03-22)
+
+#### 버그 수정
+
+* **scripts:** finished로 이동할 때 오류 메시지에 명령 이름 사용 ([#2483](https://github.com/taskforcesh/bullmq/issues/2483)) ([3c335d4](https://github.com/taskforcesh/bullmq/commit/3c335d49ba637145648c1ef0864d8e0d297dd890))
+
+### [5.4.4](https://github.com/taskforcesh/bullmq/compare/v5.4.3...v5.4.4) (2024-03-21)
+
+#### 버그 수정
+
+* **queue:** opts 속성에 QueueOptions 타입 사용 ([#2481](https://github.com/taskforcesh/bullmq/issues/2481)) ([51a589f](https://github.com/taskforcesh/bullmq/commit/51a589f7e07b5336eb35ed00a1b795501b24f254))
+
+### [5.4.3](https://github.com/taskforcesh/bullmq/compare/v5.4.2...v5.4.3) (2024-03-17)
+
+#### 버그 수정
+
+* **worker:** drainDelay가 0보다 커야 함을 검증 ([#2477](https://github.com/taskforcesh/bullmq/issues/2477)) ([ab43693](https://github.com/taskforcesh/bullmq/commit/ab436938d895125635aef0393ae2fb5c77c16c1f))
+
+### [5.4.2](https://github.com/taskforcesh/bullmq/compare/v5.4.1...v5.4.2) (2024-03-06)
+
+#### 버그 수정
+
+* fast-glob와 minimatch를 dev-dependencies로 이동 ([#2452](https://github.com/taskforcesh/bullmq/issues/2452)) ([cf13b31](https://github.com/taskforcesh/bullmq/commit/cf13b31ca552bcad53f40fe5668a907cf02e0a2e))
+
+### [5.4.1](https://github.com/taskforcesh/bullmq/compare/v5.4.0...v5.4.1) (2024-03-01)
+
+#### 버그 수정
+
+* **worker:** 지연된 작업을 가져올 시간이 되면 blockTimeout을 0.001로 설정 ([#2455](https://github.com/taskforcesh/bullmq/issues/2455)) fixes [#2450](https://github.com/taskforcesh/bullmq/issues/2450) ([2de15ca](https://github.com/taskforcesh/bullmq/commit/2de15ca1019517f7ce11f3734fff316a3e4ab894))
+
+## [5.4.0](https://github.com/taskforcesh/bullmq/compare/v5.3.3...v5.4.0) (2024-02-27)
+
+#### 기능
+
+* **job:** removeChildDependency 메서드 추가 ([#2435](https://github.com/taskforcesh/bullmq/issues/2435)) ([1151022](https://github.com/taskforcesh/bullmq/commit/1151022e4825fbb20cf1ef6ce1ff3e7fe929de5c))
+
+### [5.3.3](https://github.com/taskforcesh/bullmq/compare/v5.3.2...v5.3.3) (2024-02-25)
+
+#### 버그 수정
+
+* **deps:** 보안 권고로 인해 glob을 fast-glob으로 대체 ([91cf9a9](https://github.com/taskforcesh/bullmq/commit/91cf9a9253370ea76df48c27a7e0fcf8d7504c81))
+
+### [5.3.2](https://github.com/taskforcesh/bullmq/compare/v5.3.1...v5.3.2) (2024-02-24)
+
+#### 버그 수정
+
+* **sandbox:** SandboxedJob을 JobJsonSandbox에서 확장 ([#2446](https://github.com/taskforcesh/bullmq/issues/2446)) fixes [#2439](https://github.com/taskforcesh/bullmq/issues/2439) ([7606e36](https://github.com/taskforcesh/bullmq/commit/7606e3611f1cc18b1585c08b0f7fd9cb90749c9c))
+
+### [5.3.1](https://github.com/taskforcesh/bullmq/compare/v5.3.0...v5.3.1) (2024-02-22)
+
+#### 버그 수정
+
+* **add-job:** parent job cannot be replaced 오류 메시지 수정 ([#2441](https://github.com/taskforcesh/bullmq/issues/2441)) ([1e9a13f](https://github.com/taskforcesh/bullmq/commit/1e9a13fc0dc9de810ef75a042fbfeeae5b571ffe))
+
+## [5.3.0](https://github.com/taskforcesh/bullmq/compare/v5.2.1...v5.3.0) (2024-02-20)
+
+#### 기능
+
+* **worker:** 워커 이름 지정 지원 추가 ([7ba2729](https://github.com/taskforcesh/bullmq/commit/7ba27293615e443903cfdf7d0ff8be0052d061c4))
+
+### [5.2.1](https://github.com/taskforcesh/bullmq/compare/v5.2.0...v5.2.1) (2024-02-17)
+
+#### 버그 수정
+
+* **flow:** 자동 제거 시 실패한 자식 참조 제거 ([#2432](https://github.com/taskforcesh/bullmq/issues/2432)) ([8a85207](https://github.com/taskforcesh/bullmq/commit/8a85207cf3c552ebab37baca3c395821b9804b37))
+
+## [5.2.0](https://github.com/taskforcesh/bullmq/compare/v5.1.12...v5.2.0) (2024-02-17)
+
+#### 기능
+
+* **flow:** ignoreDependencyOnFailure 옵션 추가 ([#2426](https://github.com/taskforcesh/bullmq/issues/2426)) ([c7559f4](https://github.com/taskforcesh/bullmq/commit/c7559f4f0a7fa51764ad43b4f46bb9d55ac42d0d))
+
+### [5.1.12](https://github.com/taskforcesh/bullmq/compare/v5.1.11...v5.1.12) (2024-02-16)
+
+#### 버그 수정
+
+* **redis-connection:** 초기화 중에도 redis 연결 종료 ([#2425](https://github.com/taskforcesh/bullmq/issues/2425)) fixes [#2385](https://github.com/taskforcesh/bullmq/issues/2385) ([1bc26a6](https://github.com/taskforcesh/bullmq/commit/1bc26a64871b85a2d1f6799a9b73b60f8bf9fa90))
+
+### [5.1.11](https://github.com/taskforcesh/bullmq/compare/v5.1.10...v5.1.11) (2024-02-13)
+
+#### 버그 수정
+
+* **flow:** parent job cannot be replaced (python) ([#2417](https://github.com/taskforcesh/bullmq/issues/2417)) ([2696ef8](https://github.com/taskforcesh/bullmq/commit/2696ef8200058b7f616938c2166a3b0454663b39))
+
+### [5.1.10](https://github.com/taskforcesh/bullmq/compare/v5.1.9...v5.1.10) (2024-02-10)
+
+#### 성능 개선
+
+* **marker:** standard 및 delayed marker 구분 (python) ([#2389](https://github.com/taskforcesh/bullmq/issues/2389)) ([18ebee8](https://github.com/taskforcesh/bullmq/commit/18ebee8c242f66f1b5b733d68e48c574b1f1fdef))
+
+### [5.1.9](https://github.com/taskforcesh/bullmq/compare/v5.1.8...v5.1.9) (2024-02-05)
+
+#### 성능 개선
+
+* **change-delay:** 필요할 때 delay marker 추가 ([#2411](https://github.com/taskforcesh/bullmq/issues/2411)) ([8b62d28](https://github.com/taskforcesh/bullmq/commit/8b62d28a06347e9dd04757807fce1b511ace79bc))
+
+### [5.1.8](https://github.com/taskforcesh/bullmq/compare/v5.1.7...v5.1.8) (2024-02-03)
+
+#### 성능 개선
+
+* **flow:** 부모를 wait로 이동할 때 marker 추가 (python) ([#2408](https://github.com/taskforcesh/bullmq/issues/2408)) ([6fb6896](https://github.com/taskforcesh/bullmq/commit/6fb6896701ae7595e1cb5e2cdbef44625c48d673))
+
+### [5.1.7](https://github.com/taskforcesh/bullmq/compare/v5.1.6...v5.1.7) (2024-02-02)
+
+#### 버그 수정
+
+* **reprocess-job:** 필요 시 marker 추가 ([#2406](https://github.com/taskforcesh/bullmq/issues/2406)) ([5923ed8](https://github.com/taskforcesh/bullmq/commit/5923ed885f5451eee2f14258767d7d5f8d80ae13))
+
+### [5.1.6](https://github.com/taskforcesh/bullmq/compare/v5.1.5...v5.1.6) (2024-01-31)
+
+#### 버그 수정
+
+* **rate-limit:** ttl이 0이어도 작업을 wait로 이동 ([#2403](https://github.com/taskforcesh/bullmq/issues/2403)) ([c1c2ccc](https://github.com/taskforcesh/bullmq/commit/c1c2cccc7c8c05591f0303e011d46f6efa0942a0))
+
+### [5.1.5](https://github.com/taskforcesh/bullmq/compare/v5.1.4...v5.1.5) (2024-01-23)
+
+#### 성능 개선
+
+* **move-to-active:** rate limited 상태를 한 번만 확인 ([#2391](https://github.com/taskforcesh/bullmq/issues/2391)) ([ca6c17a](https://github.com/taskforcesh/bullmq/commit/ca6c17a43e38d5339e62471ea9f59c62a169b797))
+
+### [5.1.4](https://github.com/taskforcesh/bullmq/compare/v5.1.3...v5.1.4) (2024-01-20)
+
+#### 버그 수정
+
+* **stalled:** 작업을 다시 wait로 이동할 때 marker 추가를 고려 ([#2384](https://github.com/taskforcesh/bullmq/issues/2384)) ([4914df8](https://github.com/taskforcesh/bullmq/commit/4914df87e416711835291e81da93b279bd758254))
+
+### [5.1.3](https://github.com/taskforcesh/bullmq/compare/v5.1.2...v5.1.3) (2024-01-16)
+
+#### 버그 수정
+
+* **retry-jobs:** 필요할 때 marker 추가 ([#2374](https://github.com/taskforcesh/bullmq/issues/2374)) ([1813d5f](https://github.com/taskforcesh/bullmq/commit/1813d5fa12b7db69ee6c8c09273729cda8e3e3b5))
+
+### [5.1.2](https://github.com/taskforcesh/bullmq/compare/v5.1.1...v5.1.2) (2024-01-15)
+
+#### 버그 수정
+
+* **security:** msgpackr 업그레이드 <https://github.com/advisories/GHSA-7hpj-7hhx-2fgx> ([7ae0953](https://github.com/taskforcesh/bullmq/commit/7ae095357fddbdaacc286cbe5782946b95160d55))
+
+### [5.1.1](https://github.com/taskforcesh/bullmq/compare/v5.1.0...v5.1.1) (2024-01-02)
+
+#### 버그 수정
+
+* **worker:** Redis가 다운되어도 worker를 종료할 수 있음 ([#2350](https://github.com/taskforcesh/bullmq/issues/2350)) ([888dcc2](https://github.com/taskforcesh/bullmq/commit/888dcc2dd40571e05fe1f4a5c81161ed062f4542))
+
+## [5.1.0](https://github.com/taskforcesh/bullmq/compare/v5.0.0...v5.1.0) (2023-12-27)
+
+#### 기능
+
+* **repeatable:** 사용자 지정 키 저장 허용 ([#1824](https://github.com/taskforcesh/bullmq/issues/1824)) ([8ea0e1f](https://github.com/taskforcesh/bullmq/commit/8ea0e1f76baf36dab94a66657c0f432492cb9999))
+
+## [5.0.0](https://github.com/taskforcesh/bullmq/compare/v4.17.0...v5.0.0) (2023-12-21)
+
+#### 버그 수정
+
+* **worker:** connection이 없으면 오류 발생 ([6491a18](https://github.com/taskforcesh/bullmq/commit/6491a185268ae546baa9b95a20b95d63c0e27915))
+
+#### 기능
+
+* **job:** 작업을 수동으로 이동할 때 skipAttempt 옵션 제공 ([#2203](https://github.com/taskforcesh/bullmq/issues/2203)) ([0e88e4f](https://github.com/taskforcesh/bullmq/commit/0e88e4fe4ed940487dfc79d1345d0686de22d0c6))
+* **worker:** marker 처리 개선 ([73cf5fc](https://github.com/taskforcesh/bullmq/commit/73cf5fc1e6e13d8329e1e4e700a8db92173e0624)) ([0bac0fb](https://github.com/taskforcesh/bullmq/commit/0bac0fbb97afa968aa7644f1438b86d7bc18bbc5))
+
+#### 호환성이 깨지는 변경 사항
+
+* **connection:** connection 전달 필수 ([#2335](https://github.com/taskforcesh/bullmq/issues/2335)) ([1867dd1](https://github.com/taskforcesh/bullmq/commit/1867dd107d7edbd417bf6918354ae4656480a544))
+* **job:** 정수를 나타내는 custom job id에 대한 console warn 되돌림 ([#2312](https://github.com/taskforcesh/bullmq/issues/2312)) ([84015ff](https://github.com/taskforcesh/bullmq/commit/84015ffa04216c45d8f3181a7f859b8c0792c80d))
+* **worker:** marker는 이제 특수 Job ID를 사용하는 대신 redis의 전용 키를 사용합니다. ([`73cf5fc`](https://github.com/taskforcesh/bullmq/commit/73cf5fc1e6e13d8329e1e4e700a8db92173e0624)) ([`0bac0fb`](https://github.com/taskforcesh/bullmq/commit/0bac0fbb97afa968aa7644f1438b86d7bc18bbc5))
+* references:
+  * [Better Queue Markers](https://bullmq.io/news/231204/better-queue-markers/)
+  * [BullMQ v5 Migration Notes](https://bullmq.io/news/231221/bullmqv5-release/)
+

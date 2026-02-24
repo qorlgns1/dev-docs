@@ -1,0 +1,27 @@
+---
+title: 'Sandboxes for groups'
+description: 'It is also possible to use Sandboxes for processing groups. It works essentially the same as in standard BullMQ, but you gain access to the "gid" prop...'
+---
+
+Source URL: https://docs.bullmq.io/bullmq-pro/groups/sandboxes-for-groups
+
+# Sandboxes for groups
+
+It is also possible to use [Sandboxes](https://docs.bullmq.io/guide/workers/sandboxed-processors) for processing groups. It works essentially the same as in standard BullMQ, but you gain access to the "gid" property in the job object sent to your processor, for example:
+
+```typescript
+import { SandboxedJobPro } from '@taskforcesh/bullmq-pro';
+
+module.exports = function (job: SandboxedJobPro) {
+  expect(job).to.have.property('gid');
+  expect(job.opts).to.have.property('group');
+  expect(job.opts.group).to.have.property('id');
+  expect(job.opts.group.id).to.be.a('string');
+  expect(job.opts.group.id).to.equal(job.gid);
+};
+```
+
+{% hint style="danger" %}
+Groups are the only Pro features supported by Sandboxed processors for now.
+{% endhint %}
+
