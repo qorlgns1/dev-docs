@@ -508,7 +508,7 @@ def html_to_markdown_html2text(html: str, page_url: str) -> str:
 
     conv = html2text.HTML2Text()
     conv.body_width = 0
-    conv.ignore_images = True
+    conv.ignore_images = False
     conv.ignore_links = False
     conv.mark_code = True
     conv.single_line_break = False
@@ -534,7 +534,7 @@ def html_to_markdown_trafilatura(html: str, page_url: str) -> str:
         url=page_url,
         output_format="markdown",
         include_links=True,
-        include_images=False,
+        include_images=True,
         include_tables=True,
         favor_recall=True,
     )
