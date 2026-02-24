@@ -25,6 +25,7 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 DEFAULT_MODEL = "gpt-5.3-codex"
 LEGACY_CODE_OPEN_RE = re.compile(r"^(?:>\s*)?\[code\].*$", re.IGNORECASE)
 LEGACY_CODE_CLOSE_RE = re.compile(r"^(?:>\s*)?\[/code\]\s*$", re.IGNORECASE)
+CODE_TOKEN_RE = re.compile(r"__CODE_BLOCK_(\d{4})__")
 
 
 # ── Chunking ─────────────────────────────────────────────────────────────────
@@ -49,6 +50,17 @@ def split_chunks(text: str, max_chars: int) -> list[str]:
             in_code = False
 
         line_size = len(line) + 1
+        if not in_code and line_size > max_chars:
+            if buf:
+                chunks.append("\n".join(buf).strip())
+                buf, size = [], 0
+            # 긴 단일 라인은 강제로 잘라 청킹한다.
+            for i in range(0, len(line), max_chars):
+                part = line[i:i + max_chars].strip()
+                if part:
+                    chunks.append(part)
+            continue
+
         if buf and size + line_size > max_chars and not in_code:
             chunks.append("\n".join(buf).strip())
             buf, size = [line], line_size
@@ -73,6 +85,77 @@ def unwrap_fence(text: str) -> str:
     return text
 
 
+def protect_code_blocks(text: str) -> tuple[str, dict[str, str]]:
+    """
+    코드 블록(fenced/legacy)을 플레이스홀더로 치환한다.
+    번역 후 restore_code_blocks()로 복원한다.
+    """
+    lines = text.splitlines(keepends=True)
+    out: list[str] = []
+    blocks: dict[str, str] = {}
+    token_idx = 1
+    i = 0
+    token_pool = {m.group(0) for m in CODE_TOKEN_RE.finditer(text)}
+
+    def next_token() -> str:
+        nonlocal token_idx
+        while True:
+            token = f"__CODE_BLOCK_{token_idx:04d}__"
+            token_idx += 1
+            if token not in token_pool and token not in blocks:
+                return token
+
+    while i < len(lines):
+        line = lines[i]
+        stripped = line.strip()
+
+        # Fenced code block
+        if stripped.startswith("```"):
+            start = i
+            i += 1
+            while i < len(lines):
+                if lines[i].strip().startswith("```"):
+                    i += 1
+                    break
+                i += 1
+            block = "".join(lines[start:i])
+            token = next_token()
+            blocks[token] = block
+            out.append(token + ("\n" if block.endswith("\n") else ""))
+            continue
+
+        # Legacy [code] ... [/code] block
+        if LEGACY_CODE_OPEN_RE.match(stripped):
+            start = i
+            i += 1
+            while i < len(lines):
+                if LEGACY_CODE_CLOSE_RE.match(lines[i].strip()):
+                    i += 1
+                    break
+                i += 1
+            block = "".join(lines[start:i])
+            token = next_token()
+            blocks[token] = block
+            out.append(token + ("\n" if block.endswith("\n") else ""))
+            continue
+
+        out.append(line)
+        i += 1
+
+    return "".join(out), blocks
+
+
+def restore_code_blocks(text: str, blocks: dict[str, str]) -> str:
+    restored = text
+    for token, block in blocks.items():
+        restored = restored.replace(token, block.rstrip("\n"))
+    return restored
+
+
+def chunk_tokens(text: str) -> list[str]:
+    return sorted({m.group(0) for m in CODE_TOKEN_RE.finditer(text)})
+
+
 # ── Codex exec ───────────────────────────────────────────────────────────────
 
 PROMPT_TMPL = """\
@@ -81,6 +164,7 @@ Return only translated Markdown.
 Preserve Markdown structure, heading hierarchy, bullet/numbered lists, and tables.
 Do not change URLs.
 Do not translate code blocks, inline code, CLI flags, file paths, env vars, API endpoints, or model IDs.
+Do not modify placeholder tokens like __CODE_BLOCK_0001__.
 Prefer natural, fluent Korean wording while keeping technical precision.
 
 <SOURCE_MARKDOWN>
@@ -112,10 +196,18 @@ def run_codex(prompt: str, out_file: Path, model: str, effort: str, timeout: int
 def translate_file(src: Path, dst: Path, model: str, effort: str,
                    max_chars: int, retries: int, timeout: int) -> bool:
     text = src.read_text(encoding="utf-8")
-    chunks = split_chunks(text, max_chars)
+    protected, blocks = protect_code_blocks(text)
+    chunks = split_chunks(protected, max_chars)
     results: list[str] = []
 
     for ci, chunk in enumerate(chunks, 1):
+        # 코드 토큰만 있는 청크는 API 호출 없이 그대로 유지.
+        chunk_without_tokens = CODE_TOKEN_RE.sub("", chunk).strip()
+        if not chunk_without_tokens:
+            results.append(chunk.strip())
+            continue
+
+        expected_tokens = chunk_tokens(chunk)
         prompt = PROMPT_TMPL.format(text=chunk)
         ok = False
         for attempt in range(1, retries + 1):
@@ -124,6 +216,17 @@ def translate_file(src: Path, dst: Path, model: str, effort: str,
             code, _ = run_codex(prompt, tmp, model, effort, timeout)
             if code == 0 and tmp.exists():
                 translated = unwrap_fence(tmp.read_text(encoding="utf-8"))
+                translated_tokens = set(chunk_tokens(translated))
+                if any(tok not in translated_tokens for tok in expected_tokens):
+                    tmp.unlink(missing_ok=True)
+                    if len(chunks) > 1:
+                        print(
+                            f"  [retry {attempt}/{retries}] chunk {ci}/{len(chunks)} "
+                            f"(placeholder mismatch)",
+                            flush=True,
+                        )
+                    time.sleep(min(2.0, 0.5 * attempt))
+                    continue
                 results.append(translated.strip())
                 tmp.unlink(missing_ok=True)
                 ok = True
@@ -137,7 +240,9 @@ def translate_file(src: Path, dst: Path, model: str, effort: str,
             return False
 
     dst.parent.mkdir(parents=True, exist_ok=True)
-    dst.write_text("\n\n".join(results).rstrip() + "\n", encoding="utf-8")
+    merged = "\n\n".join(results).rstrip() + "\n"
+    restored = restore_code_blocks(merged, blocks)
+    dst.write_text(restored.rstrip() + "\n", encoding="utf-8")
     return True
 
 
@@ -182,7 +287,8 @@ def main() -> int:
 
         chunks_note = ""
         text = src.read_text(encoding="utf-8")
-        n_chunks = len(split_chunks(text, args.max_chars))
+        protected, _ = protect_code_blocks(text)
+        n_chunks = len(split_chunks(protected, args.max_chars))
         if n_chunks > 1:
             chunks_note = f" ({n_chunks} chunks)"
 
