@@ -793,15 +793,4 @@ items: [
 	],
 },
 			
-{
-	label: 'Tailwind CSS',
-	translations: { en: 'Tailwind CSS' },
-	items: [
-		{
-			slug: 'tailwindcss/docs/styling-with-utility-classes',
-			label: '유틸리티 클래스로 스타일링',
-			translations: { en: 'Styling with utility classes' },
-		}
-	],
-},
 ];

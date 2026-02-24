@@ -1,6 +1,6 @@
 ---
-title: 'index'
-description: 'The  package is the "flagship" library of the Zod ecosystem. It strikes a balance between developer experience and bundle size that\'s ideal for the va...'
+title: "Zod"
+description: "Overview of the zod/v4 package and its role in the Zod ecosystem."
 ---
 
 Source URL: https://zod.dev/packages/zod
@@ -76,4 +76,3 @@ All schemas extend the `z.ZodType` base class, which in turn extends `z.$ZodType
     mySchema.isOptional(); // boolean
     mySchema.isNullable(); // boolean
 ```
-
