@@ -1,0 +1,635 @@
+[
+  {
+    "label": "Overview",
+    "url": "https://docs.bullmq.io/"
+  },
+  {
+    "label": "Bull",
+    "items": [
+      {
+        "label": "Important Notes",
+        "url": "https://docs.bullmq.io/bull/important-notes"
+      },
+      {
+        "label": "Install",
+        "url": "https://docs.bullmq.io/bull/install"
+      },
+      {
+        "label": "Introduction",
+        "url": "https://docs.bullmq.io/bull/introduction"
+      },
+      {
+        "label": "Patterns",
+        "url": "https://docs.bullmq.io/bull/patterns",
+        "items": [
+          {
+            "label": "Custom Backoff Strategy",
+            "url": "https://docs.bullmq.io/bull/patterns/custom-backoff-strategy"
+          },
+          {
+            "label": "Debugging",
+            "url": "https://docs.bullmq.io/bull/patterns/debugging"
+          },
+          {
+            "label": "Manually Fetching Jobs",
+            "url": "https://docs.bullmq.io/bull/patterns/manually-fetching-jobs"
+          },
+          {
+            "label": "Message Queue",
+            "url": "https://docs.bullmq.io/bull/patterns/message-queue"
+          },
+          {
+            "label": "Persistent Connections",
+            "url": "https://docs.bullmq.io/bull/patterns/persistent-connections"
+          },
+          {
+            "label": "Redis Cluster",
+            "url": "https://docs.bullmq.io/bull/patterns/redis-cluster"
+          },
+          {
+            "label": "Returning Job Completions",
+            "url": "https://docs.bullmq.io/bull/patterns/returning-job-completions"
+          },
+          {
+            "label": "Reusing Redis Connections",
+            "url": "https://docs.bullmq.io/bull/patterns/reusing-redis-connections"
+          }
+        ]
+      },
+      {
+        "label": "Quick Guide",
+        "url": "https://docs.bullmq.io/bull/quick-guide"
+      }
+    ]
+  },
+  {
+    "label": "Bullmq Pro",
+    "items": [
+      {
+        "label": "Batches",
+        "url": "https://docs.bullmq.io/bullmq-pro/batches"
+      },
+      {
+        "label": "Changelog",
+        "url": "https://docs.bullmq.io/bullmq-pro/changelog",
+        "items": [
+          {
+            "label": "Changelog V1",
+            "url": "https://docs.bullmq.io/bullmq-pro/changelog/changelog-v1"
+          },
+          {
+            "label": "Changelog V2",
+            "url": "https://docs.bullmq.io/bullmq-pro/changelog/changelog-v2"
+          },
+          {
+            "label": "Changelog V3",
+            "url": "https://docs.bullmq.io/bullmq-pro/changelog/changelog-v3"
+          },
+          {
+            "label": "Changelog V4",
+            "url": "https://docs.bullmq.io/bullmq-pro/changelog/changelog-v4"
+          },
+          {
+            "label": "Changelog V5",
+            "url": "https://docs.bullmq.io/bullmq-pro/changelog/changelog-v5"
+          },
+          {
+            "label": "Changelog V6",
+            "url": "https://docs.bullmq.io/bullmq-pro/changelog/changelog-v6"
+          }
+        ]
+      },
+      {
+        "label": "Groups",
+        "url": "https://docs.bullmq.io/bullmq-pro/groups",
+        "items": [
+          {
+            "label": "Concurrency",
+            "url": "https://docs.bullmq.io/bullmq-pro/groups/concurrency"
+          },
+          {
+            "label": "Getters",
+            "url": "https://docs.bullmq.io/bullmq-pro/groups/getters"
+          },
+          {
+            "label": "Local Group Concurrency",
+            "url": "https://docs.bullmq.io/bullmq-pro/groups/local-group-concurrency"
+          },
+          {
+            "label": "Local Group Rate Limit",
+            "url": "https://docs.bullmq.io/bullmq-pro/groups/local-group-rate-limit"
+          },
+          {
+            "label": "Max Group Size",
+            "url": "https://docs.bullmq.io/bullmq-pro/groups/max-group-size"
+          },
+          {
+            "label": "Pausing Groups",
+            "url": "https://docs.bullmq.io/bullmq-pro/groups/pausing-groups"
+          },
+          {
+            "label": "Prioritized",
+            "url": "https://docs.bullmq.io/bullmq-pro/groups/prioritized"
+          },
+          {
+            "label": "Rate Limiting",
+            "url": "https://docs.bullmq.io/bullmq-pro/groups/rate-limiting"
+          },
+          {
+            "label": "Sandboxes For Groups",
+            "url": "https://docs.bullmq.io/bullmq-pro/groups/sandboxes-for-groups"
+          }
+        ]
+      },
+      {
+        "label": "Install",
+        "url": "https://docs.bullmq.io/bullmq-pro/install"
+      },
+      {
+        "label": "Introduction",
+        "url": "https://docs.bullmq.io/bullmq-pro/introduction"
+      },
+      {
+        "label": "Nestjs",
+        "url": "https://docs.bullmq.io/bullmq-pro/nestjs",
+        "items": [
+          {
+            "label": "Changelog",
+            "url": "https://docs.bullmq.io/bullmq-pro/nestjs/changelog"
+          },
+          {
+            "label": "Producers",
+            "url": "https://docs.bullmq.io/bullmq-pro/nestjs/producers"
+          },
+          {
+            "label": "Queue Events Listeners",
+            "url": "https://docs.bullmq.io/bullmq-pro/nestjs/queue-events-listeners"
+          }
+        ]
+      },
+      {
+        "label": "New Releases",
+        "url": "https://docs.bullmq.io/bullmq-pro/new-releases"
+      },
+      {
+        "label": "Observables",
+        "url": "https://docs.bullmq.io/bullmq-pro/observables",
+        "items": [
+          {
+            "label": "Cancelation",
+            "url": "https://docs.bullmq.io/bullmq-pro/observables/cancelation"
+          }
+        ]
+      },
+      {
+        "label": "Support",
+        "url": "https://docs.bullmq.io/bullmq-pro/support"
+      },
+      {
+        "label": "Telemetry",
+        "url": "https://docs.bullmq.io/bullmq-pro/telemetry"
+      }
+    ]
+  },
+  {
+    "label": "Changelog",
+    "url": "https://docs.bullmq.io/changelog",
+    "items": [
+      {
+        "label": "Changelog V1",
+        "url": "https://docs.bullmq.io/changelog/changelog-v1"
+      },
+      {
+        "label": "Changelog V2",
+        "url": "https://docs.bullmq.io/changelog/changelog-v2"
+      },
+      {
+        "label": "Changelog V3",
+        "url": "https://docs.bullmq.io/changelog/changelog-v3"
+      },
+      {
+        "label": "Changelog V4",
+        "url": "https://docs.bullmq.io/changelog/changelog-v4"
+      }
+    ]
+  },
+  {
+    "label": "Elixir",
+    "items": [
+      {
+        "label": "Changelog",
+        "url": "https://docs.bullmq.io/elixir/changelog"
+      },
+      {
+        "label": "Introduction",
+        "url": "https://docs.bullmq.io/elixir/introduction"
+      }
+    ]
+  },
+  {
+    "label": "Guide",
+    "items": [
+      {
+        "label": "Architecture",
+        "url": "https://docs.bullmq.io/guide/architecture"
+      },
+      {
+        "label": "Connections",
+        "url": "https://docs.bullmq.io/guide/connections"
+      },
+      {
+        "label": "Events",
+        "url": "https://docs.bullmq.io/guide/events",
+        "items": [
+          {
+            "label": "Create Custom Events",
+            "url": "https://docs.bullmq.io/guide/events/create-custom-events"
+          }
+        ]
+      },
+      {
+        "label": "Flows",
+        "url": "https://docs.bullmq.io/guide/flows",
+        "items": [
+          {
+            "label": "Adding Bulks",
+            "url": "https://docs.bullmq.io/guide/flows/adding-bulks"
+          },
+          {
+            "label": "Continue Parent",
+            "url": "https://docs.bullmq.io/guide/flows/continue-parent"
+          },
+          {
+            "label": "Fail Parent",
+            "url": "https://docs.bullmq.io/guide/flows/fail-parent"
+          },
+          {
+            "label": "Get Flow Tree",
+            "url": "https://docs.bullmq.io/guide/flows/get-flow-tree"
+          },
+          {
+            "label": "Ignore Dependency",
+            "url": "https://docs.bullmq.io/guide/flows/ignore-dependency"
+          },
+          {
+            "label": "Remove Child Dependency",
+            "url": "https://docs.bullmq.io/guide/flows/remove-child-dependency"
+          },
+          {
+            "label": "Remove Dependency",
+            "url": "https://docs.bullmq.io/guide/flows/remove-dependency"
+          }
+        ]
+      },
+      {
+        "label": "Going To Production",
+        "url": "https://docs.bullmq.io/guide/going-to-production"
+      },
+      {
+        "label": "Introduction",
+        "url": "https://docs.bullmq.io/guide/introduction"
+      },
+      {
+        "label": "Job Schedulers",
+        "url": "https://docs.bullmq.io/guide/job-schedulers",
+        "items": [
+          {
+            "label": "Manage Job Schedulers",
+            "url": "https://docs.bullmq.io/guide/job-schedulers/manage-job-schedulers"
+          },
+          {
+            "label": "Repeat Options",
+            "url": "https://docs.bullmq.io/guide/job-schedulers/repeat-options"
+          },
+          {
+            "label": "Repeat Strategies",
+            "url": "https://docs.bullmq.io/guide/job-schedulers/repeat-strategies"
+          }
+        ]
+      },
+      {
+        "label": "Jobs",
+        "url": "https://docs.bullmq.io/guide/jobs",
+        "items": [
+          {
+            "label": "Deduplication",
+            "url": "https://docs.bullmq.io/guide/jobs/deduplication"
+          },
+          {
+            "label": "Delayed",
+            "url": "https://docs.bullmq.io/guide/jobs/delayed"
+          },
+          {
+            "label": "Fifo",
+            "url": "https://docs.bullmq.io/guide/jobs/fifo"
+          },
+          {
+            "label": "Getters",
+            "url": "https://docs.bullmq.io/guide/jobs/getters"
+          },
+          {
+            "label": "Job Data",
+            "url": "https://docs.bullmq.io/guide/jobs/job-data"
+          },
+          {
+            "label": "Job Ids",
+            "url": "https://docs.bullmq.io/guide/jobs/job-ids"
+          },
+          {
+            "label": "Lifo",
+            "url": "https://docs.bullmq.io/guide/jobs/lifo"
+          },
+          {
+            "label": "Prioritized",
+            "url": "https://docs.bullmq.io/guide/jobs/prioritized"
+          },
+          {
+            "label": "Removing Job",
+            "url": "https://docs.bullmq.io/guide/jobs/removing-job"
+          },
+          {
+            "label": "Repeatable",
+            "url": "https://docs.bullmq.io/guide/jobs/repeatable"
+          },
+          {
+            "label": "Retrying Job",
+            "url": "https://docs.bullmq.io/guide/jobs/retrying-job"
+          },
+          {
+            "label": "Stalled",
+            "url": "https://docs.bullmq.io/guide/jobs/stalled"
+          }
+        ]
+      },
+      {
+        "label": "Metrics",
+        "url": "https://docs.bullmq.io/guide/metrics",
+        "items": [
+          {
+            "label": "Prometheus",
+            "url": "https://docs.bullmq.io/guide/metrics/prometheus"
+          }
+        ]
+      },
+      {
+        "label": "Migration To Newer Versions",
+        "url": "https://docs.bullmq.io/guide/migration-to-newer-versions",
+        "items": [
+          {
+            "label": "Bull To Bullmq",
+            "url": "https://docs.bullmq.io/guide/migration-to-newer-versions/bull-to-bullmq"
+          }
+        ]
+      },
+      {
+        "label": "Nestjs",
+        "url": "https://docs.bullmq.io/guide/nestjs",
+        "items": [
+          {
+            "label": "Producers",
+            "url": "https://docs.bullmq.io/guide/nestjs/producers"
+          },
+          {
+            "label": "Queue Events Listeners",
+            "url": "https://docs.bullmq.io/guide/nestjs/queue-events-listeners"
+          }
+        ]
+      },
+      {
+        "label": "Parallelism And Concurrency",
+        "url": "https://docs.bullmq.io/guide/parallelism-and-concurrency"
+      },
+      {
+        "label": "Queues",
+        "url": "https://docs.bullmq.io/guide/queues",
+        "items": [
+          {
+            "label": "Adding Bulks",
+            "url": "https://docs.bullmq.io/guide/queues/adding-bulks"
+          },
+          {
+            "label": "Auto Removal Of Jobs",
+            "url": "https://docs.bullmq.io/guide/queues/auto-removal-of-jobs"
+          },
+          {
+            "label": "Global Concurrency",
+            "url": "https://docs.bullmq.io/guide/queues/global-concurrency"
+          },
+          {
+            "label": "Global Rate Limit",
+            "url": "https://docs.bullmq.io/guide/queues/global-rate-limit"
+          },
+          {
+            "label": "Meta",
+            "url": "https://docs.bullmq.io/guide/queues/meta"
+          },
+          {
+            "label": "Removing Jobs",
+            "url": "https://docs.bullmq.io/guide/queues/removing-jobs"
+          }
+        ]
+      },
+      {
+        "label": "Queuescheduler",
+        "url": "https://docs.bullmq.io/guide/queuescheduler"
+      },
+      {
+        "label": "Rate Limiting",
+        "url": "https://docs.bullmq.io/guide/rate-limiting"
+      },
+      {
+        "label": "Redis Tm Compatibility",
+        "url": "https://docs.bullmq.io/guide/redis-tm-compatibility",
+        "items": [
+          {
+            "label": "Dragonfly",
+            "url": "https://docs.bullmq.io/guide/redis-tm-compatibility/dragonfly"
+          }
+        ]
+      },
+      {
+        "label": "Redis Tm Hosting",
+        "url": "https://docs.bullmq.io/guide/redis-tm-hosting",
+        "items": [
+          {
+            "label": "Aws Elasticache",
+            "url": "https://docs.bullmq.io/guide/redis-tm-hosting/aws-elasticache"
+          },
+          {
+            "label": "Aws Memorydb",
+            "url": "https://docs.bullmq.io/guide/redis-tm-hosting/aws-memorydb"
+          }
+        ]
+      },
+      {
+        "label": "Retrying Failing Jobs",
+        "url": "https://docs.bullmq.io/guide/retrying-failing-jobs"
+      },
+      {
+        "label": "Returning Job Data",
+        "url": "https://docs.bullmq.io/guide/returning-job-data"
+      },
+      {
+        "label": "Telemetry",
+        "url": "https://docs.bullmq.io/guide/telemetry",
+        "items": [
+          {
+            "label": "Getting Started",
+            "url": "https://docs.bullmq.io/guide/telemetry/getting-started"
+          },
+          {
+            "label": "Metrics",
+            "url": "https://docs.bullmq.io/guide/telemetry/metrics"
+          },
+          {
+            "label": "Running A Simple Example",
+            "url": "https://docs.bullmq.io/guide/telemetry/running-a-simple-example"
+          },
+          {
+            "label": "Running Jaeger",
+            "url": "https://docs.bullmq.io/guide/telemetry/running-jaeger"
+          }
+        ]
+      },
+      {
+        "label": "Troubleshooting",
+        "url": "https://docs.bullmq.io/guide/troubleshooting"
+      },
+      {
+        "label": "Workers",
+        "url": "https://docs.bullmq.io/guide/workers",
+        "items": [
+          {
+            "label": "Auto Removal Of Jobs",
+            "url": "https://docs.bullmq.io/guide/workers/auto-removal-of-jobs"
+          },
+          {
+            "label": "Cancelling Jobs",
+            "url": "https://docs.bullmq.io/guide/workers/cancelling-jobs"
+          },
+          {
+            "label": "Concurrency",
+            "url": "https://docs.bullmq.io/guide/workers/concurrency"
+          },
+          {
+            "label": "Graceful Shutdown",
+            "url": "https://docs.bullmq.io/guide/workers/graceful-shutdown"
+          },
+          {
+            "label": "Pausing Queues",
+            "url": "https://docs.bullmq.io/guide/workers/pausing-queues"
+          },
+          {
+            "label": "Sandboxed Processors",
+            "url": "https://docs.bullmq.io/guide/workers/sandboxed-processors"
+          },
+          {
+            "label": "Stalled Jobs",
+            "url": "https://docs.bullmq.io/guide/workers/stalled-jobs"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Patterns",
+    "items": [
+      {
+        "label": "Adding Bulks",
+        "url": "https://docs.bullmq.io/patterns/adding-bulks"
+      },
+      {
+        "label": "Deduplication",
+        "url": "https://docs.bullmq.io/patterns/deduplication"
+      },
+      {
+        "label": "Failing Fast When Redis Is Down",
+        "url": "https://docs.bullmq.io/patterns/failing-fast-when-redis-is-down"
+      },
+      {
+        "label": "Flows",
+        "url": "https://docs.bullmq.io/patterns/flows"
+      },
+      {
+        "label": "Idempotent Jobs",
+        "url": "https://docs.bullmq.io/patterns/idempotent-jobs"
+      },
+      {
+        "label": "Manual Retrying",
+        "url": "https://docs.bullmq.io/patterns/manual-retrying"
+      },
+      {
+        "label": "Manually Fetching Jobs",
+        "url": "https://docs.bullmq.io/patterns/manually-fetching-jobs"
+      },
+      {
+        "label": "Named Processor",
+        "url": "https://docs.bullmq.io/patterns/named-processor"
+      },
+      {
+        "label": "Process Step Jobs",
+        "url": "https://docs.bullmq.io/patterns/process-step-jobs"
+      },
+      {
+        "label": "Redis Cluster",
+        "url": "https://docs.bullmq.io/patterns/redis-cluster"
+      },
+      {
+        "label": "Stop Retrying Jobs",
+        "url": "https://docs.bullmq.io/patterns/stop-retrying-jobs"
+      },
+      {
+        "label": "Throttle Jobs",
+        "url": "https://docs.bullmq.io/patterns/throttle-jobs"
+      },
+      {
+        "label": "Timeout For Sandboxed Processors",
+        "url": "https://docs.bullmq.io/patterns/timeout-for-sandboxed-processors"
+      },
+      {
+        "label": "Timeout Jobs",
+        "url": "https://docs.bullmq.io/patterns/timeout-jobs"
+      }
+    ]
+  },
+  {
+    "label": "Php",
+    "items": [
+      {
+        "label": "Changelog",
+        "url": "https://docs.bullmq.io/php/changelog"
+      },
+      {
+        "label": "Introduction",
+        "url": "https://docs.bullmq.io/php/introduction"
+      }
+    ]
+  },
+  {
+    "label": "Python",
+    "items": [
+      {
+        "label": "Changelog",
+        "url": "https://docs.bullmq.io/python/changelog",
+        "items": [
+          {
+            "label": "Changelog V0",
+            "url": "https://docs.bullmq.io/python/changelog/changelog-v0"
+          },
+          {
+            "label": "Changelog V1",
+            "url": "https://docs.bullmq.io/python/changelog/changelog-v1"
+          }
+        ]
+      },
+      {
+        "label": "Introduction",
+        "url": "https://docs.bullmq.io/python/introduction"
+      }
+    ]
+  },
+  {
+    "label": "Readme 1",
+    "url": "https://docs.bullmq.io/readme-1"
+  }
+]

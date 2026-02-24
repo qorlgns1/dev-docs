@@ -1,1 +1,1198 @@
-[]
+[
+  {
+    "label": "BullMQ",
+    "translations": {
+      "en": "BullMQ"
+    },
+    "items": [
+      {
+        "slug": "bullmq",
+        "label": "개요",
+        "translations": {
+          "en": "Overview"
+        }
+      },
+      {
+        "label": "Bull",
+        "translations": {
+          "en": "Bull"
+        },
+        "items": [
+          {
+            "slug": "bullmq/bull/important-notes",
+            "label": "중요사항",
+            "translations": {
+              "en": "Important Notes"
+            }
+          },
+          {
+            "slug": "bullmq/bull/install",
+            "label": "설치",
+            "translations": {
+              "en": "Install"
+            }
+          },
+          {
+            "slug": "bullmq/bull/introduction",
+            "label": "소개",
+            "translations": {
+              "en": "Introduction"
+            }
+          },
+          {
+            "label": "패턴",
+            "translations": {
+              "en": "Patterns"
+            },
+            "items": [
+              {
+                "slug": "bullmq/bull/patterns",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/bull/patterns/custom-backoff-strategy",
+                "label": "맞춤 백오프",
+                "translations": {
+                  "en": "Custom Backoff Strategy"
+                }
+              },
+              {
+                "slug": "bullmq/bull/patterns/debugging",
+                "label": "디버깅",
+                "translations": {
+                  "en": "Debugging"
+                }
+              },
+              {
+                "slug": "bullmq/bull/patterns/manually-fetching-jobs",
+                "label": "수동 작업조회",
+                "translations": {
+                  "en": "Manually Fetching Jobs"
+                }
+              },
+              {
+                "slug": "bullmq/bull/patterns/message-queue",
+                "label": "메시지 큐",
+                "translations": {
+                  "en": "Message Queue"
+                }
+              },
+              {
+                "slug": "bullmq/bull/patterns/persistent-connections",
+                "label": "지속 연결",
+                "translations": {
+                  "en": "Persistent Connections"
+                }
+              },
+              {
+                "slug": "bullmq/bull/patterns/redis-cluster",
+                "label": "Redis 클러스터",
+                "translations": {
+                  "en": "Redis Cluster"
+                }
+              },
+              {
+                "slug": "bullmq/bull/patterns/returning-job-completions",
+                "label": "작업 완료 반환",
+                "translations": {
+                  "en": "Returning Job Completions"
+                }
+              },
+              {
+                "slug": "bullmq/bull/patterns/reusing-redis-connections",
+                "label": "Redis 연결 재사용",
+                "translations": {
+                  "en": "Reusing Redis Connections"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/bull/quick-guide",
+            "label": "빠른 가이드",
+            "translations": {
+              "en": "Quick Guide"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bullmq Pro",
+        "translations": {
+          "en": "Bullmq Pro"
+        },
+        "items": [
+          {
+            "slug": "bullmq/bullmq-pro/batches",
+            "label": "배치",
+            "translations": {
+              "en": "Batches"
+            }
+          },
+          {
+            "label": "변경사항",
+            "translations": {
+              "en": "Changelog"
+            },
+            "items": [
+              {
+                "slug": "bullmq/bullmq-pro/changelog",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/changelog/changelog-v1",
+                "label": "변경사항 V1",
+                "translations": {
+                  "en": "Changelog V1"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/changelog/changelog-v2",
+                "label": "변경사항 V2",
+                "translations": {
+                  "en": "Changelog V2"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/changelog/changelog-v3",
+                "label": "변경사항 V3",
+                "translations": {
+                  "en": "Changelog V3"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/changelog/changelog-v4",
+                "label": "변경사항 V4",
+                "translations": {
+                  "en": "Changelog V4"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/changelog/changelog-v5",
+                "label": "변경사항 V5",
+                "translations": {
+                  "en": "Changelog V5"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/changelog/changelog-v6",
+                "label": "변경사항 V6",
+                "translations": {
+                  "en": "Changelog V6"
+                }
+              }
+            ]
+          },
+          {
+            "label": "그룹",
+            "translations": {
+              "en": "Groups"
+            },
+            "items": [
+              {
+                "slug": "bullmq/bullmq-pro/groups",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/groups/concurrency",
+                "label": "동시성",
+                "translations": {
+                  "en": "Concurrency"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/groups/getters",
+                "label": "게터",
+                "translations": {
+                  "en": "Getters"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/groups/local-group-concurrency",
+                "label": "로컬 그룹 동시성",
+                "translations": {
+                  "en": "Local Group Concurrency"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/groups/local-group-rate-limit",
+                "label": "로컬 그룹 속도제한",
+                "translations": {
+                  "en": "Local Group Rate Limit"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/groups/max-group-size",
+                "label": "최대 그룹 크기",
+                "translations": {
+                  "en": "Max Group Size"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/groups/pausing-groups",
+                "label": "그룹 일시중지",
+                "translations": {
+                  "en": "Pausing Groups"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/groups/prioritized",
+                "label": "우선순위",
+                "translations": {
+                  "en": "Prioritized"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/groups/rate-limiting",
+                "label": "속도 제한",
+                "translations": {
+                  "en": "Rate Limiting"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/groups/sandboxes-for-groups",
+                "label": "그룹용 샌드박스",
+                "translations": {
+                  "en": "Sandboxes For Groups"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/bullmq-pro/install",
+            "label": "설치",
+            "translations": {
+              "en": "Install"
+            }
+          },
+          {
+            "slug": "bullmq/bullmq-pro/introduction",
+            "label": "소개",
+            "translations": {
+              "en": "Introduction"
+            }
+          },
+          {
+            "label": "Nestjs",
+            "translations": {
+              "en": "Nestjs"
+            },
+            "items": [
+              {
+                "slug": "bullmq/bullmq-pro/nestjs",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/nestjs/changelog",
+                "label": "변경사항",
+                "translations": {
+                  "en": "Changelog"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/nestjs/producers",
+                "label": "프로듀서",
+                "translations": {
+                  "en": "Producers"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/nestjs/queue-events-listeners",
+                "label": "큐 이벤트 리스너",
+                "translations": {
+                  "en": "Queue Events Listeners"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/bullmq-pro/new-releases",
+            "label": "새 릴리스",
+            "translations": {
+              "en": "New Releases"
+            }
+          },
+          {
+            "label": "옵저버블",
+            "translations": {
+              "en": "Observables"
+            },
+            "items": [
+              {
+                "slug": "bullmq/bullmq-pro/observables",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/bullmq-pro/observables/cancelation",
+                "label": "취소",
+                "translations": {
+                  "en": "Cancelation"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/bullmq-pro/support",
+            "label": "지원",
+            "translations": {
+              "en": "Support"
+            }
+          },
+          {
+            "slug": "bullmq/bullmq-pro/telemetry",
+            "label": "텔레메트리",
+            "translations": {
+              "en": "Telemetry"
+            }
+          }
+        ]
+      },
+      {
+        "label": "변경사항",
+        "translations": {
+          "en": "Changelog"
+        },
+        "items": [
+          {
+            "slug": "bullmq/changelog",
+            "label": "개요",
+            "translations": {
+              "en": "Overview"
+            }
+          },
+          {
+            "slug": "bullmq/changelog/changelog-v1",
+            "label": "변경사항 V1",
+            "translations": {
+              "en": "Changelog V1"
+            }
+          },
+          {
+            "slug": "bullmq/changelog/changelog-v2",
+            "label": "변경사항 V2",
+            "translations": {
+              "en": "Changelog V2"
+            }
+          },
+          {
+            "slug": "bullmq/changelog/changelog-v3",
+            "label": "변경사항 V3",
+            "translations": {
+              "en": "Changelog V3"
+            }
+          },
+          {
+            "slug": "bullmq/changelog/changelog-v4",
+            "label": "변경사항 V4",
+            "translations": {
+              "en": "Changelog V4"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Elixir",
+        "translations": {
+          "en": "Elixir"
+        },
+        "items": [
+          {
+            "slug": "bullmq/elixir/changelog",
+            "label": "변경사항",
+            "translations": {
+              "en": "Changelog"
+            }
+          },
+          {
+            "slug": "bullmq/elixir/introduction",
+            "label": "소개",
+            "translations": {
+              "en": "Introduction"
+            }
+          }
+        ]
+      },
+      {
+        "label": "가이드",
+        "translations": {
+          "en": "Guide"
+        },
+        "items": [
+          {
+            "slug": "bullmq/guide/architecture",
+            "label": "아키텍처",
+            "translations": {
+              "en": "Architecture"
+            }
+          },
+          {
+            "slug": "bullmq/guide/connections",
+            "label": "연결",
+            "translations": {
+              "en": "Connections"
+            }
+          },
+          {
+            "label": "이벤트",
+            "translations": {
+              "en": "Events"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/events",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/events/create-custom-events",
+                "label": "커스텀 이벤트 생성",
+                "translations": {
+                  "en": "Create Custom Events"
+                }
+              }
+            ]
+          },
+          {
+            "label": "플로우",
+            "translations": {
+              "en": "Flows"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/flows",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/flows/adding-bulks",
+                "label": "대량 추가",
+                "translations": {
+                  "en": "Adding Bulks"
+                }
+              },
+              {
+                "slug": "bullmq/guide/flows/continue-parent",
+                "label": "상위 계속",
+                "translations": {
+                  "en": "Continue Parent"
+                }
+              },
+              {
+                "slug": "bullmq/guide/flows/fail-parent",
+                "label": "상위 실패",
+                "translations": {
+                  "en": "Fail Parent"
+                }
+              },
+              {
+                "slug": "bullmq/guide/flows/get-flow-tree",
+                "label": "플로우 트리 조회",
+                "translations": {
+                  "en": "Get Flow Tree"
+                }
+              },
+              {
+                "slug": "bullmq/guide/flows/ignore-dependency",
+                "label": "의존성 무시",
+                "translations": {
+                  "en": "Ignore Dependency"
+                }
+              },
+              {
+                "slug": "bullmq/guide/flows/remove-child-dependency",
+                "label": "하위 의존성 제거",
+                "translations": {
+                  "en": "Remove Child Dependency"
+                }
+              },
+              {
+                "slug": "bullmq/guide/flows/remove-dependency",
+                "label": "의존성 제거",
+                "translations": {
+                  "en": "Remove Dependency"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/guide/going-to-production",
+            "label": "운영 배포",
+            "translations": {
+              "en": "Going To Production"
+            }
+          },
+          {
+            "slug": "bullmq/guide/introduction",
+            "label": "소개",
+            "translations": {
+              "en": "Introduction"
+            }
+          },
+          {
+            "label": "작업 스케줄러",
+            "translations": {
+              "en": "Job Schedulers"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/job-schedulers",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/job-schedulers/manage-job-schedulers",
+                "label": "작업 스케줄러 관리",
+                "translations": {
+                  "en": "Manage Job Schedulers"
+                }
+              },
+              {
+                "slug": "bullmq/guide/job-schedulers/repeat-options",
+                "label": "반복 옵션",
+                "translations": {
+                  "en": "Repeat Options"
+                }
+              },
+              {
+                "slug": "bullmq/guide/job-schedulers/repeat-strategies",
+                "label": "반복 전략",
+                "translations": {
+                  "en": "Repeat Strategies"
+                }
+              }
+            ]
+          },
+          {
+            "label": "작업",
+            "translations": {
+              "en": "Jobs"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/jobs",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/deduplication",
+                "label": "중복 제거",
+                "translations": {
+                  "en": "Deduplication"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/delayed",
+                "label": "지연 작업",
+                "translations": {
+                  "en": "Delayed"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/fifo",
+                "label": "FIFO",
+                "translations": {
+                  "en": "Fifo"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/getters",
+                "label": "게터",
+                "translations": {
+                  "en": "Getters"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/job-data",
+                "label": "작업 데이터",
+                "translations": {
+                  "en": "Job Data"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/job-ids",
+                "label": "작업 ID",
+                "translations": {
+                  "en": "Job Ids"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/lifo",
+                "label": "LIFO",
+                "translations": {
+                  "en": "Lifo"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/prioritized",
+                "label": "우선순위",
+                "translations": {
+                  "en": "Prioritized"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/removing-job",
+                "label": "작업 제거",
+                "translations": {
+                  "en": "Removing Job"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/repeatable",
+                "label": "반복 작업",
+                "translations": {
+                  "en": "Repeatable"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/retrying-job",
+                "label": "작업 재시도",
+                "translations": {
+                  "en": "Retrying Job"
+                }
+              },
+              {
+                "slug": "bullmq/guide/jobs/stalled",
+                "label": "정체",
+                "translations": {
+                  "en": "Stalled"
+                }
+              }
+            ]
+          },
+          {
+            "label": "메트릭",
+            "translations": {
+              "en": "Metrics"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/metrics",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/metrics/prometheus",
+                "label": "Prometheus",
+                "translations": {
+                  "en": "Prometheus"
+                }
+              }
+            ]
+          },
+          {
+            "label": "최신 버전 마이그레이션",
+            "translations": {
+              "en": "Migration To Newer Versions"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/migration-to-newer-versions",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/migration-to-newer-versions/bull-to-bullmq",
+                "label": "Bull에서 Bullmq로",
+                "translations": {
+                  "en": "Bull To Bullmq"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Nestjs",
+            "translations": {
+              "en": "Nestjs"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/nestjs",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/nestjs/producers",
+                "label": "프로듀서",
+                "translations": {
+                  "en": "Producers"
+                }
+              },
+              {
+                "slug": "bullmq/guide/nestjs/queue-events-listeners",
+                "label": "큐 이벤트 리스너",
+                "translations": {
+                  "en": "Queue Events Listeners"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/guide/parallelism-and-concurrency",
+            "label": "병렬성과 동시성",
+            "translations": {
+              "en": "Parallelism And Concurrency"
+            }
+          },
+          {
+            "label": "큐",
+            "translations": {
+              "en": "Queues"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/queues",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/queues/adding-bulks",
+                "label": "대량 추가",
+                "translations": {
+                  "en": "Adding Bulks"
+                }
+              },
+              {
+                "slug": "bullmq/guide/queues/auto-removal-of-jobs",
+                "label": "작업 자동 제거",
+                "translations": {
+                  "en": "Auto Removal Of Jobs"
+                }
+              },
+              {
+                "slug": "bullmq/guide/queues/global-concurrency",
+                "label": "전역 동시성",
+                "translations": {
+                  "en": "Global Concurrency"
+                }
+              },
+              {
+                "slug": "bullmq/guide/queues/global-rate-limit",
+                "label": "전역 속도제한",
+                "translations": {
+                  "en": "Global Rate Limit"
+                }
+              },
+              {
+                "slug": "bullmq/guide/queues/meta",
+                "label": "메타",
+                "translations": {
+                  "en": "Meta"
+                }
+              },
+              {
+                "slug": "bullmq/guide/queues/removing-jobs",
+                "label": "작업 제거",
+                "translations": {
+                  "en": "Removing Jobs"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/guide/queuescheduler",
+            "label": "QueueScheduler",
+            "translations": {
+              "en": "Queuescheduler"
+            }
+          },
+          {
+            "slug": "bullmq/guide/rate-limiting",
+            "label": "속도 제한",
+            "translations": {
+              "en": "Rate Limiting"
+            }
+          },
+          {
+            "label": "Redis Tm 호환성",
+            "translations": {
+              "en": "Redis Tm Compatibility"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/redis-tm-compatibility",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/redis-tm-compatibility/dragonfly",
+                "label": "Dragonfly",
+                "translations": {
+                  "en": "Dragonfly"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Redis Tm 호스팅",
+            "translations": {
+              "en": "Redis Tm Hosting"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/redis-tm-hosting",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/redis-tm-hosting/aws-elasticache",
+                "label": "AWS ElastiCache",
+                "translations": {
+                  "en": "Aws Elasticache"
+                }
+              },
+              {
+                "slug": "bullmq/guide/redis-tm-hosting/aws-memorydb",
+                "label": "AWS MemoryDB",
+                "translations": {
+                  "en": "Aws Memorydb"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/guide/retrying-failing-jobs",
+            "label": "실패 작업 재시도",
+            "translations": {
+              "en": "Retrying Failing Jobs"
+            }
+          },
+          {
+            "slug": "bullmq/guide/returning-job-data",
+            "label": "작업 데이터 반환",
+            "translations": {
+              "en": "Returning Job Data"
+            }
+          },
+          {
+            "label": "텔레메트리",
+            "translations": {
+              "en": "Telemetry"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/telemetry",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/telemetry/getting-started",
+                "label": "시작하기",
+                "translations": {
+                  "en": "Getting Started"
+                }
+              },
+              {
+                "slug": "bullmq/guide/telemetry/metrics",
+                "label": "메트릭",
+                "translations": {
+                  "en": "Metrics"
+                }
+              },
+              {
+                "slug": "bullmq/guide/telemetry/running-a-simple-example",
+                "label": "간단 예제 실행",
+                "translations": {
+                  "en": "Running A Simple Example"
+                }
+              },
+              {
+                "slug": "bullmq/guide/telemetry/running-jaeger",
+                "label": "Jaeger 실행",
+                "translations": {
+                  "en": "Running Jaeger"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/guide/troubleshooting",
+            "label": "문제 해결",
+            "translations": {
+              "en": "Troubleshooting"
+            }
+          },
+          {
+            "label": "워커",
+            "translations": {
+              "en": "Workers"
+            },
+            "items": [
+              {
+                "slug": "bullmq/guide/workers",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/guide/workers/auto-removal-of-jobs",
+                "label": "작업 자동 제거",
+                "translations": {
+                  "en": "Auto Removal Of Jobs"
+                }
+              },
+              {
+                "slug": "bullmq/guide/workers/cancelling-jobs",
+                "label": "작업 취소",
+                "translations": {
+                  "en": "Cancelling Jobs"
+                }
+              },
+              {
+                "slug": "bullmq/guide/workers/concurrency",
+                "label": "동시성",
+                "translations": {
+                  "en": "Concurrency"
+                }
+              },
+              {
+                "slug": "bullmq/guide/workers/graceful-shutdown",
+                "label": "정상 종료",
+                "translations": {
+                  "en": "Graceful Shutdown"
+                }
+              },
+              {
+                "slug": "bullmq/guide/workers/pausing-queues",
+                "label": "큐 일시중지",
+                "translations": {
+                  "en": "Pausing Queues"
+                }
+              },
+              {
+                "slug": "bullmq/guide/workers/sandboxed-processors",
+                "label": "샌드박스 프로세서",
+                "translations": {
+                  "en": "Sandboxed Processors"
+                }
+              },
+              {
+                "slug": "bullmq/guide/workers/stalled-jobs",
+                "label": "정체 작업",
+                "translations": {
+                  "en": "Stalled Jobs"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "패턴",
+        "translations": {
+          "en": "Patterns"
+        },
+        "items": [
+          {
+            "slug": "bullmq/patterns/adding-bulks",
+            "label": "대량 추가",
+            "translations": {
+              "en": "Adding Bulks"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/deduplication",
+            "label": "중복 제거",
+            "translations": {
+              "en": "Deduplication"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/failing-fast-when-redis-is-down",
+            "label": "Redis 다운 시 빠른 실패",
+            "translations": {
+              "en": "Failing Fast When Redis Is Down"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/flows",
+            "label": "플로우",
+            "translations": {
+              "en": "Flows"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/idempotent-jobs",
+            "label": "멱등 작업",
+            "translations": {
+              "en": "Idempotent Jobs"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/manual-retrying",
+            "label": "수동 재시도",
+            "translations": {
+              "en": "Manual Retrying"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/manually-fetching-jobs",
+            "label": "수동 작업조회",
+            "translations": {
+              "en": "Manually Fetching Jobs"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/named-processor",
+            "label": "이름 지정 프로세서",
+            "translations": {
+              "en": "Named Processor"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/process-step-jobs",
+            "label": "단계 작업 처리",
+            "translations": {
+              "en": "Process Step Jobs"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/redis-cluster",
+            "label": "Redis 클러스터",
+            "translations": {
+              "en": "Redis Cluster"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/stop-retrying-jobs",
+            "label": "작업 재시도 중지",
+            "translations": {
+              "en": "Stop Retrying Jobs"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/throttle-jobs",
+            "label": "작업 스로틀링",
+            "translations": {
+              "en": "Throttle Jobs"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/timeout-for-sandboxed-processors",
+            "label": "샌드박스 프로세서 타임아웃",
+            "translations": {
+              "en": "Timeout For Sandboxed Processors"
+            }
+          },
+          {
+            "slug": "bullmq/patterns/timeout-jobs",
+            "label": "작업 타임아웃",
+            "translations": {
+              "en": "Timeout Jobs"
+            }
+          }
+        ]
+      },
+      {
+        "label": "PHP",
+        "translations": {
+          "en": "Php"
+        },
+        "items": [
+          {
+            "slug": "bullmq/php/changelog",
+            "label": "변경사항",
+            "translations": {
+              "en": "Changelog"
+            }
+          },
+          {
+            "slug": "bullmq/php/introduction",
+            "label": "소개",
+            "translations": {
+              "en": "Introduction"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Python",
+        "translations": {
+          "en": "Python"
+        },
+        "items": [
+          {
+            "label": "변경사항",
+            "translations": {
+              "en": "Changelog"
+            },
+            "items": [
+              {
+                "slug": "bullmq/python/changelog",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "bullmq/python/changelog/changelog-v0",
+                "label": "변경사항 V0",
+                "translations": {
+                  "en": "Changelog V0"
+                }
+              },
+              {
+                "slug": "bullmq/python/changelog/changelog-v1",
+                "label": "변경사항 V1",
+                "translations": {
+                  "en": "Changelog V1"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "bullmq/python/introduction",
+            "label": "소개",
+            "translations": {
+              "en": "Introduction"
+            }
+          }
+        ]
+      },
+      {
+        "slug": "bullmq/readme-1",
+        "label": "README 1",
+        "translations": {
+          "en": "Readme 1"
+        }
+      }
+    ]
+  }
+]
