@@ -1,0 +1,136 @@
+[
+  {
+    "label": "Overview",
+    "url": "https://next-intl.dev/docs"
+  },
+  {
+    "label": "Design Principles",
+    "url": "https://next-intl.dev/docs/design-principles"
+  },
+  {
+    "label": "Environments",
+    "url": "https://next-intl.dev/docs/environments",
+    "items": [
+      {
+        "label": "Actions Metadata Route Handlers",
+        "url": "https://next-intl.dev/docs/environments/actions-metadata-route-handlers"
+      },
+      {
+        "label": "Core Library",
+        "url": "https://next-intl.dev/docs/environments/core-library"
+      },
+      {
+        "label": "Error Files",
+        "url": "https://next-intl.dev/docs/environments/error-files"
+      },
+      {
+        "label": "Runtime Requirements",
+        "url": "https://next-intl.dev/docs/environments/runtime-requirements"
+      },
+      {
+        "label": "Server Client Components",
+        "url": "https://next-intl.dev/docs/environments/server-client-components"
+      },
+      {
+        "label": "Testing",
+        "url": "https://next-intl.dev/docs/environments/testing"
+      }
+    ]
+  },
+  {
+    "label": "Getting Started",
+    "url": "https://next-intl.dev/docs/getting-started",
+    "items": [
+      {
+        "label": "App Router",
+        "url": "https://next-intl.dev/docs/getting-started/app-router"
+      },
+      {
+        "label": "Pages Router",
+        "url": "https://next-intl.dev/docs/getting-started/pages-router"
+      }
+    ]
+  },
+  {
+    "label": "Routing",
+    "url": "https://next-intl.dev/docs/routing",
+    "items": [
+      {
+        "label": "Configuration",
+        "url": "https://next-intl.dev/docs/routing/configuration"
+      },
+      {
+        "label": "Middleware",
+        "url": "https://next-intl.dev/docs/routing/middleware"
+      },
+      {
+        "label": "Navigation",
+        "url": "https://next-intl.dev/docs/routing/navigation"
+      },
+      {
+        "label": "Setup",
+        "url": "https://next-intl.dev/docs/routing/setup"
+      }
+    ]
+  },
+  {
+    "label": "Usage",
+    "url": "https://next-intl.dev/docs/usage",
+    "items": [
+      {
+        "label": "Configuration",
+        "url": "https://next-intl.dev/docs/usage/configuration"
+      },
+      {
+        "label": "Dates Times",
+        "url": "https://next-intl.dev/docs/usage/dates-times"
+      },
+      {
+        "label": "Extraction",
+        "url": "https://next-intl.dev/docs/usage/extraction"
+      },
+      {
+        "label": "Lists",
+        "url": "https://next-intl.dev/docs/usage/lists"
+      },
+      {
+        "label": "Numbers",
+        "url": "https://next-intl.dev/docs/usage/numbers"
+      },
+      {
+        "label": "Plugin",
+        "url": "https://next-intl.dev/docs/usage/plugin"
+      },
+      {
+        "label": "Translations",
+        "url": "https://next-intl.dev/docs/usage/translations"
+      }
+    ]
+  },
+  {
+    "label": "Workflows",
+    "url": "https://next-intl.dev/docs/workflows",
+    "items": [
+      {
+        "label": "Localization Management",
+        "url": "https://next-intl.dev/docs/workflows/localization-management"
+      },
+      {
+        "label": "Messages",
+        "url": "https://next-intl.dev/docs/workflows/messages"
+      },
+      {
+        "label": "Storybook",
+        "url": "https://next-intl.dev/docs/workflows/storybook"
+      },
+      {
+        "label": "Typescript",
+        "url": "https://next-intl.dev/docs/workflows/typescript"
+      },
+      {
+        "label": "Vscode Integration",
+        "url": "https://next-intl.dev/docs/workflows/vscode-integration"
+      }
+    ]
+  }
+]

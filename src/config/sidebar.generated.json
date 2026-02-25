@@ -1194,5 +1194,270 @@
         }
       }
     ]
+  },
+  {
+    "label": "next-intl",
+    "translations": {
+      "en": "next-intl"
+    },
+    "items": [
+      {
+        "slug": "next-intl",
+        "label": "개요",
+        "translations": {
+          "en": "Overview"
+        }
+      },
+      {
+        "slug": "next-intl/design-principles",
+        "label": "설계 원칙",
+        "translations": {
+          "en": "Design Principles"
+        }
+      },
+      {
+        "label": "환경",
+        "translations": {
+          "en": "Environments"
+        },
+        "items": [
+          {
+            "slug": "next-intl/environments",
+            "label": "개요",
+            "translations": {
+              "en": "Overview"
+            }
+          },
+          {
+            "slug": "next-intl/environments/actions-metadata-route-handlers",
+            "label": "액션 메타데이터 라우트 핸들러",
+            "translations": {
+              "en": "Actions Metadata Route Handlers"
+            }
+          },
+          {
+            "slug": "next-intl/environments/core-library",
+            "label": "핵심 라이브러리",
+            "translations": {
+              "en": "Core Library"
+            }
+          },
+          {
+            "slug": "next-intl/environments/error-files",
+            "label": "에러 파일",
+            "translations": {
+              "en": "Error Files"
+            }
+          },
+          {
+            "slug": "next-intl/environments/runtime-requirements",
+            "label": "런타임 요건",
+            "translations": {
+              "en": "Runtime Requirements"
+            }
+          },
+          {
+            "slug": "next-intl/environments/server-client-components",
+            "label": "서버 클라이언트 컴포넌트",
+            "translations": {
+              "en": "Server Client Components"
+            }
+          },
+          {
+            "slug": "next-intl/environments/testing",
+            "label": "테스트",
+            "translations": {
+              "en": "Testing"
+            }
+          }
+        ]
+      },
+      {
+        "label": "시작하기",
+        "translations": {
+          "en": "Getting Started"
+        },
+        "items": [
+          {
+            "slug": "next-intl/getting-started",
+            "label": "개요",
+            "translations": {
+              "en": "Overview"
+            }
+          },
+          {
+            "slug": "next-intl/getting-started/app-router",
+            "label": "App 라우터",
+            "translations": {
+              "en": "App Router"
+            }
+          },
+          {
+            "slug": "next-intl/getting-started/pages-router",
+            "label": "Pages 라우터",
+            "translations": {
+              "en": "Pages Router"
+            }
+          }
+        ]
+      },
+      {
+        "label": "라우팅",
+        "translations": {
+          "en": "Routing"
+        },
+        "items": [
+          {
+            "slug": "next-intl/routing",
+            "label": "개요",
+            "translations": {
+              "en": "Overview"
+            }
+          },
+          {
+            "slug": "next-intl/routing/configuration",
+            "label": "구성",
+            "translations": {
+              "en": "Configuration"
+            }
+          },
+          {
+            "slug": "next-intl/routing/middleware",
+            "label": "미들웨어",
+            "translations": {
+              "en": "Middleware"
+            }
+          },
+          {
+            "slug": "next-intl/routing/navigation",
+            "label": "탐색",
+            "translations": {
+              "en": "Navigation"
+            }
+          },
+          {
+            "slug": "next-intl/routing/setup",
+            "label": "설정",
+            "translations": {
+              "en": "Setup"
+            }
+          }
+        ]
+      },
+      {
+        "label": "사용법",
+        "translations": {
+          "en": "Usage"
+        },
+        "items": [
+          {
+            "slug": "next-intl/usage",
+            "label": "개요",
+            "translations": {
+              "en": "Overview"
+            }
+          },
+          {
+            "slug": "next-intl/usage/configuration",
+            "label": "구성",
+            "translations": {
+              "en": "Configuration"
+            }
+          },
+          {
+            "slug": "next-intl/usage/dates-times",
+            "label": "날짜 시간",
+            "translations": {
+              "en": "Dates Times"
+            }
+          },
+          {
+            "slug": "next-intl/usage/extraction",
+            "label": "추출",
+            "translations": {
+              "en": "Extraction"
+            }
+          },
+          {
+            "slug": "next-intl/usage/lists",
+            "label": "목록",
+            "translations": {
+              "en": "Lists"
+            }
+          },
+          {
+            "slug": "next-intl/usage/numbers",
+            "label": "숫자",
+            "translations": {
+              "en": "Numbers"
+            }
+          },
+          {
+            "slug": "next-intl/usage/plugin",
+            "label": "플러그인",
+            "translations": {
+              "en": "Plugin"
+            }
+          },
+          {
+            "slug": "next-intl/usage/translations",
+            "label": "번역",
+            "translations": {
+              "en": "Translations"
+            }
+          }
+        ]
+      },
+      {
+        "label": "워크플로",
+        "translations": {
+          "en": "Workflows"
+        },
+        "items": [
+          {
+            "slug": "next-intl/workflows",
+            "label": "개요",
+            "translations": {
+              "en": "Overview"
+            }
+          },
+          {
+            "slug": "next-intl/workflows/localization-management",
+            "label": "현지화 관리",
+            "translations": {
+              "en": "Localization Management"
+            }
+          },
+          {
+            "slug": "next-intl/workflows/messages",
+            "label": "메시지",
+            "translations": {
+              "en": "Messages"
+            }
+          },
+          {
+            "slug": "next-intl/workflows/storybook",
+            "label": "Storybook",
+            "translations": {
+              "en": "Storybook"
+            }
+          },
+          {
+            "slug": "next-intl/workflows/typescript",
+            "label": "TypeScript",
+            "translations": {
+              "en": "Typescript"
+            }
+          },
+          {
+            "slug": "next-intl/workflows/vscode-integration",
+            "label": "VSCode 연동",
+            "translations": {
+              "en": "Vscode Integration"
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
