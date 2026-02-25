@@ -1,0 +1,521 @@
+[
+  {
+    "label": "Overview",
+    "url": "https://tanstack.com/query/latest"
+  },
+  {
+    "label": "Docs",
+    "url": "https://tanstack.com/query/latest/docs",
+    "items": [
+      {
+        "label": "Community Resources",
+        "url": "https://tanstack.com/query/latest/docs/community-resources"
+      },
+      {
+        "label": "Contributors",
+        "url": "https://tanstack.com/query/latest/docs/contributors"
+      },
+      {
+        "label": "Eslint",
+        "items": [
+          {
+            "label": "Eslint Plugin Query",
+            "url": "https://tanstack.com/query/latest/docs/eslint/eslint-plugin-query"
+          },
+          {
+            "label": "Exhaustive Deps",
+            "url": "https://tanstack.com/query/latest/docs/eslint/exhaustive-deps"
+          },
+          {
+            "label": "Infinite Query Property Order",
+            "url": "https://tanstack.com/query/latest/docs/eslint/infinite-query-property-order"
+          },
+          {
+            "label": "Mutation Property Order",
+            "url": "https://tanstack.com/query/latest/docs/eslint/mutation-property-order"
+          },
+          {
+            "label": "No Rest Destructuring",
+            "url": "https://tanstack.com/query/latest/docs/eslint/no-rest-destructuring"
+          },
+          {
+            "label": "No Unstable Deps",
+            "url": "https://tanstack.com/query/latest/docs/eslint/no-unstable-deps"
+          },
+          {
+            "label": "No Void Query Fn",
+            "url": "https://tanstack.com/query/latest/docs/eslint/no-void-query-fn"
+          },
+          {
+            "label": "Stable Query Client",
+            "url": "https://tanstack.com/query/latest/docs/eslint/stable-query-client"
+          }
+        ]
+      },
+      {
+        "label": "Framework",
+        "url": "https://tanstack.com/query/latest/docs/framework",
+        "items": [
+          {
+            "label": "React",
+            "items": [
+              {
+                "label": "Comparison",
+                "url": "https://tanstack.com/query/latest/docs/framework/react/comparison"
+              },
+              {
+                "label": "Devtools",
+                "url": "https://tanstack.com/query/latest/docs/framework/react/devtools"
+              },
+              {
+                "label": "Examples",
+                "items": [
+                  {
+                    "label": "Algolia",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/algolia"
+                  },
+                  {
+                    "label": "Auto Refetching",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/auto-refetching"
+                  },
+                  {
+                    "label": "Basic",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/basic"
+                  },
+                  {
+                    "label": "Basic Graphql Request",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/basic-graphql-request"
+                  },
+                  {
+                    "label": "Chat",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/chat"
+                  },
+                  {
+                    "label": "Default Query Function",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/default-query-function"
+                  },
+                  {
+                    "label": "Devtools Panel",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/devtools-panel"
+                  },
+                  {
+                    "label": "Infinite Query With Max Pages",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/infinite-query-with-max-pages"
+                  },
+                  {
+                    "label": "Load More Infinite Scroll",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/load-more-infinite-scroll"
+                  },
+                  {
+                    "label": "Nextjs",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/nextjs"
+                  },
+                  {
+                    "label": "Nextjs App Prefetching",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/nextjs-app-prefetching"
+                  },
+                  {
+                    "label": "Nextjs Suspense Streaming",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/nextjs-suspense-streaming"
+                  },
+                  {
+                    "label": "Offline",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/offline"
+                  },
+                  {
+                    "label": "Optimistic Updates Cache",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/optimistic-updates-cache"
+                  },
+                  {
+                    "label": "Optimistic Updates Ui",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/optimistic-updates-ui"
+                  },
+                  {
+                    "label": "Pagination",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/pagination"
+                  },
+                  {
+                    "label": "Playground",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/playground"
+                  },
+                  {
+                    "label": "Prefetching",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/prefetching"
+                  },
+                  {
+                    "label": "React Native",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/react-native"
+                  },
+                  {
+                    "label": "React Router",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/react-router"
+                  },
+                  {
+                    "label": "Rick Morty",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/rick-morty"
+                  },
+                  {
+                    "label": "Shadow Dom",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/shadow-dom"
+                  },
+                  {
+                    "label": "Simple",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/simple"
+                  },
+                  {
+                    "label": "Star Wars",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/star-wars"
+                  },
+                  {
+                    "label": "Suspense",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/examples/suspense"
+                  }
+                ]
+              },
+              {
+                "label": "Graphql",
+                "url": "https://tanstack.com/query/latest/docs/framework/react/graphql"
+              },
+              {
+                "label": "Guides",
+                "items": [
+                  {
+                    "label": "Advanced Ssr",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr"
+                  },
+                  {
+                    "label": "Background Fetching Indicators",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/background-fetching-indicators"
+                  },
+                  {
+                    "label": "Caching",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/caching"
+                  },
+                  {
+                    "label": "Default Query Function",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/default-query-function"
+                  },
+                  {
+                    "label": "Dependent Queries",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/dependent-queries"
+                  },
+                  {
+                    "label": "Disabling Queries",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/disabling-queries"
+                  },
+                  {
+                    "label": "Does This Replace Client State",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/does-this-replace-client-state"
+                  },
+                  {
+                    "label": "Filters",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/filters"
+                  },
+                  {
+                    "label": "Important Defaults",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/important-defaults"
+                  },
+                  {
+                    "label": "Infinite Queries",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/infinite-queries"
+                  },
+                  {
+                    "label": "Initial Query Data",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/initial-query-data"
+                  },
+                  {
+                    "label": "Invalidations From Mutations",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/invalidations-from-mutations"
+                  },
+                  {
+                    "label": "Migrating To React Query 3",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/migrating-to-react-query-3"
+                  },
+                  {
+                    "label": "Migrating To React Query 4",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/migrating-to-react-query-4"
+                  },
+                  {
+                    "label": "Migrating To V5",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/migrating-to-v5"
+                  },
+                  {
+                    "label": "Mutations",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/mutations"
+                  },
+                  {
+                    "label": "Network Mode",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/network-mode"
+                  },
+                  {
+                    "label": "Optimistic Updates",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates"
+                  },
+                  {
+                    "label": "Paginated Queries",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/paginated-queries"
+                  },
+                  {
+                    "label": "Parallel Queries",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/parallel-queries"
+                  },
+                  {
+                    "label": "Placeholder Query Data",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/placeholder-query-data"
+                  },
+                  {
+                    "label": "Prefetching",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/prefetching"
+                  },
+                  {
+                    "label": "Queries",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/queries"
+                  },
+                  {
+                    "label": "Query Cancellation",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/query-cancellation"
+                  },
+                  {
+                    "label": "Query Functions",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/query-functions"
+                  },
+                  {
+                    "label": "Query Invalidation",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/query-invalidation"
+                  },
+                  {
+                    "label": "Query Keys",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/query-keys"
+                  },
+                  {
+                    "label": "Query Options",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/query-options"
+                  },
+                  {
+                    "label": "Query Retries",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/query-retries"
+                  },
+                  {
+                    "label": "Render Optimizations",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/render-optimizations"
+                  },
+                  {
+                    "label": "Request Waterfalls",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/request-waterfalls"
+                  },
+                  {
+                    "label": "Scroll Restoration",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/scroll-restoration"
+                  },
+                  {
+                    "label": "Ssr",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/ssr"
+                  },
+                  {
+                    "label": "Suspense",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/suspense"
+                  },
+                  {
+                    "label": "Testing",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/testing"
+                  },
+                  {
+                    "label": "Updates From Mutation Responses",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/updates-from-mutation-responses"
+                  },
+                  {
+                    "label": "Window Focus Refetching",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/guides/window-focus-refetching"
+                  }
+                ]
+              },
+              {
+                "label": "Installation",
+                "url": "https://tanstack.com/query/latest/docs/framework/react/installation"
+              },
+              {
+                "label": "Overview",
+                "url": "https://tanstack.com/query/latest/docs/framework/react/overview"
+              },
+              {
+                "label": "Plugins",
+                "items": [
+                  {
+                    "label": "broadcastQueryClient",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/plugins/broadcastQueryClient"
+                  },
+                  {
+                    "label": "createAsyncStoragePersister",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/plugins/createAsyncStoragePersister"
+                  },
+                  {
+                    "label": "createPersister",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/plugins/createPersister"
+                  },
+                  {
+                    "label": "createSyncStoragePersister",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/plugins/createSyncStoragePersister"
+                  },
+                  {
+                    "label": "persistQueryClient",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/plugins/persistQueryClient"
+                  }
+                ]
+              },
+              {
+                "label": "Quick Start",
+                "url": "https://tanstack.com/query/latest/docs/framework/react/quick-start"
+              },
+              {
+                "label": "React Native",
+                "url": "https://tanstack.com/query/latest/docs/framework/react/react-native"
+              },
+              {
+                "label": "Reference",
+                "items": [
+                  {
+                    "label": "QueryClientProvider",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/QueryClientProvider"
+                  },
+                  {
+                    "label": "QueryErrorResetBoundary",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/QueryErrorResetBoundary"
+                  },
+                  {
+                    "label": "Hydration",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/hydration"
+                  },
+                  {
+                    "label": "infiniteQueryOptions",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/infiniteQueryOptions"
+                  },
+                  {
+                    "label": "mutationOptions",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/mutationOptions"
+                  },
+                  {
+                    "label": "queryOptions",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/queryOptions"
+                  },
+                  {
+                    "label": "useInfiniteQuery",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useInfiniteQuery"
+                  },
+                  {
+                    "label": "useIsFetching",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useIsFetching"
+                  },
+                  {
+                    "label": "useIsMutating",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useIsMutating"
+                  },
+                  {
+                    "label": "useMutation",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useMutation"
+                  },
+                  {
+                    "label": "useMutationState",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useMutationState"
+                  },
+                  {
+                    "label": "usePrefetchInfiniteQuery",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/usePrefetchInfiniteQuery"
+                  },
+                  {
+                    "label": "usePrefetchQuery",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/usePrefetchQuery"
+                  },
+                  {
+                    "label": "useQueries",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useQueries"
+                  },
+                  {
+                    "label": "useQuery",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useQuery"
+                  },
+                  {
+                    "label": "useQueryClient",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useQueryClient"
+                  },
+                  {
+                    "label": "useQueryErrorResetBoundary",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useQueryErrorResetBoundary"
+                  },
+                  {
+                    "label": "useSuspenseInfiniteQuery",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useSuspenseInfiniteQuery"
+                  },
+                  {
+                    "label": "useSuspenseQueries",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useSuspenseQueries"
+                  },
+                  {
+                    "label": "useSuspenseQuery",
+                    "url": "https://tanstack.com/query/latest/docs/framework/react/reference/useSuspenseQuery"
+                  }
+                ]
+              },
+              {
+                "label": "Typescript",
+                "url": "https://tanstack.com/query/latest/docs/framework/react/typescript"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Npm Stats",
+        "url": "https://tanstack.com/query/latest/docs/npm-stats"
+      },
+      {
+        "label": "Reference",
+        "items": [
+          {
+            "label": "InfiniteQueryObserver",
+            "url": "https://tanstack.com/query/latest/docs/reference/InfiniteQueryObserver"
+          },
+          {
+            "label": "MutationCache",
+            "url": "https://tanstack.com/query/latest/docs/reference/MutationCache"
+          },
+          {
+            "label": "QueriesObserver",
+            "url": "https://tanstack.com/query/latest/docs/reference/QueriesObserver"
+          },
+          {
+            "label": "QueryCache",
+            "url": "https://tanstack.com/query/latest/docs/reference/QueryCache"
+          },
+          {
+            "label": "QueryClient",
+            "url": "https://tanstack.com/query/latest/docs/reference/QueryClient"
+          },
+          {
+            "label": "QueryObserver",
+            "url": "https://tanstack.com/query/latest/docs/reference/QueryObserver"
+          },
+          {
+            "label": "focusManager",
+            "url": "https://tanstack.com/query/latest/docs/reference/focusManager"
+          },
+          {
+            "label": "notifyManager",
+            "url": "https://tanstack.com/query/latest/docs/reference/notifyManager"
+          },
+          {
+            "label": "onlineManager",
+            "url": "https://tanstack.com/query/latest/docs/reference/onlineManager"
+          },
+          {
+            "label": "streamedQuery",
+            "url": "https://tanstack.com/query/latest/docs/reference/streamedQuery"
+          },
+          {
+            "label": "timeoutManager",
+            "url": "https://tanstack.com/query/latest/docs/reference/timeoutManager"
+          }
+        ]
+      }
+    ]
+  }
+]

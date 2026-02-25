@@ -1,0 +1,35 @@
+---
+title: 'useSuspenseInfiniteQuery'
+description: 'const result = useSuspenseInfiniteQuery(options)'
+---
+
+Source URL: https://tanstack.com/query/latest/docs/framework/react/reference/useSuspenseInfiniteQuery
+
+# useSuspenseInfiniteQuery
+
+```tsx
+const result = useSuspenseInfiniteQuery(options)
+```
+
+**Options**
+
+The same as for [useInfiniteQuery](https://tanstack.com/query/latest/docs/framework/react/reference/useInfiniteQuery.md), except for:
+
+- `suspense`
+- `throwOnError`
+- `enabled`
+- `placeholderData`
+
+**Returns**
+
+Same object as [useInfiniteQuery](https://tanstack.com/query/latest/docs/framework/react/reference/useInfiniteQuery.md), except that:
+
+- `data` is guaranteed to be defined
+- `isPlaceholderData` is missing
+- `status` is either `success` or `error`
+  - the derived flags are set accordingly.
+
+**Caveat**
+
+[Cancellation](https://tanstack.com/query/latest/docs/framework/react/guides/query-cancellation.md) does not work.
+

@@ -2798,5 +2798,925 @@
         ]
       }
     ]
+  },
+  {
+    "label": "React Query",
+    "translations": {
+      "en": "React Query"
+    },
+    "items": [
+      {
+        "slug": "react-query/latest",
+        "label": "개요",
+        "translations": {
+          "en": "Overview"
+        }
+      },
+      {
+        "label": "문서",
+        "translations": {
+          "en": "Docs"
+        },
+        "items": [
+          {
+            "slug": "react-query/latest/docs",
+            "label": "개요",
+            "translations": {
+              "en": "Overview"
+            }
+          },
+          {
+            "slug": "react-query/latest/docs/community-resources",
+            "label": "커뮤니티 자료",
+            "translations": {
+              "en": "Community Resources"
+            }
+          },
+          {
+            "slug": "react-query/latest/docs/contributors",
+            "label": "기여자",
+            "translations": {
+              "en": "Contributors"
+            }
+          },
+          {
+            "label": "ESLint",
+            "translations": {
+              "en": "Eslint"
+            },
+            "items": [
+              {
+                "slug": "react-query/latest/docs/eslint/eslint-plugin-query",
+                "label": "ESLint Query 플러그인",
+                "translations": {
+                  "en": "Eslint Plugin Query"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/eslint/exhaustive-deps",
+                "label": "전체 의존성",
+                "translations": {
+                  "en": "Exhaustive Deps"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/eslint/infinite-query-property-order",
+                "label": "무한 쿼리 속성 순서",
+                "translations": {
+                  "en": "Infinite Query Property Order"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/eslint/mutation-property-order",
+                "label": "뮤테이션 속성 순서",
+                "translations": {
+                  "en": "Mutation Property Order"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/eslint/no-rest-destructuring",
+                "label": "Rest 구조분해 금지",
+                "translations": {
+                  "en": "No Rest Destructuring"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/eslint/no-unstable-deps",
+                "label": "불안정 의존성 금지",
+                "translations": {
+                  "en": "No Unstable Deps"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/eslint/no-void-query-fn",
+                "label": "Void 쿼리 함수 금지",
+                "translations": {
+                  "en": "No Void Query Fn"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/eslint/stable-query-client",
+                "label": "안정 쿼리 클라이언트",
+                "translations": {
+                  "en": "Stable Query Client"
+                }
+              }
+            ]
+          },
+          {
+            "label": "프레임워크",
+            "translations": {
+              "en": "Framework"
+            },
+            "items": [
+              {
+                "slug": "react-query/latest/docs/framework",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "label": "React",
+                "translations": {
+                  "en": "React"
+                },
+                "items": [
+                  {
+                    "slug": "react-query/latest/docs/framework/react/comparison",
+                    "label": "비교",
+                    "translations": {
+                      "en": "Comparison"
+                    }
+                  },
+                  {
+                    "slug": "react-query/latest/docs/framework/react/devtools",
+                    "label": "Devtools",
+                    "translations": {
+                      "en": "Devtools"
+                    }
+                  },
+                  {
+                    "label": "예제",
+                    "translations": {
+                      "en": "Examples"
+                    },
+                    "items": [
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/algolia",
+                        "label": "Algolia",
+                        "translations": {
+                          "en": "Algolia"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/auto-refetching",
+                        "label": "자동 재조회",
+                        "translations": {
+                          "en": "Auto Refetching"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/basic",
+                        "label": "기본",
+                        "translations": {
+                          "en": "Basic"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/basic-graphql-request",
+                        "label": "기본 GraphQL 요청",
+                        "translations": {
+                          "en": "Basic Graphql Request"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/chat",
+                        "label": "채팅",
+                        "translations": {
+                          "en": "Chat"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/default-query-function",
+                        "label": "기본 쿼리 함수",
+                        "translations": {
+                          "en": "Default Query Function"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/devtools-panel",
+                        "label": "Devtools 패널",
+                        "translations": {
+                          "en": "Devtools Panel"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/infinite-query-with-max-pages",
+                        "label": "최대 페이지 무한 쿼리",
+                        "translations": {
+                          "en": "Infinite Query With Max Pages"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/load-more-infinite-scroll",
+                        "label": "더보기 무한 스크롤",
+                        "translations": {
+                          "en": "Load More Infinite Scroll"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/nextjs",
+                        "label": "Nextjs",
+                        "translations": {
+                          "en": "Nextjs"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/nextjs-app-prefetching",
+                        "label": "Nextjs 앱 사전조회",
+                        "translations": {
+                          "en": "Nextjs App Prefetching"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/nextjs-suspense-streaming",
+                        "label": "Nextjs Suspense 스트리밍",
+                        "translations": {
+                          "en": "Nextjs Suspense Streaming"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/offline",
+                        "label": "오프라인",
+                        "translations": {
+                          "en": "Offline"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/optimistic-updates-cache",
+                        "label": "낙관적 업데이트 캐시",
+                        "translations": {
+                          "en": "Optimistic Updates Cache"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/optimistic-updates-ui",
+                        "label": "낙관적 업데이트 UI",
+                        "translations": {
+                          "en": "Optimistic Updates Ui"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/pagination",
+                        "label": "페이지네이션",
+                        "translations": {
+                          "en": "Pagination"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/playground",
+                        "label": "플레이그라운드",
+                        "translations": {
+                          "en": "Playground"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/prefetching",
+                        "label": "사전조회",
+                        "translations": {
+                          "en": "Prefetching"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/react-native",
+                        "label": "React Native",
+                        "translations": {
+                          "en": "React Native"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/react-router",
+                        "label": "React Router",
+                        "translations": {
+                          "en": "React Router"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/rick-morty",
+                        "label": "릭 앤 모티",
+                        "translations": {
+                          "en": "Rick Morty"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/shadow-dom",
+                        "label": "Shadow DOM",
+                        "translations": {
+                          "en": "Shadow Dom"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/simple",
+                        "label": "단순",
+                        "translations": {
+                          "en": "Simple"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/star-wars",
+                        "label": "스타워즈",
+                        "translations": {
+                          "en": "Star Wars"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/examples/suspense",
+                        "label": "서스펜스",
+                        "translations": {
+                          "en": "Suspense"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "slug": "react-query/latest/docs/framework/react/graphql",
+                    "label": "GraphQL",
+                    "translations": {
+                      "en": "Graphql"
+                    }
+                  },
+                  {
+                    "label": "가이드",
+                    "translations": {
+                      "en": "Guides"
+                    },
+                    "items": [
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/advanced-ssr",
+                        "label": "고급 SSR",
+                        "translations": {
+                          "en": "Advanced Ssr"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/background-fetching-indicators",
+                        "label": "백그라운드 로딩 표시",
+                        "translations": {
+                          "en": "Background Fetching Indicators"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/caching",
+                        "label": "캐싱",
+                        "translations": {
+                          "en": "Caching"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/default-query-function",
+                        "label": "기본 쿼리 함수",
+                        "translations": {
+                          "en": "Default Query Function"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/dependent-queries",
+                        "label": "종속 쿼리",
+                        "translations": {
+                          "en": "Dependent Queries"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/disabling-queries",
+                        "label": "쿼리 비활성화",
+                        "translations": {
+                          "en": "Disabling Queries"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/does-this-replace-client-state",
+                        "label": "클라이언트 상태 대체?",
+                        "translations": {
+                          "en": "Does This Replace Client State"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/filters",
+                        "label": "필터",
+                        "translations": {
+                          "en": "Filters"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/important-defaults",
+                        "label": "중요 기본값",
+                        "translations": {
+                          "en": "Important Defaults"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/infinite-queries",
+                        "label": "무한 쿼리",
+                        "translations": {
+                          "en": "Infinite Queries"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/initial-query-data",
+                        "label": "초기 쿼리 데이터",
+                        "translations": {
+                          "en": "Initial Query Data"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/invalidations-from-mutations",
+                        "label": "뮤테이션 기반 무효화",
+                        "translations": {
+                          "en": "Invalidations From Mutations"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/migrating-to-react-query-3",
+                        "label": "React Query 3 마이그레이션",
+                        "translations": {
+                          "en": "Migrating To React Query 3"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/migrating-to-react-query-4",
+                        "label": "React Query 4 마이그레이션",
+                        "translations": {
+                          "en": "Migrating To React Query 4"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/migrating-to-v5",
+                        "label": "V5 마이그레이션",
+                        "translations": {
+                          "en": "Migrating To V5"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/mutations",
+                        "label": "뮤테이션",
+                        "translations": {
+                          "en": "Mutations"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/network-mode",
+                        "label": "네트워크 모드",
+                        "translations": {
+                          "en": "Network Mode"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/optimistic-updates",
+                        "label": "낙관적 업데이트",
+                        "translations": {
+                          "en": "Optimistic Updates"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/paginated-queries",
+                        "label": "페이지 쿼리",
+                        "translations": {
+                          "en": "Paginated Queries"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/parallel-queries",
+                        "label": "병렬 쿼리",
+                        "translations": {
+                          "en": "Parallel Queries"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/placeholder-query-data",
+                        "label": "플레이스홀더 쿼리 데이터",
+                        "translations": {
+                          "en": "Placeholder Query Data"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/prefetching",
+                        "label": "사전조회",
+                        "translations": {
+                          "en": "Prefetching"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/queries",
+                        "label": "쿼리",
+                        "translations": {
+                          "en": "Queries"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/query-cancellation",
+                        "label": "쿼리 취소",
+                        "translations": {
+                          "en": "Query Cancellation"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/query-functions",
+                        "label": "쿼리 함수",
+                        "translations": {
+                          "en": "Query Functions"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/query-invalidation",
+                        "label": "쿼리 무효화",
+                        "translations": {
+                          "en": "Query Invalidation"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/query-keys",
+                        "label": "쿼리 키",
+                        "translations": {
+                          "en": "Query Keys"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/query-options",
+                        "label": "쿼리 옵션",
+                        "translations": {
+                          "en": "Query Options"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/query-retries",
+                        "label": "쿼리 재시도",
+                        "translations": {
+                          "en": "Query Retries"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/render-optimizations",
+                        "label": "렌더링 최적화",
+                        "translations": {
+                          "en": "Render Optimizations"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/request-waterfalls",
+                        "label": "요청 워터폴",
+                        "translations": {
+                          "en": "Request Waterfalls"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/scroll-restoration",
+                        "label": "스크롤 복원",
+                        "translations": {
+                          "en": "Scroll Restoration"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/ssr",
+                        "label": "SSR",
+                        "translations": {
+                          "en": "Ssr"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/suspense",
+                        "label": "서스펜스",
+                        "translations": {
+                          "en": "Suspense"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/testing",
+                        "label": "테스트",
+                        "translations": {
+                          "en": "Testing"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/updates-from-mutation-responses",
+                        "label": "뮤테이션 응답 업데이트",
+                        "translations": {
+                          "en": "Updates From Mutation Responses"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/guides/window-focus-refetching",
+                        "label": "창 포커스 재조회",
+                        "translations": {
+                          "en": "Window Focus Refetching"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "slug": "react-query/latest/docs/framework/react/installation",
+                    "label": "설치",
+                    "translations": {
+                      "en": "Installation"
+                    }
+                  },
+                  {
+                    "slug": "react-query/latest/docs/framework/react/overview",
+                    "label": "개요",
+                    "translations": {
+                      "en": "Overview"
+                    }
+                  },
+                  {
+                    "label": "플러그인",
+                    "translations": {
+                      "en": "Plugins"
+                    },
+                    "items": [
+                      {
+                        "slug": "react-query/latest/docs/framework/react/plugins/broadcastQueryClient",
+                        "label": "broadcastQueryClient",
+                        "translations": {
+                          "en": "broadcastQueryClient"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/plugins/createAsyncStoragePersister",
+                        "label": "createAsyncStoragePersister",
+                        "translations": {
+                          "en": "createAsyncStoragePersister"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/plugins/createPersister",
+                        "label": "createPersister",
+                        "translations": {
+                          "en": "createPersister"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/plugins/createSyncStoragePersister",
+                        "label": "createSyncStoragePersister",
+                        "translations": {
+                          "en": "createSyncStoragePersister"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/plugins/persistQueryClient",
+                        "label": "persistQueryClient",
+                        "translations": {
+                          "en": "persistQueryClient"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "slug": "react-query/latest/docs/framework/react/quick-start",
+                    "label": "빠른 시작",
+                    "translations": {
+                      "en": "Quick Start"
+                    }
+                  },
+                  {
+                    "slug": "react-query/latest/docs/framework/react/react-native",
+                    "label": "React Native",
+                    "translations": {
+                      "en": "React Native"
+                    }
+                  },
+                  {
+                    "label": "레퍼런스",
+                    "translations": {
+                      "en": "Reference"
+                    },
+                    "items": [
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/QueryClientProvider",
+                        "label": "QueryClientProvider",
+                        "translations": {
+                          "en": "QueryClientProvider"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/QueryErrorResetBoundary",
+                        "label": "QueryErrorResetBoundary",
+                        "translations": {
+                          "en": "QueryErrorResetBoundary"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/hydration",
+                        "label": "하이드레이션",
+                        "translations": {
+                          "en": "Hydration"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/infiniteQueryOptions",
+                        "label": "infiniteQueryOptions",
+                        "translations": {
+                          "en": "infiniteQueryOptions"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/mutationOptions",
+                        "label": "mutationOptions",
+                        "translations": {
+                          "en": "mutationOptions"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/queryOptions",
+                        "label": "queryOptions",
+                        "translations": {
+                          "en": "queryOptions"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useInfiniteQuery",
+                        "label": "useInfiniteQuery",
+                        "translations": {
+                          "en": "useInfiniteQuery"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useIsFetching",
+                        "label": "useIsFetching",
+                        "translations": {
+                          "en": "useIsFetching"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useIsMutating",
+                        "label": "useIsMutating",
+                        "translations": {
+                          "en": "useIsMutating"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useMutation",
+                        "label": "useMutation",
+                        "translations": {
+                          "en": "useMutation"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useMutationState",
+                        "label": "useMutationState",
+                        "translations": {
+                          "en": "useMutationState"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/usePrefetchInfiniteQuery",
+                        "label": "usePrefetchInfiniteQuery",
+                        "translations": {
+                          "en": "usePrefetchInfiniteQuery"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/usePrefetchQuery",
+                        "label": "usePrefetchQuery",
+                        "translations": {
+                          "en": "usePrefetchQuery"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useQueries",
+                        "label": "useQueries",
+                        "translations": {
+                          "en": "useQueries"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useQuery",
+                        "label": "useQuery",
+                        "translations": {
+                          "en": "useQuery"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useQueryClient",
+                        "label": "useQueryClient",
+                        "translations": {
+                          "en": "useQueryClient"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useQueryErrorResetBoundary",
+                        "label": "useQueryErrorResetBoundary",
+                        "translations": {
+                          "en": "useQueryErrorResetBoundary"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useSuspenseInfiniteQuery",
+                        "label": "useSuspenseInfiniteQuery",
+                        "translations": {
+                          "en": "useSuspenseInfiniteQuery"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useSuspenseQueries",
+                        "label": "useSuspenseQueries",
+                        "translations": {
+                          "en": "useSuspenseQueries"
+                        }
+                      },
+                      {
+                        "slug": "react-query/latest/docs/framework/react/reference/useSuspenseQuery",
+                        "label": "useSuspenseQuery",
+                        "translations": {
+                          "en": "useSuspenseQuery"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "slug": "react-query/latest/docs/framework/react/typescript",
+                    "label": "TypeScript",
+                    "translations": {
+                      "en": "Typescript"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "slug": "react-query/latest/docs/npm-stats",
+            "label": "npm 통계",
+            "translations": {
+              "en": "Npm Stats"
+            }
+          },
+          {
+            "label": "레퍼런스",
+            "translations": {
+              "en": "Reference"
+            },
+            "items": [
+              {
+                "slug": "react-query/latest/docs/reference/InfiniteQueryObserver",
+                "label": "InfiniteQueryObserver",
+                "translations": {
+                  "en": "InfiniteQueryObserver"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/MutationCache",
+                "label": "MutationCache",
+                "translations": {
+                  "en": "MutationCache"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/QueriesObserver",
+                "label": "QueriesObserver",
+                "translations": {
+                  "en": "QueriesObserver"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/QueryCache",
+                "label": "QueryCache",
+                "translations": {
+                  "en": "QueryCache"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/QueryClient",
+                "label": "QueryClient",
+                "translations": {
+                  "en": "QueryClient"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/QueryObserver",
+                "label": "QueryObserver",
+                "translations": {
+                  "en": "QueryObserver"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/focusManager",
+                "label": "focusManager",
+                "translations": {
+                  "en": "focusManager"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/notifyManager",
+                "label": "notifyManager",
+                "translations": {
+                  "en": "notifyManager"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/onlineManager",
+                "label": "onlineManager",
+                "translations": {
+                  "en": "onlineManager"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/streamedQuery",
+                "label": "streamedQuery",
+                "translations": {
+                  "en": "streamedQuery"
+                }
+              },
+              {
+                "slug": "react-query/latest/docs/reference/timeoutManager",
+                "label": "timeoutManager",
+                "translations": {
+                  "en": "timeoutManager"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
