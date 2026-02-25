@@ -1,0 +1,66 @@
+---
+title: 'Offline Caching | Sentry for Next.js'
+description: 'If your JavaScript application is designed to continue working offline, dropping events when no connection is available and missing offline events, co...'
+---
+
+Source URL: https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices/offline-caching
+
+# Offline Caching | Sentry for Next.js
+
+If your JavaScript application is designed to continue working offline, dropping events when no connection is available and missing offline events, could mean you're missing important information.
+
+To enable offline events caching, use `makeBrowserOfflineTransport` to wrap existing transports and queue events using the browsers' IndexedDB storage. Once your application comes back online, all events will be sent together.
+
+```javascript
+import * as Sentry from "@sentry/browser";
+
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+  transport: Sentry.makeBrowserOfflineTransport(Sentry.makeFetchTransport)
+  transportOptions: {
+    // see below
+  }
+})
+```
+
+Here are a few optional properties you can add to `transportOptions`:
+
+```javascript
+transportOptions:{
+  /**
+   * Name of IndexedDb database to store events
+   * Default: 'sentry-offline'
+   */
+  dbName: string;
+  /**
+   * Name of IndexedDb object store to store events
+   * Default: 'queue'
+   */
+  storeName: string;
+  /**
+   * Maximum number of events to store
+   * Default: 30
+   */
+  maxQueueSize: number;
+  /**
+   * Flush the store shortly after startup.
+   * Default: false
+   */
+  flushAtStartup: boolean;
+  /**
+   * Called before an event is stored.
+   * Return false to drop the envelope rather than store it.
+   *
+   * @param envelope The envelope that failed to send.
+   * @param error The error that occurred.
+   * @param retryDelay The current retry delay in milliseconds.
+   */
+  shouldStore: (envelope: Envelope, error: Error, retryDelay: number) => boolean | Promise<boolean>;
+}
+```
+
+#
+- [Browser Support](https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices/offline-caching.md#browser-support)
+
+Offline caching is not supported in IE due to a lack of IndexedDB features.
+

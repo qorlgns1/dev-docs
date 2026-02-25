@@ -1,0 +1,709 @@
+[
+  {
+    "label": "Overview",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs"
+  },
+  {
+    "label": "Ai Agent Monitoring",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/ai-agent-monitoring",
+    "items": [
+      {
+        "label": "Mastra",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/ai-agent-monitoring/mastra"
+      }
+    ]
+  },
+  {
+    "label": "Best Practices",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices",
+    "items": [
+      {
+        "label": "Deploying On Cloudflare",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices/deploying-on-cloudflare"
+      },
+      {
+        "label": "Micro Frontends",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices/micro-frontends"
+      },
+      {
+        "label": "Multiple Sentry Instances",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices/multiple-sentry-instances"
+      },
+      {
+        "label": "Offline Caching",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices/offline-caching"
+      },
+      {
+        "label": "Sentry Testkit",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices/sentry-testkit"
+      },
+      {
+        "label": "Shared Environments",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices/shared-environments"
+      },
+      {
+        "label": "Web Workers",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/best-practices/web-workers"
+      }
+    ]
+  },
+  {
+    "label": "Capturing Errors",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/capturing-errors"
+  },
+  {
+    "label": "Configuration",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration",
+    "items": [
+      {
+        "label": "Apis",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/apis"
+      },
+      {
+        "label": "Build",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/build"
+      },
+      {
+        "label": "Event Loop Block",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/event-loop-block"
+      },
+      {
+        "label": "Filtering",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/filtering"
+      },
+      {
+        "label": "Integrations",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations",
+        "items": [
+          {
+            "label": "Amqplib",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/amqplib"
+          },
+          {
+            "label": "Anr",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/anr"
+          },
+          {
+            "label": "Anthropic",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/anthropic"
+          },
+          {
+            "label": "Breadcrumbs",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/breadcrumbs"
+          },
+          {
+            "label": "Browserapierrors",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/browserapierrors"
+          },
+          {
+            "label": "Browserprofiling",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/browserprofiling"
+          },
+          {
+            "label": "Browsersession",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/browsersession"
+          },
+          {
+            "label": "Browsertracing",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/browsertracing"
+          },
+          {
+            "label": "Captureconsole",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/captureconsole"
+          },
+          {
+            "label": "childProcess",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/childProcess"
+          },
+          {
+            "label": "Console",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/console"
+          },
+          {
+            "label": "Contextlines",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/contextlines"
+          },
+          {
+            "label": "Custom",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/custom"
+          },
+          {
+            "label": "Dataloader",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/dataloader"
+          },
+          {
+            "label": "Dedupe",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/dedupe"
+          },
+          {
+            "label": "Event Loop Block",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/event-loop-block"
+          },
+          {
+            "label": "Extraerrordata",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/extraerrordata"
+          },
+          {
+            "label": "Featureflags",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/featureflags"
+          },
+          {
+            "label": "Fs",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/fs"
+          },
+          {
+            "label": "Functiontostring",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/functiontostring"
+          },
+          {
+            "label": "Genericpool",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/genericpool"
+          },
+          {
+            "label": "Globalhandlers",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/globalhandlers"
+          },
+          {
+            "label": "Google Genai",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/google-genai"
+          },
+          {
+            "label": "Graphql",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/graphql"
+          },
+          {
+            "label": "Graphqlclient",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/graphqlclient"
+          },
+          {
+            "label": "Http",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/http"
+          },
+          {
+            "label": "Httpclient",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/httpclient"
+          },
+          {
+            "label": "Httpcontext",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/httpcontext"
+          },
+          {
+            "label": "Inboundfilters",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/inboundfilters"
+          },
+          {
+            "label": "Kafka",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/kafka"
+          },
+          {
+            "label": "Knex",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/knex"
+          },
+          {
+            "label": "Langchain",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain"
+          },
+          {
+            "label": "Langgraph",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langgraph"
+          },
+          {
+            "label": "Launchdarkly",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/launchdarkly"
+          },
+          {
+            "label": "Linkederrors",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/linkederrors"
+          },
+          {
+            "label": "Localvariables",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/localvariables"
+          },
+          {
+            "label": "Lrumemoizer",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/lrumemoizer"
+          },
+          {
+            "label": "Modulemetadata",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/modulemetadata"
+          },
+          {
+            "label": "Modules",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/modules"
+          },
+          {
+            "label": "Mongo",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/mongo"
+          },
+          {
+            "label": "Mongoose",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/mongoose"
+          },
+          {
+            "label": "Mysql",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/mysql"
+          },
+          {
+            "label": "Mysql2",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/mysql2"
+          },
+          {
+            "label": "Nodecontext",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/nodecontext"
+          },
+          {
+            "label": "Nodefetch",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/nodefetch"
+          },
+          {
+            "label": "Nodeprofiling",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/nodeprofiling"
+          },
+          {
+            "label": "Onuncaughtexception",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/onuncaughtexception"
+          },
+          {
+            "label": "Openai",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/openai"
+          },
+          {
+            "label": "Openfeature",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/openfeature"
+          },
+          {
+            "label": "Pino",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/pino"
+          },
+          {
+            "label": "Postgres",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/postgres"
+          },
+          {
+            "label": "Prisma",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/prisma"
+          },
+          {
+            "label": "Prisma  V8.X",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/prisma__v8.x"
+          },
+          {
+            "label": "Redis",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/redis"
+          },
+          {
+            "label": "Replay",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/replay"
+          },
+          {
+            "label": "Replaycanvas",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/replaycanvas"
+          },
+          {
+            "label": "Reportingobserver",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/reportingobserver"
+          },
+          {
+            "label": "Requestdata",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/requestdata"
+          },
+          {
+            "label": "Rewriteframes",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/rewriteframes"
+          },
+          {
+            "label": "Statsig",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/statsig"
+          },
+          {
+            "label": "Supabase",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/supabase"
+          },
+          {
+            "label": "Tedious",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/tedious"
+          },
+          {
+            "label": "Trpc",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/trpc"
+          },
+          {
+            "label": "Unhandledrejection",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/unhandledrejection"
+          },
+          {
+            "label": "Unleash",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/unleash"
+          },
+          {
+            "label": "Vercelai",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/vercelai"
+          },
+          {
+            "label": "Webworker",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/webworker"
+          },
+          {
+            "label": "Wintercgfetch",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/wintercgfetch"
+          },
+          {
+            "label": "zodErrors",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/zodErrors"
+          }
+        ]
+      },
+      {
+        "label": "Options",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options"
+      },
+      {
+        "label": "Releases",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/releases"
+      },
+      {
+        "label": "Transports",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/transports"
+      },
+      {
+        "label": "Tree Shaking",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/tree-shaking"
+      }
+    ]
+  },
+  {
+    "label": "Crons",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/crons",
+    "items": [
+      {
+        "label": "Troubleshooting",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/crons/troubleshooting"
+      }
+    ]
+  },
+  {
+    "label": "Data Management",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/data-management",
+    "items": [
+      {
+        "label": "Data Collected",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/data-management/data-collected"
+      },
+      {
+        "label": "Sensitive Data",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/data-management/sensitive-data"
+      }
+    ]
+  },
+  {
+    "label": "Enriching Events",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/enriching-events",
+    "items": [
+      {
+        "label": "Attachments",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/enriching-events/attachments"
+      },
+      {
+        "label": "Breadcrumbs",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/enriching-events/breadcrumbs"
+      },
+      {
+        "label": "Event Processors",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/enriching-events/event-processors"
+      },
+      {
+        "label": "Fingerprinting",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/enriching-events/fingerprinting"
+      },
+      {
+        "label": "Level",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/enriching-events/level"
+      },
+      {
+        "label": "Request Isolation",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/enriching-events/request-isolation"
+      },
+      {
+        "label": "Scopes",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/enriching-events/scopes"
+      },
+      {
+        "label": "Tags",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/enriching-events/tags"
+      }
+    ]
+  },
+  {
+    "label": "Feature Flags",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/feature-flags"
+  },
+  {
+    "label": "Logs",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/logs"
+  },
+  {
+    "label": "Manual Setup",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup",
+    "items": [
+      {
+        "label": "Pages Router",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/pages-router"
+      },
+      {
+        "label": "Webpack Setup",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/webpack-setup"
+      }
+    ]
+  },
+  {
+    "label": "Metrics",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/metrics"
+  },
+  {
+    "label": "Migration",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/migration",
+    "items": [
+      {
+        "label": "V4 To V5 V6",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/migration/v4-to-v5_v6"
+      },
+      {
+        "label": "V6 To V7",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/migration/v6-to-v7"
+      },
+      {
+        "label": "V7 To V8",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/migration/v7-to-v8",
+        "items": [
+          {
+            "label": "V7 Deprecations",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/migration/v7-to-v8/v7-deprecations"
+          },
+          {
+            "label": "V8 New Performance Api",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/migration/v7-to-v8/v8-new-performance-api"
+          }
+        ]
+      },
+      {
+        "label": "V8 To V9",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/migration/v8-to-v9"
+      },
+      {
+        "label": "V9 To V10",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/migration/v9-to-v10"
+      }
+    ]
+  },
+  {
+    "label": "Opentelemetry",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/opentelemetry",
+    "items": [
+      {
+        "label": "Custom Setup",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/opentelemetry/custom-setup"
+      },
+      {
+        "label": "Using Opentelemetry Apis",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/opentelemetry/using-opentelemetry-apis"
+      }
+    ]
+  },
+  {
+    "label": "Profiling",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/profiling",
+    "items": [
+      {
+        "label": "Browser",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/profiling/browser"
+      },
+      {
+        "label": "Node",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/profiling/node"
+      }
+    ]
+  },
+  {
+    "label": "Sampling",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sampling"
+  },
+  {
+    "label": "Security Policy Reporting",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/security-policy-reporting"
+  },
+  {
+    "label": "Session Replay",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/session-replay",
+    "items": [
+      {
+        "label": "Configuration",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/session-replay/configuration"
+      },
+      {
+        "label": "Issue Types",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/session-replay/issue-types"
+      },
+      {
+        "label": "Privacy",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/session-replay/privacy"
+      },
+      {
+        "label": "Troubleshooting",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/session-replay/troubleshooting"
+      },
+      {
+        "label": "Understanding Sessions",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/session-replay/understanding-sessions"
+      }
+    ]
+  },
+  {
+    "label": "Sourcemaps",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps",
+    "items": [
+      {
+        "label": "Troubleshooting Js",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/troubleshooting_js",
+        "items": [
+          {
+            "label": "Debug Ids",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/troubleshooting_js/debug-ids"
+          },
+          {
+            "label": "Legacy Uploading Methods",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/troubleshooting_js/legacy-uploading-methods"
+          }
+        ]
+      },
+      {
+        "label": "Uploading",
+        "items": [
+          {
+            "label": "Esbuild",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/uploading/esbuild"
+          },
+          {
+            "label": "Ionic",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/uploading/ionic"
+          },
+          {
+            "label": "Ionic Capacitor",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/uploading/ionic-capacitor"
+          },
+          {
+            "label": "Rollup",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/uploading/rollup"
+          },
+          {
+            "label": "Systemjs",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/uploading/systemjs"
+          },
+          {
+            "label": "Typescript",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/uploading/typescript"
+          },
+          {
+            "label": "Uglifyjs",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/uploading/uglifyjs"
+          },
+          {
+            "label": "Vite",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/uploading/vite"
+          },
+          {
+            "label": "Webpack",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/sourcemaps/uploading/webpack"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Tracing",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing",
+    "items": [
+      {
+        "label": "Configure Sampling",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/configure-sampling"
+      },
+      {
+        "label": "Distributed Tracing",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/distributed-tracing",
+        "items": [
+          {
+            "label": "Custom Instrumentation",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/distributed-tracing/custom-instrumentation"
+          },
+          {
+            "label": "Dealing With Cors Issues",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/distributed-tracing/dealing-with-cors-issues"
+          }
+        ]
+      },
+      {
+        "label": "Instrumentation",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/instrumentation",
+        "items": [
+          {
+            "label": "Automatic Instrumentation",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/instrumentation/automatic-instrumentation"
+          },
+          {
+            "label": "Caches Module",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/instrumentation/caches-module"
+          },
+          {
+            "label": "Mcp Module",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/instrumentation/mcp-module"
+          },
+          {
+            "label": "Queues Module",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/instrumentation/queues-module"
+          },
+          {
+            "label": "Requests Module",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/instrumentation/requests-module"
+          }
+        ]
+      },
+      {
+        "label": "Span Metrics",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/span-metrics",
+        "items": [
+          {
+            "label": "Examples",
+            "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/span-metrics/examples"
+          }
+        ]
+      },
+      {
+        "label": "Troubleshooting",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/troubleshooting"
+      }
+    ]
+  },
+  {
+    "label": "Troubleshooting",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/troubleshooting",
+    "items": [
+      {
+        "label": "Supported Browsers",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/troubleshooting/supported-browsers"
+      }
+    ]
+  },
+  {
+    "label": "User Feedback",
+    "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/user-feedback",
+    "items": [
+      {
+        "label": "Configuration",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/user-feedback/configuration"
+      },
+      {
+        "label": "Configuration  V7.X",
+        "url": "https://docs.sentry.io/platforms/javascript/guides/nextjs/user-feedback/configuration__v7.x"
+      }
+    ]
+  }
+]

@@ -1,0 +1,106 @@
+---
+title: 'Instrument Queues | Sentry for Next.js'
+description: "To ensure that you have performance data about your messaging queues, you'll need to instrument custom spans and transactions around your queue produc..."
+---
+
+Source URL: https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/instrumentation/queues-module
+
+# Instrument Queues | Sentry for Next.js
+
+To ensure that you have performance data about your messaging queues, you'll need to instrument custom spans and transactions around your queue producers and consumers.
+
+## [Producer Instrumentation](https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/instrumentation/queues-module.md#producer-instrumentation)
+
+To start capturing performance metrics, use the `Sentry.startSpan` function to wrap your queue producer events. Your span `op` must be set to `queue.publish`. Include the following attributes to enrich your producer spans with queue metrics:
+
+| Attribute                     | Type   | Description                       |
+| ----------------------------- | ------ | --------------------------------- |
+| `messaging.message.id`        | string | The message identifier            |
+| `messaging.destination.name`  | string | The queue or topic name           |
+| `messaging.message.body.size` | int    | Size of the message body in bytes |
+
+You must also include trace headers in your message using `spanToTraceHeader` and `spanToBaggageHeader` so that your consumers can continue your trace once your message is picked up.
+
+Your `queue.publish` span must exist as a child within a parent span in order to be recognized as a producer span. If you don't already have a parent producer span, you can start a new one using `Sentry.startSpan`.
+
+`my-queue.js`
+
+```javascript
+app.post("/publish", async (req, res) => {
+  // Route handler automatically instruments a parent span
+  await Sentry.startSpan(
+    {
+      name: "queue_producer",
+      op: "queue.publish",
+      attributes: {
+        "messaging.message.id": messageId,
+        "messaging.destination.name": "messages",
+        "messaging.message.body.size": messageBodySize,
+      },
+    },
+    async () => {
+      const { "sentry-trace": sentryTrace, baggage: sentryBaggage } =
+        Sentry.getTraceData();
+      await redisClient.lPush(
+        "messages",
+        JSON.stringify({
+          sentryTrace,
+          sentryBaggage,
+          timestamp: Date.now(),
+          messageId,
+        }),
+      );
+    },
+  );
+});
+```
+
+## [Consumer Instrumentation](https://docs.sentry.io/platforms/javascript/guides/nextjs/tracing/instrumentation/queues-module.md#consumer-instrumentation)
+
+To start capturing performance metrics, use the `Sentry.startSpan` function to wrap your queue consumers. Your span `op` must be set to `queue.process`. Include the following attributes to enrich your consumer spans with queue metrics:
+
+| Attribute                           | Type   | Description                                                         |
+| ----------------------------------- | ------ | ------------------------------------------------------------------- |
+| `messaging.message.id`              | string | The message identifier                                              |
+| `messaging.destination.name`        | string | The queue or topic name                                             |
+| `messaging.message.body.size`       | number | Size of the message body in bytes                                   |
+| `messaging.message.retry.count`     | number | The number of times a message was attempted to be processed         |
+| `messaging.message.receive.latency` | number | The time in milliseconds that a message awaited processing in queue |
+
+Use `Sentry.continueTrace` to connect your consumer spans to their associated producer spans, and `setStatus` to mark the trace of your message as success or failed.
+
+Your `queue.process` span must exist as a child within a parent span in order to be recognized as a consumer span. If you don't have a parent span, you can create one to wrap the consumer span with by using `Sentry.startSpan`.
+
+`my-consumer.js`
+
+```javascript
+const message = JSON.parse(await redisClient.lPop(QUEUE_KEY));
+const latency = Date.now() - message.timestamp;
+
+Sentry.continueTrace(
+    { sentryTrace: message.sentryTrace, baggage: message.sentryBaggage },
+    () => {
+        Sentry.startSpan({
+                name: 'queue_consumer_transaction',
+            },
+            (parent) => {
+                Sentry.startSpan({
+                    name: 'queue_consumer',
+                    op: 'queue.process',
+                    attributes: {
+                        'messaging.message.id': message.messageId,
+                        'messaging.destination.name': 'messages',
+                        'messaging.message.body.size': message.messageBodySize,
+                        'messaging.message.receive.latency': latency,
+                        'messaging.message.retry.count': 0,
+                    }
+                }, (span) => {
+                    ... // Continue message processing
+                    parent.setStatus({code: 1, message: 'ok'});
+                });
+            },
+        ),
+    },
+)
+```
+
