@@ -12,6 +12,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
@@ -74,9 +75,13 @@ def extract_description(body: str) -> str | None:
 
 
 def build_frontmatter(title: str, description: str | None) -> str:
-    lines = ["---", f"title: {repr(title)}"]
+    # Emit YAML-safe strings via JSON encoding (valid YAML scalar syntax).
+    def yaml_quote(value: str) -> str:
+        return json.dumps(value, ensure_ascii=False)
+
+    lines = ["---", f"title: {yaml_quote(title)}"]
     if description:
-        lines.append(f"description: {repr(description)}")
+        lines.append(f"description: {yaml_quote(description)}")
     lines.append("---")
     return "\n".join(lines)
 
