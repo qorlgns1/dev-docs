@@ -54,6 +54,7 @@ function mergeSidebarWithGenerated(staticSidebar, generatedSidebar) {
 }
 
 const generatedSidebarSections = readGeneratedSidebarSections();
+const GA_MEASUREMENT_ID = 'G-Y34H0TV1CR';
 
 export default defineConfig({
 	site: 'https://dev-docs.moodybeard.com',
@@ -66,6 +67,29 @@ export default defineConfig({
 				ContentPanel: './src/components/ContentPanel.astro',
 			},
 			head: [
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'alternate',
+						type: 'application/rss+xml',
+						title: 'dev-docs RSS Feed',
+						href: '/rss.xml',
+					},
+				},
+				{
+					tag: 'script',
+					attrs: {
+						async: true,
+						src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
+					},
+				},
+				{
+					tag: 'script',
+					content: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`,
+				},
 				{
 					tag: 'meta',
 					attrs: {
