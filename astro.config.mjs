@@ -67,6 +67,13 @@ export default defineConfig({
 			},
 			head: [
 				{
+					tag: 'meta',
+					attrs: {
+						name: 'naver-site-verification',
+						content: '972590feaaf77f1c694d3f0ccb77fa58d2f3fff4',
+					},
+				},
+				{
 					tag: 'script',
 					attrs: { type: 'application/ld+json' },
 					content: JSON.stringify({
