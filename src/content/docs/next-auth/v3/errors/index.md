@@ -1,5 +1,5 @@
 ---
-title: 'Client[\u200b](https://next-auth.js.org/v3/errors#client "제목으로 바로 가는 링크")'
+title: 'Client[​](https://next-auth.js.org/v3/errors#client "제목으로 바로 가는 링크")'
 description: "다음은 NextAuth.js에서 출력되는 오류 목록입니다."
 ---
 

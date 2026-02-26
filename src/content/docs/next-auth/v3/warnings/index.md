@@ -1,5 +1,5 @@
 ---
-title: '클라이언트[\u200b](https://next-auth.js.org/v3/warnings#client "Direct link to heading")'
+title: '클라이언트[​](https://next-auth.js.org/v3/warnings#client "Direct link to heading")'
 description: "다음은 NextAuth.js의 경고 출력 목록입니다."
 ---
 

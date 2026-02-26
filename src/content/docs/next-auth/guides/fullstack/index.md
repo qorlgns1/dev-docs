@@ -1,5 +1,5 @@
 ---
-title: '[Refresh Token Rotation](https://authjs.dev/guides/refresh-token-rotation)[\u200b](https://next-auth.js.org/guides/fullstack#refresh-token-rotation "Direct link to heading")'
+title: '[Refresh Token Rotation](https://authjs.dev/guides/refresh-token-rotation)[​](https://next-auth.js.org/guides/fullstack#refresh-token-rotation "Direct link to heading")'
 ---
 
 Source URL: https://next-auth.js.org/guides/fullstack

@@ -1,5 +1,5 @@
 ---
-title: '오류 코드[\u200b](https://next-auth.js.org/configuration/pages#error-codes "Direct link to heading")'
+title: '오류 코드[​](https://next-auth.js.org/configuration/pages#error-codes "Direct link to heading")'
 description: "NextAuth.js는 로그인, 로그아웃, 이메일 인증 처리 및 오류 메시지 표시를 위한 단순하고 브랜드가 적용되지 않은 인증 페이지를 자동으로 생성합니다."
 ---
 

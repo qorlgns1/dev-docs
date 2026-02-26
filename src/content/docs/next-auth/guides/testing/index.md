@@ -1,5 +1,5 @@
 ---
-title: '[Cypress로 테스트하기](https://next-auth.js.org/tutorials/testing-with-cypress)[\u200b](https://next-auth.js.org/guides/testing#testing-with-cypress "헤딩으로 바로 가는 링크")'
+title: '[Cypress로 테스트하기](https://next-auth.js.org/tutorials/testing-with-cypress)[​](https://next-auth.js.org/guides/testing#testing-with-cypress "헤딩으로 바로 가는 링크")'
 ---
 
 원문 URL: https://next-auth.js.org/guides/testing

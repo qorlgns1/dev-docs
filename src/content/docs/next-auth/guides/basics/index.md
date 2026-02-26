@@ -1,5 +1,5 @@
 ---
-title: '[페이지 및 API 라우트 보안](https://next-auth.js.org/tutorials/securing-pages-and-api-routes)[\u200b](https://next-auth.js.org/guides/basics#securing-pages-and-api-routes "Direct link to heading")'
+title: '[페이지 및 API 라우트 보안](https://next-auth.js.org/tutorials/securing-pages-and-api-routes)[​](https://next-auth.js.org/guides/basics#securing-pages-and-api-routes "Direct link to heading")'
 description: "원본 URL: https://next-auth.js.org/guides/basics"
 ---
 

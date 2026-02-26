@@ -1,5 +1,5 @@
 ---
-title: '로그인 콜백[\u200b](https://next-auth.js.org/v3/configuration/callbacks#sign-in-callback "Direct link to heading")'
+title: '로그인 콜백[​](https://next-auth.js.org/v3/configuration/callbacks#sign-in-callback "Direct link to heading")'
 description: "콜백은 작업이 수행될 때 어떤 일이 발생할지 제어하는 데 사용할 수 있는 비동기 함수입니다."
 ---
 

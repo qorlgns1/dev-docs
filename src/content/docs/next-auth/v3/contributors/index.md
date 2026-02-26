@@ -1,5 +1,5 @@
 ---
-title: '핵심 팀[\u200b](https://next-auth.js.org/v3/contributors#core-team "헤딩으로 직접 링크")'
+title: '핵심 팀[​](https://next-auth.js.org/v3/contributors#core-team "헤딩으로 직접 링크")'
 description: "원본 URL: https://next-auth.js.org/v3/contributors"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: '이벤트[\u200b](https://next-auth.js.org/configuration/events#events "Direct link to heading")'
+title: '이벤트[​](https://next-auth.js.org/configuration/events#events "Direct link to heading")'
 description: "원본 URL: https://next-auth.js.org/configuration/events"
 ---
 

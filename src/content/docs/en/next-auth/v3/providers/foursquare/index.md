@@ -1,6 +1,6 @@
 ---
-title: 'Foursquare'
-description: 'Foursquare requires an additional  parameter in  format, which essentially states "I\'m prepared for API changes up to this date".'
+title: "Foursquare"
+description: 'Foursquare requires an additional  parameter in  format, which essentially states "I''m prepared for API changes up to this date".'
 ---
 
 Source URL: https://next-auth.js.org/v3/providers/foursquare

@@ -1,5 +1,5 @@
 ---
-title: '취약점 제보[\u200b](https://next-auth.js.org/security#reporting-a-vulnerability "Direct link to heading")'
+title: '취약점 제보[​](https://next-auth.js.org/security#reporting-a-vulnerability "Direct link to heading")'
 description: "NextAuth.js는 책임 있는 공개 원칙을 따릅니다."
 ---
 

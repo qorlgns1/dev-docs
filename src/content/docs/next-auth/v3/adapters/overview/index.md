@@ -1,5 +1,5 @@
 ---
-title: '사용자 정의 Adapter[\u200b](https://next-auth.js.org/v3/adapters/overview#custom-adapter "Direct link to heading")'
+title: '사용자 정의 Adapter[​](https://next-auth.js.org/v3/adapters/overview#custom-adapter "Direct link to heading")'
 description: "NextAuth.js의 Adapter는 사용자 계정, 세션 등의 데이터를 저장하기 위해 애플리케이션을 원하는 데이터베이스 또는 백엔드 시스템에 연결해 줍니다."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: '환경 변수[\u200b](https://next-auth.js.org/configuration/options#environment-variables "Direct link to heading")'
+title: '환경 변수[​](https://next-auth.js.org/configuration/options#environment-variables "Direct link to heading")'
 description: "프로덕션에 배포할 때는  환경 변수를 사이트의 정식 URL로 설정하세요."
 ---
 

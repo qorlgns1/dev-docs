@@ -1,5 +1,5 @@
 ---
-title: '문서[\u200b](https://next-auth.js.org/v3/providers/vk#documentation "제목으로 바로 가는 링크")'
+title: '문서[​](https://next-auth.js.org/v3/providers/vk#documentation "제목으로 바로 가는 링크")'
 description: "사용 사례에 맞게 어떤 옵션이든 재정의할 수 있습니다."
 ---
 

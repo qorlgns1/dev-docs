@@ -1,5 +1,5 @@
 ---
-title: '개요[\u200b](https://next-auth.js.org/providers/email#overview "Direct link to heading")'
+title: '개요[​](https://next-auth.js.org/providers/email#overview "Direct link to heading")'
 description: 'Email provider는 로그인에 사용할 수 있는 "magic links"를 이메일로 전송하며, Slack 같은 서비스를 사용해 봤다면 아마 본 적이 있을 것입니다.'
 ---
 

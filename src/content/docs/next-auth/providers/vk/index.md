@@ -1,5 +1,5 @@
 ---
-title: '문서[\u200b](https://next-auth.js.org/providers/vk#documentation "Direct link to heading")'
+title: '문서[​](https://next-auth.js.org/providers/vk#documentation "Direct link to heading")'
 description: "필요에 맞게 모든 옵션을 재정의할 수 있습니다."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: '이벤트[\u200b](https://next-auth.js.org/v3/configuration/events#events "Direct link to heading")'
+title: '이벤트[​](https://next-auth.js.org/v3/configuration/events#events "Direct link to heading")'
 description: "이벤트는 응답을 반환하지 않는 비동기 함수이며, 감사 로그/리포팅에 유용합니다."
 ---
 

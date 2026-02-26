@@ -1,5 +1,5 @@
 ---
-title: '간단한 초기화[\u200b](https://next-auth.js.org/configuration/initialization#simple-initialization "Direct link to heading")'
+title: '간단한 초기화[​](https://next-auth.js.org/configuration/initialization#simple-initialization "Direct link to heading")'
 description: "NextAuth.js의 주요 진입점은 에서 import하는  메서드입니다. 이 메서드는 REST API 섹션에 정의된 대로 다양한 유형의 요청을 처리합니다."
 ---
 

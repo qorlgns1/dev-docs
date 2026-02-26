@@ -1,5 +1,5 @@
 ---
-title: '문서[\u200b](https://next-auth.js.org/providers/box#documentation "헤딩으로 직접 연결되는 링크")'
+title: '문서[​](https://next-auth.js.org/providers/box#documentation "헤딩으로 직접 연결되는 링크")'
 description: "사용 사례에 맞게 어떤 옵션이든 재정의할 수 있습니다."
 ---
 

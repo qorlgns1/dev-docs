@@ -1,5 +1,5 @@
 ---
-title: 'User[\u200b](https://next-auth.js.org/v3/adapters/models#user "Direct link to heading")'
+title: 'User[​](https://next-auth.js.org/v3/adapters/models#user "Direct link to heading")'
 description: "NextAuth.js의 모델은 ANSI SQL을 기준으로 설계되었지만 다형성을 가지며, 사용 중인 데이터베이스에 맞게 변환됩니다. 특정 데이터 타입(예: datetime, text 필드 등)에는 약간의 차이가 있지만, 가능한 한 동작 일관성을 유지하면서 기능적으로는 동..."
 ---
 

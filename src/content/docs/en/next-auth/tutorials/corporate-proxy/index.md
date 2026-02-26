@@ -1,6 +1,6 @@
 ---
 title: "corporate-proxy"
-description: '\\-- id: corporate-proxy'
+description: "\\-- id: corporate-proxy"
 ---
 
 Source URL: https://next-auth.js.org/tutorials/corporate-proxy

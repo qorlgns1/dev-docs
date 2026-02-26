@@ -1,5 +1,5 @@
 ---
-title: 'Vercel[\u200b](https://next-auth.js.org/deployment#vercel "Direct link to heading")'
+title: 'Vercel[​](https://next-auth.js.org/deployment#vercel "Direct link to heading")'
 description: "NextAuth.js를 배포하는 데는 몇 가지 단계만 필요합니다. Next.js 애플리케이션이 실행될 수 있는 곳이라면 어디서든 실행할 수 있습니다. 따라서 데이터베이스 없이 JWT 세션 전략만 사용하는 기본 구성에서는, 애플리케이션 외에 다음 몇 가지만 있으면 됩니다..."
 ---
 

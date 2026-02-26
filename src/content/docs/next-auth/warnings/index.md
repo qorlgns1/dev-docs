@@ -1,5 +1,5 @@
 ---
-title: '클라이언트[\u200b](https://next-auth.js.org/warnings#client "Direct link to heading")'
+title: '클라이언트[​](https://next-auth.js.org/warnings#client "Direct link to heading")'
 description: "원본 URL: https://next-auth.js.org/warnings"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 'Documentation[\u200b](https://next-auth.js.org/providers/box#documentation "Direct link to heading")'
+title: 'Documentation[​](https://next-auth.js.org/providers/box#documentation "Direct link to heading")'
 description: "The Box Provider comes with a set of default options:"
 ---
 
