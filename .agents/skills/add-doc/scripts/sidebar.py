@@ -29,6 +29,7 @@ GENERATED_SIDEBAR_JSON = REPO_ROOT / "src/config/sidebar.generated.json"
 KO_DOCS_ROOT = REPO_ROOT / "src/content/docs"
 EN_DOCS_ROOT = REPO_ROOT / "src/content/docs/en"
 DEFAULT_MODEL = "gpt-5.3-codex"
+HOME_INDEX_SCRIPT = Path(__file__).with_name("home_index.py")
 
 
 # ── URL → slug ────────────────────────────────────────────────────────────────
@@ -452,6 +453,13 @@ def main() -> int:
         fallback.write_text(json.dumps(section_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"[sidebar] Saved generated JSON → {fallback}", file=sys.stderr)
         return 1
+
+    # 홈 인덱스 페이지도 현재 섹션 목록 기준으로 자동 갱신한다.
+    if HOME_INDEX_SCRIPT.exists():
+        proc = subprocess.run([sys.executable, str(HOME_INDEX_SCRIPT)], cwd=str(REPO_ROOT))
+        if proc.returncode != 0:
+            print("[ERROR] Failed to update home index page", file=sys.stderr)
+            return 1
 
     return 0
 

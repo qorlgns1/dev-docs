@@ -60,8 +60,12 @@ python3 .agents/skills/add-doc/scripts/translate.py \
   --dest-root   src/content/docs/$SECTION
 python3 .agents/skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/$SECTION
 python3 .agents/skills/add-doc/scripts/frontmatter.py --docs-dir src/content/docs/en/$SECTION
+python3 .agents/skills/add-doc/scripts/sidebar.py --section $SECTION
 python3 .agents/skills/add-doc/scripts/deploy.py --section $SECTION
 ```
+
+`sidebar.py` 실행 시 `src/config/sidebar.generated.json` 뿐 아니라
+홈페이지 `src/content/docs/index.md`도 현재 섹션 기준으로 자동 갱신됩니다.
 
 ## Codex에서 호출
 

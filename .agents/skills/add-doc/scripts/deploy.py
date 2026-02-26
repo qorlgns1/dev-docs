@@ -44,6 +44,10 @@ def main() -> int:
     if sidebar_generated.exists():
         git(["add", str(sidebar_generated)])
 
+    docs_home = REPO_ROOT / "src/content/docs/index.md"
+    if docs_home.exists():
+        git(["add", str(docs_home)])
+
     nav_json = REPO_ROOT / ".agents/skills/add-doc/references" / f"{args.section}-nav.json"
     if nav_json.exists():
         git(["add", str(nav_json)])
