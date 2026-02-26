@@ -31,6 +31,7 @@ hero:
 - [Sentry Next.js](/sentry-nextjs/)
 - [BullMQ](/bullmq/)
 - [next-intl](/next-intl/)
+- [Playwright](/playwright/)
 - [Zod](/zod/)
 
 ## 피드 및 색인

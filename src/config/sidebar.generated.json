@@ -3718,5 +3718,994 @@
         ]
       }
     ]
+  },
+  {
+    "label": "Playwright",
+    "translations": {
+      "en": "Playwright"
+    },
+    "items": [
+      {
+        "slug": "playwright/accessibility-testing",
+        "label": "접근성 테스트",
+        "translations": {
+          "en": "Accessibility Testing"
+        }
+      },
+      {
+        "slug": "playwright/actionability",
+        "label": "실행 가능성",
+        "translations": {
+          "en": "Actionability"
+        }
+      },
+      {
+        "slug": "playwright/api-testing",
+        "label": "API 테스트",
+        "translations": {
+          "en": "Api Testing"
+        }
+      },
+      {
+        "label": "API",
+        "translations": {
+          "en": "Api"
+        },
+        "items": [
+          {
+            "slug": "playwright/api/class-android",
+            "label": "Android 클래스",
+            "translations": {
+              "en": "Class Android"
+            }
+          },
+          {
+            "slug": "playwright/api/class-androiddevice",
+            "label": "AndroidDevice 클래스",
+            "translations": {
+              "en": "Class Androiddevice"
+            }
+          },
+          {
+            "slug": "playwright/api/class-androidinput",
+            "label": "AndroidInput 클래스",
+            "translations": {
+              "en": "Class Androidinput"
+            }
+          },
+          {
+            "slug": "playwright/api/class-androidsocket",
+            "label": "AndroidSocket 클래스",
+            "translations": {
+              "en": "Class Androidsocket"
+            }
+          },
+          {
+            "slug": "playwright/api/class-androidwebview",
+            "label": "AndroidWebView 클래스",
+            "translations": {
+              "en": "Class Androidwebview"
+            }
+          },
+          {
+            "slug": "playwright/api/class-apirequest",
+            "label": "APIRequest 클래스",
+            "translations": {
+              "en": "Class Apirequest"
+            }
+          },
+          {
+            "slug": "playwright/api/class-apirequestcontext",
+            "label": "APIRequestContext 클래스",
+            "translations": {
+              "en": "Class Apirequestcontext"
+            }
+          },
+          {
+            "slug": "playwright/api/class-apiresponse",
+            "label": "APIResponse 클래스",
+            "translations": {
+              "en": "Class Apiresponse"
+            }
+          },
+          {
+            "slug": "playwright/api/class-apiresponseassertions",
+            "label": "APIResponseAssertions 클래스",
+            "translations": {
+              "en": "Class Apiresponseassertions"
+            }
+          },
+          {
+            "slug": "playwright/api/class-browser",
+            "label": "Browser 클래스",
+            "translations": {
+              "en": "Class Browser"
+            }
+          },
+          {
+            "slug": "playwright/api/class-browsercontext",
+            "label": "BrowserContext 클래스",
+            "translations": {
+              "en": "Class Browsercontext"
+            }
+          },
+          {
+            "slug": "playwright/api/class-browserserver",
+            "label": "BrowserServer 클래스",
+            "translations": {
+              "en": "Class Browserserver"
+            }
+          },
+          {
+            "slug": "playwright/api/class-browsertype",
+            "label": "BrowserType 클래스",
+            "translations": {
+              "en": "Class Browsertype"
+            }
+          },
+          {
+            "slug": "playwright/api/class-cdpsession",
+            "label": "CDPSession 클래스",
+            "translations": {
+              "en": "Class Cdpsession"
+            }
+          },
+          {
+            "slug": "playwright/api/class-clock",
+            "label": "Clock 클래스",
+            "translations": {
+              "en": "Class Clock"
+            }
+          },
+          {
+            "slug": "playwright/api/class-consolemessage",
+            "label": "ConsoleMessage 클래스",
+            "translations": {
+              "en": "Class Consolemessage"
+            }
+          },
+          {
+            "slug": "playwright/api/class-coverage",
+            "label": "Coverage 클래스",
+            "translations": {
+              "en": "Class Coverage"
+            }
+          },
+          {
+            "slug": "playwright/api/class-dialog",
+            "label": "Dialog 클래스",
+            "translations": {
+              "en": "Class Dialog"
+            }
+          },
+          {
+            "slug": "playwright/api/class-download",
+            "label": "Download 클래스",
+            "translations": {
+              "en": "Class Download"
+            }
+          },
+          {
+            "slug": "playwright/api/class-electron",
+            "label": "Electron 클래스",
+            "translations": {
+              "en": "Class Electron"
+            }
+          },
+          {
+            "slug": "playwright/api/class-electronapplication",
+            "label": "ElectronApplication 클래스",
+            "translations": {
+              "en": "Class Electronapplication"
+            }
+          },
+          {
+            "slug": "playwright/api/class-elementhandle",
+            "label": "ElementHandle 클래스",
+            "translations": {
+              "en": "Class Elementhandle"
+            }
+          },
+          {
+            "slug": "playwright/api/class-filechooser",
+            "label": "FileChooser 클래스",
+            "translations": {
+              "en": "Class Filechooser"
+            }
+          },
+          {
+            "slug": "playwright/api/class-fixtures",
+            "label": "Fixtures 클래스",
+            "translations": {
+              "en": "Class Fixtures"
+            }
+          },
+          {
+            "slug": "playwright/api/class-frame",
+            "label": "Frame 클래스",
+            "translations": {
+              "en": "Class Frame"
+            }
+          },
+          {
+            "slug": "playwright/api/class-framelocator",
+            "label": "FrameLocator 클래스",
+            "translations": {
+              "en": "Class Framelocator"
+            }
+          },
+          {
+            "slug": "playwright/api/class-fullconfig",
+            "label": "FullConfig 클래스",
+            "translations": {
+              "en": "Class Fullconfig"
+            }
+          },
+          {
+            "slug": "playwright/api/class-fullproject",
+            "label": "FullProject 클래스",
+            "translations": {
+              "en": "Class Fullproject"
+            }
+          },
+          {
+            "slug": "playwright/api/class-genericassertions",
+            "label": "GenericAssertions 클래스",
+            "translations": {
+              "en": "Class Genericassertions"
+            }
+          },
+          {
+            "slug": "playwright/api/class-jshandle",
+            "label": "JSHandle 클래스",
+            "translations": {
+              "en": "Class Jshandle"
+            }
+          },
+          {
+            "slug": "playwright/api/class-keyboard",
+            "label": "Keyboard 클래스",
+            "translations": {
+              "en": "Class Keyboard"
+            }
+          },
+          {
+            "slug": "playwright/api/class-location",
+            "label": "Location 클래스",
+            "translations": {
+              "en": "Class Location"
+            }
+          },
+          {
+            "slug": "playwright/api/class-locator",
+            "label": "Locator 클래스",
+            "translations": {
+              "en": "Class Locator"
+            }
+          },
+          {
+            "slug": "playwright/api/class-locatorassertions",
+            "label": "LocatorAssertions 클래스",
+            "translations": {
+              "en": "Class Locatorassertions"
+            }
+          },
+          {
+            "slug": "playwright/api/class-logger",
+            "label": "Logger 클래스",
+            "translations": {
+              "en": "Class Logger"
+            }
+          },
+          {
+            "slug": "playwright/api/class-mouse",
+            "label": "Mouse 클래스",
+            "translations": {
+              "en": "Class Mouse"
+            }
+          },
+          {
+            "slug": "playwright/api/class-page",
+            "label": "Page 클래스",
+            "translations": {
+              "en": "Class Page"
+            }
+          },
+          {
+            "slug": "playwright/api/class-pageassertions",
+            "label": "PageAssertions 클래스",
+            "translations": {
+              "en": "Class Pageassertions"
+            }
+          },
+          {
+            "slug": "playwright/api/class-playwright",
+            "label": "Playwright 클래스",
+            "translations": {
+              "en": "Class Playwright"
+            }
+          },
+          {
+            "slug": "playwright/api/class-playwrightassertions",
+            "label": "PlaywrightAssertions 클래스",
+            "translations": {
+              "en": "Class Playwrightassertions"
+            }
+          },
+          {
+            "slug": "playwright/api/class-reporter",
+            "label": "Reporter 클래스",
+            "translations": {
+              "en": "Class Reporter"
+            }
+          },
+          {
+            "slug": "playwright/api/class-request",
+            "label": "Request 클래스",
+            "translations": {
+              "en": "Class Request"
+            }
+          },
+          {
+            "slug": "playwright/api/class-response",
+            "label": "Response 클래스",
+            "translations": {
+              "en": "Class Response"
+            }
+          },
+          {
+            "slug": "playwright/api/class-route",
+            "label": "Route 클래스",
+            "translations": {
+              "en": "Class Route"
+            }
+          },
+          {
+            "slug": "playwright/api/class-selectors",
+            "label": "Selectors 클래스",
+            "translations": {
+              "en": "Class Selectors"
+            }
+          },
+          {
+            "slug": "playwright/api/class-snapshotassertions",
+            "label": "SnapshotAssertions 클래스",
+            "translations": {
+              "en": "Class Snapshotassertions"
+            }
+          },
+          {
+            "slug": "playwright/api/class-suite",
+            "label": "Suite 클래스",
+            "translations": {
+              "en": "Class Suite"
+            }
+          },
+          {
+            "slug": "playwright/api/class-test",
+            "label": "Test 클래스",
+            "translations": {
+              "en": "Class Test"
+            }
+          },
+          {
+            "slug": "playwright/api/class-testcase",
+            "label": "TestCase 클래스",
+            "translations": {
+              "en": "Class Testcase"
+            }
+          },
+          {
+            "slug": "playwright/api/class-testconfig",
+            "label": "TestConfig 클래스",
+            "translations": {
+              "en": "Class Testconfig"
+            }
+          },
+          {
+            "slug": "playwright/api/class-testerror",
+            "label": "TestError 클래스",
+            "translations": {
+              "en": "Class Testerror"
+            }
+          },
+          {
+            "slug": "playwright/api/class-testinfo",
+            "label": "TestInfo 클래스",
+            "translations": {
+              "en": "Class Testinfo"
+            }
+          },
+          {
+            "slug": "playwright/api/class-testinfoerror",
+            "label": "TestInfoError 클래스",
+            "translations": {
+              "en": "Class Testinfoerror"
+            }
+          },
+          {
+            "slug": "playwright/api/class-testoptions",
+            "label": "TestOptions 클래스",
+            "translations": {
+              "en": "Class Testoptions"
+            }
+          },
+          {
+            "slug": "playwright/api/class-testproject",
+            "label": "TestProject 클래스",
+            "translations": {
+              "en": "Class Testproject"
+            }
+          },
+          {
+            "slug": "playwright/api/class-testresult",
+            "label": "TestResult 클래스",
+            "translations": {
+              "en": "Class Testresult"
+            }
+          },
+          {
+            "slug": "playwright/api/class-teststep",
+            "label": "TestStep 클래스",
+            "translations": {
+              "en": "Class Teststep"
+            }
+          },
+          {
+            "slug": "playwright/api/class-teststepinfo",
+            "label": "TestStepInfo 클래스",
+            "translations": {
+              "en": "Class Teststepinfo"
+            }
+          },
+          {
+            "slug": "playwright/api/class-timeouterror",
+            "label": "TimeoutError 클래스",
+            "translations": {
+              "en": "Class Timeouterror"
+            }
+          },
+          {
+            "slug": "playwright/api/class-touchscreen",
+            "label": "Touchscreen 클래스",
+            "translations": {
+              "en": "Class Touchscreen"
+            }
+          },
+          {
+            "slug": "playwright/api/class-tracing",
+            "label": "Tracing 클래스",
+            "translations": {
+              "en": "Class Tracing"
+            }
+          },
+          {
+            "slug": "playwright/api/class-video",
+            "label": "Video 클래스",
+            "translations": {
+              "en": "Class Video"
+            }
+          },
+          {
+            "slug": "playwright/api/class-weberror",
+            "label": "WebError 클래스",
+            "translations": {
+              "en": "Class Weberror"
+            }
+          },
+          {
+            "slug": "playwright/api/class-websocket",
+            "label": "WebSocket 클래스",
+            "translations": {
+              "en": "Class Websocket"
+            }
+          },
+          {
+            "slug": "playwright/api/class-websocketroute",
+            "label": "WebSocketRoute 클래스",
+            "translations": {
+              "en": "Class Websocketroute"
+            }
+          },
+          {
+            "slug": "playwright/api/class-worker",
+            "label": "Worker 클래스",
+            "translations": {
+              "en": "Class Worker"
+            }
+          },
+          {
+            "slug": "playwright/api/class-workerinfo",
+            "label": "WorkerInfo 클래스",
+            "translations": {
+              "en": "Class Workerinfo"
+            }
+          }
+        ]
+      },
+      {
+        "slug": "playwright/aria-snapshots",
+        "label": "ARIA 스냅샷",
+        "translations": {
+          "en": "Aria Snapshots"
+        }
+      },
+      {
+        "slug": "playwright/auth",
+        "label": "인증",
+        "translations": {
+          "en": "Auth"
+        }
+      },
+      {
+        "slug": "playwright/best-practices",
+        "label": "모범 사례",
+        "translations": {
+          "en": "Best Practices"
+        }
+      },
+      {
+        "slug": "playwright/browser-contexts",
+        "label": "브라우저 컨텍스트",
+        "translations": {
+          "en": "Browser Contexts"
+        }
+      },
+      {
+        "slug": "playwright/browsers",
+        "label": "브라우저",
+        "translations": {
+          "en": "Browsers"
+        }
+      },
+      {
+        "slug": "playwright/canary-releases",
+        "label": "카나리 릴리스",
+        "translations": {
+          "en": "Canary Releases"
+        }
+      },
+      {
+        "slug": "playwright/chrome-extensions",
+        "label": "Chrome 확장",
+        "translations": {
+          "en": "Chrome Extensions"
+        }
+      },
+      {
+        "slug": "playwright/ci",
+        "label": "CI",
+        "translations": {
+          "en": "Ci"
+        }
+      },
+      {
+        "slug": "playwright/ci-intro",
+        "label": "CI 소개",
+        "translations": {
+          "en": "Ci Intro"
+        }
+      },
+      {
+        "slug": "playwright/clock",
+        "label": "시계",
+        "translations": {
+          "en": "Clock"
+        }
+      },
+      {
+        "slug": "playwright/codegen",
+        "label": "코드 생성",
+        "translations": {
+          "en": "Codegen"
+        }
+      },
+      {
+        "slug": "playwright/codegen-intro",
+        "label": "코드 생성 소개",
+        "translations": {
+          "en": "Codegen Intro"
+        }
+      },
+      {
+        "slug": "playwright/debug",
+        "label": "디버그",
+        "translations": {
+          "en": "Debug"
+        }
+      },
+      {
+        "slug": "playwright/dialogs",
+        "label": "대화상자",
+        "translations": {
+          "en": "Dialogs"
+        }
+      },
+      {
+        "slug": "playwright/docker",
+        "label": "Docker",
+        "translations": {
+          "en": "Docker"
+        }
+      },
+      {
+        "slug": "playwright/downloads",
+        "label": "다운로드",
+        "translations": {
+          "en": "Downloads"
+        }
+      },
+      {
+        "slug": "playwright/emulation",
+        "label": "에뮬레이션",
+        "translations": {
+          "en": "Emulation"
+        }
+      },
+      {
+        "slug": "playwright/evaluating",
+        "label": "평가",
+        "translations": {
+          "en": "Evaluating"
+        }
+      },
+      {
+        "slug": "playwright/events",
+        "label": "이벤트",
+        "translations": {
+          "en": "Events"
+        }
+      },
+      {
+        "slug": "playwright/extensibility",
+        "label": "확장성",
+        "translations": {
+          "en": "Extensibility"
+        }
+      },
+      {
+        "slug": "playwright/frames",
+        "label": "프레임",
+        "translations": {
+          "en": "Frames"
+        }
+      },
+      {
+        "slug": "playwright/getting-started-vscode",
+        "label": "VSCode 시작",
+        "translations": {
+          "en": "Getting Started Vscode"
+        }
+      },
+      {
+        "slug": "playwright/handles",
+        "label": "핸들",
+        "translations": {
+          "en": "Handles"
+        }
+      },
+      {
+        "slug": "playwright/input",
+        "label": "입력",
+        "translations": {
+          "en": "Input"
+        }
+      },
+      {
+        "slug": "playwright/intro",
+        "label": "소개",
+        "translations": {
+          "en": "Intro"
+        }
+      },
+      {
+        "slug": "playwright/languages",
+        "label": "언어",
+        "translations": {
+          "en": "Languages"
+        }
+      },
+      {
+        "slug": "playwright/library",
+        "label": "라이브러리",
+        "translations": {
+          "en": "Library"
+        }
+      },
+      {
+        "slug": "playwright/locators",
+        "label": "로케이터",
+        "translations": {
+          "en": "Locators"
+        }
+      },
+      {
+        "slug": "playwright/mock",
+        "label": "모킹",
+        "translations": {
+          "en": "Mock"
+        }
+      },
+      {
+        "slug": "playwright/mock-browser-apis",
+        "label": "브라우저 API 모킹",
+        "translations": {
+          "en": "Mock Browser Apis"
+        }
+      },
+      {
+        "slug": "playwright/navigations",
+        "label": "탐색",
+        "translations": {
+          "en": "Navigations"
+        }
+      },
+      {
+        "slug": "playwright/network",
+        "label": "네트워크",
+        "translations": {
+          "en": "Network"
+        }
+      },
+      {
+        "slug": "playwright/other-locators",
+        "label": "기타 로케이터",
+        "translations": {
+          "en": "Other Locators"
+        }
+      },
+      {
+        "slug": "playwright/pages",
+        "label": "페이지",
+        "translations": {
+          "en": "Pages"
+        }
+      },
+      {
+        "slug": "playwright/pom",
+        "label": "POM",
+        "translations": {
+          "en": "Pom"
+        }
+      },
+      {
+        "slug": "playwright/protractor",
+        "label": "Protractor",
+        "translations": {
+          "en": "Protractor"
+        }
+      },
+      {
+        "slug": "playwright/puppeteer",
+        "label": "Puppeteer",
+        "translations": {
+          "en": "Puppeteer"
+        }
+      },
+      {
+        "slug": "playwright/release-notes",
+        "label": "릴리스 노트",
+        "translations": {
+          "en": "Release Notes"
+        }
+      },
+      {
+        "slug": "playwright/running-tests",
+        "label": "테스트 실행",
+        "translations": {
+          "en": "Running Tests"
+        }
+      },
+      {
+        "slug": "playwright/screenshots",
+        "label": "스크린샷",
+        "translations": {
+          "en": "Screenshots"
+        }
+      },
+      {
+        "slug": "playwright/selenium-grid",
+        "label": "Selenium Grid",
+        "translations": {
+          "en": "Selenium Grid"
+        }
+      },
+      {
+        "slug": "playwright/service-workers",
+        "label": "서비스 워커",
+        "translations": {
+          "en": "Service Workers"
+        }
+      },
+      {
+        "slug": "playwright/test-agents",
+        "label": "테스트 에이전트",
+        "translations": {
+          "en": "Test Agents"
+        }
+      },
+      {
+        "slug": "playwright/test-annotations",
+        "label": "테스트 어노테이션",
+        "translations": {
+          "en": "Test Annotations"
+        }
+      },
+      {
+        "slug": "playwright/test-assertions",
+        "label": "테스트 단언",
+        "translations": {
+          "en": "Test Assertions"
+        }
+      },
+      {
+        "slug": "playwright/test-cli",
+        "label": "테스트 CLI",
+        "translations": {
+          "en": "Test Cli"
+        }
+      },
+      {
+        "slug": "playwright/test-components",
+        "label": "테스트 컴포넌트",
+        "translations": {
+          "en": "Test Components"
+        }
+      },
+      {
+        "slug": "playwright/test-configuration",
+        "label": "테스트 Config",
+        "translations": {
+          "en": "Test Configuration"
+        }
+      },
+      {
+        "slug": "playwright/test-fixtures",
+        "label": "테스트 픽스처",
+        "translations": {
+          "en": "Test Fixtures"
+        }
+      },
+      {
+        "slug": "playwright/test-global-setup-teardown",
+        "label": "테스트 전역 설정/해제",
+        "translations": {
+          "en": "Test Global Setup Teardown"
+        }
+      },
+      {
+        "slug": "playwright/test-parallel",
+        "label": "병렬 테스트",
+        "translations": {
+          "en": "Test Parallel"
+        }
+      },
+      {
+        "slug": "playwright/test-parameterize",
+        "label": "매개변수 테스트",
+        "translations": {
+          "en": "Test Parameterize"
+        }
+      },
+      {
+        "slug": "playwright/test-projects",
+        "label": "테스트 프로젝트",
+        "translations": {
+          "en": "Test Projects"
+        }
+      },
+      {
+        "slug": "playwright/test-reporters",
+        "label": "테스트 리포터",
+        "translations": {
+          "en": "Test Reporters"
+        }
+      },
+      {
+        "slug": "playwright/test-retries",
+        "label": "테스트 재시도",
+        "translations": {
+          "en": "Test Retries"
+        }
+      },
+      {
+        "slug": "playwright/test-sharding",
+        "label": "테스트 샤딩",
+        "translations": {
+          "en": "Test Sharding"
+        }
+      },
+      {
+        "slug": "playwright/test-snapshots",
+        "label": "테스트 스냅샷",
+        "translations": {
+          "en": "Test Snapshots"
+        }
+      },
+      {
+        "slug": "playwright/test-timeouts",
+        "label": "테스트 타임아웃",
+        "translations": {
+          "en": "Test Timeouts"
+        }
+      },
+      {
+        "slug": "playwright/test-typescript",
+        "label": "테스트 TypeScript",
+        "translations": {
+          "en": "Test Typescript"
+        }
+      },
+      {
+        "slug": "playwright/test-ui-mode",
+        "label": "테스트 UI 모드",
+        "translations": {
+          "en": "Test Ui Mode"
+        }
+      },
+      {
+        "slug": "playwright/test-use-options",
+        "label": "test.use 옵션",
+        "translations": {
+          "en": "Test Use Options"
+        }
+      },
+      {
+        "slug": "playwright/test-webserver",
+        "label": "테스트 웹서버",
+        "translations": {
+          "en": "Test Webserver"
+        }
+      },
+      {
+        "slug": "playwright/testing-library",
+        "label": "테스트 라이브러리",
+        "translations": {
+          "en": "Testing Library"
+        }
+      },
+      {
+        "slug": "playwright/touch-events",
+        "label": "터치 이벤트",
+        "translations": {
+          "en": "Touch Events"
+        }
+      },
+      {
+        "slug": "playwright/trace-viewer",
+        "label": "Trace Viewer",
+        "translations": {
+          "en": "Trace Viewer"
+        }
+      },
+      {
+        "slug": "playwright/trace-viewer-intro",
+        "label": "Trace Viewer 소개",
+        "translations": {
+          "en": "Trace Viewer Intro"
+        }
+      },
+      {
+        "slug": "playwright/videos",
+        "label": "비디오",
+        "translations": {
+          "en": "Videos"
+        }
+      },
+      {
+        "slug": "playwright/webview2",
+        "label": "WebView2",
+        "translations": {
+          "en": "Webview2"
+        }
+      },
+      {
+        "slug": "playwright/writing-tests",
+        "label": "테스트 작성",
+        "translations": {
+          "en": "Writing Tests"
+        }
+      }
+    ]
   }
 ]

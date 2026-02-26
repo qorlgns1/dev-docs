@@ -1,0 +1,563 @@
+[
+  {
+    "label": "Accessibility Testing",
+    "url": "https://playwright.dev/docs/accessibility-testing"
+  },
+  {
+    "label": "Actionability",
+    "url": "https://playwright.dev/docs/actionability"
+  },
+  {
+    "label": "Api Testing",
+    "url": "https://playwright.dev/docs/api-testing"
+  },
+  {
+    "label": "Api",
+    "items": [
+      {
+        "label": "Class Android",
+        "url": "https://playwright.dev/docs/api/class-android"
+      },
+      {
+        "label": "Class Androiddevice",
+        "url": "https://playwright.dev/docs/api/class-androiddevice"
+      },
+      {
+        "label": "Class Androidinput",
+        "url": "https://playwright.dev/docs/api/class-androidinput"
+      },
+      {
+        "label": "Class Androidsocket",
+        "url": "https://playwright.dev/docs/api/class-androidsocket"
+      },
+      {
+        "label": "Class Androidwebview",
+        "url": "https://playwright.dev/docs/api/class-androidwebview"
+      },
+      {
+        "label": "Class Apirequest",
+        "url": "https://playwright.dev/docs/api/class-apirequest"
+      },
+      {
+        "label": "Class Apirequestcontext",
+        "url": "https://playwright.dev/docs/api/class-apirequestcontext"
+      },
+      {
+        "label": "Class Apiresponse",
+        "url": "https://playwright.dev/docs/api/class-apiresponse"
+      },
+      {
+        "label": "Class Apiresponseassertions",
+        "url": "https://playwright.dev/docs/api/class-apiresponseassertions"
+      },
+      {
+        "label": "Class Browser",
+        "url": "https://playwright.dev/docs/api/class-browser"
+      },
+      {
+        "label": "Class Browsercontext",
+        "url": "https://playwright.dev/docs/api/class-browsercontext"
+      },
+      {
+        "label": "Class Browserserver",
+        "url": "https://playwright.dev/docs/api/class-browserserver"
+      },
+      {
+        "label": "Class Browsertype",
+        "url": "https://playwright.dev/docs/api/class-browsertype"
+      },
+      {
+        "label": "Class Cdpsession",
+        "url": "https://playwright.dev/docs/api/class-cdpsession"
+      },
+      {
+        "label": "Class Clock",
+        "url": "https://playwright.dev/docs/api/class-clock"
+      },
+      {
+        "label": "Class Consolemessage",
+        "url": "https://playwright.dev/docs/api/class-consolemessage"
+      },
+      {
+        "label": "Class Coverage",
+        "url": "https://playwright.dev/docs/api/class-coverage"
+      },
+      {
+        "label": "Class Dialog",
+        "url": "https://playwright.dev/docs/api/class-dialog"
+      },
+      {
+        "label": "Class Download",
+        "url": "https://playwright.dev/docs/api/class-download"
+      },
+      {
+        "label": "Class Electron",
+        "url": "https://playwright.dev/docs/api/class-electron"
+      },
+      {
+        "label": "Class Electronapplication",
+        "url": "https://playwright.dev/docs/api/class-electronapplication"
+      },
+      {
+        "label": "Class Elementhandle",
+        "url": "https://playwright.dev/docs/api/class-elementhandle"
+      },
+      {
+        "label": "Class Filechooser",
+        "url": "https://playwright.dev/docs/api/class-filechooser"
+      },
+      {
+        "label": "Class Fixtures",
+        "url": "https://playwright.dev/docs/api/class-fixtures"
+      },
+      {
+        "label": "Class Frame",
+        "url": "https://playwright.dev/docs/api/class-frame"
+      },
+      {
+        "label": "Class Framelocator",
+        "url": "https://playwright.dev/docs/api/class-framelocator"
+      },
+      {
+        "label": "Class Fullconfig",
+        "url": "https://playwright.dev/docs/api/class-fullconfig"
+      },
+      {
+        "label": "Class Fullproject",
+        "url": "https://playwright.dev/docs/api/class-fullproject"
+      },
+      {
+        "label": "Class Genericassertions",
+        "url": "https://playwright.dev/docs/api/class-genericassertions"
+      },
+      {
+        "label": "Class Jshandle",
+        "url": "https://playwright.dev/docs/api/class-jshandle"
+      },
+      {
+        "label": "Class Keyboard",
+        "url": "https://playwright.dev/docs/api/class-keyboard"
+      },
+      {
+        "label": "Class Location",
+        "url": "https://playwright.dev/docs/api/class-location"
+      },
+      {
+        "label": "Class Locator",
+        "url": "https://playwright.dev/docs/api/class-locator"
+      },
+      {
+        "label": "Class Locatorassertions",
+        "url": "https://playwright.dev/docs/api/class-locatorassertions"
+      },
+      {
+        "label": "Class Logger",
+        "url": "https://playwright.dev/docs/api/class-logger"
+      },
+      {
+        "label": "Class Mouse",
+        "url": "https://playwright.dev/docs/api/class-mouse"
+      },
+      {
+        "label": "Class Page",
+        "url": "https://playwright.dev/docs/api/class-page"
+      },
+      {
+        "label": "Class Pageassertions",
+        "url": "https://playwright.dev/docs/api/class-pageassertions"
+      },
+      {
+        "label": "Class Playwright",
+        "url": "https://playwright.dev/docs/api/class-playwright"
+      },
+      {
+        "label": "Class Playwrightassertions",
+        "url": "https://playwright.dev/docs/api/class-playwrightassertions"
+      },
+      {
+        "label": "Class Reporter",
+        "url": "https://playwright.dev/docs/api/class-reporter"
+      },
+      {
+        "label": "Class Request",
+        "url": "https://playwright.dev/docs/api/class-request"
+      },
+      {
+        "label": "Class Response",
+        "url": "https://playwright.dev/docs/api/class-response"
+      },
+      {
+        "label": "Class Route",
+        "url": "https://playwright.dev/docs/api/class-route"
+      },
+      {
+        "label": "Class Selectors",
+        "url": "https://playwright.dev/docs/api/class-selectors"
+      },
+      {
+        "label": "Class Snapshotassertions",
+        "url": "https://playwright.dev/docs/api/class-snapshotassertions"
+      },
+      {
+        "label": "Class Suite",
+        "url": "https://playwright.dev/docs/api/class-suite"
+      },
+      {
+        "label": "Class Test",
+        "url": "https://playwright.dev/docs/api/class-test"
+      },
+      {
+        "label": "Class Testcase",
+        "url": "https://playwright.dev/docs/api/class-testcase"
+      },
+      {
+        "label": "Class Testconfig",
+        "url": "https://playwright.dev/docs/api/class-testconfig"
+      },
+      {
+        "label": "Class Testerror",
+        "url": "https://playwright.dev/docs/api/class-testerror"
+      },
+      {
+        "label": "Class Testinfo",
+        "url": "https://playwright.dev/docs/api/class-testinfo"
+      },
+      {
+        "label": "Class Testinfoerror",
+        "url": "https://playwright.dev/docs/api/class-testinfoerror"
+      },
+      {
+        "label": "Class Testoptions",
+        "url": "https://playwright.dev/docs/api/class-testoptions"
+      },
+      {
+        "label": "Class Testproject",
+        "url": "https://playwright.dev/docs/api/class-testproject"
+      },
+      {
+        "label": "Class Testresult",
+        "url": "https://playwright.dev/docs/api/class-testresult"
+      },
+      {
+        "label": "Class Teststep",
+        "url": "https://playwright.dev/docs/api/class-teststep"
+      },
+      {
+        "label": "Class Teststepinfo",
+        "url": "https://playwright.dev/docs/api/class-teststepinfo"
+      },
+      {
+        "label": "Class Timeouterror",
+        "url": "https://playwright.dev/docs/api/class-timeouterror"
+      },
+      {
+        "label": "Class Touchscreen",
+        "url": "https://playwright.dev/docs/api/class-touchscreen"
+      },
+      {
+        "label": "Class Tracing",
+        "url": "https://playwright.dev/docs/api/class-tracing"
+      },
+      {
+        "label": "Class Video",
+        "url": "https://playwright.dev/docs/api/class-video"
+      },
+      {
+        "label": "Class Weberror",
+        "url": "https://playwright.dev/docs/api/class-weberror"
+      },
+      {
+        "label": "Class Websocket",
+        "url": "https://playwright.dev/docs/api/class-websocket"
+      },
+      {
+        "label": "Class Websocketroute",
+        "url": "https://playwright.dev/docs/api/class-websocketroute"
+      },
+      {
+        "label": "Class Worker",
+        "url": "https://playwright.dev/docs/api/class-worker"
+      },
+      {
+        "label": "Class Workerinfo",
+        "url": "https://playwright.dev/docs/api/class-workerinfo"
+      }
+    ]
+  },
+  {
+    "label": "Aria Snapshots",
+    "url": "https://playwright.dev/docs/aria-snapshots"
+  },
+  {
+    "label": "Auth",
+    "url": "https://playwright.dev/docs/auth"
+  },
+  {
+    "label": "Best Practices",
+    "url": "https://playwright.dev/docs/best-practices"
+  },
+  {
+    "label": "Browser Contexts",
+    "url": "https://playwright.dev/docs/browser-contexts"
+  },
+  {
+    "label": "Browsers",
+    "url": "https://playwright.dev/docs/browsers"
+  },
+  {
+    "label": "Canary Releases",
+    "url": "https://playwright.dev/docs/canary-releases"
+  },
+  {
+    "label": "Chrome Extensions",
+    "url": "https://playwright.dev/docs/chrome-extensions"
+  },
+  {
+    "label": "Ci",
+    "url": "https://playwright.dev/docs/ci"
+  },
+  {
+    "label": "Ci Intro",
+    "url": "https://playwright.dev/docs/ci-intro"
+  },
+  {
+    "label": "Clock",
+    "url": "https://playwright.dev/docs/clock"
+  },
+  {
+    "label": "Codegen",
+    "url": "https://playwright.dev/docs/codegen"
+  },
+  {
+    "label": "Codegen Intro",
+    "url": "https://playwright.dev/docs/codegen-intro"
+  },
+  {
+    "label": "Debug",
+    "url": "https://playwright.dev/docs/debug"
+  },
+  {
+    "label": "Dialogs",
+    "url": "https://playwright.dev/docs/dialogs"
+  },
+  {
+    "label": "Docker",
+    "url": "https://playwright.dev/docs/docker"
+  },
+  {
+    "label": "Downloads",
+    "url": "https://playwright.dev/docs/downloads"
+  },
+  {
+    "label": "Emulation",
+    "url": "https://playwright.dev/docs/emulation"
+  },
+  {
+    "label": "Evaluating",
+    "url": "https://playwright.dev/docs/evaluating"
+  },
+  {
+    "label": "Events",
+    "url": "https://playwright.dev/docs/events"
+  },
+  {
+    "label": "Extensibility",
+    "url": "https://playwright.dev/docs/extensibility"
+  },
+  {
+    "label": "Frames",
+    "url": "https://playwright.dev/docs/frames"
+  },
+  {
+    "label": "Getting Started Vscode",
+    "url": "https://playwright.dev/docs/getting-started-vscode"
+  },
+  {
+    "label": "Handles",
+    "url": "https://playwright.dev/docs/handles"
+  },
+  {
+    "label": "Input",
+    "url": "https://playwright.dev/docs/input"
+  },
+  {
+    "label": "Intro",
+    "url": "https://playwright.dev/docs/intro"
+  },
+  {
+    "label": "Languages",
+    "url": "https://playwright.dev/docs/languages"
+  },
+  {
+    "label": "Library",
+    "url": "https://playwright.dev/docs/library"
+  },
+  {
+    "label": "Locators",
+    "url": "https://playwright.dev/docs/locators"
+  },
+  {
+    "label": "Mock",
+    "url": "https://playwright.dev/docs/mock"
+  },
+  {
+    "label": "Mock Browser Apis",
+    "url": "https://playwright.dev/docs/mock-browser-apis"
+  },
+  {
+    "label": "Navigations",
+    "url": "https://playwright.dev/docs/navigations"
+  },
+  {
+    "label": "Network",
+    "url": "https://playwright.dev/docs/network"
+  },
+  {
+    "label": "Other Locators",
+    "url": "https://playwright.dev/docs/other-locators"
+  },
+  {
+    "label": "Pages",
+    "url": "https://playwright.dev/docs/pages"
+  },
+  {
+    "label": "Pom",
+    "url": "https://playwright.dev/docs/pom"
+  },
+  {
+    "label": "Protractor",
+    "url": "https://playwright.dev/docs/protractor"
+  },
+  {
+    "label": "Puppeteer",
+    "url": "https://playwright.dev/docs/puppeteer"
+  },
+  {
+    "label": "Release Notes",
+    "url": "https://playwright.dev/docs/release-notes"
+  },
+  {
+    "label": "Running Tests",
+    "url": "https://playwright.dev/docs/running-tests"
+  },
+  {
+    "label": "Screenshots",
+    "url": "https://playwright.dev/docs/screenshots"
+  },
+  {
+    "label": "Selenium Grid",
+    "url": "https://playwright.dev/docs/selenium-grid"
+  },
+  {
+    "label": "Service Workers",
+    "url": "https://playwright.dev/docs/service-workers"
+  },
+  {
+    "label": "Test Agents",
+    "url": "https://playwright.dev/docs/test-agents"
+  },
+  {
+    "label": "Test Annotations",
+    "url": "https://playwright.dev/docs/test-annotations"
+  },
+  {
+    "label": "Test Assertions",
+    "url": "https://playwright.dev/docs/test-assertions"
+  },
+  {
+    "label": "Test Cli",
+    "url": "https://playwright.dev/docs/test-cli"
+  },
+  {
+    "label": "Test Components",
+    "url": "https://playwright.dev/docs/test-components"
+  },
+  {
+    "label": "Test Configuration",
+    "url": "https://playwright.dev/docs/test-configuration"
+  },
+  {
+    "label": "Test Fixtures",
+    "url": "https://playwright.dev/docs/test-fixtures"
+  },
+  {
+    "label": "Test Global Setup Teardown",
+    "url": "https://playwright.dev/docs/test-global-setup-teardown"
+  },
+  {
+    "label": "Test Parallel",
+    "url": "https://playwright.dev/docs/test-parallel"
+  },
+  {
+    "label": "Test Parameterize",
+    "url": "https://playwright.dev/docs/test-parameterize"
+  },
+  {
+    "label": "Test Projects",
+    "url": "https://playwright.dev/docs/test-projects"
+  },
+  {
+    "label": "Test Reporters",
+    "url": "https://playwright.dev/docs/test-reporters"
+  },
+  {
+    "label": "Test Retries",
+    "url": "https://playwright.dev/docs/test-retries"
+  },
+  {
+    "label": "Test Sharding",
+    "url": "https://playwright.dev/docs/test-sharding"
+  },
+  {
+    "label": "Test Snapshots",
+    "url": "https://playwright.dev/docs/test-snapshots"
+  },
+  {
+    "label": "Test Timeouts",
+    "url": "https://playwright.dev/docs/test-timeouts"
+  },
+  {
+    "label": "Test Typescript",
+    "url": "https://playwright.dev/docs/test-typescript"
+  },
+  {
+    "label": "Test Ui Mode",
+    "url": "https://playwright.dev/docs/test-ui-mode"
+  },
+  {
+    "label": "Test Use Options",
+    "url": "https://playwright.dev/docs/test-use-options"
+  },
+  {
+    "label": "Test Webserver",
+    "url": "https://playwright.dev/docs/test-webserver"
+  },
+  {
+    "label": "Testing Library",
+    "url": "https://playwright.dev/docs/testing-library"
+  },
+  {
+    "label": "Touch Events",
+    "url": "https://playwright.dev/docs/touch-events"
+  },
+  {
+    "label": "Trace Viewer",
+    "url": "https://playwright.dev/docs/trace-viewer"
+  },
+  {
+    "label": "Trace Viewer Intro",
+    "url": "https://playwright.dev/docs/trace-viewer-intro"
+  },
+  {
+    "label": "Videos",
+    "url": "https://playwright.dev/docs/videos"
+  },
+  {
+    "label": "Webview2",
+    "url": "https://playwright.dev/docs/webview2"
+  },
+  {
+    "label": "Writing Tests",
+    "url": "https://playwright.dev/docs/writing-tests"
+  }
+]
