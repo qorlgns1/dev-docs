@@ -1467,7 +1467,7 @@
     },
     "items": [
       {
-        "slug": "sentry-nextjs/javascript/guides/nextjs",
+        "slug": "sentry-nextjs/platforms/javascript/guides/nextjs",
         "label": "개요",
         "translations": {
           "en": "Overview"
@@ -1480,14 +1480,14 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/ai-agent-monitoring",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/ai-agent-monitoring",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/ai-agent-monitoring/mastra",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/ai-agent-monitoring/mastra",
             "label": "Mastra",
             "translations": {
               "en": "Mastra"
@@ -1502,56 +1502,56 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/best-practices",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/best-practices",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/best-practices/deploying-on-cloudflare",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/best-practices/deploying-on-cloudflare",
             "label": "Cloudflare 배포",
             "translations": {
               "en": "Deploying On Cloudflare"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/best-practices/micro-frontends",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/best-practices/micro-frontends",
             "label": "마이크로 프런트엔드",
             "translations": {
               "en": "Micro Frontends"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/best-practices/multiple-sentry-instances",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/best-practices/multiple-sentry-instances",
             "label": "다중 Sentry 인스턴스",
             "translations": {
               "en": "Multiple Sentry Instances"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/best-practices/offline-caching",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/best-practices/offline-caching",
             "label": "오프라인 캐시",
             "translations": {
               "en": "Offline Caching"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/best-practices/sentry-testkit",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/best-practices/sentry-testkit",
             "label": "Sentry 테스트킷",
             "translations": {
               "en": "Sentry Testkit"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/best-practices/shared-environments",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/best-practices/shared-environments",
             "label": "공유 환경",
             "translations": {
               "en": "Shared Environments"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/best-practices/web-workers",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/best-practices/web-workers",
             "label": "웹 워커",
             "translations": {
               "en": "Web Workers"
@@ -1560,7 +1560,7 @@
         ]
       },
       {
-        "slug": "sentry-nextjs/javascript/guides/nextjs/capturing-errors",
+        "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/capturing-errors",
         "label": "오류 수집",
         "translations": {
           "en": "Capturing Errors"
@@ -1573,35 +1573,35 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/configuration",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/apis",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/apis",
             "label": "API",
             "translations": {
               "en": "Apis"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/build",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/build",
             "label": "빌드",
             "translations": {
               "en": "Build"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/event-loop-block",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/event-loop-block",
             "label": "이벤트 루프 차단",
             "translations": {
               "en": "Event Loop Block"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/filtering",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/filtering",
             "label": "필터링",
             "translations": {
               "en": "Filtering"
@@ -1614,490 +1614,490 @@
             },
             "items": [
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations",
                 "label": "개요",
                 "translations": {
                   "en": "Overview"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/amqplib",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/amqplib",
                 "label": "Amqplib",
                 "translations": {
                   "en": "Amqplib"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/anr",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/anr",
                 "label": "ANR",
                 "translations": {
                   "en": "Anr"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/anthropic",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/anthropic",
                 "label": "Anthropic",
                 "translations": {
                   "en": "Anthropic"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/breadcrumbs",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/breadcrumbs",
                 "label": "브레드크럼",
                 "translations": {
                   "en": "Breadcrumbs"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/browserapierrors",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/browserapierrors",
                 "label": "브라우저 API 오류",
                 "translations": {
                   "en": "Browserapierrors"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/browserprofiling",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/browserprofiling",
                 "label": "브라우저 프로파일링",
                 "translations": {
                   "en": "Browserprofiling"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/browsersession",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/browsersession",
                 "label": "브라우저 세션",
                 "translations": {
                   "en": "Browsersession"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/browsertracing",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/browsertracing",
                 "label": "브라우저 트레이싱",
                 "translations": {
                   "en": "Browsertracing"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/captureconsole",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/captureconsole",
                 "label": "콘솔 캡처",
                 "translations": {
                   "en": "Captureconsole"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/childProcess",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/childProcess",
                 "label": "자식 프로세스",
                 "translations": {
                   "en": "childProcess"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/console",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/console",
                 "label": "콘솔",
                 "translations": {
                   "en": "Console"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/contextlines",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/contextlines",
                 "label": "컨텍스트 라인",
                 "translations": {
                   "en": "Contextlines"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/custom",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/custom",
                 "label": "커스텀",
                 "translations": {
                   "en": "Custom"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/dataloader",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/dataloader",
                 "label": "Dataloader",
                 "translations": {
                   "en": "Dataloader"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/dedupe",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/dedupe",
                 "label": "중복 제거",
                 "translations": {
                   "en": "Dedupe"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/event-loop-block",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/event-loop-block",
                 "label": "이벤트 루프 차단",
                 "translations": {
                   "en": "Event Loop Block"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/extraerrordata",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/extraerrordata",
                 "label": "추가 오류 데이터",
                 "translations": {
                   "en": "Extraerrordata"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/featureflags",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/featureflags",
                 "label": "기능 플래그",
                 "translations": {
                   "en": "Featureflags"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/fs",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/fs",
                 "label": "FS",
                 "translations": {
                   "en": "Fs"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/functiontostring",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/functiontostring",
                 "label": "함수 문자열화",
                 "translations": {
                   "en": "Functiontostring"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/genericpool",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/genericpool",
                 "label": "Genericpool",
                 "translations": {
                   "en": "Genericpool"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/globalhandlers",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/globalhandlers",
                 "label": "전역 핸들러",
                 "translations": {
                   "en": "Globalhandlers"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/google-genai",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/google-genai",
                 "label": "Google GenAI",
                 "translations": {
                   "en": "Google Genai"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/graphql",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/graphql",
                 "label": "GraphQL",
                 "translations": {
                   "en": "Graphql"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/graphqlclient",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/graphqlclient",
                 "label": "GraphQL 클라이언트",
                 "translations": {
                   "en": "Graphqlclient"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/http",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/http",
                 "label": "HTTP",
                 "translations": {
                   "en": "Http"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/httpclient",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/httpclient",
                 "label": "HTTP 클라이언트",
                 "translations": {
                   "en": "Httpclient"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/httpcontext",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/httpcontext",
                 "label": "HTTP 컨텍스트",
                 "translations": {
                   "en": "Httpcontext"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/inboundfilters",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/inboundfilters",
                 "label": "인바운드 필터",
                 "translations": {
                   "en": "Inboundfilters"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/kafka",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/kafka",
                 "label": "Kafka",
                 "translations": {
                   "en": "Kafka"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/knex",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/knex",
                 "label": "Knex",
                 "translations": {
                   "en": "Knex"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/langchain",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/langchain",
                 "label": "LangChain",
                 "translations": {
                   "en": "Langchain"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/langgraph",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/langgraph",
                 "label": "LangGraph",
                 "translations": {
                   "en": "Langgraph"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/launchdarkly",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/launchdarkly",
                 "label": "LaunchDarkly",
                 "translations": {
                   "en": "Launchdarkly"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/linkederrors",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/linkederrors",
                 "label": "연결 오류",
                 "translations": {
                   "en": "Linkederrors"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/localvariables",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/localvariables",
                 "label": "로컬 변수",
                 "translations": {
                   "en": "Localvariables"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/lrumemoizer",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/lrumemoizer",
                 "label": "LRU 메모이저",
                 "translations": {
                   "en": "Lrumemoizer"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/modulemetadata",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/modulemetadata",
                 "label": "모듈 메타데이터",
                 "translations": {
                   "en": "Modulemetadata"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/modules",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/modules",
                 "label": "모듈",
                 "translations": {
                   "en": "Modules"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/mongo",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/mongo",
                 "label": "Mongo",
                 "translations": {
                   "en": "Mongo"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/mongoose",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/mongoose",
                 "label": "Mongoose",
                 "translations": {
                   "en": "Mongoose"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/mysql",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/mysql",
                 "label": "MySQL",
                 "translations": {
                   "en": "Mysql"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/mysql2",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/mysql2",
                 "label": "MySQL2",
                 "translations": {
                   "en": "Mysql2"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/nodecontext",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/nodecontext",
                 "label": "Node 컨텍스트",
                 "translations": {
                   "en": "Nodecontext"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/nodefetch",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/nodefetch",
                 "label": "node-fetch",
                 "translations": {
                   "en": "Nodefetch"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/nodeprofiling",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/nodeprofiling",
                 "label": "Node 프로파일링",
                 "translations": {
                   "en": "Nodeprofiling"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/onuncaughtexception",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/onuncaughtexception",
                 "label": "미포착 예외",
                 "translations": {
                   "en": "Onuncaughtexception"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/openai",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/openai",
                 "label": "OpenAI",
                 "translations": {
                   "en": "Openai"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/openfeature",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/openfeature",
                 "label": "OpenFeature",
                 "translations": {
                   "en": "Openfeature"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/pino",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/pino",
                 "label": "Pino",
                 "translations": {
                   "en": "Pino"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/postgres",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/postgres",
                 "label": "Postgres",
                 "translations": {
                   "en": "Postgres"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/prisma",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/prisma",
                 "label": "Prisma",
                 "translations": {
                   "en": "Prisma"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/prisma__v8.x",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/prisma__v8.x",
                 "label": "Prisma V8.X",
                 "translations": {
                   "en": "Prisma  V8.X"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/redis",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/redis",
                 "label": "Redis",
                 "translations": {
                   "en": "Redis"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/replay",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/replay",
                 "label": "리플레이",
                 "translations": {
                   "en": "Replay"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/replaycanvas",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/replaycanvas",
                 "label": "리플레이 캔버스",
                 "translations": {
                   "en": "Replaycanvas"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/reportingobserver",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/reportingobserver",
                 "label": "ReportingObserver",
                 "translations": {
                   "en": "Reportingobserver"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/requestdata",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/requestdata",
                 "label": "요청 데이터",
                 "translations": {
                   "en": "Requestdata"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/rewriteframes",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/rewriteframes",
                 "label": "프레임 재작성",
                 "translations": {
                   "en": "Rewriteframes"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/statsig",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/statsig",
                 "label": "Statsig",
                 "translations": {
                   "en": "Statsig"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/supabase",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/supabase",
                 "label": "Supabase",
                 "translations": {
                   "en": "Supabase"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/tedious",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/tedious",
                 "label": "Tedious",
                 "translations": {
                   "en": "Tedious"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/trpc",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/trpc",
                 "label": "tRPC",
                 "translations": {
                   "en": "Trpc"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/unhandledrejection",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/unhandledrejection",
                 "label": "미처리 거부",
                 "translations": {
                   "en": "Unhandledrejection"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/unleash",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/unleash",
                 "label": "Unleash",
                 "translations": {
                   "en": "Unleash"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/vercelai",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/vercelai",
                 "label": "Vercel AI",
                 "translations": {
                   "en": "Vercelai"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/webworker",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/webworker",
                 "label": "웹 워커",
                 "translations": {
                   "en": "Webworker"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/wintercgfetch",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/wintercgfetch",
                 "label": "WinterCG Fetch",
                 "translations": {
                   "en": "Wintercgfetch"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/integrations/zodErrors",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/integrations/zodErrors",
                 "label": "zod 오류",
                 "translations": {
                   "en": "zodErrors"
@@ -2106,28 +2106,28 @@
             ]
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/options",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/options",
             "label": "옵션",
             "translations": {
               "en": "Options"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/releases",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/releases",
             "label": "릴리스",
             "translations": {
               "en": "Releases"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/transports",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/transports",
             "label": "트랜스포트",
             "translations": {
               "en": "Transports"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/configuration/tree-shaking",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/configuration/tree-shaking",
             "label": "트리 셰이킹",
             "translations": {
               "en": "Tree Shaking"
@@ -2142,14 +2142,14 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/crons",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/crons",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/crons/troubleshooting",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/crons/troubleshooting",
             "label": "문제 해결",
             "translations": {
               "en": "Troubleshooting"
@@ -2164,21 +2164,21 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/data-management",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/data-management",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/data-management/data-collected",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/data-management/data-collected",
             "label": "수집 데이터",
             "translations": {
               "en": "Data Collected"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/data-management/sensitive-data",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/data-management/sensitive-data",
             "label": "민감 데이터",
             "translations": {
               "en": "Sensitive Data"
@@ -2193,63 +2193,63 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/enriching-events",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/enriching-events",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/enriching-events/attachments",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/enriching-events/attachments",
             "label": "첨부파일",
             "translations": {
               "en": "Attachments"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/enriching-events/breadcrumbs",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/enriching-events/breadcrumbs",
             "label": "브레드크럼",
             "translations": {
               "en": "Breadcrumbs"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/enriching-events/event-processors",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/enriching-events/event-processors",
             "label": "이벤트 프로세서",
             "translations": {
               "en": "Event Processors"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/enriching-events/fingerprinting",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/enriching-events/fingerprinting",
             "label": "지문 설정",
             "translations": {
               "en": "Fingerprinting"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/enriching-events/level",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/enriching-events/level",
             "label": "레벨",
             "translations": {
               "en": "Level"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/enriching-events/request-isolation",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/enriching-events/request-isolation",
             "label": "요청 격리",
             "translations": {
               "en": "Request Isolation"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/enriching-events/scopes",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/enriching-events/scopes",
             "label": "스코프",
             "translations": {
               "en": "Scopes"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/enriching-events/tags",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/enriching-events/tags",
             "label": "태그",
             "translations": {
               "en": "Tags"
@@ -2258,14 +2258,14 @@
         ]
       },
       {
-        "slug": "sentry-nextjs/javascript/guides/nextjs/feature-flags",
+        "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/feature-flags",
         "label": "기능 플래그",
         "translations": {
           "en": "Feature Flags"
         }
       },
       {
-        "slug": "sentry-nextjs/javascript/guides/nextjs/logs",
+        "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/logs",
         "label": "로그",
         "translations": {
           "en": "Logs"
@@ -2278,21 +2278,21 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/manual-setup",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/manual-setup",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/manual-setup/pages-router",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/manual-setup/pages-router",
             "label": "페이지 라우터",
             "translations": {
               "en": "Pages Router"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/manual-setup/webpack-setup",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/manual-setup/webpack-setup",
             "label": "Webpack 설정",
             "translations": {
               "en": "Webpack Setup"
@@ -2301,7 +2301,7 @@
         ]
       },
       {
-        "slug": "sentry-nextjs/javascript/guides/nextjs/metrics",
+        "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/metrics",
         "label": "메트릭",
         "translations": {
           "en": "Metrics"
@@ -2314,21 +2314,21 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/migration",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/migration",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/migration/v4-to-v5_v6",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/migration/v4-to-v5_v6",
             "label": "V4에서 V5/V6로",
             "translations": {
               "en": "V4 To V5 V6"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/migration/v6-to-v7",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/migration/v6-to-v7",
             "label": "V6에서 V7로",
             "translations": {
               "en": "V6 To V7"
@@ -2341,21 +2341,21 @@
             },
             "items": [
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/migration/v7-to-v8",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/migration/v7-to-v8",
                 "label": "개요",
                 "translations": {
                   "en": "Overview"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/migration/v7-to-v8/v7-deprecations",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/migration/v7-to-v8/v7-deprecations",
                 "label": "V7 사용 중단",
                 "translations": {
                   "en": "V7 Deprecations"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/migration/v7-to-v8/v8-new-performance-api",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/migration/v7-to-v8/v8-new-performance-api",
                 "label": "V8 신규 성능 API",
                 "translations": {
                   "en": "V8 New Performance Api"
@@ -2364,14 +2364,14 @@
             ]
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/migration/v8-to-v9",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/migration/v8-to-v9",
             "label": "V8에서 V9로",
             "translations": {
               "en": "V8 To V9"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/migration/v9-to-v10",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/migration/v9-to-v10",
             "label": "V9에서 V10으로",
             "translations": {
               "en": "V9 To V10"
@@ -2386,21 +2386,21 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/opentelemetry",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/opentelemetry",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/opentelemetry/custom-setup",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/opentelemetry/custom-setup",
             "label": "커스텀 설정",
             "translations": {
               "en": "Custom Setup"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/opentelemetry/using-opentelemetry-apis",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/opentelemetry/using-opentelemetry-apis",
             "label": "OpenTelemetry API 사용",
             "translations": {
               "en": "Using Opentelemetry Apis"
@@ -2415,21 +2415,21 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/profiling",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/profiling",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/profiling/browser",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/profiling/browser",
             "label": "브라우저",
             "translations": {
               "en": "Browser"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/profiling/node",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/profiling/node",
             "label": "Node",
             "translations": {
               "en": "Node"
@@ -2438,14 +2438,14 @@
         ]
       },
       {
-        "slug": "sentry-nextjs/javascript/guides/nextjs/sampling",
+        "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sampling",
         "label": "샘플링",
         "translations": {
           "en": "Sampling"
         }
       },
       {
-        "slug": "sentry-nextjs/javascript/guides/nextjs/security-policy-reporting",
+        "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/security-policy-reporting",
         "label": "보안 정책 보고",
         "translations": {
           "en": "Security Policy Reporting"
@@ -2458,42 +2458,42 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/session-replay",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/session-replay",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/session-replay/configuration",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/session-replay/configuration",
             "label": "설정",
             "translations": {
               "en": "Configuration"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/session-replay/issue-types",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/session-replay/issue-types",
             "label": "이슈 유형",
             "translations": {
               "en": "Issue Types"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/session-replay/privacy",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/session-replay/privacy",
             "label": "개인정보",
             "translations": {
               "en": "Privacy"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/session-replay/troubleshooting",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/session-replay/troubleshooting",
             "label": "문제 해결",
             "translations": {
               "en": "Troubleshooting"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/session-replay/understanding-sessions",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/session-replay/understanding-sessions",
             "label": "세션 이해",
             "translations": {
               "en": "Understanding Sessions"
@@ -2508,7 +2508,7 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps",
             "label": "개요",
             "translations": {
               "en": "Overview"
@@ -2521,21 +2521,21 @@
             },
             "items": [
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/troubleshooting_js",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/troubleshooting_js",
                 "label": "개요",
                 "translations": {
                   "en": "Overview"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/troubleshooting_js/debug-ids",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/troubleshooting_js/debug-ids",
                 "label": "디버그 ID",
                 "translations": {
                   "en": "Debug Ids"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/troubleshooting_js/legacy-uploading-methods",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/troubleshooting_js/legacy-uploading-methods",
                 "label": "레거시 업로드 방식",
                 "translations": {
                   "en": "Legacy Uploading Methods"
@@ -2550,63 +2550,63 @@
             },
             "items": [
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/uploading/esbuild",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/uploading/esbuild",
                 "label": "esbuild",
                 "translations": {
                   "en": "Esbuild"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/uploading/ionic",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/uploading/ionic",
                 "label": "Ionic",
                 "translations": {
                   "en": "Ionic"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/uploading/ionic-capacitor",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/uploading/ionic-capacitor",
                 "label": "Ionic Capacitor",
                 "translations": {
                   "en": "Ionic Capacitor"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/uploading/rollup",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/uploading/rollup",
                 "label": "Rollup",
                 "translations": {
                   "en": "Rollup"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/uploading/systemjs",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/uploading/systemjs",
                 "label": "SystemJS",
                 "translations": {
                   "en": "Systemjs"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/uploading/typescript",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/uploading/typescript",
                 "label": "TypeScript",
                 "translations": {
                   "en": "Typescript"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/uploading/uglifyjs",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/uploading/uglifyjs",
                 "label": "UglifyJS",
                 "translations": {
                   "en": "Uglifyjs"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/uploading/vite",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/uploading/vite",
                 "label": "Vite",
                 "translations": {
                   "en": "Vite"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/sourcemaps/uploading/webpack",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/sourcemaps/uploading/webpack",
                 "label": "Webpack",
                 "translations": {
                   "en": "Webpack"
@@ -2623,14 +2623,14 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/tracing",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/configure-sampling",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/configure-sampling",
             "label": "샘플링 설정",
             "translations": {
               "en": "Configure Sampling"
@@ -2643,21 +2643,21 @@
             },
             "items": [
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/distributed-tracing",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/distributed-tracing",
                 "label": "개요",
                 "translations": {
                   "en": "Overview"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/distributed-tracing/custom-instrumentation",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/distributed-tracing/custom-instrumentation",
                 "label": "커스텀 계측",
                 "translations": {
                   "en": "Custom Instrumentation"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/distributed-tracing/dealing-with-cors-issues",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/distributed-tracing/dealing-with-cors-issues",
                 "label": "CORS 문제 대응",
                 "translations": {
                   "en": "Dealing With Cors Issues"
@@ -2672,42 +2672,42 @@
             },
             "items": [
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/instrumentation",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/instrumentation",
                 "label": "개요",
                 "translations": {
                   "en": "Overview"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/instrumentation/automatic-instrumentation",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/instrumentation/automatic-instrumentation",
                 "label": "자동 계측",
                 "translations": {
                   "en": "Automatic Instrumentation"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/instrumentation/caches-module",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/instrumentation/caches-module",
                 "label": "캐시 모듈",
                 "translations": {
                   "en": "Caches Module"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/instrumentation/mcp-module",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/instrumentation/mcp-module",
                 "label": "MCP 모듈",
                 "translations": {
                   "en": "Mcp Module"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/instrumentation/queues-module",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/instrumentation/queues-module",
                 "label": "큐 모듈",
                 "translations": {
                   "en": "Queues Module"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/instrumentation/requests-module",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/instrumentation/requests-module",
                 "label": "요청 모듈",
                 "translations": {
                   "en": "Requests Module"
@@ -2722,14 +2722,14 @@
             },
             "items": [
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/span-metrics",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/span-metrics",
                 "label": "개요",
                 "translations": {
                   "en": "Overview"
                 }
               },
               {
-                "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/span-metrics/examples",
+                "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/span-metrics/examples",
                 "label": "예제",
                 "translations": {
                   "en": "Examples"
@@ -2738,7 +2738,7 @@
             ]
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/tracing/troubleshooting",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/tracing/troubleshooting",
             "label": "문제 해결",
             "translations": {
               "en": "Troubleshooting"
@@ -2753,14 +2753,14 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/troubleshooting",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/troubleshooting",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/troubleshooting/supported-browsers",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/troubleshooting/supported-browsers",
             "label": "지원 브라우저",
             "translations": {
               "en": "Supported Browsers"
@@ -2775,21 +2775,21 @@
         },
         "items": [
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/user-feedback",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/user-feedback",
             "label": "개요",
             "translations": {
               "en": "Overview"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/user-feedback/configuration",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/user-feedback/configuration",
             "label": "설정",
             "translations": {
               "en": "Configuration"
             }
           },
           {
-            "slug": "sentry-nextjs/javascript/guides/nextjs/user-feedback/configuration__v7.x",
+            "slug": "sentry-nextjs/platforms/javascript/guides/nextjs/user-feedback/configuration__v7.x",
             "label": "설정 V7.X",
             "translations": {
               "en": "Configuration  V7.X"

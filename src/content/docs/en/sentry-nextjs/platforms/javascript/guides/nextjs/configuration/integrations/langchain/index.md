@@ -1,0 +1,122 @@
+---
+title: 'LangChain | Sentry for Next.js'
+description: 'For meta-framework applications using all runtimes, you need to manually create a LangChain callback handler with . See instructions in the Browser-Si...'
+---
+
+Source URL: https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain
+
+# LangChain | Sentry for Next.js
+
+## [Server-Side Usage](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#server-side-usage)
+
+For meta-framework applications using all runtimes, you need to manually create a LangChain callback handler with `createLangChainCallbackHandler`. See instructions in the [Browser-Side Usage](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#browser-side-usage) section.
+
+## [Browser-Side Usage](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#browser-side-usage)
+
+*Import name: `Sentry.createLangChainCallbackHandler`*
+
+The `createLangChainCallbackHandler` helper adds instrumentation for [`langchain`](https://www.npmjs.com/package/langchain) to capture spans by creating a callback handler that wraps LangChain operations and records AI agent interactions with configurable input/output recording. You need to manually create and pass this callback handler to your LangChain operations. See example below:
+
+```javascript
+import { ChatAnthropic } from "@langchain/anthropic";
+
+// Create a LangChain callback handler
+const callbackHandler = Sentry.createLangChainCallbackHandler({
+  recordInputs: true,
+  recordOutputs: true,
+});
+
+// Use with chat models
+const model = new ChatAnthropic({
+  model: "claude-3-5-sonnet-20241022",
+  apiKey: "your-api-key", // Warning: API key will be exposed in browser!
+});
+
+await model.invoke("Tell me a joke", {
+  callbacks: [callbackHandler],
+});
+```
+
+To customize what data is captured (such as inputs and outputs), see the [Options](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#options) in the Configuration section.
+
+## [Configuration](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#configuration)
+
+- [Options](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#options)
+
+The following options control what data is captured from LangChain operations:
+
+#
+- [`recordInputs`](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#recordinputs)
+
+*Type: `boolean` (optional)*
+
+Records inputs to LangChain operations (such as prompts and messages).
+
+Defaults to `true` if `sendDefaultPii` is `true`.
+
+#
+- [`recordOutputs`](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#recordoutputs)
+
+*Type: `boolean` (optional)*
+
+Records outputs from LangChain operations (such as generated text and responses).
+
+Defaults to `true` if `sendDefaultPii` is `true`.
+
+**Usage**
+
+Using the `langChainIntegration` integration:
+
+```javascript
+Sentry.init({
+  dsn: "____PUBLIC_DSN____",
+  // Tracing must be enabled for agent monitoring to work
+  tracesSampleRate: 1.0,
+  integrations: [
+    Sentry.langChainIntegration({
+      // your options here
+    }),
+  ],
+});
+```
+
+Using the `createLangChainCallbackHandler` helper:
+
+```javascript
+const callbackHandler = Sentry.createLangChainCallbackHandler({
+  // your options here
+});
+```
+
+## [Supported Operations](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#supported-operations)
+
+By default, tracing support is added to the following LangChain SDK calls:
+
+* **Chat model invocations** - Captures spans for chat model calls
+* **LLM invocations** - Captures spans for LLM pipeline executions
+* **Chain executions** - Captures spans for chain invocations
+* **Tool executions** - Captures spans for tool calls
+
+- [Runnables](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#runnables)
+
+The integration automatically instruments the following LangChain runnable methods:
+
+* `invoke()` - Single execution
+* `stream()` - Streaming execution
+* `batch()` - Batch execution
+
+- [Providers](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#providers)
+
+The automatic instrumentation supports the following LangChain provider packages:
+
+* `@langchain/anthropic`
+* `@langchain/openai`
+* `@langchain/google-genai`
+* `@langchain/mistralai`
+* `@langchain/google-vertexai`
+* `@langchain/groq`
+
+## [Supported Versions](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/langchain.md#supported-versions)
+
+* `langchain`: `>=0.1.0 <2.0.0`
+

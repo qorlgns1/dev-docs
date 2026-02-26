@@ -1,0 +1,121 @@
+---
+title: 'Vercel AI | Sentry for Next.js'
+description: 'Requires SDK version  or higher for Node.js, Cloudflare Workers, Vercel Edge Functions and Bun. Requires SDK version  or higher for Deno.'
+---
+
+Source URL: https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/vercelai
+
+# Vercel AI | Sentry for Next.js
+
+Requires SDK version `10.6.0` or higher for Node.js, Cloudflare Workers, Vercel Edge Functions and Bun. Requires SDK version `10.12.0` or higher for Deno.
+
+*Import name: `Sentry.vercelAIIntegration`*
+
+The `vercelAIIntegration` adds instrumentation for the [`ai`](https://www.npmjs.com/package/ai) SDK by Vercel to capture spans using the [`AI SDK's built-in Telemetry`](https://sdk.vercel.ai/docs/ai-sdk-core/telemetry).
+
+This integration is enabled by default in the Node runtime, but not in the Edge runtime. You need to manually enable it by passing `Sentry.vercelAIIntegration()` to `Sentry.init` in your `sentry.edge.config.js` file:
+
+`'sentry.edge.config.(js|ts)'`
+
+```javascript
+Sentry.init({
+  dsn: "____PUBLIC_DSN____"
+  tracesSampleRate: 1.0,
+  integrations: [Sentry.vercelAIIntegration()],
+});
+```
+
+To correctly capture spans, pass the `experimental_telemetry` object with `isEnabled: true` to every `generateText`, `generateObject`, and `streamText` function call. For more details, see the [AI SDK Telemetry Metadata docs](https://sdk.vercel.ai/docs/ai-sdk-core/telemetry#telemetry-metadata).
+
+```javascript
+const result = await generateText({
+  model: openai("gpt-4o"),
+  experimental_telemetry: {
+    isEnabled: true,
+    recordInputs: true,
+    recordOutputs: true,
+  },
+});
+```
+
+## [Options](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/vercelai.md#options)
+
+- [`force`](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/vercelai.md#force)
+
+Requires SDK version `9.29.0` or higher.
+
+*Type: `boolean`*
+
+Forces the integration to be active, even when the `ai` module is not detected or available. This is useful when you want to ensure the integration is always enabled regardless of module detection.
+
+Defaults to `false`.
+
+```javascript
+Sentry.init({
+  integrations: [Sentry.vercelAIIntegration({ force: true })],
+});
+```
+
+This option is not available in the Edge runtime. There, the integration is forced when it is enabled.
+
+## [Identifying functions](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/vercelai.md#identifying-functions)
+
+In order to make it easier to correlate captured spans with the function calls we recommend setting `functionId` in `experimental_telemetry` in all generation function calls:
+
+```javascript
+const result = await generateText({
+  model: openai("gpt-4o"),
+  experimental_telemetry: {
+    isEnabled: true,
+    functionId: "my-awesome-function",
+  },
+});
+```
+
+## [Configuration](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/vercelai.md#configuration)
+
+By default this integration adds tracing support to all `ai` function callsites. If you need to disable span collection for a specific call, you can do so by setting `experimental_telemetry.isEnabled` to `false` in the first argument of the function call.
+
+```javascript
+const result = await generateText({
+  model: openai("gpt-4o"),
+  experimental_telemetry: { isEnabled: false },
+});
+```
+
+If you set `experimental_telemetry.recordInputs` and `experimental_telemetry.recordOutputs` it will override the default behavior of collecting inputs and outputs for that function call.
+
+```javascript
+const result = await generateText({
+  model: openai("gpt-4o"),
+  experimental_telemetry: {
+    isEnabled: true,
+    recordInputs: true,
+    recordOutputs: true,
+  },
+});
+```
+
+## [Supported Versions](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/vercelai.md#supported-versions)
+
+* `ai`: `>=3.0.0 <=6`
+
+## [Troubleshooting](https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/integrations/vercelai.md#troubleshooting)
+
+Why do my AI spans show 'ai.toolCall' instead of 'gen\_ai.execute\_tool' on Vercel?
+
+When deploying to Vercel, you may notice that AI SDK spans have raw names like `ai.toolCall` or `ai.streamText` instead of the expected semantic names like `gen_ai.execute_tool` or `gen_ai.stream_text`.
+
+This happens because the `ai` package is bundled (not externalized) in Next.js production builds, which prevents the integration from automatically detecting and instrumenting the module.
+
+To fix this, explicitly enable the integration with `force: true` in your `sentry.server.config.ts`:
+
+```javascript
+Sentry.init({
+  dsn: "____PUBLIC_DSN____",
+  integrations: [Sentry.vercelAIIntegration({ force: true })],
+});
+```
+
+The `force` option ensures the integration registers its span processors regardless of module detection.
+
