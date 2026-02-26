@@ -39,7 +39,16 @@ def main() -> int:
         if d.exists():
             git(["add", str(d)])
 
-    # astro.config.mjs (sidebar 변경분 포함)
+    # Sidebar/generated artifacts
+    sidebar_generated = REPO_ROOT / "src/config/sidebar.generated.json"
+    if sidebar_generated.exists():
+        git(["add", str(sidebar_generated)])
+
+    nav_json = REPO_ROOT / ".agents/skills/add-doc/references" / f"{args.section}-nav.json"
+    if nav_json.exists():
+        git(["add", str(nav_json)])
+
+    # Optional legacy sidebar location
     astro_config = REPO_ROOT / "astro.config.mjs"
     if astro_config.exists():
         git(["add", str(astro_config)])

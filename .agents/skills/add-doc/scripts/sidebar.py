@@ -26,6 +26,8 @@ from urllib.parse import unquote, urlparse
 REPO_ROOT = Path(__file__).resolve().parents[4]
 REFS_DIR = Path(__file__).parent.parent / "references"
 GENERATED_SIDEBAR_JSON = REPO_ROOT / "src/config/sidebar.generated.json"
+KO_DOCS_ROOT = REPO_ROOT / "src/content/docs"
+EN_DOCS_ROOT = REPO_ROOT / "src/content/docs/en"
 DEFAULT_MODEL = "gpt-5.3-codex"
 
 
@@ -44,6 +46,108 @@ def url_to_slug(url: str, base_path: str, section: str) -> str | None:
         rel_parts = [unquote(seg).strip() for seg in rel.split("/") if seg.strip()]
         return "/".join([section_slug, *rel_parts]) if rel_parts else section_slug
     return None
+
+
+def collect_nav_urls(items: list) -> list[str]:
+    """nav 트리에서 URL을 모두 수집한다."""
+    urls: list[str] = []
+
+    def _walk(nodes: list) -> None:
+        for item in nodes:
+            if not isinstance(item, dict):
+                continue
+            url = item.get("url")
+            if isinstance(url, str) and url.strip():
+                urls.append(url)
+            children = item.get("items")
+            if isinstance(children, list):
+                _walk(children)
+
+    _walk(items)
+    return urls
+
+
+def _longest_common_prefix_segments(paths: list[list[str]]) -> list[str]:
+    if not paths:
+        return []
+    prefix = paths[0][:]
+    for segs in paths[1:]:
+        max_len = min(len(prefix), len(segs))
+        i = 0
+        while i < max_len and prefix[i] == segs[i]:
+            i += 1
+        prefix = prefix[:i]
+        if not prefix:
+            break
+    return prefix
+
+
+def infer_base_path_from_nav(items: list, fallback: str) -> str:
+    """
+    nav URL들의 공통 경로(prefix)에서 base_path를 추론한다.
+    예:
+      /query/latest/... -> /query/latest
+      /platforms/javascript/guides/nextjs/... -> /platforms/javascript/guides/nextjs
+    """
+    urls = collect_nav_urls(items)
+    segments_list: list[list[str]] = []
+    for url in urls:
+        path = urlparse(url).path.rstrip("/")
+        parts = [unquote(seg).strip() for seg in path.split("/") if seg.strip()]
+        if parts:
+            segments_list.append(parts)
+
+    common = _longest_common_prefix_segments(segments_list)
+    if not common:
+        return fallback
+    return "/" + "/".join(common)
+
+
+def _collect_slugs(items: list) -> list[str]:
+    slugs: list[str] = []
+
+    def _walk(nodes: list) -> None:
+        for item in nodes:
+            if not isinstance(item, dict):
+                continue
+            slug = item.get("slug")
+            if isinstance(slug, str) and slug.strip():
+                slugs.append(slug.strip().strip("/"))
+            children = item.get("items")
+            if isinstance(children, list):
+                _walk(children)
+
+    _walk(items)
+    return slugs
+
+
+def _slug_to_relative_md(slug: str, section: str) -> Path | None:
+    section = section.strip().strip("/")
+    slug = slug.strip().strip("/")
+    if slug == section:
+        return Path("index.md")
+    prefix = f"{section}/"
+    if slug.startswith(prefix):
+        return Path(slug[len(prefix):]) / "index.md"
+    return None
+
+
+def validate_generated_slugs(items: list, section: str) -> list[str]:
+    """
+    생성된 slug가 실제 문서 파일(ko/en)로 해석 가능한지 검사한다.
+    누락 slug 목록을 반환한다.
+    """
+    missing: list[str] = []
+    for slug in _collect_slugs(items):
+        rel = _slug_to_relative_md(slug, section)
+        if rel is None:
+            missing.append(slug)
+            continue
+        ko_path = KO_DOCS_ROOT / section / rel
+        en_path = EN_DOCS_ROOT / section / rel
+        if not ko_path.exists() and not en_path.exists():
+            missing.append(slug)
+    return sorted(set(missing))
 
 
 # ── 레이블 수집 및 번역 ───────────────────────────────────────────────────────
@@ -267,24 +371,33 @@ def main() -> int:
         print("  → fetch.py 실행 시 자동 생성됩니다 (--no-nav 없이).", file=sys.stderr)
         return 2
 
-    nav_data: list = json.loads(nav_file.read_text(encoding="utf-8"))
+    parsed = json.loads(nav_file.read_text(encoding="utf-8"))
+    meta_base_path: str | None = None
+    if isinstance(parsed, dict):
+        nav_data = parsed.get("items")
+        if not isinstance(nav_data, list):
+            print(f"[ERROR] Invalid nav JSON format: {nav_file}", file=sys.stderr)
+            return 2
+        meta = parsed.get("_meta") or parsed.get("meta")
+        if isinstance(meta, dict):
+            candidate = meta.get("base_path")
+            if isinstance(candidate, str) and candidate.strip().startswith("/"):
+                meta_base_path = candidate.strip().rstrip("/") or "/"
+    elif isinstance(parsed, list):
+        nav_data = parsed
+    else:
+        print(f"[ERROR] Invalid nav JSON format: {nav_file}", file=sys.stderr)
+        return 2
+
     print(
         f"[sidebar] Loaded: {nav_file.name} "
         f"({len(nav_data)} top-level groups)",
         flush=True,
     )
 
-    # base_path 추론 (첫 번째 URL에서)
-    base_path = f"/{args.section}"
-    for item in nav_data:
-        url = item.get("url") or next(
-            (c.get("url") for c in item.get("items", []) if c.get("url")), None
-        )
-        if url:
-            parts = urlparse(url).path.strip("/").split("/")
-            if parts:
-                base_path = "/" + parts[0]
-            break
+    # base_path 추론: meta(base_path) 우선, 없으면 nav URL 공통 prefix 사용
+    fallback_base = f"/{args.section.strip().strip('/')}"
+    base_path = meta_base_path or infer_base_path_from_nav(nav_data, fallback_base)
 
     print(f"[sidebar] Base path: {base_path}", flush=True)
 
@@ -310,6 +423,22 @@ def main() -> int:
     # JSON 생성
     items_data = items_to_sidebar_data(nav_data, base_path, args.section, ko)
     section_data = build_section_data(section_label_en, section_label_ko, items_data)
+
+    missing_slugs = validate_generated_slugs(items_data, args.section)
+    if missing_slugs:
+        preview = "\n".join(f"  - {slug}" for slug in missing_slugs[:20])
+        print(
+            "[ERROR] Generated sidebar has slugs without matching docs files.\n"
+            f"{preview}",
+            file=sys.stderr,
+        )
+        if len(missing_slugs) > 20:
+            print(f"  ... and {len(missing_slugs) - 20} more", file=sys.stderr)
+        print(
+            "[ERROR] Check nav base_path inference or docs output paths before updating sidebar.",
+            file=sys.stderr,
+        )
+        return 1
 
     if args.dry_run:
         print("\n" + "─" * 60)
