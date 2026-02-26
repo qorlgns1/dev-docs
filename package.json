@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -22,5 +24,13 @@
     "@vercel/analytics": "^1.6.1",
     "astro": "^5.6.1",
     "sharp": "^0.34.2"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,tsx,json,md,mdx,yml,yaml,css,scss,html}": "prettier --write"
   }
 }

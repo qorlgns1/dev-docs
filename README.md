@@ -8,10 +8,10 @@
 
 ## 문서 구성
 
-| 섹션 | 원문 출처 | 한국어 경로 | 영어 경로 |
-|------|----------|------------|----------|
-| Codex | [developers.openai.com/codex](https://developers.openai.com/codex/) | `/codex/` | `/en/codex/` |
-| Next.js | [nextjs.org/docs](https://nextjs.org/docs) | `/nextjs/` | `/en/nextjs/` |
+| 섹션    | 원문 출처                                                           | 한국어 경로 | 영어 경로     |
+| ------- | ------------------------------------------------------------------- | ----------- | ------------- |
+| Codex   | [developers.openai.com/codex](https://developers.openai.com/codex/) | `/codex/`   | `/en/codex/`  |
+| Next.js | [nextjs.org/docs](https://nextjs.org/docs)                          | `/nextjs/`  | `/en/nextjs/` |
 
 ## 디렉토리 구조
 
@@ -38,6 +38,13 @@ pnpm install
 pnpm dev       # http://localhost:4321
 pnpm build
 ```
+
+## Git Hook
+
+`husky` + `lint-staged`가 설정되어 있어 push 전 기본 품질 게이트가 자동 실행됩니다.
+
+- `pre-commit`: staged 파일에 `prettier --write`
+- `pre-push`: `pnpm build` (실패 시 push 차단)
 
 ## Prerequisites
 
