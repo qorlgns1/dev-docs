@@ -1,0 +1,230 @@
+---
+title: "Pages"
+description: "NextAuth.js automatically creates simple, unbranded authentication pages for handling Sign in, Sign out, Email Verification and displaying error messa..."
+---
+
+Source URL: https://next-auth.js.org/configuration/pages
+
+# Pages | NextAuth.js
+
+Version: v4
+
+NextAuth.js automatically creates simple, unbranded authentication pages for handling Sign in, Sign out, Email Verification and displaying error messages.
+
+The options displayed on the sign-up page are automatically generated based on the providers specified in the options passed to NextAuth.js.
+
+To add a custom login page, you can use the `pages` option:
+
+pages/api/auth/[...nextauth].js
+
+```
+    ...
+      pages: {
+        signIn: '/auth/signin',
+        signOut: '/auth/signout',
+        error: '/auth/error', // Error code passed in query string as ?error=
+        verifyRequest: '/auth/verify-request', // (used for check email message)
+        newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+      }
+    ...
+
+```
+
+note
+
+When using this configuration, ensure that these pages actually exist. For example `error: '/auth/error'` refers to a page file at `pages/auth/error.js`.
+
+## Error codes[​](https://next-auth.js.org/configuration/pages#error-codes "Direct link to heading")
+
+We purposefully restrict the returned error codes for increased security.
+
+### Error page[​](https://next-auth.js.org/configuration/pages#error-page "Direct link to heading")
+
+The following errors are passed as error query parameters to the default or overridden error page:
+
+- **Configuration** : There is a problem with the server configuration. Check if your [options](https://next-auth.js.org/configuration/options#options) are correct.
+- **AccessDenied** : Usually occurs, when you restricted access through the [`signIn` callback](https://next-auth.js.org/configuration/callbacks#sign-in-callback), or [`redirect` callback](https://next-auth.js.org/configuration/callbacks#redirect-callback)
+- **Verification** : Related to the Email provider. The token has expired or has already been used
+- **Default** : Catch all, will apply, if none of the above matched
+
+Example: `/auth/error?error=Configuration`
+
+### Sign-in page[​](https://next-auth.js.org/configuration/pages#sign-in-page "Direct link to heading")
+
+The following errors are passed as error query parameters to the default or overridden sign-in page:
+
+- **OAuthSignin** : Error in constructing an authorization URL ([1](https://github.com/nextauthjs/next-auth/blob/457952bb5abf08b09861b0e5da403080cd5525be/src/server/lib/signin/oauth.js), [2](https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/core/lib/oauth/pkce-handler.ts), [3](https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/core/lib/oauth/state-handler.ts)),
+- **OAuthCallback** : Error in handling the response ([1](https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/core/lib/oauth/callback.ts), [2](https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/core/lib/oauth/pkce-handler.ts), [3](https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/core/lib/oauth/state-handler.ts)) from an OAuth provider.
+- **OAuthCreateAccount** : Could not create OAuth provider user in the database.
+- **EmailCreateAccount** : Could not create email provider user in the database.
+- **Callback** : Error in the [OAuth callback handler route](https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/core/routes/callback.ts)
+- **OAuthAccountNotLinked** : If the email on the account is already linked, but not with this OAuth account
+- **EmailSignin** : Sending the e-mail with the verification token failed
+- **CredentialsSignin** : The `authorize` callback returned `null` in the [Credentials provider](https://next-auth.js.org/providers/credentials). We don't recommend providing information about which part of the credentials were wrong, as it might be abused by malicious hackers.
+- **SessionRequired** : The content of this page requires you to be signed in at all times. See [useSession](https://next-auth.js.org/getting-started/client#require-session) for configuration.
+- **Default** : Catch all, will apply, if none of the above matched
+
+Example: `/auth/signin?error=Default`
+
+## Theming[​](https://next-auth.js.org/configuration/pages#theming "Direct link to heading")
+
+By default, the built-in pages will follow the system theme, utilizing the [`prefer-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) Media Query. You can override this to always use a dark or light theme, through the [`theme.colorScheme` option](https://next-auth.js.org/configuration/options#theme).
+
+In addition, you can define a `theme.brandColor` to define a custom accent color for these built-in pages. You can also define a URL to a logo in `theme.logo` which will be rendered above the primary card in these pages.
+
+#### Sign In[​](https://next-auth.js.org/configuration/pages#sign-in "Direct link to heading")
+
+![Customized Signin Page](https://next-auth.js.org/assets/images/pages_signin-940a5db521096f0bace59b44ecfd78b1.png)
+
+#### Sign Out[​](https://next-auth.js.org/configuration/pages#sign-out "Direct link to heading")
+
+![Customized Signout Page](https://next-auth.js.org/assets/images/pages_signout-0d202813326a52aa99579ce9894b9064.png)
+
+## Examples[​](https://next-auth.js.org/configuration/pages#examples "Direct link to heading")
+
+### OAuth Sign in[​](https://next-auth.js.org/configuration/pages#oauth-sign-in "Direct link to heading")
+
+In order to get the available authentication providers and the URLs to use for them, you can make a request to the API endpoint `/api/auth/providers`:
+
+pages/auth/signin.tsx
+
+```
+    import type {
+      GetServerSidePropsContext,
+      InferGetServerSidePropsType,
+    } from "next"
+    import { getProviders, signIn } from "next-auth/react"
+    import { getServerSession } from "next-auth/next"
+    import { authOptions } from "../api/auth/[...nextauth]"
+
+    export default function SignIn({
+      providers,
+    }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+      return (
+        <>
+          {Object.values(providers).map((provider) => (
+              <button onClick={() => signIn(provider.id)}>
+                Sign in with {provider.name}
+              </button>
+          ))}
+        </>
+      )
+    }
+
+    export async function getServerSideProps(context: GetServerSidePropsContext) {
+      const session = await getServerSession(context.req, context.res, authOptions)
+
+      // If the user is already logged in, redirect.
+      // Note: Make sure not to redirect to the same page
+      // To avoid an infinite loop!
+      if (session) {
+        return { redirect: { destination: "/" } }
+      }
+
+      const providers = await getProviders()
+
+      return {
+        props: { providers: providers ?? [] },
+      }
+    }
+
+```
+
+There is another, more fully styled example signin page available [here](https://github.com/ndom91/next-auth-example-sign-in-page).
+
+### Email Sign in[​](https://next-auth.js.org/configuration/pages#email-sign-in "Direct link to heading")
+
+If you create a custom sign in form for email sign in, you will need to submit both fields for the **email** address and **csrfToken** from **/api/auth/csrf** in a POST request to **/api/auth/signin/email**.
+
+pages/auth/email-signin.tsx
+
+```
+    import type {
+      GetServerSidePropsContext,
+      InferGetServerSidePropsType,
+    } from "next"
+    import { getCsrfToken } from "next-auth/react"
+
+    export default function SignIn({
+      csrfToken,
+    }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+      return (
+        <form method="post" action="/api/auth/signin/email">
+          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+          <label>
+            Email address
+            <input type="email" id="email" name="email" />
+          </label>
+          <button type="submit">Sign in with Email</button>
+        </form>
+      )
+    }
+
+    export async function getServerSideProps(context: GetServerSidePropsContext) {
+      const csrfToken = await getCsrfToken(context)
+      return {
+        props: { csrfToken },
+      }
+    }
+
+```
+
+You can also use the `signIn()` function which will handle obtaining the CSRF token for you:
+
+```
+    signIn("email", { email: "jsmith@example.com" })
+
+```
+
+### Credentials Sign in[​](https://next-auth.js.org/configuration/pages#credentials-sign-in "Direct link to heading")
+
+If you create a sign in form for credentials based authentication, you will need to pass a **csrfToken** from **/api/auth/csrf** in a POST request to **/api/auth/callback/credentials**.
+
+pages/auth/credentials-signin.tsx
+
+```
+    import type {
+      GetServerSidePropsContext,
+      InferGetServerSidePropsType,
+    } from "next"
+    import { getCsrfToken } from "next-auth/react"
+
+    export default function SignIn({
+      csrfToken,
+    }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+      return (
+        <form method="post" action="/api/auth/callback/credentials">
+          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+          <label>
+            Username
+            <input name="username" type="text" />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" />
+          </label>
+          <button type="submit">Sign in</button>
+        </form>
+      )
+    }
+
+    export async function getServerSideProps(context: GetServerSidePropsContext) {
+      return {
+        props: {
+          csrfToken: await getCsrfToken(context),
+        },
+      }
+    }
+
+```
+
+You can also use the `signIn()` function which will handle obtaining the CSRF token for you:
+
+```
+    signIn("credentials", { username: "jsmith", password: "1234" })
+
+```
+
+tip
+
+Remember to put any custom pages in a folder outside **/pages/api** which is reserved for API code. As per the examples above, a location convention suggestion is `pages/auth/...`.

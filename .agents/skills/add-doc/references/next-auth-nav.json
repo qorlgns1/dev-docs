@@ -1,0 +1,14 @@
+[
+  {
+    "label": "v4",
+    "url": "https://next-auth.js.org/getting-started/introduction"
+  },
+  {
+    "label": "v3",
+    "url": "https://next-auth.js.org/v3/getting-started/introduction"
+  },
+  {
+    "label": "All Releases",
+    "url": "https://github.com/nextauthjs/next-auth/releases"
+  }
+]

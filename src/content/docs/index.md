@@ -30,6 +30,7 @@ hero:
 - [React Query](/react-query/latest/)
 - [Sentry Next.js](/sentry-nextjs/)
 - [BullMQ](/bullmq/)
+- [Next Auth](/next-auth/)
 - [next-intl](/next-intl/)
 - [Playwright](/playwright/)
 - [Zod](/zod/)

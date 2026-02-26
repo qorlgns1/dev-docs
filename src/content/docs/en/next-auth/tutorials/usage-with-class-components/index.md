@@ -1,0 +1,67 @@
+---
+title: "Usage with class components"
+description: "If you want to use the  hook in your class components you can do so with the help of a higher order component or with a render prop."
+---
+
+Source URL: https://next-auth.js.org/tutorials/usage-with-class-components
+
+# Usage with class components | NextAuth.js
+
+Version: v4
+
+If you want to use the `useSession()` hook in your class components you can do so with the help of a higher order component or with a render prop.
+
+## Higher Order Component[​](https://next-auth.js.org/tutorials/usage-with-class-components#higher-order-component "Direct link to heading")
+
+```
+    import { useSession } from "next-auth/react"
+
+    const withSession = (Component) => (props) => {
+      const session = useSession()
+
+      // if the component has a render property, we are good
+      if (Component.prototype.render) {
+        return <Component session={session} {...props} />
+      }
+
+      // if the passed component is a function component, there is no need for this wrapper
+      throw new Error(
+        [
+          "You passed a function component, `withSession` is not needed.",
+          "You can `useSession` directly in your component.",
+        ].join("\n")
+      )
+    }
+
+    // Usage
+    class ClassComponent extends React.Component {
+      render() {
+        const { data: session, status } = this.props.session
+        return null
+      }
+    }
+
+    const ClassComponentWithSession = withSession(ClassComponent)
+
+```
+
+## Render Prop[​](https://next-auth.js.org/tutorials/usage-with-class-components#render-prop "Direct link to heading")
+
+```
+    import { useSession } from "next-auth/react"
+
+    const UseSession = ({ children }) => {
+      const session = useSession()
+      return children(session)
+    }
+
+    // Usage
+    class ClassComponent extends React.Component {
+      render() {
+        return (
+            {(session) => <pre>{JSON.stringify(session, null, 2)}</pre>}
+        )
+      }
+    }
+
+```

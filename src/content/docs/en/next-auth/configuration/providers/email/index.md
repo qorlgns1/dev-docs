@@ -1,0 +1,70 @@
+---
+title: "Email"
+description: 'The Email provider sends "magic links" via email that the user can click on to sign in. You have likely seen them before if you have used software lik...'
+---
+
+Source URL: https://next-auth.js.org/configuration/providers/email
+
+# Email | NextAuth.js
+
+Version: v4
+
+### Install nodemailer[​](https://next-auth.js.org/configuration/providers/email#install-nodemailer "Direct link to heading")
+
+- npm
+- yarn
+- pnpm
+
+```
+    npm install nodemailer
+```
+
+```
+    yarn add nodemailer
+```
+
+```
+    pnpm add nodemailer
+```
+
+### How to[​](https://next-auth.js.org/configuration/providers/email#how-to "Direct link to heading")
+
+The Email provider sends "magic links" via email that the user can click on to sign in. You have likely seen them before if you have used software like Slack.
+
+Adding support for signing in via email in addition to one or more OAuth services provides a way for users to sign in if they lose access to their OAuth account (e.g. if it is locked or deleted).
+
+Configuration is similar to other providers, but the options are different:
+
+pages/api/auth/[...nextauth].js
+
+```
+    import EmailProvider from "next-auth/providers/email"
+    ...
+    providers: [
+      EmailProvider({
+        server: process.env.EMAIL_SERVER,
+        from: process.env.EMAIL_FROM,
+        // maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
+      }),
+    ],
+    ...
+
+```
+
+See the [Email provider documentation](https://next-auth.js.org/providers/email) for more information on how to configure email sign in.
+
+note
+
+The email provider requires a database, it cannot be used without one.
+
+### Options[​](https://next-auth.js.org/configuration/providers/email#options "Direct link to heading")
+
+| Name                    | Description                                                                                                  | Type                             | Required |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------- | -------- |
+| id                      | Unique ID for the provider                                                                                   | `string`                         | No       |
+| name                    | Descriptive name for the provider                                                                            | `string`                         | No       |
+| type                    | Type of provider, in this case `email`                                                                       | `"email"`                        | No       |
+| server                  | Path or object pointing to the email server                                                                  | `string` or `Object`             | No       |
+| sendVerificationRequest | Callback to execute to send a verification request, default uses nodemailer                                  | `(params) => Promise<undefined>` | No       |
+| from                    | The email address from which emails are sent, default: "[no-reply@example.com](mailto:no-reply@example.com)" | `string`                         | No       |
+| maxAge                  | How long until the e-mail can be used to log the user in seconds. Defaults to 1 day                          | `number`                         | No       |

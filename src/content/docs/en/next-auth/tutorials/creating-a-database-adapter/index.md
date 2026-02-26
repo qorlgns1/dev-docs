@@ -1,0 +1,98 @@
+---
+title: "Create an adapter"
+description: "Using a custom adapter you can connect to any database back-end or even several different databases. Official adapters created and maintained by our c..."
+---
+
+Source URL: https://next-auth.js.org/tutorials/creating-a-database-adapter
+
+# Create an adapter | NextAuth.js
+
+Version: v4
+
+Using a custom adapter you can connect to any database back-end or even several different databases. Official adapters created and maintained by our community can be found in the [adapters](https://github.com/nextauthjs/next-auth/tree/main/packages) packages. Feel free to add a custom adapter from your project to the repository, or even become a maintainer of a certain adapter. Custom adapters can still be created and used in a project without being added to the repository.
+
+## How to create an adapter[​](https://next-auth.js.org/tutorials/creating-a-database-adapter#how-to-create-an-adapter "Direct link to heading")
+
+For more information about creating an adapter, see [this guide](https://authjs.dev/guides/creating-a-database-adapter).
+
+_See the code below for practical example._
+
+### Example code[​](https://next-auth.js.org/tutorials/creating-a-database-adapter#example-code "Direct link to heading")
+
+```
+    /** @return { import("next-auth/adapters").Adapter } */
+    export default function MyAdapter(client, options = {}) {
+      return {
+        async createUser(user) {
+          return
+        },
+        async getUser(id) {
+          return
+        },
+        async getUserByEmail(email) {
+          return
+        },
+        async getUserByAccount({ providerAccountId, provider }) {
+          return
+        },
+        async updateUser(user) {
+          return
+        },
+        async deleteUser(userId) {
+          return
+        },
+        async linkAccount(account) {
+          return
+        },
+        async unlinkAccount({ providerAccountId, provider }) {
+          return
+        },
+        async createSession({ sessionToken, userId, expires }) {
+          return
+        },
+        async getSessionAndUser(sessionToken) {
+          return
+        },
+        async updateSession({ sessionToken }) {
+          return
+        },
+        async deleteSession(sessionToken) {
+          return
+        },
+        async createVerificationToken({ identifier, expires, token }) {
+          return
+        },
+        async useVerificationToken({ identifier, token }) {
+          return
+        },
+      }
+    }
+
+```
+
+### Required methods[​](https://next-auth.js.org/tutorials/creating-a-database-adapter#required-methods "Direct link to heading")
+
+These methods are required for all sign in flows:
+
+- `createUser`
+- `getUser`
+- `getUserByEmail`
+- `getUserByAccount`
+- `linkAccount`
+- `createSession`
+- `getSessionAndUser`
+- `updateSession`
+- `deleteSession`
+- `updateUser`
+
+These methods are required to support email / passwordless sign in:
+
+- `createVerificationToken`
+- `useVerificationToken`
+
+### Unimplemented methods[​](https://next-auth.js.org/tutorials/creating-a-database-adapter#unimplemented-methods "Direct link to heading")
+
+These methods will be required in a future release, but are not yet invoked:
+
+- `deleteUser`
+- `unlinkAccount`

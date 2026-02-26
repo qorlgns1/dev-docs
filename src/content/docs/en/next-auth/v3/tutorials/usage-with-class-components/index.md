@@ -1,0 +1,69 @@
+---
+title: "Usage with class components"
+description: "If you want to use the  hook in your class components you can do so with the help of a higher order component or with a render prop."
+---
+
+Source URL: https://next-auth.js.org/v3/tutorials/usage-with-class-components
+
+# Usage with class components | NextAuth.js
+
+Version: v3
+
+If you want to use the `useSession()` hook in your class components you can do so with the help of a higher order component or with a render prop.
+
+## Higher Order Component[​](https://next-auth.js.org/v3/tutorials/usage-with-class-components#higher-order-component "Direct link to heading")
+
+```
+    import { useSession } from "next-auth/client"
+
+    const withSession = (Component) => (props) => {
+      const [session, loading] = useSession()
+
+      // if the component has a render property, we are good
+      if (Component.prototype.render) {
+        return <Component session={session} loading={loading} {...props} />
+      }
+
+      // if the passed component is a function component, there is no need for this wrapper
+      throw new Error(
+        [
+          "You passed a function component, `withSession` is not needed.",
+          "You can `useSession` directly in your component.",
+        ].join("\n")
+      )
+    }
+
+    // Usage
+    class ClassComponent extends React.Component {
+      render() {
+        const { session, loading } = this.props
+        return null
+      }
+    }
+
+    const ClassComponentWithSession = withSession(ClassComponent)
+
+```
+
+## Render Prop[​](https://next-auth.js.org/v3/tutorials/usage-with-class-components#render-prop "Direct link to heading")
+
+```
+    import { useSession } from "next-auth/client"
+
+    const UseSession = ({ children }) => {
+      const [session, loading] = useSession()
+      return children({ session, loading })
+    }
+
+    // Usage
+    class ClassComponent extends React.Component {
+      render() {
+        return (
+            {({ session, loading }) => (
+              <pre>{JSON.stringify(session, null, 2)}</pre>
+            )}
+        )
+      }
+    }
+
+```

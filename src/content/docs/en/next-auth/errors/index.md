@@ -1,0 +1,189 @@
+---
+title: "Errors"
+description: "This is a list of errors output from NextAuth.js."
+---
+
+Source URL: https://next-auth.js.org/errors
+
+# Errors | NextAuth.js
+
+Version: v4
+
+This is a list of errors output from NextAuth.js.
+
+All errors indicate an unexpected problem, you should not expect to see errors.
+
+If you are seeing any of these errors in the console, something is wrong.
+
+---
+
+## Client[​](https://next-auth.js.org/errors#client "Direct link to heading")
+
+These errors are returned from the client. As the client is [Universal JavaScript (or "Isomorphic JavaScript")](https://en.wikipedia.org/wiki/Isomorphic_JavaScript) it can be run on the client or server, so these errors can occur both in the terminal and in the browser console.
+
+#### CLIENT_SESSION_ERROR[​](https://next-auth.js.org/errors#client_session_error "Direct link to heading")
+
+This error occurs when the `SessionProvider` Context has a problem fetching session data.
+
+#### CLIENT_FETCH_ERROR[​](https://next-auth.js.org/errors#client_fetch_error "Direct link to heading")
+
+This can happen for multiple reasons. Make sure that you [configured](https://next-auth.js.org/configuration/initialization) NextAuth.js correctly, and if you used [`NEXTAUTH_URL`](https://next-auth.js.org/configuration/options#nextauth_url) that it's correctly set.
+
+---
+
+## Server[​](https://next-auth.js.org/errors#server "Direct link to heading")
+
+These errors are displayed on the terminal.
+
+### OAuth[​](https://next-auth.js.org/errors#oauth "Direct link to heading")
+
+#### OAUTH_GET_ACCESS_TOKEN_ERROR[​](https://next-auth.js.org/errors#oauth_get_access_token_error "Direct link to heading")
+
+This occurs when there was an error in the POST request to the OAuth provider and we were not able to retrieve the access token.
+
+Please double check your provider settings.
+
+#### OAUTH_V1_GET_ACCESS_TOKEN_ERROR[​](https://next-auth.js.org/errors#oauth_v1_get_access_token_error "Direct link to heading")
+
+This error is explicitly related to older OAuth v1.x providers, if you are using one of these, please double check all available settings.
+
+#### OAUTH_GET_PROFILE_ERROR[​](https://next-auth.js.org/errors#oauth_get_profile_error "Direct link to heading")
+
+N/A
+
+#### OAUTH_PARSE_PROFILE_ERROR[​](https://next-auth.js.org/errors#oauth_parse_profile_error "Direct link to heading")
+
+This error is a result of either a problem with the provider response or the user canceling the action with the provider, unfortunately, we can't discern which with the information we have.
+
+This error should also log the exception and available `profileData` to further aid debugging.
+
+#### OAUTH_CALLBACK_HANDLER_ERROR[​](https://next-auth.js.org/errors#oauth_callback_handler_error "Direct link to heading")
+
+This error will occur when there was an issue parsing the JSON request body, for example.
+
+There should also be further details logged when this occurs, such as the error is thrown, and the request body itself to aid in debugging.
+
+---
+
+### Signin / Callback[​](https://next-auth.js.org/errors#signin--callback "Direct link to heading")
+
+#### SIGNIN_OAUTH_ERROR[​](https://next-auth.js.org/errors#signin_oauth_error "Direct link to heading")
+
+This error occurs during the redirection to the authorization URL of the OAuth provider. Possible causes:
+
+1. Cookie handling Either PKCE code verifier or the generation of the CSRF token hash in the internal state failed.
+
+If set, check your [`cookies` configuration](https://next-auth.js.org/configuration/options#cookies), and make sure the browser is not blocking/restricting cookies.
+
+2. OAuth misconfiguration
+
+Please check your OAuth provider and make sure your URLs and other options are correctly set.
+
+If you are using an OAuth v1 provider, check your OAuth v1 provider settings, especially the OAuth token and OAuth token secret.
+
+3. `openid-client` version mismatch
+
+If you are seeing `expected 200 OK with body but no body was returned`, it might have happened due to `openid-client` (which is a dependency we rely on) node version mismatch. For instance, `openid-client` requires `>=14.2.0` for `lts/fermium` and has similar limits for the other versions. For the full list of the compatible node versions please see [package.json](https://github.com/panva/node-openid-client/blob/2a84e46992e1ebeaf685c3f87b65663d126e81aa/package.json#L78).
+
+#### OAUTH_CALLBACK_ERROR[​](https://next-auth.js.org/errors#oauth_callback_error "Direct link to heading")
+
+This can occur during the handling of the callback if the `code_verifier` cookie was not found or an invalid state was returned from the OAuth provider.
+
+#### SIGNIN_EMAIL_ERROR[​](https://next-auth.js.org/errors#signin_email_error "Direct link to heading")
+
+This error can occur when a user tries to sign in via an email link; for example, if the email token could not be generated or the verification request failed.
+
+Please double check your email settings.
+
+#### CALLBACK_EMAIL_ERROR[​](https://next-auth.js.org/errors#callback_email_error "Direct link to heading")
+
+This can occur during the email callback process. Specifically, if there was an error signing the user in via email, encoding the jwt, etc.
+
+Please double check your Email settings.
+
+#### EMAIL_REQUIRES_ADAPTER_ERROR[​](https://next-auth.js.org/errors#email_requires_adapter_error "Direct link to heading")
+
+The Email authentication provider can only be used if a database is configured.
+
+This is required to store the verification token. Please see the [email provider](https://next-auth.js.org/providers/email#configuration) for more details.
+
+#### CALLBACK_CREDENTIALS_JWT_ERROR[​](https://next-auth.js.org/errors#callback_credentials_jwt_error "Direct link to heading")
+
+The Credentials Provider can only be used if JSON Web Tokens are used for sessions.
+
+JSON Web Tokens are used for Sessions by default if you have not specified a database. However, if you are using a database, then Database Sessions are enabled by default and you need to [explicitly enable JWT Sessions](https://next-auth.js.org/configuration/options#session) to use the Credentials Provider.
+
+If you are using a Credentials Provider, NextAuth.js will not persist users or sessions in a database - user accounts used with the Credentials Provider must be created and managed outside of NextAuth.js.
+
+In _most cases_ it does not make sense to specify a database in NextAuth.js options and support a Credentials Provider.
+
+#### CALLBACK_CREDENTIALS_HANDLER_ERROR[​](https://next-auth.js.org/errors#callback_credentials_handler_error "Direct link to heading")
+
+This error occurs when there was no `authorize()` handler defined on the credential authentication provider.
+
+#### PKCE_ERROR[​](https://next-auth.js.org/errors#pkce_error "Direct link to heading")
+
+The provider you tried to use failed when setting [PKCE or Proof Key for Code Exchange](https://tools.ietf.org/html/rfc7636#section-4). The `code_verifier` is saved in a cookie called (by default) `__Secure-next-auth.pkce.code_verifier` which expires after 15 minutes. Check if `cookies.pkceCodeVerifier` is configured correctly.
+
+The default `code_challenge_method` is `"S256"`. This is currently not configurable to `"plain"`, [as per RFC7636](https://datatracker.ietf.org/doc/html/rfc7636#section-4.2):
+
+> If the client is capable of using "S256", it MUST use "S256", as S256" is Mandatory To Implement (MTI) on the server.
+
+#### INVALID_CALLBACK_URL_ERROR[​](https://next-auth.js.org/errors#invalid_callback_url_error "Direct link to heading")
+
+The `callbackUrl` provided was either invalid or not defined. See [specifying a `callbackUrl`](https://next-auth.js.org/getting-started/client#specifying-a-callbackurl) for more information.
+
+---
+
+### Session Handling[​](https://next-auth.js.org/errors#session-handling "Direct link to heading")
+
+#### JWT_SESSION_ERROR[​](https://next-auth.js.org/errors#jwt_session_error "Direct link to heading")
+
+JWEDecryptionFailed: NextAuth.js needs `NEXTAUTH_SECRET` environment variable to encrypt JWTs and to hash email verification tokens. This can also occur if you have changed the `NEXTAUTH_SECRET`, but you still had an active session with the old secret. Logging in again solves the issue.
+
+JWTKeySupport: the key does not support HS512 verify algorithm
+
+The algorithm used for generating your key isn't listed as supported. You can generate a HS512 key using
+
+```
+      jose newkey -s 512 -t oct -a HS512
+
+```
+
+#### SESSION_ERROR[​](https://next-auth.js.org/errors#session_error "Direct link to heading")
+
+---
+
+### Signout[​](https://next-auth.js.org/errors#signout "Direct link to heading")
+
+#### SIGNOUT_ERROR[​](https://next-auth.js.org/errors#signout_error "Direct link to heading")
+
+This error occurs when there was an issue deleting the session from the database, for example.
+
+---
+
+### Configuration[​](https://next-auth.js.org/errors#configuration "Direct link to heading")
+
+#### MISSING_NEXTAUTH_API_ROUTE_ERROR[​](https://next-auth.js.org/errors#missing_nextauth_api_route_error "Direct link to heading")
+
+This error happens when `[...nextauth].js` file is not found inside `pages/api/auth`.
+
+Make sure the file is there and the filename is written correctly.
+
+#### NO_SECRET[​](https://next-auth.js.org/errors#no_secret "Direct link to heading")
+
+In production, we expect you to define a `secret` property in your configuration. In development, this is shown as a warning for convenience. [Read more](https://next-auth.js.org/configuration/options#secret)
+
+#### AUTH_ON_ERROR_PAGE_ERROR[​](https://next-auth.js.org/errors#auth_on_error_page_error "Direct link to heading")
+
+You have a custom error page defined that was rendered due to an error, but the page also required authentication. To avoid an infinite redirect loop, NextAuth.js bailed out and rendered its default error page instead.
+
+If you are using a Middleware, make sure you include the same `pages` configuration in your `middleware.ts` and `[...nextauth].ts` files. Or use the `matcher` option to only require authentication for certain sites (and exclude your custom error page).
+
+If you do not use a Middleware, make sure you don't try redirecting the user to the sign-in page when hitting your custom error page.
+
+Useful links:
+
+- <https://next-auth.js.org/configuration/nextjs#pages>
+- <https://next-auth.js.org/configuration/pages>
+- <https://nextjs.org/docs/advanced-features/middleware#matcher>

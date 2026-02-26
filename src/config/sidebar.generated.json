@@ -4707,5 +4707,12 @@
         }
       }
     ]
+  },
+  {
+    "label": "Next Auth",
+    "translations": {
+      "en": "Next Auth"
+    },
+    "items": []
   }
 ]
