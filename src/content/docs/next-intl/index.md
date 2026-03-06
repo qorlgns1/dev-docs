@@ -1,6 +1,6 @@
 ---
-title: 'Next.js 국제화(i18n)'
-description: '은 Next.js용 국제화 툴킷으로, 다음을 도와줍니다:'
+title: "Next.js 국제화(i18n)"
+description: "`next-intl`은 Next.js용 국제화 툴킷으로, 다음을 도와줍니다:"
 ---
 
 출처 URL: https://next-intl.dev/docs
@@ -11,9 +11,9 @@ description: '은 Next.js용 국제화 툴킷으로, 다음을 도와줍니다:'
 
 `next-intl`은 Next.js용 국제화 툴킷으로, 다음을 도와줍니다:
 
-  1. 로컬라이즈된 번역 렌더링
-  2. 날짜, 숫자 등 포맷팅
-  3. 국제화 라우팅 처리
+1. 로컬라이즈된 번역 렌더링
+2. 날짜, 숫자 등 포맷팅
+3. 국제화 라우팅 처리
 
 … 로컬라이즈된 앱을 구축하기 위한 필수 기반을 제공합니다.
 
@@ -28,4 +28,3 @@ description: '은 Next.js용 국제화 툴킷으로, 다음을 도와줍니다:'
 [예제 앱](https://next-intl.dev/examples)을 살펴보며 `next-intl`로 무엇을 만들 수 있는지 더 알아보세요.
 
 [App Router](https://next-intl.dev/docs/getting-started/app-router "App Router")
-

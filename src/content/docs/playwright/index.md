@@ -1,30 +1,30 @@
 ---
-title: "Installation"
-description: "Playwright Test is an end-to-end test framework for modern web apps. It bundles test runner, assertions, isolation, parallelization and rich tooling. ..."
+title: "설치"
+description: "Playwright Test는 최신 웹 앱을 위한 엔드 투 엔드 테스트 프레임워크입니다. 테스트 러너, assertion, 격리, 병렬화, 그리고 풍부한 도구를 함께 제공합니다. ..."
 ---
 
-Source URL: https://playwright.dev/docs/intro
+원본 URL: https://playwright.dev/docs/intro
 
-# Installation | Playwright
+# 설치 | Playwright
 
-## Introduction[​](https://playwright.dev/docs/intro#introduction "Direct link to Introduction")
+## 소개[​](https://playwright.dev/docs/intro#introduction "소개로 바로 가기")
 
-Playwright Test is an end-to-end test framework for modern web apps. It bundles test runner, assertions, isolation, parallelization and rich tooling. Playwright supports Chromium, WebKit and Firefox on Windows, Linux and macOS, locally or in CI, headless or headed, with native mobile emulation for Chrome (Android) and Mobile Safari.
+Playwright Test는 최신 웹 앱을 위한 엔드 투 엔드 테스트 프레임워크입니다. 테스트 러너, assertion, 격리, 병렬화, 그리고 풍부한 도구를 함께 제공합니다. Playwright는 Windows, Linux, macOS에서 Chromium, WebKit, Firefox를 지원하며, 로컬 또는 CI 환경, headless 또는 headed 모드에서 실행할 수 있고, Chrome(Android) 및 Mobile Safari를 위한 네이티브 모바일 에뮬레이션도 지원합니다.
 
-**You will learn**
+**학습 내용**
 
-- [How to install Playwright](https://playwright.dev/docs/intro#installing-playwright)
-- [What's installed](https://playwright.dev/docs/intro#whats-installed)
-- [How to run the example test](https://playwright.dev/docs/intro#running-the-example-test)
-- [How to open the HTML test report](https://playwright.dev/docs/intro#html-test-reports)
+- [Playwright 설치 방법](https://playwright.dev/docs/intro#installing-playwright)
+- [설치되는 항목](https://playwright.dev/docs/intro#whats-installed)
+- [예제 테스트 실행 방법](https://playwright.dev/docs/intro#running-the-example-test)
+- [HTML 테스트 리포트 여는 방법](https://playwright.dev/docs/intro#html-test-reports)
 
-## Installing Playwright[​](https://playwright.dev/docs/intro#installing-playwright "Direct link to Installing Playwright")
+## Playwright 설치하기[​](https://playwright.dev/docs/intro#installing-playwright "Playwright 설치하기로 바로 가기")
 
-Get started by installing Playwright using one of the following methods.
+다음 방법 중 하나로 Playwright를 설치해 시작하세요.
 
-### Using npm, yarn or pnpm[​](https://playwright.dev/docs/intro#using-npm-yarn-or-pnpm "Direct link to Using npm, yarn or pnpm")
+### npm, yarn 또는 pnpm 사용[​](https://playwright.dev/docs/intro#using-npm-yarn-or-pnpm "npm, yarn 또는 pnpm 사용으로 바로 가기")
 
-The command below either initializes a new project or adds Playwright to an existing one.
+아래 명령은 새 프로젝트를 초기화하거나 기존 프로젝트에 Playwright를 추가합니다.
 
 - npm
 - yarn
@@ -45,22 +45,22 @@ The command below either initializes a new project or adds Playwright to an exis
 
 ```
 
-When prompted, choose / confirm:
+프롬프트가 표시되면 다음을 선택하거나 확인하세요.
 
-- TypeScript or JavaScript (default: TypeScript)
-- Tests folder name (default: `tests`, or `e2e` if `tests` already exists)
-- Add a GitHub Actions workflow (recommended for CI)
-- Install Playwright browsers (default: yes)
+- TypeScript 또는 JavaScript (기본값: TypeScript)
+- 테스트 폴더 이름 (기본값: `tests`, `tests`가 이미 있으면 `e2e`)
+- GitHub Actions 워크플로 추가 (CI에 권장)
+- Playwright 브라우저 설치 (기본값: yes)
 
-You can re-run the command later; it does not overwrite existing tests.
+이 명령은 나중에 다시 실행할 수 있으며, 기존 테스트를 덮어쓰지 않습니다.
 
-### Using the VS Code Extension[​](https://playwright.dev/docs/intro#using-the-vs-code-extension "Direct link to Using the VS Code Extension")
+### VS Code Extension 사용[​](https://playwright.dev/docs/intro#using-the-vs-code-extension "VS Code Extension 사용으로 바로 가기")
 
-You can also create and run tests with the [VS Code Extension](https://playwright.dev/docs/getting-started-vscode).
+[VS Code Extension](https://playwright.dev/docs/getting-started-vscode)으로도 테스트를 생성하고 실행할 수 있습니다.
 
-## What's Installed[​](https://playwright.dev/docs/intro#whats-installed "Direct link to What's Installed")
+## 설치되는 항목[​](https://playwright.dev/docs/intro#whats-installed "설치되는 항목으로 바로 가기")
 
-Playwright downloads required browser binaries and creates the scaffold below.
+Playwright는 필요한 브라우저 바이너리를 다운로드하고 아래 스캐폴드를 생성합니다.
 
 ```
     playwright.config.ts         # Test configuration
@@ -71,13 +71,13 @@ Playwright downloads required browser binaries and creates the scaffold below.
 
 ```
 
-The [playwright.config](https://playwright.dev/docs/test-configuration) centralizes configuration: target browsers, timeouts, retries, projects, reporters and more. In existing projects dependencies are added to your current `package.json`.
+[playwright.config](https://playwright.dev/docs/test-configuration)는 대상 브라우저, 타임아웃, 재시도, 프로젝트, 리포터 등 설정을 중앙에서 관리합니다. 기존 프로젝트에서는 의존성이 현재 `package.json`에 추가됩니다.
 
-`tests/` contains a minimal starter test.
+`tests/`에는 최소한의 시작용 테스트가 포함됩니다.
 
-## Running the Example Test[​](https://playwright.dev/docs/intro#running-the-example-test "Direct link to Running the Example Test")
+## 예제 테스트 실행하기[​](https://playwright.dev/docs/intro#running-the-example-test "예제 테스트 실행하기로 바로 가기")
 
-By default tests run headless in parallel across Chromium, Firefox and WebKit (configurable in [playwright.config](https://playwright.dev/docs/test-configuration)). Output and aggregated results display in the terminal.
+기본적으로 테스트는 Chromium, Firefox, WebKit에서 병렬로 headless 실행됩니다([playwright.config](https://playwright.dev/docs/test-configuration)에서 설정 가능). 출력과 집계된 결과는 터미널에 표시됩니다.
 
 - npm
 - yarn
@@ -98,20 +98,20 @@ By default tests run headless in parallel across Chromium, Firefox and WebKit (c
 
 ```
 
-![tests running in command line](https://playwright.dev/assets/images/run-tests-cli-6e7e3119a14239c9021b406d7109dc44.png)
+![명령줄에서 실행 중인 테스트](https://playwright.dev/assets/images/run-tests-cli-6e7e3119a14239c9021b406d7109dc44.png)
 
-Tips:
+팁:
 
-- See the browser window: add `--headed`.
-- Run a single project/browser: `--project=chromium`.
-- Run one file: `npx playwright test tests/example.spec.ts`.
-- Open testing UI: `--ui`.
+- 브라우저 창 보기: `--headed`를 추가하세요.
+- 단일 프로젝트/브라우저 실행: `--project=chromium`.
+- 파일 하나 실행: `npx playwright test tests/example.spec.ts`.
+- 테스트 UI 열기: `--ui`.
 
-See [Running Tests](https://playwright.dev/docs/running-tests) for details on filtering, headed mode, sharding and retries.
+필터링, headed 모드, 샤딩, 재시도에 대한 자세한 내용은 [Running Tests](https://playwright.dev/docs/running-tests)를 참고하세요.
 
-## HTML Test Reports[​](https://playwright.dev/docs/intro#html-test-reports "Direct link to HTML Test Reports")
+## HTML 테스트 리포트[​](https://playwright.dev/docs/intro#html-test-reports "HTML 테스트 리포트로 바로 가기")
 
-After a test run, the [HTML Reporter](https://playwright.dev/docs/test-reporters#html-reporter) provides a dashboard filterable by the browser, passed, failed, skipped, flaky and more. Click a test to inspect errors, attachments and steps. It auto-opens only when failures occur; open manually with the command below.
+테스트 실행 후 [HTML Reporter](https://playwright.dev/docs/test-reporters#html-reporter)는 브라우저, passed, failed, skipped, flaky 등으로 필터링 가능한 대시보드를 제공합니다. 테스트를 클릭하면 오류, 첨부 파일, 단계를 확인할 수 있습니다. 실패가 발생한 경우에만 자동으로 열리며, 아래 명령으로 수동으로 열 수 있습니다.
 
 - npm
 - yarn
@@ -132,11 +132,11 @@ After a test run, the [HTML Reporter](https://playwright.dev/docs/test-reporters
 
 ```
 
-![HTML Report](https://playwright.dev/assets/images/html-report-basic-8a88e44830660bfd1da1d17a7241f035.png)
+![HTML 리포트](https://playwright.dev/assets/images/html-report-basic-8a88e44830660bfd1da1d17a7241f035.png)
 
-## Running the Example Test in UI Mode[​](https://playwright.dev/docs/intro#running-the-example-test-in-ui-mode "Direct link to Running the Example Test in UI Mode")
+## UI Mode에서 예제 테스트 실행하기[​](https://playwright.dev/docs/intro#running-the-example-test-in-ui-mode "UI Mode에서 예제 테스트 실행하기로 바로 가기")
 
-Run tests with [UI Mode](https://playwright.dev/docs/test-ui-mode) for watch mode, live step view, time travel debugging and more.
+watch 모드, 실시간 단계 보기, 타임 트래블 디버깅 등을 위해 [UI Mode](https://playwright.dev/docs/test-ui-mode)로 테스트를 실행하세요.
 
 - npm
 - yarn
@@ -157,13 +157,13 @@ Run tests with [UI Mode](https://playwright.dev/docs/test-ui-mode) for watch mod
 
 ```
 
-![UI Mode](https://playwright.dev/assets/images/ui-mode-1958baf0398aef5e9c9b5c68c5d56f2d.png)
+![UI 모드](https://playwright.dev/assets/images/ui-mode-1958baf0398aef5e9c9b5c68c5d56f2d.png)
 
-See the [detailed guide on UI Mode](https://playwright.dev/docs/test-ui-mode) for watch filters, step details and trace integration.
+watch 필터, 단계 상세, trace 통합은 [UI Mode 상세 가이드](https://playwright.dev/docs/test-ui-mode)를 참고하세요.
 
-## Updating Playwright[​](https://playwright.dev/docs/intro#updating-playwright "Direct link to Updating Playwright")
+## Playwright 업데이트[​](https://playwright.dev/docs/intro#updating-playwright "Playwright 업데이트로 바로 가기")
 
-Update Playwright and download new browser binaries and their dependencies:
+Playwright를 업데이트하고 새 브라우저 바이너리 및 해당 의존성을 다운로드하세요.
 
 - npm
 - yarn
@@ -187,7 +187,7 @@ Update Playwright and download new browser binaries and their dependencies:
 
 ```
 
-Check your installed version:
+설치된 버전 확인:
 
 - npm
 - yarn
@@ -208,16 +208,16 @@ Check your installed version:
 
 ```
 
-## System requirements[​](https://playwright.dev/docs/intro#system-requirements "Direct link to System requirements")
+## 시스템 요구 사항[​](https://playwright.dev/docs/intro#system-requirements "시스템 요구 사항으로 바로 가기")
 
-- Node.js: latest 20.x, 22.x or 24.x.
-- Windows 11+, Windows Server 2019+ or Windows Subsystem for Linux (WSL).
-- macOS 14 (Ventura) or later.
-- Debian 12 / 13, Ubuntu 22.04 / 24.04 (x86-64 or arm64).
+- Node.js: 최신 20.x, 22.x 또는 24.x.
+- Windows 11+, Windows Server 2019+ 또는 Windows Subsystem for Linux (WSL).
+- macOS 14 (Ventura) 이상.
+- Debian 12 / 13, Ubuntu 22.04 / 24.04 (x86-64 또는 arm64).
 
-## What's next[​](https://playwright.dev/docs/intro#whats-next "Direct link to What's next")
+## 다음 단계[​](https://playwright.dev/docs/intro#whats-next "다음 단계로 바로 가기")
 
-- [Write tests using web-first assertions, fixtures and locators](https://playwright.dev/docs/writing-tests)
-- [Run single or multiple tests; headed mode](https://playwright.dev/docs/running-tests)
-- [Generate tests with Codegen](https://playwright.dev/docs/codegen-intro)
-- [View a trace of your tests](https://playwright.dev/docs/trace-viewer-intro)
+- [web-first assertion, fixture, locator를 사용해 테스트 작성하기](https://playwright.dev/docs/writing-tests)
+- [단일 또는 여러 테스트 실행; headed 모드](https://playwright.dev/docs/running-tests)
+- [Codegen으로 테스트 생성하기](https://playwright.dev/docs/codegen-intro)
+- [테스트 trace 보기](https://playwright.dev/docs/trace-viewer-intro)
