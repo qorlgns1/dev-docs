@@ -5958,5 +5958,153 @@
         ]
       }
     ]
+  },
+  {
+    "label": "Vitest",
+    "translations": {
+      "en": "Vitest"
+    },
+    "items": [
+      {
+        "label": "Api",
+        "translations": {
+          "en": "Api"
+        },
+        "items": [
+          {
+            "label": "Advanced",
+            "translations": {
+              "en": "Advanced"
+            },
+            "items": []
+          },
+          {
+            "label": "Browser",
+            "translations": {
+              "en": "Browser"
+            },
+            "items": []
+          }
+        ]
+      },
+      {
+        "label": "Config",
+        "translations": {
+          "en": "Config"
+        },
+        "items": [
+          {
+            "label": "Browser",
+            "translations": {
+              "en": "Browser"
+            },
+            "items": []
+          }
+        ]
+      },
+      {
+        "label": "Guide",
+        "translations": {
+          "en": "Guide"
+        },
+        "items": [
+          {
+            "label": "Advanced",
+            "translations": {
+              "en": "Advanced"
+            },
+            "items": []
+          },
+          {
+            "label": "Browser",
+            "translations": {
+              "en": "Browser"
+            },
+            "items": []
+          },
+          {
+            "label": "Mocking",
+            "translations": {
+              "en": "Mocking"
+            },
+            "items": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Vitest",
+    "translations": {
+      "en": "Vitest"
+    },
+    "items": [
+      {
+        "label": "API",
+        "translations": {
+          "en": "Api"
+        },
+        "items": [
+          {
+            "label": "고급",
+            "translations": {
+              "en": "Advanced"
+            },
+            "items": []
+          },
+          {
+            "label": "브라우저",
+            "translations": {
+              "en": "Browser"
+            },
+            "items": []
+          }
+        ]
+      },
+      {
+        "label": "Config",
+        "translations": {
+          "en": "Config"
+        },
+        "items": [
+          {
+            "label": "브라우저",
+            "translations": {
+              "en": "Browser"
+            },
+            "items": []
+          }
+        ]
+      },
+      {
+        "label": "가이드",
+        "translations": {
+          "en": "Guide"
+        },
+        "items": [
+          {
+            "label": "고급",
+            "translations": {
+              "en": "Advanced"
+            },
+            "items": []
+          },
+          {
+            "label": "브라우저",
+            "translations": {
+              "en": "Browser"
+            },
+            "items": []
+          },
+          {
+            "label": "모킹",
+            "translations": {
+              "en": "Mocking"
+            },
+            "items": []
+          }
+        ]
+      }
+    ]
   }
 ]

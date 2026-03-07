@@ -34,6 +34,7 @@ hero:
 - [next-intl](/next-intl/)
 - [Playwright](/playwright/)
 - [Prisma ORM](/prisma/)
+- [Vitest](/vitest/)
 - [Zod](/zod/)
 
 ## 피드 및 색인

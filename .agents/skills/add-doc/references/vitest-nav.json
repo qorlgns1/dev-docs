@@ -1,0 +1,710 @@
+[
+  {
+    "label": "Overview",
+    "url": "https://vitest.dev/"
+  },
+  {
+    "label": "Api",
+    "url": "https://vitest.dev/api",
+    "items": [
+      {
+        "label": "Advanced",
+        "items": [
+          {
+            "label": "Artifacts",
+            "url": "https://vitest.dev/api/advanced/artifacts"
+          },
+          {
+            "label": "Metadata",
+            "url": "https://vitest.dev/api/advanced/metadata"
+          },
+          {
+            "label": "Plugin",
+            "url": "https://vitest.dev/api/advanced/plugin"
+          },
+          {
+            "label": "Reporters",
+            "url": "https://vitest.dev/api/advanced/reporters"
+          },
+          {
+            "label": "Runner",
+            "url": "https://vitest.dev/api/advanced/runner"
+          },
+          {
+            "label": "Test Case",
+            "url": "https://vitest.dev/api/advanced/test-case"
+          },
+          {
+            "label": "Test Collection",
+            "url": "https://vitest.dev/api/advanced/test-collection"
+          },
+          {
+            "label": "Test Module",
+            "url": "https://vitest.dev/api/advanced/test-module"
+          },
+          {
+            "label": "Test Project",
+            "url": "https://vitest.dev/api/advanced/test-project"
+          },
+          {
+            "label": "Test Specification",
+            "url": "https://vitest.dev/api/advanced/test-specification"
+          },
+          {
+            "label": "Test Suite",
+            "url": "https://vitest.dev/api/advanced/test-suite"
+          },
+          {
+            "label": "Vitest",
+            "url": "https://vitest.dev/api/advanced/vitest"
+          }
+        ]
+      },
+      {
+        "label": "Assert",
+        "url": "https://vitest.dev/api/assert"
+      },
+      {
+        "label": "Assert Type",
+        "url": "https://vitest.dev/api/assert-type"
+      },
+      {
+        "label": "Browser",
+        "items": [
+          {
+            "label": "Assertions",
+            "url": "https://vitest.dev/api/browser/assertions"
+          },
+          {
+            "label": "Commands",
+            "url": "https://vitest.dev/api/browser/commands"
+          },
+          {
+            "label": "Context",
+            "url": "https://vitest.dev/api/browser/context"
+          },
+          {
+            "label": "Interactivity",
+            "url": "https://vitest.dev/api/browser/interactivity"
+          },
+          {
+            "label": "Locators",
+            "url": "https://vitest.dev/api/browser/locators"
+          }
+        ]
+      },
+      {
+        "label": "Expect",
+        "url": "https://vitest.dev/api/expect"
+      },
+      {
+        "label": "Expect Typeof",
+        "url": "https://vitest.dev/api/expect-typeof"
+      },
+      {
+        "label": "Mock",
+        "url": "https://vitest.dev/api/mock"
+      },
+      {
+        "label": "Vi",
+        "url": "https://vitest.dev/api/vi"
+      }
+    ]
+  },
+  {
+    "label": "Config",
+    "url": "https://vitest.dev/config",
+    "items": [
+      {
+        "label": "Alias",
+        "url": "https://vitest.dev/config/alias"
+      },
+      {
+        "label": "Allowonly",
+        "url": "https://vitest.dev/config/allowonly"
+      },
+      {
+        "label": "Api",
+        "url": "https://vitest.dev/config/api"
+      },
+      {
+        "label": "Attachmentsdir",
+        "url": "https://vitest.dev/config/attachmentsdir"
+      },
+      {
+        "label": "Bail",
+        "url": "https://vitest.dev/config/bail"
+      },
+      {
+        "label": "Benchmark",
+        "url": "https://vitest.dev/config/benchmark"
+      },
+      {
+        "label": "Browser",
+        "url": "https://vitest.dev/config/browser",
+        "items": [
+          {
+            "label": "Api",
+            "url": "https://vitest.dev/config/browser/api"
+          },
+          {
+            "label": "Commands",
+            "url": "https://vitest.dev/config/browser/commands"
+          },
+          {
+            "label": "Connecttimeout",
+            "url": "https://vitest.dev/config/browser/connecttimeout"
+          },
+          {
+            "label": "Enabled",
+            "url": "https://vitest.dev/config/browser/enabled"
+          },
+          {
+            "label": "Expect",
+            "url": "https://vitest.dev/config/browser/expect"
+          },
+          {
+            "label": "Headless",
+            "url": "https://vitest.dev/config/browser/headless"
+          },
+          {
+            "label": "Instances",
+            "url": "https://vitest.dev/config/browser/instances"
+          },
+          {
+            "label": "Isolate",
+            "url": "https://vitest.dev/config/browser/isolate"
+          },
+          {
+            "label": "Locators",
+            "url": "https://vitest.dev/config/browser/locators"
+          },
+          {
+            "label": "Orchestratorscripts",
+            "url": "https://vitest.dev/config/browser/orchestratorscripts"
+          },
+          {
+            "label": "Playwright",
+            "url": "https://vitest.dev/config/browser/playwright"
+          },
+          {
+            "label": "Preview",
+            "url": "https://vitest.dev/config/browser/preview"
+          },
+          {
+            "label": "Provider",
+            "url": "https://vitest.dev/config/browser/provider"
+          },
+          {
+            "label": "Screenshotdirectory",
+            "url": "https://vitest.dev/config/browser/screenshotdirectory"
+          },
+          {
+            "label": "Screenshotfailures",
+            "url": "https://vitest.dev/config/browser/screenshotfailures"
+          },
+          {
+            "label": "Testerhtmlpath",
+            "url": "https://vitest.dev/config/browser/testerhtmlpath"
+          },
+          {
+            "label": "Trace",
+            "url": "https://vitest.dev/config/browser/trace"
+          },
+          {
+            "label": "Trackunhandlederrors",
+            "url": "https://vitest.dev/config/browser/trackunhandlederrors"
+          },
+          {
+            "label": "Ui",
+            "url": "https://vitest.dev/config/browser/ui"
+          },
+          {
+            "label": "Viewport",
+            "url": "https://vitest.dev/config/browser/viewport"
+          },
+          {
+            "label": "Webdriverio",
+            "url": "https://vitest.dev/config/browser/webdriverio"
+          }
+        ]
+      },
+      {
+        "label": "Cache",
+        "url": "https://vitest.dev/config/cache"
+      },
+      {
+        "label": "Chaiconfig",
+        "url": "https://vitest.dev/config/chaiconfig"
+      },
+      {
+        "label": "Clearmocks",
+        "url": "https://vitest.dev/config/clearmocks"
+      },
+      {
+        "label": "Coverage",
+        "url": "https://vitest.dev/config/coverage"
+      },
+      {
+        "label": "Css",
+        "url": "https://vitest.dev/config/css"
+      },
+      {
+        "label": "Dangerouslyignoreunhandlederrors",
+        "url": "https://vitest.dev/config/dangerouslyignoreunhandlederrors"
+      },
+      {
+        "label": "Deps",
+        "url": "https://vitest.dev/config/deps"
+      },
+      {
+        "label": "Diff",
+        "url": "https://vitest.dev/config/diff"
+      },
+      {
+        "label": "Dir",
+        "url": "https://vitest.dev/config/dir"
+      },
+      {
+        "label": "Disableconsoleintercept",
+        "url": "https://vitest.dev/config/disableconsoleintercept"
+      },
+      {
+        "label": "Env",
+        "url": "https://vitest.dev/config/env"
+      },
+      {
+        "label": "Environment",
+        "url": "https://vitest.dev/config/environment"
+      },
+      {
+        "label": "Environmentoptions",
+        "url": "https://vitest.dev/config/environmentoptions"
+      },
+      {
+        "label": "Exclude",
+        "url": "https://vitest.dev/config/exclude"
+      },
+      {
+        "label": "Execargv",
+        "url": "https://vitest.dev/config/execargv"
+      },
+      {
+        "label": "Expandsnapshotdiff",
+        "url": "https://vitest.dev/config/expandsnapshotdiff"
+      },
+      {
+        "label": "Expect",
+        "url": "https://vitest.dev/config/expect"
+      },
+      {
+        "label": "Experimental",
+        "url": "https://vitest.dev/config/experimental"
+      },
+      {
+        "label": "Faketimers",
+        "url": "https://vitest.dev/config/faketimers"
+      },
+      {
+        "label": "Fileparallelism",
+        "url": "https://vitest.dev/config/fileparallelism"
+      },
+      {
+        "label": "Forcereruntriggers",
+        "url": "https://vitest.dev/config/forcereruntriggers"
+      },
+      {
+        "label": "Globals",
+        "url": "https://vitest.dev/config/globals"
+      },
+      {
+        "label": "Globalsetup",
+        "url": "https://vitest.dev/config/globalsetup"
+      },
+      {
+        "label": "Hideskippedtests",
+        "url": "https://vitest.dev/config/hideskippedtests"
+      },
+      {
+        "label": "Hooktimeout",
+        "url": "https://vitest.dev/config/hooktimeout"
+      },
+      {
+        "label": "Include",
+        "url": "https://vitest.dev/config/include"
+      },
+      {
+        "label": "Include Source",
+        "url": "https://vitest.dev/config/include-source"
+      },
+      {
+        "label": "Includetasklocation",
+        "url": "https://vitest.dev/config/includetasklocation"
+      },
+      {
+        "label": "Isolate",
+        "url": "https://vitest.dev/config/isolate"
+      },
+      {
+        "label": "Logheapusage",
+        "url": "https://vitest.dev/config/logheapusage"
+      },
+      {
+        "label": "Maxconcurrency",
+        "url": "https://vitest.dev/config/maxconcurrency"
+      },
+      {
+        "label": "Maxworkers",
+        "url": "https://vitest.dev/config/maxworkers"
+      },
+      {
+        "label": "Mockreset",
+        "url": "https://vitest.dev/config/mockreset"
+      },
+      {
+        "label": "Mode",
+        "url": "https://vitest.dev/config/mode"
+      },
+      {
+        "label": "Name",
+        "url": "https://vitest.dev/config/name"
+      },
+      {
+        "label": "Onconsolelog",
+        "url": "https://vitest.dev/config/onconsolelog"
+      },
+      {
+        "label": "Onstacktrace",
+        "url": "https://vitest.dev/config/onstacktrace"
+      },
+      {
+        "label": "Onunhandlederror",
+        "url": "https://vitest.dev/config/onunhandlederror"
+      },
+      {
+        "label": "Open",
+        "url": "https://vitest.dev/config/open"
+      },
+      {
+        "label": "Outputfile",
+        "url": "https://vitest.dev/config/outputfile"
+      },
+      {
+        "label": "Passwithnotests",
+        "url": "https://vitest.dev/config/passwithnotests"
+      },
+      {
+        "label": "Pool",
+        "url": "https://vitest.dev/config/pool"
+      },
+      {
+        "label": "Printconsoletrace",
+        "url": "https://vitest.dev/config/printconsoletrace"
+      },
+      {
+        "label": "Projects",
+        "url": "https://vitest.dev/config/projects"
+      },
+      {
+        "label": "Provide",
+        "url": "https://vitest.dev/config/provide"
+      },
+      {
+        "label": "Reporters",
+        "url": "https://vitest.dev/config/reporters"
+      },
+      {
+        "label": "Resolvesnapshotpath",
+        "url": "https://vitest.dev/config/resolvesnapshotpath"
+      },
+      {
+        "label": "Restoremocks",
+        "url": "https://vitest.dev/config/restoremocks"
+      },
+      {
+        "label": "Retry",
+        "url": "https://vitest.dev/config/retry"
+      },
+      {
+        "label": "Root",
+        "url": "https://vitest.dev/config/root"
+      },
+      {
+        "label": "Runner",
+        "url": "https://vitest.dev/config/runner"
+      },
+      {
+        "label": "Sequence",
+        "url": "https://vitest.dev/config/sequence"
+      },
+      {
+        "label": "Server",
+        "url": "https://vitest.dev/config/server"
+      },
+      {
+        "label": "Setupfiles",
+        "url": "https://vitest.dev/config/setupfiles"
+      },
+      {
+        "label": "Silent",
+        "url": "https://vitest.dev/config/silent"
+      },
+      {
+        "label": "Slowtestthreshold",
+        "url": "https://vitest.dev/config/slowtestthreshold"
+      },
+      {
+        "label": "Snapshotenvironment",
+        "url": "https://vitest.dev/config/snapshotenvironment"
+      },
+      {
+        "label": "Snapshotformat",
+        "url": "https://vitest.dev/config/snapshotformat"
+      },
+      {
+        "label": "Snapshotserializers",
+        "url": "https://vitest.dev/config/snapshotserializers"
+      },
+      {
+        "label": "Teardowntimeout",
+        "url": "https://vitest.dev/config/teardowntimeout"
+      },
+      {
+        "label": "Testnamepattern",
+        "url": "https://vitest.dev/config/testnamepattern"
+      },
+      {
+        "label": "Testtimeout",
+        "url": "https://vitest.dev/config/testtimeout"
+      },
+      {
+        "label": "Typecheck",
+        "url": "https://vitest.dev/config/typecheck"
+      },
+      {
+        "label": "Ui",
+        "url": "https://vitest.dev/config/ui"
+      },
+      {
+        "label": "Unstubenvs",
+        "url": "https://vitest.dev/config/unstubenvs"
+      },
+      {
+        "label": "Unstubglobals",
+        "url": "https://vitest.dev/config/unstubglobals"
+      },
+      {
+        "label": "Update",
+        "url": "https://vitest.dev/config/update"
+      },
+      {
+        "label": "Vmmemorylimit",
+        "url": "https://vitest.dev/config/vmmemorylimit"
+      },
+      {
+        "label": "Watch",
+        "url": "https://vitest.dev/config/watch"
+      },
+      {
+        "label": "Watchtriggerpatterns",
+        "url": "https://vitest.dev/config/watchtriggerpatterns"
+      }
+    ]
+  },
+  {
+    "label": "Guide",
+    "url": "https://vitest.dev/guide",
+    "items": [
+      {
+        "label": "Advanced",
+        "url": "https://vitest.dev/guide/advanced",
+        "items": [
+          {
+            "label": "Pool",
+            "url": "https://vitest.dev/guide/advanced/pool"
+          },
+          {
+            "label": "Reporters",
+            "url": "https://vitest.dev/guide/advanced/reporters"
+          },
+          {
+            "label": "Tests",
+            "url": "https://vitest.dev/guide/advanced/tests"
+          }
+        ]
+      },
+      {
+        "label": "Browser",
+        "url": "https://vitest.dev/guide/browser",
+        "items": [
+          {
+            "label": "Component Testing",
+            "url": "https://vitest.dev/guide/browser/component-testing"
+          },
+          {
+            "label": "Multiple Setups",
+            "url": "https://vitest.dev/guide/browser/multiple-setups"
+          },
+          {
+            "label": "Trace View",
+            "url": "https://vitest.dev/guide/browser/trace-view"
+          },
+          {
+            "label": "Visual Regression Testing",
+            "url": "https://vitest.dev/guide/browser/visual-regression-testing"
+          },
+          {
+            "label": "Why",
+            "url": "https://vitest.dev/guide/browser/why"
+          }
+        ]
+      },
+      {
+        "label": "Cli",
+        "url": "https://vitest.dev/guide/cli"
+      },
+      {
+        "label": "Common Errors",
+        "url": "https://vitest.dev/guide/common-errors"
+      },
+      {
+        "label": "Comparisons",
+        "url": "https://vitest.dev/guide/comparisons"
+      },
+      {
+        "label": "Coverage",
+        "url": "https://vitest.dev/guide/coverage"
+      },
+      {
+        "label": "Debugging",
+        "url": "https://vitest.dev/guide/debugging"
+      },
+      {
+        "label": "Environment",
+        "url": "https://vitest.dev/guide/environment"
+      },
+      {
+        "label": "Extending Matchers",
+        "url": "https://vitest.dev/guide/extending-matchers"
+      },
+      {
+        "label": "Features",
+        "url": "https://vitest.dev/guide/features"
+      },
+      {
+        "label": "Filtering",
+        "url": "https://vitest.dev/guide/filtering"
+      },
+      {
+        "label": "Ide",
+        "url": "https://vitest.dev/guide/ide"
+      },
+      {
+        "label": "Improving Performance",
+        "url": "https://vitest.dev/guide/improving-performance"
+      },
+      {
+        "label": "In Source",
+        "url": "https://vitest.dev/guide/in-source"
+      },
+      {
+        "label": "Lifecycle",
+        "url": "https://vitest.dev/guide/lifecycle"
+      },
+      {
+        "label": "Migration",
+        "url": "https://vitest.dev/guide/migration"
+      },
+      {
+        "label": "Mocking",
+        "url": "https://vitest.dev/guide/mocking",
+        "items": [
+          {
+            "label": "Classes",
+            "url": "https://vitest.dev/guide/mocking/classes"
+          },
+          {
+            "label": "Dates",
+            "url": "https://vitest.dev/guide/mocking/dates"
+          },
+          {
+            "label": "File System",
+            "url": "https://vitest.dev/guide/mocking/file-system"
+          },
+          {
+            "label": "Functions",
+            "url": "https://vitest.dev/guide/mocking/functions"
+          },
+          {
+            "label": "Globals",
+            "url": "https://vitest.dev/guide/mocking/globals"
+          },
+          {
+            "label": "Modules",
+            "url": "https://vitest.dev/guide/mocking/modules"
+          },
+          {
+            "label": "Requests",
+            "url": "https://vitest.dev/guide/mocking/requests"
+          },
+          {
+            "label": "Timers",
+            "url": "https://vitest.dev/guide/mocking/timers"
+          }
+        ]
+      },
+      {
+        "label": "Open Telemetry",
+        "url": "https://vitest.dev/guide/open-telemetry"
+      },
+      {
+        "label": "Parallelism",
+        "url": "https://vitest.dev/guide/parallelism"
+      },
+      {
+        "label": "Profiling Test Performance",
+        "url": "https://vitest.dev/guide/profiling-test-performance"
+      },
+      {
+        "label": "Projects",
+        "url": "https://vitest.dev/guide/projects"
+      },
+      {
+        "label": "Recipes",
+        "url": "https://vitest.dev/guide/recipes"
+      },
+      {
+        "label": "Reporters",
+        "url": "https://vitest.dev/guide/reporters"
+      },
+      {
+        "label": "Snapshot",
+        "url": "https://vitest.dev/guide/snapshot"
+      },
+      {
+        "label": "Test Annotations",
+        "url": "https://vitest.dev/guide/test-annotations"
+      },
+      {
+        "label": "Test Context",
+        "url": "https://vitest.dev/guide/test-context"
+      },
+      {
+        "label": "Testing Types",
+        "url": "https://vitest.dev/guide/testing-types"
+      },
+      {
+        "label": "Ui",
+        "url": "https://vitest.dev/guide/ui"
+      },
+      {
+        "label": "Why",
+        "url": "https://vitest.dev/guide/why"
+      },
+      {
+        "label": "Workspace",
+        "url": "https://vitest.dev/guide/workspace"
+      }
+    ]
+  }
+]

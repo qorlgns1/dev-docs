@@ -1,0 +1,25 @@
+---
+title: "clearMocks"
+description: "Should Vitest automatically call  before each test."
+---
+
+Source URL: https://vitest.dev/config/clearmocks
+
+# clearMocks
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+Should Vitest automatically call [`vi.clearAllMocks()`](https://vitest.dev/api/vi#vi-clearallmocks) before each test.
+
+This will clear mock history without affecting mock implementations.
+
+```js [vitest.config.js]
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    clearMocks: true,
+  },
+});
+```
