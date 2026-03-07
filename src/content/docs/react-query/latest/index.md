@@ -44,8 +44,6 @@ TanStack Query는 *서버 상태*가 만들어 내는 까다로운 도전과 장
 - 애플리케이션을 이전보다 더 빠르고 반응성 있게 느껴지도록 만들어 최종 사용자 경험에 직접적인 영향
 - 대역폭을 절약하고 메모리 성능을 향상할 잠재력
 
-[//]: # "Example"
-
 ## 이제 설명은 충분하니, 코드부터 보여 주세요!
 
 아래 예제에서는 TanStack Query가 가장 기본적이고 단순한 형태로 TanStack Query GitHub 프로젝트 자체의 GitHub 통계를 가져오는 데 사용되는 모습을 볼 수 있습니다:
@@ -78,9 +76,9 @@ function Example() {
       ),
   });
 
-  if (isPending) return "Loading...";
+  if (isPending) return "로딩 중...";
 
-  if (error) return "An error has occurred: " + error.message;
+  if (error) return "오류가 발생했습니다: " + error.message;
 
   return (
     <div>
@@ -94,13 +92,8 @@ function Example() {
 }
 ```
 
-[//]: # "Example"
-[//]: # "Materials"
-
 ## 설득됐습니다. 이제 무엇을 하면 될까요?
 
 - 공식 [TanStack Query Course](https://query.gg?s=tanstack)를 수강해 보세요(팀 전체가 함께 구매하는 것도 좋습니다!)
 - 아주 꼼꼼한 [Walkthrough Guide](https://tanstack.com/query/latest/docs/framework/react/installation.md)와 [API Reference](https://tanstack.com/query/latest/docs/framework/react/reference/useQuery.md)를 통해 자율 학습을 진행하세요.
 - [Why You Want React Query](https://tkdodo.eu/blog/why-you-want-react-query) 글을 읽어 보세요.
-
-[//]: # "Materials"

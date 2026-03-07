@@ -5,8 +5,6 @@ description: "`next-intl`은 Next.js용 국제화 툴킷으로, 다음을 도와
 
 출처 URL: https://next-intl.dev/docs
 
-문서 시작하기
-
 # Next.js 국제화(i18n)
 
 `next-intl`은 Next.js용 국제화 툴킷으로, 다음을 도와줍니다:

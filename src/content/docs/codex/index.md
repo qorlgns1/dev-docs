@@ -3,7 +3,7 @@ title: "Codex"
 description: "Codex는 소프트웨어 개발을 위한 OpenAI의 코딩 에이전트입니다. ChatGPT Plus, Pro, Business, Edu, Enterprise 플랜에는 Codex가 포함됩니다. 다음과 같은 도움을 받을 수 있습니다:"
 ---
 
-Source URL: https://developers.openai.com/codex
+출처 URL: https://developers.openai.com/codex
 
 # Codex
 
@@ -19,10 +19,10 @@ Codex는 소프트웨어 개발을 위한 OpenAI의 코딩 에이전트입니다
 
 - **개발 업무 자동화** : Codex는 리팩터링, 테스트, 마이그레이션, 설정 작업과 같은 반복적인 워크플로를 실행하여 상위 수준의 엔지니어링 작업에 집중할 수 있게 합니다.
 
-[ Codex 시작하기 ](https://developers.openai.com/codex/quickstart)
+[Codex 시작하기](https://developers.openai.com/codex/quickstart)
 
-- [Quickstart Codex를 다운로드하고 바로 빌드를 시작하세요. 시작하기](https://developers.openai.com/codex/quickstart)
+- [빠른 시작](https://developers.openai.com/codex/quickstart): Codex를 다운로드하고 바로 빌드를 시작하세요.
 
-- [Explore Codex로 무엇을 만들 수 있는지 영감을 얻어보세요. 더 알아보기](https://developers.openai.com/codex/explore)
+- [둘러보기](https://developers.openai.com/codex/explore): Codex로 무엇을 만들 수 있는지 영감을 얻어보세요.
 
-- [Community Codex 앰배서더와 지역별 예정 커뮤니티 밋업을 살펴보세요. 커뮤니티 보기](https://developers.openai.com/codex/community/meetups)
+- [커뮤니티](https://developers.openai.com/codex/community/meetups): Codex 앰배서더와 지역별 예정 커뮤니티 밋업을 살펴보세요.
