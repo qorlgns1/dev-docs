@@ -1,0 +1,692 @@
+[
+  {
+    "label": "Overview",
+    "url": "https://docs.prisma.io/docs/orm"
+  },
+  {
+    "label": "Core Concepts",
+    "items": [
+      {
+        "label": "Api Patterns",
+        "url": "https://docs.prisma.io/docs/orm/core-concepts/api-patterns"
+      },
+      {
+        "label": "Data Modeling",
+        "url": "https://docs.prisma.io/docs/orm/core-concepts/data-modeling"
+      },
+      {
+        "label": "Supported Databases",
+        "url": "https://docs.prisma.io/docs/orm/core-concepts/supported-databases",
+        "items": [
+          {
+            "label": "Database Drivers",
+            "url": "https://docs.prisma.io/docs/orm/core-concepts/supported-databases/database-drivers"
+          },
+          {
+            "label": "Mongodb",
+            "url": "https://docs.prisma.io/docs/orm/core-concepts/supported-databases/mongodb"
+          },
+          {
+            "label": "Mysql",
+            "url": "https://docs.prisma.io/docs/orm/core-concepts/supported-databases/mysql"
+          },
+          {
+            "label": "Postgresql",
+            "url": "https://docs.prisma.io/docs/orm/core-concepts/supported-databases/postgresql"
+          },
+          {
+            "label": "Sql Server",
+            "url": "https://docs.prisma.io/docs/orm/core-concepts/supported-databases/sql-server"
+          },
+          {
+            "label": "Sqlite",
+            "url": "https://docs.prisma.io/docs/orm/core-concepts/supported-databases/sqlite"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "More",
+    "items": [
+      {
+        "label": "Best Practices",
+        "url": "https://docs.prisma.io/docs/orm/more/best-practices"
+      },
+      {
+        "label": "Comparisons",
+        "items": [
+          {
+            "label": "Prisma And Drizzle",
+            "url": "https://docs.prisma.io/docs/orm/more/comparisons/prisma-and-drizzle"
+          },
+          {
+            "label": "Prisma And Mongoose",
+            "url": "https://docs.prisma.io/docs/orm/more/comparisons/prisma-and-mongoose"
+          },
+          {
+            "label": "Prisma And Sequelize",
+            "url": "https://docs.prisma.io/docs/orm/more/comparisons/prisma-and-sequelize"
+          },
+          {
+            "label": "Prisma And Typeorm",
+            "url": "https://docs.prisma.io/docs/orm/more/comparisons/prisma-and-typeorm"
+          }
+        ]
+      },
+      {
+        "label": "Dev Environment",
+        "items": [
+          {
+            "label": "Editor Setup",
+            "url": "https://docs.prisma.io/docs/orm/more/dev-environment/editor-setup"
+          },
+          {
+            "label": "Environment Variables",
+            "url": "https://docs.prisma.io/docs/orm/more/dev-environment/environment-variables"
+          }
+        ]
+      },
+      {
+        "label": "Releases",
+        "url": "https://docs.prisma.io/docs/orm/more/releases"
+      },
+      {
+        "label": "Troubleshooting",
+        "items": [
+          {
+            "label": "Bundler Issues",
+            "url": "https://docs.prisma.io/docs/orm/more/troubleshooting/bundler-issues"
+          },
+          {
+            "label": "Check Constraints",
+            "url": "https://docs.prisma.io/docs/orm/more/troubleshooting/check-constraints"
+          },
+          {
+            "label": "Graphql Autocompletion",
+            "url": "https://docs.prisma.io/docs/orm/more/troubleshooting/graphql-autocompletion"
+          },
+          {
+            "label": "Many To Many Relations",
+            "url": "https://docs.prisma.io/docs/orm/more/troubleshooting/many-to-many-relations"
+          },
+          {
+            "label": "Nextjs",
+            "url": "https://docs.prisma.io/docs/orm/more/troubleshooting/nextjs"
+          },
+          {
+            "label": "Nuxt",
+            "url": "https://docs.prisma.io/docs/orm/more/troubleshooting/nuxt"
+          },
+          {
+            "label": "Raw Sql Comparisons",
+            "url": "https://docs.prisma.io/docs/orm/more/troubleshooting/raw-sql-comparisons"
+          },
+          {
+            "label": "Typescript Performance",
+            "url": "https://docs.prisma.io/docs/orm/more/troubleshooting/typescript-performance"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Prisma Client",
+    "items": [
+      {
+        "label": "Client Extensions",
+        "url": "https://docs.prisma.io/docs/orm/prisma-client/client-extensions",
+        "items": [
+          {
+            "label": "Client",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/client-extensions/client"
+          },
+          {
+            "label": "Extension Examples",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/client-extensions/extension-examples"
+          },
+          {
+            "label": "Model",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/client-extensions/model"
+          },
+          {
+            "label": "Query",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/client-extensions/query"
+          },
+          {
+            "label": "Result",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/client-extensions/result"
+          },
+          {
+            "label": "Shared Extensions",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/client-extensions/shared-extensions",
+            "items": [
+              {
+                "label": "Permit Rbac",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/client-extensions/shared-extensions/permit-rbac"
+              }
+            ]
+          },
+          {
+            "label": "Type Utilities",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/client-extensions/type-utilities"
+          }
+        ]
+      },
+      {
+        "label": "Debugging And Troubleshooting",
+        "items": [
+          {
+            "label": "Debugging",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/debugging-and-troubleshooting/debugging"
+          },
+          {
+            "label": "Handling Exceptions And Errors",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/debugging-and-troubleshooting/handling-exceptions-and-errors"
+          }
+        ]
+      },
+      {
+        "label": "Deployment",
+        "items": [
+          {
+            "label": "Caveats When Deploying To Aws Platforms",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/caveats-when-deploying-to-aws-platforms"
+          },
+          {
+            "label": "Deploy Database Changes With Prisma Migrate",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/deploy-database-changes-with-prisma-migrate"
+          },
+          {
+            "label": "Deploy Migrations From A Local Environment",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/deploy-migrations-from-a-local-environment"
+          },
+          {
+            "label": "Deploy Prisma",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/deploy-prisma"
+          },
+          {
+            "label": "Edge",
+            "items": [
+              {
+                "label": "Deploy To Cloudflare",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare"
+              },
+              {
+                "label": "Deploy To Deno Deploy",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-deno-deploy"
+              },
+              {
+                "label": "Deploy To Vercel",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-vercel"
+              },
+              {
+                "label": "Overview",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/edge/overview"
+              }
+            ]
+          },
+          {
+            "label": "Serverless",
+            "items": [
+              {
+                "label": "Deploy To Aws Lambda",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/serverless/deploy-to-aws-lambda"
+              },
+              {
+                "label": "Deploy To Azure Functions",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/serverless/deploy-to-azure-functions"
+              },
+              {
+                "label": "Deploy To Netlify",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/serverless/deploy-to-netlify"
+              },
+              {
+                "label": "Deploy To Vercel",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/serverless/deploy-to-vercel"
+              }
+            ]
+          },
+          {
+            "label": "Traditional",
+            "items": [
+              {
+                "label": "Deploy To Flyio",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/traditional/deploy-to-flyio"
+              },
+              {
+                "label": "Deploy To Heroku",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/traditional/deploy-to-heroku"
+              },
+              {
+                "label": "Deploy To Koyeb",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/traditional/deploy-to-koyeb"
+              },
+              {
+                "label": "Deploy To Railway",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/traditional/deploy-to-railway"
+              },
+              {
+                "label": "Deploy To Render",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/traditional/deploy-to-render"
+              },
+              {
+                "label": "Deploy To Sevalla",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/deployment/traditional/deploy-to-sevalla"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Observability And Logging",
+        "items": [
+          {
+            "label": "Logging",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/observability-and-logging/logging"
+          },
+          {
+            "label": "Opentelemetry Tracing",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/observability-and-logging/opentelemetry-tracing"
+          },
+          {
+            "label": "Sql Comments",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/observability-and-logging/sql-comments"
+          }
+        ]
+      },
+      {
+        "label": "Queries",
+        "items": [
+          {
+            "label": "Advanced",
+            "items": [
+              {
+                "label": "Query Optimization Performance",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/queries/advanced/query-optimization-performance"
+              }
+            ]
+          },
+          {
+            "label": "Aggregation Grouping Summarizing",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/queries/aggregation-grouping-summarizing"
+          },
+          {
+            "label": "Crud",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/queries/crud"
+          },
+          {
+            "label": "Relation Queries",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/queries/relation-queries"
+          },
+          {
+            "label": "Transactions",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/queries/transactions"
+          }
+        ]
+      },
+      {
+        "label": "Setup And Configuration",
+        "items": [
+          {
+            "label": "Custom Model And Field Names",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/custom-model-and-field-names"
+          },
+          {
+            "label": "Database Polyfills",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/database-polyfills"
+          },
+          {
+            "label": "Databases Connections",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/databases-connections",
+            "items": [
+              {
+                "label": "Connection Management",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/databases-connections/connection-management"
+              },
+              {
+                "label": "Connection Pool",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/databases-connections/connection-pool"
+              },
+              {
+                "label": "Pgbouncer",
+                "url": "https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/databases-connections/pgbouncer"
+              }
+            ]
+          },
+          {
+            "label": "Error Formatting",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/error-formatting"
+          },
+          {
+            "label": "Introduction",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/introduction"
+          },
+          {
+            "label": "Read Replicas",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/read-replicas"
+          }
+        ]
+      },
+      {
+        "label": "Special Fields And Types",
+        "url": "https://docs.prisma.io/docs/orm/prisma-client/special-fields-and-types",
+        "items": [
+          {
+            "label": "Composite Types",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/special-fields-and-types/composite-types"
+          },
+          {
+            "label": "Null And Undefined",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/special-fields-and-types/null-and-undefined"
+          },
+          {
+            "label": "Working With Composite Ids And Constraints",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/special-fields-and-types/working-with-composite-ids-and-constraints"
+          },
+          {
+            "label": "Working With Json Fields",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/special-fields-and-types/working-with-json-fields"
+          },
+          {
+            "label": "Working With Scalar Lists Arrays",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/special-fields-and-types/working-with-scalar-lists-arrays"
+          }
+        ]
+      },
+      {
+        "label": "Testing",
+        "items": [
+          {
+            "label": "Integration Testing",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/testing/integration-testing"
+          },
+          {
+            "label": "Unit Testing",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/testing/unit-testing"
+          }
+        ]
+      },
+      {
+        "label": "Type Safety",
+        "url": "https://docs.prisma.io/docs/orm/prisma-client/type-safety",
+        "items": [
+          {
+            "label": "Operating Against Partial Structures Of Model Types",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/type-safety/operating-against-partial-structures-of-model-types"
+          },
+          {
+            "label": "Prisma Type System",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/type-safety/prisma-type-system"
+          }
+        ]
+      },
+      {
+        "label": "Using Raw Sql",
+        "url": "https://docs.prisma.io/docs/orm/prisma-client/using-raw-sql",
+        "items": [
+          {
+            "label": "Raw Queries",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/using-raw-sql/raw-queries"
+          },
+          {
+            "label": "Safeql",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/using-raw-sql/safeql"
+          },
+          {
+            "label": "Typedsql",
+            "url": "https://docs.prisma.io/docs/orm/prisma-client/using-raw-sql/typedsql"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Prisma Migrate",
+    "url": "https://docs.prisma.io/docs/orm/prisma-migrate",
+    "items": [
+      {
+        "label": "Getting Started",
+        "url": "https://docs.prisma.io/docs/orm/prisma-migrate/getting-started"
+      },
+      {
+        "label": "Understanding Prisma Migrate",
+        "items": [
+          {
+            "label": "Limitations And Known Issues",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/limitations-and-known-issues"
+          },
+          {
+            "label": "Mental Model",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/mental-model"
+          },
+          {
+            "label": "Migration Histories",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/migration-histories"
+          },
+          {
+            "label": "Shadow Database",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/shadow-database"
+          }
+        ]
+      },
+      {
+        "label": "Workflows",
+        "items": [
+          {
+            "label": "Baselining",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/baselining"
+          },
+          {
+            "label": "Customizing Migrations",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/customizing-migrations"
+          },
+          {
+            "label": "Development And Production",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production"
+          },
+          {
+            "label": "Generating Down Migrations",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/generating-down-migrations"
+          },
+          {
+            "label": "Native Database Functions",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/native-database-functions"
+          },
+          {
+            "label": "Native Database Types",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/native-database-types"
+          },
+          {
+            "label": "Patching And Hotfixing",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/patching-and-hotfixing"
+          },
+          {
+            "label": "Prototyping Your Schema",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/prototyping-your-schema"
+          },
+          {
+            "label": "Seeding",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/seeding"
+          },
+          {
+            "label": "Squashing Migrations",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/squashing-migrations"
+          },
+          {
+            "label": "Troubleshooting",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/troubleshooting"
+          },
+          {
+            "label": "Unsupported Database Features",
+            "url": "https://docs.prisma.io/docs/orm/prisma-migrate/workflows/unsupported-database-features"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Prisma Schema",
+    "items": [
+      {
+        "label": "Data Model",
+        "items": [
+          {
+            "label": "Database Mapping",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/database-mapping"
+          },
+          {
+            "label": "Externally Managed Tables",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/externally-managed-tables"
+          },
+          {
+            "label": "Indexes",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/indexes"
+          },
+          {
+            "label": "Models",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/models"
+          },
+          {
+            "label": "Multi Schema",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/multi-schema"
+          },
+          {
+            "label": "Relations",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/relations",
+            "items": [
+              {
+                "label": "Many To Many Relations",
+                "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/relations/many-to-many-relations"
+              },
+              {
+                "label": "One To Many Relations",
+                "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/relations/one-to-many-relations"
+              },
+              {
+                "label": "One To One Relations",
+                "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/relations/one-to-one-relations"
+              },
+              {
+                "label": "Referential Actions",
+                "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/relations/referential-actions"
+              },
+              {
+                "label": "Relation Mode",
+                "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/relations/relation-mode"
+              },
+              {
+                "label": "Self Relations",
+                "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/relations/self-relations"
+              },
+              {
+                "label": "Troubleshooting Relations",
+                "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/relations/troubleshooting-relations"
+              }
+            ]
+          },
+          {
+            "label": "Table Inheritance",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/table-inheritance"
+          },
+          {
+            "label": "Unsupported Database Features",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/unsupported-database-features"
+          },
+          {
+            "label": "Views",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/data-model/views"
+          }
+        ]
+      },
+      {
+        "label": "Introspection",
+        "url": "https://docs.prisma.io/docs/orm/prisma-schema/introspection"
+      },
+      {
+        "label": "Overview",
+        "url": "https://docs.prisma.io/docs/orm/prisma-schema/overview",
+        "items": [
+          {
+            "label": "Data Sources",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/overview/data-sources"
+          },
+          {
+            "label": "Generators",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/overview/generators"
+          },
+          {
+            "label": "Location",
+            "url": "https://docs.prisma.io/docs/orm/prisma-schema/overview/location"
+          }
+        ]
+      },
+      {
+        "label": "Postgresql Extensions",
+        "url": "https://docs.prisma.io/docs/orm/prisma-schema/postgresql-extensions"
+      }
+    ]
+  },
+  {
+    "label": "Reference",
+    "items": [
+      {
+        "label": "Connection Urls",
+        "url": "https://docs.prisma.io/docs/orm/reference/connection-urls"
+      },
+      {
+        "label": "Database Features",
+        "url": "https://docs.prisma.io/docs/orm/reference/database-features"
+      },
+      {
+        "label": "Environment Variables Reference",
+        "url": "https://docs.prisma.io/docs/orm/reference/environment-variables-reference"
+      },
+      {
+        "label": "Error Reference",
+        "url": "https://docs.prisma.io/docs/orm/reference/error-reference"
+      },
+      {
+        "label": "Errors",
+        "url": "https://docs.prisma.io/docs/orm/reference/errors"
+      },
+      {
+        "label": "Preview Features",
+        "items": [
+          {
+            "label": "Cli Preview Features",
+            "url": "https://docs.prisma.io/docs/orm/reference/preview-features/cli-preview-features"
+          },
+          {
+            "label": "Client Preview Features",
+            "url": "https://docs.prisma.io/docs/orm/reference/preview-features/client-preview-features"
+          }
+        ]
+      },
+      {
+        "label": "Prisma Cli Reference",
+        "url": "https://docs.prisma.io/docs/orm/reference/prisma-cli-reference"
+      },
+      {
+        "label": "Prisma Client Reference",
+        "url": "https://docs.prisma.io/docs/orm/reference/prisma-client-reference"
+      },
+      {
+        "label": "Prisma Config Reference",
+        "url": "https://docs.prisma.io/docs/orm/reference/prisma-config-reference"
+      },
+      {
+        "label": "Prisma Schema Reference",
+        "url": "https://docs.prisma.io/docs/orm/reference/prisma-schema-reference"
+      },
+      {
+        "label": "Supported Databases",
+        "url": "https://docs.prisma.io/docs/orm/reference/supported-databases"
+      },
+      {
+        "label": "System Requirements",
+        "url": "https://docs.prisma.io/docs/orm/reference/system-requirements"
+      }
+    ]
+  }
+]

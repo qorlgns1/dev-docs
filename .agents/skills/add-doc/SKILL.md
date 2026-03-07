@@ -39,6 +39,7 @@ python3 .agents/skills/add-doc/scripts/fetch.py \
 ```
 
 Dependencies (install before use):
+
 ```bash
 pip install -r .agents/skills/add-doc/scripts/requirements.txt
 # JS fallback 사용 시 추가:
@@ -46,6 +47,7 @@ playwright install chromium
 ```
 
 Output:
+
 - `src/content/docs/en/<section>/` — 영어 Markdown
 - `.agents/skills/add-doc/references/<section>-nav.json` — 사이드바 계층 구조
 
@@ -60,6 +62,18 @@ python3 .agents/skills/add-doc/scripts/translate.py \
 ```
 
 Output: `src/content/docs/<section>/`
+
+### 2.5. Cleanup — 수집 잔재 정리
+
+번역 전후로 한 번씩 실행해, `Copy MarkdownOpen`, 헤딩 링크, GitHub 편집 링크, breadcrumb 찌꺼기 같은 잔재를 제거합니다.
+
+```bash
+python3 .agents/skills/add-doc/scripts/cleanup.py \
+  --docs-dir src/content/docs/en/<section>
+
+python3 .agents/skills/add-doc/scripts/cleanup.py \
+  --docs-dir src/content/docs/<section>
+```
 
 ### 3. Frontmatter — title + description 삽입
 
@@ -88,6 +102,7 @@ python3 .agents/skills/add-doc/scripts/sidebar.py \
 ```
 
 Output:
+
 - `src/config/sidebar.generated.json` — 섹션 블록이 교체 또는 추가됨
 - `src/content/docs/index.md` — 홈 문서 허브 링크 자동 갱신
 

@@ -1,0 +1,105 @@
+---
+title: "GraphQL autocompletion"
+description: "Get autocompletion for Prisma Client queries in GraphQL resolvers with plain JavaScript"
+---
+
+Source URL: https://docs.prisma.io/docs/orm/more/troubleshooting/graphql-autocompletion
+
+# GraphQL autocompletion
+
+Get autocompletion for Prisma Client queries in GraphQL resolvers with plain JavaScript
+
+When using GraphQL with TypeScript, you get autocompletion for the Prisma Client instance in your GraphQL resolvers because the `context` object can be typed. In plain JavaScript, this needs a little more effort.
+
+## Problem
+
+In a resolver like this:
+
+```
+    filterPosts: (parent, args, ctx) => {
+      return ctx.prisma.post.findMany({
+        where: {
+          OR: [
+            { title: { contains: args.searchString } },
+            { content: { contains: args.searchString } },
+          ],
+        },
+      });
+    };
+```
+
+VS Code doesn't know the type of the `context` object so it can't provide any intellisense.
+
+## Solution
+
+Add a [JSDoc](https://jsdoc.app/) comment named `typedef` to "import" the correct type:
+
+```
+    // Add this to the top of the file
+    /**
+     * @typedef { import("../prisma/generated/client").PrismaClient } Prisma
+     */
+```
+
+Then type your resolver arguments:
+
+```
+    /**
+     * @param {any} parent
+     * @param {{ searchString: string }} args
+     * @param {{ prisma: Prisma }} ctx
+     */
+    filterPosts: (parent, args, ctx) => {
+      return ctx.prisma.post.findMany({
+        where: {
+          OR: [
+            { title: { contains: args.searchString } },
+            { content: { contains: args.searchString } },
+          ],
+        },
+      });
+    };
+```
+
+This tells VS Code that `context` has a property named `prisma` with type `Prisma`, enabling autocompletion.
+
+## Complete example
+
+```
+    /**
+     * @typedef { import("../prisma/generated/client").PrismaClient } Prisma
+     * @typedef { import("../prisma/generated/client").UserCreateArgs } UserCreateArgs
+     */
+
+    const { makeExecutableSchema } = require("graphql-tools");
+
+    const resolvers = {
+      Query: {
+        /**
+         * @param {any} parent
+         * @param {any} args
+         * @param {{ prisma: Prisma }} ctx
+         */
+        feed: (parent, args, ctx) => {
+          return ctx.prisma.post.findMany({
+            where: { published: true },
+          });
+        },
+        /**
+         * @param {any} parent
+         * @param {{ searchString: string }} args
+         * @param {{ prisma: Prisma }} ctx
+         */
+        filterPosts: (parent, args, ctx) => {
+          return ctx.prisma.post.findMany({
+            where: {
+              OR: [
+                { title: { contains: args.searchString } },
+                { content: { contains: args.searchString } },
+              ],
+            },
+          });
+        },
+      },
+    };
+```

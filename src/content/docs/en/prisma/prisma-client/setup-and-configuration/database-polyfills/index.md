@@ -1,0 +1,23 @@
+---
+title: "Database polyfills"
+description: 'Prisma Client provides features that are not achievable with relational databases. These features are referred to as "polyfills" and explained on this...'
+---
+
+Source URL: https://docs.prisma.io/docs/orm/prisma-client/setup-and-configuration/database-polyfills
+
+# Database polyfills
+
+Prisma Client provides features that are not achievable with relational databases. These features are referred to as "polyfills" and explained on this page.
+
+Prisma Client provides features that are typically either not achievable with particular databases or require extensions. These features are referred to as _polyfills_. For all databases, this includes:
+
+- Initializing [ID](https://docs.prisma.io/docs/orm/prisma-schema/data-model/models#defining-an-id-field) values with `cuid` and `uuid` values
+- Using [`@updatedAt`](https://docs.prisma.io/docs/orm/prisma-schema/data-model/models#defining-attributes) to store the time when a record was last updated
+
+For relational databases, this includes:
+
+- Implicit many-to-many relations
+
+For MongoDB, this includes:
+
+- [Relations in general](https://docs.prisma.io/docs/orm/prisma-schema/data-model/relations) \- foreign key relations between documents are not enforced in MongoDB

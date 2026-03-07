@@ -120,6 +120,7 @@ META_NOISE_PREFIXES = (
     "@doc-version:",
     "@last-updated:",
 )
+HTML_DISCOVERY_MAX_PAGES = 2000
 
 CARD_HEADING_RE = re.compile(r"^(#{3,6})\s+\[([^\]]+)\]\((https?://[^)\s]+)\)\s*$")
 BREADCRUMB_RE = re.compile(r"^\[[^\]]+\]\([^)]+\)\[[^\]]+\]\([^)]+\)\S*$")
@@ -311,6 +312,37 @@ def _links_from_html(base_url: str, scope: str) -> list[str]:
     return list(dict.fromkeys(found))  # deduplicate, preserve order
 
 
+def _discover_urls_from_html(base_url: str, scope: str, max_pages: int = HTML_DISCOVERY_MAX_PAGES) -> list[str]:
+    """
+    Recursively discover in-scope URLs by following HTML links.
+    Used when no sitemap is available.
+    """
+    start = canonicalize(base_url)
+    seen: set[str] = set()
+    queue: list[str] = [start]
+    discovered: list[str] = []
+
+    while queue and len(seen) < max_pages:
+        current = queue.pop(0)
+        if current in seen:
+            continue
+        seen.add(current)
+        discovered.append(current)
+
+        for link in _links_from_html(current, scope):
+            if link not in seen:
+                queue.append(link)
+
+    if queue:
+        print(
+            f"[collect] HTML discovery stopped after {max_pages} page(s); "
+            "increase HTML_DISCOVERY_MAX_PAGES if needed",
+            file=sys.stderr,
+        )
+
+    return discovered
+
+
 def markdown_candidate(url: str) -> str:
     p = urlparse(url)
     path = p.path.rstrip("/")
@@ -445,13 +477,13 @@ def collect_urls(base_url: str) -> list[str]:
     urls.append(canonicalize(base_url))
 
     # Fallback: if sitemap discovered nothing beyond the base URL itself,
-    # extract in-scope <a href> links from the base page HTML.
+    # recursively extract in-scope <a href> links from HTML pages.
     if len(set(urls)) <= 1:
         print(
             "[collect] No sitemap found — falling back to HTML link discovery",
             flush=True,
         )
-        urls.extend(_links_from_html(canonicalize(base_url), scope))
+        urls.extend(_discover_urls_from_html(canonicalize(base_url), scope))
 
     return sorted(set(urls))
 

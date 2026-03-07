@@ -33,6 +33,7 @@ hero:
 - [Next Auth](/next-auth/)
 - [next-intl](/next-intl/)
 - [Playwright](/playwright/)
+- [Prisma ORM](/prisma/)
 - [Zod](/zod/)
 
 ## 피드 및 색인

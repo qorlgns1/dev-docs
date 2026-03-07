@@ -4714,5 +4714,1249 @@
       "en": "Next Auth"
     },
     "items": []
+  },
+  {
+    "label": "Prisma ORM",
+    "translations": {
+      "en": "Prisma ORM"
+    },
+    "items": [
+      {
+        "slug": "prisma",
+        "label": "개요",
+        "translations": {
+          "en": "Overview"
+        }
+      },
+      {
+        "label": "핵심 개념",
+        "translations": {
+          "en": "Core Concepts"
+        },
+        "items": [
+          {
+            "slug": "prisma/core-concepts/api-patterns",
+            "label": "API 패턴",
+            "translations": {
+              "en": "Api Patterns"
+            }
+          },
+          {
+            "slug": "prisma/core-concepts/data-modeling",
+            "label": "데이터 모델링",
+            "translations": {
+              "en": "Data Modeling"
+            }
+          },
+          {
+            "label": "지원 데이터베이스",
+            "translations": {
+              "en": "Supported Databases"
+            },
+            "items": [
+              {
+                "slug": "prisma/core-concepts/supported-databases",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "prisma/core-concepts/supported-databases/database-drivers",
+                "label": "데이터베이스 드라이버",
+                "translations": {
+                  "en": "Database Drivers"
+                }
+              },
+              {
+                "slug": "prisma/core-concepts/supported-databases/mongodb",
+                "label": "MongoDB",
+                "translations": {
+                  "en": "Mongodb"
+                }
+              },
+              {
+                "slug": "prisma/core-concepts/supported-databases/mysql",
+                "label": "MySQL",
+                "translations": {
+                  "en": "Mysql"
+                }
+              },
+              {
+                "slug": "prisma/core-concepts/supported-databases/postgresql",
+                "label": "PostgreSQL",
+                "translations": {
+                  "en": "Postgresql"
+                }
+              },
+              {
+                "slug": "prisma/core-concepts/supported-databases/sql-server",
+                "label": "SQL Server",
+                "translations": {
+                  "en": "Sql Server"
+                }
+              },
+              {
+                "slug": "prisma/core-concepts/supported-databases/sqlite",
+                "label": "SQLite",
+                "translations": {
+                  "en": "Sqlite"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "더보기",
+        "translations": {
+          "en": "More"
+        },
+        "items": [
+          {
+            "slug": "prisma/more/best-practices",
+            "label": "모범 사례",
+            "translations": {
+              "en": "Best Practices"
+            }
+          },
+          {
+            "label": "비교",
+            "translations": {
+              "en": "Comparisons"
+            },
+            "items": [
+              {
+                "slug": "prisma/more/comparisons/prisma-and-drizzle",
+                "label": "Prisma와 Drizzle",
+                "translations": {
+                  "en": "Prisma And Drizzle"
+                }
+              },
+              {
+                "slug": "prisma/more/comparisons/prisma-and-mongoose",
+                "label": "Prisma와 Mongoose",
+                "translations": {
+                  "en": "Prisma And Mongoose"
+                }
+              },
+              {
+                "slug": "prisma/more/comparisons/prisma-and-sequelize",
+                "label": "Prisma와 Sequelize",
+                "translations": {
+                  "en": "Prisma And Sequelize"
+                }
+              },
+              {
+                "slug": "prisma/more/comparisons/prisma-and-typeorm",
+                "label": "Prisma와 TypeORM",
+                "translations": {
+                  "en": "Prisma And Typeorm"
+                }
+              }
+            ]
+          },
+          {
+            "label": "개발 환경",
+            "translations": {
+              "en": "Dev Environment"
+            },
+            "items": [
+              {
+                "slug": "prisma/more/dev-environment/editor-setup",
+                "label": "에디터 설정",
+                "translations": {
+                  "en": "Editor Setup"
+                }
+              },
+              {
+                "slug": "prisma/more/dev-environment/environment-variables",
+                "label": "환경 변수",
+                "translations": {
+                  "en": "Environment Variables"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "prisma/more/releases",
+            "label": "릴리스",
+            "translations": {
+              "en": "Releases"
+            }
+          },
+          {
+            "label": "문제 해결",
+            "translations": {
+              "en": "Troubleshooting"
+            },
+            "items": [
+              {
+                "slug": "prisma/more/troubleshooting/bundler-issues",
+                "label": "번들러 이슈",
+                "translations": {
+                  "en": "Bundler Issues"
+                }
+              },
+              {
+                "slug": "prisma/more/troubleshooting/check-constraints",
+                "label": "체크 제약조건",
+                "translations": {
+                  "en": "Check Constraints"
+                }
+              },
+              {
+                "slug": "prisma/more/troubleshooting/graphql-autocompletion",
+                "label": "GraphQL 자동완성",
+                "translations": {
+                  "en": "Graphql Autocompletion"
+                }
+              },
+              {
+                "slug": "prisma/more/troubleshooting/many-to-many-relations",
+                "label": "다대다 관계",
+                "translations": {
+                  "en": "Many To Many Relations"
+                }
+              },
+              {
+                "slug": "prisma/more/troubleshooting/nextjs",
+                "label": "Next.js",
+                "translations": {
+                  "en": "Nextjs"
+                }
+              },
+              {
+                "slug": "prisma/more/troubleshooting/nuxt",
+                "label": "Nuxt",
+                "translations": {
+                  "en": "Nuxt"
+                }
+              },
+              {
+                "slug": "prisma/more/troubleshooting/raw-sql-comparisons",
+                "label": "Raw SQL 비교",
+                "translations": {
+                  "en": "Raw Sql Comparisons"
+                }
+              },
+              {
+                "slug": "prisma/more/troubleshooting/typescript-performance",
+                "label": "TypeScript 성능",
+                "translations": {
+                  "en": "Typescript Performance"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Prisma Client",
+        "translations": {
+          "en": "Prisma Client"
+        },
+        "items": [
+          {
+            "label": "Client 확장",
+            "translations": {
+              "en": "Client Extensions"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-client/client-extensions",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/client-extensions/client",
+                "label": "클라이언트",
+                "translations": {
+                  "en": "Client"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/client-extensions/extension-examples",
+                "label": "확장 예제",
+                "translations": {
+                  "en": "Extension Examples"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/client-extensions/model",
+                "label": "모델",
+                "translations": {
+                  "en": "Model"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/client-extensions/query",
+                "label": "쿼리",
+                "translations": {
+                  "en": "Query"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/client-extensions/result",
+                "label": "결과",
+                "translations": {
+                  "en": "Result"
+                }
+              },
+              {
+                "label": "공용 확장",
+                "translations": {
+                  "en": "Shared Extensions"
+                },
+                "items": [
+                  {
+                    "slug": "prisma/prisma-client/client-extensions/shared-extensions",
+                    "label": "개요",
+                    "translations": {
+                      "en": "Overview"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/client-extensions/shared-extensions/permit-rbac",
+                    "label": "Permit RBAC",
+                    "translations": {
+                      "en": "Permit Rbac"
+                    }
+                  }
+                ]
+              },
+              {
+                "slug": "prisma/prisma-client/client-extensions/type-utilities",
+                "label": "타입 유틸",
+                "translations": {
+                  "en": "Type Utilities"
+                }
+              }
+            ]
+          },
+          {
+            "label": "디버깅과 문제 해결",
+            "translations": {
+              "en": "Debugging And Troubleshooting"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-client/debugging-and-troubleshooting/debugging",
+                "label": "디버깅",
+                "translations": {
+                  "en": "Debugging"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/debugging-and-troubleshooting/handling-exceptions-and-errors",
+                "label": "예외 및 오류 처리",
+                "translations": {
+                  "en": "Handling Exceptions And Errors"
+                }
+              }
+            ]
+          },
+          {
+            "label": "배포",
+            "translations": {
+              "en": "Deployment"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-client/deployment/caveats-when-deploying-to-aws-platforms",
+                "label": "AWS 플랫폼 배포 시 주의사항",
+                "translations": {
+                  "en": "Caveats When Deploying To Aws Platforms"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/deployment/deploy-database-changes-with-prisma-migrate",
+                "label": "Prisma Migrate로 DB 변경 배포",
+                "translations": {
+                  "en": "Deploy Database Changes With Prisma Migrate"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/deployment/deploy-migrations-from-a-local-environment",
+                "label": "로컬 환경에서 마이그레이션 배포",
+                "translations": {
+                  "en": "Deploy Migrations From A Local Environment"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/deployment/deploy-prisma",
+                "label": "Prisma 배포",
+                "translations": {
+                  "en": "Deploy Prisma"
+                }
+              },
+              {
+                "label": "Edge",
+                "translations": {
+                  "en": "Edge"
+                },
+                "items": [
+                  {
+                    "slug": "prisma/prisma-client/deployment/edge/deploy-to-cloudflare",
+                    "label": "Cloudflare에 배포",
+                    "translations": {
+                      "en": "Deploy To Cloudflare"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/edge/deploy-to-deno-deploy",
+                    "label": "Deno Deploy에 배포",
+                    "translations": {
+                      "en": "Deploy To Deno Deploy"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/edge/deploy-to-vercel",
+                    "label": "Vercel에 배포",
+                    "translations": {
+                      "en": "Deploy To Vercel"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/edge/overview",
+                    "label": "개요",
+                    "translations": {
+                      "en": "Overview"
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "서버리스",
+                "translations": {
+                  "en": "Serverless"
+                },
+                "items": [
+                  {
+                    "slug": "prisma/prisma-client/deployment/serverless/deploy-to-aws-lambda",
+                    "label": "AWS Lambda에 배포",
+                    "translations": {
+                      "en": "Deploy To Aws Lambda"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/serverless/deploy-to-azure-functions",
+                    "label": "Azure Functions에 배포",
+                    "translations": {
+                      "en": "Deploy To Azure Functions"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/serverless/deploy-to-netlify",
+                    "label": "Netlify에 배포",
+                    "translations": {
+                      "en": "Deploy To Netlify"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/serverless/deploy-to-vercel",
+                    "label": "Vercel에 배포",
+                    "translations": {
+                      "en": "Deploy To Vercel"
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "전통 서버",
+                "translations": {
+                  "en": "Traditional"
+                },
+                "items": [
+                  {
+                    "slug": "prisma/prisma-client/deployment/traditional/deploy-to-flyio",
+                    "label": "Fly.io에 배포",
+                    "translations": {
+                      "en": "Deploy To Flyio"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/traditional/deploy-to-heroku",
+                    "label": "Heroku에 배포",
+                    "translations": {
+                      "en": "Deploy To Heroku"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/traditional/deploy-to-koyeb",
+                    "label": "Koyeb에 배포",
+                    "translations": {
+                      "en": "Deploy To Koyeb"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/traditional/deploy-to-railway",
+                    "label": "Railway에 배포",
+                    "translations": {
+                      "en": "Deploy To Railway"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/traditional/deploy-to-render",
+                    "label": "Render에 배포",
+                    "translations": {
+                      "en": "Deploy To Render"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/deployment/traditional/deploy-to-sevalla",
+                    "label": "Sevalla에 배포",
+                    "translations": {
+                      "en": "Deploy To Sevalla"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "관측성 및 로깅",
+            "translations": {
+              "en": "Observability And Logging"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-client/observability-and-logging/logging",
+                "label": "로깅",
+                "translations": {
+                  "en": "Logging"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/observability-and-logging/opentelemetry-tracing",
+                "label": "OpenTelemetry 트레이싱",
+                "translations": {
+                  "en": "Opentelemetry Tracing"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/observability-and-logging/sql-comments",
+                "label": "SQL 주석",
+                "translations": {
+                  "en": "Sql Comments"
+                }
+              }
+            ]
+          },
+          {
+            "label": "쿼리",
+            "translations": {
+              "en": "Queries"
+            },
+            "items": [
+              {
+                "label": "고급",
+                "translations": {
+                  "en": "Advanced"
+                },
+                "items": [
+                  {
+                    "slug": "prisma/prisma-client/queries/advanced/query-optimization-performance",
+                    "label": "쿼리 최적화 성능",
+                    "translations": {
+                      "en": "Query Optimization Performance"
+                    }
+                  }
+                ]
+              },
+              {
+                "slug": "prisma/prisma-client/queries/aggregation-grouping-summarizing",
+                "label": "집계·그룹화·요약",
+                "translations": {
+                  "en": "Aggregation Grouping Summarizing"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/queries/crud",
+                "label": "CRUD",
+                "translations": {
+                  "en": "Crud"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/queries/relation-queries",
+                "label": "관계 쿼리",
+                "translations": {
+                  "en": "Relation Queries"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/queries/transactions",
+                "label": "트랜잭션",
+                "translations": {
+                  "en": "Transactions"
+                }
+              }
+            ]
+          },
+          {
+            "label": "설정 및 구성",
+            "translations": {
+              "en": "Setup And Configuration"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-client/setup-and-configuration/custom-model-and-field-names",
+                "label": "사용자 정의 모델/필드명",
+                "translations": {
+                  "en": "Custom Model And Field Names"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/setup-and-configuration/database-polyfills",
+                "label": "데이터베이스 폴리필",
+                "translations": {
+                  "en": "Database Polyfills"
+                }
+              },
+              {
+                "label": "데이터베이스 연결",
+                "translations": {
+                  "en": "Databases Connections"
+                },
+                "items": [
+                  {
+                    "slug": "prisma/prisma-client/setup-and-configuration/databases-connections",
+                    "label": "개요",
+                    "translations": {
+                      "en": "Overview"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/setup-and-configuration/databases-connections/connection-management",
+                    "label": "연결 관리",
+                    "translations": {
+                      "en": "Connection Management"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/setup-and-configuration/databases-connections/connection-pool",
+                    "label": "연결 풀",
+                    "translations": {
+                      "en": "Connection Pool"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-client/setup-and-configuration/databases-connections/pgbouncer",
+                    "label": "PgBouncer",
+                    "translations": {
+                      "en": "Pgbouncer"
+                    }
+                  }
+                ]
+              },
+              {
+                "slug": "prisma/prisma-client/setup-and-configuration/error-formatting",
+                "label": "오류 포맷팅",
+                "translations": {
+                  "en": "Error Formatting"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/setup-and-configuration/introduction",
+                "label": "소개",
+                "translations": {
+                  "en": "Introduction"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/setup-and-configuration/read-replicas",
+                "label": "읽기 복제본",
+                "translations": {
+                  "en": "Read Replicas"
+                }
+              }
+            ]
+          },
+          {
+            "label": "특수 필드 및 타입",
+            "translations": {
+              "en": "Special Fields And Types"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-client/special-fields-and-types",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/special-fields-and-types/composite-types",
+                "label": "복합 타입",
+                "translations": {
+                  "en": "Composite Types"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/special-fields-and-types/null-and-undefined",
+                "label": "Null과 Undefined",
+                "translations": {
+                  "en": "Null And Undefined"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/special-fields-and-types/working-with-composite-ids-and-constraints",
+                "label": "복합 ID 및 제약조건 다루기",
+                "translations": {
+                  "en": "Working With Composite Ids And Constraints"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/special-fields-and-types/working-with-json-fields",
+                "label": "JSON 필드 다루기",
+                "translations": {
+                  "en": "Working With Json Fields"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/special-fields-and-types/working-with-scalar-lists-arrays",
+                "label": "스칼라 리스트/배열 다루기",
+                "translations": {
+                  "en": "Working With Scalar Lists Arrays"
+                }
+              }
+            ]
+          },
+          {
+            "label": "테스트",
+            "translations": {
+              "en": "Testing"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-client/testing/integration-testing",
+                "label": "통합 테스트",
+                "translations": {
+                  "en": "Integration Testing"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/testing/unit-testing",
+                "label": "단위 테스트",
+                "translations": {
+                  "en": "Unit Testing"
+                }
+              }
+            ]
+          },
+          {
+            "label": "타입 안정성",
+            "translations": {
+              "en": "Type Safety"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-client/type-safety",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/type-safety/operating-against-partial-structures-of-model-types",
+                "label": "모델 타입 부분 구조 다루기",
+                "translations": {
+                  "en": "Operating Against Partial Structures Of Model Types"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/type-safety/prisma-type-system",
+                "label": "Prisma 타입 시스템",
+                "translations": {
+                  "en": "Prisma Type System"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Raw SQL 사용",
+            "translations": {
+              "en": "Using Raw Sql"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-client/using-raw-sql",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/using-raw-sql/raw-queries",
+                "label": "Raw 쿼리",
+                "translations": {
+                  "en": "Raw Queries"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/using-raw-sql/safeql",
+                "label": "SafeQL",
+                "translations": {
+                  "en": "Safeql"
+                }
+              },
+              {
+                "slug": "prisma/prisma-client/using-raw-sql/typedsql",
+                "label": "TypedSQL",
+                "translations": {
+                  "en": "Typedsql"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Prisma Migrate",
+        "translations": {
+          "en": "Prisma Migrate"
+        },
+        "items": [
+          {
+            "slug": "prisma/prisma-migrate",
+            "label": "개요",
+            "translations": {
+              "en": "Overview"
+            }
+          },
+          {
+            "slug": "prisma/prisma-migrate/getting-started",
+            "label": "시작하기",
+            "translations": {
+              "en": "Getting Started"
+            }
+          },
+          {
+            "label": "Prisma Migrate 이해하기",
+            "translations": {
+              "en": "Understanding Prisma Migrate"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-migrate/understanding-prisma-migrate/limitations-and-known-issues",
+                "label": "제한사항 및 알려진 이슈",
+                "translations": {
+                  "en": "Limitations And Known Issues"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/understanding-prisma-migrate/mental-model",
+                "label": "개념 모델",
+                "translations": {
+                  "en": "Mental Model"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/understanding-prisma-migrate/migration-histories",
+                "label": "마이그레이션 이력",
+                "translations": {
+                  "en": "Migration Histories"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/understanding-prisma-migrate/shadow-database",
+                "label": "섀도 데이터베이스",
+                "translations": {
+                  "en": "Shadow Database"
+                }
+              }
+            ]
+          },
+          {
+            "label": "워크플로",
+            "translations": {
+              "en": "Workflows"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-migrate/workflows/baselining",
+                "label": "기준선 설정",
+                "translations": {
+                  "en": "Baselining"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/customizing-migrations",
+                "label": "마이그레이션 커스터마이징",
+                "translations": {
+                  "en": "Customizing Migrations"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/development-and-production",
+                "label": "개발 및 운영",
+                "translations": {
+                  "en": "Development And Production"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/generating-down-migrations",
+                "label": "다운 마이그레이션 생성",
+                "translations": {
+                  "en": "Generating Down Migrations"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/native-database-functions",
+                "label": "네이티브 DB 함수",
+                "translations": {
+                  "en": "Native Database Functions"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/native-database-types",
+                "label": "네이티브 DB 타입",
+                "translations": {
+                  "en": "Native Database Types"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/patching-and-hotfixing",
+                "label": "패치 및 핫픽스",
+                "translations": {
+                  "en": "Patching And Hotfixing"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/prototyping-your-schema",
+                "label": "스키마 프로토타이핑",
+                "translations": {
+                  "en": "Prototyping Your Schema"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/seeding",
+                "label": "시딩",
+                "translations": {
+                  "en": "Seeding"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/squashing-migrations",
+                "label": "마이그레이션 스쿼시",
+                "translations": {
+                  "en": "Squashing Migrations"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/troubleshooting",
+                "label": "문제 해결",
+                "translations": {
+                  "en": "Troubleshooting"
+                }
+              },
+              {
+                "slug": "prisma/prisma-migrate/workflows/unsupported-database-features",
+                "label": "미지원 DB 기능",
+                "translations": {
+                  "en": "Unsupported Database Features"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Prisma Schema",
+        "translations": {
+          "en": "Prisma Schema"
+        },
+        "items": [
+          {
+            "label": "데이터 모델",
+            "translations": {
+              "en": "Data Model"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-schema/data-model/database-mapping",
+                "label": "DB 매핑",
+                "translations": {
+                  "en": "Database Mapping"
+                }
+              },
+              {
+                "slug": "prisma/prisma-schema/data-model/externally-managed-tables",
+                "label": "외부 관리 테이블",
+                "translations": {
+                  "en": "Externally Managed Tables"
+                }
+              },
+              {
+                "slug": "prisma/prisma-schema/data-model/indexes",
+                "label": "인덱스",
+                "translations": {
+                  "en": "Indexes"
+                }
+              },
+              {
+                "slug": "prisma/prisma-schema/data-model/models",
+                "label": "모델",
+                "translations": {
+                  "en": "Models"
+                }
+              },
+              {
+                "slug": "prisma/prisma-schema/data-model/multi-schema",
+                "label": "멀티 스키마",
+                "translations": {
+                  "en": "Multi Schema"
+                }
+              },
+              {
+                "label": "관계",
+                "translations": {
+                  "en": "Relations"
+                },
+                "items": [
+                  {
+                    "slug": "prisma/prisma-schema/data-model/relations",
+                    "label": "개요",
+                    "translations": {
+                      "en": "Overview"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-schema/data-model/relations/many-to-many-relations",
+                    "label": "다대다 관계",
+                    "translations": {
+                      "en": "Many To Many Relations"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-schema/data-model/relations/one-to-many-relations",
+                    "label": "일대다 관계",
+                    "translations": {
+                      "en": "One To Many Relations"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-schema/data-model/relations/one-to-one-relations",
+                    "label": "일대일 관계",
+                    "translations": {
+                      "en": "One To One Relations"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-schema/data-model/relations/referential-actions",
+                    "label": "참조 동작",
+                    "translations": {
+                      "en": "Referential Actions"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-schema/data-model/relations/relation-mode",
+                    "label": "관계 모드",
+                    "translations": {
+                      "en": "Relation Mode"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-schema/data-model/relations/self-relations",
+                    "label": "자기 관계",
+                    "translations": {
+                      "en": "Self Relations"
+                    }
+                  },
+                  {
+                    "slug": "prisma/prisma-schema/data-model/relations/troubleshooting-relations",
+                    "label": "관계 문제 해결",
+                    "translations": {
+                      "en": "Troubleshooting Relations"
+                    }
+                  }
+                ]
+              },
+              {
+                "slug": "prisma/prisma-schema/data-model/table-inheritance",
+                "label": "테이블 상속",
+                "translations": {
+                  "en": "Table Inheritance"
+                }
+              },
+              {
+                "slug": "prisma/prisma-schema/data-model/unsupported-database-features",
+                "label": "미지원 DB 기능",
+                "translations": {
+                  "en": "Unsupported Database Features"
+                }
+              },
+              {
+                "slug": "prisma/prisma-schema/data-model/views",
+                "label": "뷰",
+                "translations": {
+                  "en": "Views"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "prisma/prisma-schema/introspection",
+            "label": "인트로스펙션",
+            "translations": {
+              "en": "Introspection"
+            }
+          },
+          {
+            "label": "개요",
+            "translations": {
+              "en": "Overview"
+            },
+            "items": [
+              {
+                "slug": "prisma/prisma-schema/overview",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "prisma/prisma-schema/overview/data-sources",
+                "label": "데이터 소스",
+                "translations": {
+                  "en": "Data Sources"
+                }
+              },
+              {
+                "slug": "prisma/prisma-schema/overview/generators",
+                "label": "생성기",
+                "translations": {
+                  "en": "Generators"
+                }
+              },
+              {
+                "slug": "prisma/prisma-schema/overview/location",
+                "label": "위치",
+                "translations": {
+                  "en": "Location"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "prisma/prisma-schema/postgresql-extensions",
+            "label": "PostgreSQL 확장",
+            "translations": {
+              "en": "Postgresql Extensions"
+            }
+          }
+        ]
+      },
+      {
+        "label": "레퍼런스",
+        "translations": {
+          "en": "Reference"
+        },
+        "items": [
+          {
+            "slug": "prisma/reference/connection-urls",
+            "label": "연결 URL",
+            "translations": {
+              "en": "Connection Urls"
+            }
+          },
+          {
+            "slug": "prisma/reference/database-features",
+            "label": "DB 기능",
+            "translations": {
+              "en": "Database Features"
+            }
+          },
+          {
+            "slug": "prisma/reference/environment-variables-reference",
+            "label": "환경 변수 레퍼런스",
+            "translations": {
+              "en": "Environment Variables Reference"
+            }
+          },
+          {
+            "slug": "prisma/reference/error-reference",
+            "label": "오류 레퍼런스",
+            "translations": {
+              "en": "Error Reference"
+            }
+          },
+          {
+            "slug": "prisma/reference/errors",
+            "label": "오류",
+            "translations": {
+              "en": "Errors"
+            }
+          },
+          {
+            "label": "미리보기 기능",
+            "translations": {
+              "en": "Preview Features"
+            },
+            "items": [
+              {
+                "slug": "prisma/reference/preview-features/cli-preview-features",
+                "label": "CLI 미리보기 기능",
+                "translations": {
+                  "en": "Cli Preview Features"
+                }
+              },
+              {
+                "slug": "prisma/reference/preview-features/client-preview-features",
+                "label": "Client 미리보기 기능",
+                "translations": {
+                  "en": "Client Preview Features"
+                }
+              }
+            ]
+          },
+          {
+            "slug": "prisma/reference/prisma-cli-reference",
+            "label": "Prisma CLI 레퍼런스",
+            "translations": {
+              "en": "Prisma Cli Reference"
+            }
+          },
+          {
+            "slug": "prisma/reference/prisma-client-reference",
+            "label": "Prisma Client 레퍼런스",
+            "translations": {
+              "en": "Prisma Client Reference"
+            }
+          },
+          {
+            "slug": "prisma/reference/prisma-config-reference",
+            "label": "Prisma Config 레퍼런스",
+            "translations": {
+              "en": "Prisma Config Reference"
+            }
+          },
+          {
+            "slug": "prisma/reference/prisma-schema-reference",
+            "label": "Prisma Schema 레퍼런스",
+            "translations": {
+              "en": "Prisma Schema Reference"
+            }
+          },
+          {
+            "slug": "prisma/reference/supported-databases",
+            "label": "지원 데이터베이스",
+            "translations": {
+              "en": "Supported Databases"
+            }
+          },
+          {
+            "slug": "prisma/reference/system-requirements",
+            "label": "시스템 요구사항",
+            "translations": {
+              "en": "System Requirements"
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
