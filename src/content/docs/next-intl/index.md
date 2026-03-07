@@ -21,8 +21,8 @@ description: "`next-intl`은 Next.js용 국제화 툴킷으로, 다음을 도와
 
 실제 프로젝트를 통해 기본부터 고급 패턴까지, Next.js로 매력적인 다국어 앱을 만드는 방법을 배워보세요.
 
-[시작하기→](https://learn.next-intl.dev)
+[시작하기](https://learn.next-intl.dev)
 
 [예제 앱](https://next-intl.dev/examples)을 살펴보며 `next-intl`로 무엇을 만들 수 있는지 더 알아보세요.
 
-[App Router](https://next-intl.dev/docs/getting-started/app-router "App Router")
+App Router로 시작하려면 [App Router 가이드](https://next-intl.dev/docs/getting-started/app-router)를 참고하세요.

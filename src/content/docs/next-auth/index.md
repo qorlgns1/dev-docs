@@ -1,9 +1,9 @@
 ---
 title: "NextAuth.js"
-description: "_(Google, Facebook, Auth0, Apple…)_"
+description: "Google, Facebook, Auth0, Apple 같은 인기 서비스에 대한 기본 지원을 제공합니다."
 ---
 
-Source URL: https://next-auth.js.org/
+출처 URL: https://next-auth.js.org/
 
 # NextAuth.js
 
@@ -23,7 +23,7 @@ Source URL: https://next-auth.js.org/
 
 ### 유연함
 
-- Serverless를 위해 설계되어 어디서나 실행 가능
+- 서버리스(Serverless) 환경을 고려해 설계되어 어디서나 실행 가능
 - 데이터베이스는 직접 선택 - 없어도 됨!
   _(MySQL, Postgres, MSSQL, MongoDB…)_
 - 데이터베이스 세션 또는 JWT 선택 가능
@@ -34,9 +34,9 @@ Source URL: https://next-auth.js.org/
 ### 보안성
 
 - 서명되고 접두사가 붙은 서버 전용 쿠키
-- HTTP POST + CSRF Token 검증
+- HTTP POST + CSRF 토큰(Token) 검증
 - JWS / JWE / JWK를 사용하는 JWT
-- 탭 동기화, 자동 재검증, keepalive
+- 탭 동기화, 자동 재검증, keep-alive 지원
 - 클라이언트 사이드 JavaScript에 의존하지 않음
 
 [npm install next-auth](https://www.npmjs.com/package/next-auth)
@@ -54,7 +54,7 @@ Source URL: https://next-auth.js.org/
 
     export default NextAuth({
       providers: [
-        // OAuth authentication providers...
+        // OAuth 인증 제공자...
         AppleProvider({
           clientId: process.env.APPLE_ID,
           clientSecret: process.env.APPLE_SECRET
@@ -67,7 +67,7 @@ Source URL: https://next-auth.js.org/
           clientId: process.env.GOOGLE_ID,
           clientSecret: process.env.GOOGLE_SECRET
         }),
-        // Passwordless / email sign in
+        // 비밀번호 없는 / 이메일 로그인
         EmailProvider({
           server: process.env.MAIL_SERVER,
           from: 'NextAuth.js <no-reply@example.com>'
@@ -100,13 +100,13 @@ Source URL: https://next-auth.js.org/
       const { data: session } = useSession()
       if(session) {
         return <>
-          Signed in as {session.user.email} <br/>
-          <button onClick={() => signOut()}>Sign out</button>
+          로그인됨: {session.user.email} <br/>
+          <button onClick={() => signOut()}>로그아웃</button>
         </>
       }
       return <>
-        Not signed in <br/>
-        <button onClick={() => signIn()}>Sign in</button>
+        로그인되지 않음 <br/>
+        <button onClick={() => signIn()}>로그인</button>
       </>
     }
 
