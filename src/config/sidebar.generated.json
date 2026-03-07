@@ -6106,5 +6106,1524 @@
         ]
       }
     ]
+  },
+  {
+    "label": "Tailwind CSS",
+    "translations": {
+      "en": "Tailwind CSS"
+    },
+    "items": [
+      {
+        "label": "시작하기",
+        "translations": {
+          "en": "Getting started"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/installation",
+            "label": "설치",
+            "translations": {
+              "en": "Installation"
+            }
+          },
+          {
+            "slug": "tailwindcss/editor-setup",
+            "label": "에디터 설정",
+            "translations": {
+              "en": "Editor setup"
+            }
+          },
+          {
+            "slug": "tailwindcss/compatibility",
+            "label": "호환성",
+            "translations": {
+              "en": "Compatibility"
+            }
+          },
+          {
+            "slug": "tailwindcss/upgrade-guide",
+            "label": "업그레이드 안내",
+            "translations": {
+              "en": "Upgrade guide"
+            }
+          }
+        ]
+      },
+      {
+        "label": "핵심 개념",
+        "translations": {
+          "en": "Core concepts"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/styling-with-utility-classes",
+            "label": "유틸 클래스 스타일링",
+            "translations": {
+              "en": "Styling with utility classes"
+            }
+          },
+          {
+            "slug": "tailwindcss/hover-focus-and-other-states",
+            "label": "호버·포커스·기타 상태",
+            "translations": {
+              "en": "Hover, focus, and other states"
+            }
+          },
+          {
+            "slug": "tailwindcss/responsive-design",
+            "label": "반응형 디자인",
+            "translations": {
+              "en": "Responsive design"
+            }
+          },
+          {
+            "slug": "tailwindcss/dark-mode",
+            "label": "다크 모드",
+            "translations": {
+              "en": "Dark mode"
+            }
+          },
+          {
+            "slug": "tailwindcss/theme",
+            "label": "테마 변수",
+            "translations": {
+              "en": "Theme variables"
+            }
+          },
+          {
+            "slug": "tailwindcss/colors",
+            "label": "색상",
+            "translations": {
+              "en": "Colors"
+            }
+          },
+          {
+            "slug": "tailwindcss/adding-custom-styles",
+            "label": "커스텀 스타일 추가",
+            "translations": {
+              "en": "Adding custom styles"
+            }
+          },
+          {
+            "slug": "tailwindcss/detecting-classes-in-source-files",
+            "label": "소스 파일 클래스 감지",
+            "translations": {
+              "en": "Detecting classes in source files"
+            }
+          },
+          {
+            "slug": "tailwindcss/functions-and-directives",
+            "label": "함수와 지시어",
+            "translations": {
+              "en": "Functions and directives"
+            }
+          }
+        ]
+      },
+      {
+        "label": "기본 스타일",
+        "translations": {
+          "en": "Base styles"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/preflight",
+            "label": "프리플라이트",
+            "translations": {
+              "en": "Preflight"
+            }
+          }
+        ]
+      },
+      {
+        "label": "레이아웃",
+        "translations": {
+          "en": "Layout"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/aspect-ratio",
+            "label": "종횡비",
+            "translations": {
+              "en": "aspect-ratio"
+            }
+          },
+          {
+            "slug": "tailwindcss/columns",
+            "label": "컬럼",
+            "translations": {
+              "en": "columns"
+            }
+          },
+          {
+            "slug": "tailwindcss/break-after",
+            "label": "뒤 분할",
+            "translations": {
+              "en": "break-after"
+            }
+          },
+          {
+            "slug": "tailwindcss/break-before",
+            "label": "앞 분할",
+            "translations": {
+              "en": "break-before"
+            }
+          },
+          {
+            "slug": "tailwindcss/break-inside",
+            "label": "내부 분할",
+            "translations": {
+              "en": "break-inside"
+            }
+          },
+          {
+            "slug": "tailwindcss/box-decoration-break",
+            "label": "박스 장식 분할",
+            "translations": {
+              "en": "box-decoration-break"
+            }
+          },
+          {
+            "slug": "tailwindcss/box-sizing",
+            "label": "박스 크기 기준",
+            "translations": {
+              "en": "box-sizing"
+            }
+          },
+          {
+            "slug": "tailwindcss/display",
+            "label": "표시",
+            "translations": {
+              "en": "display"
+            }
+          },
+          {
+            "slug": "tailwindcss/float",
+            "label": "띄움",
+            "translations": {
+              "en": "float"
+            }
+          },
+          {
+            "slug": "tailwindcss/clear",
+            "label": "해제",
+            "translations": {
+              "en": "clear"
+            }
+          },
+          {
+            "slug": "tailwindcss/isolation",
+            "label": "격리",
+            "translations": {
+              "en": "isolation"
+            }
+          },
+          {
+            "slug": "tailwindcss/object-fit",
+            "label": "객체 맞춤",
+            "translations": {
+              "en": "object-fit"
+            }
+          },
+          {
+            "slug": "tailwindcss/object-position",
+            "label": "객체 위치",
+            "translations": {
+              "en": "object-position"
+            }
+          },
+          {
+            "slug": "tailwindcss/overflow",
+            "label": "넘침",
+            "translations": {
+              "en": "overflow"
+            }
+          },
+          {
+            "slug": "tailwindcss/overscroll-behavior",
+            "label": "오버스크롤 동작",
+            "translations": {
+              "en": "overscroll-behavior"
+            }
+          },
+          {
+            "slug": "tailwindcss/position",
+            "label": "위치",
+            "translations": {
+              "en": "position"
+            }
+          },
+          {
+            "slug": "tailwindcss/top-right-bottom-left",
+            "label": "상 / 우 / 하 / 좌",
+            "translations": {
+              "en": "top / right / bottom / left"
+            }
+          },
+          {
+            "slug": "tailwindcss/visibility",
+            "label": "가시성",
+            "translations": {
+              "en": "visibility"
+            }
+          },
+          {
+            "slug": "tailwindcss/z-index",
+            "label": "쌓임 순서",
+            "translations": {
+              "en": "z-index"
+            }
+          }
+        ]
+      },
+      {
+        "label": "플렉스·그리드",
+        "translations": {
+          "en": "Flexbox & Grid"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/flex-basis",
+            "label": "기본 크기",
+            "translations": {
+              "en": "flex-basis"
+            }
+          },
+          {
+            "slug": "tailwindcss/flex-direction",
+            "label": "배치 방향",
+            "translations": {
+              "en": "flex-direction"
+            }
+          },
+          {
+            "slug": "tailwindcss/flex-wrap",
+            "label": "줄바꿈",
+            "translations": {
+              "en": "flex-wrap"
+            }
+          },
+          {
+            "slug": "tailwindcss/flex",
+            "label": "플렉스",
+            "translations": {
+              "en": "flex"
+            }
+          },
+          {
+            "slug": "tailwindcss/flex-grow",
+            "label": "확장 비율",
+            "translations": {
+              "en": "flex-grow"
+            }
+          },
+          {
+            "slug": "tailwindcss/flex-shrink",
+            "label": "축소 비율",
+            "translations": {
+              "en": "flex-shrink"
+            }
+          },
+          {
+            "slug": "tailwindcss/order",
+            "label": "순서",
+            "translations": {
+              "en": "order"
+            }
+          },
+          {
+            "slug": "tailwindcss/grid-template-columns",
+            "label": "열 템플릿",
+            "translations": {
+              "en": "grid-template-columns"
+            }
+          },
+          {
+            "slug": "tailwindcss/grid-column",
+            "label": "열 배치",
+            "translations": {
+              "en": "grid-column"
+            }
+          },
+          {
+            "slug": "tailwindcss/grid-template-rows",
+            "label": "행 템플릿",
+            "translations": {
+              "en": "grid-template-rows"
+            }
+          },
+          {
+            "slug": "tailwindcss/grid-row",
+            "label": "행 배치",
+            "translations": {
+              "en": "grid-row"
+            }
+          },
+          {
+            "slug": "tailwindcss/grid-auto-flow",
+            "label": "자동 흐름",
+            "translations": {
+              "en": "grid-auto-flow"
+            }
+          },
+          {
+            "slug": "tailwindcss/grid-auto-columns",
+            "label": "자동 열",
+            "translations": {
+              "en": "grid-auto-columns"
+            }
+          },
+          {
+            "slug": "tailwindcss/grid-auto-rows",
+            "label": "자동 행",
+            "translations": {
+              "en": "grid-auto-rows"
+            }
+          },
+          {
+            "slug": "tailwindcss/gap",
+            "label": "간격",
+            "translations": {
+              "en": "gap"
+            }
+          },
+          {
+            "slug": "tailwindcss/justify-content",
+            "label": "주축 정렬",
+            "translations": {
+              "en": "justify-content"
+            }
+          },
+          {
+            "slug": "tailwindcss/justify-items",
+            "label": "항목 정렬",
+            "translations": {
+              "en": "justify-items"
+            }
+          },
+          {
+            "slug": "tailwindcss/justify-self",
+            "label": "자기 정렬",
+            "translations": {
+              "en": "justify-self"
+            }
+          },
+          {
+            "slug": "tailwindcss/align-content",
+            "label": "교차축 정렬",
+            "translations": {
+              "en": "align-content"
+            }
+          },
+          {
+            "slug": "tailwindcss/align-items",
+            "label": "항목 정렬",
+            "translations": {
+              "en": "align-items"
+            }
+          },
+          {
+            "slug": "tailwindcss/align-self",
+            "label": "자기 정렬",
+            "translations": {
+              "en": "align-self"
+            }
+          },
+          {
+            "slug": "tailwindcss/place-content",
+            "label": "콘텐츠 배치",
+            "translations": {
+              "en": "place-content"
+            }
+          },
+          {
+            "slug": "tailwindcss/place-items",
+            "label": "항목 배치",
+            "translations": {
+              "en": "place-items"
+            }
+          },
+          {
+            "slug": "tailwindcss/place-self",
+            "label": "자기 배치",
+            "translations": {
+              "en": "place-self"
+            }
+          }
+        ]
+      },
+      {
+        "label": "여백",
+        "translations": {
+          "en": "Spacing"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/padding",
+            "label": "안쪽 여백",
+            "translations": {
+              "en": "padding"
+            }
+          },
+          {
+            "slug": "tailwindcss/margin",
+            "label": "바깥 여백",
+            "translations": {
+              "en": "margin"
+            }
+          }
+        ]
+      },
+      {
+        "label": "크기",
+        "translations": {
+          "en": "Sizing"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/width",
+            "label": "너비",
+            "translations": {
+              "en": "width"
+            }
+          },
+          {
+            "slug": "tailwindcss/min-width",
+            "label": "최소 너비",
+            "translations": {
+              "en": "min-width"
+            }
+          },
+          {
+            "slug": "tailwindcss/max-width",
+            "label": "최대 너비",
+            "translations": {
+              "en": "max-width"
+            }
+          },
+          {
+            "slug": "tailwindcss/height",
+            "label": "높이",
+            "translations": {
+              "en": "height"
+            }
+          },
+          {
+            "slug": "tailwindcss/min-height",
+            "label": "최소 높이",
+            "translations": {
+              "en": "min-height"
+            }
+          },
+          {
+            "slug": "tailwindcss/max-height",
+            "label": "최대 높이",
+            "translations": {
+              "en": "max-height"
+            }
+          },
+          {
+            "slug": "tailwindcss/inline-size",
+            "label": "인라인 크기",
+            "translations": {
+              "en": "inline-size"
+            }
+          },
+          {
+            "slug": "tailwindcss/min-inline-size",
+            "label": "최소 인라인 크기",
+            "translations": {
+              "en": "min-inline-size"
+            }
+          },
+          {
+            "slug": "tailwindcss/max-inline-size",
+            "label": "최대 인라인 크기",
+            "translations": {
+              "en": "max-inline-size"
+            }
+          },
+          {
+            "slug": "tailwindcss/block-size",
+            "label": "블록 크기",
+            "translations": {
+              "en": "block-size"
+            }
+          },
+          {
+            "slug": "tailwindcss/min-block-size",
+            "label": "최소 블록 크기",
+            "translations": {
+              "en": "min-block-size"
+            }
+          },
+          {
+            "slug": "tailwindcss/max-block-size",
+            "label": "최대 블록 크기",
+            "translations": {
+              "en": "max-block-size"
+            }
+          }
+        ]
+      },
+      {
+        "label": "타이포그래피",
+        "translations": {
+          "en": "Typography"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/font-family",
+            "label": "글꼴군",
+            "translations": {
+              "en": "font-family"
+            }
+          },
+          {
+            "slug": "tailwindcss/font-size",
+            "label": "글꼴 크기",
+            "translations": {
+              "en": "font-size"
+            }
+          },
+          {
+            "slug": "tailwindcss/font-smoothing",
+            "label": "글꼴 스무딩",
+            "translations": {
+              "en": "font-smoothing"
+            }
+          },
+          {
+            "slug": "tailwindcss/font-style",
+            "label": "글꼴 스타일",
+            "translations": {
+              "en": "font-style"
+            }
+          },
+          {
+            "slug": "tailwindcss/font-weight",
+            "label": "글꼴 두께",
+            "translations": {
+              "en": "font-weight"
+            }
+          },
+          {
+            "slug": "tailwindcss/font-stretch",
+            "label": "글꼴 폭",
+            "translations": {
+              "en": "font-stretch"
+            }
+          },
+          {
+            "slug": "tailwindcss/font-variant-numeric",
+            "label": "숫자 변형",
+            "translations": {
+              "en": "font-variant-numeric"
+            }
+          },
+          {
+            "slug": "tailwindcss/font-feature-settings",
+            "label": "글꼴 기능 설정",
+            "translations": {
+              "en": "font-feature-settings"
+            }
+          },
+          {
+            "slug": "tailwindcss/letter-spacing",
+            "label": "자간",
+            "translations": {
+              "en": "letter-spacing"
+            }
+          },
+          {
+            "slug": "tailwindcss/line-clamp",
+            "label": "줄 수 제한",
+            "translations": {
+              "en": "line-clamp"
+            }
+          },
+          {
+            "slug": "tailwindcss/line-height",
+            "label": "줄 높이",
+            "translations": {
+              "en": "line-height"
+            }
+          },
+          {
+            "slug": "tailwindcss/list-style-image",
+            "label": "목록 이미지",
+            "translations": {
+              "en": "list-style-image"
+            }
+          },
+          {
+            "slug": "tailwindcss/list-style-position",
+            "label": "목록 위치",
+            "translations": {
+              "en": "list-style-position"
+            }
+          },
+          {
+            "slug": "tailwindcss/list-style-type",
+            "label": "목록 유형",
+            "translations": {
+              "en": "list-style-type"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-align",
+            "label": "텍스트 정렬",
+            "translations": {
+              "en": "text-align"
+            }
+          },
+          {
+            "slug": "tailwindcss/color",
+            "label": "글자색",
+            "translations": {
+              "en": "color"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-decoration-line",
+            "label": "텍스트 선",
+            "translations": {
+              "en": "text-decoration-line"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-decoration-color",
+            "label": "선 색상",
+            "translations": {
+              "en": "text-decoration-color"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-decoration-style",
+            "label": "선 스타일",
+            "translations": {
+              "en": "text-decoration-style"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-decoration-thickness",
+            "label": "선 두께",
+            "translations": {
+              "en": "text-decoration-thickness"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-underline-offset",
+            "label": "밑줄 오프셋",
+            "translations": {
+              "en": "text-underline-offset"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-transform",
+            "label": "텍스트 변환",
+            "translations": {
+              "en": "text-transform"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-overflow",
+            "label": "텍스트 넘침",
+            "translations": {
+              "en": "text-overflow"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-wrap",
+            "label": "텍스트 줄바꿈",
+            "translations": {
+              "en": "text-wrap"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-indent",
+            "label": "들여쓰기",
+            "translations": {
+              "en": "text-indent"
+            }
+          },
+          {
+            "slug": "tailwindcss/vertical-align",
+            "label": "수직 정렬",
+            "translations": {
+              "en": "vertical-align"
+            }
+          },
+          {
+            "slug": "tailwindcss/white-space",
+            "label": "공백 처리",
+            "translations": {
+              "en": "white-space"
+            }
+          },
+          {
+            "slug": "tailwindcss/word-break",
+            "label": "단어 줄바꿈",
+            "translations": {
+              "en": "word-break"
+            }
+          },
+          {
+            "slug": "tailwindcss/overflow-wrap",
+            "label": "넘침 줄바꿈",
+            "translations": {
+              "en": "overflow-wrap"
+            }
+          },
+          {
+            "slug": "tailwindcss/hyphens",
+            "label": "하이픈",
+            "translations": {
+              "en": "hyphens"
+            }
+          },
+          {
+            "slug": "tailwindcss/content",
+            "label": "콘텐츠",
+            "translations": {
+              "en": "content"
+            }
+          }
+        ]
+      },
+      {
+        "label": "배경",
+        "translations": {
+          "en": "Backgrounds"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/background-attachment",
+            "label": "배경 고정",
+            "translations": {
+              "en": "background-attachment"
+            }
+          },
+          {
+            "slug": "tailwindcss/background-clip",
+            "label": "배경 클립",
+            "translations": {
+              "en": "background-clip"
+            }
+          },
+          {
+            "slug": "tailwindcss/background-color",
+            "label": "배경색",
+            "translations": {
+              "en": "background-color"
+            }
+          },
+          {
+            "slug": "tailwindcss/background-image",
+            "label": "배경 이미지",
+            "translations": {
+              "en": "background-image"
+            }
+          },
+          {
+            "slug": "tailwindcss/background-origin",
+            "label": "배경 기준",
+            "translations": {
+              "en": "background-origin"
+            }
+          },
+          {
+            "slug": "tailwindcss/background-position",
+            "label": "배경 위치",
+            "translations": {
+              "en": "background-position"
+            }
+          },
+          {
+            "slug": "tailwindcss/background-repeat",
+            "label": "배경 반복",
+            "translations": {
+              "en": "background-repeat"
+            }
+          },
+          {
+            "slug": "tailwindcss/background-size",
+            "label": "배경 크기",
+            "translations": {
+              "en": "background-size"
+            }
+          }
+        ]
+      },
+      {
+        "label": "테두리",
+        "translations": {
+          "en": "Borders"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/border-radius",
+            "label": "모서리 둥글기",
+            "translations": {
+              "en": "border-radius"
+            }
+          },
+          {
+            "slug": "tailwindcss/border-width",
+            "label": "테두리 두께",
+            "translations": {
+              "en": "border-width"
+            }
+          },
+          {
+            "slug": "tailwindcss/border-color",
+            "label": "테두리 색상",
+            "translations": {
+              "en": "border-color"
+            }
+          },
+          {
+            "slug": "tailwindcss/border-style",
+            "label": "테두리 스타일",
+            "translations": {
+              "en": "border-style"
+            }
+          },
+          {
+            "slug": "tailwindcss/outline-width",
+            "label": "윤곽선 두께",
+            "translations": {
+              "en": "outline-width"
+            }
+          },
+          {
+            "slug": "tailwindcss/outline-color",
+            "label": "윤곽선 색상",
+            "translations": {
+              "en": "outline-color"
+            }
+          },
+          {
+            "slug": "tailwindcss/outline-style",
+            "label": "윤곽선 스타일",
+            "translations": {
+              "en": "outline-style"
+            }
+          },
+          {
+            "slug": "tailwindcss/outline-offset",
+            "label": "윤곽선 오프셋",
+            "translations": {
+              "en": "outline-offset"
+            }
+          }
+        ]
+      },
+      {
+        "label": "효과",
+        "translations": {
+          "en": "Effects"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/box-shadow",
+            "label": "박스 그림자",
+            "translations": {
+              "en": "box-shadow"
+            }
+          },
+          {
+            "slug": "tailwindcss/text-shadow",
+            "label": "텍스트 그림자",
+            "translations": {
+              "en": "text-shadow"
+            }
+          },
+          {
+            "slug": "tailwindcss/opacity",
+            "label": "불투명도",
+            "translations": {
+              "en": "opacity"
+            }
+          },
+          {
+            "slug": "tailwindcss/mix-blend-mode",
+            "label": "혼합 모드",
+            "translations": {
+              "en": "mix-blend-mode"
+            }
+          },
+          {
+            "slug": "tailwindcss/background-blend-mode",
+            "label": "배경 혼합 모드",
+            "translations": {
+              "en": "background-blend-mode"
+            }
+          },
+          {
+            "slug": "tailwindcss/mask-clip",
+            "label": "마스크 클립",
+            "translations": {
+              "en": "mask-clip"
+            }
+          },
+          {
+            "slug": "tailwindcss/mask-composite",
+            "label": "마스크 합성",
+            "translations": {
+              "en": "mask-composite"
+            }
+          },
+          {
+            "slug": "tailwindcss/mask-image",
+            "label": "마스크 이미지",
+            "translations": {
+              "en": "mask-image"
+            }
+          },
+          {
+            "slug": "tailwindcss/mask-mode",
+            "label": "마스크 모드",
+            "translations": {
+              "en": "mask-mode"
+            }
+          },
+          {
+            "slug": "tailwindcss/mask-origin",
+            "label": "마스크 기준",
+            "translations": {
+              "en": "mask-origin"
+            }
+          },
+          {
+            "slug": "tailwindcss/mask-position",
+            "label": "마스크 위치",
+            "translations": {
+              "en": "mask-position"
+            }
+          },
+          {
+            "slug": "tailwindcss/mask-repeat",
+            "label": "마스크 반복",
+            "translations": {
+              "en": "mask-repeat"
+            }
+          },
+          {
+            "slug": "tailwindcss/mask-size",
+            "label": "마스크 크기",
+            "translations": {
+              "en": "mask-size"
+            }
+          },
+          {
+            "slug": "tailwindcss/mask-type",
+            "label": "마스크 유형",
+            "translations": {
+              "en": "mask-type"
+            }
+          }
+        ]
+      },
+      {
+        "label": "필터",
+        "translations": {
+          "en": "Filters"
+        },
+        "items": [
+          {
+            "label": "필터",
+            "translations": {
+              "en": "filter"
+            },
+            "items": [
+              {
+                "slug": "tailwindcss/filter",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "tailwindcss/filter-blur",
+                "label": "흐림",
+                "translations": {
+                  "en": "blur"
+                }
+              },
+              {
+                "slug": "tailwindcss/filter-brightness",
+                "label": "밝기",
+                "translations": {
+                  "en": "brightness"
+                }
+              },
+              {
+                "slug": "tailwindcss/filter-contrast",
+                "label": "대비",
+                "translations": {
+                  "en": "contrast"
+                }
+              },
+              {
+                "slug": "tailwindcss/filter-drop-shadow",
+                "label": "드롭 그림자",
+                "translations": {
+                  "en": "drop-shadow"
+                }
+              },
+              {
+                "slug": "tailwindcss/filter-grayscale",
+                "label": "회색조",
+                "translations": {
+                  "en": "grayscale"
+                }
+              },
+              {
+                "slug": "tailwindcss/filter-hue-rotate",
+                "label": "색조 회전",
+                "translations": {
+                  "en": "hue-rotate"
+                }
+              },
+              {
+                "slug": "tailwindcss/filter-invert",
+                "label": "반전",
+                "translations": {
+                  "en": "invert"
+                }
+              },
+              {
+                "slug": "tailwindcss/filter-saturate",
+                "label": "채도",
+                "translations": {
+                  "en": "saturate"
+                }
+              },
+              {
+                "slug": "tailwindcss/filter-sepia",
+                "label": "세피아",
+                "translations": {
+                  "en": "sepia"
+                }
+              }
+            ]
+          },
+          {
+            "label": "백드롭 필터",
+            "translations": {
+              "en": "backdrop-filter"
+            },
+            "items": [
+              {
+                "slug": "tailwindcss/backdrop-filter",
+                "label": "개요",
+                "translations": {
+                  "en": "Overview"
+                }
+              },
+              {
+                "slug": "tailwindcss/backdrop-filter-blur",
+                "label": "흐림",
+                "translations": {
+                  "en": "blur"
+                }
+              },
+              {
+                "slug": "tailwindcss/backdrop-filter-brightness",
+                "label": "밝기",
+                "translations": {
+                  "en": "brightness"
+                }
+              },
+              {
+                "slug": "tailwindcss/backdrop-filter-contrast",
+                "label": "대비",
+                "translations": {
+                  "en": "contrast"
+                }
+              },
+              {
+                "slug": "tailwindcss/backdrop-filter-grayscale",
+                "label": "회색조",
+                "translations": {
+                  "en": "grayscale"
+                }
+              },
+              {
+                "slug": "tailwindcss/backdrop-filter-hue-rotate",
+                "label": "색조 회전",
+                "translations": {
+                  "en": "hue-rotate"
+                }
+              },
+              {
+                "slug": "tailwindcss/backdrop-filter-invert",
+                "label": "반전",
+                "translations": {
+                  "en": "invert"
+                }
+              },
+              {
+                "slug": "tailwindcss/backdrop-filter-opacity",
+                "label": "불투명도",
+                "translations": {
+                  "en": "opacity"
+                }
+              },
+              {
+                "slug": "tailwindcss/backdrop-filter-saturate",
+                "label": "채도",
+                "translations": {
+                  "en": "saturate"
+                }
+              },
+              {
+                "slug": "tailwindcss/backdrop-filter-sepia",
+                "label": "세피아",
+                "translations": {
+                  "en": "sepia"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "표",
+        "translations": {
+          "en": "Tables"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/border-collapse",
+            "label": "테두리 병합",
+            "translations": {
+              "en": "border-collapse"
+            }
+          },
+          {
+            "slug": "tailwindcss/border-spacing",
+            "label": "테두리 간격",
+            "translations": {
+              "en": "border-spacing"
+            }
+          },
+          {
+            "slug": "tailwindcss/table-layout",
+            "label": "표 레이아웃",
+            "translations": {
+              "en": "table-layout"
+            }
+          },
+          {
+            "slug": "tailwindcss/caption-side",
+            "label": "캡션 위치",
+            "translations": {
+              "en": "caption-side"
+            }
+          }
+        ]
+      },
+      {
+        "label": "전환·애니메이션",
+        "translations": {
+          "en": "Transitions & Animation"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/transition-property",
+            "label": "전환 속성",
+            "translations": {
+              "en": "transition-property"
+            }
+          },
+          {
+            "slug": "tailwindcss/transition-behavior",
+            "label": "전환 동작",
+            "translations": {
+              "en": "transition-behavior"
+            }
+          },
+          {
+            "slug": "tailwindcss/transition-duration",
+            "label": "전환 시간",
+            "translations": {
+              "en": "transition-duration"
+            }
+          },
+          {
+            "slug": "tailwindcss/transition-timing-function",
+            "label": "전환 타이밍 함수",
+            "translations": {
+              "en": "transition-timing-function"
+            }
+          },
+          {
+            "slug": "tailwindcss/transition-delay",
+            "label": "전환 지연",
+            "translations": {
+              "en": "transition-delay"
+            }
+          },
+          {
+            "slug": "tailwindcss/animation",
+            "label": "애니메이션",
+            "translations": {
+              "en": "animation"
+            }
+          }
+        ]
+      },
+      {
+        "label": "변형",
+        "translations": {
+          "en": "Transforms"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/backface-visibility",
+            "label": "뒷면 표시",
+            "translations": {
+              "en": "backface-visibility"
+            }
+          },
+          {
+            "slug": "tailwindcss/perspective",
+            "label": "원근감",
+            "translations": {
+              "en": "perspective"
+            }
+          },
+          {
+            "slug": "tailwindcss/perspective-origin",
+            "label": "원근 기준",
+            "translations": {
+              "en": "perspective-origin"
+            }
+          },
+          {
+            "slug": "tailwindcss/rotate",
+            "label": "회전",
+            "translations": {
+              "en": "rotate"
+            }
+          },
+          {
+            "slug": "tailwindcss/scale",
+            "label": "크기 조절",
+            "translations": {
+              "en": "scale"
+            }
+          },
+          {
+            "slug": "tailwindcss/skew",
+            "label": "기울이기",
+            "translations": {
+              "en": "skew"
+            }
+          },
+          {
+            "slug": "tailwindcss/transform",
+            "label": "변형",
+            "translations": {
+              "en": "transform"
+            }
+          },
+          {
+            "slug": "tailwindcss/transform-origin",
+            "label": "변형 기준",
+            "translations": {
+              "en": "transform-origin"
+            }
+          },
+          {
+            "slug": "tailwindcss/transform-style",
+            "label": "변형 스타일",
+            "translations": {
+              "en": "transform-style"
+            }
+          },
+          {
+            "slug": "tailwindcss/translate",
+            "label": "이동",
+            "translations": {
+              "en": "translate"
+            }
+          }
+        ]
+      },
+      {
+        "label": "상호작용",
+        "translations": {
+          "en": "Interactivity"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/accent-color",
+            "label": "강조 색상",
+            "translations": {
+              "en": "accent-color"
+            }
+          },
+          {
+            "slug": "tailwindcss/appearance",
+            "label": "기본 모양",
+            "translations": {
+              "en": "appearance"
+            }
+          },
+          {
+            "slug": "tailwindcss/caret-color",
+            "label": "캐럿 색상",
+            "translations": {
+              "en": "caret-color"
+            }
+          },
+          {
+            "slug": "tailwindcss/color-scheme",
+            "label": "색상 스킴",
+            "translations": {
+              "en": "color-scheme"
+            }
+          },
+          {
+            "slug": "tailwindcss/cursor",
+            "label": "커서",
+            "translations": {
+              "en": "cursor"
+            }
+          },
+          {
+            "slug": "tailwindcss/field-sizing",
+            "label": "필드 크기",
+            "translations": {
+              "en": "field-sizing"
+            }
+          },
+          {
+            "slug": "tailwindcss/pointer-events",
+            "label": "포인터 이벤트",
+            "translations": {
+              "en": "pointer-events"
+            }
+          },
+          {
+            "slug": "tailwindcss/resize",
+            "label": "크기 조절",
+            "translations": {
+              "en": "resize"
+            }
+          },
+          {
+            "slug": "tailwindcss/scroll-behavior",
+            "label": "스크롤 동작",
+            "translations": {
+              "en": "scroll-behavior"
+            }
+          },
+          {
+            "slug": "tailwindcss/scroll-margin",
+            "label": "스크롤 여백",
+            "translations": {
+              "en": "scroll-margin"
+            }
+          },
+          {
+            "slug": "tailwindcss/scroll-padding",
+            "label": "스크롤 패딩",
+            "translations": {
+              "en": "scroll-padding"
+            }
+          },
+          {
+            "slug": "tailwindcss/scroll-snap-align",
+            "label": "스냅 정렬",
+            "translations": {
+              "en": "scroll-snap-align"
+            }
+          },
+          {
+            "slug": "tailwindcss/scroll-snap-stop",
+            "label": "스냅 정지",
+            "translations": {
+              "en": "scroll-snap-stop"
+            }
+          },
+          {
+            "slug": "tailwindcss/scroll-snap-type",
+            "label": "스냅 유형",
+            "translations": {
+              "en": "scroll-snap-type"
+            }
+          },
+          {
+            "slug": "tailwindcss/touch-action",
+            "label": "터치 동작",
+            "translations": {
+              "en": "touch-action"
+            }
+          },
+          {
+            "slug": "tailwindcss/user-select",
+            "label": "텍스트 선택",
+            "translations": {
+              "en": "user-select"
+            }
+          },
+          {
+            "slug": "tailwindcss/will-change",
+            "label": "변경 예고",
+            "translations": {
+              "en": "will-change"
+            }
+          }
+        ]
+      },
+      {
+        "label": "SVG",
+        "translations": {
+          "en": "SVG"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/fill",
+            "label": "채우기",
+            "translations": {
+              "en": "fill"
+            }
+          },
+          {
+            "slug": "tailwindcss/stroke",
+            "label": "선",
+            "translations": {
+              "en": "stroke"
+            }
+          },
+          {
+            "slug": "tailwindcss/stroke-width",
+            "label": "선 두께",
+            "translations": {
+              "en": "stroke-width"
+            }
+          }
+        ]
+      },
+      {
+        "label": "접근성",
+        "translations": {
+          "en": "Accessibility"
+        },
+        "items": [
+          {
+            "slug": "tailwindcss/forced-color-adjust",
+            "label": "강제 색상 조정",
+            "translations": {
+              "en": "forced-color-adjust"
+            }
+          }
+        ]
+      }
+    ]
   }
 ]

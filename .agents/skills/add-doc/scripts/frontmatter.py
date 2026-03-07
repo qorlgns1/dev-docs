@@ -66,9 +66,12 @@ def extract_description(body: str) -> str | None:
             continue
         if any(re.match(p, line) for p in SKIP_PATTERNS):
             continue
+        if "|" in line:
+            continue
         clean = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", line)
         clean = re.sub(r"\*\*([^*]+)\*\*", r"\1", clean)
-        clean = re.sub(r"`[^`]+`", "", clean).strip()
+        clean = re.sub(r"`([^`]+)`", r"\1", clean)
+        clean = re.sub(r"\s+", " ", clean).strip()
         if len(clean) > 20:
             return (clean[:150] + "...") if len(clean) > 150 else clean
     return None

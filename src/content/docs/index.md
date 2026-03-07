@@ -34,6 +34,7 @@ hero:
 - [next-intl](/next-intl/)
 - [Playwright](/playwright/)
 - [Prisma ORM](/prisma/)
+- [Tailwind CSS](/tailwindcss/)
 - [Vitest](/vitest/)
 - [Zod](/zod/)
 

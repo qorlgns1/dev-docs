@@ -1114,6 +1114,41 @@ def _parse_li(li, base_url: str, base_path: str) -> dict | None:
     return None
 
 
+def _direct_element_children(node) -> list:
+    return [child for child in node.children if getattr(child, "name", None)]
+
+
+def _extract_group_label(node) -> str:
+    for tag in ("h2", "h3", "h4", "h5", "h6", "p", "span", "button"):
+        child = node.find(tag, recursive=False)
+        if not child:
+            continue
+        label = child.get_text(" ", strip=True)
+        if label:
+            return label
+    return ""
+
+
+def _parse_grouped_nav(node, base_url: str, base_path: str) -> list[dict]:
+    items: list[dict] = []
+    for child in _direct_element_children(node):
+        direct_ul = child.find("ul", recursive=False)
+        if not direct_ul:
+            continue
+
+        group_items = _parse_ul(direct_ul, base_url, base_path)
+        if not group_items:
+            continue
+
+        label = _extract_group_label(child)
+        if label:
+            items.append({"label": label, "items": group_items})
+        else:
+            items.extend(group_items)
+
+    return items
+
+
 def _item_count(items: list) -> int:
     total = len(items)
     for item in items:
@@ -1206,22 +1241,37 @@ def extract_nav(base_url: str, base_path: str, section: str) -> bool:
         print("[nav] No navigation element found", file=sys.stderr)
         return False
 
-    top_ul = nav_node if nav_node.name == "ul" else nav_node.find("ul")
-    if not top_ul:
-        print("[nav] No <ul> inside nav element", file=sys.stderr)
-        return False
+    best_items: list[dict] = []
+    best_score = (0, 0)
 
-    items = _parse_ul(top_ul, base_url, base_path)
-    if not items:
-        print("[nav] Empty navigation (no in-scope links found)", file=sys.stderr)
+    grouped_items = _parse_grouped_nav(nav_node, base_url, base_path)
+    if grouped_items:
+        best_items = grouped_items
+        best_score = (_item_count(grouped_items), len(grouped_items))
+
+    ul_candidates = [nav_node] if nav_node.name == "ul" else nav_node.find_all("ul")
+    for ul in ul_candidates:
+        items = _parse_ul(ul, base_url, base_path)
+        if not items:
+            continue
+        score = (_item_count(items), len(items))
+        if score > best_score:
+            best_items = items
+            best_score = score
+
+    if not best_items:
+        if not ul_candidates:
+            print("[nav] No <ul> inside nav element", file=sys.stderr)
+        else:
+            print("[nav] Empty navigation (no in-scope links found)", file=sys.stderr)
         return False
 
     REFS_DIR.mkdir(parents=True, exist_ok=True)
     out_file = REFS_DIR / f"{section}-nav.json"
-    out_file.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
+    out_file.write_text(json.dumps(best_items, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
         f"[nav] Saved: {out_file.relative_to(REPO_ROOT)} "
-        f"({_item_count(items)} items, {len(items)} top-level groups)",
+        f"({_item_count(best_items)} items, {len(best_items)} top-level groups)",
         flush=True,
     )
     return True
